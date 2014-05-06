@@ -1,0 +1,260 @@
+<div>
+  <div>
+    <div class="main-sec">
+      <div class="w-container">
+        <div class="test-prog-bar">
+          <div class="house-block">
+            <%= image_tag "house.png",                      class: "house"    %>
+            <%= image_tag "color-house-parts/roof.png",     class: "roof"     %>
+            <%= image_tag "color-house-parts/fence.png",    class: "fence"    %>
+            <%= image_tag "color-house-parts/addition.png", class: "addition" %>
+            <%= image_tag "color-house-parts/chimney.png",  class: "chimney"  %>
+          </div>
+          <h2>Progress</h2>
+          <div class="bar">
+            <div class="bar small waypoint"></div>
+          </div>
+          <h6 class="progress-percent">0%</h6>
+          <p class="small-text">Approximate time 20 mins</p>
+        </div>
+        <div class="chunk chuck-w-padding first-chuck" id="select-renovations">
+          <h1>How would you like to improve your house?</h1>
+          <p>Give us a few details about the type of improvement you want done.</p>
+          <div class="w-form">
+            <form class="form" name="email-form" data-name="Email Form">
+              <label class="label" for="name">Pick an improvement or search for your own:</label>
+              <div class="w-row">
+                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline fence-btn" href="#">Fencing</a>
+                </div>
+                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline roof-btn" href="#">Roofing</a>
+                </div>
+                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline repairs-btn" href="#">Chimney</a>
+                </div>
+                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline addition-btn" href="#">Additions</a>
+                </div>
+              </div>
+              <input class="w-input field" type="text" placeholder="Or something else? e.g. paint house, install fence, add garage" name="name" data-name="Name"></input><a class="btn-fill" href="#enter-address">next</a>
+            </form>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div class="w-form-fail">
+              <p>Oops! Something went wrong while submitting the form :(</p>
+            </div>
+          </div>
+        </div>
+        <div class="chunk chuck-w-padding ha-waypoint" id="enter-address" data-animate-down="17%" data-animate-up="0%">
+          <h1>Enter your address</h1>
+          <p>We will use this information to help you plan out your changes.</p>
+          <div class="w-form">
+            <form class="form" name="email-form" data-name="Email Form">
+              <label class="label" for="name">Your address:</label>
+              <input class="w-input field" type="text" placeholder="Enter your address" name="name" data-name="Name"></input><a class="btn-fill" href="#address-confirmed">submit</a>
+            </form>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div class="w-form-fail">
+              <p>Oops! Something went wrong while submitting the form :(</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-container container">
+        <div class="w-clearfix">
+          <div class="chunk chuck-w-padding ha-waypoint" id="address-confirmed" data-animate-down="34%" data-animate-up="17%">
+            <h1>This is what we know about your home</h1>
+            <h3 class="alt-h1">555 Saint Mary's San Antonio, TX&nbsp;78204</h3>
+            <div class="w-row about-house-row">
+              <div class="w-col w-col-5">
+
+                <%= image_tag "overlay.jpg",  alt: "5331ba9fee53fb987a000a65_overlay.jpg",
+                class: "overlay-img" %>
+
+              </div>
+              <div class="w-col w-col-7">
+                <p><strong>Your home has unique historic architecture.</strong> It features unique window stylings and parapets designed in the last century.
+                  <br>
+                  <br><strong>You live in a Historic District.</strong>
+                  <br>The King William Historic Zone has been home to San Antonians since 1793. Many of its homes were built in the mid-19th century.
+                </div>
+              </div><a class="btn-fill" href="#renovation-rules">Next</a>
+            </div>
+          </div>
+          <div class="chunk chuck-w-padding ha-waypoint" id="renovation-rules" data-animate-down="50%" data-animate-up="34%">
+            <h1>These are the guidelines for your renovation project</h1>
+            <div class="ren-rule">
+              <h3><strong>Re-roofing</strong></h3>
+              <ul>
+                <li class="list-item">Replace missing or damaged sidingwith in-kind materials.</li>
+                <li class="list-item">Repair or replace rotted sills and caulk around window and door frames.</li>
+                <li class="list-item">Replace missing balustrades and rotted wood decking</li>
+              </ul>
+            </div>
+            <div class="ren-rule">
+              <h3><strong>Masonry and Stucco</strong></h3>
+              <ul>
+                <li class="list-item">Remove stucco from masonry surfaces where historically appropriate.</li>
+                <li class="list-item">Avoid painting historically unpainted surfaces.&nbsp;</li>
+                <li class="list-item">Repoint masonry with compatible mortar and matching joint profile and composition</li>
+              </ul>
+            </div>
+            <div class="ren-rule">
+              <h3><strong>Foundations</strong></h3>
+              <ul>
+                <li class="list-item">Concrete piers are a suitable replacement for cedar when original piers are deteriorated beyond repair.</li>
+                <li class="list-item">Many limestone foundations can be restored rather than replaced.</li>
+              </ul>
+            </div>
+            <h2 class="grant-total permits-req">Permits Required</h2>
+            <div class="w-row">
+              <div class="w-col w-col-4">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">RE-ROOF</h3>
+                  <p class="small-text">Required for all residential re-roofing project. Carries specific construction and material requirements. Repairs can be done by homeowner or contractor.</p>
+                  <p class="small-text"><b>Application cost:</b> $26</p>
+                  <p class="small-text"><b>Required documents:</b> <br>Site plan, permit application</p>
+                  <p class="small-text"><b>Approximate time:</b> <br>2 weeks</p>
+                </div><a class="btn-fill grant-btn" href="#grants-available">apply</a>
+              </div>
+              <div class="w-col w-col-4">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">HISTORIC</h3>
+                  <p class="small-text">Your property is in the King William Historic District. Your change will require a design review from the Historic Design Review Commission.</p>
+                  <p class="small-text"><b>Application cost:</b> $0</p>
+                  <p class="small-text"><b>Required documents:</b> <br>Site plan</p>
+                  <p class="small-text"><b>Approximate time:</b> <br>1 week</p>
+                </div><a class="btn-fill grant-btn" href="#grants-available">apply</a>
+              </div>
+              <div class="w-col w-col-4">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">BUILDING</h3>
+                  <p class="small-text">A general permit is required for alteration to homes. This permit will require site plans and project documentation.</p>
+                  <p class="small-text"><b>Application cost:</b> $106 (average)</p>
+                  <p class="small-text"><b>Required documents:</b> <br>Permit application</p>
+                  <p class="small-text"><b>Approximate time:</b> <br>2 weeks</p>
+                </div><a class="btn-fill grant-btn" href="#grants-available">apply</a>
+              </div>
+            </div>
+          </div>
+          <div class="chunk chuck-w-padding ha-waypoint" id="grants-available" data-animate-down="67%" data-animate-up="50%">
+            <h1>These grants are available to help you</h1>
+            <h2 class="grant-total">Up to $6000 available</h2>
+            <div class="w-row">
+              <div class="w-col w-col-4">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">FREDERICK'S</h3>
+                  <h3 class="grant-h3">$2000</h3>
+                  <p class="small-text">This grant provides between $1,000 and $2,000 to homeowners performing renovations on the homes they live in. The grant is provided by the City of San Antonio.</p>
+                </div><a class="btn-fill grant-btn" href="#labor-available">apply</a>
+              </div>
+              <div class="w-col w-col-4">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">2014 10X</h3>
+                  <h3 class="grant-h3">$2000</h3>
+                  <p class="small-text">The 2014 10X grant program sponsors homeowners in certain Historic Districts to provide assistance in improving the facade of their home.</p>
+                </div><a class="btn-fill grant-btn" href="#labor-available">apply</a>
+              </div>
+              <div class="w-col w-col-4">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">DEF</h3>
+                  <h3 class="grant-h3">$1000</h3>
+                  <p class="small-text">The DEF program provides a grants to homeowners on the Eastside looking for funds to imrprove their roof or walls. The grant is intended to fund sustaining structual improvements to homes.</p>
+                </div><a class="btn-fill grant-btn" href="#labor-available">apply</a>
+              </div>
+            </div>
+          </div>
+          <div class="chunk chuck-w-padding ha-waypoint" id="labor-available" data-animate-down="84%" data-animate-up="67%">
+            <h1>This labor is available to build your renovation</h1>
+            <div class="w-row">
+              <div class="w-col w-col-6">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">JAB CONSTRUCTION</h3>
+                  <h3 class="grant-h3">Contractor</h3>
+                  <p class="small-text">JAB Construction is a fully licensed and city-sponsored firm that provides subsidized construction services for home improvements throughout San Antonio. The JAB Construction company is focused on improving the lives of San Antonians and creating a better community.</p>
+                </div><a class="btn-fill grant-btn" href="#summary">send request</a>
+              </div>
+              <div class="w-col w-col-6">
+                <div class="grant-block">
+                  <h3 class="grant-h3 top-grant-h3">STAR PROGRAM</h3>
+                  <h3 class="grant-h3">Volunteers</h3>
+                  <p class="small-text">S.T.A.R. (Students Together Achieving Revitalization) is a partnership between the Office of Historic Preservation, the UTSA College of Architecture, San Antonio College, the Historic Preservation Association (HPA), and local contractors
+                    to provide minor exterior home repairs and maintenance to homeowners within local historic districts.&nbsp;</p>
+                  </div><a class="btn-fill grant-btn" href="#summary">send request</a>
+                </div>
+              </div>
+            </div>
+            <div class="chunk chuck-w-padding ha-waypoint" id="summary" data-animate-down="100%" data-animate-up="84%">
+              <h1 class="complete-message">You're done!</h1>
+              <h1>These are your next steps</h1>
+              <h2 class="alt-h1">1. Review and print project info</h2>
+              <h2 class="alt-h1">555 Saint Mary's San Antonio, TX&nbsp;78204</h2>
+              <div class="w-row">
+                <div class="w-col w-col-4">
+                  <%= image_tag "house-color.png",  alt: "53321879f335a68211000248_house-color.png" %>      
+                </div>
+                <div class="w-col w-col-8">
+                  <div class="ren-rule">
+                    <h3><strong>Project details:&nbsp;</strong></h3>
+                    <ul>
+                      <li class="list-item"><strong>Build a Fence</strong>
+                      </li>
+                      <li class="list-item"><strong>Material</strong>: Wrought Iron</li>
+                      <li class="list-item"><strong>Height</strong>: 6 feet</li>
+                      <li class="list-item"><strong>Yard Size</strong>: 1.2 acres</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="ren-rule">
+                <h3><strong>Rules</strong></h3>
+                <ul>
+                  <li class="list-item">Remove stucco from masonry surfaces where historically appropriate.</li>
+                  <li class="list-item">Avoid painting historically unpainted surfaces.&nbsp;</li>
+                  <li class="list-item">Repoint masonry with compatible mortar and matching joint profile and composition</li>
+                </ul>
+              </div>
+              <div class="ren-rule">
+                <h3><strong>Foundations</strong></h3>
+                <ul>
+                  <li class="list-item">Concrete piers are a suitable replacement for cedar when original piers are deteriorated beyond repair.</li>
+                  <li class="list-item">Many limestone foundations can be restored rather than replaced.</li>
+                </ul>
+              </div>
+              <h2 class="alt-h1">2. Apply for permits</h2>
+              <div class="w-row">
+                <div class="w-col w-col-4">
+                  <div class="grant-block">
+                    <h3 class="grant-h3 top-grant-h3">RE-ROOF</h3>
+                    <p class="small-text">Required for all residential re-roofing project. Carries specific construction and material requirements. Repairs can be done by homeowner or contractor.</p>
+                    <p class="small-text"><b>Application cost:</b> $26</p>
+                    <p class="small-text"><b>Required documents:</b> <br>Site plan, permit application</p>
+                    <p class="small-text"><b>Approximate time:</b> <br>2 weeks</p>
+                  </div>
+                </div>
+                <div class="w-col w-col-4">
+                  <div class="grant-block">
+                    <h3 class="grant-h3 top-grant-h3">HISTORIC</h3>
+                    <p class="small-text">Your property is in the King William Historic District. Your change will require a design review from the Historic Design Review Commission.</p>
+                    <p class="small-text"><b>Application cost:</b> $0</p>
+                    <p class="small-text"><b>Required documents:</b> <br>Site plan</p>
+                    <p class="small-text"><b>Approximate time:</b> <br>1 week</p>
+                  </div>
+                </div>
+                <div class="w-col w-col-4">
+                  <div class="grant-block">
+                    <h3 class="grant-h3 top-grant-h3">BUILDING</h3>
+                    <p class="small-text">A general permit is required for alteration to homes. This permit will require site plans and project documentation.</p>
+                    <p class="small-text"><b>Application cost:</b> $106 (average)</p>
+                    <p class="small-text"><b>Required documents:</b> <br>Permit application</p>
+                    <p class="small-text"><b>Approximate time:</b> <br>2 weeks</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-row">
+              <div class="w-col w-col-3 progress-col"></div>
+              <div class="w-col w-col-9 main-col"></div>
+            </div>
+          </div>
+        </div>

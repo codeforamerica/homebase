@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require webflow
+//= require modernizr
+//= require jquery-waypoints/waypoints.min
+//= require landing

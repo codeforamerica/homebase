@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html data-wf-site="532cb8f39ff60e067100012a">
 <head>
+  <meta charset="utf-8">
   <title>Homebase</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Webflow">
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script>
+    WebFont.load({
+      google: {
+	families: ["Montserrat:400,700","Open Sans:300,400,600,700,800"]
+      }
+    });
+  </script>
+  <!--<script type="text/javascript" src="js/modernizr.js"></script>-->
+  <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
 </head>
+
 <body>
 
 <%= yield %>
