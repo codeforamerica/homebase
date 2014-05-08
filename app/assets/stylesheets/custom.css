@@ -306,3 +306,27 @@ p {
 .switch-btns {padding-left: 6px;}
 .switch-btns a {margin-right: 4px;}
 .lowercase-h1 {text-transform: none;}
+
+.button.btn-outline.alt-button-outline.fence-btn.toggle-on, .button.btn-outline.fence-btn:hover 
+{
+  background-color: #0074D9;
+  border-color: #0074D9;
+}
+
+.button.btn-outline.alt-button-outline.roof-btn.toggle-on, .button.btn-outline.roof-btn:hover 
+{
+  background-color: #CF1B41;
+  border-color: #CF1B41;
+}
+
+.button.btn-outline.alt-button-outline.repairs-btn.toggle-on, .button.btn-outline.repairs-btn:hover 
+{
+  background-color: #69579C;
+  border-color: #69579C;
+}
+
+.button.btn-outline.alt-button-outline.addition-btn.toggle-on, .button.btn-outline.addition-btn:hover 
+{
+  background-color: #3D9970;
+  border-color: #3D9970;
+}
