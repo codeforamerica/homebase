@@ -177,16 +177,14 @@ p {
   padding-top: 22px;
   padding-bottom: 22px;
 }
-.chunk {
+.step {
   width: 75%;
-  padding-top: 12px;
+  padding-top: 100px;
   padding-bottom: 133px;
   float: right;
 }
-.chunk.chuck-w-padding {
-  padding-top: 100px;
-}
-.chunk.chuck-w-padding.first-chuck {
+
+.step.first-step {
   padding-top: 18px;
 }
 .list-item {
