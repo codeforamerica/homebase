@@ -238,14 +238,11 @@ p {
   padding-right: 30px;
 }
 .main-sec {
-  padding-top: 81px;
+  padding-top: 20px;
 }
 @media (max-width: 991px) {
 }
 @media (max-width: 767px) {
-  .chunk {
-    width: auto;
-  }
   .test-prog-bar {
     position: relative;
     width: auto;
