@@ -193,22 +193,20 @@ p {
   font-size: 18px;
   line-height: 1.4em;
 }
-.grant-block {
+.content-block {
   margin-right: 12px;
+  margin-bottom: 14px;
   padding: 11px 16px 5px;
   border: 3px solid #ebebeb;
   border-radius: 7px;
   background-color: #f7f7f7;
 }
-.grant-h3 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  font-weight: 400;
-}
-.grant-h3.top-grant-h3 {
+.content-block h3 {
   border-top-style: solid;
   border-bottom-style: solid;
   font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .small-text {
   font-size: 16px;
@@ -324,4 +322,9 @@ p {
 {
   background-color: #3D9970;
   border-color: #3D9970;
+}
+.w-checkbox-input, .w-radio-input {
+    float: left;
+    line-height: normal;
+    margin: 4px 10px 0 0;
 }
