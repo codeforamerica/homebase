@@ -11,17 +11,13 @@
           </div>
           <h6 class="progress-percent">0%</h6> 
         </div>
-        <div class="step first-step" id="select-renovations">
-          <h1>How would you like to improve your house?</h1>
-          <p>Give us a few details about the type of improvement you want done.</p>
+        <div class="step ha-waypoint" id="enter-address" data-animate-down="17%" data-animate-up="0%">
+          <h1>Enter your address</h1>
+          <p>We will use this information to help you plan out your changes.</p>
           <div class="w-form">
-            <form class="form" name="select-improvement" data-name="Select Improvement Form">
-              <label class="label" for="name">Pick an improvement:</label>
-              <div class="w-row">                
-                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline addition-btn" href="#">Additions</a>
-                </div>
-              </div>
-              <a class="btn-fill" href="#enter-address">next</a>
+            <form class="form" name="email-form" data-name="Email Form">
+              <label class="label" for="name">Your address:</label>
+              <input class="w-input field" type="text" placeholder="Enter your address" name="name" data-name="Name"></input><a class="btn-fill" href="#renovation-rules">submit</a>
             </form>
             <div class="w-form-done">
               <p>Thank you! Your submission has been received!</p>
@@ -31,3 +27,4 @@
             </div>
           </div>
         </div>
+      </div>
