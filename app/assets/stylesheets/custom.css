@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Open Sans',sans-serif;
   color: #333;
   font-size: 14px;
   line-height: 20px;
@@ -179,7 +179,7 @@ p {
 }
 .step {
   width: 75%;
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 133px;
   float: right;
 }
