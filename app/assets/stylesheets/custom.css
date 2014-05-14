@@ -194,6 +194,9 @@ p {
   line-height: 1.4em;
 }
 .content-block {
+	
+}
+.content-block {
   margin-right: 12px;
   margin-bottom: 14px;
   padding: 11px 16px 5px;
@@ -328,3 +331,4 @@ p {
     line-height: normal;
     margin: 4px 10px 0 0;
 }
+.contractor-fields {display: none;}

@@ -24,19 +24,19 @@
         </select>
         <label>Contractor used?</label>
         <div class="w-radio">
-          <input class="w-radio-input" id="yes" type="radio" name="radio" value="Yes" data-name="Radio">
+          <input class="w-radio-input" id="yes" type="radio" name="contractor-used" value="yes" data-name="Radio">
           <label class="w-form-label" for="yes">Yes</label>
-        </div>
-        <div class="w-radio">
-          <input class="w-radio-input" id="radio-2" type="radio" name="radio" value="Radio 2" data-name="Radio">
+          <input class="w-radio-input" id="no" type="radio" name="contractor-used" value="no" data-name="Radio">
           <label class="w-form-label" for="radio-2">No</label>
         </div>
-        <label for="contractor-name">Contractor Name:</label>
-        <input class="w-input" id="contractor-name" type="text" placeholder="Example Text" name="contractor-name" required="required" data-name="Contractor Name">
-        <label for="contractor-id">Contractor ID#:</label>
-        <input class="w-input" id="contractor-id" type="text" placeholder="Example Text" name="contractor-id" required="required" data-name="Contractor ID#">
-        <label for="license">License #:</label>
-        <input class="w-input" id="license" type="text" placeholder="Example Text" name="license" required="required" data-name="License #">
+        <div class="contractor-fields">
+	        <label for="contractor-name">Contractor Name:</label>
+	        <input class="w-input" id="contractor-name" type="text" placeholder="Example Text" name="contractor-name" required="required" data-name="Contractor Name">
+	        <label for="contractor-id">Contractor ID#:</label>
+	        <input class="w-input" id="contractor-id" type="text" placeholder="Example Text" name="contractor-id" required="required" data-name="Contractor ID#">
+	        <label for="license">License #:</label>
+	        <input class="w-input" id="license" type="text" placeholder="Example Text" name="license" required="required" data-name="License #">
+		</div>
         <label for="phone">Phone:</label>
         <input class="w-input" id="phone" type="text" placeholder="Example Text" name="phone" required="required" data-name="Phone">
         <label for="fax">Fax:</label>
