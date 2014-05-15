@@ -21,20 +21,43 @@
           <h1>How would you like to improve your house?</h1>
           <p>Give us a few details about the type of improvement you want done.</p>
           <div class="w-form">
+            <!--
             <form class="form" name="email-form" data-name="Email Form">
+            -->
+            <%= form_tag({controller: "landing", action: "index"}, method: "get", class: "form") do %>
+            <!--
+            <form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post">
+            <%#= form_for(@user) do |f| %>
+            -->
               <label class="label" for="name">Pick an improvement or search for your own:</label>
+              <!--
+              <label for="user_name">Name</label>
+              <input id="user_name" name="user[name]" type="text" />
+              <%#= f.label :name %>
+              <%#= f.text_field :name %>
+              <%#= f.submit "Next", class: "btn-fill" %>
+              -->
               <div class="w-row">
-                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline fence-btn" href="#">Fencing</a>
-                </div>
-                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline roof-btn" href="#">Roofing</a>
-                </div>
-                <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline repairs-btn" href="#">Chimney</a>
-                </div>
+                <!--
                 <div class="w-col w-col-3 item-col"><a class="button btn-outline alt-button-outline addition-btn" href="#">Additions</a>
+                -->
+                <div class="w-col w-col-3 item-col">
+                <!--
+                  <button class="button btn-outline alt-button-outline addition-btn" type="button" value=false>Additions</button>
+                  -->
+                  <%= button_tag(:addition, class: "button btn-outline alt-button-outline addition-btn", type: "button", value: false) do
+                        content_tag(:strong, 'Additions')
+                      end %>
                 </div>
               </div>
-              <input class="w-input field" type="text" placeholder="Or something else? e.g. paint house, install fence, add garage" name="name" data-name="Name"></input><a class="btn-fill" href="#enter-address">next</a>
-            </form>
+              <!--
+              <a class="btn-fill" href="#enter-address">next</a>
+              <a href="#enter-address"><input class="btn-fill" type="submit" value="next" /></a>
+              -->
+              <a href="#enter-address"><%= submit_tag("next", class: "btn-fill") %></a>
+              <% end %>
+            <!--</form>-->
+
             <div class="w-form-done">
               <p>Thank you! Your submission has been received!</p>
             </div>

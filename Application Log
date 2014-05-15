@@ -1,0 +1,481 @@
+# Logfile created on 2014-05-12 15:16:14 -0700 by logger.rb/41954
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-12 15:16:21 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-12 15:16:22 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-12 15:23:35 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-12 15:23:36 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-12 15:23:37 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-12 15:23:38 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-12 15:26:31 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-13 11:06:24 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-13 11:06:25 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/landing.css?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/webflow.css?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/webflow.js?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/jquery-waypoints/waypoints.min.js?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/landing.js?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-13 15:16:52 -0700
+
+
+Started GET "/assets/house.png" for 127.0.0.1 at 2014-05-13 15:16:53 -0700
+
+
+Started GET "/assets/color-house-parts/addition.png" for 127.0.0.1 at 2014-05-13 15:16:53 -0700
+
+
+Started GET "/assets/color-house-parts/fence.png" for 127.0.0.1 at 2014-05-13 15:16:53 -0700
+
+
+Started GET "/assets/house-color.png" for 127.0.0.1 at 2014-05-13 15:16:53 -0700
+
+
+Started GET "/assets/color-house-parts/chimney.png" for 127.0.0.1 at 2014-05-13 15:16:53 -0700
+
+
+Started GET "/assets/overlay.jpg" for 127.0.0.1 at 2014-05-13 15:16:53 -0700
+
+
+Started GET "/assets/color-house-parts/roof.png" for 127.0.0.1 at 2014-05-13 15:16:53 -0700

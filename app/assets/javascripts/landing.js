@@ -1,5 +1,6 @@
   $(document).ready(function() 
   {
+    var addition = false;
     $(".roof-btn").click(function()
     {
       $(".roof").fadeToggle("fast","swing");
@@ -22,7 +23,12 @@
     {
       $(".addition").fadeToggle("fast","swing");
       $('.addition-btn').toggleClass("toggle-on");
+      addition = !addition;
+      $('.addition-btn').val(addition);
+      console.log($('.addition-btn'));
     });
+
+    
 
     $('.ha-waypoint').waypoint(function(direction) 
     {
