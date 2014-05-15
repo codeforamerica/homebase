@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
    root 'landing#index'
+   
+   get "landing/step1"
+   get "landing/step2"
+   get "landing/step3"
+   get "landing/step4"
+   get "landing/step5"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

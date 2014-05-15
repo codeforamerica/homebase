@@ -23,7 +23,23 @@
       $(".addition").fadeToggle("fast","swing");
       $('.addition-btn').toggleClass("toggle-on");
     });
+    
+    $("#yes").click(function()
+    {
+      if (!$('.contractor-fields').hasClass('toggled-on')){
+        $(".contractor-fields").fadeToggle("fast","swing");
+        $('.contractor-fields').addClass("toggled-on");
+      }
+    });
 
+    $("#no").click(function()
+    {
+      if ($('.contractor-fields').hasClass('toggled-on')){
+	    $(".contractor-fields").fadeToggle("fast","swing");
+	    $('.contractor-fields').removeClass("toggled-on");
+	  }
+    });
+    
     $('.ha-waypoint').waypoint(function(direction) 
     {
       var $el = $(this);

@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Open Sans',sans-serif;
   color: #333;
   font-size: 14px;
   line-height: 20px;
@@ -177,16 +177,14 @@ p {
   padding-top: 22px;
   padding-bottom: 22px;
 }
-.chunk {
+.step {
   width: 75%;
-  padding-top: 12px;
+  padding-top: 50px;
   padding-bottom: 133px;
   float: right;
 }
-.chunk.chuck-w-padding {
-  padding-top: 100px;
-}
-.chunk.chuck-w-padding.first-chuck {
+
+.step.first-step {
   padding-top: 18px;
 }
 .list-item {
@@ -195,22 +193,23 @@ p {
   font-size: 18px;
   line-height: 1.4em;
 }
-.grant-block {
+.content-block {
+	
+}
+.content-block {
   margin-right: 12px;
+  margin-bottom: 14px;
   padding: 11px 16px 5px;
   border: 3px solid #ebebeb;
   border-radius: 7px;
   background-color: #f7f7f7;
 }
-.grant-h3 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  font-weight: 400;
-}
-.grant-h3.top-grant-h3 {
+.content-block h3 {
   border-top-style: solid;
   border-bottom-style: solid;
   font-weight: 700;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .small-text {
   font-size: 16px;
@@ -240,14 +239,11 @@ p {
   padding-right: 30px;
 }
 .main-sec {
-  padding-top: 81px;
+  padding-top: 20px;
 }
 @media (max-width: 991px) {
 }
 @media (max-width: 767px) {
-  .chunk {
-    width: auto;
-  }
   .test-prog-bar {
     position: relative;
     width: auto;
@@ -306,3 +302,33 @@ p {
 .switch-btns {padding-left: 6px;}
 .switch-btns a {margin-right: 4px;}
 .lowercase-h1 {text-transform: none;}
+
+.button.btn-outline.alt-button-outline.fence-btn.toggle-on, .button.btn-outline.fence-btn:hover 
+{
+  background-color: #0074D9;
+  border-color: #0074D9;
+}
+
+.button.btn-outline.alt-button-outline.roof-btn.toggle-on, .button.btn-outline.roof-btn:hover 
+{
+  background-color: #CF1B41;
+  border-color: #CF1B41;
+}
+
+.button.btn-outline.alt-button-outline.repairs-btn.toggle-on, .button.btn-outline.repairs-btn:hover 
+{
+  background-color: #69579C;
+  border-color: #69579C;
+}
+
+.button.btn-outline.alt-button-outline.addition-btn.toggle-on, .button.btn-outline.addition-btn:hover 
+{
+  background-color: #3D9970;
+  border-color: #3D9970;
+}
+.w-checkbox-input, .w-radio-input {
+    float: left;
+    line-height: normal;
+    margin: 4px 10px 0 0;
+}
+.contractor-fields {display: none;}
