@@ -1,5 +1,6 @@
-  $(document).ready(function() 
+$(document).ready(function() 
   {
+    var addition = false;
     $(".roof-btn").click(function()
     {
       $(".roof").fadeToggle("fast","swing");
@@ -22,24 +23,13 @@
     {
       $(".addition").fadeToggle("fast","swing");
       $('.addition-btn').toggleClass("toggle-on");
-    });
-    
-    $("#yes").click(function()
-    {
-      if (!$('.contractor-fields').hasClass('toggled-on')){
-        $(".contractor-fields").fadeToggle("fast","swing");
-        $('.contractor-fields').addClass("toggled-on");
-      }
+      addition = !addition;
+      $('.addition-btn').val(addition);
+      console.log($('.addition-btn'));
     });
 
-    $("#no").click(function()
-    {
-      if ($('.contractor-fields').hasClass('toggled-on')){
-	    $(".contractor-fields").fadeToggle("fast","swing");
-	    $('.contractor-fields').removeClass("toggled-on");
-	  }
-    });
     
+
     $('.ha-waypoint').waypoint(function(direction) 
     {
       var $el = $(this);

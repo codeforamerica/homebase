@@ -11,9 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140515184759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "permits", force: true do |t|
+    t.string   "owner_name"
+    t.string   "owner_address"
+    t.boolean  "addition"
+    t.integer  "house_area"
+    t.integer  "addition_area"
+    t.string   "ac"
+    t.string   "contractor_name"
+    t.string   "contractor_id"
+    t.boolean  "escrow"
+    t.string   "license_holder"
+    t.string   "license_num"
+    t.string   "agent_name"
+    t.string   "contact_id"
+    t.string   "other_contact_id"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

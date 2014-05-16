@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_name: MyString
+  owner_address: MyString
+  addition: false
+  house_area: 1
+  addition_area: 1
+  ac: MyString
+  contractor_name: MyString
+  contractor_id: MyString
+  escrow: false
+  license_holder: MyString
+  license_num: MyString
+  agent_name: MyString
+  contact_id: MyString
+  other_contact_id: MyString
+  phone: MyString
+  fax: MyString
+  email: MyString
+
+two:
+  owner_name: MyString
+  owner_address: MyString
+  addition: false
+  house_area: 1
+  addition_area: 1
+  ac: MyString
+  contractor_name: MyString
+  contractor_id: MyString
+  escrow: false
+  license_holder: MyString
+  license_num: MyString
+  agent_name: MyString
+  contact_id: MyString
+  other_contact_id: MyString
+  phone: MyString
+  fax: MyString
+  email: MyString
