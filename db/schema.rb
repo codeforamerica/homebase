@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140515184759) do
     t.integer  "house_area"
     t.integer  "addition_area"
     t.string   "ac"
+    t.boolean  "contractor"
     t.string   "contractor_name"
     t.string   "contractor_id"
     t.boolean  "escrow"
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140515184759) do
     t.string   "phone"
     t.string   "fax"
     t.string   "email"
+    t.text     "work_summary"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

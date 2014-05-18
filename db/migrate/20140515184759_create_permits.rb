@@ -7,6 +7,7 @@ class CreatePermits < ActiveRecord::Migration
       t.integer :house_area
       t.integer :addition_area
       t.string :ac
+      t.boolean :contractor
       t.string :contractor_name
       t.string :contractor_id
       t.boolean :escrow
@@ -18,6 +19,7 @@ class CreatePermits < ActiveRecord::Migration
       t.string :phone
       t.string :fax
       t.string :email
+      t.text :work_summary
 
       t.timestamps
     end

@@ -14,8 +14,9 @@
             <div class="step ha-waypoint" id="summary" data-animate-down="100%" data-animate-up="84%">
               <h1 class="complete-message">You're done!</h1>
               <h1>These are your next steps</h1>
+              <%= @permit.to_yaml %>
               <h2 class="alt-h1">1. Review and print project info</h2>
-              <h2 class="alt-h1">555 Saint Mary's San Antonio, TX&nbsp;78204</h2>
+              <h2 class="alt-h1"><%= @permit.owner_address %></h2>
               <div class="w-row">
                 <div class="w-col w-col-4">
                   <%= image_tag "house-color.png",  alt: "53321879f335a68211000248_house-color.png" %>      

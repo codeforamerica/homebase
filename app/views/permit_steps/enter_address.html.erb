@@ -1,30 +1,35 @@
-    <div class="main-sec">
-      <div class="w-container">
-        <div class="test-prog-bar">
-          <div class="house-block">
-            <%= image_tag "house.png",                      class: "house"    %>
-            <%= image_tag "color-house-parts/addition.png", class: "addition" %>
-          </div>
-          <h2>Progress</h2>
-          <div class="bar">
-            <div class="bar small waypoint"></div>
-          </div>
-          <h6 class="progress-percent">0%</h6> 
+<div class="main-sec">
+  <div class="w-container">
+    <div class="test-prog-bar">
+      <div class="house-block">
+        <%= image_tag "house.png",                      class: "house"    %>
+        <%= image_tag "color-house-parts/addition.png", class: "addition" %>
+      </div>
+      <h2>Progress</h2>
+      <div class="bar">
+        <div class="bar small waypoint"></div>
+      </div>
+      <h6 class="progress-percent">0%</h6> 
+    </div>
+    <div class="step ha-waypoint" id="enter-address" data-animate-down="17%" data-animate-up="0%">
+      <h1>Enter your address</h1>
+      <p>We will use this information to help you plan out your changes.</p>
+      <div class="w-form">
+        <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
+        <%= f.label :owner_address, "Your address:", class: "label", for: "name" %>
+        <%= f.text_field :owner_address, placeholder: "Enter your address", class: "w-input field" %>
+        <%= f.submit "submit", class: "btn-fill" %>
+        <% end %>
+<!--         <form class="form" name="address-form" data-name="Address Form">
+          <label class="label" for="name">Your address:</label>
+          <input class="w-input field" type="text" placeholder="Enter your address" name="name" data-name="Name"></input><a class="btn-fill" href="/landing/step3">submit</a>
+        </form> -->
+        <div class="w-form-done">
+          <p>Thank you! Your submission has been received!</p>
         </div>
-        <div class="step ha-waypoint" id="enter-address" data-animate-down="17%" data-animate-up="0%">
-          <h1>Enter your address</h1>
-          <p>We will use this information to help you plan out your changes.</p>
-          <div class="w-form">
-            <form class="form" name="address-form" data-name="Address Form">
-              <label class="label" for="name">Your address:</label>
-              <input class="w-input field" type="text" placeholder="Enter your address" name="name" data-name="Name"></input><a class="btn-fill" href="/landing/step3">submit</a>
-            </form>
-            <div class="w-form-done">
-              <p>Thank you! Your submission has been received!</p>
-            </div>
-            <div class="w-form-fail">
-              <p>Oops! Something went wrong while submitting the form :(</p>
-            </div>
-          </div>
+        <div class="w-form-fail">
+          <p>Oops! Something went wrong while submitting the form :(</p>
         </div>
       </div>
+    </div>
+  </div>
