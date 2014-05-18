@@ -14,7 +14,6 @@
             <div class="step ha-waypoint" id="summary" data-animate-down="100%" data-animate-up="84%">
               <h1 class="complete-message">You're done!</h1>
               <h1>These are your next steps</h1>
-              <%= @permit.to_yaml %>
               <h2 class="alt-h1">1. Review and print project info</h2>
               <h2 class="alt-h1"><%= @permit.owner_address %></h2>
               <div class="w-row">
@@ -44,5 +43,33 @@
                     <p class="small-text"><b>Required documents:</b> <br>Site plan, permit application</p>
                     <p class="small-text"><b>Approximate time:</b> <br>2 weeks</p>
                   </div>
+                  <p class="small-text"><b>Owner Name:</b> <%= @permit.owner_name %></p>
+                  <p class="small-text"><b>Owner Address:</b> <%= @permit.owner_address %></p>
+
+                  <% if @permit.addition %>
+                    <p class="small-text"><b>House Square Feet:</b> <%= @permit.house_area %></p>
+                    <p class="small-text"><b>Addition Square Feet:</b> <%= @permit.addition_area %></p>
+                    <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
+                  <% end %>
+
+                  <% if @permit.contractor %>
+                    <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
+                    <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
+                  <% end %>
+
+                  <% if @permit.escrow %>
+                    <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
+                    <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
+                    <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>
+                    <p class="small-text"><b>Contact ID #:</b> <%= @permit.contact_id %></p>
+                    <p class="small-text"><b>Telephone:</b> <%= @permit.phone %></p>
+                    <p class="small-text"><b>Fax:</b> <%= @permit.fax %></p>
+                    <p class="small-text"><b>Email:</b> <%= @permit.email %></p>
+                    <p class="small-text"><b>Oher Contact ID # Associated with Permit:</b> <%= @permit.other_contact_id %></p>
+                  <% end %>
+
+                  <p class="small-text"><b>Work Summary:</b> <%= @permit.work_summary %></p>
+
+                  
                 </div>                
               </div>
