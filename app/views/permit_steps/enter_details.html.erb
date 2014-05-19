@@ -64,8 +64,8 @@
     <%= f.label :work_summary, "Work Summary:", for: "work-summary" %>
     <%= f.text_area :work_summary, class: "w-input", id: "work_summary" %>
 
-    <%#= f.label :job_cost, "Job Cost:", for: "job-cost" %>
-    <%#= f.text_field :job_cost, class: "w-input", id: "job-cost" %>     
+    <%= f.label :job_cost, "Job Cost:", for: "job-cost" %>
+    <%= f.text_field :job_cost, class: "w-input", id: "job-cost" %>     
 
     <%= f.submit "submit", class: "btn-fill" %> 
     <% end %>
