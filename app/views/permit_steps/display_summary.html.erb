@@ -1,75 +1,63 @@
-    <div class="main-sec">
-      <div class="w-container">
-        <div class="test-prog-bar">
-          <div class="house-block">
-            <%= image_tag "house.png",                      class: "house"    %>
-            <%= image_tag "color-house-parts/addition.png", class: "addition" %>
-          </div>
-          <h2>Progress</h2>
-          <div class="bar">
-            <div class="bar small waypoint"></div>
-          </div>
-          <h6 class="progress-percent">0%</h6> 
-        </div>
-            <div class="step ha-waypoint" id="summary" data-animate-down="100%" data-animate-up="84%">
-              <h1 class="complete-message">You're done!</h1>
-              <h1>These are your next steps</h1>
-              <h2 class="alt-h1">1. Review and print project info</h2>
-              <h2 class="alt-h1"><%= @permit.owner_address %></h2>
-              <div class="w-row">
-                <div class="w-col w-col-4">
-                  <%= image_tag "house-color.png",  alt: "53321879f335a68211000248_house-color.png" %>      
-                </div>
-                <div class="w-col w-col-8">
-                  <div class="ren-rule">
-                    <h3><strong>Project details:&nbsp;</strong></h3>
-                    <ul>
-                      <li class="list-item"><strong>Build a Fence</strong>
-                      </li>
-                      <li class="list-item"><strong>Material</strong>: Wrought Iron</li>
-                      <li class="list-item"><strong>Height</strong>: 6 feet</li>
-                      <li class="list-item"><strong>Yard Size</strong>: 1.2 acres</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>              
-              <h2 class="alt-h1">2. Apply for permits</h2>
-              <div class="w-row">
-                <div class="w-col">
-                  <div class="content-block">
-                    <h3>GENERAL</h3>
-                    <p class="small-text">Required for all residential additions project. Carries specific construction and material requirements. Repairs can be done by homeowner or contractor.</p>
-                    <p class="small-text"><b>Application cost:</b> $26</p>
-                    <p class="small-text"><b>Required documents:</b> <br>Site plan, permit application</p>
-                    <p class="small-text"><b>Approximate time:</b> <br>2 weeks</p>
-                  </div>
-                  <p class="small-text"><b>Owner Name:</b> <%= @permit.owner_name %></p>
-                  <p class="small-text"><b>Owner Address:</b> <%= @permit.owner_address %></p>
+<div class="step ha-waypoint" id="summary" data-animate-down="100%" data-animate-up="84%">
+  <h1 class="complete-message">You're done!</h1>
+  <h1>These are your next steps</h1>
+  <h2 class="alt-h1">1. Review and print project info</h2>
+  <h2 class="alt-h1"><%= @permit.owner_address %></h2>
+  <div class="w-row">
+    <div class="w-col w-col-4">
+      <%= image_tag "house-color.png",  alt: "53321879f335a68211000248_house-color.png" %>      
+    </div>
+    <div class="w-col w-col-8">
+      <div class="ren-rule">
+        <h3><strong>Project details:&nbsp;</strong></h3>
+        <ul>
+          <li class="list-item"><strong>Build a Fence</strong>
+          </li>
+          <li class="list-item"><strong>Material</strong>: Wrought Iron</li>
+          <li class="list-item"><strong>Height</strong>: 6 feet</li>
+          <li class="list-item"><strong>Yard Size</strong>: 1.2 acres</li>
+        </ul>
+      </div>
+    </div>
+  </div>              
+  <h2 class="alt-h1">2. Apply for permits</h2>
+  <div class="w-row">
+    <div class="w-col">
+      <div class="content-block">
+        <h3>GENERAL</h3>
+        <p class="small-text">Required for all residential additions project. Carries specific construction and material requirements. Repairs can be done by homeowner or contractor.</p>
+        <p class="small-text"><b>Application cost:</b> $26</p>
+        <p class="small-text"><b>Required documents:</b> <br>Site plan, permit application</p>
+        <p class="small-text"><b>Approximate time:</b> <br>2 weeks</p>
+      </div>
+      <p class="small-text"><b>Owner Name:</b> <%= @permit.owner_name %></p>
+      <p class="small-text"><b>Owner Address:</b> <%= @permit.owner_address %></p>
 
-                  <% if @permit.addition %>
-                    <p class="small-text"><b>House Square Feet:</b> <%= @permit.house_area %></p>
-                    <p class="small-text"><b>Addition Square Feet:</b> <%= @permit.addition_area %></p>
-                    <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
-                  <% end %>
+      <% if @permit.addition %>
+      <p class="small-text"><b>House Square Feet:</b> <%= @permit.house_area %></p>
+      <p class="small-text"><b>Addition Square Feet:</b> <%= @permit.addition_area %></p>
+      <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
+      <% end %>
 
-                  <% if @permit.contractor %>
-                    <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
-                    <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
-                  <% end %>
+      <% if @permit.contractor %>
+      <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
+      <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
+      <% end %>
 
-                  <% if @permit.escrow %>
-                    <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
-                    <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
-                    <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>
-                    <p class="small-text"><b>Contact ID #:</b> <%= @permit.contact_id %></p>
-                    <p class="small-text"><b>Telephone:</b> <%= @permit.phone %></p>
-                    <p class="small-text"><b>Fax:</b> <%= @permit.fax %></p>
-                    <p class="small-text"><b>Email:</b> <%= @permit.email %></p>
-                    <p class="small-text"><b>Oher Contact ID # Associated with Permit:</b> <%= @permit.other_contact_id %></p>
-                  <% end %>
+      <% if @permit.escrow %>
+      <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
+      <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
+      <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>
+      <p class="small-text"><b>Contact ID #:</b> <%= @permit.contact_id %></p>
+      <p class="small-text"><b>Telephone:</b> <%= @permit.phone %></p>
+      <p class="small-text"><b>Fax:</b> <%= @permit.fax %></p>
+      <p class="small-text"><b>Email:</b> <%= @permit.email %></p>
+      <p class="small-text"><b>Oher Contact ID # Associated with Permit:</b> <%= @permit.other_contact_id %></p>
+      <% end %>
 
-                  <p class="small-text"><b>Work Summary:</b> <%= @permit.work_summary %></p>
+      <p class="small-text"><b>Work Summary:</b> <%= @permit.work_summary %></p>
 
-                  
-                </div>                
-              </div>
+
+    </div>                
+  </div>
+</div>

@@ -1,42 +1,26 @@
-<div class="main-sec">
-  <div class="w-container">
-    <div class="test-prog-bar">
-      <div class="house-block">
-        <%= image_tag "house.png",                      class: "house"    %>
-        <%= image_tag "color-house-parts/addition.png", class: "addition" %>
+<div class="step first-step" id="select-renovations">   
+  <h1>How would you like to improve your house?</h1>
+  <p>Give us a few details about the type of improvement you want done.</p>
+  <div class="w-form">
+    <%= form_for @permit, html: {name: "select-improvement"} do |f| %>
+      <% if @permit.errors.any? %>
+        <div class="error_messages">
+          <h2><%= pluralize(@permit.errors.count, "error") %> prohibited this permit from being saved:</h2>
+          <ul>
+          <% @permit.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %> 
+      <%= f.label "Pick an improvement:", class:"label", for: "name" %>
+      <div class="w-row">
+        <div class="w-col w-col-3 item-col">
+          <%= f.label :addition, "Additions", class: 'button btn-outline alt-button-outline addition-btn'%>
+          <%= f.check_box :addition, style: 'display: none' %><br />
+        </div>
       </div>
-      <h2>Progress</h2>
-      <div class="bar">
-        <div class="bar small waypoint"></div>
-      </div>
-      <h6 class="progress-percent">0%</h6> 
-    </div>
-    <div class="step first-step" id="select-renovations">   
-      <h1>How would you like to improve your house?</h1>
-      <p>Give us a few details about the type of improvement you want done.</p>
-      <div class="w-form">
-        <%= form_for @permit, html: {name: "select-improvement"} do |f| %>
-          <% if @permit.errors.any? %>
-            <div class="error_messages">
-              <h2><%= pluralize(@permit.errors.count, "error") %> prohibited this permit from being saved:</h2>
-              <ul>
-              <% @permit.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %> 
-          <%= f.label "Pick an improvement:", class:"label", for: "name" %>
-          <div class="w-row">
-            <div class="w-col w-col-3 item-col">
-              <%= f.label :addition, "Additions", class: 'button btn-outline alt-button-outline addition-btn'%>
-              <%= f.check_box :addition, style: 'display: none' %><br />
-            </div>
-          </div>
-          <%= f.submit "Next", class: "btn-fill"%>
-        <% end %>
-
-      </div>
-    </div>
+      <%= f.submit "Next", class: "btn-fill"%>
+    <% end %>
   </div>
 </div>
