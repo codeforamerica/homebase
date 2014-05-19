@@ -41,5 +41,8 @@ gem 'spring', '1.1.2',       group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Multi-step form
 gem 'wicked', '1.0.3'
 
+# Geocoding
+gem 'geokit', '1.8.4'

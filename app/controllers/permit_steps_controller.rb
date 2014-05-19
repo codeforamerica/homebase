@@ -1,4 +1,6 @@
 require 'permit_params'
+require 'geokit'
+
 class PermitStepsController < ApplicationController
   include PermitParams
 
@@ -12,7 +14,14 @@ class PermitStepsController < ApplicationController
 
   def update
     @permit = current_permit
+    case step
+
+    when :enter_address
+      address = Geokit::Geocoders::MultiGeocoder.geocode params[:permit][:owner_address]
+      params[:permit][:owner_address] = address.full_address
+    end
+
     @permit.update_attributes(permit_params)
     render_wizard @permit
-end
+  end
 end
