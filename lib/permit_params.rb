@@ -18,7 +18,9 @@ module PermitParams
     :phone,
     :fax,
     :email,
-    :work_summary
+    :work_summary,
+    :job_cost,
+    :status
     )
  end
 end

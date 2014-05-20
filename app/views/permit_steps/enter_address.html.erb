@@ -3,9 +3,19 @@
   <p>We will use this information to help you plan out your changes.</p>
   <div class="w-form">
     <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
-    <%= f.label :owner_address, "Your address:", class: "label", for: "name" %>
-    <%= f.text_field :owner_address, placeholder: "Enter your address", class: "w-input field" %>
-    <%= f.submit "submit", class: "btn-fill" %>
+      <% if @permit.errors.any? %>
+        <div class="error_messages">
+          <h2><%= pluralize(@permit.errors.count, "error") %> prohibited this permit from being saved:</h2>
+          <ul>
+            <% @permit.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.label :owner_address, "Your address:", class: "label", for: "name" %>
+      <%= f.text_field :owner_address, placeholder: "Enter your address", class: "w-input field" %>
+      <%= f.submit "submit", class: "btn-fill" %>
     <% end %>
 
     <div class="w-form-done">

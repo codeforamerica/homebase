@@ -14,6 +14,10 @@ class PermitStepsController < ApplicationController
 
   def update
     @permit = current_permit
+
+    params[:permit][:status] = step.to_s
+    params[:permit][:status] = 'active' if step == steps.last
+
     case step
 
     when :enter_address
