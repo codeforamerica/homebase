@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519181919) do
+ActiveRecord::Schema.define(version: 20140520060728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cosa_boundaries", force: true do |t|
+    t.string   "name"
+    t.float    "sqmiles"
+    t.float    "shape_area"
+    t.float    "shape_leng"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.spatial  "geom",       limit: {:srid=>0, :type=>"geometry"}
+  end
 
   create_table "permits", force: true do |t|
     t.string   "owner_name"
