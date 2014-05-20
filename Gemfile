@@ -46,3 +46,9 @@ gem 'wicked', '1.0.3'
 
 # Geocoding
 gem 'geokit', '1.8.4'
+
+# GIS   
+gem 'rgeo', '0.3.20'
+gem 'rgeo-geojson', '0.2.3'
+gem 'activerecord-postgis-adapter', '2.0.1'
+gem 'rgeo-shapefile', '0.2.3'
