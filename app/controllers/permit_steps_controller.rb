@@ -17,11 +17,23 @@ class PermitStepsController < ApplicationController
     case step
 
     when :enter_address
-      address = Geokit::Geocoders::MultiGeocoder.geocode params[:permit][:owner_address]
-      params[:permit][:owner_address] = address.full_address
+      sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
+      address = Geokit::Geocoders::MultiGeocoder.geocode(params[:permit][:owner_address], bias: sa_bounds)
+
+      if valid_address?(address) && CosaBoundary.inCosa?(address.lat, address.lng)
+        params[:permit][:owner_address] = address.full_address
+      else
+        puts "erroring out"
+      end
     end
 
     @permit.update_attributes(permit_params)
     render_wizard @permit
+  end
+
+  private
+
+  def valid_address? address
+    address != nil && address.lat != nil && address.lng != nil && address.full_address != nil && address.street_name != nil
   end
 end
