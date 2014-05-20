@@ -1,5 +1,6 @@
 class Permit < ActiveRecord::Base
-  validates :owner_address,      :presence => true, :if => :active_or_address?
+  validates :owner_address,      :presence => true, :address => true, :if => :active_or_address?
+
 
   def active?
     status == 'active'

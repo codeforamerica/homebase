@@ -24,7 +24,7 @@ class PermitStepsController < ApplicationController
       sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
       address = Geokit::Geocoders::MultiGeocoder.geocode(params[:permit][:owner_address], bias: sa_bounds)
 
-      if valid_address?(address) && CosaBoundary.inCosa?(address.lat, address.lng)
+      if valid_address?(address)
         params[:permit][:owner_address] = address.full_address
       else
         puts "erroring out"
