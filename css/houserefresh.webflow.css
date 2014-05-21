@@ -210,7 +210,13 @@ section.last h3 {padding: 10px 0 40px;}
     padding-right: 100px;
     padding-top: 32px;
 }
+.w-icon-nav-menu:before {color: #fff;}
+.w-nav-button.w--open, .w--nav-menu-open {
+    background-color: #32465B;
+}
+    
 @media (max-width: 991px) {
+.logo {margin-top: -8px;}
 }
 @media (max-width: 767px) {
 .sec {padding: 20px 0;}
@@ -225,8 +231,13 @@ section.last h3 {padding: 10px 0 40px;}
 .hero .w-container {
 	padding: 20px 10px;
 }
-h1 {font-size: 42px;}
-h2 {font-size: 22px}
+h1 {font-size: 37px;}
+h2 {font-size: 19px}
 h3 {font-size: 30px;}
+h1, h2, h3, img, .hero {text-align: center;}
+.lets-go {margin: 0 auto;}
 .arrow-1, .arrow-2 {display: none;}
+.w-col-6 {
+    text-align: center;
+} 
 }
