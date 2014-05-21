@@ -206,6 +206,10 @@ section.last h3 {padding: 10px 0 40px;}
     right: 41%;
     z-index: 1;
 }
+.permit {
+    padding-right: 100px;
+    padding-top: 32px;
+}
 @media (max-width: 991px) {
 }
 @media (max-width: 767px) {
@@ -213,7 +217,7 @@ section.last h3 {padding: 10px 0 40px;}
 .sec h3, .gray-sec img {
 	padding: 20px 0;
 }
-.sec img {max-width: 100%;}
+.sec img {max-width: 100%; padding: 10px 0;}
 .sec.light img {float: none}
 .hero .w-container {
   background-image: none;  
