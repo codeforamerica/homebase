@@ -115,6 +115,10 @@ p {
 }
 .lets-go {
     background-color: #E74C3C;
+    background-image: url("../images/right-arrow.png");
+    background-position: 92% center;
+    background-repeat: no-repeat;
+    background-size: 7% auto;
     border-radius: 10px;
     box-shadow: 4px 4px 0 0 #AE2214;
     color: #FFFFFF;
@@ -123,7 +127,7 @@ p {
     font-size: 30px;
     font-weight: 600;
     line-height: 1.4em;
-    padding: 5px 0 2px;
+    padding: 5px 17px 2px 0;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
