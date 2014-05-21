@@ -184,6 +184,24 @@ p {
 .footer img {
     width: 120px;
 }
+section.last {
+    padding-bottom: 55px;
+    text-align: center;
+}
+section.last .lets-go {margin: 0 auto;}
+section.last h3 {padding: 10px 0 40px;}
+.arrow-1 {
+    padding-top: 246px;
+    position: absolute;
+    right: 44%;
+    z-index: 1;
+}
+.arrow-2 {
+    padding-top: 600px;
+    position: absolute;
+    right: 41%;
+    z-index: 1;
+}
 @media (max-width: 991px) {
 }
 @media (max-width: 767px) {
@@ -202,4 +220,5 @@ p {
 h1 {font-size: 42px;}
 h2 {font-size: 22px}
 h3 {font-size: 30px;}
+.arrow-1, .arrow-2 {display: none;}
 }
