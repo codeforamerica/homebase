@@ -1,0 +1,329 @@
+body {
+  font-family: proxima nova, 'Helvetica Neue', Helvetica, sans-serif;
+  color: #333;
+  font-size: 14px;
+  line-height: 20px;
+}
+h1 {
+    font-family: proxima nova,sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 44px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: proxima nova, sans-serif;
+  font-size: 39px;
+  font-weight: 600;
+  line-height: 36px;
+}
+.hero h2 {
+	margin-bottom: 42px;
+}
+h3 {
+    color: #2C3E50;
+    font-family: proxima nova,sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: proxima nova, sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
+}
+p {
+  margin-bottom: 8px;
+  font-family: proxima nova, sans-serif;
+  font-size: 18px;
+  line-height: 1.4em;
+}
+.button {
+  display: inline-block;
+  padding: 4px 15px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.button.btn-outline {
+  width: 76%;
+  border: 2px solid #333;
+  border-radius: 3px;
+  background-color: transparent;
+  font-family: proxima nova, sans-serif;
+  color: #333;
+}
+.button.btn-outline:hover {
+  background-color: #333;
+  color: white;
+}
+.button.btn-outline.alt-button-outline {
+  width: 78%;
+}
+.bar {
+  width: auto;
+  height: 12px;
+  margin-top: 43px;
+  background-color: #ebebeb;
+}
+.bar.small {
+  width: 62%;
+  margin-top: -12px;
+  background-color: #a7ccd4;
+}
+.bar.small.zero {
+  width: 33%;
+}
+.navbar {
+  position: fixed;
+  width: 100%;
+  background-color: #f0f0f0;
+}
+.brand {
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+}
+.navlink {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  -webkit-transition: none 0ms ease;
+  -o-transition: none 0ms ease;
+  transition: none 0ms ease;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.navlink:hover {
+  color: white;
+}
+.navlink.light {
+  color: rgba(255, 255, 255, 0.6);
+}
+.container {
+  padding-top: 21px;
+  padding-bottom: 33px;
+}
+.btn-fill {
+  display: inline-block;
+  padding: 12px;
+  border-bottom: 2px solid #6598a3;
+  border-radius: 3px;
+  background-color: #81bac7;
+  font-family: Montserrat, sans-serif;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.btn-fill:hover {
+  background-color: #a7ccd4;
+}
+.btn-fill:active {
+  border-bottom-color: #a7ccd4;
+  opacity: 1;
+  -webkit-transform: translate(0px, 1px);
+  -ms-transform: translate(0px, 1px);
+  -o-transform: translate(0px, 1px);
+  transform: translate(0px, 1px);
+}
+.btn-fill.grant-btn {
+  width: 95%;
+  margin-top: 9px;
+}
+.field {
+  margin-bottom: 12px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  font-family:'Open Sans', sans-serif;
+  font-size: 18px;
+}
+.label {
+  padding-bottom: 6px;
+  font-family:'Open Sans', sans-serif;
+  font-size: 18px;
+  text-transform: none;
+}
+.form {
+  padding-top: 32px;
+}
+.alt-h1 {
+  font-family: Montserrat, sans-serif;
+  text-transform: none;
+}
+.item-col {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+.chunk {
+  width: 75%;
+  padding-top: 12px;
+  padding-bottom: 133px;
+  float: right;
+}
+.chunk.chuck-w-padding {
+  padding-top: 100px;
+}
+.chunk.chuck-w-padding.first-chuck {
+  padding-top: 18px;
+}
+.list-item {
+  padding-bottom: 7px;
+  font-family: proxima nova, sans-serif;
+  font-size: 18px;
+  line-height: 1.4em;
+}
+.grant-blcok {
+  margin-right: 12px;
+  padding: 11px 18px 5px;
+  border: 3px solid #ebebeb;
+  border-radius: 7px;
+  background-color: #f7f7f7;
+}
+.grant-h3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.grant-h3.top-grant-h3 {
+  border-top-style: solid;
+  border-bottom-style: solid;
+  font-weight: 700;
+}
+.small-text {
+  font-size: 16px;
+}
+.grant-total {
+  padding: 11px;
+  border-top: 6px solid #afc9a7;
+  background-color: #dfedda;
+}
+.grant-total.permits-req {
+  border-top-color: #c9a7a7;
+  background-color: #eddada;
+}
+.overlay-img {
+  padding-right: 22px;
+}
+.about-house-row {
+  padding-bottom: 26px;
+}
+.progress-col {
+  padding-top: 22px;
+}
+.test-prog-bar {
+  position: fixed;
+  width: 17%;
+  padding-top: 43px;
+}
+.main-sec {
+  padding-top: 81px;
+}
+.home-header {
+  background-color: #2c3e50;
+}
+.logo {
+  color: white;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.4em;
+  padding-top: 18px;
+}
+.hero {
+  background-color: #3498db;
+}
+.lets-go {
+  padding: 14px 19px 10px;
+  border-radius: 14px;
+  background-color: #e74c3c;
+  box-shadow: #ae2214 2px 2px 0px 0px;
+  font-family: proxima nova, 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.lets-go:hover {
+	background-color: #e56154;
+}
+.lets-go:focus {
+	box-shadow: none;
+}
+.lets-go:active {
+    transform: translate(1px, 4px);
+}
+.footer {
+  background-color: #2c3e50;
+  font-family: proxima nova, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 16px;
+  color: white;
+  padding: 18px 0;
+}
+.gray-sec {
+  background-color: #ededed;
+}
+.hero-con {
+  padding-top: 99px;
+  padding-bottom: 99px;
+  background-image: url('../images/house.png');
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-size: 44% auto;  
+}
+.home-navbar {
+  background-color: #2c3e50;
+}
+.flagtag {
+  float: left;
+}
+.hero h1, .hero h2 {
+	color: #fff;
+}
+.sec {padding: 40px 0;}
+.sec img {max-width: 70%;}
+.sec.light img {float: right;}
+.sec h3 {
+	padding: 70px 0;
+}
+.gray-sec img {padding: 97px 0;}
+.footer p {padding-left: 10px; padding-top: 10px;}
+.footer img {width: 120px;}
+@media (max-width: 991px) {
+}
+@media (max-width: 767px) {
+  .chunk {
+    width: auto;
+  }
+  .test-prog-bar {
+    position: relative;
+    width: auto;
+    padding-right: 33px;
+    padding-left: 33px;
+  }
+}
