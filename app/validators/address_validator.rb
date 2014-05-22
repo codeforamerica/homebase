@@ -5,7 +5,7 @@ class AddressValidator < ActiveModel::EachValidator
 
     address = Geokit::Geocoders::MultiGeocoder.geocode(value)
     unless CosaBoundary.inCosa?(address.lat, address.lng)
-      record.errors[attribute] << (options[:message] || "is not in San Antonio")
+      record.errors[attribute] << ("Sorry, the address you entered is not in San Antonio.  Please enter a San Antonio address.")
     end
   end
 end

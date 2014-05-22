@@ -2,6 +2,19 @@
   <h1>General Permit Application</h1>
   <div class="room-addition-fields">
     <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
+      <% if @permit.errors.any? %>
+        <div class="error_messages">
+            <h2><font color="red">
+              <% @permit.errors.messages.values.each do |msg| %>
+                <%msg.each do  |m| %>
+                  <%= m %>
+                <%end %>
+              <% end %>
+            </font></h2>
+        </div>
+        <br><br>
+      <% end %>
+
     <%= f.label :owner_name, "Owner Name:", class: "label", for: "owner-name" %>
     <%= f.text_field :owner_name, class: "w-input", id: "owner-name" %>
 

@@ -5,14 +5,16 @@
     <%= form_for @permit, html: {name: "select-improvement"} do |f| %>
       <% if @permit.errors.any? %>
         <div class="error_messages">
-          <h2><%= pluralize(@permit.errors.count, "error") %> prohibited this permit from being saved:</h2>
-          <ul>
-          <% @permit.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
+            <h2><font color="red">
+              <% @permit.errors.messages.values.each do |msg| %>
+                <%msg.each do  |m| %>
+                  <%= m %>
+                <%end %>
+              <% end %>
+            </font></h2>
         </div>
-      <% end %> 
+        <br><br>
+      <% end %>
       <%= f.label "Pick an improvement:", class:"label", for: "name" %>
       <div class="w-row">
         <div class="w-col w-col-3 item-col">
