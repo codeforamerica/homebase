@@ -36,10 +36,10 @@
 
     <h3 class="form">2. Contractor details</h3>
 
-    <%= f.label :contractor, "Contractor used?" %>
-    <%= f.radio_button :contractor, true, class: "radio-btn" %>
+    <%= f.label :contractor, "Are you using a contractor for this project?" %>
+    <%= f.radio_button :contractor, true, class: "radio-btn", id: "contractor-yes-btn" %>
     <%= f.label :contractor, "Yes", value: "true" %>
-    <%= f.radio_button :contractor, false, class: "radio-btn" %>  
+    <%= f.radio_button :contractor, false, class: "radio-btn", id: "contractor-no-btn" %>  
     <%= f.label :contractor, "No", value: "false" %>
 
     <div class="contractor-details">
