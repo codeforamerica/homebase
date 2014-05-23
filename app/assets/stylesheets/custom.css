@@ -337,7 +337,7 @@ p {
 .steps li {
 	font-weight: 600;
 	list-style: none;
-	opacity: .6;
+	opacity: .42;
 }
 .steps .complete {
 	opacity: 1;
