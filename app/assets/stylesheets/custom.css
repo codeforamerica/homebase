@@ -324,13 +324,17 @@ p {
     line-height: normal;
     margin: 4px 10px 0 0;
 }
-.contractor_details {
+.contractor-details {
   display: none;
 }
 
 .radio-btn {
   float:left;
-  margin:0 10px 0 0;
+  margin:0 13px 0 0;
+}
+
+.radio-last {
+  margin-bottom:10px;
 }
 
 h3.form { 
@@ -348,4 +352,16 @@ h3.form {
 .room-addition-fields input,
 .room-addition-fields select {
   margin-bottom: 20px;
+}
+
+p.label-explainer {
+  font-size:14px;
+  margin-top:-5px;
+}
+
+textarea.w-input {
+  height:150px;
+}
+.w-input {
+  margin-bottom:25px;
 }
