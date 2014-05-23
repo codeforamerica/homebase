@@ -15,6 +15,10 @@
         <br><br>
       <% end %>
 
+    <!-- Basic info section -->
+
+    <h3 class="form">1. Basic information</h3>
+
     <%= f.label :owner_name, "Owner Name:", class: "label", for: "owner-name" %>
     <%= f.text_field :owner_name, class: "w-input", id: "owner-name" %>
 
@@ -26,29 +30,30 @@
 
     <%= f.label :ac, "Air conditioning heating system:", for: "air-conditioning-heating-system" %>
     <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), include_blank: "Select one...", class: "w-select", id: "air-conditioning-heating-system" %>
+
+    <!-- Contractor info section -->
+
+    <h3 class="form">2. Contractor details</h3>
+
     <%= f.label :contractor, "Contractor used?" %>
-    <div class="w-radio">
-      <%= f.radio_button :contractor, true %>
-      <%= f.label :contractor, "Yes", value: "true" %>
-      <%= f.radio_button :contractor, false %>
-      <%= f.label :contractor, "No", value: "false" %>
-    </div>
-    <!-- <div class="contractor-fields">-->
+    <%= f.radio_button :contractor, true, class: "radio-btn" %>
+    <%= f.label :contractor, "Yes", value: "true" %>
+    <%= f.radio_button :contractor, false, class: "radio-btn" %>
+    <%= f.label :contractor, "No", value: "false" %>
+
+    <div class="contractor-details-partial"></div>
+
     <%= f.label :contractor_name, "Contractor Name:", for: "contractor-name" %>
     <%= f.text_field :contractor_name, class: "w-input", id: "contractor-name" %>
 
     <%= f.label :contractor_id, "Contractor ID#:", for: "contractor-id" %>
     <%= f.text_field :contractor_id, class: "w-input", id: "contractor-id" %>
 
-    <!--</div>-->
-
     <%= f.label :escrow, "Escrow?" %>
-    <div class="w-radio">
-      <%= f.radio_button :escrow, true %>
-      <%= f.label :escrow, "Yes", value: "true" %>
-      <%= f.radio_button :escrow, false %>
-      <%= f.label :escrow, "No", value: "false" %>
-    </div>
+    <%= f.radio_button :escrow, true, class: "radio-btn" %>
+    <%= f.label :escrow, "Yes", value: "true" %>
+    <%= f.radio_button :escrow, false, class: "radio-btn" %>
+    <%= f.label :escrow, "No", value: "false" %>
 
     <%= f.label :license_holder, "Registered License Holder", for: "license-holder" %>
     <%= f.text_field :license_holder, class: "w-input", id: "license_holder" %>
