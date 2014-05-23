@@ -54,3 +54,7 @@ gem 'rgeo', '0.3.20'
 gem 'rgeo-geojson', '0.2.3'
 gem 'activerecord-postgis-adapter', '2.0.1'
 gem 'rgeo-shapefile', '0.2.3'
+
+# Sentry error monitoring
+
+gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
