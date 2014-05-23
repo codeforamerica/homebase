@@ -38,46 +38,52 @@
     <%= f.label :contractor, "Contractor used?" %>
     <%= f.radio_button :contractor, true, class: "radio-btn" %>
     <%= f.label :contractor, "Yes", value: "true" %>
-    <%= f.radio_button :contractor, false, class: "radio-btn" %>
+    <%= f.radio_button :contractor, false, class: "radio-btn" %>  
     <%= f.label :contractor, "No", value: "false" %>
 
-    <div class="contractor-details-partial"></div>
+    <div class="contractor-details">
 
-    <%= f.label :contractor_name, "Contractor Name:", for: "contractor-name" %>
-    <%= f.text_field :contractor_name, class: "w-input", id: "contractor-name" %>
+      <%= f.label :contractor_name, "Contractor Name:", for: "contractor-name" %>
+      <%= f.text_field :contractor_name, class: "w-input", id: "contractor-name" %>
 
-    <%= f.label :contractor_id, "Contractor ID#:", for: "contractor-id" %>
-    <%= f.text_field :contractor_id, class: "w-input", id: "contractor-id" %>
+      <%= f.label :contractor_id, "Contractor ID#:", for: "contractor-id" %>
+      <%= f.text_field :contractor_id, class: "w-input", id: "contractor-id" %>
 
-    <%= f.label :escrow, "Escrow?" %>
-    <%= f.radio_button :escrow, true, class: "radio-btn" %>
-    <%= f.label :escrow, "Yes", value: "true" %>
-    <%= f.radio_button :escrow, false, class: "radio-btn" %>
-    <%= f.label :escrow, "No", value: "false" %>
+      <%= f.label :escrow, "Escrow?" %>
+      <%= f.radio_button :escrow, true, class: "radio-btn" %>
+      <%= f.label :escrow, "Yes", value: "true" %>
+      <%= f.radio_button :escrow, false, class: "radio-btn" %>
+      <%= f.label :escrow, "No", value: "false" %>
 
-    <%= f.label :license_holder, "Registered License Holder", for: "license-holder" %>
-    <%= f.text_field :license_holder, class: "w-input", id: "license_holder" %>
+      <%= f.label :license_holder, "Registered License Holder", for: "license-holder" %>
+      <%= f.text_field :license_holder, class: "w-input", id: "license_holder" %>
 
-    <%= f.label :license_num, "License #:", for: "license" %>
-    <%= f.text_field :license_num, class: "w-input", id: "license" %>
+      <%= f.label :license_num, "License #:", for: "license" %>
+      <%= f.text_field :license_num, class: "w-input", id: "license" %>
 
-    <%= f.label :agent_name, "Authorized Agent Name:", for: "agent-name" %>
-    <%= f.text_field :agent_name, class: "w-input", id: "agent-name" %>
+      <%= f.label :agent_name, "Authorized Agent Name:", for: "agent-name" %>
+      <%= f.text_field :agent_name, class: "w-input", id: "agent-name" %>
 
-    <%= f.label :contact_id, "Contact ID #:", for: "contact-id" %>
-    <%= f.text_field :contact_id, class: "w-input", id: "contact-id" %>
+      <%= f.label :contact_id, "Contact ID #:", for: "contact-id" %>
+      <%= f.text_field :contact_id, class: "w-input", id: "contact-id" %>
 
-    <%= f.label :other_contact_id, "Other Contact ID # Associated with Permit", for: "other-contact-id" %>
-    <%= f.text_field :other_contact_id, class: "w-input", id: "other-contact-id" %>
+      <%= f.label :other_contact_id, "Other Contact ID # Associated with Permit", for: "other-contact-id" %>
+      <%= f.text_field :other_contact_id, class: "w-input", id: "other-contact-id" %>
 
-    <%= f.label :phone, "Phone:", for: "phone" %>
-    <%= f.text_field :phone, class: "w-input", id: "phone" %>
+      <%= f.label :phone, "Phone:", for: "phone" %>
+      <%= f.text_field :phone, class: "w-input", id: "phone" %>
 
-    <%= f.label :fax, "Fax:", for: "fax" %>
-    <%= f.text_field :fax, class: "w-input", id: "fax" %>
+      <%= f.label :fax, "Fax:", for: "fax" %>
+      <%= f.text_field :fax, class: "w-input", id: "fax" %>
 
-    <%= f.label :email, "Email:", for: "email" %>
-    <%= f.text_field :email, class: "w-input", id: "email" %>
+      <%= f.label :email, "Email:", for: "email" %>
+      <%= f.text_field :email, class: "w-input", id: "email" %>
+
+    </div>
+
+    <!-- Final info -->
+
+    <h3 class="form">3. Summary</h3>
 
     <%= f.label :work_summary, "Work Summary:", for: "work-summary" %>
     <%= f.text_area :work_summary, class: "w-input", id: "work_summary" %>
