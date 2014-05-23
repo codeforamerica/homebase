@@ -4,12 +4,16 @@
     <%= image_tag "color-house-parts/addition.png", class: "addition" %>
   </div>
   <h2>Progress</h2>
+<!--
   <div class="bar">
     <div class="bar small waypoint"></div>
   </div>
   <h6 class="progress-percent">0%</h6> 
-  Current Step: <%= cur_step %>
+-->  
+  <h4><%= cur_step %></h4>
 </div>
+
+<!--
 <script>
   var addition = <%= @permit.addition != nil ? @permit.addition : false %>;
   if (addition)
@@ -18,3 +22,4 @@
     $('.addition-btn').toggleClass("toggle-on");
   }
 </script>
+--> 

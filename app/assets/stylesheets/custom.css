@@ -332,3 +332,17 @@ p {
     margin: 4px 10px 0 0;
 }
 .contractor-fields {display: none;}
+
+/* new sidebar */
+.steps li {
+	font-weight: 600;
+	list-style: none;
+	opacity: .6;
+}
+.steps .complete {
+	opacity: 1;
+}
+.steps .cur-step {
+	font-weight: bold;
+	opacity: 1;
+}
