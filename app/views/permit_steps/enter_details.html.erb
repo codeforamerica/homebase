@@ -16,70 +16,86 @@
         <br><br>
       <% end %>
 
-    <%= f.label :owner_name, "Owner Name:", class: "label", for: "owner-name" %>
-    <%= f.text_field :owner_name, class: "w-input", id: "owner-name" %>
+    <!-- Basic info section -->
 
-    <%= f.label :house_area, "Sq Ft (House):", for: "SqFtHouse" %>
-    <%= f.text_field :house_area, class: "w-input", id: "SqFtHouse" %>
+    <p class="label-explainer">Fields marked with * are required.</h4>
 
-    <%= f.label :addition_area, "Sq Ft (Addition):", for: "SqFtAddition" %>
-    <%= f.text_field :addition_area, class: "w-input", id: "SqFtAddition" %>
+    <h3 class="form">1. Basic information</h3>
 
-    <%= f.label :ac, "Air conditioning heating system:", for: "air-conditioning-heating-system" %>
-    <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), include_blank: "Select one...", class: "w-select", id: "air-conditioning-heating-system" %>
-    <%= f.label :contractor, "Contractor used?" %>
-    <div class="w-radio">
-      <%= f.radio_button :contractor, true %>
-      <%= f.label :contractor, "Yes", value: "true" %>
-      <%= f.radio_button :contractor, false %>
-      <%= f.label :contractor, "No", value: "false" %>
-    </div>
-    <!-- <div class="contractor-fields">-->
-    <%= f.label :contractor_name, "Contractor Name:", for: "contractor-name" %>
-    <%= f.text_field :contractor_name, class: "w-input", id: "contractor-name" %>
+    <%= f.label :owner_name, "Home owner name*", class: "label", for: "owner-name" %>
+    <%= f.text_field :owner_name, :required => true, class: "w-input", id: "owner-name" %>
 
-    <%= f.label :contractor_id, "Contractor ID#:", for: "contractor-id" %>
-    <%= f.text_field :contractor_id, class: "w-input", id: "contractor-id" %>
+    <%= f.label :house_area, "Size of house in square feet*", for: "SqFtHouse" %>
+    <%= f.text_field :house_area, :required => true, class: "w-input", id: "SqFtHouse" %>
 
-    <!--</div>-->
+    <%= f.label :addition_area, "Size of addition in square feet*", for: "SqFtAddition" %>
+    <%= f.text_field :addition_area, :required => true, class: "w-input", id: "SqFtAddition" %>
 
-    <%= f.label :escrow, "Escrow?" %>
-    <div class="w-radio">
-      <%= f.radio_button :escrow, true %>
+    <%= f.label :ac, "Air conditioning / heating system*", for: "air-conditioning-heating-system" %>
+    <p class="label-explainer">Please select the type of temperature control system you plan to install in your addition.</p>
+    <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), include_blank: "Select one...", :required => true, class: "w-select", id: "air-conditioning-heating-system" %>
+
+    <!-- Contractor info section -->
+
+    <h3 class="form">2. Contractor details</h3>
+
+    <%= f.label :contractor, "Are you using a contractor for this project?" %>
+    <%= f.radio_button :contractor, true, class: "radio-btn", id: "contractor-yes-btn" %>
+    <%= f.label :contractor, "Yes", value: "true" %>
+    <%= f.radio_button :contractor, false, class: "radio-btn", id: "contractor-no-btn" %>  
+    <%= f.label :contractor, "No", value: "false" %>
+
+    <div class="contractor-details">
+
+      <%= f.label :contractor_name, "Contractor name", for: "contractor-name" %>
+      <%= f.text_field :contractor_name, class: "w-input", id: "contractor-name" %>
+
+      <%= f.label :contractor_id, "Contractor ID number", for: "contractor-id" %>
+      <%= f.text_field :contractor_id, class: "w-input", id: "contractor-id" %>
+
+      <%= f.label :escrow, "Are you using an escrow account?" %>
+      <%= f.radio_button :escrow, true, class: "radio-btn" %>
       <%= f.label :escrow, "Yes", value: "true" %>
-      <%= f.radio_button :escrow, false %>
-      <%= f.label :escrow, "No", value: "false" %>
+      <%= f.radio_button :escrow, false, class: "radio-btn" %>
+      <%= f.label :escrow, "No", value: "false", class: "radio-last" %>
+
+      <%= f.label :license_holder, "Registered license holder", for: "license-holder" %>
+      <%= f.text_field :license_holder, class: "w-input", id: "license_holder" %>
+
+      <%= f.label :license_num, "Contractor license number", for: "license" %>
+      <%= f.text_field :license_num, class: "w-input", id: "license" %>
+
+      <%= f.label :agent_name, "Contractor authorized agent name", for: "agent-name" %>
+      <%= f.text_field :agent_name, class: "w-input", id: "agent-name" %>
+
+      <%= f.label :contact_id, "Contact ID number", for: "contact-id" %>
+      <%= f.text_field :contact_id, class: "w-input", id: "contact-id" %>
+
+      <%= f.label :other_contact_id, "Other Contact ID numbers associated with permit", for: "other-contact-id" %>
+      <%= f.text_field :other_contact_id, class: "w-input", id: "other-contact-id" %>
+
+      <%= f.label :phone, "Contractor phone", for: "phone" %>
+      <%= f.text_field :phone, class: "w-input", id: "phone" %>
+
+      <%= f.label :fax, "Contractor fax", for: "fax" %>
+      <%= f.text_field :fax, class: "w-input", id: "fax" %>
+
+      <%= f.label :email, "Contractor email", for: "email" %>
+      <%= f.text_field :email, class: "w-input", id: "email" %>
+
     </div>
 
-    <%= f.label :license_holder, "Registered License Holder", for: "license-holder" %>
-    <%= f.text_field :license_holder, class: "w-input", id: "license_holder" %>
+    <!-- Final info -->
 
-    <%= f.label :license_num, "License #:", for: "license" %>
-    <%= f.text_field :license_num, class: "w-input", id: "license" %>
+    <h3 class="form">3. Summary</h3>
 
-    <%= f.label :agent_name, "Authorized Agent Name:", for: "agent-name" %>
-    <%= f.text_field :agent_name, class: "w-input", id: "agent-name" %>
+    <%= f.label :work_summary, "Work summary*", for: "work-summary" %>
+    <p class="label-explainer">Please describe the project you are working on.</p>
+    <%= f.text_area :work_summary, :required => true, class: "w-input", id: "work_summary" %>
 
-    <%= f.label :contact_id, "Contact ID #:", for: "contact-id" %>
-    <%= f.text_field :contact_id, class: "w-input", id: "contact-id" %>
-
-    <%= f.label :other_contact_id, "Other Contact ID # Associated with Permit", for: "other-contact-id" %>
-    <%= f.text_field :other_contact_id, class: "w-input", id: "other-contact-id" %>
-
-    <%= f.label :phone, "Phone:", for: "phone" %>
-    <%= f.text_field :phone, class: "w-input", id: "phone" %>
-
-    <%= f.label :fax, "Fax:", for: "fax" %>
-    <%= f.text_field :fax, class: "w-input", id: "fax" %>
-
-    <%= f.label :email, "Email:", for: "email" %>
-    <%= f.text_field :email, class: "w-input", id: "email" %>
-
-    <%= f.label :work_summary, "Work Summary:", for: "work-summary" %>
-    <%= f.text_area :work_summary, class: "w-input", id: "work_summary" %>
-
-    <%= f.label :job_cost, "Job Cost:", for: "job-cost" %>
-    <%= f.text_field :job_cost, class: "w-input", id: "job-cost" %>     
+    <%= f.label :job_cost, "Job cost*", for: "job-cost" %>
+    <p class="label-explainer">Please enter the total cost of labor and materials for your project.</p>
+    <%= f.text_field :job_cost, :required => true, class: "w-input", id: "job-cost" %>     
 
     <%= f.submit "submit", class: "btn-fill" %> 
     <% end %>

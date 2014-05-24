@@ -2,7 +2,6 @@ body {
   font-family: 'Open Sans',sans-serif;
   color: #333;
   font-size: 14px;
-  line-height: 20px;
 }
 h1 {
   margin-top: 20px;
@@ -159,12 +158,6 @@ p {
   padding-bottom: 28px;
   font-family:'Open Sans', sans-serif;
   font-size: 18px;
-}
-.label {
-  padding-bottom: 6px;
-  font-family:'Open Sans', sans-serif;
-  font-size: 18px;
-  text-transform: none;
 }
 .form {
   padding-top: 20px;
@@ -331,6 +324,7 @@ p {
     line-height: normal;
     margin: 4px 10px 0 0;
 }
+
 .contractor-fields {display: none;}
 
 /* new sidebar */
@@ -345,4 +339,46 @@ p {
 .steps .cur-step {
 	font-weight: bold;
 	opacity: 1;
+}
+
+.contractor-details {
+  display: none;
+}
+
+.radio-btn {
+  float:left;
+  margin:0 13px 0 0;
+}
+
+.radio-last {
+  margin-bottom:10px;
+}
+
+h3.form { 
+  color:#999999;
+  text-transform:uppercase;
+  margin-bottom:30px; 
+}
+
+.room-addition-fields label {
+  padding-bottom: 5px;
+  font-family:'Open Sans', sans-serif;
+  font-size: 18px;
+  text-transform: none;
+}
+.room-addition-fields input,
+.room-addition-fields select {
+  margin-bottom: 20px;
+}
+
+p.label-explainer {
+  font-size:14px;
+  margin-top:-5px;
+}
+
+textarea.w-input {
+  height:150px;
+}
+.w-input {
+  margin-bottom:25px;
 }
