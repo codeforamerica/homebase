@@ -132,7 +132,7 @@ p {
     text-decoration: none;
     text-transform: uppercase;
     transition: all 0.1s ease 0s;
-    width: 200px;
+    width: 340px;
 }
 .lets-go:hover {
 	background-color: #e56154;
@@ -156,13 +156,25 @@ p {
 .hero .w-container {
   padding-top: 99px;
   padding-bottom: 99px;
-  background-image: url('../images/house.png');
+  background-image: url('../images/housexxx.png');
   background-position: 100% 50%;
   background-repeat: no-repeat;
   background-size: 44% auto;  
 }
-.hero h2 {
-	margin-bottom: 22px;
+.hero h3 {
+  font-size:25px;
+	
+  margin-bottom: 22px;
+  color:#fff;
+  line-height:40px;
+  font-weight: 200;
+}
+span.heavy {
+  font-weight: 600;
+  color:#fff;
+}
+.hero h1 {
+  font-size:80px;
 }
 .home-navbar {
   background-color: #2c3e50;
@@ -213,6 +225,18 @@ section.last h3 {padding: 10px 0 40px;}
 .w-icon-nav-menu:before {color: #fff;}
 .w-nav-button.w--open, .w--nav-menu-open {
     background-color: #32465B;
+}
+
+input.email {
+  width:70%;
+  height:70px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:30px;
+  text-align:center;
+  font-family: proxima-nova, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size:30px;
+  color:#999999;
 }
     
 @media (max-width: 991px) {
