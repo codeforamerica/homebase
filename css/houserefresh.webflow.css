@@ -193,8 +193,15 @@ p {
   margin:80px auto;
   max-width: 940px;
 }
-.sec-about p {
+.sec p {
   margin-top:15px;
+}
+section.p-about {
+  padding:80px 0;
+}
+section.p-about h3 {
+  padding-top:0;
+  margin-top:0;
 }
 .gray-sec img {padding: 97px 0;}
 section.last {
@@ -255,6 +262,9 @@ input.p-about {
 }
 #about {
   background-image: url('../images/b-about.jpg');
+}
+#contact {
+  background-image: url('../images/b-contact.jpg');
 }
 .w-nav {
   background-color: transparent;
