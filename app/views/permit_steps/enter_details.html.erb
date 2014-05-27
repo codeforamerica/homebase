@@ -5,13 +5,13 @@
     <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
       <% if @permit.errors.any? %>
         <div class="error_messages">
-            <h2><font color="red">
+            <h3><font color="red">
               <% @permit.errors.messages.values.each do |msg| %>
                 <%msg.each do  |m| %>
-                  <%= m %>
+                  <%= m %><br>
                 <%end %>
               <% end %>
-            </font></h2>
+            </font></h3>
         </div>
         <br><br>
       <% end %>
@@ -23,17 +23,17 @@
     <h3 class="form">1. Basic information</h3>
 
     <%= f.label :owner_name, "Home owner name*", class: "label", for: "owner-name" %>
-    <%= f.text_field :owner_name, :required => true, class: "w-input", id: "owner-name" %>
+    <%= f.text_field :owner_name, class: "w-input", id: "owner-name" %>
 
     <%= f.label :house_area, "Size of house in square feet*", for: "SqFtHouse" %>
-    <%= f.text_field :house_area, :required => true, class: "w-input", id: "SqFtHouse" %>
+    <%= f.text_field :house_area, class: "w-input", id: "SqFtHouse" %>
 
     <%= f.label :addition_area, "Size of addition in square feet*", for: "SqFtAddition" %>
     <%= f.text_field :addition_area, class: "w-input", id: "SqFtAddition" %>
 
     <%= f.label :ac, "Air conditioning / heating system*", for: "air-conditioning-heating-system" %>
     <p class="label-explainer">Please select the type of temperature control system you plan to install in your addition.</p>
-    <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), include_blank: "Select one...", :required => true, class: "w-select", id: "air-conditioning-heating-system" %>
+    <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), include_blank: "Select one...", class: "w-select", id: "air-conditioning-heating-system" %>
 
     <!-- Contractor info section -->
 
@@ -91,11 +91,11 @@
 
     <%= f.label :work_summary, "Work summary*", for: "work-summary" %>
     <p class="label-explainer">Please describe the project you are working on.</p>
-    <%= f.text_area :work_summary, :required => true, class: "w-input", id: "work_summary" %>
+    <%= f.text_area :work_summary, class: "w-input", id: "work_summary" %>
 
     <%= f.label :job_cost, "Job cost*", for: "job-cost" %>
     <p class="label-explainer">Please enter the total cost of labor and materials for your project.</p>
-    <%= f.text_field :job_cost, :required => true, class: "w-input", id: "job-cost" %>     
+    <%= f.text_field :job_cost, class: "w-input", id: "job-cost" %>     
 
     <%= f.submit "submit", class: "btn-fill" %> 
     <% end %>

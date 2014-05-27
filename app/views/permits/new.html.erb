@@ -6,13 +6,13 @@
     <%= form_for @permit, html: {name: "select-improvement"} do |f| %>
       <% if @permit.errors.any? %>
         <div class="error_messages">
-            <h2><font color="red">
+            <h3><font color="red">
               <% @permit.errors.messages.values.each do |msg| %>
                 <%msg.each do  |m| %>
-                  <%= m %>
+                  <%= m %><br>
                 <%end %>
               <% end %>
-            </font></h2>
+            </font></h3>
         </div>
         <br><br>
       <% end %>
