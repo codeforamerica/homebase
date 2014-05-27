@@ -1,21 +1,30 @@
 <div class="test-prog-bar">
+
+  <!-- colorful house block -->
   <div class="house-block">
     <%= image_tag "house.png",                      class: "house"    %>
     <%= image_tag "color-house-parts/addition.png", class: "addition" %>
   </div>
-  <h2>Progress</h2>
-  <% steps = ["1. Choose your project", "2. Enter your address", "3. Find the permit you need", "4. Fill out permit details", "5. Submit your permit"] %>
-  <ul class="steps">
-    <% for i in 0..steps.length - 1 %>
-      <% if i == cur_step %>
-        <%= content_tag :li, steps[i], class: "cur-step" %>
-      <% elsif i < cur_step %>
-        <%= content_tag :li, steps[i], class: "complete" %>
-      <% else %> 
-        <%= content_tag :li, steps[i] %>
+
+  <hr>
+
+  <!-- progress through form -->
+  <div class="prog">
+    <h4>Your progress</h4>
+    <% steps = ["1. Choose your project", "2. Enter your address", "3. Find the permit you need", "4. Fill out permit details", "5. Submit your permit"] %>
+    <ul class="steps">
+      <% for i in 0..steps.length - 1 %>
+        <% if i == cur_step %>
+          <%= content_tag :li, steps[i], class: "cur-step" %>
+        <% elsif i < cur_step %>
+          <%= content_tag :li, steps[i], class: "complete" %><span class="flaticon-check33"></span>
+        <% else %> 
+          <%= content_tag :li, steps[i] %>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
+
 </div>
 
 

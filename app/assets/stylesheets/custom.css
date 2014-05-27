@@ -374,11 +374,30 @@ textarea.w-input {
   font-weight: 600;
   list-style: none;
   opacity: .42;
+  margin-bottom:20px;
 }
 .steps .complete {
-  opacity: 1;
+  opacity: .42;
 }
 .steps .cur-step {
   font-weight: bold;
   opacity: 1;
+}
+.prog ul {
+  padding:0;
+}
+.prog h4 {
+  margin-top:20px;
+  text-transform: uppercase;
+}
+.test-prog-bar hr {
+  width:70%;
+  margin-left: 0;
+}
+.flaticon-check33 {
+  opacity:.42;
+  position:absolute;
+  margin-top:-41px;
+  margin-left:-50px;
+  font-size:10px;
 }
