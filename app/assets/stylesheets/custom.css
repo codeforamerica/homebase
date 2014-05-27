@@ -327,20 +327,6 @@ p {
 
 .contractor-fields {display: none;}
 
-/* new sidebar */
-.steps li {
-	font-weight: 600;
-	list-style: none;
-	opacity: .42;
-}
-.steps .complete {
-	opacity: 1;
-}
-.steps .cur-step {
-	font-weight: bold;
-	opacity: 1;
-}
-
 .contractor-details {
   display: none;
 }
@@ -381,4 +367,18 @@ textarea.w-input {
 }
 .w-input {
   margin-bottom:25px;
+}
+
+/* new sidebar */
+.steps li {
+  font-weight: 600;
+  list-style: none;
+  opacity: .42;
+}
+.steps .complete {
+  opacity: 1;
+}
+.steps .cur-step {
+  font-weight: bold;
+  opacity: 1;
 }
