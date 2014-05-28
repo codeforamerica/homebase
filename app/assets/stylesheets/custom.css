@@ -383,6 +383,10 @@ textarea.w-input {
   font-weight: bold;
   opacity: 1;
 }
+.prog {
+  /* fixes a responsive problem with check mark in sidebar */
+  min-width:162px;
+}
 .prog ul {
   padding:0;
 }
