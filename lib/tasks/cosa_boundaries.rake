@@ -11,10 +11,12 @@ namespace :cosa_boundaries do
       puts "File contains #{file.num_records} records"
       file.each do |n|
          record = n.attributes
-         CosaBoundary.create( :name => record["name"], 
-                              :sqmiles => record["sqmiles"],
-                              :shape_area => record["shape_area"],
-                              :shape_leng => record["shape_len"], 
+         puts n.attributes
+         CosaBoundary.create( :name => record["Name"], 
+                              :acres => record["Acres"],
+                              :sqmiles => record["SqMiles"],
+                              :shape_area => record["Shape_area"],
+                              :shape_leng => record["Shape_len"], 
                               :geom => n.geometry)
       end
     end

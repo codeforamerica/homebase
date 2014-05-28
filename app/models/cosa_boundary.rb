@@ -1,8 +1,5 @@
 class CosaBoundary < ActiveRecord::Base
 
-  # self.primary_key = 'gid'
-  # self.table_name = 'historicdistricts'
-
   COORD_SYS_REF = 4326;   # The coordinate system that will be used as the reference and is now Latitude and Longitude Coord System
   COORD_SYS_AREA = 2278;  # The coordinate system used in the data Texas South Central Coordinate System
 

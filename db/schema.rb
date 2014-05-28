@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520195925) do
+ActiveRecord::Schema.define(version: 20140528175359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140520195925) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.spatial  "geom",       limit: {:srid=>0, :type=>"geometry"}
+    t.float    "acres"
   end
 
   create_table "permits", force: true do |t|
