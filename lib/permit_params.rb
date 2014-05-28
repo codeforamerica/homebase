@@ -7,6 +7,7 @@ module PermitParams
     :house_area, 
     :addition_area, 
     :ac, 
+    :contractor,
     :contractor_name, 
     :contractor_id, 
     :escrow, 
