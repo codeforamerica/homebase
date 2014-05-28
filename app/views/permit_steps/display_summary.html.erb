@@ -41,11 +41,10 @@
       <% end %>
 
       <% if @permit.contractor %>
+      <p class="small-text"><b>Contractor?:</b> <%= @permit.contractor ? "Yes" : "No" %></p>
       <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
       <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
-      <% end %>
-
-      <% if @permit.escrow %>
+      <p class="small-text"><b>Escrow?:</b> <%= @permit.escrow ? "Yes" : "No" %></p>
       <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
       <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
       <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>

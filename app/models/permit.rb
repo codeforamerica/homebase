@@ -8,6 +8,7 @@ class Permit < ActiveRecord::Base
   validates_presence_of :addition_area, :if => :active_or_details?, :message => "Please enter the size of addition in square feet."
   validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
   validates_presence_of :ac, :if => :active_or_details?, :message => "Please select an air conditioning / heating system."
+  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_details?, :message => "Please select whether you are using a contractor or not in this project."
   validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
   validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
 
