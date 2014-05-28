@@ -11,13 +11,13 @@
   <!-- progress through form -->
   <div class="prog">
     <h4>Your progress</h4>
-    <% steps = ["1. Choose your project", "2. Enter your address", "3. Find the permit you need", "4. Fill out permit details", "5. Submit your permit"] %>
+    <% steps = ["1. Choose your project", "2. Enter your address", "3. Select your permits", "4. Fill out permits", "5. Submit your permits"] %>
     <ul class="steps">
       <% for i in 0..steps.length - 1 %>
         <% if i == cur_step && i != (steps.length - 1) %>
           <%= content_tag :li, steps[i], class: "cur-step" %>
         <% elsif i == cur_step && i == (steps.length - 1) %>
-          <%= content_tag :li, steps[i], class: "cur-step" %><span class="flaticon-check33"></span>
+          <%= content_tag :li, steps[i], class: "cur-step" %><span class="flaticon-check33 last"></span>
         <% elsif i < cur_step %>
           <%= content_tag :li, steps[i], class: "complete" %><span class="flaticon-check33"></span>
         <% else %> 
