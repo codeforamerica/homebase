@@ -122,8 +122,9 @@ p {
     background-image: url("../images/right-arrow.png");
     background-position: 92% center;
     background-repeat: no-repeat;
-    background-size: 7% auto;
+    background-size: 5% auto;
     border-radius: 10px;
+    border-width: 0;
     box-shadow: 4px 4px 0 0 #AE2214;
     color: #FFFFFF;
     display: block;
@@ -146,6 +147,7 @@ p {
 }
 .lets-go:active {
     transform: translate(1px, 4px);
+	box-shadow: none;
 }
 
 /* footer */
