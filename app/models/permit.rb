@@ -1,4 +1,5 @@
 class Permit < ActiveRecord::Base
+  validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
   validates_presence_of :owner_address, :if => :active_or_address?, :message => "Please enter a San Antonio address."
   validates :owner_address, :address => true, :if => :only_if_address_presence?
   validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
