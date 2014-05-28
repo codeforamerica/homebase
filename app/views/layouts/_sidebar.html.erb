@@ -17,7 +17,7 @@
         <% if i == cur_step && i != (steps.length - 1) %>
           <%= content_tag :li, steps[i], class: "cur-step" %>
         <% elsif i == cur_step && i == (steps.length - 1) %>
-          <%= content_tag :li, steps[i], class: "cur-step" %><span class="flaticon-check33"></span>
+          <%= content_tag :li, steps[i], class: "cur-step" %><span class="flaticon-check33 last"></span>
         <% elsif i < cur_step %>
           <%= content_tag :li, steps[i], class: "complete" %><span class="flaticon-check33"></span>
         <% else %> 
