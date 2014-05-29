@@ -7,6 +7,13 @@ describe Permit do
 
   context "with valid attributes" do
   	it { expect(FactoryGirl.create(:permit)).to be_valid }
+
+  	it { expect(FactoryGirl.build(:permit, owner_address: nil, status: nil)).to be_valid }
+
+  	it { expect(FactoryGirl.build(:permit, house_area: nil, status: nil)).to be_valid }
+  	it { expect(FactoryGirl.build(:permit, house_area: nil, status: "enter_address")).to be_valid }
+  	it { expect(FactoryGirl.build(:permit, house_area: nil, status: "display_permits")).to be_valid }
+
   end
 
   context "with invalid attributes" do
@@ -14,12 +21,14 @@ describe Permit do
 
   	it { expect(FactoryGirl.build(:permit, owner_address: nil)).to be_invalid }
   	it { expect(FactoryGirl.build(:permit, owner_address: "155 9th St, San Francisco, CA 94103")).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, owner_address: nil, status: "enter_address")).to be_invalid }
 
   	it { expect(FactoryGirl.build(:permit, addition: false)).to be_invalid }
   	it { expect(FactoryGirl.build(:permit, addition: nil)).to be_invalid }
 
   	it { expect(FactoryGirl.build(:permit, house_area: nil)).to be_invalid }
   	it { expect(FactoryGirl.build(:permit, house_area: "a")).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, house_area: nil, status: "enter_details")).to be_invalid }
 
   	it { expect(FactoryGirl.build(:permit, addition_area: nil)).to be_invalid }
   	it { expect(FactoryGirl.build(:permit, addition_area: "a")).to be_invalid }
@@ -35,6 +44,7 @@ describe Permit do
     @cosa.destroy
   end
 end
+#:enter_address, :display_permits, :enter_details, :display_summary
 # describe Post do
 #   context "with 2 or more comments" do
 #     it "orders them in reverse" do
