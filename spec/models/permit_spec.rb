@@ -11,9 +11,24 @@ describe Permit do
 
   context "with invalid attributes" do
   	it { expect(FactoryGirl.build(:permit, owner_name: nil)).to be_invalid }
+
   	it { expect(FactoryGirl.build(:permit, owner_address: nil)).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, owner_address: "155 9th St, San Francisco, CA 94103")).to be_invalid }
+
   	it { expect(FactoryGirl.build(:permit, addition: false)).to be_invalid }
   	it { expect(FactoryGirl.build(:permit, addition: nil)).to be_invalid }
+
+  	it { expect(FactoryGirl.build(:permit, house_area: nil)).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, house_area: "a")).to be_invalid }
+
+  	it { expect(FactoryGirl.build(:permit, addition_area: nil)).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, addition_area: "a")).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, addition_area: 1000)).to be_invalid }
+
+  	it { expect(FactoryGirl.build(:permit, ac: nil)).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, contractor: nil)).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, work_summary: nil)).to be_invalid }
+  	it { expect(FactoryGirl.build(:permit, job_cost: nil)).to be_invalid }
   end
 
   after(:all) do
