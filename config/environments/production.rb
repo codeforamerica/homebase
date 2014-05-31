@@ -83,6 +83,6 @@ Rails.application.configure do
 
   # Precompile vendor assets in production (for heroku)
 
-  config.assets.precompile += %w( flaticon/* )
+  config.assets.precompile += %w['flaticon/*']
 
 end
