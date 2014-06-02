@@ -398,16 +398,16 @@ textarea.w-input {
   width:70%;
   margin-left: 0;
 }
-.flaticon-check33 {
-  opacity:.42;
-  position:absolute;
-  margin-top:-41px;
-  margin-left:-50px;
-  font-size:10px;
+.checkicon {
+  opacity: .42;
+  position: absolute;
+  margin-top:-37px;
+  margin-left:-25px;
+  height:1.2em;
 }
-.flaticon-check33.last {
+.checkicon.last {
   opacity: 1;
-}
+} 
 
 /* enter details errors */
 .error_messages h3 {
