@@ -1,6 +1,12 @@
 class Permit < ActiveRecord::Base
+  
+  # validates on permit_steps#new
   validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
+
+  # validates on permit_steps#enter_address
   validates_presence_of :owner_address, :if => :active_or_address?, :message => "Please enter a San Antonio address."
+  
+  # validates on permit_steps#enter_details
   validates :owner_address, :address => true, :if => :only_if_address_presence?
   validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
   validates_presence_of :house_area, :if => :active_or_details?, :message => "Please enter the size of house in square feet."

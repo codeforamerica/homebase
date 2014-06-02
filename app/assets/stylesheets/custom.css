@@ -408,3 +408,16 @@ textarea.w-input {
 .flaticon-check33.last {
   opacity: 1;
 }
+
+/* enter details errors */
+.error_messages h3 {
+  color:red;
+}
+.error p {
+  font-weight: 900;
+  color:red;
+}
+.error input,
+.error textarea {
+  background-color: rgba(255,0,0,0.05);
+}
