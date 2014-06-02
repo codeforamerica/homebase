@@ -398,17 +398,6 @@ textarea.w-input {
   width:70%;
   margin-left: 0;
 }
-.flaticon-check33 {
-  opacity:.42;
-  position:absolute;
-  margin-top:-41px;
-  margin-left:-50px;
-  font-size:10px;
-}
-.flaticon-check33.last {
-  opacity: 1;
-}
-
 .checkicon {
   opacity: .42;
   position: absolute;
