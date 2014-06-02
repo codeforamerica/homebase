@@ -3,99 +3,216 @@
   <h1>General Permit Application</h1>
   <div class="room-addition-fields">
     <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
-      <% if @permit.errors.any? %>
-        <div class="error_messages">
-            <h3><font color="red">
-              <% @permit.errors.messages.values.each do |msg| %>
-                <%msg.each do  |m| %>
-                  <%= m %><br>
-                <%end %>
-              <% end %>
-            </font></h3>
-        </div>
-        <br><br>
-      <% end %>
 
-    <!-- Basic info section -->
+    <% if @permit.errors.any? %>
+      <div class="error_messages">
+        <h3>Sorry, there was a problem. Please check your answers.</h3>
+      </div>
+      <br><br>
+    <% end %>
 
     <p class="label-explainer">Fields marked with * are required.</h4>
 
-    <h3 class="form">1. Basic information</h3>
+    <!-- Basic info section --> 
 
-    <%= f.label :owner_name, "Home owner name*", class: "label", for: "owner-name" %>
-    <%= f.text_field :owner_name, class: "w-input", id: "owner-name" %>
+      <h3 class="form">1. Basic information</h3>
 
-    <%= f.label :house_area, "Size of house in square feet*", for: "SqFtHouse" %>
-    <%= f.text_field :house_area, class: "w-input", id: "SqFtHouse" %>
+      <!-- owner_name -->
 
-    <%= f.label :addition_area, "Size of addition in square feet*", for: "SqFtAddition" %>
-    <%= f.text_field :addition_area, class: "w-input", id: "SqFtAddition" %>
+        <%= f.label :owner_name, "Home owner name*", class: "label", for: "owner-name" %>
 
-    <%= f.label :ac, "Air conditioning / heating system*", for: "air-conditioning-heating-system" %>
-    <p class="label-explainer">Please select the type of temperature control system you plan to install in your addition.</p>
-    <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), include_blank: "Select one...", class: "w-select", id: "air-conditioning-heating-system" %>
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:owner_name].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:owner_name][0] %></p>
+        <% end %>
+
+        <%= f.text_field :owner_name, class: "w-input", id: "owner-name" %>
+
+        <% if @permit.errors.messages[:owner_name].length >= 1 %>
+          <!-- close the errors div -->
+          </div>
+        <% end %>
+
+      <!-- ./owner_name -->
+
+      <!-- house_area -->
+
+        <%= f.label :house_area, "Size of house in square feet*", for: "SqFtHouse" %>
+
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:house_area].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:house_area][0] %></p>
+        <% end %>
+
+        <%= f.text_field :house_area, class: "w-input", id: "SqFtHouse" %>
+
+        <% if @permit.errors.messages[:house_area].length >= 1 %>
+          <!-- close the errors div -->
+          </div>
+        <% end %>
+
+      <!-- ./house_area -->
+
+      <!-- addition_area -->
+
+        <%= f.label :addition_area, "Size of addition in square feet*", for: "SqFtAddition" %>
+
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:addition_area].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:addition_area][0] %></p>
+        <% end %>
+
+        <%= f.text_field :addition_area, class: "w-input", id: "SqFtAddition" %>
+
+        <% if @permit.errors.messages[:addition_area].length >= 1 %>
+          <!-- close the errors div -->
+          </div>
+        <% end %>        
+
+      <!-- ./addition_area -->
+
+      <!-- ac -->
+
+        <%= f.label :ac, "Air conditioning / heating system*", for: "air-conditioning-heating-system" %>
+        
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:ac].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:ac][0] %></p>
+          <!-- close the errors div. we don't need it for radio buttons -->
+          </div>
+        <% end %>
+
+        <p class="label-explainer">Please select the type of temperature control system you plan to install in your addition.</p>
+        <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), include_blank: "Select one...", class: "w-select", id: "air-conditioning-heating-system" %>
+
+      <!-- ./ac -->
+
+    <!-- ./Basic info section -->
 
     <!-- Contractor info section -->
 
-    <h3 class="form">2. Contractor details</h3>
+      <h3 class="form">2. Contractor details</h3>
 
-    <%= f.label :contractor, "Are you using a contractor for this project?" %>
-    <%= f.radio_button :contractor, true, class: "radio-btn", id: "contractor-yes-btn" %>
-    <%= f.label :contractor, "Yes", value: "true" %>
-    <%= f.radio_button :contractor, false, class: "radio-btn", id: "contractor-no-btn" %>  
-    <%= f.label :contractor, "No", value: "false" %>
+      <%= f.label :contractor, "Are you using a contractor for this project?" %>
 
-    <div class="contractor-details">
+      <!-- check if there's an error for this field -->
+      <% if @permit.errors.messages[:contractor].length >= 1 %>
+        <!-- create an errors div to style error message and make input red -->    
+        <div class="error">
+          <!-- Print out the error message (from validator) -->
+          <p><%= @permit.errors.messages[:contractor][0] %></p>
+        <!-- close the errors div. we don't need it for radio buttons -->
+        </div>
+      <% end %>
 
-      <%= f.label :contractor_name, "Contractor name", for: "contractor-name" %>
-      <%= f.text_field :contractor_name, class: "w-input", id: "contractor-name" %>
+      <%= f.radio_button :contractor, true, class: "radio-btn", id: "contractor-yes-btn" %>
+      <%= f.label :contractor, "Yes", value: "true" %>
+      <%= f.radio_button :contractor, false, class: "radio-btn", id: "contractor-no-btn" %>  
+      <%= f.label :contractor, "No", value: "false" %>
 
-      <%= f.label :contractor_id, "Contractor ID number", for: "contractor-id" %>
-      <%= f.text_field :contractor_id, class: "w-input", id: "contractor-id" %>
+      <div class="contractor-details">
 
-      <%= f.label :escrow, "Are you using an escrow account?" %>
-      <%= f.radio_button :escrow, true, class: "radio-btn" %>
-      <%= f.label :escrow, "Yes", value: "true" %>
-      <%= f.radio_button :escrow, false, class: "radio-btn" %>
-      <%= f.label :escrow, "No", value: "false", class: "radio-last" %>
+        <%= f.label :contractor_name, "Contractor name", for: "contractor-name" %>
+        <%= f.text_field :contractor_name, class: "w-input", id: "contractor-name" %>
 
-      <%= f.label :license_holder, "Registered license holder", for: "license-holder" %>
-      <%= f.text_field :license_holder, class: "w-input", id: "license_holder" %>
+        <%= f.label :contractor_id, "Contractor ID number", for: "contractor-id" %>
+        <%= f.text_field :contractor_id, class: "w-input", id: "contractor-id" %>
 
-      <%= f.label :license_num, "Contractor license number", for: "license" %>
-      <%= f.text_field :license_num, class: "w-input", id: "license" %>
+        <%= f.label :escrow, "Are you using an escrow account?" %>
+        <%= f.radio_button :escrow, true, class: "radio-btn" %>
+        <%= f.label :escrow, "Yes", value: "true" %>
+        <%= f.radio_button :escrow, false, class: "radio-btn" %>
+        <%= f.label :escrow, "No", value: "false", class: "radio-last" %>
 
-      <%= f.label :agent_name, "Contractor authorized agent name", for: "agent-name" %>
-      <%= f.text_field :agent_name, class: "w-input", id: "agent-name" %>
+        <%= f.label :license_holder, "Registered license holder", for: "license-holder" %>
+        <%= f.text_field :license_holder, class: "w-input", id: "license_holder" %>
 
-      <%= f.label :contact_id, "Contact ID number", for: "contact-id" %>
-      <%= f.text_field :contact_id, class: "w-input", id: "contact-id" %>
+        <%= f.label :license_num, "Contractor license number", for: "license" %>
+        <%= f.text_field :license_num, class: "w-input", id: "license" %>
 
-      <%= f.label :other_contact_id, "Other Contact ID numbers associated with permit", for: "other-contact-id" %>
-      <%= f.text_field :other_contact_id, class: "w-input", id: "other-contact-id" %>
+        <%= f.label :agent_name, "Contractor authorized agent name", for: "agent-name" %>
+        <%= f.text_field :agent_name, class: "w-input", id: "agent-name" %>
 
-      <%= f.label :phone, "Contractor phone", for: "phone" %>
-      <%= f.text_field :phone, class: "w-input", id: "phone" %>
+        <%= f.label :contact_id, "Contact ID number", for: "contact-id" %>
+        <%= f.text_field :contact_id, class: "w-input", id: "contact-id" %>
 
-      <%= f.label :fax, "Contractor fax", for: "fax" %>
-      <%= f.text_field :fax, class: "w-input", id: "fax" %>
+        <%= f.label :other_contact_id, "Other Contact ID numbers associated with permit", for: "other-contact-id" %>
+        <%= f.text_field :other_contact_id, class: "w-input", id: "other-contact-id" %>
 
-      <%= f.label :email, "Contractor email", for: "email" %>
-      <%= f.text_field :email, class: "w-input", id: "email" %>
+        <%= f.label :phone, "Contractor phone", for: "phone" %>
+        <%= f.text_field :phone, class: "w-input", id: "phone" %>
 
-    </div>
+        <%= f.label :fax, "Contractor fax", for: "fax" %>
+        <%= f.text_field :fax, class: "w-input", id: "fax" %>
+
+        <%= f.label :email, "Contractor email", for: "email" %>
+        <%= f.text_field :email, class: "w-input", id: "email" %>
+
+      </div>
+
+    <!-- ./Contractor Info Section -->
 
     <!-- Final info -->
 
-    <h3 class="form">3. Summary</h3>
+      <h3 class="form">3. Summary</h3>
 
-    <%= f.label :work_summary, "Work summary*", for: "work-summary" %>
-    <p class="label-explainer">Please describe the project you are working on.</p>
-    <%= f.text_area :work_summary, class: "w-input", id: "work_summary" %>
+      <!-- work_summary -->
 
-    <%= f.label :job_cost, "Job cost*", for: "job-cost" %>
-    <p class="label-explainer">Please enter the total cost of labor and materials for your project.</p>
-    <%= f.text_field :job_cost, class: "w-input", id: "job-cost" %>     
+        <%= f.label :work_summary, "Work summary*", for: "work-summary" %>
+        <p class="label-explainer">Please describe the project you are working on.</p>
+
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:work_summary].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:work_summary][0] %></p>
+        <% end %>
+
+        <%= f.text_area :work_summary, class: "w-input", id: "work_summary" %>
+
+        <% if @permit.errors.messages[:work_summary].length >= 1 %>
+          <!-- close the errors div -->
+          </div>
+        <% end %>   
+
+      <!-- ./work_summary -->
+
+      <!-- job_cost -->
+
+        <%= f.label :job_cost, "Job cost*", for: "job-cost" %>
+        <p class="label-explainer">Please enter the total cost of labor and materials for your project.</p>
+
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:job_cost].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:job_cost][0] %></p>
+        <% end %>
+
+        <%= f.text_field :job_cost, class: "w-input", id: "job-cost" %>  
+
+        <% if @permit.errors.messages[:job_cost].length >= 1 %>
+          <!-- close the errors div -->
+          </div>
+        <% end %>  
+
+      <!-- ./job_cost -->
+
+    <!-- ./Final info -->   
 
     <%= f.submit "submit", class: "btn-fill" %> 
     <% end %>
