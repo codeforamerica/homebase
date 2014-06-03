@@ -1,25 +1,23 @@
-<div class="test-prog-bar">
+<div class="col-sm-3" id="sidebar"> <!-- use the boostrap grid -->
 
   <!-- colorful house block -->
-  <div class="house-block">
+  <div class="visuals">
     <%= image_tag "house.png",                      class: "house"    %>
     <%= image_tag "color-house-parts/addition.png", class: "addition" %>
   </div>
 
-  <hr>
-
   <!-- progress through form -->
-  <div class="prog">
+  <div class="status">
     <h4>Your progress</h4>
     <% steps = ["1. Choose your project", "2. Enter your address", "3. Select your permits", "4. Fill out permits", "5. Submit your permits"] %>
-    <ul class="steps">
+    <ul>
       <% for i in 0..steps.length - 1 %>
         <% if i == cur_step && i != (steps.length - 1) %>
           <%= content_tag :li, steps[i], class: "cur-step" %>
         <% elsif i == cur_step && i == (steps.length - 1) %>
-          <%= content_tag :li, steps[i], class: "cur-step" %><%= image_tag "checkmark.png", class: "checkicon last" %>
+          <%= content_tag :li, steps[i], class: "cur-step" %><%= image_tag "checkmark.png", class: "last" %>
         <% elsif i < cur_step %>
-          <%= content_tag :li, steps[i], class: "complete" %><%= image_tag "checkmark.png", class: "checkicon" %>
+          <%= content_tag :li, steps[i] %><%= image_tag "checkmark.png" %>
         <% else %> 
           <%= content_tag :li, steps[i] %>
         <% end %>
@@ -29,7 +27,7 @@
 
 </div>
 
-
+<!-- @TODO refactor this out to javascript asset pipelien -->
 <script>
   var addition = <%= @permit.addition != nil ? @permit.addition : false %>;
   if (addition)
