@@ -1,9 +1,18 @@
-<%= render partial: "layouts/sidebar", locals: {cur_step: 0} %> 
-<div class="step first-step" id="select-renovations">   
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 0} %>
+
+<!-- Load the step here -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
   <h1>How would you like to improve your house?</h1>
   <p>Give us a few details about the type of improvement you want done.</p>
+
+  <!-- Start the permit select form -->
   <div class="w-form">
     <%= form_for @permit, html: {name: "select-improvement"} do |f| %>
+
+      <!-- error checking -->
       <% if @permit.errors.any? %>
         <div class="error_messages">
             <h3><font color="red">
@@ -16,14 +25,22 @@
         </div>
         <br><br>
       <% end %>
-      <%= f.label "Pick an improvement:", class:"label", for: "name" %>
+      <!-- ./ error checking -->
+
+      <%= f.label "Pick an improvement:", class: "labeled", for: "name" %>
+      
+      <!-- Options for rennovation -->
       <div class="w-row">
         <div class="w-col w-col-3 item-col">
           <%= f.label :addition, "Additions", class: 'button btn-outline alt-button-outline addition-btn'%>
           <%= f.check_box :addition, style: 'display: none' %><br />
         </div>
       </div>
+      
+      <!-- Submit button -->
       <%= f.submit "Next", class: "btn-fill"%>
+
     <% end %>
-  </div>
+  </div><!-- ./form -->
+
 </div>

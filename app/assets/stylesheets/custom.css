@@ -225,12 +225,12 @@ p {
 .progress-col {
   padding-top: 22px;
 }
-.test-prog-bar {
+/*.test-prog-bar {
   position: fixed;
   width: 17%;
   padding-top: 43px;
   padding-right: 30px;
-}
+}*/
 .main-sec {
   padding-top: 20px;
 }
@@ -247,40 +247,41 @@ p {
 
 /* new */
 
-.house-block {
-    height: 152px;
-    margin-bottom: 20px;
-    position: relative;
-}
-.house, .roof, .fence, .addition, .chimney {
-  position: absolute;  
-}
-.roof, .fence, .addition, .chimney {
-  display: none;
-}
-.house {
-  width: 148px;
-}
-.roof {
-  left: -5px;
-  top: -1px;
-  width: 158px;
-}
-.fence {
-  bottom: 0;
-  left: 6px;
-  width: 136px;
-}
-.addition {
-  bottom: 5px;
-  left: 147px;
-  width: 50px;
-}
-.chimney {
-  left: 15px;
-  top: 4px;
-  width: 34px;
-}
+                          /*.house-block {
+                              height: 152px;
+                              margin-bottom: 20px;
+                              position: relative;
+                          }*/
+                        /*  .house, .roof, .fence, .addition, .chimney {
+                            position: absolute;  
+                          }
+                          .roof, .fence, .addition, .chimney {
+                            display: none;
+                          }
+                          .house {
+                            width: 148px;
+                          }
+                          .roof {
+                            left: -5px;
+                            top: -1px;
+                            width: 158px;
+                          }
+                          .fence {
+                            bottom: 0;
+                            left: 6px;
+                            width: 136px;
+                          }
+                          .addition {
+                            bottom: 5px;
+                            left: 147px;
+                            width: 50px;
+                          }
+                          .chimney {
+                            left: 15px;
+                            top: 4px;
+                            width: 34px;
+                          }*/
+
 .roof-btn {
   position: relative;
 }
@@ -370,30 +371,30 @@ textarea.w-input {
 }
 
 /* new sidebar */
-.steps li {
+/*.steps li {
   font-weight: 600;
   list-style: none;
   opacity: .42;
   margin-bottom:20px;
-}
-.steps .complete {
+}*/
+/*.steps .complete {
   opacity: .42;
-}
-.steps .cur-step {
+}*/
+/*.steps .cur-step {
   font-weight: bold;
   opacity: 1;
-}
-.prog {
-  /* fixes a responsive problem with check mark in sidebar */
+}*/
+/*.prog {
+   fixes a responsive problem with check mark in sidebar 
   min-width:162px;
-}
-.prog ul {
+}*/
+/*.prog ul {
   padding:0;
-}
-.prog h4 {
+}*/
+/*.prog h4 {
   margin-top:20px;
   text-transform: uppercase;
-}
+}*/
 .test-prog-bar hr {
   width:70%;
   margin-left: 0;

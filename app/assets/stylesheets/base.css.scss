@@ -103,9 +103,10 @@ h1 {
       font-weight: 800; // bold the current step
     }
     .last {
-     opacity: 1; 
+     opacity: 1; // for the last step, the check icon should be fully black
     }
   } // ./status
 
 } // ./sidebar
+
 
