@@ -7,7 +7,7 @@
     ===========================
 */
 
-$container-lg: 960px; /* set the max container size */
+$container-lg: 1000px; /* set the max container size */
 
 /* set some basic font styles */
 $text-color: #333; // set the base text color
@@ -109,4 +109,18 @@ h1 {
 
 } // ./sidebar
 
+/* basic styles for each step */
 
+.intro {
+  margin-bottom: 25px; // put some space between the intro text and the form content
+}
+
+/* styles for #new (first step) */
+
+.panel-info-addition { // styles for little green house ... @TODO refactor this to make it work for more project panels
+  img { // 
+    float:left;
+    padding-right:25px;
+    width:110px;
+  }
+}
