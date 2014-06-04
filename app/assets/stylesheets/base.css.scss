@@ -124,3 +124,18 @@ h1 {
     width:110px;
   }
 }
+
+/* styles for #enter_details */
+
+.has-error p { //styles error helper text
+  font-weight: 900;
+  color: $brand-danger;
+}
+
+.form-group {
+  padding-top: 25px; // space out the form fields
+
+  &:first-of-type {
+    padding-top:0px; // but not the first form field
+  }
+}
