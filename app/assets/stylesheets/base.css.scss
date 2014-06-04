@@ -139,3 +139,14 @@ h1 {
     padding-top:0px; // but not the first form field
   }
 }
+
+/* styles for header */
+
+.header {
+  width:100%;
+  background-color: $gray-lighter;
+  .container {
+    margin-top:0;
+    height:65px;
+  }
+}
