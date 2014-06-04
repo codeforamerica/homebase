@@ -40,6 +40,14 @@ describe Permit do
 
   context "with invalid attributes" do
 
+    before { @ipermit = FactoryGirl.build(:permit, owner_name: nil) }
+    it "adds the correct error message" do
+      @ipermit.valid?
+      expect(@ipermit).to be_invalid
+      expect(@ipermit.errors.count).to eq(1)
+      expect(@ipermit.errors.messages[:owner_name]).to include("Please enter home owner name.")
+    end
+
     it { expect(FactoryGirl.build(:permit, owner_name: nil)).to be_invalid }
     it { expect(FactoryGirl.build(:permit, owner_name: nil, status: "enter_details")).to be_invalid }
 

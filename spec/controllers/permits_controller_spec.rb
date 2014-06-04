@@ -7,17 +7,89 @@ describe PermitsController do
 
   describe "GET #new" do
 
-    context "when in district address is passed in" do
-#      before { get :new, :format => 'html', :permit => FactoryGirl.build(:permit, )}
+    context "when addition is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:permit, 
+                                                                                      owner_address: nil,
+                                                                                      house_area: nil,
+                                                                                      addition_area: nil,
+                                                                                      ac: nil,
+                                                                                      contractor: nil,
+                                                                                      contractor_name: nil,
+                                                                                      contractor_id: nil,
+                                                                                      escrow: nil,
+                                                                                      license_holder: nil,
+                                                                                      license_num: nil,
+                                                                                      agent_name: nil,
+                                                                                      contact_id: nil,
+                                                                                      other_contact_id: nil,
+                                                                                      phone: nil,
+                                                                                      fax: nil,
+                                                                                      email: nil,
+                                                                                      work_summary: nil,
+                                                                                      job_cost: nil,
+                                                                                      status: nil) }
+        
 
-      # it { expect(json['lat']).to be_within(0.01).of(29.414432) }
-      # it { expect(json['lng']).to be_within(0.01).of(-98.491916) }
-      # it { expect(json['in_hist_district']).to be_true }
-      # it { expect(json['hist_district_polygon']).not_to be_nil }
-      # it { expect(json['in_cosa_district']).to be_true }
-      # it { expect(json['cosa_district_polygon']).not_to be_nil }
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
 
       # it { should respond_with 200 }
+    end
+
+    context "when addition is selected as false" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:permit, 
+                                                                                      addition: false,
+                                                                                      owner_address: nil,
+                                                                                      house_area: nil,
+                                                                                      addition_area: nil,
+                                                                                      ac: nil,
+                                                                                      contractor: nil,
+                                                                                      contractor_name: nil,
+                                                                                      contractor_id: nil,
+                                                                                      escrow: nil,
+                                                                                      license_holder: nil,
+                                                                                      license_num: nil,
+                                                                                      agent_name: nil,
+                                                                                      contact_id: nil,
+                                                                                      other_contact_id: nil,
+                                                                                      phone: nil,
+                                                                                      fax: nil,
+                                                                                      email: nil,
+                                                                                      work_summary: nil,
+                                                                                      job_cost: nil,
+                                                                                      status: nil) }
+        
+
+      it { expect(subject).to render_template("new") }
+
+
+      # it { should respond_with 200 }      
+    end
+
+    context "when addition is not selected" do
+      subject { get :create, :format=> 'html', :permit => FactoryGirl.attributes_for( :permit,
+                                                                                      addition: nil,
+                                                                                      owner_address: nil,
+                                                                                      house_area: nil,
+                                                                                      addition_area: nil,
+                                                                                      ac: nil,
+                                                                                      contractor: nil,
+                                                                                      contractor_name: nil,
+                                                                                      contractor_id: nil,
+                                                                                      escrow: nil,
+                                                                                      license_holder: nil,
+                                                                                      license_num: nil,
+                                                                                      agent_name: nil,
+                                                                                      contact_id: nil,
+                                                                                      other_contact_id: nil,
+                                                                                      phone: nil,
+                                                                                      fax: nil,
+                                                                                      email: nil,
+                                                                                      work_summary: nil,
+                                                                                      job_cost: nil,
+                                                                                      status: nil) }
+
+      it { expect(subject).to render_template("new") }
     end
   end
 
