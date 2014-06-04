@@ -129,6 +129,8 @@ p {
   padding: 12px;
   border-bottom: 2px solid #6598a3;
   border-radius: 3px;
+  border-style: none none solid;
+  border-width: 0 0 2px;
   background-color: #81bac7;
   font-family: Montserrat, sans-serif;
   color: white;
@@ -226,10 +228,10 @@ p {
   padding-top: 22px;
 }
 .test-prog-bar {
-  position: fixed;
-  width: 17%;
+  float: left;
   padding-top: 43px;
   padding-right: 30px;
+  width: 25%;
 }
 .main-sec {
   padding-top: 20px;
@@ -242,6 +244,10 @@ p {
     width: auto;
     padding-right: 33px;
     padding-left: 33px;
+  }
+  .step {
+	  padding: 0 20px;
+	  width: 100%;
   }
 }
 
