@@ -159,9 +159,9 @@ p {
   font-family:'Open Sans', sans-serif;
   font-size: 18px;
 }
-.form {
+/*.form {
   padding-top: 20px;
-}
+}*/
 .alt-h1 {
   font-family: Montserrat, sans-serif;
   text-transform: none;
@@ -387,7 +387,7 @@ textarea.w-input {
 /*.prog {
    fixes a responsive problem with check mark in sidebar 
   min-width:162px;
-}*/
+}*/ 
 /*.prog ul {
   padding:0;
 }*/
