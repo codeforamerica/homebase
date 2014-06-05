@@ -29,15 +29,13 @@
 <body>
 
   <!-- header -->
-  <div class="header">
-    <div class="container">
-      <span class="glyphicon glyphicon-map-marker"></span>
-      <span class="logo"><strong>HOMEBASE</strong></span>
-    </div>
+  <div class="container" id="header">
+    <!-- render the header partial -->
+    <%= render partial: "layouts/header" %>
   </div>
 
   <!-- body -->
-  <div class="container">
+  <div class="container" id="content">
     <div class="row">
       <%= yield %>
     </div>

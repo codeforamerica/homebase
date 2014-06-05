@@ -33,11 +33,21 @@ $grid-gutter-width: 50px; // bump up the grid gutters
     ===========================
 */
 
-.container {
-  margin-top: 50px; // offset all the content from the top of the page
+.container#content {
+  margin-top: 40px; // offset all the content from the top of the page
 }
 
-h1 {
+.container#header {
+  .page-header {
+    margin-top:25px; // set the offset of the header
+
+    .about_container {
+      margin:20px 0; // push the collapsed about container down
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
   margin-top: 0px; // reset the top margin for h1. not sure why this is a thing in bootstrap/normalize
 }
 
@@ -137,16 +147,5 @@ h1 {
 
   &:first-of-type {
     padding-top:0px; // but not the first form field
-  }
-}
-
-/* styles for header */
-
-.header {
-  width:100%;
-  background-color: $gray-lighter;
-  .container {
-    margin-top:0;
-    height:65px;
   }
 }
