@@ -4,9 +4,10 @@ rvm:
 before_install:
   - sudo apt-get update
   - sudo apt-get install libgeos-dev libproj-dev
-  - echo y | bundle uninstall rgeo
+  - sudo find / -name "GEOS"
 before_script:
   - psql -c 'create database "homebase_test";' -U postgres
+  - psql -U postgres -c "create extension postgis"
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 notifications:
