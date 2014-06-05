@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - ruby-2.0.0
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libgeos-dev libproj-dev
 before_script:
   - psql -c 'create database "homebase_test";' -U postgres
   - bundle exec rake db:migrate
