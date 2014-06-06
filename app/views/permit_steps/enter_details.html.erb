@@ -12,7 +12,7 @@
 
 
   <!-- Room additions fields -->
-  <div class="room-addition-fields999">
+  <div class="form">
     <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
 
     <!-- error checking -->
@@ -171,7 +171,7 @@
 
         </div>
 
-        <div class="contractor-details">
+        <div class="collapse contractor-details">
 
           <div class="form-group">
             <%= f.label :contractor_name, "Contractor name", for: "contractor-name" %>
