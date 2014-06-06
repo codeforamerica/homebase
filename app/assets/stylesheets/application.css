@@ -10,8 +10,5 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require webflow
- *= require normalize
- *= require custom
  *= require base
  */
