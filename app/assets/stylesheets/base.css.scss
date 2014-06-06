@@ -145,14 +145,15 @@ h1 {
   color: $brand-danger;
 }
 
-.form-group {
-  padding-top: 25px; // space out the form fields
+.multi-form {
+  .form-group {
+    padding-top: 25px; // space out the form fields
 
-  &:first-of-type {
-    padding-top:0px; // but not the first form field
+    &:first-of-type {
+      padding-top:0px; // but not the first form field
+    }
   }
 }
-
 /* Mobile styles */
 
 @media (max-width: $screen-sm-min) {
