@@ -56,7 +56,7 @@ h1 {
   
   .visuals {
     position: relative; // allows us to position improvements
-    overflow: hidden; // testing to keep icons tidy and inside sidebar
+     // testing to keep icons tidy and inside sidebar
 
     .roof, .fence, .addition {
       position: absolute; // allows us to position each improvement
@@ -103,7 +103,7 @@ h1 {
     }
     li {
       opacity: .4; // grey out the steps
-      font-size: 14px;
+      font-size: 13px;
       margin-bottom: 10px; // space out the steps
       list-style: none;
       &:first-child {
@@ -113,7 +113,7 @@ h1 {
 
     .cur-step {
       opacity: 1; // darken the current step
-      font-weight: 800; // bold the current step
+      font-weight: 700; // bold the current step
     }
     .last {
      opacity: 1; // for the last step, the check icon should be fully black
