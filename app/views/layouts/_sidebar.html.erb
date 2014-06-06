@@ -9,18 +9,33 @@
   <!-- progress through form -->
   <div class="status">
     <h4 class="hidden-xs">Your progress</h4>
-    <% steps = ["1. Choose your project", "2. Enter your address", "3. Select your permits", "4. Fill out permits", "5. Submit your permits"] %>
+    <!-- @TODO move this to the controller -->
+
+    <% steps = [
+                  # description, controller, action, id
+                  [ "1. Choose your project", "permits", "new", nil ], 
+                  [ "2. Enter your address", "permit_steps", "show", "enter_address"  ], 
+                  [ "3. Select your permits", "permit_steps", "show", "display_permits" ], 
+                  [ "4. Fill out permits", "permit_steps", "show", "enter_details" ],
+                  [ "5. Submit your permits", "permit_steps", "show", "display_summary" ] 
+                ] %>
     <ul>
       <li class="cur-step hidden-sm hidden-md hidden-lg"><strong>Current Step:</strong></li><!-- for mobile devices -->
       <% for i in 0..steps.length - 1 %>
         <% if i == cur_step && i != (steps.length - 1) %>
-          <%= content_tag :li, steps[i], class: "cur-step" %>
-        <% elsif i == cur_step && i == (steps.length - 1) %>
-          <%= content_tag :li, steps[i], class: "cur-step" %><%= image_tag "checkmark.png", class: "last hidden-xs" %>
-        <% elsif i < cur_step %>
-          <%= content_tag :li, steps[i] %><%= image_tag "checkmark.png", class: "hidden-xs" %>
-        <% else %> 
-          <%= content_tag :li, steps[i] %>
+          <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %> <!-- current/active step -->
+            <%= content_tag :li, steps[i][0], class: "cur-step" %>
+          <% end %>
+        <% elsif i == cur_step && i == (steps.length - 1) %> <!-- active last step ... so we can keep it bold/dark -->
+          <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %>
+            <%= content_tag :li, steps[i][0], class: "cur-step" %><%= image_tag "checkmark.png", class: "last hidden-xs" %>
+          <% end %>
+        <% elsif i < cur_step %> <!-- finished step -->
+          <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %>
+            <%= content_tag :li, steps[i][0] %><%= image_tag "checkmark.png", class: "hidden-xs" %>
+          <% end %>
+        <% else %> <!-- future steps -->
+            <%= content_tag :li, steps[i][0] %>
         <% end %>
       <% end %>
     </ul>

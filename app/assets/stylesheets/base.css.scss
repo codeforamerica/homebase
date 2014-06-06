@@ -98,6 +98,9 @@ h1 {
     ul {
       padding: 0; // fixes the indentation for the steps/progress
     }
+    a {
+      color: $text-color; // keep the sidebar links black
+    }
     li {
       opacity: .4; // grey out the steps
       font-size: 14px;
