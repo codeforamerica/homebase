@@ -23,9 +23,6 @@ $(document).ready(function()
     {
       $(".addition").fadeToggle("fast","swing");
       $('.addition-btn').toggleClass("toggle-on");
-      //addition = !addition;
-      //$('.addition-btn').val(addition);
-      //console.log($('.addition-btn'));
     });
 
 

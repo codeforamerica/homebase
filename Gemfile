@@ -68,4 +68,4 @@ gem 'rgeo-shapefile', '0.2.3'
 
 # Sentry error monitoring
 
-gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
+#gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
