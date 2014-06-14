@@ -123,7 +123,9 @@ Check it out at project-name-here.herokuapp.com.
 
 # Contribute
 
+If you see a problem, please [submit an issue](https://github.com/codeforamerica/homebase/issues). 
 
+If you'd like to contribute some code to our project, please follow this great [guide on contributing through Pull Requests](https://guides.github.com/activities/contributing-to-open-source/#contributing) from Github. We welcome Pull Requests big and small: you can help squash a bug or even just fix a typo.
 
 # Say hello
 
