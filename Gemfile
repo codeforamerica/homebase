@@ -72,5 +72,3 @@ gem 'rgeo-shapefile', '0.2.3'
 # Add bootstrap sass
 gem 'bootstrap-sass', '~> 3.1.1'
 
-
-
