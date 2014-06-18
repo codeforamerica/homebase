@@ -1,0 +1,189 @@
+/*  
+    =========================
+    SET BASE VARIABLES
+
+    these variabes will override the bootstrap defaut mixins 
+    see those mixins here: http://getbootstrap.com/customize/#less-variables
+    ===========================
+*/
+
+$container-lg: 1000px; /* set the max container size */
+
+/* set some basic font styles */
+$text-color: #333; // set the base text color
+$font-family-sans-serif: 'Open Sans',sans-serif; 
+$font-family-serif: Georgia, serif;
+$font-size-base: 18px;
+
+/* style our headings */
+$headings-font-family: Montserrat, serif;
+$headings-font-weight: 700;
+$font-size-h1: 50px;
+
+$grid-gutter-width: 40px; // bump up the grid gutters
+
+/* now let's important the base bootstrap styles */
+@import "bootstrap";
+
+/*  
+    =========================
+    HOMEBASE STYLES, CRAFTED BY HAND
+
+    this is where our custom styling beyond bootstrap begins
+    ===========================
+*/
+
+.container#content {
+  margin-top: 40px; // offset all the content from the top of the page
+}
+
+.container#header {
+  .page-header {
+    margin-top:25px; // set the offset of the header
+
+    .about_container {
+      margin:20px 0; // push the collapsed about container down
+    }
+  }
+}
+
+h1 {
+  margin-top: 0px; // reset the top margin for h1. not sure why this is a thing in bootstrap/normalize
+}
+
+/* styles for the sidebar */
+#sidebar {
+  
+  .visuals {
+    position: relative; // allows us to position improvements
+     // testing to keep icons tidy and inside sidebar
+
+    .roof, .fence, .addition {
+      position: absolute; // allows us to position each improvement
+      display: none; // hide these on load; we reveal when they pick one
+    }    
+
+    /* positions for improvement icons */
+    .house {
+      width: 120px;
+    }
+    .roof {
+      left: -5px;
+      top: -1px;
+      width: 158px;
+    }
+    .fence {
+      bottom: 0;
+      left: 6px;
+      width: 136px;
+    }
+    .addition {
+      bottom: 0px;
+      left: 120px;
+      width: 40px;
+    }
+  } // ./visuals
+
+  .status {
+    margin-top: 30px; // move the progress/steps down from the house block
+    
+    /* styles for the check icons  ...  @TODO this is an ugly way to do this, refactor */
+    img {
+      position: absolute;
+      margin-top: -27px;
+      margin-left: -20px;
+      height: 0.8em;
+      opacity: .4;
+    }
+    ul {
+      padding: 0; // fixes the indentation for the steps/progress
+    }
+    a {
+      color: $text-color; // keep the sidebar links black
+    }
+    li {
+      opacity: .4; // grey out the steps
+      font-size: 13px;
+      margin-bottom: 10px; // space out the steps
+      list-style: none;
+      &:first-child {
+        margin-top: 10px; // give the first step some space
+      }
+    } //./li
+
+    .cur-step {
+      opacity: 1; // darken the current step
+      font-weight: 700; // bold the current step
+    }
+    .last {
+     opacity: 1; // for the last step, the check icon should be fully black
+    }
+  } // ./status
+
+} // ./sidebar
+
+/* basic styles for each step */
+
+.intro {
+  margin-bottom: 25px; // put some space between the intro text and the form content
+}
+
+/* styles for #new (first step) */
+
+.panel-info-addition { // styles for little green house ... @TODO refactor this to make it work for more project panels
+  img { // 
+    float:left;
+    padding-right:25px;
+    width:110px;
+  }
+}
+
+/* styles for #enter_details */
+
+.has-error p { //styles error helper text
+  font-weight: 900;
+  color: $brand-danger;
+}
+
+.multi-form {
+  .form-group {
+    padding-top: 25px; // space out the form fields
+
+    &:first-of-type {
+      padding-top:0px; // but not the first form field
+    }
+  }
+}
+/* Mobile styles */
+
+@media (max-width: $screen-sm-min) {
+  h1 {
+    font-size: 2em; // shrink the section headers
+  }
+
+  .container#content {
+    margin-top:0; // we don't need this margin anymore
+  }
+
+  #sidebar {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+
+    .status {
+      margin-top: 0; // we don't need this margin anymore
+      border: 1px solid $gray-lighter;
+      padding: 5px 15px;
+
+      li {
+        display:none; // hide all the steps
+        margin:0; // we don't need this margin anymore
+      }
+      .cur-step {
+        display:inline-block; // show the step we're on, settle them on the same line
+        font-weight: 700;
+        font-size:12px;
+        opacity: .5;
+      }
+    }
+  }
+}

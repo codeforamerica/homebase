@@ -19,4 +19,7 @@ $(document).ready(function()
         }
     });
 
+    // add bootstrap button toggle functionality
+    $('.btn').button()
+
 });
