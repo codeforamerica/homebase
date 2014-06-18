@@ -24,6 +24,7 @@ You'll need the following set up to run Homebase:
 * [Ruby](https://github.com/codeforamerica/howto/blob/master/Ruby.md)
 * [Rails](https://github.com/codeforamerica/howto/blob/master/Rails.md)
 * [PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
+* [GEOS](http://trac.osgeo.org/geos/) - You may need to adjust RGeo gem GEOS installation directory to point to your installation
 
 ### Local Installation
 
@@ -109,15 +110,26 @@ Make sure that's the URL for your actual datbase from the heroku config info. Ma
 
     $ git push heroku:master
 
-#### 6. Now let's migrate the database
+#### 6. Enable PostGIS support
+
+##### First log into your database
+    $ heroku pg:psql HEROKU_POSTGRESQL_COLOR_URL
+
+##### Enable PostGIS
+    $ CREATE EXTENSION postgis;
+
+##### Exit out of your database
+    $ \q
+
+#### 7. Now let's migrate the database
 
     $ heroku run rake db:migrate
 
-#### 7. Load your data
+#### 8. Load your data
 
     $ heroku run cosa_boundaries:load
 
-#### 8. Your app is good to go
+#### 9. Your app is good to go
 
 Check it out at project-name-here.herokuapp.com.
 
