@@ -67,7 +67,7 @@ gem 'activerecord-postgis-adapter', '2.0.1'
 gem 'rgeo-shapefile', '0.2.3'
 
 # Sentry error monitoring
-gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
+#gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 
 # Add bootstrap sass
 gem 'bootstrap-sass', '~> 3.1.1'
