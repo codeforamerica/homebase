@@ -122,7 +122,11 @@
           <% end %>
 
           <p class="help-block">Please select the system you plan to install in your addition.</p>
-          <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), { include_blank: "Select one..." }, { class: "form-control", id: "air-conditioning-heating-system" } %>
+          <% if @permit.ac.blank? %>
+            <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), { include_blank: "Select one..." }, { class: "form-control", id: "air-conditioning-heating-system" } %>
+          <% else %>
+            <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"], @permit.ac), { include_blank: "Select one..." }, { class: "form-control", id: "air-conditioning-heating-system" } %>
+          <% end %>
         </div>
 
       <!-- ./ac -->
