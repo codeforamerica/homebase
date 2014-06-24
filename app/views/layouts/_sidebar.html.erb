@@ -28,11 +28,11 @@
           <% end %>
         <% elsif i == cur_step && i == (steps.length - 1) %> <!-- active last step ... so we can keep it bold/dark -->
           <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %>
-            <%= content_tag :li, steps[i][0], class: "cur-step" %><%= image_tag "checkmark.png", class: "last hidden-xs" %>
+            <%= content_tag :li, steps[i][0], class: "cur-step" %>
           <% end %>
         <% elsif i < cur_step %> <!-- finished step -->
           <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %>
-            <%= content_tag :li, steps[i][0] %><%= image_tag "checkmark.png", class: "hidden-xs" %>
+            <%= content_tag :li, steps[i][0] %>
           <% end %>
         <% else %> <!-- future steps -->
             <%= content_tag :li, steps[i][0], class: "entry-future" %>
