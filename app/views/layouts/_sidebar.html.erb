@@ -35,7 +35,7 @@
             <%= content_tag :li, steps[i][0] %><%= image_tag "checkmark.png", class: "hidden-xs" %>
           <% end %>
         <% else %> <!-- future steps -->
-            <%= content_tag :li, steps[i][0] %>
+            <%= content_tag :li, steps[i][0], class: "entry-future" %>
         <% end %>
       <% end %>
     </ul>
