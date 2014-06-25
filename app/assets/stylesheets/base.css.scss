@@ -218,13 +218,13 @@ h1 {
       border: 1px solid $gray-lighter;
       padding: 5px 15px;
       
-	  ul {
-	  	margin-bottom: 7px;
-	  	padding: 0;
-	    &:before {
-		  display: none;
+  	  ul {
+  	  	margin-bottom: 7px;
+  	  	padding: 0;
+  	    &:before {
+    		  display: none;
         }
-	  }
+  	  }
       li {
         display:none; // hide all the steps
         margin:0; // we don't need this margin anymore
