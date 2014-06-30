@@ -43,30 +43,14 @@
 
 </div>
 
-<!-- @TODO refactor this out to javascript asset pipelien -->
+<!-- @TODO refactor this out to javascript asset pipeline -->
 <script>
-  var addition = <%= @permit.addition != nil ? @permit.addition : false %>;
-  if (addition)
-  {
+  <% if @permit.addition %>
+
     $(".addition").fadeToggle("fast","swing");
     $('.addition-btn').toggleClass("toggle-on");
-  }
-  <%# if @permit.contractor != nil %>
-  // var contractor = <%= @permit.contractor %>;
-  //   if (contractor == true)
-  //   {
-  //     if(!$('.contractor-details').is(':visible'))
-  //     {
-  //       $(".contractor-details").fadeToggle("fast","swing");
-  //     }
-  //   }
-  //   else if (contractor == false)
-  //   {
-  //     if($('.contractor-details').is(':visible'))
-  //     {
-  //       $(".contractor-details").fadeToggle("fast","swing");
-  //     }
-  //   }
-  <%# end %>
+
+  <% end %>
+ 
 
 </script>
