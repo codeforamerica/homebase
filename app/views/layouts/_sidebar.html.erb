@@ -45,12 +45,12 @@
 
 <!-- @TODO refactor this out to javascript asset pipeline -->
 <script>
-  var addition = <%= @permit.addition != nil ? @permit.addition : false %>;
-  if (addition)
-  {
+  <% if @permit.addition %>
+
     $(".addition").fadeToggle("fast","swing");
     $('.addition-btn').toggleClass("toggle-on");
-  }
+
+  <% end %>
  
 
 </script>
