@@ -1,0 +1,169 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 3} %>
+
+<!-- Begin step -->
+<div class="col-sm-9 multi-form"> <!-- multi-form adds some nice padding for long form groupings -->
+
+  <!-- Intro text -->
+    <div class="intro">
+      <h1>General Permit Application</h1>
+      <p>This permit covers many home repair and renovation projects.</p>
+    </div>
+
+
+  <!-- General Repairs fields -->
+  <div class="form">
+    <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
+
+    <!-- error checking -->
+    <% if @permit.errors.any? %>
+      <div class="alert alert-danger">
+        <p><strong>Sorry, there was a problem. Please check your answers.</strong></p>
+      </div>
+    <% end %>
+    <!-- ./error checking -->
+
+    <!-- required notice -->
+    <div class="alert alert-info">
+      <p>Fields marked with * are required.</p>
+    </div>
+
+    <!-- Contractor info section -->
+    
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h4>What changes are you making to your house?</h4>
+      </div>
+
+      <div class="panel-body">
+
+        <!-- Window section -->
+        <div class="form-group">
+          <%= f.label :window, "Are you making changes to the windows?*" %>
+
+          <!-- check if there's an error for this field -->
+          <% if @permit.errors.messages[:window].length >= 1 %>
+            <!-- create an errors div to style error message and make input red -->    
+            <div class="has-error">
+              <!-- Print out the error message (from validator) -->
+              <p><%= @permit.errors.messages[:window][0] %></p>
+            <!-- close the errors div. we don't need it for radio buttons -->
+            </div>
+          <% end %>
+
+          <br>
+          <div class="btn-group" data-toggle="buttons"> <!-- @TODO javascript make button select persistent -->
+            <%= f.label :window, "Yes", value: "true", class: "btn btn-primary", id: "window-yes-btn" do %>
+              <%= f.radio_button :window, true, style: 'display:none;' %>
+              Yes
+            <% end %>
+
+            <%= f.label :window, "No", value: "false", class: "btn btn-primary", id: "window-no-btn" do %>
+              <%= f.radio_button :window, false, style: 'display:none;' %>
+              No
+            <% end %>
+          </div>
+
+        </div>
+
+        <!-- <div class="collapse window-details"> -->
+
+          <div class="form-group">
+            <%= f.label :window_count, "How many windows are you changing/adding?", for: "window-count" %>
+            <%= f.text_field :window_count, class: "form-control input-lg", id: "window-count" %>
+          </div>
+        <!-- </div>./window-details -->
+
+        <!-- Door section -->
+        <div class="form-group">
+          <%= f.label :door, "Are you making changes to the doors?*" %>
+
+          <!-- check if there's an error for this field -->
+          <% if @permit.errors.messages[:door].length >= 1 %>
+            <!-- create an errors div to style error message and make input red -->    
+            <div class="has-error">
+              <!-- Print out the error message (from validator) -->
+              <p><%= @permit.errors.messages[:door][0] %></p>
+            <!-- close the errors div. we don't need it for radio buttons -->
+            </div>
+          <% end %>
+
+          <br>
+          <div class="btn-group" data-toggle="buttons"> <!-- @TODO javascript make button select persistent -->
+            <%= f.label :door, "Yes", value: "true", class: "btn btn-primary", id: "door-yes-btn" do %>
+              <%= f.radio_button :door, true, style: 'display:none;' %>
+              Yes
+            <% end %>
+
+            <%= f.label :door, "No", value: "false", class: "btn btn-primary", id: "door-no-btn" do %>
+              <%= f.radio_button :door, false, style: 'display:none;' %>
+              No
+            <% end %>
+          </div>
+
+        </div>
+
+        <!-- <div class="collapse door-details"> -->
+
+          <div class="form-group">
+            <%= f.label :door_count, "How many doors are you changing/adding?", for: "door-count" %>
+            <%= f.text_field :door_count, class: "form-control input-lg", id: "door-count" %>
+          </div>
+        <!-- </div>./door-details -->
+
+      </div><!-- ./panel_body -->
+    </div><!-- ./panel -->
+
+    <!-- ./General Repairs Info Section -->
+   
+
+    <%= f.submit "Submit", class: "btn btn-primary btn-lg" %> 
+    <% end %>
+  </div>
+</div>
+
+<script>
+  <% if @permit.window != nil %>
+
+    <% if @permit.window %>
+
+      $("#window-yes-btn").trigger('click');
+      if(!$('.window-details').is(':visible'))
+      {
+        $(".window-details").fadeToggle("fast","swing");
+      }
+
+    <% else %>
+
+      $("#window-no-btn").trigger('click');
+      if($('.window-details').is(':visible'))
+      {
+        $(".window-details").fadeToggle("fast","swing");
+      }
+
+    <% end %>
+  <% end %>
+
+  <% if @permit.door != nil %>
+
+    <% if @permit.door %>
+
+      $("#door-yes-btn").trigger('click');
+      if(!$('.door-details').is(':visible'))
+      {
+        $(".door-details").fadeToggle("fast","swing");
+      }
+
+    <% else %>
+
+      $("#door-no-btn").trigger('click');
+      if($('.door-details').is(':visible'))
+      {
+        $(".door-details").fadeToggle("fast","swing");
+      }
+
+    <% end %>
+  <% end %>
+
+</script>
