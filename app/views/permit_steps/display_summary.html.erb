@@ -46,6 +46,14 @@
         <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
       <% end %>
 
+      <% if @permit.repair %>
+        <p class="small-text"><b>Windows:</b> <%= @permit.window %></p>
+        <p class="small-text"><b>Doors:</b> <%= @permit.door %></p>
+        <p class="small-text"><b>Walls:</b> <%= @permit.wall %></p>
+        <p class="small-text"><b>Siding Replacement:</b> <%= @permit.siding %></p>
+        <p class="small-text"><b>Floor:</b> <%= @permit.floor %></p>
+      <% end %>
+
       <% if @permit.contractor %>
         <p class="small-text"><b>Contractor?:</b> <%= @permit.contractor ? "Yes" : "No" %></p>
         <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>

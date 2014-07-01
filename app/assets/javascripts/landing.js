@@ -7,10 +7,14 @@ $(document).ready(function()
       $(".addition").fadeToggle("fast","swing");
       $(".pick-addition").toggleClass("btn-success");
       $(".panel-info-addition").toggleClass("panel-success")
-      //addition = !addition;
-      //$('.addition-btn').val(addition);
-      //console.log($('.addition-btn'));
     });
+
+  $(".pick-repair").click(function()
+    {
+      $(".repair").fadeToggle("fast","swing");
+      $(".pick-repair").toggleClass("btn-success");
+      $(".panel-info-repair").toggleClass("panel-success")
+    });  
 
     // @TODO refactor this unnecessary js out
 

@@ -21,7 +21,15 @@ module PermitParams
     :email,
     :work_summary,
     :job_cost,
-    :status
+    :status,
+    :repair,
+    :window,
+    :door,
+    :wall,
+    :siding,
+    :floor,
+    :window_count,
+    :door_count
     )
  end
 end
