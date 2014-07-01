@@ -93,27 +93,5 @@ describe PermitsController do
     end
   end
 
-  describe "new" do
-
-    before { visit permits_new_path }
-
-    let(:submit) { "Submit" }
-
-    # describe "with invalid information" do
-    #   it "should not create a user" do
-    #     expect { click_button submit }.not_to change(User, :count)
-    #   end
-    # end
-
-    describe "with valid information" do
-      before do
-        fill_in "Addition",         with: true
-      end
-
-      it "should create a user" do
-        expect { click_button submit }.to redirect_to(permit_steps_path)
-      end
-    end
-  end
 end
 
