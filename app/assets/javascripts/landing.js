@@ -1,6 +1,19 @@
 $(document).ready(function() 
   {
 
+
+  $(".pick-addition").click(function()
+    {
+      $(".addition").fadeToggle("fast","swing");
+      $(".pick-addition").toggleClass("btn-success");
+      $(".panel-info-addition").toggleClass("panel-success")
+      //addition = !addition;
+      //$('.addition-btn').val(addition);
+      //console.log($('.addition-btn'));
+    });
+
+    // @TODO refactor this unnecessary js out
+
     $(".roof-btn").click(function()
     {
       $(".roof").fadeToggle("fast","swing");
@@ -23,9 +36,6 @@ $(document).ready(function()
     {
       $(".addition").fadeToggle("fast","swing");
       $('.addition-btn').toggleClass("toggle-on");
-      //addition = !addition;
-      //$('.addition-btn').val(addition);
-      //console.log($('.addition-btn'));
     });
 
 

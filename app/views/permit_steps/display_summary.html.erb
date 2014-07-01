@@ -1,62 +1,97 @@
-<%= render partial: "layouts/sidebar", locals: {cur_step: 4} %> 
-<div class="step ha-waypoint" id="summary" data-animate-down="100%" data-animate-up="84%">
-  <h1 class="complete-message">You're done!</h1>
-  <h1>These are your next steps</h1>
-  <h2 class="alt-h1">1. Review and print project info</h2>
-  <h2 class="alt-h1"><%= @permit.owner_address %></h2>
-  <div class="w-row">
-    <div class="w-col w-col-4">
-      <%= image_tag "house-color.png",  alt: "53321879f335a68211000248_house-color.png" %>      
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 4} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1>It's time to send in your permit</h1>
+    <p>To complete the permit process, you'll have to download the General Repairs permit application, fill it out and submit it to the City of San Antonio.</p>
+  </div>
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h4>1. Download and print the General Repairs Permit</h4>
     </div>
-    <div class="w-col w-col-8">
-      <div class="ren-rule">
-        <h3><strong>Project details:&nbsp;</strong></h3>
-        <ul>
-          <li class="list-item"><strong>Build a Fence</strong>
-          </li>
-          <li class="list-item"><strong>Material</strong>: Wrought Iron</li>
-          <li class="list-item"><strong>Height</strong>: 6 feet</li>
-          <li class="list-item"><strong>Yard Size</strong>: 1.2 acres</li>
-        </ul>
+
+    <div class="panel-body">
+      <p>Please <a href="https://webapps1.sanantonio.gov/dsddocumentcentral/upload/GeneralRepairsMinorCommercialApplication.pdf">click this link</a> to download the permit application from the City of San Antonio website. Please print out the application.
+
+      <div class="alert alert-warning">
+        The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href="http://get.adobe.com/reader/">this link</a>.</p>
       </div>
+    </div><!-- ./panel_body -->
+
+  </div><!-- ./panel -->
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h4>2. Fill out the permit with this information</h4>
     </div>
-  </div>              
-  <h2 class="alt-h1">2. Apply for permits</h2>
-  <div class="w-row">
-    <div class="w-col">
-      <div class="content-block">
-        <h3>General Repair/Residential Permit</h3>
-        <p class="small-text">This permit is required for most residential repair projects. Seperate permits are required for any mechanical, electrical or plumbing work.</p>
-        <p class="small-text"><b>Application cost:</b> <br>Depends on the cost of your project</p>
-        <p class="small-text"><b>Required documents:</b> <br>Completed permit application, site plan, picture ID or proof of ownership of property</p>
-      </div>
+
+    <div class="panel-body">
+
+      <p><strong>Write the following information on the printed permit.</strong></p>
+
+      <p class="small-text"><b>Job Cost:</b> $<%= @permit.job_cost %></p>
       <p class="small-text"><b>Owner Name:</b> <%= @permit.owner_name %></p>
       <p class="small-text"><b>Owner Address:</b> <%= @permit.owner_address %></p>
 
       <% if @permit.addition %>
-      <p class="small-text"><b>House Square Feet:</b> <%= @permit.house_area %></p>
-      <p class="small-text"><b>Addition Square Feet:</b> <%= @permit.addition_area %></p>
-      <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
+        <p class="small-text"><b>House Square Feet:</b> <%= @permit.house_area %></p>
+        <p class="small-text"><b>Addition Square Feet:</b> <%= @permit.addition_area %></p>
+        <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
       <% end %>
 
       <% if @permit.contractor %>
-      <p class="small-text"><b>Contractor?:</b> <%= @permit.contractor ? "Yes" : "No" %></p>
-      <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
-      <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
-      <p class="small-text"><b>Escrow?:</b> <%= @permit.escrow ? "Yes" : "No" %></p>
-      <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
-      <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
-      <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>
-      <p class="small-text"><b>Contact ID #:</b> <%= @permit.contact_id %></p>
-      <p class="small-text"><b>Telephone:</b> <%= @permit.phone %></p>
-      <p class="small-text"><b>Fax:</b> <%= @permit.fax %></p>
-      <p class="small-text"><b>Email:</b> <%= @permit.email %></p>
-      <p class="small-text"><b>Oher Contact ID # Associated with Permit:</b> <%= @permit.other_contact_id %></p>
+        <p class="small-text"><b>Contractor?:</b> <%= @permit.contractor ? "Yes" : "No" %></p>
+        <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
+        <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
+        <p class="small-text"><b>Escrow?:</b> <%= @permit.escrow ? "Yes" : "No" %></p>
+        <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
+        <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
+        <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>
+        <p class="small-text"><b>Contact ID #:</b> <%= @permit.contact_id %></p>
+        <p class="small-text"><b>Telephone:</b> <%= @permit.phone %></p>
+        <p class="small-text"><b>Fax:</b> <%= @permit.fax %></p>
+        <p class="small-text"><b>Email:</b> <%= @permit.email %></p>
+        <p class="small-text"><b>Oher Contact ID # Associated with Permit:</b> <%= @permit.other_contact_id %></p>
       <% end %>
 
       <p class="small-text"><b>Work Summary:</b> <%= @permit.work_summary %></p>
 
+    </div><!-- panel-body -->
+  </div><!-- ./panel -->
 
-    </div>                
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>3. Make a detailed site plan</h4>
+    </div>
+    <div class="panel-body">
+      <p>Site plan must be drawn to scale showing the size of lot, location of existing structures, locations of easements, 
+      and proposed new structure with distances to all adjacent property lines and other existing structures.</p>
+      <p>For an example of a site plan, <a href="http://www.putnam-fl.com/uploads/uploads/forms/EXAMPLE_SITE_PLAN[1].pdf">click here</a>.</p>
+    </div>
   </div>
-</div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>4. Bring your materials to Development Services Department</h4>
+    </div>
+    <div class="panel-body">
+      <p>Bring the following materials with you:
+      <ul>
+        <li>Completed Permit Application</li>
+        <li>Completed Site Plan</li>
+        <li>A Form of Identification (i.e. Driver's license, passport)</li>
+        <li>Proof of Home Ownership (i.e. Grant Deed, Utility Bills)</li>
+      </ul>
+      <p>Development Services Department is located at <a href="https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393">1901 S. Alamo, San Antonio, Texas 78204</a>.</p>
+      <p>Questions? Call them at (210) 207-1111.</p>
+    </div>
+  </div>
+
+</div> <!-- ./col-sm-9 -->

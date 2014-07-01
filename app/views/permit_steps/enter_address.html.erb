@@ -1,31 +1,40 @@
-<%= render partial: "layouts/sidebar", locals: {cur_step: 1} %> 
-<div class="step ha-waypoint" id="enter-address" data-animate-down="17%" data-animate-up="0%">
-  <h1>Enter your address</h1>
-  <p>We will use this information to help you plan out your changes.</p>
-  <div class="w-form">
-    <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
-      <% if @permit.errors.any? %>
-        <div class="error_messages">
-            <h3><font color="red">
-              <% @permit.errors.messages.values.each do |msg| %>
-                <%msg.each do  |m| %>
-                  <%= m %><br>
-                <%end %>
-              <% end %>
-            </font></h3>
-        </div>
-        <br><br>
-      <% end %>
-      <%= f.label :owner_address, "Your address:", class: "label", for: "name" %>
-      <%= f.text_field :owner_address, placeholder: "Enter your address", class: "w-input field" %>
-      <%= f.submit "submit", class: "btn-fill" %>
-    <% end %>
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 1} %>
 
-    <div class="w-form-done">
-      <p>Thank you! Your submission has been received!</p>
-    </div>
-    <div class="w-form-fail">
-      <p>Oops! Something went wrong while submitting the form :(</p>
-    </div>
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1>Enter your address</h1>
+    <p>Type your address in the box below:</p>
   </div>
-</div>
+
+  <!-- Start the address form -->
+  <div class="form">
+    <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
+
+      <!-- error checking -->
+      <% if @permit.errors.any? %>
+        <div class="alert alert-danger">
+          <% @permit.errors.messages.values.each do |msg| %>
+            <%msg.each do  |m| %>
+              <strong><%= m %></strong>
+            <%end %>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- ./ error checking -->
+
+      <!-- address entry -->
+      <div class="form-group">
+        <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
+      </div>
+      <!-- ./address entry -->
+
+      <!-- submit button -->
+      <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
+
+    <% end %>
+  </div><!-- ./form -->
+</div> <!-- ./col-sm-9 -->
