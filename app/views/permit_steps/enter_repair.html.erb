@@ -112,6 +112,93 @@
           </div>
         <!-- </div>./door-details -->
 
+        <!-- Wall section -->
+        <div class="form-group">
+          <%= f.label :wall, "Are you making changes to the wall?*" %>
+
+          <!-- check if there's an error for this field -->
+          <% if @permit.errors.messages[:wall].length >= 1 %>
+            <!-- create an errors div to style error message and make input red -->    
+            <div class="has-error">
+              <!-- Print out the error message (from validator) -->
+              <p><%= @permit.errors.messages[:wall][0] %></p>
+            <!-- close the errors div. we don't need it for radio buttons -->
+            </div>
+          <% end %>
+
+          <br>
+          <div class="btn-group" data-toggle="buttons"> <!-- @TODO javascript make button select persistent -->
+            <%= f.label :wall, "Yes", value: "true", class: "btn btn-primary", id: "wall-yes-btn" do %>
+              <%= f.radio_button :wall, true, style: 'display:none;' %>
+              Yes
+            <% end %>
+
+            <%= f.label :wall, "No", value: "false", class: "btn btn-primary", id: "wall-no-btn" do %>
+              <%= f.radio_button :wall, false, style: 'display:none;' %>
+              No
+            <% end %>
+          </div>
+
+        </div>
+
+        <!-- Siding section -->
+        <div class="form-group">
+          <%= f.label :siding, "Are you replacing the siding?*" %>
+
+          <!-- check if there's an error for this field -->
+          <% if @permit.errors.messages[:siding].length >= 1 %>
+            <!-- create an errors div to style error message and make input red -->    
+            <div class="has-error">
+              <!-- Print out the error message (from validator) -->
+              <p><%= @permit.errors.messages[:siding][0] %></p>
+            <!-- close the errors div. we don't need it for radio buttons -->
+            </div>
+          <% end %>
+
+          <br>
+          <div class="btn-group" data-toggle="buttons"> <!-- @TODO javascript make button select persistent -->
+            <%= f.label :siding, "Yes", value: "true", class: "btn btn-primary", id: "siding-yes-btn" do %>
+              <%= f.radio_button :siding, true, style: 'display:none;' %>
+              Yes
+            <% end %>
+
+            <%= f.label :siding, "No", value: "false", class: "btn btn-primary", id: "siding-no-btn" do %>
+              <%= f.radio_button :siding, false, style: 'display:none;' %>
+              No
+            <% end %>
+          </div>
+
+        </div>
+
+        <!-- Floor section -->
+        <div class="form-group">
+          <%= f.label :floor, "Are you making changes to the floor?*" %>
+
+          <!-- check if there's an error for this field -->
+          <% if @permit.errors.messages[:floor].length >= 1 %>
+            <!-- create an errors div to style error message and make input red -->    
+            <div class="has-error">
+              <!-- Print out the error message (from validator) -->
+              <p><%= @permit.errors.messages[:floor][0] %></p>
+            <!-- close the errors div. we don't need it for radio buttons -->
+            </div>
+          <% end %>
+
+          <br>
+          <div class="btn-group" data-toggle="buttons"> <!-- @TODO javascript make button select persistent -->
+            <%= f.label :floor, "Yes", value: "true", class: "btn btn-primary", id: "floor-yes-btn" do %>
+              <%= f.radio_button :floor, true, style: 'display:none;' %>
+              Yes
+            <% end %>
+
+            <%= f.label :floor, "No", value: "false", class: "btn btn-primary", id: "floor-no-btn" do %>
+              <%= f.radio_button :floor, false, style: 'display:none;' %>
+              No
+            <% end %>
+          </div>
+
+        </div>
+
       </div><!-- ./panel_body -->
     </div><!-- ./panel -->
 
