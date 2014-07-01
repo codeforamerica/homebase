@@ -14,6 +14,7 @@ class Permit < ActiveRecord::Base
   validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
   validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :message => "Job cost must be a number."
 
+  # validates on permit_steps#enter_addition
   validates_presence_of :house_area, :if => :active_or_addition?, :message => "Please enter the size of house in square feet."
   validates_numericality_of :house_area, :if => :only_if_house_presence?, :message => "Please enter the size of house in square feet."
   validates_presence_of :addition_area, :if => :active_or_addition?, :message => "Please enter the size of addition in square feet."
@@ -21,6 +22,14 @@ class Permit < ActiveRecord::Base
   validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
   validates_presence_of :ac, :if => :active_or_addition?, :message => "Please select an air conditioning / heating system."
 
+  # validates on permit_steps#enter_repair
+  validates_inclusion_of :window, :in => [true, false], :if => :active_or_repair?, :message => "Please select whether you are changing windows in this project."
+  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are changing/adding."
+  validates_inclusion_of :door, :in => [true, false], :if => :active_or_repair?, :message => "Please select whether you are changing doors in this project."
+  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Please specify the number of doors you are changing/adding."
+  validates_inclusion_of :wall, :in => [true, false], :if => :active_or_repair?, :message => "Please select whether you are changing walls in this project."
+  validates_inclusion_of :siding, :in => [true, false], :if => :active_or_repair?, :message => "Please select whether you are changing sidings in this project."
+  validates_inclusion_of :floor, :in => [true, false], :if => :active_or_repair?, :message => "Please select whether you are changing floors in this project."
 
   def active?
     status == 'active'
@@ -52,5 +61,17 @@ class Permit < ActiveRecord::Base
 
   def active_or_addition?
     status.to_s.include?('enter_addition') || active?
+  end
+
+  def active_or_repair?
+    status.to_s.include?('enter_repair') || active?
+  end
+
+  def only_if_window_true?
+    active_or_repair? && window
+  end
+
+  def only_if_door_true?
+    active_or_repair? && door
   end
 end

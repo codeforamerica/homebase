@@ -69,8 +69,18 @@
 
         <!-- <div class="collapse window-details"> -->
 
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:window_count] != nil && @permit.errors.messages[:window_count].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="has-error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:window_count][0] %></p>
+          <!-- close the errors div. we don't need it for radio buttons -->
+          </div>
+        <% end %>
+
           <div class="form-group">
-            <%= f.label :window_count, "How many windows are you changing/adding?", for: "window-count" %>
+            <%= f.label :window_count, "How many windows are you changing/adding?*", for: "window-count" %>
             <%= f.text_field :window_count, class: "form-control input-lg", id: "window-count" %>
           </div>
         <!-- </div>./window-details -->
@@ -106,8 +116,18 @@
 
         <!-- <div class="collapse door-details"> -->
 
+        <!-- check if there's an error for this field -->
+        <% if @permit.errors.messages[:door_count] != nil && @permit.errors.messages[:door_count].length >= 1 %>
+          <!-- create an errors div to style error message and make input red -->    
+          <div class="has-error">
+            <!-- Print out the error message (from validator) -->
+            <p><%= @permit.errors.messages[:door_count][0] %></p>
+          <!-- close the errors div. we don't need it for radio buttons -->
+          </div>
+        <% end %>
+
           <div class="form-group">
-            <%= f.label :door_count, "How many doors are you changing/adding?", for: "door-count" %>
+            <%= f.label :door_count, "How many doors are you changing/adding?*", for: "door-count" %>
             <%= f.text_field :door_count, class: "form-control input-lg", id: "door-count" %>
           </div>
         <!-- </div>./door-details -->
@@ -253,4 +273,66 @@
     <% end %>
   <% end %>
 
+    <% if @permit.wall != nil %>
+
+    <% if @permit.wall %>
+
+      $("#wall-yes-btn").trigger('click');
+      if(!$('.wall-details').is(':visible'))
+      {
+        $(".wall-details").fadeToggle("fast","swing");
+      }
+
+    <% else %>
+
+      $("#wall-no-btn").trigger('click');
+      if($('.wall-details').is(':visible'))
+      {
+        $(".wall-details").fadeToggle("fast","swing");
+      }
+
+    <% end %>
+  <% end %>
+
+  <% if @permit.siding != nil %>
+
+    <% if @permit.siding %>
+
+      $("#siding-yes-btn").trigger('click');
+      if(!$('.siding-details').is(':visible'))
+      {
+        $(".siding-details").fadeToggle("fast","swing");
+      }
+
+    <% else %>
+
+      $("#siding-no-btn").trigger('click');
+      if($('.siding-details').is(':visible'))
+      {
+        $(".siding-details").fadeToggle("fast","swing");
+      }
+
+    <% end %>
+  <% end %>
+
+  <% if @permit.floor != nil %>
+
+    <% if @permit.floor %>
+
+      $("#floor-yes-btn").trigger('click');
+      if(!$('.floor-details').is(':visible'))
+      {
+        $(".floor-details").fadeToggle("fast","swing");
+      }
+
+    <% else %>
+
+      $("#floor-no-btn").trigger('click');
+      if($('.floor-details').is(':visible'))
+      {
+        $(".floor-details").fadeToggle("fast","swing");
+      }
+
+    <% end %>
+  <% end %>
 </script>
