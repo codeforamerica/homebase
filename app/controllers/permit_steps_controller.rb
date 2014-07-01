@@ -9,8 +9,18 @@ class PermitStepsController < ApplicationController
   
   def show
     @permit = current_permit
+
+    case step
+
+    when :enter_details
+      skip_step if @permit.addition == nil || !@permit.addition
+    end
+    when :enter_repair
+      skip_step if @permit.repair == nil || !@permit.repair
+    end
     render_wizard
-  end
+
+    end
 
   def update
     @permit = current_permit
