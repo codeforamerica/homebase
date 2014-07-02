@@ -5,12 +5,22 @@ class PermitStepsController < ApplicationController
   include PermitParams
 
   include Wicked::Wizard
-  steps :enter_address, :display_permits, :enter_details, :display_summary
+  steps :enter_address, :display_permits, :enter_details, :enter_addition, :enter_repair, :display_summary
   
   def show
     @permit = current_permit
+
+    case step
+
+    when :enter_addition
+      skip_step if @permit.addition == nil || !@permit.addition
+
+    when :enter_repair
+      skip_step if @permit.repair == nil || !@permit.repair
+    end
     render_wizard
-  end
+
+    end
 
   def update
     @permit = current_permit

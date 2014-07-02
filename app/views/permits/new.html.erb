@@ -37,10 +37,22 @@
         </div>
       </div>
       <!-- ./addition -->
-     
+
+      <!-- Pick and option: REPAIRS -->
+      <div class="panel panel-default panel-info-repair">
+        <div class="panel-heading"><h4>General Repairs</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>General repairs are changes you make to your current home, like adding a new window, door, walls, siding, and floor.</p>
+          <%= f.label :repair, "I want to make a general repair", class: 'btn btn-default btn-small pick-repair'%>
+          <%= f.check_box :repair, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./repair -->
+
       <!-- Submit button -->
       <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
     <% end %>
   </div><!-- ./form -->
-</div><!-- ./col-sm-9 -->
+</div><!-- ./col-sm-9
