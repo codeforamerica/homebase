@@ -20,6 +20,7 @@ Webflow.init = function () {
   var _ = api._ = underscore();
   var domready = false;
   var tram = window.tram;
+  var Modernizr = window.Modernizr;
   tram.config.hideBackface = false;
   tram.config.keepInherited = true;
 
@@ -86,7 +87,9 @@ Webflow.init = function () {
   var userAgent = navigator.userAgent.toLowerCase();
   var appVersion = navigator.appVersion.toLowerCase();
   api.env.touch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch;
-  api.env.chrome = (window.chrome || /chrome/.test(userAgent)) && parseInt(appVersion.match(/chrome\/(\d+)\./)[1], 10);
+  var chrome = api.env.chrome = (window.chrome || /chrome/.test(userAgent)) && parseInt(appVersion.match(/chrome\/(\d+)\./)[1], 10);
+  var ios = api.env.ios = Modernizr && Modernizr.ios;
+  api.env.safari = /safari/.test(userAgent) && !chrome && !ios;
 
   /**
    * Webflow.script() - Append script to document head
@@ -403,103 +406,6 @@ window.tram=function(t){function i(t,i){var e=new Z.Bare;return e.init(t,i)}func
  * Licensed MIT (/blob/master/LICENSE.txt)
  */
 (function($){if(!$.support.cors&&$.ajaxTransport&&window.XDomainRequest){var n=/^https?:\/\//i;var o=/^get|post$/i;var p=new RegExp('^'+location.protocol,'i');var q=/text\/html/i;var r=/\/json/i;var s=/\/xml/i;$.ajaxTransport('* text html xml json',function(i,j,k){if(i.crossDomain&&i.async&&o.test(i.type)&&n.test(i.url)&&p.test(i.url)){var l=null;var m=(j.dataType||'').toLowerCase();return{send:function(f,g){l=new XDomainRequest();if(/^\d+$/.test(j.timeout)){l.timeout=j.timeout}l.ontimeout=function(){g(500,'timeout')};l.onload=function(){var a='Content-Length: '+l.responseText.length+'\r\nContent-Type: '+l.contentType;var b={code:200,message:'success'};var c={text:l.responseText};try{if(m==='html'||q.test(l.contentType)){c.html=l.responseText}else if(m==='json'||(m!=='text'&&r.test(l.contentType))){try{c.json=$.parseJSON(l.responseText)}catch(e){b.code=500;b.message='parseerror'}}else if(m==='xml'||(m!=='text'&&s.test(l.contentType))){var d=new ActiveXObject('Microsoft.XMLDOM');d.async=false;try{d.loadXML(l.responseText)}catch(e){d=undefined}if(!d||!d.documentElement||d.getElementsByTagName('parsererror').length){b.code=500;b.message='parseerror';throw'Invalid XML: '+l.responseText;}c.xml=d}}catch(parseMessage){throw parseMessage;}finally{g(b.code,b.message,c,a)}};l.onprogress=function(){};l.onerror=function(){g(500,'error',{text:l.responseText})};var h='';if(j.data){h=($.type(j.data)==='string')?j.data:$.param(j.data)}l.open(i.type,i.url);l.send(h)},abort:function(){if(l){l.abort()}}}}})}})(jQuery);
-/*!
- * tap.js
- * Copyright (c) 2013 Alex Gibson, http://alxgbsn.co.uk/
- * Released under MIT license
- */
-(function (window, document) {
-
-    'use strict';
-
-    function Tap(el) {
-        el = typeof el === 'object' ? el : document.getElementById(el);
-        this.element = el;
-        this.moved = false; //flags if the finger has moved
-        this.startX = 0; //starting x coordinate
-        this.startY = 0; //starting y coordinate
-        this.hasTouchEventOccured = false; //flag touch event
-        el.addEventListener('touchstart', this, false);
-        el.addEventListener('touchmove', this, false);
-        el.addEventListener('touchend', this, false);
-        el.addEventListener('touchcancel', this, false);
-        el.addEventListener('mousedown', this, false);
-        el.addEventListener('mouseup', this, false);
-    }
-
-    Tap.prototype.start = function (e) {
-        if (e.type === 'touchstart') {
-            this.hasTouchEventOccured = true;
-        }
-        this.moved = false;
-        this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-        this.startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-    };
-
-    Tap.prototype.move = function (e) {
-        //if finger moves more than 10px flag to cancel
-        if (Math.abs(e.touches[0].clientX - this.startX) > 10 || Math.abs(e.touches[0].clientY - this.startY) > 10) {
-            this.moved = true;
-        }
-    };
-
-    Tap.prototype.end = function (e) {
-        var evt;
-
-        if (this.hasTouchEventOccured && e.type === 'mouseup') {
-            e.preventDefault();
-            e.stopPropagation();
-            this.hasTouchEventOccured = false;
-            return;
-        }
-
-        if (!this.moved) {
-            //create custom event
-            if (typeof document.CustomEvent !== "undefined") {
-                evt = new document.CustomEvent('tap', {
-                    bubbles: true,
-                    cancelable: true
-                });
-            } else {
-                evt = document.createEvent('Event');
-                evt.initEvent('tap', true, true);
-            }
-            e.target.dispatchEvent(evt);
-        }
-    };
-
-    Tap.prototype.cancel = function (e) {
-        this.hasTouchEventOccured = false;
-        this.moved = false;
-        this.startX = 0;
-        this.startY = 0;
-    };
-
-    Tap.prototype.destroy = function () {
-        var el = this.element;
-        el.removeEventListener('touchstart', this, false);
-        el.removeEventListener('touchmove', this, false);
-        el.removeEventListener('touchend', this, false);
-        el.removeEventListener('touchcancel', this, false);
-        el.removeEventListener('mousedown', this, false);
-        el.removeEventListener('mouseup', this, false);
-        this.element = null;
-    };
-
-    Tap.prototype.handleEvent = function (e) {
-        switch (e.type) {
-        case 'touchstart': this.start(e); break;
-        case 'touchmove': this.move(e); break;
-        case 'touchend': this.end(e); break;
-        case 'touchcancel': this.cancel(e); break;
-        case 'mousedown': this.start(e); break;
-        case 'mouseup': this.end(e); break;
-        }
-    };
-
-    window.Tap = Tap;
-
-}(window, document));
 /* jshint ignore:end */
 /**
  * ----------------------------------------------------------------------
@@ -508,120 +414,570 @@ window.tram=function(t){function i(t,i){var e=new Z.Bare;return e.init(t,i)}func
 Webflow.init();
 /**
  * ----------------------------------------------------------------------
- * Webflow: Touch events for jQuery based on tap.js
+ * Webflow: Interactions
+ */
+Webflow.define('ix', function ($, _) {
+  'use strict';
+
+  var api = {};
+  var designer;
+  var $win = $(window);
+  var namespace = '.w-ix';
+  var tram = window.tram;
+  var env = Webflow.env;
+  var ios = env.ios;
+  var inApp = env();
+  var emptyFix = env.chrome && env.chrome < 35;
+  var transNone = 'none 0s ease 0s';
+  var introEvent = 'w-ix-intro' + namespace;
+  var outroEvent = 'w-ix-outro' + namespace;
+  var eventQueue = [];
+  var $subs = $();
+  var config = {};
+  var anchors = [];
+  var loads = [];
+  var readys = [];
+  var unique = 0;
+  var store;
+
+  // -----------------------------------
+  // Module methods
+
+  api.init = function (list) {
+    setTimeout(function () { init(list); }, 1);
+  };
+
+  api.preview = function () {
+    designer = false;
+    setTimeout(function () { init(window.__wf_ix); }, 1);
+  };
+
+  api.design = function () {
+    designer = true;
+    $subs.each(teardown);
+    Webflow.scroll.off(scroll);
+    asyncEvents();
+    anchors = [];
+    loads = [];
+    readys = [];
+  };
+
+  api.run = run;
+  api.events = {};
+  api.style = inApp ? styleApp : stylePub;
+
+  // -----------------------------------
+  // Private methods
+
+  function init(list) {
+    if (!list) return;
+    store = {};
+
+    // Map all interactions to a hash using slug as key.
+    config = {};
+    _.each(list, function (item) {
+      config[item.slug] = item.value;
+    });
+
+    // Build each element's interaction keying from data attribute
+    var els = $('[data-ix]');
+    els.each(teardown);
+    els.each(build);
+
+    // Listen for scroll events if any anchors exist
+    if (anchors.length) {
+      Webflow.scroll.on(scroll);
+      setTimeout(scroll, 1);
+    }
+
+    // Handle loads or readys if they exist
+    if (loads.length) $win.on('load', runLoads);
+    if (readys.length) setTimeout(runReadys, 1);
+
+    // Init module events
+    initEvents();
+  }
+
+  function build(i, el) {
+    var $el = $(el);
+    var id = $el.attr('data-ix');
+    var ix = config[id];
+    if (!ix) return;
+    var triggers = ix.triggers;
+    if (!triggers) return;
+    var state = store[id] || (store[id] = {});
+    var $proxy;
+
+    // Set initial styles, unless we detect an iOS device + any non-iOS triggers
+    var setStyles = !(ios && _.any(triggers, isNonIOS));
+    if (setStyles) api.style($el, ix.style);
+
+    _.each(triggers, function (trigger) {
+      var type = trigger.type;
+      var stepsB = trigger.stepsB && trigger.stepsB.length;
+
+      function runA() { run(trigger, $el, { group: 'A' }); }
+      function runB() { run(trigger, $el, { group: 'B' }); }
+
+      if (type == 'load') {
+        (trigger.preload && !inApp) ? loads.push(runA) : readys.push(runA);
+        return;
+      }
+
+      if (type == 'click') {
+        var stateKey = 'click:' + unique++;
+        if (trigger.descend) stateKey += ':descend';
+        if (trigger.siblings) stateKey += ':siblings';
+        if (trigger.selector) stateKey += ':' + trigger.selector;
+
+        $el.on('click' + namespace, function (evt) {
+          if ($el.attr('href') === '#') evt.preventDefault();
+
+          run(trigger, $el, { group: state[stateKey] ? 'B' : 'A' });
+          if (stepsB) state[stateKey] = !state[stateKey];
+        });
+        $subs = $subs.add($el);
+        return;
+      }
+
+      if (type == 'hover') {
+        $el.on('mouseenter' + namespace, runA);
+        $el.on('mouseleave' + namespace, runB);
+        $subs = $subs.add($el);
+        return;
+      }
+
+      if (type == 'tabs') {
+        $proxy = $el.closest('.w-tab-link, .w-tab-pane');
+        $proxy.on(introEvent, runA).on(outroEvent, runB);
+        $subs = $subs.add($proxy);
+        return;
+      }
+
+      if (type == 'slider') {
+        $proxy = $el.closest('.w-slide');
+        $proxy.on(introEvent, runA).on(outroEvent, runB);
+        $subs = $subs.add($proxy);
+        return;
+      }
+
+      // Ignore the following triggers on iOS devices
+      if (ios) return;
+
+      if (type == 'scroll') {
+        anchors.push({
+          el: $el, trigger: trigger, state: { active: false },
+          offsetTop: convert(trigger.offsetTop),
+          offsetBot: convert(trigger.offsetBot)
+        });
+        return;
+      }
+    });
+  }
+
+  function isNonIOS(trigger) {
+    return trigger.type == 'scroll';
+  }
+
+  function convert(offset) {
+    if (!offset) return 0;
+    offset = offset + '';
+    var result = parseInt(offset, 10);
+    if (result !== result) return 0;
+    if (offset.indexOf('%') > 0) {
+      result = result / 100;
+      if (result >= 1) result = 0.999;
+    }
+    return result;
+  }
+
+  function teardown(i, el) {
+    $(el).off(namespace);
+  }
+
+  function scroll() {
+    var viewTop = $win.scrollTop();
+    var viewHeight = $win.height();
+
+    // Check each anchor for a valid scroll trigger
+    var count = anchors.length;
+    for (var i = 0; i < count; i++) {
+      var anchor = anchors[i];
+      var $el = anchor.el;
+      var trigger = anchor.trigger;
+      var stepsB = trigger.stepsB && trigger.stepsB.length;
+      var state = anchor.state;
+      var top = $el.offset().top;
+      var height = $el.outerHeight();
+      var offsetTop = anchor.offsetTop;
+      var offsetBot = anchor.offsetBot;
+      if (offsetTop < 1 && offsetTop > 0) offsetTop *= viewHeight;
+      if (offsetBot < 1 && offsetBot > 0) offsetBot *= viewHeight;
+      var active = (top + height - offsetTop >= viewTop && top + offsetBot <= viewTop + viewHeight);
+      if (active === state.active) continue;
+      if (active === false && !stepsB) continue;
+      state.active = active;
+      run(trigger, $el, { group: active ? 'A' : 'B' });
+    }
+  }
+
+  function runLoads() {
+    var count = loads.length;
+    for (var i = 0; i < count; i++) {
+      loads[i]();
+    }
+  }
+
+  function runReadys() {
+    var count = readys.length;
+    for (var i = 0; i < count; i++) {
+      readys[i]();
+    }
+  }
+
+  function run(trigger, $el, opts, replay) {
+    opts = opts || {};
+    var done = opts.done;
+
+    // Do not run in designer unless forced
+    if (designer && !opts.force) return;
+
+    // Operate on a set of grouped steps
+    var group = opts.group || 'A';
+    var loop = trigger['loop' + group];
+    var steps = trigger['steps' + group];
+    if (!steps || !steps.length) return;
+    if (steps.length < 2) loop = false;
+
+    // One-time init before any loops
+    if (!replay) {
+
+      // Find selector within element descendants, siblings, or query whole document
+      var selector = trigger.selector;
+      if (selector) {
+        $el = (
+          trigger.descend ? $el.find(selector) :
+          trigger.siblings ? $el.siblings(selector) :
+          $(selector)
+        );
+        if (inApp) $el.attr('data-ix-affect', 1);
+      }
+
+      // Apply empty fix for certain Chrome versions
+      if (emptyFix) $el.addClass('w-ix-emptyfix');
+    }
+
+    var _tram = tram($el);
+
+    // Add steps
+    var meta = {};
+    for (var i = 0; i < steps.length; i++) {
+      addStep(_tram, steps[i], meta);
+    }
+
+    function fin() {
+      // Run trigger again if looped
+      if (loop) return run(trigger, $el, opts, true);
+
+      // Reset any 'auto' values
+      if (meta.width == 'auto') _tram.set({ width: 'auto' });
+      if (meta.height == 'auto') _tram.set({ height: 'auto' });
+
+      // Run callback
+      done && done();
+    }
+
+    // Add final step to queue if tram has started
+    meta.start ? _tram.then(fin) : fin();
+  }
+
+  function addStep(_tram, step, meta) {
+    var addMethod = 'add';
+    var startMethod = 'start';
+
+    // Once the transition has started, we will always use then() to add to the queue.
+    if (meta.start) addMethod = startMethod = 'then';
+
+    // Parse transitions string on the current step
+    var transitions = step.transition;
+    if (transitions) {
+      transitions = transitions.split(',');
+      for (var i = 0; i < transitions.length; i++) {
+        _tram[addMethod](transitions[i]);
+      }
+    }
+
+    // Build a clean object to pass to the tram method
+    var clean = tramify(step) || {};
+
+    // Store last width and height values
+    if (clean.width != null) meta.width = clean.width;
+    if (clean.height != null) meta.height = clean.height;
+
+    // When transitions are not present, set values immediately and continue queue.
+    if (transitions == null) {
+
+      // If we have started, wrap set() in then() and reset queue
+      if (meta.start) {
+        _tram.then(function () {
+          var queue = this.queue;
+          this.set(clean);
+          if (clean.display) {
+            _tram.redraw();
+            Webflow.redraw.up();
+          }
+          this.queue = queue;
+          this.next();
+        });
+      } else {
+        _tram.set(clean);
+
+        // Always redraw after setting display
+        if (clean.display) {
+          _tram.redraw();
+          Webflow.redraw.up();
+        }
+      }
+
+      // Use the wait() method to kick off queue in absence of transitions.
+      var wait = clean.wait;
+      if (wait != null) {
+        _tram.wait(wait);
+        meta.start = true;
+      }
+
+    // Otherwise, when transitions are present
+    } else {
+
+      // If display is present, handle it separately
+      if (clean.display) {
+        var display = clean.display;
+        delete clean.display;
+
+        // If we've already started, we need to wrap it in a then()
+        if (meta.start) {
+          _tram.then(function () {
+            var queue = this.queue;
+            this.set({ display: display }).redraw();
+            Webflow.redraw.up();
+            this.queue = queue;
+            this.next();
+          });
+        } else {
+          _tram.set({ display: display }).redraw();
+          Webflow.redraw.up();
+        }
+      }
+
+      // Otherwise, start a transition using the current start method.
+      _tram[startMethod](clean);
+      meta.start = true;
+    }
+  }
+
+  // (In app) Set styles immediately and manage upstream transition
+  function styleApp(el, data) {
+    var _tram = tram(el);
+
+    // Get computed transition value
+    el.css('transition', '');
+    var computed = el.css('transition');
+
+    // If computed is disabled, clear upstream
+    if (computed === transNone) computed = _tram.upstream = null;
+
+    // Disable upstream temporarily
+    _tram.upstream = transNone;
+
+    // Set values immediately
+    _tram.set(tramify(data));
+
+    // Only restore upstream in preview mode
+    _tram.upstream = computed;
+  }
+
+  // (Published) Set styles immediately on specified jquery element
+  function stylePub(el, data) {
+    tram(el).set(tramify(data));
+  }
+
+  // Build a clean object for tram
+  function tramify(obj) {
+    var result = {};
+    var found = false;
+    for (var x in obj) {
+      if (x === 'transition') continue;
+      result[x] = obj[x];
+      found = true;
+    }
+    // If empty, return null for tram.set/stop compliance
+    return found ? result : null;
+  }
+
+  // Events used by other webflow modules
+  var events = {
+    reset: function (i, el) {
+      el.__wf_intro = null;
+    },
+    intro: function (i, el) {
+      if (el.__wf_intro) return;
+      el.__wf_intro = true;
+      $(el).triggerHandler(introEvent);
+    },
+    outro: function (i, el) {
+      if (!el.__wf_intro) return;
+      el.__wf_intro = null;
+      $(el).triggerHandler(outroEvent);
+    }
+  };
+
+  // Trigger events in queue + point to sync methods
+  function initEvents() {
+    var count = eventQueue.length;
+    for (var i = 0; i < count; i++) {
+      var memo = eventQueue[i];
+      memo[0](0, memo[1]);
+    }
+    eventQueue = [];
+    $.extend(api.events, events);
+  }
+
+  // Replace events with async methods prior to init
+  function asyncEvents() {
+    _.each(events, function (func, name) {
+      api.events[name] = function (i, el) {
+        eventQueue.push([func, el]);
+      };
+    });
+  }
+
+  asyncEvents();
+
+  // Export module
+  return api;
+});
+/**
+ * ----------------------------------------------------------------------
+ * Webflow: Touch events
  */
 Webflow.define('touch', function ($, _) {
   'use strict';
 
-  var Tap = window.Tap;
-  var namespace = '.w-events-';
-  var dataKey = namespace + 'tap';
-  var fallback = !document.addEventListener;
-
-  // jQuery event "tap" - use click in old + non-touch browsers
-  $.event.special.tap = (fallback || !Webflow.env.touch) ? { bindType: 'click', delegateType: 'click' } : {
-    setup: function () {
-      $.data(this, dataKey, new Tap(this));
-    },
-    teardown: function () {
-      var tap = $.data(this, dataKey);
-      if (tap && tap.destroy) {
-        tap.destroy();
-        $.removeData(this, dataKey);
-      }
-    },
-    add: function (handleObj) {
-      this.addEventListener('tap', handleObj.handler, false);
-    },
-    remove: function (handleObj) {
-      this.removeEventListener('tap', handleObj.handler, false);
-    }
+  var api = {};
+  api.init = function (el) {
+    el = typeof el === 'string' ? $(el).get(0) : el;
+    return el ? new Touch(el) : null;
   };
 
-  // No swipe events for old browsers
-  if (fallback || !Object.create) return;
+  function Touch(el) {
+    var active = false;
+    var dirty = false;
+    var useTouch = false;
+    var thresholdX = Math.min(Math.round(window.innerWidth * 0.04), 40);
+    var startX, startY, lastX;
 
-  // jQuery event "swipe"
-  dataKey = namespace + 'swipe';
+    el.addEventListener('touchstart', start, false);
+    el.addEventListener('touchmove', move, false);
+    el.addEventListener('touchend', end, false);
+    el.addEventListener('touchcancel', cancel, false);
+    el.addEventListener('mousedown', start, false);
+    el.addEventListener('mousemove', move, false);
+    el.addEventListener('mouseup', end, false);
+    el.addEventListener('mouseout', cancel, false);
 
-  $.event.special.swipe = {
-    setup: function () {
-      $.data(this, dataKey, new Swipe(this));
-    },
-    teardown: function () {
-      var tap = $.data(this, dataKey);
-      if (tap && tap.destroy) {
-        tap.destroy();
-        $.removeData(this, dataKey);
+    function start(evt) {
+      // We don’t handle multi-touch events yet.
+      var touches = evt.touches;
+      if (touches && touches.length > 1) {
+        return;
       }
-    },
-    add: function (handleObj) {
-      this.addEventListener('swipe', handleObj.handler, false);
-    },
-    remove: function (handleObj) {
-      this.removeEventListener('swipe', handleObj.handler, false);
-    }
-  };
 
-  /**
-   * Swipe - extends Tap, supports mouse swipes!
-   */
-  function Swipe(el) {
-    Tap.call(this, el);
+      active = true;
+      dirty = false;
+
+      if (touches) {
+        useTouch = true;
+        startX = touches[0].clientX;
+        startY = touches[0].clientY;
+      } else {
+        startX = evt.clientX;
+        startY = evt.clientY;
+      }
+
+      lastX = startX;
+    }
+
+    function move(evt) {
+      if (!active) return;
+
+      if (useTouch && evt.type === 'mousemove') {
+        evt.preventDefault();
+        evt.stopPropagation();
+        return;
+      }
+
+      var touches = evt.touches;
+      var x = touches ? touches[0].clientX : evt.clientX;
+      var y = touches ? touches[0].clientY : evt.clientY;
+
+      var velocityX = x - lastX;
+      lastX = x;
+
+      if (Math.abs(velocityX) > thresholdX) {
+        triggerEvent('swipe', evt, { direction: velocityX > 0 ? 'right' : 'left' });
+        cancel();
+      }
+
+      // If pointer moves more than 10px flag to cancel tap
+      if (Math.abs(x - startX) > 10 || Math.abs(y - startY) > 10) {
+        dirty = true;
+      }
+    }
+
+    function end(evt) {
+      if (!active) return;
+
+      if (useTouch && evt.type === 'mouseup') {
+        evt.preventDefault();
+        evt.stopPropagation();
+        useTouch = false;
+        return;
+      }
+
+      if (!dirty) triggerEvent('tap', evt);
+    }
+
+    function cancel(evt) {
+      active = false;
+    }
+
+    function destroy() {
+      el.removeEventListener('touchstart', start, false);
+      el.removeEventListener('touchmove', move, false);
+      el.removeEventListener('touchend', end, false);
+      el.removeEventListener('touchcancel', cancel, false);
+      el.removeEventListener('mousedown', start, false);
+      el.removeEventListener('mousemove', move, false);
+      el.removeEventListener('mouseup', end, false);
+      el.removeEventListener('mouseout', cancel, false);
+      el = null;
+    }
+
+    // Public instance methods
+    this.destroy = destroy;
   }
 
-  (function () {
-    var supr = Tap.prototype;
-    var proto = Swipe.prototype = Object.create(supr);
-    var threshold = Math.round(screen.width * 0.04) || 20;
-    if (threshold > 40) threshold = 40;
+  // Wrap native event to supoprt preventdefault + stopPropagation
+  function triggerEvent(type, evt, data) {
+    var newEvent = $.Event(type, { originalEvent: evt });
+    $(evt.target).trigger(newEvent, data);
+  }
 
-    proto.start = function (e) {
-      supr.start.call(this, e);
-      this.element.addEventListener('mousemove', this, false);
-      document.addEventListener('mouseup', this, false);
-      this.velocityX = 0;
-      this.lastX = this.startX;
-      this.enabled = true;
-    };
+  // Listen for touch events on all nodes by default.
+  api.instance = api.init(document);
 
-    proto.move = _.throttle(function (e) {
-      if (!this.enabled) return;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      this.velocityX = x - this.lastX;
-      this.lastX = x;
-      if (Math.abs(this.velocityX) > threshold) {
-        this.end(e);
-      }
-    });
-
-    proto.end = function (e) {
-      if (!this.enabled) return;
-      var velocityX = this.velocityX;
-      this.cancel();
-      if (Math.abs(velocityX) > threshold) {
-        $(this.element).triggerHandler('swipe', { direction: velocityX > 0 ? 'right' : 'left' });
-      }
-    };
-
-    proto.destroy = function () {
-      this.cancel();
-      supr.destroy.call(this);
-    };
-
-    proto.cancel = function () {
-      this.enabled = false;
-      this.element.removeEventListener('mousemove', this, false);
-      document.removeEventListener('mouseup', this, false);
-      supr.cancel.call(this);
-    };
-
-    proto.handleEvent = function (e) {
-      if (e.type == 'mousemove') return this.move(e);
-      supr.handleEvent.call(this, e);
-    };
-  }());
-
+  // Export module
+  return api;
 });
 /**
  * ----------------------------------------------------------------------
@@ -836,10 +1192,11 @@ Webflow.define('forms', function ($, _) {
     var fullName;
     _.each(payload, function (value, key) {
       if (emailField.test(key)) payload.EMAIL = value;
-      if (/^(name|full(\-)?name)$/i.test(key)) fullName = value;
-      if (/^(first(\-)?name)$/i.test(key)) payload.FNAME = value;
-      if (/^(last(\-)?name)$/i.test(key)) payload.LNAME = value;
+      if (/^((full[ _-]?)?name)$/i.test(key)) fullName = value;
+      if (/^(first[ _-]?name)$/i.test(key)) payload.FNAME = value;
+      if (/^(last[ _-]?name)$/i.test(key)) payload.LNAME = value;
     });
+
     if (fullName && !payload.FNAME) {
       fullName = fullName.split(' ');
       payload.FNAME = fullName[0];
@@ -1344,7 +1701,7 @@ Webflow.define('links', function ($, _) {
 });
 /**
  * ----------------------------------------------------------------------
- * Webflow: Slider widget
+ * Webflow: Slider component
  */
 Webflow.define('slider', function ($, _) {
   'use strict';
@@ -1357,6 +1714,8 @@ Webflow.define('slider', function ($, _) {
   var inApp = Webflow.env();
   var namespace = '.w-slider';
   var dot = '<div class="w-slider-dot" data-wf-ignore />';
+  var ix = Webflow.require('ix');
+  ix = ix && ix.events;
   var fallback;
   var redraw;
 
@@ -1416,6 +1775,7 @@ Webflow.define('slider', function ($, _) {
     data.right = $el.children('.w-slider-arrow-right');
     data.nav = $el.children('.w-slider-nav');
     data.slides = data.mask.children('.w-slide');
+    if (ix) data.slides.each(ix.reset);
     if (redraw) data.maskWidth = 0;
 
     // Disable in old browsers
@@ -1438,12 +1798,14 @@ Webflow.define('slider', function ($, _) {
 
     // Add events based on mode
     if (designer) {
-      $el.on('setting' + namespace, handler(data));
+      data.el.on('setting' + namespace, handler(data));
       killTimer(data);
+      data.hasTimer = false;
     } else {
       data.el.on('swipe' + namespace, handler(data));
       data.left.on('tap' + namespace, previous(data));
       data.right.on('tap' + namespace, next(data));
+
       // Start timer if autoplay is true, only once
       if (data.config.autoplay && !data.hasTimer) {
         data.hasTimer = true;
@@ -1640,6 +2002,12 @@ Webflow.define('slider', function ($, _) {
     var fadeRule = 'opacity ' + duration + 'ms ' + easing;
     var slideRule = 'transform ' + duration + 'ms ' + easing;
 
+    // Trigger IX events
+    if (!designer && ix) {
+      targets.each(ix.intro);
+      others.each(ix.outro);
+    }
+
     // Set immediately after layout changes (but not during redraw)
     if (options.immediate && !redraw) {
       tram(targets).set(resetConfig);
@@ -1813,7 +2181,7 @@ Webflow.define('slider', function ($, _) {
 });
 /**
  * ----------------------------------------------------------------------
- * Webflow: Navbar widget
+ * Webflow: Navbar component
  */
 Webflow.define('navbar', function ($, _) {
   'use strict';
@@ -1872,6 +2240,7 @@ Webflow.define('navbar', function ($, _) {
     data.outside = outside(data);
 
     // Remove old events
+    data.el.off(namespace);
     data.button.off(namespace);
     data.menu.off(namespace);
 
@@ -1881,11 +2250,11 @@ Webflow.define('navbar', function ($, _) {
     // Add events based on mode
     if (designer) {
       removeOverlay(data);
-      $el.on('setting' + namespace, handler(data));
+      data.el.on('setting' + namespace, handler(data));
     } else {
       addOverlay(data);
-      data.button.on('click' + namespace, toggle(data));
-      data.menu.on('click' + namespace, '> a', navigate(data));
+      data.button.on('tap' + namespace, toggle(data));
+      data.menu.on('tap' + namespace, 'a', navigate(data));
     }
 
     // Trigger initial resize
@@ -1981,13 +2350,14 @@ Webflow.define('navbar', function ($, _) {
   }
 
   function outside(data) {
-    return function (evt) {
-      var target = evt.target;
-      // Close navbars when clicked outside
-      if (!data.el.has(target).length && !data.el.is(target)) {
+    // Close menu when tapped outside
+    return _.debounce(function (evt) {
+      if (!data.open) return;
+      var menu = $(evt.target).closest('.w-nav-menu');
+      if (!data.menu.is(menu)) {
         close(data);
       }
-    };
+    });
   }
 
   function resize(i, el) {
@@ -2035,7 +2405,7 @@ Webflow.define('navbar', function ($, _) {
     resize(0, data.el[0]);
 
     // Listen for tap outside events
-    if (!designer) $doc.on('click' + namespace, data.outside);
+    if (!designer) $doc.on('tap' + namespace, data.outside);
 
     // Update menu height for Over state
     if (animOver) setMenuHeight(data);
@@ -2087,7 +2457,7 @@ Webflow.define('navbar', function ($, _) {
     var animation = config.animation;
 
     // Stop listening for tap outside events
-    $doc.off('click' + namespace, data.outside);
+    $doc.off('tap' + namespace, data.outside);
 
     if (immediate) {
       tram(data.menu).stop();
@@ -2134,380 +2504,170 @@ Webflow.define('navbar', function ($, _) {
 });
 /**
  * ----------------------------------------------------------------------
- * Webflow: Interactions
+ * Webflow: Tabs component
  */
-Webflow.define('ix', function ($, _) {
+Webflow.define('tabs', function ($, _) {
   'use strict';
 
   var api = {};
-  var designer;
-  var $win = $(window);
-  var namespace = '.w-ix';
   var tram = window.tram;
-  var Modernizr = window.Modernizr;
-  var ios = Modernizr && Modernizr.ios;
-  var touch = Modernizr && Modernizr.touch;
+  var $win = $(window);
+  var $doc = $(document);
+  var $tabs;
+  var design;
   var env = Webflow.env;
+  var safari = env.safari;
   var inApp = env();
-  var emptyFix = env.chrome && env.chrome < 35;
-  var transNone = 'none 0s ease 0s';
-  var config = {};
-  var anchors = [];
-  var loads = [];
-  var readys = [];
-  var unique = 0;
-  var store;
+  var tabAttr = 'data-w-tab';
+  var namespace = '.w-tabs';
+  var linkCurrent = 'w--current';
+  var tabActive = 'w--tab-active';
+  var ix = Webflow.require('ix').events;
 
   // -----------------------------------
   // Module methods
 
-  api.init = function (list) {
-    init(list);
-  };
-
-  api.preview = function () {
-    designer = false;
-    setTimeout(function () {
-      init(window.__wf_ix);
-    }, 1);
-  };
-
-  api.design = function () {
-    designer = true;
-    $('[data-ix]').each(teardown);
-    Webflow.scroll.off(scroll);
-    anchors = [];
-    loads = [];
-    readys = [];
-  };
-
-  api.run = run;
-  api.style = inApp ? styleApp : stylePub;
+  api.ready = api.design = api.preview = init;
 
   // -----------------------------------
   // Private methods
 
-  function init(list) {
-    if (!list) return;
-    store = {};
+  function init() {
+    design = inApp && Webflow.env('design');
 
-    // Map all interactions to a hash using slug as key.
-    config = {};
-    _.each(list, function (item) {
-      config[item.slug] = item.value;
-    });
-
-    // Build each element's interaction keying from data attribute
-    var els = $('[data-ix]');
-    els.each(teardown);
-    els.each(build);
-
-    // Listen for scroll events if any anchors exist
-    if (anchors.length) {
-      Webflow.scroll.on(scroll);
-      setTimeout(scroll, 1);
-    }
-
-    // Handle loads or readys if they exist
-    if (loads.length) $win.on('load', runLoads);
-    if (readys.length) setTimeout(runReadys, 1);
+    // Find all instances on the page
+    $tabs = $doc.find(namespace);
+    $tabs.each(build);
   }
 
   function build(i, el) {
+    var $el = $(el);
 
-    el = $(el);
-    var id = el.attr('data-ix');
-    var ix = config[id];
-    if (!ix) return;
-    var triggers = ix.triggers;
-    if (!triggers) return;
-    var state = store[id] || (store[id] = {});
+    // Store state in data
+    var data = $.data(el, namespace);
+    if (!data) data = $.data(el, namespace, { el: $el, config: {} });
+    data.current = null;
+    data.menu = $el.children('.w-tab-menu');
+    data.links = data.menu.children('.w-tab-link');
+    data.content = $el.children('.w-tab-content');
+    data.panes = data.content.children('.w-tab-pane');
 
-    // Set initial styles, unless we detect an iOS device + any non-iOS triggers
-    var setStyles = !(ios && _.any(triggers, isNonIOS));
-    if (setStyles) api.style(el, ix.style);
+    // Remove old events
+    data.el.off(namespace);
+    data.links.off(namespace);
 
-    _.each(triggers, function (trigger) {
-      var type = trigger.type;
-      var stepsB = trigger.stepsB && trigger.stepsB.length;
+    // Set config from data attributes
+    configure(data);
 
-      function runA() { run(trigger, el, { group: 'A' }); }
-      function runB() { run(trigger, el, { group: 'B' }); }
+    // Wire up events when not in design mode
+    if (!design) {
+      data.links.on('click' + namespace, linkSelect(data));
 
-      if (type == 'load') {
-        (trigger.preload && !inApp) ? loads.push(runA) : readys.push(runA);
-      }
+      // Trigger first intro event from current tab
+      var $link = data.links.filter('.' + linkCurrent);
+      var tab = $link.attr(tabAttr);
+      tab && changeTab(data, { tab: tab, immediate: true });
+    }
+  }
 
-      if (type == 'click') {
-        var stateKey = 'click:' + unique++;
-        if (trigger.descend) stateKey += ':descend';
-        if (trigger.siblings) stateKey += ':siblings';
-        if (trigger.selector) stateKey += ':' + trigger.selector;
+  function configure(data) {
+    var config = {};
+    var old = data.config || {};
 
-        el.on('click' + namespace, function (evt) {
-          if (el.attr('href') === '#') evt.preventDefault();
+    // Set config options from data attributes
+    config.easing = data.el.attr('data-easing') || 'ease';
 
-          run(trigger, el, { group: state[stateKey] ? 'B' : 'A' });
-          if (stepsB) state[stateKey] = !state[stateKey];
-        });
-      }
+    var intro = +data.el.attr('data-duration-in');
+    intro = config.intro = intro === intro ? intro : 0;
 
-      if (type == 'hover') {
-        el.on('mouseenter' + namespace, runA);
-        el.on('mouseleave' + namespace, runB);
-      }
+    var outro = +data.el.attr('data-duration-out');
+    outro = config.outro = outro === outro ? outro : 0;
 
-      // Ignore the following triggers on iOS devices
-      if (ios) return;
+    config.immediate = !intro && !outro;
 
-      if (type == 'scroll') {
-        anchors.push({
-          el: el, trigger: trigger, state: { active: false },
-          offsetTop: convert(trigger.offsetTop),
-          offsetBot: convert(trigger.offsetBot)
-        });
+    // Store config in data
+    data.config = config;
+  }
+
+  function linkSelect(data) {
+    return function (evt) {
+      var tab = evt.currentTarget.getAttribute(tabAttr);
+      tab && changeTab(data, { tab: tab });
+    };
+  }
+
+  function changeTab(data, options) {
+    options = options || {};
+
+    var config = data.config;
+    var easing = config.easing;
+    var tab = options.tab;
+
+    // Don't select the same tab twice
+    if (tab === data.current) return;
+    data.current = tab;
+
+    // Select the current link
+    data.links.each(function (i, el) {
+      var $el = $(el);
+      if (el.getAttribute(tabAttr) === tab) $el.addClass(linkCurrent).each(ix.intro);
+      else if ($el.hasClass(linkCurrent)) $el.removeClass(linkCurrent).each(ix.outro);
+    });
+
+    // Find the new tab panes and keep track of previous
+    var targets = [];
+    var previous = [];
+    data.panes.each(function (i, el) {
+      var $el = $(el);
+      if (el.getAttribute(tabAttr) === tab) {
+        targets.push(el);
+      } else if ($el.hasClass(tabActive)) {
+        previous.push(el);
       }
     });
-  }
 
-  function isNonIOS(trigger) {
-    return trigger.type == 'scroll';
-  }
+    var $targets = $(targets);
+    var $previous = $(previous);
 
-  function convert(offset) {
-    if (!offset) return 0;
-    offset = offset + '';
-    var result = parseInt(offset, 10);
-    if (result !== result) return 0;
-    if (offset.indexOf('%') > 0) {
-      result = result / 100;
-      if (result >= 1) result = 0.999;
-    }
-    return result;
-  }
-
-  function teardown(i, el) {
-    el = $(el);
-    el.off(namespace);
-  }
-
-  function scroll() {
-    var viewTop = $win.scrollTop();
-    var viewHeight = $win.height();
-
-    // Check each anchor for a valid scroll trigger
-    var count = anchors.length;
-    for (var i = 0; i < count; i++) {
-      var anchor = anchors[i];
-      var el = anchor.el;
-      var trigger = anchor.trigger;
-      var stepsB = trigger.stepsB && trigger.stepsB.length;
-      var state = anchor.state;
-      var top = el.offset().top;
-      var height = el.outerHeight();
-      var offsetTop = anchor.offsetTop;
-      var offsetBot = anchor.offsetBot;
-      if (offsetTop < 1 && offsetTop > 0) offsetTop *= viewHeight;
-      if (offsetBot < 1 && offsetBot > 0) offsetBot *= viewHeight;
-      var active = (top + height - offsetTop >= viewTop && top + offsetBot <= viewTop + viewHeight);
-      if (active === state.active) continue;
-      if (active === false && !stepsB) continue;
-      state.active = active;
-      run(trigger, el, { group: active ? 'A' : 'B' });
-    }
-  }
-
-  function runLoads() {
-    var count = loads.length;
-    for (var i = 0; i < count; i++) {
-      loads[i]();
-    }
-  }
-
-  function runReadys() {
-    var count = readys.length;
-    for (var i = 0; i < count; i++) {
-      readys[i]();
-    }
-  }
-
-  function run(trigger, el, opts, replay) {
-    opts = opts || {};
-    var done = opts.done;
-
-    // Do not run in designer unless forced
-    if (designer && !opts.force) return;
-
-    // Operate on a set of grouped steps
-    var group = opts.group || 'A';
-    var loop = trigger['loop' + group];
-    var steps = trigger['steps' + group];
-    if (!steps || !steps.length) return;
-    if (steps.length < 2) loop = false;
-
-    // One-time init before any loops
-    if (!replay) {
-
-      // Find selector within element descendants, siblings, or query whole document
-      var selector = trigger.selector;
-      if (selector) {
-        el = (
-          trigger.descend ? el.find(selector) :
-          trigger.siblings ? el.siblings(selector) :
-          $(selector)
-        );
-        if (inApp) el.attr('data-ix-affect', 1);
-      }
-
-      // Apply empty fix for certain Chrome versions
-      if (emptyFix) el.addClass('w-ix-emptyfix');
+    // Switch tabs immediately and bypass transitions
+    if (options.immediate || config.immediate) {
+      $targets.addClass(tabActive).each(ix.intro);
+      $previous.removeClass(tabActive);
+      Webflow.redraw.up();
+      return;
     }
 
-    var _tram = tram(el);
-
-    // Add steps
-    var meta = {};
-    for (var i = 0; i < steps.length; i++) {
-      addStep(_tram, steps[i], meta);
-    }
-
-    function fin() {
-      // Run trigger again if looped
-      if (loop) return run(trigger, el, opts, true);
-
-      // Reset any 'auto' values
-      if (meta.width == 'auto') _tram.set({ width: 'auto' });
-      if (meta.height == 'auto') _tram.set({ height: 'auto' });
-
-      // Run callback
-      done && done();
-    }
-
-    // Add final step to queue if tram has started
-    meta.start ? _tram.then(fin) : fin();
-  }
-
-  function addStep(_tram, step, meta) {
-    var addMethod = 'add';
-    var startMethod = 'start';
-
-    // Once the transition has started, we will always use then() to add to the queue.
-    if (meta.start) addMethod = startMethod = 'then';
-
-    // Parse transitions string on the current step
-    var transitions = step.transition;
-    if (transitions) {
-      transitions = transitions.split(',');
-      for (var i = 0; i < transitions.length; i++) {
-        _tram[addMethod](transitions[i]);
-      }
-    }
-
-    // Build a clean object to pass to the tram method
-    var clean = tramify(step) || {};
-
-    // Store last width and height values
-    if (clean.width != null) meta.width = clean.width;
-    if (clean.height != null) meta.height = clean.height;
-
-    // When transitions are not present, set values immediately and continue queue.
-    if (transitions == null) {
-
-      // If we have started, wrap set() in then() and reset queue
-      if (meta.start) {
-        _tram.then(function () {
-          var queue = this.queue;
-          this.set(clean);
-          if (clean.display) {
-            _tram.redraw();
-            Webflow.redraw.up();
-          }
-          this.queue = queue;
-          this.next();
-        });
-      } else {
-        _tram.set(clean);
-
-        // Always redraw after setting display
-        if (clean.display) {
-          _tram.redraw();
-          Webflow.redraw.up();
-        }
-      }
-
-      // Use the wait() method to kick off queue in absence of transitions.
-      var wait = clean.wait;
-      if (wait != null) {
-        _tram.wait(wait);
-        meta.start = true;
-      }
-
-    // Otherwise, when transitions are present
+    // Fade out the currently active tab before intro
+    if ($previous.length && config.outro) {
+      $previous.each(ix.outro);
+      tram($previous)
+        .add('opacity ' + config.outro + 'ms ' + easing, { fallback: safari })
+        .start({ opacity: 0 })
+        .then(intro);
     } else {
-
-      // If display is present, handle it separately
-      if (clean.display) {
-        var display = clean.display;
-        delete clean.display;
-
-        // If we've already started, we need to wrap it in a then()
-        if (meta.start) {
-          _tram.then(function () {
-            var queue = this.queue;
-            this.set({ display: display }).redraw();
-            Webflow.redraw.up();
-            this.queue = queue;
-            this.next();
-          });
-        } else {
-          _tram.set({ display: display }).redraw();
-          Webflow.redraw.up();
-        }
-      }
-
-      // Otherwise, start a transition using the current start method.
-      _tram[startMethod](clean);
-      meta.start = true;
+      // Skip the outro and play intro
+      intro();
     }
-  }
 
-  // (In app) Set styles immediately and manage upstream transition
-  function styleApp(el, data) {
-    var _tram = tram(el);
+    // Fade in the new target
+    function intro() {
+      // Clear previous active class + inline style
+      $previous.removeClass(tabActive).removeAttr('style');
 
-    // Get computed transition value
-    el.css('transition', '');
-    var computed = el.css('transition');
+      // Add active class to new target
+      $targets.addClass(tabActive).each(ix.intro);
+      Webflow.redraw.up();
 
-    // If computed is disabled, clear upstream
-    if (computed === transNone) computed = _tram.upstream = null;
+      // Set opacity immediately if intro is zero
+      if (!config.intro) return tram($targets).set({ opacity: 1 });
 
-    // Disable upstream temporarily
-    _tram.upstream = transNone;
-
-    // Set values immediately
-    _tram.set(tramify(data));
-
-    // Only restore upstream in preview mode
-    _tram.upstream = computed;
-  }
-
-  // (Published) Set styles immediately on specified jquery element
-  function stylePub(el, data) {
-    tram(el).set(tramify(data));
-  }
-
-  // Build a clean object for tram
-  function tramify(obj) {
-    var result = {};
-    var found = false;
-    for (var x in obj) {
-      if (x === 'transition') continue;
-      result[x] = obj[x];
-      found = true;
+      // Otherwise fade in opacity
+      tram($targets)
+        .set({ opacity: 0 })
+        .redraw()
+        .add('opacity ' + config.intro + 'ms ' + easing, { fallback: safari })
+        .start({ opacity: 1 });
     }
-    // If empty, return null for tram.set/stop compliance
-    return found ? result : null;
   }
 
   // Export module
