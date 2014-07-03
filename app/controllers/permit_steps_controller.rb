@@ -1,8 +1,10 @@
 require 'permit_params'
 require 'geokit'
+require 'pdf_forms'
 
 class PermitStepsController < ApplicationController
-  include PermitParams
+      FORM_FIELDS = { owner_name: 'Text1 PG 1', owner_address: 'Text4 PG 1' }
+        include PermitParams
 
   include Wicked::Wizard
   steps :enter_address, :display_permits, :enter_details, :enter_addition, :enter_repair, :display_summary
@@ -17,6 +19,19 @@ class PermitStepsController < ApplicationController
 
     when :enter_repair
       skip_step if @permit.repair == nil || !@permit.repair
+
+    when :display_summary
+      @test = "Test"
+      @pdftk = PdfForms.new('pdftk')
+      #@path = "#{Rails.root}/lib/PermitForms/GeneralRepairsMinorCommercialApplication.pdf"
+      path = "#{Rails.root}/lib/PermitForms/calfresh_application_single_page.pdf"
+      @field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/calfresh_application_single_page.pdf")
+      #@field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/GeneralRepairsMinorCommercialApplication.pdf")
+      filled_in_form_path = "#{Rails.root}/tmp/application_1.pdf"
+
+
+      @pdftk.fill_form path, filled_in_form_path, { FORM_FIELDS[:owner_name] => @permit.owner_name, FORM_FIELDS[:owner_address] => @permit.owner_address }
+
     end
     render_wizard
 
