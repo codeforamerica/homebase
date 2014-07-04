@@ -226,7 +226,10 @@
             <p><%= @permit.errors.messages[:job_cost][0] %></p>
         <% end %>
 
-        <%= f.text_field :job_cost, class: "form-control input-lg", id: "job-cost" %>  
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <%= f.text_field :job_cost, class: "form-control input-lg", id: "job-cost" %>  
+        </div>
 
         <% if @permit.errors.messages[:job_cost].length >= 1 %>
           <!-- close the errors div -->
