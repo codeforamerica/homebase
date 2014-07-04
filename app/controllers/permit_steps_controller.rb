@@ -3,9 +3,7 @@ require 'geokit'
 require 'pdf_forms'
 
 class PermitStepsController < ApplicationController
-      #FORM_FIELDS = { owner_name: 'Text1 PG 1', owner_address: 'Text4 PG 1' }
-      #["NCB", "AC_NONE", "AC_WALL_UNIT", "AC_EXTENDED", "AC_NEW_SPLIT", "DATE", "ADDRESS", "LOT", "BLOCK", "JOB_COST", "OWNER_NAME", "SQ_FOOT_HOUSE", "SQ_FOOT_ADDITION", "ADDITIONS_CHECKBOX", "ACCESSORY_STRUCTURE_CHECKBOX", "DECK_CHECKBOX", "SWIMMING_POOL_CHECKBOX", "CARPORTS_COVERS_CHECKBOX", "GENERAL_REPAIRS_CHECKBOX", "NUMBER_WINDOWS", "NUMBER_DOORS", "CONTRACTOR_NAME", "CONTRACTOR_ID", "LICENSE_NUMBER", "REGISTERED_LICENSE_HOLDER", "AUTHORIZED_AGENT_NAME", "CONTACT_ID_NUMBER", "TELEPHONE", "FAX", "WORK_SUMMARY", "EMAIL", "WINDOWS_CHECKBOX", "DOORS_CHECKBOX", "WALLS_CHECKBOX", "SIDING_CHECKBOX", "FLOOR_STRUCTURAL_CHECKBOX", "ESCROW_YES_CHECKBOX", "ESCROW_NO_CHECKBOX"]
-        include PermitParams
+  include PermitParams
 
   include Wicked::Wizard
   steps :enter_address, :display_permits, :enter_details, :enter_addition, :enter_repair, :display_summary
@@ -22,17 +20,15 @@ class PermitStepsController < ApplicationController
       skip_step if @permit.repair == nil || !@permit.repair
 
     when :display_summary
-      @test = "Test"
-      @pdftk = PdfForms.new('pdftk')
-      #@path = "#{Rails.root}/lib/PermitForms/GeneralRepairsMinorCommercialApplication.pdf"
+      pdftk = PdfForms.new('pdftk')
       path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"
-      @field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
-      #@field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/GeneralRepairsMinorCommercialApplication.pdf")
+      #@field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
       filled_in_form_path = "#{Rails.root}/tmp/application_1.pdf"
 
 
-      @pdftk.fill_form path, filled_in_form_path, { 
-                                                    'JOB_COST'            => @permit.job_cost,
+      pdftk.fill_form path, filled_in_form_path, { 
+                                                    'DATE'                => Date.today.strftime("%m/%d/%Y"),
+                                                    'JOB_COST'            => "$ #{@permit.job_cost}",
                                                     'OWNER_NAME'          => @permit.owner_name, 
                                                     'ADDRESS'             => @permit.owner_address,
 
@@ -53,10 +49,10 @@ class PermitStepsController < ApplicationController
                                                     'SIDING_CHECKBOX'           => @permit.siding ? "X" : ' ',
                                                     'FLOOR_STRUCTURAL_CHECKBOX' => @permit.floor ? "X" : ' ',
 
-                                                    'CONTRACTOR_NAME' => @permit.contractor_name,
-                                                    'CONTRACTOR_ID'   => @permit.contractor_id,
-                                                    'ESCROW_YES_CHECKBOX' => @permit.escrow ? "X" : ' ',
-                                                    'ESCROW_NO_CHECKBOX'  => @permit.escrow ? ' ' : "X",
+                                                    'CONTRACTOR_NAME'           => @permit.contractor_name,
+                                                    'CONTRACTOR_ID'             => @permit.contractor_id,
+                                                    'ESCROW_YES_CHECKBOX'       => @permit.escrow ? "X" : ' ',
+                                                    'ESCROW_NO_CHECKBOX'        => @permit.escrow ? ' ' : "X",
                                                     'REGISTERED_LICENSE_HOLDER' => @permit.license_holder,
                                                     'LICENSE_NUMBER'            => @permit.license_num,
                                                     'AUTHORIZED_AGENT_NAME'     => @permit.agent_name,
@@ -64,7 +60,7 @@ class PermitStepsController < ApplicationController
                                                     'PHONE'                     => @permit.phone,
                                                     'EMAIL'                     => @permit.email,
                                                     'OTHER_CONTACT_ID'          => @permit.other_contact_id,
-                                                    'WORK_SUMMARY'              => @permit.work_summary,
+                                                    'WORK_SUMMARY'              => @permit.work_summary
 
                                                   }
 #["NCB", "AC_NONE", "AC_WALL_UNIT", "AC_EXTENDED", "AC_NEW_SPLIT", "DATE", "ADDRESS", "LOT", "BLOCK", "JOB_COST", "OWNER_NAME", "SQ_FOOT_HOUSE", "SQ_FOOT_ADDITION", "ADDITIONS_CHECKBOX", "ACCESSORY_STRUCTURE_CHECKBOX", "DECK_CHECKBOX", "SWIMMING_POOL_CHECKBOX", "CARPORTS_COVERS_CHECKBOX", "GENERAL_REPAIRS_CHECKBOX", "NUMBER_WINDOWS", "NUMBER_DOORS", "CONTRACTOR_NAME", "CONTRACTOR_ID", "LICENSE_NUMBER", "REGISTERED_LICENSE_HOLDER", "AUTHORIZED_AGENT_NAME", "CONTACT_ID_NUMBER", "TELEPHONE", "FAX", "WORK_SUMMARY", "EMAIL", "WINDOWS_CHECKBOX", "DOORS_CHECKBOX", "WALLS_CHECKBOX", "SIDING_CHECKBOX", "FLOOR_STRUCTURAL_CHECKBOX", "ESCROW_YES_CHECKBOX", "ESCROW_NO_CHECKBOX"]
