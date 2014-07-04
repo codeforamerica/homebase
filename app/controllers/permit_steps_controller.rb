@@ -1,6 +1,7 @@
 require 'permit_params'
 require 'geokit'
 require 'pdf_forms'
+require 'securerandom'
 
 class PermitStepsController < ApplicationController
   include PermitParams
@@ -23,7 +24,8 @@ class PermitStepsController < ApplicationController
       pdftk = PdfForms.new('pdftk')
       path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"
       #@field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
-      filled_in_form_path = "#{Rails.root}/tmp/application_1.pdf"
+      unique_key = SecureRandom.hex
+      filled_in_form_path = "#{Rails.root}/tmp/#{unique_key}.pdf"
 
 
       pdftk.fill_form path, filled_in_form_path, { 
