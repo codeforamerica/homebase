@@ -13,6 +13,12 @@ Homebase is a very young application still under rigorous development. It regula
 
 (But if you'd like to poke around, fix some things and make a pull request, take a look at Pull Requests Welcome section below.)
 
+### What it does now and where we're going
+
+Right now, we can help users decide what project they want to work on (i.e. building a new bedroom on to their house) and help them apply for the appropriate permits for that project.
+
+Going forward, we want to extend this functionality to include a number of different home repair and upgrade projects. We're also interested in using the information we collect during the application process to match users with free grants to fund their projects, and certified contractors to complete the work.
+
 # Install and deploy
 
 Homebase has been tested and deployed locally and on the Heroku platform. We'll cover local installation first, then Heroku deployment.
