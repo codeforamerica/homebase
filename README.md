@@ -25,6 +25,7 @@ You'll need the following set up to run Homebase:
 * [Rails](https://github.com/codeforamerica/howto/blob/master/Rails.md)
 * [PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
 * [GEOS](http://trac.osgeo.org/geos/) - You may need to adjust RGeo gem GEOS installation directory to point to your installation
+* [PDFtk](http://www.pdflabs.com/tools/pdftk-server/) - A tool Homebase uses to fill in PDF documents
 
 ### Local Installation
 
