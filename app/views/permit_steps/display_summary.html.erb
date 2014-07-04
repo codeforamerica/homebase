@@ -27,62 +27,8 @@
   </div><!-- ./panel -->
 
   <div class="panel panel-default">
-
     <div class="panel-heading">
-      <h4>2. Fill out the permit with this information</h4>
-    </div>
-
-    <div class="panel-body">
-      Field Names: <%= @field_names %>
-      <p><strong>Write the following information on the printed permit.</strong></p>
-
-      <p class="small-text"><b>Job Cost:</b> $<%= @permit.job_cost %></p>
-      <p class="small-text"><b>Owner Name:</b> <%= @permit.owner_name %></p>
-      <p class="small-text"><b>Owner Address:</b> <%= @permit.owner_address %></p>
-
-      <% if @permit.addition %>
-        <p class="small-text"><b>House Square Feet:</b> <%= @permit.house_area %></p>
-        <p class="small-text"><b>Addition Square Feet:</b> <%= @permit.addition_area %></p>
-        <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
-      <% end %>
-
-      <% if @permit.repair %>
-        <p class="small-text"><b>Windows:</b> <%= @permit.window ? "Yes" : "No" %></p>
-        <% if @permit.window %>
-          <p class="small-text"><b>No. of Windows:</b> <%= @permit.window_count %></p>
-        <% end %>
-        <p class="small-text"><b>Doors:</b> <%= @permit.door ? "Yes" : "No" %></p>
-        <% if @permit.door %>
-          <p class="small-text"><b>No. of Doors:</b> <%= @permit.door_count %></p>
-        <% end %>
-        <p class="small-text"><b>Walls:</b> <%= @permit.wall ? "Yes" : "No" %></p>
-        <p class="small-text"><b>Siding Replacement:</b> <%= @permit.siding ? "Yes" : "No" %></p>
-        <p class="small-text"><b>Floor:</b> <%= @permit.floor ? "Yes" : "No" %></p>
-      <% end %>
-
-      <% if @permit.contractor %>
-        <p class="small-text"><b>Contractor?:</b> <%= @permit.contractor ? "Yes" : "No" %></p>
-        <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
-        <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
-        <p class="small-text"><b>Escrow?:</b> <%= @permit.escrow ? "Yes" : "No" %></p>
-        <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
-        <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
-        <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>
-        <p class="small-text"><b>Contact ID #:</b> <%= @permit.contact_id %></p>
-        <p class="small-text"><b>Telephone:</b> <%= @permit.phone %></p>
-        <p class="small-text"><b>Fax:</b> <%= @permit.fax %></p>
-        <p class="small-text"><b>Email:</b> <%= @permit.email %></p>
-        <p class="small-text"><b>Oher Contact ID # Associated with Permit:</b> <%= @permit.other_contact_id %></p>
-      <% end %>
-
-      <p class="small-text"><b>Work Summary:</b> <%= @permit.work_summary %></p>
-
-    </div><!-- panel-body -->
-  </div><!-- ./panel -->
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>3. Make a detailed site plan</h4>
+      <h4>2. Make a detailed site plan</h4>
     </div>
     <div class="panel-body">
       <p>Site plan must be drawn to scale showing the size of lot, location of existing structures, locations of easements, 
@@ -93,7 +39,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>4. Bring your materials to Development Services Department</h4>
+      <h4>3. Bring your materials to Development Services Department</h4>
     </div>
     <div class="panel-body">
       <p>Bring the following materials with you:
