@@ -24,8 +24,8 @@ class PermitStepsController < ApplicationController
       pdftk = PdfForms.new('pdftk')
       path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"
       #@field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
-      unique_key = SecureRandom.hex
-      filled_in_form_path = "#{Rails.root}/tmp/#{unique_key}.pdf"
+      @unique_key = SecureRandom.hex
+      filled_in_form_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
 
 
       pdftk.fill_form path, filled_in_form_path, { 
@@ -92,6 +92,15 @@ class PermitStepsController < ApplicationController
 
     @permit.update_attributes(permit_params)
     render_wizard @permit
+  end
+
+  def serve
+    path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
+
+    send_file( path,
+      :disposition => 'inline',
+      :type => 'application/pdf',
+      :x_sendfile => true )
   end
 
   private

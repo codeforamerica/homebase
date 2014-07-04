@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :permits
   resources :permit_steps
   root to: 'permits#new'
+  get '/serve_pdf/:filename' => 'permit_steps#serve'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
