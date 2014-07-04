@@ -23,17 +23,11 @@
       <li class="cur-step hidden-sm hidden-md hidden-lg"><strong>Current Step:</strong></li><!-- for mobile devices -->
       <% for i in 0..steps.length - 1 %>
         <% if i == cur_step && i != (steps.length - 1) %>
-          <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %> <!-- current/active step -->
             <%= content_tag :li, steps[i][0], class: "cur-step" %>
-          <% end %>
         <% elsif i == cur_step && i == (steps.length - 1) %> <!-- active last step ... so we can keep it bold/dark -->
-          <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %>
             <%= content_tag :li, steps[i][0], class: "cur-step" %>
-          <% end %>
         <% elsif i < cur_step %> <!-- finished step -->
-          <%= link_to controller: steps[i][1], action: steps[i][2], id: steps[i][3] do %>
             <%= content_tag :li, steps[i][0] %>
-          <% end %>
         <% else %> <!-- future steps -->
             <%= content_tag :li, steps[i][0], class: "entry-future" %>
         <% end %>
