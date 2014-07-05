@@ -32,7 +32,8 @@ module PermitParams
     :door_count,
     :cover,
     :pool,
-    :deck
+    :deck,
+    :acs_struct
     )
  end
 end
