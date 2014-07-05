@@ -7,7 +7,8 @@ class PermitStepsController < ApplicationController
   include PermitParams
 
   include Wicked::Wizard
-  steps :enter_address, :display_permits, :enter_details, :enter_addition, :enter_repair, :display_summary
+  steps :enter_address, :display_permits, :enter_details, :enter_addition, #:enter_repair, 
+        :display_summary
   
   def show
     @permit = current_permit
@@ -17,8 +18,9 @@ class PermitStepsController < ApplicationController
     when :enter_addition
       skip_step if @permit.addition == nil || !@permit.addition
 
-    when :enter_repair
-      skip_step if @permit.repair == nil || !@permit.repair
+    # @TODO: Will take out completely when David put everything in 1 page
+    # when :enter_repair
+    #  skip_step if (!@permit.window || !@permit.door || !@permit.wall || !@permit.siding || !@permit.floor)
 
     when :display_summary
       pdftk = PdfForms.new('pdftk')
@@ -50,7 +52,11 @@ class PermitStepsController < ApplicationController
                                                     
                                                     'CARPORT_COVER_CHECKBOX'  => @permit.cover ? "X" : ' ',
 
-                                                    'GENERAL_REPAIRS_CHECKBOX'  => @permit.repair ? "X" : ' ',
+                                                    'GENERAL_REPAIRS_CHECKBOX'  => (@permit.window ||
+                                                                                    @permit.door ||
+                                                                                    @permit.wall ||
+                                                                                    @permit.siding ||
+                                                                                    @permit.floor) ? "X" : ' ',
                                                     'WINDOWS_CHECKBOX'          => @permit.window ? "X" : ' ',
                                                     'NUMBER_WINDOWS'            => @permit.window_count,
                                                     'DOORS_CHECKBOX'            => @permit.door ? "X" : ' ',
