@@ -9,12 +9,40 @@ $(document).ready(function()
       $(".panel-info-addition").toggleClass("panel-success")
     });
 
-  $(".pick-repair").click(function()
+  $(".pick-window").click(function()
     {
-      $(".repair").fadeToggle("fast","swing");
-      $(".pick-repair").toggleClass("btn-success");
-      $(".panel-info-repair").toggleClass("panel-success")
+      $(".window").fadeToggle("fast","swing");
+      $(".pick-window").toggleClass("btn-success");
+      $(".panel-info-window").toggleClass("panel-success")
     });  
+
+  $(".pick-door").click(function()
+    {
+      $(".door").fadeToggle("fast","swing");
+      $(".pick-door").toggleClass("btn-success");
+      $(".panel-info-door").toggleClass("panel-success")
+    }); 
+
+  $(".pick-wall").click(function()
+    {
+      $(".wall").fadeToggle("fast","swing");
+      $(".pick-wall").toggleClass("btn-success");
+      $(".panel-info-wall").toggleClass("panel-success")
+    }); 
+
+  $(".pick-siding").click(function()
+    {
+      $(".siding").fadeToggle("fast","swing");
+      $(".pick-siding").toggleClass("btn-success");
+      $(".panel-info-siding").toggleClass("panel-success")
+    }); 
+
+  $(".pick-floor").click(function()
+    {
+      $(".floor").fadeToggle("fast","swing");
+      $(".pick-floor").toggleClass("btn-success");
+      $(".panel-info-floor").toggleClass("panel-success")
+    }); 
 
   $(".pick-cover").click(function()
     {

@@ -22,7 +22,6 @@ module PermitParams
     :work_summary,
     :job_cost,
     :status,
-    :repair,
     :window,
     :door,
     :wall,

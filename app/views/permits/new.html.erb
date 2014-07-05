@@ -38,17 +38,65 @@
       </div>
       <!-- ./addition -->
 
-      <!-- Pick and option: REPAIRS -->
-      <div class="panel panel-default panel-info-repair">
-        <div class="panel-heading"><h4>General Repairs</h4></div>
+      <!-- Pick and option: WINDOW -->
+      <div class="panel panel-default panel-info-window">
+        <div class="panel-heading"><h4>Windows</h4></div>
         <div class="panel-body">
           <%= image_tag "#", class: 'hidden-xs' %>
-          <p>General repairs are changes you make to your current home, like adding a new window, door, walls, siding, and floor.</p>
-          <%= f.label :repair, "I want to make a general repair", class: 'btn btn-default btn-small pick-repair'%>
-          <%= f.check_box :repair, style: 'display:none;' %>
+          <p>Replace windows.</p>
+          <%= f.label :window, "I want to change window", class: 'btn btn-default btn-small pick-window'%>
+          <%= f.check_box :window, style: 'display:none;' %>
         </div>
       </div>
-      <!-- ./repair -->
+      <!-- ./window -->
+
+      <!-- Pick and option: DOOR -->
+      <div class="panel panel-default panel-info-door">
+        <div class="panel-heading"><h4>Doors</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>Replace doors.</p>
+          <%= f.label :door, "I want to change door", class: 'btn btn-default btn-small pick-door'%>
+          <%= f.check_box :door, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./door -->
+
+      <!-- Pick and option: WALL -->
+      <div class="panel panel-default panel-info-wall">
+        <div class="panel-heading"><h4>Walls</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>Replace walls.</p>
+          <%= f.label :wall, "I want to change wall", class: 'btn btn-default btn-small pick-wall'%>
+          <%= f.check_box :wall, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./wall -->
+
+      <!-- Pick and option: SIDING -->
+      <div class="panel panel-default panel-info-siding">
+        <div class="panel-heading"><h4>Sidings</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>Replace sidings.</p>
+          <%= f.label :siding, "I want to change siding", class: 'btn btn-default btn-small pick-siding'%>
+          <%= f.check_box :siding, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./siding -->
+
+      <!-- Pick and option: FLOOR -->
+      <div class="panel panel-default panel-info-floor">
+        <div class="panel-heading"><h4>Floors</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>Replace floors.</p>
+          <%= f.label :floor, "I want to change floor", class: 'btn btn-default btn-small pick-floor'%>
+          <%= f.check_box :floor, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./floor -->
 
       <!-- Pick and option: COVER -->
       <div class="panel panel-default panel-info-cover">
