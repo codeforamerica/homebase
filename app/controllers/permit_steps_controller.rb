@@ -43,6 +43,7 @@ class PermitStepsController < ApplicationController
                                                     'AC_NEW_SPLIT'        => @permit.ac == "New Split System" ? "X" : ' ',
 
 
+                                                    'DECK_CHECKBOX'           => @permit.deck ? "X" : ' ',
                                                     'POOL_CHECKBOX'           => @permit.pool ? "X" : ' ',
                                                     'CARPORT_COVER_CHECKBOX'  => @permit.cover ? "X" : ' ',
 
