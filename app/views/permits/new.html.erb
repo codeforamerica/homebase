@@ -50,6 +50,18 @@
       </div>
       <!-- ./repair -->
 
+      <!-- Pick and option: COVER -->
+      <div class="panel panel-default panel-info-cover">
+        <div class="panel-heading"><h4>Carport/Patio Cover/Porch Cover</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>Adding Carport/Patio Cover/Porch Cover.</p>
+          <%= f.label :cover, "I want to add carport/patio cover/porch cover", class: 'btn btn-default btn-small pick-cover'%>
+          <%= f.check_box :cover, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./cover -->
+
       <!-- Submit button -->
       <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
