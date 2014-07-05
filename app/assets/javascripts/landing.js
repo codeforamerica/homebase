@@ -37,6 +37,13 @@ $(document).ready(function()
       $(".panel-info-deck").toggleClass("panel-success")
     }); 
 
+  $(".pick-acs-struct").click(function()
+    {
+      $(".acs-struct").fadeToggle("fast","swing");
+      $(".pick-acs-struct").toggleClass("btn-success");
+      $(".panel-info-acs-struct").toggleClass("panel-success")
+    }); 
+
     // @TODO refactor this unnecessary js out
 
     $(".roof-btn").click(function()
