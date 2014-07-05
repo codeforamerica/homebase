@@ -42,6 +42,8 @@ class PermitStepsController < ApplicationController
                                                     'AC_EXTENDED'         => @permit.ac == "Extended from Main House" ? "X" : ' ',
                                                     'AC_NEW_SPLIT'        => @permit.ac == "New Split System" ? "X" : ' ',
 
+
+                                                    'POOL_CHECKBOX'           => @permit.pool ? "X" : ' ',
                                                     'CARPORT_COVER_CHECKBOX'  => @permit.cover ? "X" : ' ',
 
                                                     'GENERAL_REPAIRS_CHECKBOX'  => @permit.repair ? "X" : ' ',

@@ -30,7 +30,8 @@ module PermitParams
     :floor,
     :window_count,
     :door_count,
-    :cover
+    :cover,
+    :pool
     )
  end
 end

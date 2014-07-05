@@ -62,6 +62,18 @@
       </div>
       <!-- ./cover -->
 
+      <!-- Pick and option: POOL -->
+      <div class="panel panel-default panel-info-pool">
+        <div class="panel-heading"><h4>Swimming Pool</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>Adding Swimming Pool.</p>
+          <%= f.label :pool, "I want to add swimming pool", class: 'btn btn-default btn-small pick-pool'%>
+          <%= f.check_box :pool, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./pool -->
+
       <!-- Submit button -->
       <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
