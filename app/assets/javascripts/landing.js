@@ -16,6 +16,13 @@ $(document).ready(function()
       $(".panel-info-repair").toggleClass("panel-success")
     });  
 
+  $(".pick-cover").click(function()
+    {
+      $(".cover").fadeToggle("fast","swing");
+      $(".pick-cover").toggleClass("btn-success");
+      $(".panel-info-cover").toggleClass("panel-success")
+    });  
+
     // @TODO refactor this unnecessary js out
 
     $(".roof-btn").click(function()

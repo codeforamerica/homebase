@@ -29,7 +29,8 @@ module PermitParams
     :siding,
     :floor,
     :window_count,
-    :door_count
+    :door_count,
+    :cover
     )
  end
 end

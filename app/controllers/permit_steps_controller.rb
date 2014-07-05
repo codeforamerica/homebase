@@ -23,7 +23,7 @@ class PermitStepsController < ApplicationController
     when :display_summary
       pdftk = PdfForms.new('pdftk')
       path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"
-      #@field_names = @pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
+      @field_names = pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
       @unique_key = SecureRandom.hex
       filled_in_form_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
 
@@ -42,6 +42,8 @@ class PermitStepsController < ApplicationController
                                                     'AC_EXTENDED'         => @permit.ac == "Extended from Main House" ? "X" : ' ',
                                                     'AC_NEW_SPLIT'        => @permit.ac == "New Split System" ? "X" : ' ',
 
+                                                    'CARPORT_COVER_CHECKBOX'  => @permit.cover ? "X" : ' ',
+
                                                     'GENERAL_REPAIRS_CHECKBOX'  => @permit.repair ? "X" : ' ',
                                                     'WINDOWS_CHECKBOX'          => @permit.window ? "X" : ' ',
                                                     'NUMBER_WINDOWS'            => @permit.window_count,
@@ -54,7 +56,7 @@ class PermitStepsController < ApplicationController
                                                     'CONTRACTOR_NAME'           => @permit.contractor_name,
                                                     'CONTRACTOR_ID'             => @permit.contractor_id,
                                                     'ESCROW_YES_CHECKBOX'       => @permit.escrow ? "X" : ' ',
-                                                    'ESCROW_NO_CHECKBOX'        => @permit.escrow ? ' ' : "X",
+                                                    'ESCROW_NO_CHECKBOX'        => (!@permit.escrow && @permit.escrow != nil) ? "X" : ' ',
                                                     'REGISTERED_LICENSE_HOLDER' => @permit.license_holder,
                                                     'LICENSE_NUMBER'            => @permit.license_num,
                                                     'AUTHORIZED_AGENT_NAME'     => @permit.agent_name,
@@ -65,11 +67,12 @@ class PermitStepsController < ApplicationController
                                                     'WORK_SUMMARY'              => @permit.work_summary
 
                                                   }
-#["NCB", "AC_NONE", "AC_WALL_UNIT", "AC_EXTENDED", "AC_NEW_SPLIT", "DATE", "ADDRESS", "LOT", "BLOCK", "JOB_COST", "OWNER_NAME", "SQ_FOOT_HOUSE", "SQ_FOOT_ADDITION", "ADDITIONS_CHECKBOX", "ACCESSORY_STRUCTURE_CHECKBOX", "DECK_CHECKBOX", "SWIMMING_POOL_CHECKBOX", "CARPORTS_COVERS_CHECKBOX", "GENERAL_REPAIRS_CHECKBOX", "NUMBER_WINDOWS", "NUMBER_DOORS", "CONTRACTOR_NAME", "CONTRACTOR_ID", "LICENSE_NUMBER", "REGISTERED_LICENSE_HOLDER", "AUTHORIZED_AGENT_NAME", "CONTACT_ID_NUMBER", "TELEPHONE", "FAX", "WORK_SUMMARY", "EMAIL", "WINDOWS_CHECKBOX", "DOORS_CHECKBOX", "WALLS_CHECKBOX", "SIDING_CHECKBOX", "FLOOR_STRUCTURAL_CHECKBOX", "ESCROW_YES_CHECKBOX", "ESCROW_NO_CHECKBOX"]
+#["NCB", "DATE", "ADDRESS", "LOT", "BLOCK", "JOB_COST", "OWNER_NAME", "SQ_FOOT_HOUSE", "SQ_FOOT_ADDITION", "NUMBER_WINDOWS", "NUMBER_DOORS", "CONTRACTOR_NAME", "CONTRACTOR_ID", "LICENSE_NUMBER", "REGISTERED_LICENSE_HOLDER", "AUTHORIZED_AGENT_NAME", "CONTACT_ID_NUMBER", "TELEPHONE", "FAX", "WORK_SUMMARY", "EMAIL", "ADDITIONS_CHECKBOX", "DECK_CHECKBOX", "POOL_CHECKBOX", "CARPORT_COVER_CHECKBOX", "GENERAL_REPAIRS_CHECKBOX", "WINDOWS_CHECKBOX", "DOORS_CHECKBOX", "WALLS_CHECKBOX", "SIDING_CHECKBOX", "FLOOR_STRUCTURAL_CHECKBOX", "ESCROW_YES_CHECKBOX", "ESCROW_NO_CHECKBOX", "ACCESSORY_STRUCTURE_CHECKBOX", "AC_NONE", "AC_WALL_UNIT", "AC_EXTENDED", "AC_NEW_SPLIT", "OTHER_CONTACT_ID"]
+
     end
     render_wizard
 
-    end
+  end
 
   def update
     @permit = current_permit
