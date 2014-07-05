@@ -23,6 +23,13 @@ $(document).ready(function()
       $(".panel-info-cover").toggleClass("panel-success")
     });  
 
+  $(".pick-pool").click(function()
+    {
+      $(".pool").fadeToggle("fast","swing");
+      $(".pick-pool").toggleClass("btn-success");
+      $(".panel-info-pool").toggleClass("panel-success")
+    }); 
+
     // @TODO refactor this unnecessary js out
 
     $(".roof-btn").click(function()
