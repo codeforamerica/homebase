@@ -30,6 +30,13 @@ $(document).ready(function()
       $(".panel-info-pool").toggleClass("panel-success")
     }); 
 
+  $(".pick-deck").click(function()
+    {
+      $(".deck").fadeToggle("fast","swing");
+      $(".pick-deck").toggleClass("btn-success");
+      $(".panel-info-deck").toggleClass("panel-success")
+    }); 
+
     // @TODO refactor this unnecessary js out
 
     $(".roof-btn").click(function()

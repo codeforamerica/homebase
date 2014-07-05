@@ -31,7 +31,8 @@ module PermitParams
     :window_count,
     :door_count,
     :cover,
-    :pool
+    :pool,
+    :deck
     )
  end
 end

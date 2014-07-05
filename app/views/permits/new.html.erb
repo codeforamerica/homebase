@@ -74,6 +74,18 @@
       </div>
       <!-- ./pool -->
 
+      <!-- Pick and option: DECK -->
+      <div class="panel panel-default panel-info-deck">
+        <div class="panel-heading"><h4>Deck</h4></div>
+        <div class="panel-body">
+          <%= image_tag "#", class: 'hidden-xs' %>
+          <p>Adding Deck.</p>
+          <%= f.label :deck, "I want to add deck", class: 'btn btn-default btn-small pick-deck'%>
+          <%= f.check_box :deck, style: 'display:none;' %>
+        </div>
+      </div>
+      <!-- ./deck -->
+
       <!-- Submit button -->
       <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
