@@ -28,198 +28,100 @@
 
         <div class="w-row project-row">
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "addition.png", class: "project-icon" %>
-              <div class="btn-block">Room Additions</div>
-            </a>
+              <%= f.label :addition, "Room Additions", class: "btn-block pick-addition" %>
+              <%= f.check_box :addition, style: 'display:none' %>
+            </div>
           </div>
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "shed.png", class: "project-icon" %>
-              <div class="btn-block">Shed or Garage</div>
-            </a>
+              <%= f.label :acs_struct, "Shed or Garage", class: "btn-block pick-acs-struct" %>
+              <%= f.check_box :acs_struct, style: 'display:none' %>
+            </div>
           </div>
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "deck.png", class: "project-icon" %>
-              <div class="btn-block">Deck</div>
-            </a>
+              <%= f.label :deck, "Deck", class: "btn-block pick-deck" %>
+              <%= f.check_box :deck, style: 'display:none' %>
+            </div>
           </div>
         </div>
         <div class="w-row project-row">
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "pool.png", class: "project-icon" %>
-              <div class="btn-block">Swimming Pool</div>
-            </a>
+              <%= f.label :pool, "Swimming Pool", class: "btn-block pick-pool" %>
+              <%= f.check_box :pool, style: 'display:none' %>
+            </div>
           </div>
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "carport.png", class: "project-icon" %>
-              <div class="btn-block long">Carports and
-                <br>Outdoor Covers</div>
-            </a>
+              <%= f.label :cover, class: "btn-block long pick-cover" do %>
+                Carports and 
+                <br>
+                Outdoor Covers
+              <% end %>
+              <%= f.check_box :cover, style: 'display:none' %>
+            </div>
           </div>
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "window.png", class: "project-icon" %>
-              <div class="btn-block">Windows</div>
-            </a>
+              <%= f.label :window, "Windows", class: "btn-block pick-window" %>
+              <%= f.check_box :window, style: 'display:none' %>
+            </div>
           </div>
         </div>
         <div class="w-row project-row">
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "door.png", class: "project-icon" %>
-              <div class="btn-block">Doors</div>
-            </a>
+              <%= f.label :door, "Doors", class: "btn-block pick-door" %>
+              <%= f.check_box :door, style: 'display:none' %>
+            </div>
           </div>
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "wall.png", class: "project-icon" %>
-              <div class="btn-block">Walls</div>
-            </a>
+              <%= f.label :wall, "Walls", class: "btn-block pick-wall" %>
+              <%= f.check_box :wall, style: 'display:none' %>
+            </div>
           </div>
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "siding.png", class: "project-icon" %>
-              <div class="btn-block">Siding Replacement</div>
-            </a>
+              <%= f.label :siding, "Siding Replacement", class: "btn-block pick-siding" %>
+              <%= f.check_box :siding, style: 'display:none' %>
+            </div>
           </div>
         </div>
         <div class="w-row">
           <div class="w-col w-col-4">
-            <a class="w-clearfix w-inline-block project-block" href="#">
+            <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "floor.png", class: "project-icon" %>
-              <div class="btn-block">Floor</div>
-            </a>
+              <%= f.label :floor, "Floor", class: "btn-block pick-floor" %>
+              <%= f.check_box :floor, style: 'display:none' %>
+            </div>
           </div>
           <div class="w-col w-col-4"></div>
           <div class="w-col w-col-4"></div>
         </div>
 
 
-
-
-
-      <!-- Pick and option: ADDITION -->
-      <div class="panel panel-default panel-info-addition">
-        <div class="panel-heading"><h4>Build an addition</h4></div>
-        <div class="panel-body">
-          <%= image_tag "color-house-parts/addition.png", class: 'hidden-xs' %>
-          <p>Home additions are new space added to your current home, like a new bedroom or a bigger kitchen.</p>
-          <%= f.label :addition, "I want to build an addition", class: 'btn btn-default btn-small pick-addition'%>
-          <%= f.check_box :addition, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./addition -->
-
-      <!-- Pick and option: WINDOW -->
-      <div class="panel panel-default panel-info-window">
-        <div class="panel-heading"><h4>Windows</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Replace windows.</p>
-          <%= f.label :window, "I want to change window", class: 'btn btn-default btn-small pick-window'%>
-          <%= f.check_box :window, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./window -->
-
-      <!-- Pick and option: DOOR -->
-      <div class="panel panel-default panel-info-door">
-        <div class="panel-heading"><h4>Doors</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Replace doors.</p>
-          <%= f.label :door, "I want to change door", class: 'btn btn-default btn-small pick-door'%>
-          <%= f.check_box :door, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./door -->
-
-      <!-- Pick and option: WALL -->
-      <div class="panel panel-default panel-info-wall">
-        <div class="panel-heading"><h4>Walls</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Replace walls.</p>
-          <%= f.label :wall, "I want to change wall", class: 'btn btn-default btn-small pick-wall'%>
-          <%= f.check_box :wall, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./wall -->
-
-      <!-- Pick and option: SIDING -->
-      <div class="panel panel-default panel-info-siding">
-        <div class="panel-heading"><h4>Sidings</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Replace sidings.</p>
-          <%= f.label :siding, "I want to change siding", class: 'btn btn-default btn-small pick-siding'%>
-          <%= f.check_box :siding, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./siding -->
-
-      <!-- Pick and option: FLOOR -->
-      <div class="panel panel-default panel-info-floor">
-        <div class="panel-heading"><h4>Floors</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Replace floors.</p>
-          <%= f.label :floor, "I want to change floor", class: 'btn btn-default btn-small pick-floor'%>
-          <%= f.check_box :floor, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./floor -->
-
-      <!-- Pick and option: COVER -->
-      <div class="panel panel-default panel-info-cover">
-        <div class="panel-heading"><h4>Carport/Patio Cover/Porch Cover</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Adding Carport/Patio Cover/Porch Cover.</p>
-          <%= f.label :cover, "I want to add carport/patio cover/porch cover", class: 'btn btn-default btn-small pick-cover'%>
-          <%= f.check_box :cover, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./cover -->
-
-      <!-- Pick and option: POOL -->
-      <div class="panel panel-default panel-info-pool">
-        <div class="panel-heading"><h4>Swimming Pool</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Adding Swimming Pool.</p>
-          <%= f.label :pool, "I want to add swimming pool", class: 'btn btn-default btn-small pick-pool'%>
-          <%= f.check_box :pool, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./pool -->
-
-      <!-- Pick and option: DECK -->
-      <div class="panel panel-default panel-info-deck">
-        <div class="panel-heading"><h4>Deck</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Adding Deck.</p>
-          <%= f.label :deck, "I want to add deck", class: 'btn btn-default btn-small pick-deck'%>
-          <%= f.check_box :deck, style: 'display:none;' %>
-        </div>
-      </div>
-      <!-- ./deck -->
-
       <!-- Pick and option: ACS_STRUCT -->
-      <div class="panel panel-default panel-info-acs-struct">
-        <div class="panel-heading"><h4>Accessory Structure</h4></div>
-        <div class="panel-body">
-          <%= image_tag "#", class: 'hidden-xs' %>
-          <p>Adding Deck.</p>
-          <%= f.label :acs_struct, "I want to add accessory structure", class: 'btn btn-default btn-small pick-acs-struct'%>
-          <%= f.check_box :acs_struct, style: 'display:none;' %>
-        </div>
-      </div>
+      <!-- <div class="panel panel-default panel-info-acs-struct"> -->
+        <!-- <div class="panel-heading"><h4>Accessory Structure</h4></div> -->
+        <!-- <div class="panel-body"> -->
+          <%#= image_tag "#", class: 'hidden-xs' %>
+          <!-- <p>Adding Deck.</p> -->
+          <%#= f.label :acs_struct, "I want to add accessory structure", class: 'btn btn-default btn-small pick-acs-struct'%>
+          <%#= f.check_box :acs_struct, style: 'display:none;' %>
+        <!-- </div> -->
+      <!-- </div> -->
       <!-- ./acs_struct -->
 
       <!-- Submit button -->
