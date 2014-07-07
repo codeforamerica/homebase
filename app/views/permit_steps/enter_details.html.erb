@@ -67,6 +67,142 @@
 
     <!-- ./Basic info section -->
 
+    <% if @permit.addition %>
+      <!-- Addition section --> 
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h4>Addition information</h4>
+        </div>
+
+        <div class="panel-body">
+
+        <!-- house_area -->
+
+          <div class="form-group">
+            <%= f.label :house_area, "Size of house in square feet*", for: "SqFtHouse" %>
+
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors.messages[:house_area].length >= 1 %>
+              <!-- create an errors div to style error message and make input red -->    
+              <div class="has-error">
+                <!-- Print out the error message (from validator) -->
+                <p><%= @permit.errors.messages[:house_area][0] %></p>
+            <% end %>
+
+            <%= f.text_field :house_area, class: "form-control input-lg", id: "SqFtHouse" %>
+
+            <% if @permit.errors.messages[:house_area].length >= 1 %>
+              <!-- close the errors div -->
+              </div>
+            <% end %>
+          </div>
+
+        <!-- ./house_area -->
+
+        <!-- addition_area -->
+
+          <div class="form-group">
+            <%= f.label :addition_area, "Size of addition in square feet*", for: "SqFtAddition" %>
+
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors.messages[:addition_area].length >= 1 %>
+              <!-- create an errors div to style error message and make input red -->    
+              <div class="has-error">
+                <!-- Print out the error message (from validator) -->
+                <p><%= @permit.errors.messages[:addition_area][0] %></p>
+            <% end %>
+
+            <%= f.text_field :addition_area, class: "form-control input-lg", id: "SqFtAddition" %>
+
+            <% if @permit.errors.messages[:addition_area].length >= 1 %>
+              <!-- close the errors div -->
+              </div>
+            <% end %>        
+          </div> 
+        <!-- ./addition_area -->
+
+        <!-- ac -->
+
+          <div class="form-group">
+            <%= f.label :ac, "Air conditioning / heating system*", for: "air-conditioning-heating-system" %>
+            
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors.messages[:ac].length >= 1 %>
+              <!-- create an errors div to style error message and make input red -->    
+              <div class="has-error">
+                <!-- Print out the error message (from validator) -->
+                <p><%= @permit.errors.messages[:ac][0] %></p>
+              <!-- close the errors div. we don't need it for radio buttons -->
+              </div>
+            <% end %>
+
+            <p class="help-block">Please select the system you plan to install in your addition.</p>
+            <% if @permit.ac.blank? %>
+              <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"]), { include_blank: "Select one..." }, { class: "form-control", id: "air-conditioning-heating-system" } %>
+            <% else %>
+              <%= f.select :ac, options_for_select(["None", "Wall Unit", "Extended from Main House", "New Split System"], @permit.ac), { include_blank: "Select one..." }, { class: "form-control", id: "air-conditioning-heating-system" } %>
+            <% end %>
+          </div>
+
+        <!-- ./ac -->
+
+          </div><!-- ./panel_body -->
+        </div><!-- ./panel -->
+
+      <!-- ./Addition section -->
+      <% end %>
+
+      <!-- Window section -->
+      <% if @permit.window %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Window Information</h4>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors.messages[:window_count] != nil && @permit.errors.messages[:window_count].length >= 1 %>
+              <!-- create an errors div to style error message and make input red -->    
+              <div class="has-error">
+                <!-- Print out the error message (from validator) -->
+                <p><%= @permit.errors.messages[:window_count][0] %></p>
+              <!-- close the errors div. we don't need it for radio buttons -->
+              </div>
+            <% end %>
+              <%= f.label :window_count, "How many windows are you changing?*", for: "window-count" %>
+              <%= f.text_field :window_count, class: "form-control input-lg", id: "window-count" %>
+            </div>
+          </div> <!-- ./panel_body -->
+        </div> <!-- ./panel -->
+      <% end %> <!-- window -->
+
+      <!-- Door section -->
+      <% if @permit.door %>
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <h4>Door Information</h4>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors.messages[:door_count] != nil && @permit.errors.messages[:door_count].length >= 1 %>
+              <!-- create an errors div to style error message and make input red -->    
+              <div class="has-error">
+                <!-- Print out the error message (from validator) -->
+                <p><%= @permit.errors.messages[:door_count][0] %></p>
+              <!-- close the errors div. we don't need it for radio buttons -->
+              </div>
+            <% end %>
+              <%= f.label :door_count, "How many doors are you changing?*", for: "door-count" %>
+              <%= f.text_field :door_count, class: "form-control input-lg", id: "door-count" %>
+            </div>
+          </div> <!-- ./panel_body -->
+        </div> <!-- ./panel -->
+      <% end %> <!-- door -->
+
     <!-- Contractor info section -->
     
     <div class="panel panel-default">

@@ -7,20 +7,12 @@ class PermitStepsController < ApplicationController
   include PermitParams
 
   include Wicked::Wizard
-  steps :enter_address, :display_permits, :enter_details, :enter_addition, #:enter_repair, 
-        :display_summary
+  steps :enter_address, :display_permits, :enter_details, :display_summary
   
   def show
     @permit = current_permit
 
     case step
-
-    when :enter_addition
-      skip_step if @permit.addition == nil || !@permit.addition
-
-    # @TODO: Will take out completely when David put everything in 1 page
-    # when :enter_repair
-    #  skip_step if (!@permit.window || !@permit.door || !@permit.wall || !@permit.siding || !@permit.floor)
 
     when :display_summary
       pdftk = PdfForms.new('pdftk')
