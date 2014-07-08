@@ -81,7 +81,7 @@
         <!-- house_area -->
 
           <div class="form-group">
-            <%= f.label :house_area, "Size of house in square feet*", for: "SqFtHouse" %>
+            <%= f.label :house_area, "Size of existing house in square feet*", for: "SqFtHouse" %>
 
             <!-- check if there's an error for this field -->
             <% if @permit.errors.messages[:house_area].length >= 1 %>
@@ -104,7 +104,7 @@
         <!-- addition_area -->
 
           <div class="form-group">
-            <%= f.label :addition_area, "Size of addition in square feet*", for: "SqFtAddition" %>
+            <%= f.label :addition_area, "Size of new addition in square feet*", for: "SqFtAddition" %>
 
             <!-- check if there's an error for this field -->
             <% if @permit.errors.messages[:addition_area].length >= 1 %>
