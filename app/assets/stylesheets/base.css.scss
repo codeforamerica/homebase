@@ -178,6 +178,26 @@ h1 {
     width:110px;
   }
 }
+.btn-initial {
+  background-color: rgba(237, 237, 237, 1);
+  border-radius: 4px;
+  margin-bottom: 0;
+  width: 100%;
+}
+.btn-initial:hover {
+  background-color: rgba(237, 237, 237, .7);
+  cursor: pointer;
+}
+.btn-initial.btn-success {
+  background-color: #c9e6ed;
+}
+.new_permit .btn {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.new_permit {
+  padding-bottom: 30px;
+}
 
 /* styles for #enter_details */
 

@@ -28,82 +28,112 @@
 
         <div class="w-row project-row">
           <div class="w-col w-col-4">
+              <%= f.label :addition, class: "pick-addition btn-initial" do %>
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "addition.png", class: "project-icon" %>
-              <%= f.label :addition, "Room Additions", class: "btn-block pick-addition" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Room Additions</p>
+              <% end %>               
               <%= f.check_box :addition, style: 'display:none' %>
             </div>
           </div>
           <div class="w-col w-col-4">
+              <%= f.label :acs_struct, class: "pick-acs-struct btn-initial" do %>
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "shed.png", class: "project-icon" %>
-              <%= f.label :acs_struct, "Shed or Garage", class: "btn-block pick-acs-struct" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Shed or Garage</p>
+              <% end %>               
               <%= f.check_box :acs_struct, style: 'display:none' %>
             </div>
           </div>
           <div class="w-col w-col-4">
+              <%= f.label :deck, class: "pick-deck btn-initial" do %>
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "deck.png", class: "project-icon" %>
-              <%= f.label :deck, "Deck", class: "btn-block pick-deck" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Deck</p>
+              <% end %>               
               <%= f.check_box :deck, style: 'display:none' %>
             </div>
           </div>
         </div>
         <div class="w-row project-row">
           <div class="w-col w-col-4">
+              <%= f.label :pool, "Swimming Pool", class: "pick-pool btn-initial" do %>            
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "pool.png", class: "project-icon" %>
-              <%= f.label :pool, "Swimming Pool", class: "btn-block pick-pool" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Swimming Pool</p>
+              <% end %>              
               <%= f.check_box :pool, style: 'display:none' %>
             </div>
           </div>
           <div class="w-col w-col-4">
-            <div class="w-clearfix w-inline-block project-block">
-              <%= image_tag "carport.png", class: "project-icon" %>
-              <%= f.label :cover, class: "btn-block long pick-cover" do %>
+              <%= f.label :cover, class: "pick-cover btn-initial" do %>
+                <div class="w-clearfix w-inline-block project-block">
+               <%= image_tag "carport.png", class: "project-icon" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block long">
                 Carports and 
                 <br>
-                Outdoor Covers
+                Outdoor Covers 
+                </p>              
+                </div>
               <% end %>
               <%= f.check_box :cover, style: 'display:none' %>
-            </div>
           </div>
           <div class="w-col w-col-4">
-            <div class="w-clearfix w-inline-block project-block">
+              <%= f.label :window, class: "pick-window btn-initial" do %>
+                <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "window.png", class: "project-icon" %>
-              <%= f.label :window, "Windows", class: "btn-block pick-window" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Windows</p>
+              <% end %>
               <%= f.check_box :window, style: 'display:none' %>
             </div>
           </div>
         </div>
         <div class="w-row project-row">
           <div class="w-col w-col-4">
+              <%= f.label :door, class: "pick-door btn-initial" do %>
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "door.png", class: "project-icon" %>
-              <%= f.label :door, "Doors", class: "btn-block pick-door" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Doors</p>
+              <% end %>
               <%= f.check_box :door, style: 'display:none' %>
             </div>
           </div>
           <div class="w-col w-col-4">
+              <%= f.label :wall, class: "pick-wall btn-initial" do %>
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "wall.png", class: "project-icon" %>
-              <%= f.label :wall, "Walls", class: "btn-block pick-wall" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Walls</p>              
+              <% end %>
               <%= f.check_box :wall, style: 'display:none' %>
             </div>
           </div>
           <div class="w-col w-col-4">
+              <%= f.label :siding, class: "pick-siding btn-initial" do %>
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "siding.png", class: "project-icon" %>
-              <%= f.label :siding, "Siding Replacement", class: "btn-block pick-siding" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Siding Replacement</p>              
+              <% end %>              
               <%= f.check_box :siding, style: 'display:none' %>
             </div>
           </div>
         </div>
         <div class="w-row">
           <div class="w-col w-col-4">
+              <%= f.label :floor, class: "pick-floor btn-initial" do %>
             <div class="w-clearfix w-inline-block project-block">
               <%= image_tag "floor.png", class: "project-icon" %>
-              <%= f.label :floor, "Floor", class: "btn-block pick-floor" %>
+               <div class="w-clearfix"></div>
+               <p class="btn-block">Floors</p>              
+              <% end %>              
               <%= f.check_box :floor, style: 'display:none' %>
             </div>
           </div>

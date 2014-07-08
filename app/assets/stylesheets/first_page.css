@@ -16,14 +16,9 @@
 .project-block {
   width: 100%;
   height: 116px;
-  border-radius: 4px;
-  background-color: #ededed;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   text-align: center;
   text-decoration: none;
-}
-.project-block:hover {
-  background-color: rgba(237, 237, 237, 0.49);
 }
 .project-row {
   padding-bottom: 20px;
@@ -52,7 +47,7 @@
     padding-right: 33px;
     padding-left: 33px;
   }
-  .project-block {
+  .btn-initial {
     margin-bottom: 3px;
   }
   .project-row {
@@ -136,5 +131,8 @@
 @media screen and (max-width: 479px) {
   .w-col {
     width: 100%;
+  }
+  .project-block .w-clearfix {
+    display: none;
   }
 }
