@@ -68,12 +68,6 @@ class Permit < ActiveRecord::Base
     active_or_details? && door
   end
 
-# def at_least_one_name
-#   if [self.zh_name, self.en_name, self.fr_name].reject(&:blank?).size == 0
-#     errors[:base] << ("Please choose at least one name - any language will do.")
-#   end
-# end 
-
   def at_least_one_chosen
     if !(addition || window || door || wall || siding || floor || cover || pool || deck || acs_struct)
       errors[:base] << ("Plase choose an improvement.")
