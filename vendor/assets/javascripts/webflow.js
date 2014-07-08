@@ -19,6 +19,10 @@ Webflow.init = function () {
   var $win = $(window);
   var _ = api._ = underscore();
   var domready = false;
+  var tram = window.tram;
+  var Modernizr = window.Modernizr;
+  tram.config.hideBackface = false;
+  tram.config.keepInherited = true;
 
   /**
    * Webflow.define() - Define a webflow.js module
@@ -80,9 +84,12 @@ Webflow.init = function () {
   };
 
   // Feature detects + browser sniffs  ಠ_ಠ
-  var ua = navigator.userAgent;
+  var userAgent = navigator.userAgent.toLowerCase();
+  var appVersion = navigator.appVersion.toLowerCase();
   api.env.touch = ('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch;
-  api.env.chrome = /chrome|crios/i.test(ua);
+  var chrome = api.env.chrome = (window.chrome || /chrome/.test(userAgent)) && parseInt(appVersion.match(/chrome\/(\d+)\./)[1], 10);
+  var ios = api.env.ios = Modernizr && Modernizr.ios;
+  api.env.safari = /safari/.test(userAgent) && !chrome && !ios;
 
   /**
    * Webflow.script() - Append script to document head
@@ -103,6 +110,7 @@ Webflow.init = function () {
   var scrollEvents = 'scroll.webflow ' + resizeEvents;
   api.resize = eventProxy($win, resizeEvents);
   api.scroll = eventProxy($win, scrollEvents);
+  api.redraw = eventProxy();
 
   // Create a proxy instance for throttled events
   function eventProxy(target, types) {
@@ -115,7 +123,7 @@ Webflow.init = function () {
     });
 
     // Bind events to target
-    target.on(types, proxy.up);
+    if (target && types) target.on(types, proxy.up);
 
     /**
      * Add an event handler
@@ -139,22 +147,21 @@ Webflow.init = function () {
     return proxy;
   }
 
-  // Wrap window.location in api
+  // Webflow.location - Wrap window.location in api
   api.location = function (url) {
     window.location = url;
   };
 
-  // Designer-specific methods
-  if (api.env()) {
+  // Webflow.app - Designer-specific methods
+  api.app = api.env() ? {} : null;
+  if (api.app) {
+
     // Trigger redraw for specific elements
     var Event = window.Event;
     var redraw = new Event('__wf_redraw');
-    $.fn.redraw = function () {
-      return this.each(function () {
-        this.dispatchEvent(redraw);
-      });
-    };
-    // Trigger event instead of changing location
+    api.app.redrawElement = function (i, el) { el.dispatchEvent(redraw); };
+
+    // Webflow.location - Re-route location change to trigger an event
     api.location = function (url) {
       window.dispatchEvent(new CustomEvent('__wf_location', { detail: url }));
     };
@@ -321,7 +328,7 @@ Webflow.init = function () {
         wait = true;
         args = arguments;
         context = this;
-        window.tram.frame(function () {
+        tram.frame(function () {
           wait = false;
           func.apply(context, args);
         });
@@ -387,116 +394,18 @@ Webflow.init = function () {
  */
 /* jshint ignore:start */
 /*!
- * tram.js v0.7.2-global
+ * tram.js v0.8.0-global
  * Cross-browser CSS3 transitions in JavaScript
  * https://github.com/bkwld/tram
  * MIT License
  */
-window.tram=function(t){function i(t,i){var e=new U.Bare;return e.init(t,i)}function e(t){return t.replace(/[A-Z]/g,function(t){return"-"+t.toLowerCase()})}function n(t){var i=parseInt(t.slice(1),16),e=255&i>>16,n=255&i>>8,r=255&i;return[e,n,r]}function r(t,i,e){return"#"+(1<<24|t<<16|i<<8|e).toString(16).slice(1)}function s(){}function a(t,i){K("Type warning: Expected: ["+t+"] Got: ["+typeof i+"] "+i)}function o(t,i,e){K("Units do not match ["+t+"]: "+i+", "+e)}function u(t,i,e){if(void 0!==i&&(e=i),void 0===t)return e;var n=e;return W.test(t)||!J.test(t)?n=parseInt(t,10):J.test(t)&&(n=1e3*parseFloat(t)),0>n&&(n=0),n===n?n:e}function c(t){for(var i=-1,e=t?t.length:0,n=[];e>++i;){var r=t[i];r&&n.push(r)}return n}var h=function(t,i,e){function n(t){return"object"==typeof t}function r(t){return"function"==typeof t}function s(){}function a(o,u){function c(){var t=new h;return r(t.init)&&t.init.apply(t,arguments),t}function h(){}u===e&&(u=o,o=Object),c.Bare=h;var l,f=s[t]=o[t],d=h[t]=c[t]=new s;return d.constructor=c,c.mixin=function(i){return h[t]=c[t]=a(c,i)[t],c},c.open=function(t){if(l={},r(t)?l=t.call(c,d,f,c,o):n(t)&&(l=t),n(l))for(var e in l)i.call(l,e)&&(d[e]=l[e]);return r(d.init)||(d.init=o),c},c.open(u)}return a}("prototype",{}.hasOwnProperty),l={ease:["ease",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(-2.75*s*r+11*r*r+-15.5*s+8*r+.25*t)}],"ease-in":["ease-in",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(-1*s*r+3*r*r+-3*s+2*r)}],"ease-out":["ease-out",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(.3*s*r+-1.6*r*r+2.2*s+-1.8*r+1.9*t)}],"ease-in-out":["ease-in-out",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(2*s*r+-5*r*r+2*s+2*r)}],linear:["linear",function(t,i,e,n){return e*t/n+i}],"ease-in-quad":["cubic-bezier(0.550, 0.085, 0.680, 0.530)",function(t,i,e,n){return e*(t/=n)*t+i}],"ease-out-quad":["cubic-bezier(0.250, 0.460, 0.450, 0.940)",function(t,i,e,n){return-e*(t/=n)*(t-2)+i}],"ease-in-out-quad":["cubic-bezier(0.455, 0.030, 0.515, 0.955)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t+i:-e/2*(--t*(t-2)-1)+i}],"ease-in-cubic":["cubic-bezier(0.550, 0.055, 0.675, 0.190)",function(t,i,e,n){return e*(t/=n)*t*t+i}],"ease-out-cubic":["cubic-bezier(0.215, 0.610, 0.355, 1)",function(t,i,e,n){return e*((t=t/n-1)*t*t+1)+i}],"ease-in-out-cubic":["cubic-bezier(0.645, 0.045, 0.355, 1)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t*t+i:e/2*((t-=2)*t*t+2)+i}],"ease-in-quart":["cubic-bezier(0.895, 0.030, 0.685, 0.220)",function(t,i,e,n){return e*(t/=n)*t*t*t+i}],"ease-out-quart":["cubic-bezier(0.165, 0.840, 0.440, 1)",function(t,i,e,n){return-e*((t=t/n-1)*t*t*t-1)+i}],"ease-in-out-quart":["cubic-bezier(0.770, 0, 0.175, 1)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t*t*t+i:-e/2*((t-=2)*t*t*t-2)+i}],"ease-in-quint":["cubic-bezier(0.755, 0.050, 0.855, 0.060)",function(t,i,e,n){return e*(t/=n)*t*t*t*t+i}],"ease-out-quint":["cubic-bezier(0.230, 1, 0.320, 1)",function(t,i,e,n){return e*((t=t/n-1)*t*t*t*t+1)+i}],"ease-in-out-quint":["cubic-bezier(0.860, 0, 0.070, 1)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t*t*t*t+i:e/2*((t-=2)*t*t*t*t+2)+i}],"ease-in-sine":["cubic-bezier(0.470, 0, 0.745, 0.715)",function(t,i,e,n){return-e*Math.cos(t/n*(Math.PI/2))+e+i}],"ease-out-sine":["cubic-bezier(0.390, 0.575, 0.565, 1)",function(t,i,e,n){return e*Math.sin(t/n*(Math.PI/2))+i}],"ease-in-out-sine":["cubic-bezier(0.445, 0.050, 0.550, 0.950)",function(t,i,e,n){return-e/2*(Math.cos(Math.PI*t/n)-1)+i}],"ease-in-expo":["cubic-bezier(0.950, 0.050, 0.795, 0.035)",function(t,i,e,n){return 0===t?i:e*Math.pow(2,10*(t/n-1))+i}],"ease-out-expo":["cubic-bezier(0.190, 1, 0.220, 1)",function(t,i,e,n){return t===n?i+e:e*(-Math.pow(2,-10*t/n)+1)+i}],"ease-in-out-expo":["cubic-bezier(1, 0, 0, 1)",function(t,i,e,n){return 0===t?i:t===n?i+e:1>(t/=n/2)?e/2*Math.pow(2,10*(t-1))+i:e/2*(-Math.pow(2,-10*--t)+2)+i}],"ease-in-circ":["cubic-bezier(0.600, 0.040, 0.980, 0.335)",function(t,i,e,n){return-e*(Math.sqrt(1-(t/=n)*t)-1)+i}],"ease-out-circ":["cubic-bezier(0.075, 0.820, 0.165, 1)",function(t,i,e,n){return e*Math.sqrt(1-(t=t/n-1)*t)+i}],"ease-in-out-circ":["cubic-bezier(0.785, 0.135, 0.150, 0.860)",function(t,i,e,n){return 1>(t/=n/2)?-e/2*(Math.sqrt(1-t*t)-1)+i:e/2*(Math.sqrt(1-(t-=2)*t)+1)+i}],"ease-in-back":["cubic-bezier(0.600, -0.280, 0.735, 0.045)",function(t,i,e,n,r){return void 0===r&&(r=1.70158),e*(t/=n)*t*((r+1)*t-r)+i}],"ease-out-back":["cubic-bezier(0.175, 0.885, 0.320, 1.275)",function(t,i,e,n,r){return void 0===r&&(r=1.70158),e*((t=t/n-1)*t*((r+1)*t+r)+1)+i}],"ease-in-out-back":["cubic-bezier(0.680, -0.550, 0.265, 1.550)",function(t,i,e,n,r){return void 0===r&&(r=1.70158),1>(t/=n/2)?e/2*t*t*(((r*=1.525)+1)*t-r)+i:e/2*((t-=2)*t*(((r*=1.525)+1)*t+r)+2)+i}]},f={"ease-in-back":"cubic-bezier(0.600, 0, 0.735, 0.045)","ease-out-back":"cubic-bezier(0.175, 0.885, 0.320, 1)","ease-in-out-back":"cubic-bezier(0.680, 0, 0.265, 1)"},d=document,p=window,b="bkwld-tram",m=/[\-\.0-9]/g,v=/[A-Z]/,g="number",y=/^(rgb|#)/,w=/(em|cm|mm|in|pt|pc|px)$/,k=/(em|cm|mm|in|pt|pc|px|%)$/,x=/(deg|rad|turn)$/,z="unitless",q=" ",$=d.createElement("a"),M=["Webkit","Moz","O","ms"],A=["-webkit-","-moz-","-o-","-ms-"],B=function(t){if(t in $.style)return{dom:t,css:t};var i,e,n="",r=t.split("-");for(i=0;r.length>i;i++)n+=r[i].charAt(0).toUpperCase()+r[i].slice(1);for(i=0;M.length>i;i++)if(e=M[i]+n,e in $.style)return{dom:e,css:A[i]+t}},R=i.support={bind:Function.prototype.bind,transform:B("transform"),transition:B("transition"),backface:B("backface-visibility"),timing:B("transition-timing-function")};if(R.transition){var F=R.timing.dom;if($.style[F]=l["ease-in-back"][0],!$.style[F])for(var S in f)l[S][0]=f[S]}var j=i.frame=function(){var t=p.requestAnimationFrame||p.webkitRequestAnimationFrame||p.mozRequestAnimationFrame||p.oRequestAnimationFrame||p.msRequestAnimationFrame;return t&&R.bind?t.bind(p):function(t){p.setTimeout(t,16)}}(),G=i.now=function(){var t=p.performance,i=t&&(t.now||t.webkitNow||t.msNow||t.mozNow);return i&&R.bind?i.bind(t):Date.now||function(){return+new Date}}(),T=h(function(i){function n(t,i){var e=c((""+t).split(q)),n=e[0];i=i||{};var r=L[n];if(!r)return K("Unsupported property: "+n);if(!i.weak||!this.props[n]){var s=r[0],a=this.props[n];return a||(a=this.props[n]=new s.Bare),a.init(this.$el,e,r,i),a}}function r(t,i,e){if(t){var r=typeof t;if(i||(this.timer&&this.timer.destroy(),this.queue=[],this.active=!1),"number"==r&&i)return this.timer=new P({duration:t,context:this,complete:o}),this.active=!0,void 0;if("string"==r&&i){switch(t){case"hide":d.call(this);break;case"stop":h.call(this);break;case"redraw":p.call(this);break;default:n.call(this,t,e&&e[1])}return o.call(this)}if("function"==r)return t.call(this,this),void 0;if("object"==r){var s=0;m.call(this,t,function(t,i){t.span>s&&(s=t.span),t.stop(),t.animate(i)},function(t){"wait"in t&&(s=u(t.wait,0))}),b.call(this),s>0&&(this.timer=new P({duration:s,context:this}),this.active=!0,i&&(this.timer.complete=o));var a=this,c=!1,l={};j(function(){m.call(a,t,function(t){t.active&&(c=!0,l[t.name]=t.nextStyle)}),c&&a.$el.css(l)})}}}function s(t){t=u(t,0),this.active?this.queue.push({options:t}):(this.timer=new P({duration:t,context:this,complete:o}),this.active=!0)}function a(t){return this.active?(this.queue.push({options:t,args:arguments}),this.timer.complete=o,void 0):K("No active transition timer. Use start() or wait() before then().")}function o(){if(this.timer&&this.timer.destroy(),this.active=!1,this.queue.length){var t=this.queue.shift();r.call(this,t.options,!0,t.args)}}function h(t,i){this.timer&&this.timer.destroy(),this.queue=[],this.active=!1;var e;"string"==typeof t?(e={},e[t]=1):e="object"==typeof t&&null!=t?t:this.props,i?(m.call(this,e,y),b.call(this),m.call(this,e,w)):(m.call(this,e,g),b.call(this))}function l(t){h.call(this,t),m.call(this,t,k,x)}function f(t){"string"!=typeof t&&(t="block"),this.el.style.display=t}function d(){h.call(this),this.el.style.display="none"}function p(){this.el.offsetHeight}function b(){var t,i,e=[];for(t in this.props)i=this.props[t],i.active&&e.push(i.string);e=e.join(","),this.style!==e&&(this.style=e,this.el.style[R.transition.dom]=e)}function m(t,i,r){var s,a,o,u,c=i!==g&&i!==y&&i!==w,h={};for(s in t)o=t[s],s in Q?(h.transform||(h.transform={}),h.transform[s]=o):(v.test(s)&&(s=e(s)),s in L?h[s]=o:(u||(u={}),u[s]=o));for(s in h){if(o=h[s],a=this.props[s],!a){if(!c)continue;a=n.call(this,s)}i.call(this,a,o)}r&&u&&r.call(this,u)}function g(t){t.stop()}function y(t){t.pause()}function w(t){t.stop(!0)}function k(t,i){t.set(i)}function x(t){this.$el.css(t)}function z(t,e){i[t]=function(){return this.children?$.call(this,e,arguments):(this.el&&e.apply(this,arguments),this)}}function $(t,i){var e,n=this.children.length;for(e=0;n>e;e++)t.apply(this.children[e],i);return this}i.init=function(i){this.$el=t(i),this.el=this.$el[0],this.props={},this.queue=[],this.style="",this.active=!1,R.backface&&Y.hideBackface&&E(this.el,R.backface.css,"hidden")},z("add",n),z("start",r),z("wait",s),z("then",a),z("next",o),z("stop",h),z("set",l),z("show",f),z("hide",d),z("redraw",p)}),U=h(T,function(i){function e(i,e){var n=t.data(i,b)||t.data(i,b,new T.Bare);return n.el||n.init(i),e?n.start(e):n}i.init=function(i,n){var r=t(i);if(!r.length)return this;if(1===r.length)return e(r[0],n);var s=[];return r.each(function(t,i){s.push(e(i,n))}),this.children=s,this}}),I=h(function(t){function i(t,i,e){return void 0!==i&&(e=i),t in l?t:e}function e(t){var i=/rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(t);return(i?r(i[1],i[2],i[3]):t).replace(/#(\w)(\w)(\w)$/,"#$1$1$2$2$3$3")}var n={duration:500,ease:"ease",delay:0};t.init=function(t,e,r,s){this.$el=t,this.el=t[0];var a=e[0];r[2]&&(a=r[2]),D[a]&&(a=D[a]),this.name=a,this.type=r[1],this.duration=u(e[1],this.duration,n.duration),this.ease=i(e[2],this.ease,n.ease),this.delay=u(e[3],this.delay,n.delay),this.span=this.duration+this.delay,this.active=!1,this.nextStyle=null,this.unit=s.unit||this.unit||Y.defaultUnit,this.angle=s.angle||this.angle||Y.defaultAngle,Y.fallback||s.fallback?this.animate=this.fallback:(this.animate=this.transition,this.string=this.name+q+this.duration+"ms"+("ease"!=this.ease?q+l[this.ease][0]:"")+(this.delay?q+this.delay+"ms":""))},t.set=function(t){t=this.convert(t,this.type),this.update(t),this.redraw()},t.transition=function(t){this.active=!0,this.nextStyle=this.convert(t,this.type)},t.fallback=function(t){this.tween=new O({from:this.convert(this.get(),this.type),to:this.convert(t,this.type),duration:this.duration,delay:this.delay,ease:this.ease,update:this.update,context:this})},t.get=function(){return C(this.el,this.name)},t.update=function(t){E(this.el,this.name,t)},t.pause=function(){this.active&&(this.active=!1,this.update(this.get()),this.redraw())},t.stop=function(t){var i=this.nextStyle;(this.active||i)&&(this.active=!1,this.nextStyle=null,this.update(t?i:this.get()));var e=this.tween;e&&e.active&&(t&&e.render(e.start+e.delay+e.duration),e.destroy())},t.convert=function(t,i){var n,r="number"==typeof t,s="string"==typeof t;switch(i){case g:if(r)return t;if(s&&""===t.replace(m,""))return+t;n="number(unitless)";break;case y:if(s){if(""===t&&this.original)return this.original;if(i.test(t))return"#"==t.charAt(0)&&7==t.length?t:e(t)}n="hex or rgb string";break;case w:if(r)return t+this.unit;if(s&&i.test(t))return t;n="number(px) or string(unit)";break;case k:if(r)return t+this.unit;if(s&&i.test(t))return t;n="number(px) or string(unit or %)";break;case x:if(r)return t+this.angle;if(s&&i.test(t))return t;n="number(deg) or string(angle)";break;case z:if(r)return t;if(s&&k.test(t))return t;n="number(unitless) or string(unit or %)"}return a(n,t),t},t.redraw=function(){this.el.offsetHeight}}),Z=h(I,function(t,i){t.init=function(){i.init.apply(this,arguments),this.original||(this.original=this.convert(this.get(),y))}}),H=h(I,function(t,i){t.init=function(){i.init.apply(this,arguments),this.animate=this.fallback},t.get=function(){return this.$el[this.name]()},t.update=function(t){this.$el[this.name](t)}}),N=h(I,function(t,i){function e(t,i){var e,n,r,s,a;for(e in t)s=Q[e],r=s[0],n=s[1]||e,a=this.convert(t[e],r),i.call(this,n,a,r)}t.init=function(){i.init.apply(this,arguments),this.current||(this.current={},Q.perspective&&Y.perspective&&(this.current.perspective=Y.perspective,E(this.el,this.name,this.style(this.current)),this.redraw()))},t.set=function(t){e.call(this,t,function(t,i){this.current[t]=i}),E(this.el,this.name,this.style(this.current)),this.redraw()},t.transition=function(t){var i=this.values(t);this.tween=new X({current:this.current,values:i,duration:this.duration,delay:this.delay,ease:this.ease});var e,n={};for(e in this.current)n[e]=e in i?i[e]:this.current[e];this.active=!0,this.nextStyle=this.style(n)},t.fallback=function(t){var i=this.values(t);this.tween=new X({current:this.current,values:i,duration:this.duration,delay:this.delay,ease:this.ease,update:this.update,context:this})},t.update=function(){E(this.el,this.name,this.style(this.current))},t.style=function(t){var i,e="";for(i in t)e+=i+"("+t[i]+") ";return e},t.values=function(t){var i,n={};return e.call(this,t,function(t,e,r){n[t]=e,void 0===this.current[t]&&(i=0,~t.indexOf("scale")&&(i=1),this.current[t]=this.convert(i,r))}),n}}),O=h(function(i){function e(t){1===d.push(t)&&j(a)}function a(){var t,i,e,n=d.length;if(n)for(j(a),i=G(),t=n;t--;)e=d[t],e&&e.render(i)}function u(i){var e,n=t.inArray(i,d);n>=0&&(e=d.slice(n+1),d.length=n,e.length&&(d=d.concat(e)))}function c(t){return Math.round(t*p)/p}function h(t,i,e){return r(t[0]+e*(i[0]-t[0]),t[1]+e*(i[1]-t[1]),t[2]+e*(i[2]-t[2]))}var f={ease:l.ease[1],from:0,to:1};i.init=function(t){this.duration=t.duration||0,this.delay=t.delay||0;var i=t.ease||f.ease;l[i]&&(i=l[i][1]),"function"!=typeof i&&(i=f.ease),this.ease=i,this.update=t.update||s,this.complete=t.complete||s,this.context=t.context||this,this.name=t.name;var e=t.from,n=t.to;void 0===e&&(e=f.from),void 0===n&&(n=f.to),this.unit=t.unit||"","number"==typeof e&&"number"==typeof n?(this.begin=e,this.change=n-e):this.format(n,e),this.value=this.begin+this.unit,this.start=G(),t.autoplay!==!1&&this.play()},i.play=function(){this.active||(this.start||(this.start=G()),this.active=!0,e(this))},i.stop=function(){this.active&&(this.active=!1,u(this))},i.render=function(t){var i,e=t-this.start;if(this.delay){if(this.delay>=e)return;e-=this.delay}if(this.duration>e){var n=this.ease(e,0,1,this.duration);return i=this.startRGB?h(this.startRGB,this.endRGB,n):c(this.begin+n*this.change),this.value=i+this.unit,this.update.call(this.context,i),void 0}i=this.endHex||this.begin+this.change,this.value=i+this.unit,this.update.call(this.context,i),this.complete.call(this.context),this.destroy()},i.format=function(t,i){if(i+="",t+="","#"==t.charAt(0))return this.startRGB=n(i),this.endRGB=n(t),this.endHex=t,this.begin=0,this.change=1,void 0;if(!this.unit){var e=i.replace(m,""),r=t.replace(m,"");e!==r&&o("tween",i,t),this.unit=e}i=parseFloat(i),t=parseFloat(t),this.begin=this.value=i,this.change=t-i},i.destroy=function(){this.stop(),this.context=null,this.ease=this.update=this.complete=s};var d=[],p=1e3}),P=h(O,function(t){t.init=function(t){this.duration=t.duration||0,this.complete=t.complete||s,this.context=t.context,this.play()},t.render=function(t){var i=t-this.start;this.duration>i||(this.complete.call(this.context),this.destroy())}}),X=h(O,function(t,i){t.init=function(t){this.context=t.context,this.update=t.update,this.tweens=[],this.current=t.current;var i,e;for(i in t.values)e=t.values[i],this.current[i]!==e&&this.tweens.push(new O({name:i,from:this.current[i],to:e,duration:t.duration,delay:t.delay,ease:t.ease,autoplay:!1}));this.play()},t.render=function(t){var i,e,n=this.tweens.length,r=!1;for(i=n;i--;)e=this.tweens[i],e.ease&&(e.render(t),this.current[e.name]=e.value,r=!0);return r?(this.update&&this.update.call(this.context),void 0):this.destroy()},t.destroy=function(){if(i.destroy.call(this),this.tweens){var t,e=this.tweens.length;for(t=e;t--;)this.tweens[t].destroy();this.tweens=null,this.current=null}}}),Y=i.config={defaultUnit:"px",defaultAngle:"deg",hideBackface:!0,perspective:"",fallback:!R.transition,agentTests:[]};i.fallback=function(t){if(!R.transition)return Y.fallback=!0;Y.agentTests.push("("+t+")");var i=RegExp(Y.agentTests.join("|"),"i");Y.fallback=i.test(navigator.userAgent)},i.fallback("6.0.[2-5] Safari"),i.tween=function(t){return new O(t)},i.delay=function(t,i,e){return new P({complete:i,duration:t,context:e})},t.fn.tram=function(t){return i.call(null,this,t)};var E=t.style,C=t.css,D={transform:R.transform&&R.transform.css},L={color:[Z,y],background:[Z,y,"background-color"],"outline-color":[Z,y],"border-color":[Z,y],"border-top-color":[Z,y],"border-right-color":[Z,y],"border-bottom-color":[Z,y],"border-left-color":[Z,y],"border-width":[I,w],"border-top-width":[I,w],"border-right-width":[I,w],"border-bottom-width":[I,w],"border-left-width":[I,w],"border-spacing":[I,w],"letter-spacing":[I,w],margin:[I,w],"margin-top":[I,w],"margin-right":[I,w],"margin-bottom":[I,w],"margin-left":[I,w],padding:[I,w],"padding-top":[I,w],"padding-right":[I,w],"padding-bottom":[I,w],"padding-left":[I,w],"outline-width":[I,w],opacity:[I,g],top:[I,k],right:[I,k],bottom:[I,k],left:[I,k],"font-size":[I,k],"text-indent":[I,k],"word-spacing":[I,k],width:[I,k],"min-width":[I,k],"max-width":[I,k],height:[I,k],"min-height":[I,k],"max-height":[I,k],"line-height":[I,z],"scroll-top":[H,g,"scrollTop"],"scroll-left":[H,g,"scrollLeft"]},Q={};R.transform&&(L.transform=[N],Q={x:[k,"translateX"],y:[k,"translateY"],rotate:[x],rotateX:[x],rotateY:[x],scale:[g],scaleX:[g],scaleY:[g],skew:[x],skewX:[x],skewY:[x]}),R.transform&&R.backface&&(Q.z=[k,"translateZ"],Q.rotateZ=[x],Q.scaleZ=[g],Q.perspective=[w]);var W=/ms/,J=/s|\./,K=function(){var t="warn",i=window.console;return i&&i[t]?function(e){i[t](e)}:s}();return t.tram=i}(window.jQuery);
-/*!
+window.tram=function(t){function i(t,i){var e=new Z.Bare;return e.init(t,i)}function e(t){return t.replace(/[A-Z]/g,function(t){return"-"+t.toLowerCase()})}function n(t){var i=parseInt(t.slice(1),16),e=255&i>>16,n=255&i>>8,r=255&i;return[e,n,r]}function r(t,i,e){return"#"+(1<<24|t<<16|i<<8|e).toString(16).slice(1)}function s(){}function a(t,i){_("Type warning: Expected: ["+t+"] Got: ["+typeof i+"] "+i)}function o(t,i,e){_("Units do not match ["+t+"]: "+i+", "+e)}function u(t,i,e){if(void 0!==i&&(e=i),void 0===t)return e;var n=e;return K.test(t)||!V.test(t)?n=parseInt(t,10):V.test(t)&&(n=1e3*parseFloat(t)),0>n&&(n=0),n===n?n:e}function c(t){for(var i=-1,e=t?t.length:0,n=[];e>++i;){var r=t[i];r&&n.push(r)}return n}var h=function(t,i,e){function n(t){return"object"==typeof t}function r(t){return"function"==typeof t}function s(){}function a(o,u){function c(){var t=new h;return r(t.init)&&t.init.apply(t,arguments),t}function h(){}u===e&&(u=o,o=Object),c.Bare=h;var l,f=s[t]=o[t],d=h[t]=c[t]=new s;return d.constructor=c,c.mixin=function(i){return h[t]=c[t]=a(c,i)[t],c},c.open=function(t){if(l={},r(t)?l=t.call(c,d,f,c,o):n(t)&&(l=t),n(l))for(var e in l)i.call(l,e)&&(d[e]=l[e]);return r(d.init)||(d.init=o),c},c.open(u)}return a}("prototype",{}.hasOwnProperty),l={ease:["ease",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(-2.75*s*r+11*r*r+-15.5*s+8*r+.25*t)}],"ease-in":["ease-in",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(-1*s*r+3*r*r+-3*s+2*r)}],"ease-out":["ease-out",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(.3*s*r+-1.6*r*r+2.2*s+-1.8*r+1.9*t)}],"ease-in-out":["ease-in-out",function(t,i,e,n){var r=(t/=n)*t,s=r*t;return i+e*(2*s*r+-5*r*r+2*s+2*r)}],linear:["linear",function(t,i,e,n){return e*t/n+i}],"ease-in-quad":["cubic-bezier(0.550, 0.085, 0.680, 0.530)",function(t,i,e,n){return e*(t/=n)*t+i}],"ease-out-quad":["cubic-bezier(0.250, 0.460, 0.450, 0.940)",function(t,i,e,n){return-e*(t/=n)*(t-2)+i}],"ease-in-out-quad":["cubic-bezier(0.455, 0.030, 0.515, 0.955)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t+i:-e/2*(--t*(t-2)-1)+i}],"ease-in-cubic":["cubic-bezier(0.550, 0.055, 0.675, 0.190)",function(t,i,e,n){return e*(t/=n)*t*t+i}],"ease-out-cubic":["cubic-bezier(0.215, 0.610, 0.355, 1)",function(t,i,e,n){return e*((t=t/n-1)*t*t+1)+i}],"ease-in-out-cubic":["cubic-bezier(0.645, 0.045, 0.355, 1)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t*t+i:e/2*((t-=2)*t*t+2)+i}],"ease-in-quart":["cubic-bezier(0.895, 0.030, 0.685, 0.220)",function(t,i,e,n){return e*(t/=n)*t*t*t+i}],"ease-out-quart":["cubic-bezier(0.165, 0.840, 0.440, 1)",function(t,i,e,n){return-e*((t=t/n-1)*t*t*t-1)+i}],"ease-in-out-quart":["cubic-bezier(0.770, 0, 0.175, 1)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t*t*t+i:-e/2*((t-=2)*t*t*t-2)+i}],"ease-in-quint":["cubic-bezier(0.755, 0.050, 0.855, 0.060)",function(t,i,e,n){return e*(t/=n)*t*t*t*t+i}],"ease-out-quint":["cubic-bezier(0.230, 1, 0.320, 1)",function(t,i,e,n){return e*((t=t/n-1)*t*t*t*t+1)+i}],"ease-in-out-quint":["cubic-bezier(0.860, 0, 0.070, 1)",function(t,i,e,n){return 1>(t/=n/2)?e/2*t*t*t*t*t+i:e/2*((t-=2)*t*t*t*t+2)+i}],"ease-in-sine":["cubic-bezier(0.470, 0, 0.745, 0.715)",function(t,i,e,n){return-e*Math.cos(t/n*(Math.PI/2))+e+i}],"ease-out-sine":["cubic-bezier(0.390, 0.575, 0.565, 1)",function(t,i,e,n){return e*Math.sin(t/n*(Math.PI/2))+i}],"ease-in-out-sine":["cubic-bezier(0.445, 0.050, 0.550, 0.950)",function(t,i,e,n){return-e/2*(Math.cos(Math.PI*t/n)-1)+i}],"ease-in-expo":["cubic-bezier(0.950, 0.050, 0.795, 0.035)",function(t,i,e,n){return 0===t?i:e*Math.pow(2,10*(t/n-1))+i}],"ease-out-expo":["cubic-bezier(0.190, 1, 0.220, 1)",function(t,i,e,n){return t===n?i+e:e*(-Math.pow(2,-10*t/n)+1)+i}],"ease-in-out-expo":["cubic-bezier(1, 0, 0, 1)",function(t,i,e,n){return 0===t?i:t===n?i+e:1>(t/=n/2)?e/2*Math.pow(2,10*(t-1))+i:e/2*(-Math.pow(2,-10*--t)+2)+i}],"ease-in-circ":["cubic-bezier(0.600, 0.040, 0.980, 0.335)",function(t,i,e,n){return-e*(Math.sqrt(1-(t/=n)*t)-1)+i}],"ease-out-circ":["cubic-bezier(0.075, 0.820, 0.165, 1)",function(t,i,e,n){return e*Math.sqrt(1-(t=t/n-1)*t)+i}],"ease-in-out-circ":["cubic-bezier(0.785, 0.135, 0.150, 0.860)",function(t,i,e,n){return 1>(t/=n/2)?-e/2*(Math.sqrt(1-t*t)-1)+i:e/2*(Math.sqrt(1-(t-=2)*t)+1)+i}],"ease-in-back":["cubic-bezier(0.600, -0.280, 0.735, 0.045)",function(t,i,e,n,r){return void 0===r&&(r=1.70158),e*(t/=n)*t*((r+1)*t-r)+i}],"ease-out-back":["cubic-bezier(0.175, 0.885, 0.320, 1.275)",function(t,i,e,n,r){return void 0===r&&(r=1.70158),e*((t=t/n-1)*t*((r+1)*t+r)+1)+i}],"ease-in-out-back":["cubic-bezier(0.680, -0.550, 0.265, 1.550)",function(t,i,e,n,r){return void 0===r&&(r=1.70158),1>(t/=n/2)?e/2*t*t*(((r*=1.525)+1)*t-r)+i:e/2*((t-=2)*t*(((r*=1.525)+1)*t+r)+2)+i}]},f={"ease-in-back":"cubic-bezier(0.600, 0, 0.735, 0.045)","ease-out-back":"cubic-bezier(0.175, 0.885, 0.320, 1)","ease-in-out-back":"cubic-bezier(0.680, 0, 0.265, 1)"},d=document,p=window,b="bkwld-tram",m=/[\-\.0-9]/g,v=/[A-Z]/,g="number",y=/^(rgb|#)/,w=/(em|cm|mm|in|pt|pc|px)$/,k=/(em|cm|mm|in|pt|pc|px|%)$/,x=/(deg|rad|turn)$/,z="unitless",q=/(all|none) 0s ease 0s/,$=/^(width|height)$/,M=" ",A=d.createElement("a"),B=["Webkit","Moz","O","ms"],R=["-webkit-","-moz-","-o-","-ms-"],F=function(t){if(t in A.style)return{dom:t,css:t};var i,e,n="",r=t.split("-");for(i=0;r.length>i;i++)n+=r[i].charAt(0).toUpperCase()+r[i].slice(1);for(i=0;B.length>i;i++)if(e=B[i]+n,e in A.style)return{dom:e,css:R[i]+t}},S=i.support={bind:Function.prototype.bind,transform:F("transform"),transition:F("transition"),backface:F("backface-visibility"),timing:F("transition-timing-function")};if(S.transition){var j=S.timing.dom;if(A.style[j]=l["ease-in-back"][0],!A.style[j])for(var I in f)l[I][0]=f[I]}var G=i.frame=function(){var t=p.requestAnimationFrame||p.webkitRequestAnimationFrame||p.mozRequestAnimationFrame||p.oRequestAnimationFrame||p.msRequestAnimationFrame;return t&&S.bind?t.bind(p):function(t){p.setTimeout(t,16)}}(),T=i.now=function(){var t=p.performance,i=t&&(t.now||t.webkitNow||t.msNow||t.mozNow);return i&&S.bind?i.bind(t):Date.now||function(){return+new Date}}(),U=h(function(i){function n(t,i){var e=c((""+t).split(M)),n=e[0];i=i||{};var r=W[n];if(!r)return _("Unsupported property: "+n);if(!i.weak||!this.props[n]){var s=r[0],a=this.props[n];return a||(a=this.props[n]=new s.Bare),a.init(this.$el,e,r,i),a}}function r(t,i,e){if(t){var r=typeof t;if(i||(this.timer&&this.timer.destroy(),this.queue=[],this.active=!1),"number"==r&&i)return this.timer=new Y({duration:t,context:this,complete:o}),this.active=!0,void 0;if("string"==r&&i){switch(t){case"hide":d.call(this);break;case"stop":h.call(this);break;case"redraw":p.call(this);break;default:n.call(this,t,e&&e[1])}return o.call(this)}if("function"==r)return t.call(this,this),void 0;if("object"==r){var s=0;m.call(this,t,function(t,i){t.span>s&&(s=t.span),t.stop(),t.animate(i)},function(t){"wait"in t&&(s=u(t.wait,0))}),b.call(this),s>0&&(this.timer=new Y({duration:s,context:this}),this.active=!0,i&&(this.timer.complete=o));var a=this,c=!1,l={};G(function(){m.call(a,t,function(t){t.active&&(c=!0,l[t.name]=t.nextStyle)}),c&&a.$el.css(l)})}}}function s(t){t=u(t,0),this.active?this.queue.push({options:t}):(this.timer=new Y({duration:t,context:this,complete:o}),this.active=!0)}function a(t){return this.active?(this.queue.push({options:t,args:arguments}),this.timer.complete=o,void 0):_("No active transition timer. Use start() or wait() before then().")}function o(){if(this.timer&&this.timer.destroy(),this.active=!1,this.queue.length){var t=this.queue.shift();r.call(this,t.options,!0,t.args)}}function h(t){this.timer&&this.timer.destroy(),this.queue=[],this.active=!1;var i;"string"==typeof t?(i={},i[t]=1):i="object"==typeof t&&null!=t?t:this.props,m.call(this,i,g),b.call(this)}function l(t){h.call(this,t),m.call(this,t,y,w)}function f(t){"string"!=typeof t&&(t="block"),this.el.style.display=t}function d(){h.call(this),this.el.style.display="none"}function p(){this.el.offsetHeight}function b(){var t,i,e=[];this.upstream&&e.push(this.upstream);for(t in this.props)i=this.props[t],i.active&&e.push(i.string);e=e.join(","),this.style!==e&&(this.style=e,this.el.style[S.transition.dom]=e)}function m(t,i,r){var s,a,o,u,c=i!==g,h={};for(s in t)o=t[s],s in J?(h.transform||(h.transform={}),h.transform[s]=o):(v.test(s)&&(s=e(s)),s in W?h[s]=o:(u||(u={}),u[s]=o));for(s in h){if(o=h[s],a=this.props[s],!a){if(!c)continue;a=n.call(this,s)}i.call(this,a,o)}r&&u&&r.call(this,u)}function g(t){t.stop()}function y(t,i){t.set(i)}function w(t){this.$el.css(t)}function k(t,e){i[t]=function(){return this.children?x.call(this,e,arguments):(this.el&&e.apply(this,arguments),this)}}function x(t,i){var e,n=this.children.length;for(e=0;n>e;e++)t.apply(this.children[e],i);return this}i.init=function(i){if(this.$el=t(i),this.el=this.$el[0],this.props={},this.queue=[],this.style="",this.active=!1,C.keepInherited&&!C.fallback){var e=L(this.el,"transition");e&&!q.test(e)&&(this.upstream=e)}S.backface&&C.hideBackface&&D(this.el,S.backface.css,"hidden")},k("add",n),k("start",r),k("wait",s),k("then",a),k("next",o),k("stop",h),k("set",l),k("show",f),k("hide",d),k("redraw",p)}),Z=h(U,function(i){function e(i,e){var n=t.data(i,b)||t.data(i,b,new U.Bare);return n.el||n.init(i),e?n.start(e):n}i.init=function(i,n){var r=t(i);if(!r.length)return this;if(1===r.length)return e(r[0],n);var s=[];return r.each(function(t,i){s.push(e(i,n))}),this.children=s,this}}),H=h(function(t){function i(){var t=this.get();this.update("auto");var i=this.get();return this.update(t),i}function e(t,i,e){return void 0!==i&&(e=i),t in l?t:e}function n(t){var i=/rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(t);return(i?r(i[1],i[2],i[3]):t).replace(/#(\w)(\w)(\w)$/,"#$1$1$2$2$3$3")}var s={duration:500,ease:"ease",delay:0};t.init=function(t,i,n,r){this.$el=t,this.el=t[0];var a=i[0];n[2]&&(a=n[2]),Q[a]&&(a=Q[a]),this.name=a,this.type=n[1],this.duration=u(i[1],this.duration,s.duration),this.ease=e(i[2],this.ease,s.ease),this.delay=u(i[3],this.delay,s.delay),this.span=this.duration+this.delay,this.active=!1,this.nextStyle=null,this.auto=$.test(this.name),this.unit=r.unit||this.unit||C.defaultUnit,this.angle=r.angle||this.angle||C.defaultAngle,C.fallback||r.fallback?this.animate=this.fallback:(this.animate=this.transition,this.string=this.name+M+this.duration+"ms"+("ease"!=this.ease?M+l[this.ease][0]:"")+(this.delay?M+this.delay+"ms":""))},t.set=function(t){t=this.convert(t,this.type),this.update(t),this.redraw()},t.transition=function(t){this.active=!0,t=this.convert(t,this.type),this.auto&&("auto"==this.el.style[this.name]&&(this.update(this.get()),this.redraw()),"auto"==t&&(t=i.call(this))),this.nextStyle=t},t.fallback=function(t){var e=this.el.style[this.name]||this.convert(this.get(),this.type);t=this.convert(t,this.type),this.auto&&("auto"==e&&(e=this.convert(this.get(),this.type)),"auto"==t&&(t=i.call(this))),this.tween=new X({from:e,to:t,duration:this.duration,delay:this.delay,ease:this.ease,update:this.update,context:this})},t.get=function(){return L(this.el,this.name)},t.update=function(t){D(this.el,this.name,t)},t.stop=function(){(this.active||this.nextStyle)&&(this.active=!1,this.nextStyle=null,D(this.el,this.name,this.get()));var t=this.tween;t&&t.context&&t.destroy()},t.convert=function(t,i){if("auto"==t&&this.auto)return t;var e,r="number"==typeof t,s="string"==typeof t;switch(i){case g:if(r)return t;if(s&&""===t.replace(m,""))return+t;e="number(unitless)";break;case y:if(s){if(""===t&&this.original)return this.original;if(i.test(t))return"#"==t.charAt(0)&&7==t.length?t:n(t)}e="hex or rgb string";break;case w:if(r)return t+this.unit;if(s&&i.test(t))return t;e="number(px) or string(unit)";break;case k:if(r)return t+this.unit;if(s&&i.test(t))return t;e="number(px) or string(unit or %)";break;case x:if(r)return t+this.angle;if(s&&i.test(t))return t;e="number(deg) or string(angle)";break;case z:if(r)return t;if(s&&k.test(t))return t;e="number(unitless) or string(unit or %)"}return a(e,t),t},t.redraw=function(){this.el.offsetHeight}}),N=h(H,function(t,i){t.init=function(){i.init.apply(this,arguments),this.original||(this.original=this.convert(this.get(),y))}}),O=h(H,function(t,i){t.init=function(){i.init.apply(this,arguments),this.animate=this.fallback},t.get=function(){return this.$el[this.name]()},t.update=function(t){this.$el[this.name](t)}}),P=h(H,function(t,i){function e(t,i){var e,n,r,s,a;for(e in t)s=J[e],r=s[0],n=s[1]||e,a=this.convert(t[e],r),i.call(this,n,a,r)}t.init=function(){i.init.apply(this,arguments),this.current||(this.current={},J.perspective&&C.perspective&&(this.current.perspective=C.perspective,D(this.el,this.name,this.style(this.current)),this.redraw()))},t.set=function(t){e.call(this,t,function(t,i){this.current[t]=i}),D(this.el,this.name,this.style(this.current)),this.redraw()},t.transition=function(t){var i=this.values(t);this.tween=new E({current:this.current,values:i,duration:this.duration,delay:this.delay,ease:this.ease});var e,n={};for(e in this.current)n[e]=e in i?i[e]:this.current[e];this.active=!0,this.nextStyle=this.style(n)},t.fallback=function(t){var i=this.values(t);this.tween=new E({current:this.current,values:i,duration:this.duration,delay:this.delay,ease:this.ease,update:this.update,context:this})},t.update=function(){D(this.el,this.name,this.style(this.current))},t.style=function(t){var i,e="";for(i in t)e+=i+"("+t[i]+") ";return e},t.values=function(t){var i,n={};return e.call(this,t,function(t,e,r){n[t]=e,void 0===this.current[t]&&(i=0,~t.indexOf("scale")&&(i=1),this.current[t]=this.convert(i,r))}),n}}),X=h(function(i){function e(t){1===d.push(t)&&G(a)}function a(){var t,i,e,n=d.length;if(n)for(G(a),i=T(),t=n;t--;)e=d[t],e&&e.render(i)}function u(i){var e,n=t.inArray(i,d);n>=0&&(e=d.slice(n+1),d.length=n,e.length&&(d=d.concat(e)))}function c(t){return Math.round(t*p)/p}function h(t,i,e){return r(t[0]+e*(i[0]-t[0]),t[1]+e*(i[1]-t[1]),t[2]+e*(i[2]-t[2]))}var f={ease:l.ease[1],from:0,to:1};i.init=function(t){this.duration=t.duration||0,this.delay=t.delay||0;var i=t.ease||f.ease;l[i]&&(i=l[i][1]),"function"!=typeof i&&(i=f.ease),this.ease=i,this.update=t.update||s,this.complete=t.complete||s,this.context=t.context||this,this.name=t.name;var e=t.from,n=t.to;void 0===e&&(e=f.from),void 0===n&&(n=f.to),this.unit=t.unit||"","number"==typeof e&&"number"==typeof n?(this.begin=e,this.change=n-e):this.format(n,e),this.value=this.begin+this.unit,this.start=T(),t.autoplay!==!1&&this.play()},i.play=function(){this.active||(this.start||(this.start=T()),this.active=!0,e(this))},i.stop=function(){this.active&&(this.active=!1,u(this))},i.render=function(t){var i,e=t-this.start;if(this.delay){if(this.delay>=e)return;e-=this.delay}if(this.duration>e){var n=this.ease(e,0,1,this.duration);return i=this.startRGB?h(this.startRGB,this.endRGB,n):c(this.begin+n*this.change),this.value=i+this.unit,this.update.call(this.context,this.value),void 0}i=this.endHex||this.begin+this.change,this.value=i+this.unit,this.update.call(this.context,this.value),this.complete.call(this.context),this.destroy()},i.format=function(t,i){if(i+="",t+="","#"==t.charAt(0))return this.startRGB=n(i),this.endRGB=n(t),this.endHex=t,this.begin=0,this.change=1,void 0;if(!this.unit){var e=i.replace(m,""),r=t.replace(m,"");e!==r&&o("tween",i,t),this.unit=e}i=parseFloat(i),t=parseFloat(t),this.begin=this.value=i,this.change=t-i},i.destroy=function(){this.stop(),this.context=null,this.ease=this.update=this.complete=s};var d=[],p=1e3}),Y=h(X,function(t){t.init=function(t){this.duration=t.duration||0,this.complete=t.complete||s,this.context=t.context,this.play()},t.render=function(t){var i=t-this.start;this.duration>i||(this.complete.call(this.context),this.destroy())}}),E=h(X,function(t,i){t.init=function(t){this.context=t.context,this.update=t.update,this.tweens=[],this.current=t.current;var i,e;for(i in t.values)e=t.values[i],this.current[i]!==e&&this.tweens.push(new X({name:i,from:this.current[i],to:e,duration:t.duration,delay:t.delay,ease:t.ease,autoplay:!1}));this.play()},t.render=function(t){var i,e,n=this.tweens.length,r=!1;for(i=n;i--;)e=this.tweens[i],e.context&&(e.render(t),this.current[e.name]=e.value,r=!0);return r?(this.update&&this.update.call(this.context),void 0):this.destroy()},t.destroy=function(){if(i.destroy.call(this),this.tweens){var t,e=this.tweens.length;for(t=e;t--;)this.tweens[t].destroy();this.tweens=null,this.current=null}}}),C=i.config={defaultUnit:"px",defaultAngle:"deg",keepInherited:!1,hideBackface:!1,perspective:"",fallback:!S.transition,agentTests:[]};i.fallback=function(t){if(!S.transition)return C.fallback=!0;C.agentTests.push("("+t+")");var i=RegExp(C.agentTests.join("|"),"i");C.fallback=i.test(navigator.userAgent)},i.fallback("6.0.[2-5] Safari"),i.tween=function(t){return new X(t)},i.delay=function(t,i,e){return new Y({complete:i,duration:t,context:e})},t.fn.tram=function(t){return i.call(null,this,t)};var D=t.style,L=t.css,Q={transform:S.transform&&S.transform.css},W={color:[N,y],background:[N,y,"background-color"],"outline-color":[N,y],"border-color":[N,y],"border-top-color":[N,y],"border-right-color":[N,y],"border-bottom-color":[N,y],"border-left-color":[N,y],"border-width":[H,w],"border-top-width":[H,w],"border-right-width":[H,w],"border-bottom-width":[H,w],"border-left-width":[H,w],"border-spacing":[H,w],"letter-spacing":[H,w],margin:[H,w],"margin-top":[H,w],"margin-right":[H,w],"margin-bottom":[H,w],"margin-left":[H,w],padding:[H,w],"padding-top":[H,w],"padding-right":[H,w],"padding-bottom":[H,w],"padding-left":[H,w],"outline-width":[H,w],opacity:[H,g],top:[H,k],right:[H,k],bottom:[H,k],left:[H,k],"font-size":[H,k],"text-indent":[H,k],"word-spacing":[H,k],width:[H,k],"min-width":[H,k],"max-width":[H,k],height:[H,k],"min-height":[H,k],"max-height":[H,k],"line-height":[H,z],"scroll-top":[O,g,"scrollTop"],"scroll-left":[O,g,"scrollLeft"]},J={};S.transform&&(W.transform=[P],J={x:[k,"translateX"],y:[k,"translateY"],rotate:[x],rotateX:[x],rotateY:[x],scale:[g],scaleX:[g],scaleY:[g],skew:[x],skewX:[x],skewY:[x]}),S.transform&&S.backface&&(J.z=[k,"translateZ"],J.rotateZ=[x],J.scaleZ=[g],J.perspective=[w]);var K=/ms/,V=/s|\./,_=function(){var t="warn",i=window.console;return i&&i[t]?function(e){i[t](e)}:s}();return t.tram=i}(window.jQuery);/*!
  * jQuery-ajaxTransport-XDomainRequest - v1.0.1 - 2013-10-17
  * https://github.com/MoonScript/jQuery-ajaxTransport-XDomainRequest
  * Copyright (c) 2013 Jason Moon (@JSONMOON)
  * Licensed MIT (/blob/master/LICENSE.txt)
  */
 (function($){if(!$.support.cors&&$.ajaxTransport&&window.XDomainRequest){var n=/^https?:\/\//i;var o=/^get|post$/i;var p=new RegExp('^'+location.protocol,'i');var q=/text\/html/i;var r=/\/json/i;var s=/\/xml/i;$.ajaxTransport('* text html xml json',function(i,j,k){if(i.crossDomain&&i.async&&o.test(i.type)&&n.test(i.url)&&p.test(i.url)){var l=null;var m=(j.dataType||'').toLowerCase();return{send:function(f,g){l=new XDomainRequest();if(/^\d+$/.test(j.timeout)){l.timeout=j.timeout}l.ontimeout=function(){g(500,'timeout')};l.onload=function(){var a='Content-Length: '+l.responseText.length+'\r\nContent-Type: '+l.contentType;var b={code:200,message:'success'};var c={text:l.responseText};try{if(m==='html'||q.test(l.contentType)){c.html=l.responseText}else if(m==='json'||(m!=='text'&&r.test(l.contentType))){try{c.json=$.parseJSON(l.responseText)}catch(e){b.code=500;b.message='parseerror'}}else if(m==='xml'||(m!=='text'&&s.test(l.contentType))){var d=new ActiveXObject('Microsoft.XMLDOM');d.async=false;try{d.loadXML(l.responseText)}catch(e){d=undefined}if(!d||!d.documentElement||d.getElementsByTagName('parsererror').length){b.code=500;b.message='parseerror';throw'Invalid XML: '+l.responseText;}c.xml=d}}catch(parseMessage){throw parseMessage;}finally{g(b.code,b.message,c,a)}};l.onprogress=function(){};l.onerror=function(){g(500,'error',{text:l.responseText})};var h='';if(j.data){h=($.type(j.data)==='string')?j.data:$.param(j.data)}l.open(i.type,i.url);l.send(h)},abort:function(){if(l){l.abort()}}}}})}})(jQuery);
-/*!
- * tap.js
- * Copyright (c) 2013 Alex Gibson, http://alxgbsn.co.uk/
- * Released under MIT license
- */
-(function (window, document) {
-
-    'use strict';
-
-    function Tap(el) {
-        el = typeof el === 'object' ? el : document.getElementById(el);
-        this.element = el;
-        this.moved = false; //flags if the finger has moved
-        this.startX = 0; //starting x coordinate
-        this.startY = 0; //starting y coordinate
-        this.hasTouchEventOccured = false; //flag touch event
-        el.addEventListener('touchstart', this, false);
-        el.addEventListener('touchmove', this, false);
-        el.addEventListener('touchend', this, false);
-        el.addEventListener('touchcancel', this, false);
-        el.addEventListener('mousedown', this, false);
-        el.addEventListener('mouseup', this, false);
-    }
-
-    Tap.prototype.start = function (e) {
-        if (e.type === 'touchstart') {
-            this.hasTouchEventOccured = true;
-        }
-        this.moved = false;
-        this.startX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-        this.startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-    };
-
-    Tap.prototype.move = function (e) {
-        //if finger moves more than 10px flag to cancel
-        if (Math.abs(e.touches[0].clientX - this.startX) > 10 || Math.abs(e.touches[0].clientY - this.startY) > 10) {
-            this.moved = true;
-        }
-    };
-
-    Tap.prototype.end = function (e) {
-        var evt;
-
-        if (this.hasTouchEventOccured && e.type === 'mouseup') {
-            e.preventDefault();
-            e.stopPropagation();
-            this.hasTouchEventOccured = false;
-            return;
-        }
-
-        if (!this.moved) {
-            //create custom event
-            if (typeof document.CustomEvent !== "undefined") {
-                evt = new document.CustomEvent('tap', {
-                    bubbles: true,
-                    cancelable: true
-                });
-            } else {
-                evt = document.createEvent('Event');
-                evt.initEvent('tap', true, true);
-            }
-            e.target.dispatchEvent(evt);
-        }
-    };
-
-    Tap.prototype.cancel = function (e) {
-        this.hasTouchEventOccured = false;
-        this.moved = false;
-        this.startX = 0;
-        this.startY = 0;
-    };
-
-    Tap.prototype.destroy = function () {
-        var el = this.element;
-        el.removeEventListener('touchstart', this, false);
-        el.removeEventListener('touchmove', this, false);
-        el.removeEventListener('touchend', this, false);
-        el.removeEventListener('touchcancel', this, false);
-        el.removeEventListener('mousedown', this, false);
-        el.removeEventListener('mouseup', this, false);
-        this.element = null;
-    };
-
-    Tap.prototype.handleEvent = function (e) {
-        switch (e.type) {
-        case 'touchstart': this.start(e); break;
-        case 'touchmove': this.move(e); break;
-        case 'touchend': this.end(e); break;
-        case 'touchcancel': this.cancel(e); break;
-        case 'mousedown': this.start(e); break;
-        case 'mouseup': this.end(e); break;
-        }
-    };
-
-    window.Tap = Tap;
-
-}(window, document));
 /* jshint ignore:end */
 /**
  * ----------------------------------------------------------------------
@@ -505,120 +414,570 @@ window.tram=function(t){function i(t,i){var e=new U.Bare;return e.init(t,i)}func
 Webflow.init();
 /**
  * ----------------------------------------------------------------------
- * Webflow: Touch events for jQuery based on tap.js
+ * Webflow: Interactions
+ */
+Webflow.define('ix', function ($, _) {
+  'use strict';
+
+  var api = {};
+  var designer;
+  var $win = $(window);
+  var namespace = '.w-ix';
+  var tram = window.tram;
+  var env = Webflow.env;
+  var ios = env.ios;
+  var inApp = env();
+  var emptyFix = env.chrome && env.chrome < 35;
+  var transNone = 'none 0s ease 0s';
+  var introEvent = 'w-ix-intro' + namespace;
+  var outroEvent = 'w-ix-outro' + namespace;
+  var eventQueue = [];
+  var $subs = $();
+  var config = {};
+  var anchors = [];
+  var loads = [];
+  var readys = [];
+  var unique = 0;
+  var store;
+
+  // -----------------------------------
+  // Module methods
+
+  api.init = function (list) {
+    setTimeout(function () { init(list); }, 1);
+  };
+
+  api.preview = function () {
+    designer = false;
+    setTimeout(function () { init(window.__wf_ix); }, 1);
+  };
+
+  api.design = function () {
+    designer = true;
+    $subs.each(teardown);
+    Webflow.scroll.off(scroll);
+    asyncEvents();
+    anchors = [];
+    loads = [];
+    readys = [];
+  };
+
+  api.run = run;
+  api.events = {};
+  api.style = inApp ? styleApp : stylePub;
+
+  // -----------------------------------
+  // Private methods
+
+  function init(list) {
+    if (!list) return;
+    store = {};
+
+    // Map all interactions to a hash using slug as key.
+    config = {};
+    _.each(list, function (item) {
+      config[item.slug] = item.value;
+    });
+
+    // Build each element's interaction keying from data attribute
+    var els = $('[data-ix]');
+    els.each(teardown);
+    els.each(build);
+
+    // Listen for scroll events if any anchors exist
+    if (anchors.length) {
+      Webflow.scroll.on(scroll);
+      setTimeout(scroll, 1);
+    }
+
+    // Handle loads or readys if they exist
+    if (loads.length) $win.on('load', runLoads);
+    if (readys.length) setTimeout(runReadys, 1);
+
+    // Init module events
+    initEvents();
+  }
+
+  function build(i, el) {
+    var $el = $(el);
+    var id = $el.attr('data-ix');
+    var ix = config[id];
+    if (!ix) return;
+    var triggers = ix.triggers;
+    if (!triggers) return;
+    var state = store[id] || (store[id] = {});
+    var $proxy;
+
+    // Set initial styles, unless we detect an iOS device + any non-iOS triggers
+    var setStyles = !(ios && _.any(triggers, isNonIOS));
+    if (setStyles) api.style($el, ix.style);
+
+    _.each(triggers, function (trigger) {
+      var type = trigger.type;
+      var stepsB = trigger.stepsB && trigger.stepsB.length;
+
+      function runA() { run(trigger, $el, { group: 'A' }); }
+      function runB() { run(trigger, $el, { group: 'B' }); }
+
+      if (type == 'load') {
+        (trigger.preload && !inApp) ? loads.push(runA) : readys.push(runA);
+        return;
+      }
+
+      if (type == 'click') {
+        var stateKey = 'click:' + unique++;
+        if (trigger.descend) stateKey += ':descend';
+        if (trigger.siblings) stateKey += ':siblings';
+        if (trigger.selector) stateKey += ':' + trigger.selector;
+
+        $el.on('click' + namespace, function (evt) {
+          if ($el.attr('href') === '#') evt.preventDefault();
+
+          run(trigger, $el, { group: state[stateKey] ? 'B' : 'A' });
+          if (stepsB) state[stateKey] = !state[stateKey];
+        });
+        $subs = $subs.add($el);
+        return;
+      }
+
+      if (type == 'hover') {
+        $el.on('mouseenter' + namespace, runA);
+        $el.on('mouseleave' + namespace, runB);
+        $subs = $subs.add($el);
+        return;
+      }
+
+      if (type == 'tabs') {
+        $proxy = $el.closest('.w-tab-link, .w-tab-pane');
+        $proxy.on(introEvent, runA).on(outroEvent, runB);
+        $subs = $subs.add($proxy);
+        return;
+      }
+
+      if (type == 'slider') {
+        $proxy = $el.closest('.w-slide');
+        $proxy.on(introEvent, runA).on(outroEvent, runB);
+        $subs = $subs.add($proxy);
+        return;
+      }
+
+      // Ignore the following triggers on iOS devices
+      if (ios) return;
+
+      if (type == 'scroll') {
+        anchors.push({
+          el: $el, trigger: trigger, state: { active: false },
+          offsetTop: convert(trigger.offsetTop),
+          offsetBot: convert(trigger.offsetBot)
+        });
+        return;
+      }
+    });
+  }
+
+  function isNonIOS(trigger) {
+    return trigger.type == 'scroll';
+  }
+
+  function convert(offset) {
+    if (!offset) return 0;
+    offset = offset + '';
+    var result = parseInt(offset, 10);
+    if (result !== result) return 0;
+    if (offset.indexOf('%') > 0) {
+      result = result / 100;
+      if (result >= 1) result = 0.999;
+    }
+    return result;
+  }
+
+  function teardown(i, el) {
+    $(el).off(namespace);
+  }
+
+  function scroll() {
+    var viewTop = $win.scrollTop();
+    var viewHeight = $win.height();
+
+    // Check each anchor for a valid scroll trigger
+    var count = anchors.length;
+    for (var i = 0; i < count; i++) {
+      var anchor = anchors[i];
+      var $el = anchor.el;
+      var trigger = anchor.trigger;
+      var stepsB = trigger.stepsB && trigger.stepsB.length;
+      var state = anchor.state;
+      var top = $el.offset().top;
+      var height = $el.outerHeight();
+      var offsetTop = anchor.offsetTop;
+      var offsetBot = anchor.offsetBot;
+      if (offsetTop < 1 && offsetTop > 0) offsetTop *= viewHeight;
+      if (offsetBot < 1 && offsetBot > 0) offsetBot *= viewHeight;
+      var active = (top + height - offsetTop >= viewTop && top + offsetBot <= viewTop + viewHeight);
+      if (active === state.active) continue;
+      if (active === false && !stepsB) continue;
+      state.active = active;
+      run(trigger, $el, { group: active ? 'A' : 'B' });
+    }
+  }
+
+  function runLoads() {
+    var count = loads.length;
+    for (var i = 0; i < count; i++) {
+      loads[i]();
+    }
+  }
+
+  function runReadys() {
+    var count = readys.length;
+    for (var i = 0; i < count; i++) {
+      readys[i]();
+    }
+  }
+
+  function run(trigger, $el, opts, replay) {
+    opts = opts || {};
+    var done = opts.done;
+
+    // Do not run in designer unless forced
+    if (designer && !opts.force) return;
+
+    // Operate on a set of grouped steps
+    var group = opts.group || 'A';
+    var loop = trigger['loop' + group];
+    var steps = trigger['steps' + group];
+    if (!steps || !steps.length) return;
+    if (steps.length < 2) loop = false;
+
+    // One-time init before any loops
+    if (!replay) {
+
+      // Find selector within element descendants, siblings, or query whole document
+      var selector = trigger.selector;
+      if (selector) {
+        $el = (
+          trigger.descend ? $el.find(selector) :
+          trigger.siblings ? $el.siblings(selector) :
+          $(selector)
+        );
+        if (inApp) $el.attr('data-ix-affect', 1);
+      }
+
+      // Apply empty fix for certain Chrome versions
+      if (emptyFix) $el.addClass('w-ix-emptyfix');
+    }
+
+    var _tram = tram($el);
+
+    // Add steps
+    var meta = {};
+    for (var i = 0; i < steps.length; i++) {
+      addStep(_tram, steps[i], meta);
+    }
+
+    function fin() {
+      // Run trigger again if looped
+      if (loop) return run(trigger, $el, opts, true);
+
+      // Reset any 'auto' values
+      if (meta.width == 'auto') _tram.set({ width: 'auto' });
+      if (meta.height == 'auto') _tram.set({ height: 'auto' });
+
+      // Run callback
+      done && done();
+    }
+
+    // Add final step to queue if tram has started
+    meta.start ? _tram.then(fin) : fin();
+  }
+
+  function addStep(_tram, step, meta) {
+    var addMethod = 'add';
+    var startMethod = 'start';
+
+    // Once the transition has started, we will always use then() to add to the queue.
+    if (meta.start) addMethod = startMethod = 'then';
+
+    // Parse transitions string on the current step
+    var transitions = step.transition;
+    if (transitions) {
+      transitions = transitions.split(',');
+      for (var i = 0; i < transitions.length; i++) {
+        _tram[addMethod](transitions[i]);
+      }
+    }
+
+    // Build a clean object to pass to the tram method
+    var clean = tramify(step) || {};
+
+    // Store last width and height values
+    if (clean.width != null) meta.width = clean.width;
+    if (clean.height != null) meta.height = clean.height;
+
+    // When transitions are not present, set values immediately and continue queue.
+    if (transitions == null) {
+
+      // If we have started, wrap set() in then() and reset queue
+      if (meta.start) {
+        _tram.then(function () {
+          var queue = this.queue;
+          this.set(clean);
+          if (clean.display) {
+            _tram.redraw();
+            Webflow.redraw.up();
+          }
+          this.queue = queue;
+          this.next();
+        });
+      } else {
+        _tram.set(clean);
+
+        // Always redraw after setting display
+        if (clean.display) {
+          _tram.redraw();
+          Webflow.redraw.up();
+        }
+      }
+
+      // Use the wait() method to kick off queue in absence of transitions.
+      var wait = clean.wait;
+      if (wait != null) {
+        _tram.wait(wait);
+        meta.start = true;
+      }
+
+    // Otherwise, when transitions are present
+    } else {
+
+      // If display is present, handle it separately
+      if (clean.display) {
+        var display = clean.display;
+        delete clean.display;
+
+        // If we've already started, we need to wrap it in a then()
+        if (meta.start) {
+          _tram.then(function () {
+            var queue = this.queue;
+            this.set({ display: display }).redraw();
+            Webflow.redraw.up();
+            this.queue = queue;
+            this.next();
+          });
+        } else {
+          _tram.set({ display: display }).redraw();
+          Webflow.redraw.up();
+        }
+      }
+
+      // Otherwise, start a transition using the current start method.
+      _tram[startMethod](clean);
+      meta.start = true;
+    }
+  }
+
+  // (In app) Set styles immediately and manage upstream transition
+  function styleApp(el, data) {
+    var _tram = tram(el);
+
+    // Get computed transition value
+    el.css('transition', '');
+    var computed = el.css('transition');
+
+    // If computed is disabled, clear upstream
+    if (computed === transNone) computed = _tram.upstream = null;
+
+    // Disable upstream temporarily
+    _tram.upstream = transNone;
+
+    // Set values immediately
+    _tram.set(tramify(data));
+
+    // Only restore upstream in preview mode
+    _tram.upstream = computed;
+  }
+
+  // (Published) Set styles immediately on specified jquery element
+  function stylePub(el, data) {
+    tram(el).set(tramify(data));
+  }
+
+  // Build a clean object for tram
+  function tramify(obj) {
+    var result = {};
+    var found = false;
+    for (var x in obj) {
+      if (x === 'transition') continue;
+      result[x] = obj[x];
+      found = true;
+    }
+    // If empty, return null for tram.set/stop compliance
+    return found ? result : null;
+  }
+
+  // Events used by other webflow modules
+  var events = {
+    reset: function (i, el) {
+      el.__wf_intro = null;
+    },
+    intro: function (i, el) {
+      if (el.__wf_intro) return;
+      el.__wf_intro = true;
+      $(el).triggerHandler(introEvent);
+    },
+    outro: function (i, el) {
+      if (!el.__wf_intro) return;
+      el.__wf_intro = null;
+      $(el).triggerHandler(outroEvent);
+    }
+  };
+
+  // Trigger events in queue + point to sync methods
+  function initEvents() {
+    var count = eventQueue.length;
+    for (var i = 0; i < count; i++) {
+      var memo = eventQueue[i];
+      memo[0](0, memo[1]);
+    }
+    eventQueue = [];
+    $.extend(api.events, events);
+  }
+
+  // Replace events with async methods prior to init
+  function asyncEvents() {
+    _.each(events, function (func, name) {
+      api.events[name] = function (i, el) {
+        eventQueue.push([func, el]);
+      };
+    });
+  }
+
+  asyncEvents();
+
+  // Export module
+  return api;
+});
+/**
+ * ----------------------------------------------------------------------
+ * Webflow: Touch events
  */
 Webflow.define('touch', function ($, _) {
   'use strict';
 
-  var Tap = window.Tap;
-  var namespace = '.w-events-';
-  var dataKey = namespace + 'tap';
-  var fallback = !document.addEventListener;
-
-  // jQuery event "tap" - use click in old + non-touch browsers
-  $.event.special.tap = (fallback || !Webflow.env.touch) ? { bindType: 'click', delegateType: 'click' } : {
-    setup: function () {
-      $.data(this, dataKey, new Tap(this));
-    },
-    teardown: function () {
-      var tap = $.data(this, dataKey);
-      if (tap && tap.destroy) {
-        tap.destroy();
-        $.removeData(this, dataKey);
-      }
-    },
-    add: function (handleObj) {
-      this.addEventListener('tap', handleObj.handler, false);
-    },
-    remove: function (handleObj) {
-      this.removeEventListener('tap', handleObj.handler, false);
-    }
+  var api = {};
+  api.init = function (el) {
+    el = typeof el === 'string' ? $(el).get(0) : el;
+    return el ? new Touch(el) : null;
   };
 
-  // No swipe events for old browsers
-  if (fallback || !Object.create) return;
+  function Touch(el) {
+    var active = false;
+    var dirty = false;
+    var useTouch = false;
+    var thresholdX = Math.min(Math.round(window.innerWidth * 0.04), 40);
+    var startX, startY, lastX;
 
-  // jQuery event "swipe"
-  dataKey = namespace + 'swipe';
+    el.addEventListener('touchstart', start, false);
+    el.addEventListener('touchmove', move, false);
+    el.addEventListener('touchend', end, false);
+    el.addEventListener('touchcancel', cancel, false);
+    el.addEventListener('mousedown', start, false);
+    el.addEventListener('mousemove', move, false);
+    el.addEventListener('mouseup', end, false);
+    el.addEventListener('mouseout', cancel, false);
 
-  $.event.special.swipe = {
-    setup: function () {
-      $.data(this, dataKey, new Swipe(this));
-    },
-    teardown: function () {
-      var tap = $.data(this, dataKey);
-      if (tap && tap.destroy) {
-        tap.destroy();
-        $.removeData(this, dataKey);
+    function start(evt) {
+      // We don’t handle multi-touch events yet.
+      var touches = evt.touches;
+      if (touches && touches.length > 1) {
+        return;
       }
-    },
-    add: function (handleObj) {
-      this.addEventListener('swipe', handleObj.handler, false);
-    },
-    remove: function (handleObj) {
-      this.removeEventListener('swipe', handleObj.handler, false);
-    }
-  };
 
-  /**
-   * Swipe - extends Tap, supports mouse swipes!
-   */
-  function Swipe(el) {
-    Tap.call(this, el);
+      active = true;
+      dirty = false;
+
+      if (touches) {
+        useTouch = true;
+        startX = touches[0].clientX;
+        startY = touches[0].clientY;
+      } else {
+        startX = evt.clientX;
+        startY = evt.clientY;
+      }
+
+      lastX = startX;
+    }
+
+    function move(evt) {
+      if (!active) return;
+
+      if (useTouch && evt.type === 'mousemove') {
+        evt.preventDefault();
+        evt.stopPropagation();
+        return;
+      }
+
+      var touches = evt.touches;
+      var x = touches ? touches[0].clientX : evt.clientX;
+      var y = touches ? touches[0].clientY : evt.clientY;
+
+      var velocityX = x - lastX;
+      lastX = x;
+
+      if (Math.abs(velocityX) > thresholdX) {
+        triggerEvent('swipe', evt, { direction: velocityX > 0 ? 'right' : 'left' });
+        cancel();
+      }
+
+      // If pointer moves more than 10px flag to cancel tap
+      if (Math.abs(x - startX) > 10 || Math.abs(y - startY) > 10) {
+        dirty = true;
+      }
+    }
+
+    function end(evt) {
+      if (!active) return;
+
+      if (useTouch && evt.type === 'mouseup') {
+        evt.preventDefault();
+        evt.stopPropagation();
+        useTouch = false;
+        return;
+      }
+
+      if (!dirty) triggerEvent('tap', evt);
+    }
+
+    function cancel(evt) {
+      active = false;
+    }
+
+    function destroy() {
+      el.removeEventListener('touchstart', start, false);
+      el.removeEventListener('touchmove', move, false);
+      el.removeEventListener('touchend', end, false);
+      el.removeEventListener('touchcancel', cancel, false);
+      el.removeEventListener('mousedown', start, false);
+      el.removeEventListener('mousemove', move, false);
+      el.removeEventListener('mouseup', end, false);
+      el.removeEventListener('mouseout', cancel, false);
+      el = null;
+    }
+
+    // Public instance methods
+    this.destroy = destroy;
   }
 
-  (function () {
-    var supr = Tap.prototype;
-    var proto = Swipe.prototype = Object.create(supr);
-    var threshold = Math.round(screen.width * 0.04) || 20;
-    if (threshold > 40) threshold = 40;
+  // Wrap native event to supoprt preventdefault + stopPropagation
+  function triggerEvent(type, evt, data) {
+    var newEvent = $.Event(type, { originalEvent: evt });
+    $(evt.target).trigger(newEvent, data);
+  }
 
-    proto.start = function (e) {
-      supr.start.call(this, e);
-      this.element.addEventListener('mousemove', this, false);
-      document.addEventListener('mouseup', this, false);
-      this.velocityX = 0;
-      this.lastX = this.startX;
-      this.enabled = true;
-    };
+  // Listen for touch events on all nodes by default.
+  api.instance = api.init(document);
 
-    proto.move = _.throttle(function (e) {
-      if (!this.enabled) return;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      this.velocityX = x - this.lastX;
-      this.lastX = x;
-      if (Math.abs(this.velocityX) > threshold) {
-        this.end(e);
-      }
-    });
-
-    proto.end = function (e) {
-      if (!this.enabled) return;
-      var velocityX = this.velocityX;
-      this.cancel();
-      if (Math.abs(velocityX) > threshold) {
-        $(this.element).triggerHandler('swipe', { direction: velocityX > 0 ? 'right' : 'left' });
-      }
-    };
-
-    proto.destroy = function () {
-      this.cancel();
-      supr.destroy.call(this);
-    };
-
-    proto.cancel = function () {
-      this.enabled = false;
-      this.element.removeEventListener('mousemove', this, false);
-      document.removeEventListener('mouseup', this, false);
-      supr.cancel.call(this);
-    };
-
-    proto.handleEvent = function (e) {
-      if (e.type == 'mousemove') return this.move(e);
-      supr.handleEvent.call(this, e);
-    };
-  }());
-
+  // Export module
+  return api;
 });
 /**
  * ----------------------------------------------------------------------
@@ -725,14 +1084,30 @@ Webflow.define('forms', function ($, _) {
   function findFields(form, result) {
     var status = null;
     result = result || {};
+
+    // The ":input" selector is a jQuery shortcut to select all inputs, selects, textareas
     form.find(':input:not([type="submit"])').each(function(i, el) {
       var field = $(el);
+      var type = field.attr('type');
       var name = field.attr('data-name') || field.attr('name') || ('Field ' + (i + 1));
       var value = field.val();
+
+      if (type == 'checkbox') {
+        value = field.is(':checked');
+      } if (type == 'radio') {
+        // Radio group value already processed
+        if (result[name] === null || typeof result[name] == 'string') {
+          return;
+        }
+
+        value = form.find('input[name="' + field.attr('name') + '"]:checked').val() || null;
+      }
+
       if (typeof value == 'string') value = $.trim(value);
       result[name] = value;
       status = status || getStatus(field, name, value);
     });
+
     return status;
   }
 
@@ -817,10 +1192,11 @@ Webflow.define('forms', function ($, _) {
     var fullName;
     _.each(payload, function (value, key) {
       if (emailField.test(key)) payload.EMAIL = value;
-      if (/^(name|full(\-)?name)$/i.test(key)) fullName = value;
-      if (/^(first(\-)?name)$/i.test(key)) payload.FNAME = value;
-      if (/^(last(\-)?name)$/i.test(key)) payload.LNAME = value;
+      if (/^((full[ _-]?)?name)$/i.test(key)) fullName = value;
+      if (/^(first[ _-]?name)$/i.test(key)) payload.FNAME = value;
+      if (/^(last[ _-]?name)$/i.test(key)) payload.LNAME = value;
     });
+
     if (fullName && !payload.FNAME) {
       fullName = fullName.split(' ');
       payload.FNAME = fullName[0];
@@ -899,16 +1275,21 @@ Webflow.define('maps', function ($, _) {
   var namespace = '.w-widget-map';
 
   // -----------------------------------
-  // App preview
+  // Module methods
+
+  api.ready = function () {
+    // Init Maps on the front-end
+    if (!Webflow.env()) initMaps();
+  };
 
   api.preview = function () {
     // Update active map nodes
     $maps = $doc.find(namespace);
     // Listen for resize events
-    Webflow.resize.off(redrawMaps);
+    Webflow.resize.off(triggerRedraw);
     if ($maps.length) {
-      Webflow.resize.on(redrawMaps);
-      redrawMaps();
+      Webflow.resize.on(triggerRedraw);
+      triggerRedraw();
     }
   };
 
@@ -916,22 +1297,20 @@ Webflow.define('maps', function ($, _) {
     // Update active map nodes
     $maps = $doc.find(namespace);
     // Stop listening for resize events
-    Webflow.resize.off(redrawMaps);
+    Webflow.resize.off(triggerRedraw);
     // Redraw to account for page changes
-    $maps.length && _.defer(redrawMaps);
+    $maps.length && _.defer(triggerRedraw);
   };
-
-  function redrawMaps() {
-    $maps.length && $maps.redraw();
-  }
 
   // -----------------------------------
-  // Site load
+  // Private methods
 
-  api.ready = function () {
-    // Load Maps API on the front-end
-    if (!Webflow.env()) initMaps();
-  };
+  // Trigger redraw in designer or preview mode
+  function triggerRedraw() {
+    if ($maps.length && Webflow.app) {
+      $maps.each(Webflow.app.redrawElement);
+    }
+  }
 
   function initMaps() {
     $maps = $doc.find(namespace);
@@ -941,9 +1320,8 @@ Webflow.define('maps', function ($, _) {
         window._wf_maps_loaded = function () {};
         google = window.google;
         $maps.each(renderMap);
-        Webflow.resize.on(function () {
-          $maps.each(resizeMap);
-        });
+        Webflow.resize.on(resizeMaps);
+        Webflow.redraw.on(resizeMaps);
       };
     }
   }
@@ -952,6 +1330,10 @@ Webflow.define('maps', function ($, _) {
   function renderMap(i, el) {
     var data = $(el).data();
     getState(el, data);
+  }
+
+  function resizeMaps() {
+    $maps.each(resizeMap);
   }
 
   // Resize map when window changes
@@ -1093,7 +1475,7 @@ Webflow.define('gplus', function ($) {
   };
 
   function init() {
-    $doc.find('.w-widget-gplus') && Webflow.script('https://apis.google.com/js/plusone.js');
+    $doc.find('.w-widget-gplus').length && Webflow.script('https://apis.google.com/js/plusone.js');
   }
 
   // Export module
@@ -1319,7 +1701,7 @@ Webflow.define('links', function ($, _) {
 });
 /**
  * ----------------------------------------------------------------------
- * Webflow: Slider widget
+ * Webflow: Slider component
  */
 Webflow.define('slider', function ($, _) {
   'use strict';
@@ -1332,6 +1714,8 @@ Webflow.define('slider', function ($, _) {
   var inApp = Webflow.env();
   var namespace = '.w-slider';
   var dot = '<div class="w-slider-dot" data-wf-ignore />';
+  var ix = Webflow.require('ix');
+  ix = ix && ix.events;
   var fallback;
   var redraw;
 
@@ -1376,6 +1760,8 @@ Webflow.define('slider', function ($, _) {
     Webflow.resize.on(function () {
       $sliders.each(render);
     });
+
+    Webflow.redraw.on(api.redraw);
   }
 
   function build(i, el) {
@@ -1389,6 +1775,7 @@ Webflow.define('slider', function ($, _) {
     data.right = $el.children('.w-slider-arrow-right');
     data.nav = $el.children('.w-slider-nav');
     data.slides = data.mask.children('.w-slide');
+    if (ix) data.slides.each(ix.reset);
     if (redraw) data.maskWidth = 0;
 
     // Disable in old browsers
@@ -1399,9 +1786,6 @@ Webflow.define('slider', function ($, _) {
       fallback = true;
       return;
     }
-
-    // Fix chrome rendering bug
-    Webflow.env.chrome && fixAttach(data);
 
     // Remove old events
     data.el.off(namespace);
@@ -1414,14 +1798,19 @@ Webflow.define('slider', function ($, _) {
 
     // Add events based on mode
     if (designer) {
-      $el.on('setting' + namespace, handler(data));
+      data.el.on('setting' + namespace, handler(data));
       killTimer(data);
+      data.hasTimer = false;
     } else {
       data.el.on('swipe' + namespace, handler(data));
       data.left.on('tap' + namespace, previous(data));
       data.right.on('tap' + namespace, next(data));
-      // Start timer if autoplay is true
-      data.config.autoplay && startTimer(data);
+
+      // Start timer if autoplay is true, only once
+      if (data.config.autoplay && !data.hasTimer) {
+        data.hasTimer = true;
+        startTimer(data);
+      }
     }
 
     // Listen to nav events
@@ -1613,8 +2002,14 @@ Webflow.define('slider', function ($, _) {
     var fadeRule = 'opacity ' + duration + 'ms ' + easing;
     var slideRule = 'transform ' + duration + 'ms ' + easing;
 
-    // Set immediately after layout changes
-    if (options.immediate) {
+    // Trigger IX events
+    if (!designer && ix) {
+      targets.each(ix.intro);
+      others.each(ix.outro);
+    }
+
+    // Set immediately after layout changes (but not during redraw)
+    if (options.immediate && !redraw) {
       tram(targets).set(resetConfig);
       resetOthers();
       return;
@@ -1781,21 +2176,12 @@ Webflow.define('slider', function ($, _) {
     return false;
   }
 
-  function fixAttach(data) {
-    // Fix issue with chrome fixed backgrounds + backface-hidden
-    data.slides.each(function (i, el) {
-      if ($(el).css('background-attachment') == 'fixed') {
-        tram.config.hideBackface = false;
-      }
-    });
-  }
-
   // Export module
   return api;
 });
 /**
  * ----------------------------------------------------------------------
- * Webflow: Navbar widget
+ * Webflow: Navbar component
  */
 Webflow.define('navbar', function ($, _) {
   'use strict';
@@ -1854,6 +2240,7 @@ Webflow.define('navbar', function ($, _) {
     data.outside = outside(data);
 
     // Remove old events
+    data.el.off(namespace);
     data.button.off(namespace);
     data.menu.off(namespace);
 
@@ -1863,11 +2250,11 @@ Webflow.define('navbar', function ($, _) {
     // Add events based on mode
     if (designer) {
       removeOverlay(data);
-      $el.on('setting' + namespace, handler(data));
+      data.el.on('setting' + namespace, handler(data));
     } else {
       addOverlay(data);
-      data.button.on('click' + namespace, toggle(data));
-      data.menu.on('click' + namespace, '> a', navigate(data));
+      data.button.on('tap' + namespace, toggle(data));
+      data.menu.on('tap' + namespace, 'a', navigate(data));
     }
 
     // Trigger initial resize
@@ -1963,13 +2350,14 @@ Webflow.define('navbar', function ($, _) {
   }
 
   function outside(data) {
-    return function (evt) {
-      var target = evt.target;
-      // Close navbars when clicked outside
-      if (!data.el.has(target).length && !data.el.is(target)) {
+    // Close menu when tapped outside
+    return _.debounce(function (evt) {
+      if (!data.open) return;
+      var menu = $(evt.target).closest('.w-nav-menu');
+      if (!data.menu.is(menu)) {
         close(data);
       }
-    };
+    });
   }
 
   function resize(i, el) {
@@ -2017,7 +2405,7 @@ Webflow.define('navbar', function ($, _) {
     resize(0, data.el[0]);
 
     // Listen for tap outside events
-    if (!designer) $doc.on('click' + namespace, data.outside);
+    if (!designer) $doc.on('tap' + namespace, data.outside);
 
     // Update menu height for Over state
     if (animOver) setMenuHeight(data);
@@ -2069,7 +2457,7 @@ Webflow.define('navbar', function ($, _) {
     var animation = config.animation;
 
     // Stop listening for tap outside events
-    $doc.off('click' + namespace, data.outside);
+    $doc.off('tap' + namespace, data.outside);
 
     if (immediate) {
       tram(data.menu).stop();
@@ -2116,268 +2504,169 @@ Webflow.define('navbar', function ($, _) {
 });
 /**
  * ----------------------------------------------------------------------
- * Webflow: Interactions
+ * Webflow: Tabs component
  */
-Webflow.define('ix', function ($, _) {
+Webflow.define('tabs', function ($, _) {
   'use strict';
 
   var api = {};
-  var designer;
-  var $win = $(window);
-  var namespace = '.w-ix';
   var tram = window.tram;
-  var Modernizr = window.Modernizr;
-  var touch = Modernizr && Modernizr.touch;
-  var inApp = Webflow.env();
-  var config = {};
-  var anchors = [];
-  var unique = 0;
-  var store;
+  var $win = $(window);
+  var $doc = $(document);
+  var $tabs;
+  var design;
+  var env = Webflow.env;
+  var safari = env.safari;
+  var inApp = env();
+  var tabAttr = 'data-w-tab';
+  var namespace = '.w-tabs';
+  var linkCurrent = 'w--current';
+  var tabActive = 'w--tab-active';
+  var ix = Webflow.require('ix').events;
 
   // -----------------------------------
   // Module methods
 
-  api.init = function (list) {
-    init(list);
-  };
-
-  api.preview = function () {
-    designer = false;
-    _.delay(function () {
-      init(window.__wf_ix);
-    }, 100);
-  };
-
-  api.design = function () {
-    designer = true;
-    $('[data-ix]').each(teardown);
-    Webflow.scroll.off(scroll);
-    anchors = [];
-  };
-
-  api.run = run;
+  api.ready = api.design = api.preview = init;
 
   // -----------------------------------
   // Private methods
 
-  function init(list) {
-    if (!list) return;
-    store = {};
+  function init() {
+    design = inApp && Webflow.env('design');
 
-    // Map all interactions to a hash using slug as key.
-    config = {};
-    _.each(list, function (item) {
-      config[item.slug] = item.value.triggers;
-    });
-
-    // Build each element's interaction keying from data attribute
-    var els = $('[data-ix]');
-    els.each(teardown);
-    els.each(build);
-
-    // Listen for scroll events if any anchors exist
-    if (anchors.length) {
-      Webflow.scroll.on(scroll);
-      scroll();
-    }
+    // Find all instances on the page
+    $tabs = $doc.find(namespace);
+    $tabs.each(build);
   }
 
   function build(i, el) {
+    var $el = $(el);
 
-    el = $(el);
-    var id = el.attr('data-ix');
-    var triggers = config[id];
-    if (!triggers) return;
-    var state = store[id] || (store[id] = {});
-    unique++;
+    // Store state in data
+    var data = $.data(el, namespace);
+    if (!data) data = $.data(el, namespace, { el: $el, config: {} });
+    data.current = null;
+    data.menu = $el.children('.w-tab-menu');
+    data.links = data.menu.children('.w-tab-link');
+    data.content = $el.children('.w-tab-content');
+    data.panes = data.content.children('.w-tab-pane');
 
-    _.each(triggers, function (trigger) {
-      var type = trigger.type;
-      var stepsB = trigger.stepsB && trigger.stepsB.length;
+    // Remove old events
+    data.el.off(namespace);
+    data.links.off(namespace);
 
-      if (type == 'load') {
-        run(trigger, el);
-      }
+    // Set config from data attributes
+    configure(data);
 
-      if (type == 'click') {
-        var stateKey = 'click:';
-        if (trigger.descend) stateKey += unique + ':';
-        stateKey += trigger.selector;
+    // Wire up events when not in design mode
+    if (!design) {
+      data.links.on('click' + namespace, linkSelect(data));
 
-        el.on('click' + namespace, function () {
-          run(trigger, el, { group: state[stateKey] ? 'B' : 'A' });
-          if (stepsB) state[stateKey] = !state[stateKey];
-        });
-      }
-
-      // Ignore the following triggers on touch
-      if (touch) return;
-
-      if (type == 'hover') {
-        el.on('mouseover' + namespace, function () {
-          run(trigger, el, { group: 'A' });
-        });
-        el.on('mouseleave' + namespace, function () {
-          run(trigger, el, { group: 'B' });
-        });
-      }
-
-      if (type == 'scroll') {
-        anchors.push({ el: el, trigger: trigger, state: { active: false } });
-
-        // Convert offsets to numbers
-        trigger._offsetTop = convert(trigger.offsetTop);
-        trigger._offsetBot = convert(trigger.offsetBot);
-      }
-    });
-  }
-
-  function convert(offset) {
-    if (!offset) return 0;
-    offset = offset + '';
-    var result = parseInt(offset, 10);
-    if (offset.indexOf('%') > 0) {
-      result = result / 100;
-      if (result >= 1) result = 0.999;
+      // Trigger first intro event from current tab
+      var $link = data.links.filter('.' + linkCurrent);
+      var tab = $link.attr(tabAttr);
+      tab && changeTab(data, { tab: tab, immediate: true });
     }
-    return result;
   }
 
-  function teardown(i, el) {
-    el = $(el);
-    el.off(namespace);
+  function configure(data) {
+    var config = {};
+    var old = data.config || {};
+
+    // Set config options from data attributes
+    config.easing = data.el.attr('data-easing') || 'ease';
+
+    var intro = +data.el.attr('data-duration-in');
+    intro = config.intro = intro === intro ? intro : 0;
+
+    var outro = +data.el.attr('data-duration-out');
+    outro = config.outro = outro === outro ? outro : 0;
+
+    config.immediate = !intro && !outro;
+
+    // Store config in data
+    data.config = config;
   }
 
-  function scroll() {
-    var viewTop = $win.scrollTop();
-    var viewHeight = $win.height();
+  function linkSelect(data) {
+    return function (evt) {
+      var tab = evt.currentTarget.getAttribute(tabAttr);
+      tab && changeTab(data, { tab: tab });
+    };
+  }
 
-    // Check each anchor for a valid scroll trigger
-    _.each(anchors, function (anchor) {
-      var el = anchor.el;
-      var trigger = anchor.trigger;
-      var stepsB = trigger.stepsB && trigger.stepsB.length;
-      var state = anchor.state;
-      var top = el.offset().top;
-      var height = el.outerHeight();
-      var offsetTop = trigger._offsetTop || 0;
-      var offsetBot = trigger._offsetBot || 0;
-      if (offsetTop < 1 && offsetTop > 0) offsetTop *= viewHeight;
-      if (offsetBot < 1 && offsetBot > 0) offsetBot *= viewHeight;
-      var active = (top + height - offsetTop >= viewTop && top + offsetBot <= viewTop + viewHeight);
-      if (active === state.active) return;
-      if (active === false && !stepsB) return;
-      state.active = active;
-      run(trigger, el, { group: active ? 'A' : 'B' });
+  function changeTab(data, options) {
+    options = options || {};
+
+    var config = data.config;
+    var easing = config.easing;
+    var tab = options.tab;
+
+    // Don't select the same tab twice
+    if (tab === data.current) return;
+    data.current = tab;
+
+    // Select the current link
+    data.links.each(function (i, el) {
+      var $el = $(el);
+      if (el.getAttribute(tabAttr) === tab) $el.addClass(linkCurrent).each(ix.intro);
+      else if ($el.hasClass(linkCurrent)) $el.removeClass(linkCurrent).each(ix.outro);
     });
-  }
 
-  function run(trigger, el, opts) {
-    opts = opts || {};
+    // Find the new tab panes and keep track of previous
+    var targets = [];
+    var previous = [];
+    data.panes.each(function (i, el) {
+      var $el = $(el);
+      if (el.getAttribute(tabAttr) === tab) {
+        targets.push(el);
+      } else if ($el.hasClass(tabActive)) {
+        previous.push(el);
+      }
+    });
 
-    // Do not run in designer unless forced
-    if (designer && !opts.force) return;
+    var $targets = $(targets);
+    var $previous = $(previous);
 
-    // Operate on a set of grouped steps
-    var group = opts.group || 'A';
-    var steps = trigger['steps' + group];
-    if (!steps || !steps.length) return;
-
-    // Find selector within element descendants or query whole document
-    var selector = trigger.selector;
-    if (selector) {
-      el = trigger.descend ? el.find(selector) : $(selector);
-      if (inApp) el.attr('data-ix-affect', 1);
+    // Switch tabs immediately and bypass transitions
+    if (options.immediate || config.immediate) {
+      $targets.addClass(tabActive).each(ix.intro);
+      $previous.removeClass(tabActive);
+      Webflow.redraw.up();
+      return;
     }
-    var _tram = tram(el);
 
-    // Add steps
-    var meta = {};
-    _.each(steps, function (step, index) {
-      addStep(_tram, step, index, meta);
-    });
-
-    // Add final step
-    if (meta.start) {
-      _tram.then(function () {
-        this.stop(null, true);
-        opts.done && opts.done();
-      });
+    // Fade out the currently active tab before intro
+    if ($previous.length && config.outro) {
+      $previous.each(ix.outro);
+      tram($previous)
+        .add('opacity ' + config.outro + 'ms ' + easing, { fallback: safari })
+        .start({ opacity: 0 })
+        .then(intro);
     } else {
-      opts.done && opts.done();
+      // Skip the outro and play intro
+      intro();
     }
-  }
 
-  function addStep(_tram, step, index, meta) {
-    var addMethod = 'add';
-    var startMethod = 'start';
+    // Fade in the new target
+    function intro() {
+      // Clear previous active class + inline style
+      $previous.removeClass(tabActive).removeAttr('style');
 
-    // Once the transition has started, we will always use then() to add to the queue.
-    if (meta.start) addMethod = startMethod = 'then';
+      // Add active class to new target
+      $targets.addClass(tabActive).each(ix.intro);
+      Webflow.redraw.up();
 
-    // Parse transitions string on the current step
-    var transitions = step.transition;
-    transitions && _.each(transitions.split(','), function (transition) {
-      _tram[addMethod](transition);
-    });
+      // Set opacity immediately if intro is zero
+      if (!config.intro) return tram($targets).set({ opacity: 1 });
 
-    // Build a clean object to pass to the tram method
-    var clean = {};
-    _.each(step, function (value, key) {
-      if (key === 'transition') return;
-      clean[key] = value;
-    });
-
-    // When transitions are not present, set values immediately and continue queue.
-    if (transitions == null) {
-
-      // If we have started, wrap set() in then() and reset queue
-      if (meta.start) {
-        _tram.then(function () {
-          var queue = this.queue;
-          this.set(clean);
-          if (clean.display) _tram.redraw();
-          this.queue = queue;
-          this.next();
-        });
-      } else {
-        _tram.set(clean);
-
-        // Always redraw after setting display
-        if (clean.display) _tram.redraw();
-      }
-
-      // Use the wait() method to kick off queue in absence of transitions.
-      var wait = clean.wait;
-      if (wait != null) {
-        _tram.wait(wait);
-        meta.start = true;
-      }
-
-    // Otherwise, when transitions are present
-    } else {
-
-      // If display is present, handle it separately
-      if (clean.display) {
-        var display = clean.display;
-        delete clean.display;
-
-        // If we've already started, we need to wrap it in a then()
-        if (meta.start) {
-          _tram.then(function () {
-            var queue = this.queue;
-            this.set({ display: display }).redraw();
-            this.queue = queue;
-            this.next();
-          });
-        } else {
-          _tram.set({ display: display }).redraw();
-        }
-      }
-
-      // Otherwise, start a transition using the current start method.
-      _tram[startMethod](clean);
-      meta.start = true;
+      // Otherwise fade in opacity
+      tram($targets)
+        .set({ opacity: 0 })
+        .redraw()
+        .add('opacity ' + config.intro + 'ms ' + easing, { fallback: safari })
+        .start({ opacity: 1 });
     }
   }
 
