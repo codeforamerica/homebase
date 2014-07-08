@@ -87,9 +87,11 @@ You'll also need to upgrade to the Standard Yanari package (this costs $50/month
 
     $ heroku addons:add heroku-postgresql:standard-yanari
 
-#### 3. Configure your buildpack
+#### 3. Add Heroku Config Vars
 
     $ heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
+    $ heroku config:set LD_LIBRARY_PATH=/app/lib
+    $ heroku config:set PDFTK_PATH=/vendor/pdftk/bin/pdftk
 
 #### 4. Change your database config
 
@@ -115,7 +117,7 @@ Make sure that's the URL for your actual datbase from the heroku config info. Ma
 
 #### 5. Push your repo up
 
-    $ git push heroku:master
+    $ git push heroku master
 
 #### 6. Enable PostGIS support
 
@@ -134,7 +136,7 @@ Make sure that's the URL for your actual datbase from the heroku config info. Ma
 
 #### 8. Load your data
 
-    $ heroku run cosa_boundaries:load
+    $ heroku run rake cosa_boundaries:load
 
 #### 9. Your app is good to go
 
