@@ -24,13 +24,8 @@ class Permit < ActiveRecord::Base
   validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Please select an air conditioning / heating system."
 
   # validates on permit_steps#enter_repair
-  validates_inclusion_of :window, :in => [true, false], :if => :active_or_details?, :message => "Please select whether you are changing windows in this project."
-  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are changing/adding."
-  validates_inclusion_of :door, :in => [true, false], :if => :active_or_details?, :message => "Please select whether you are changing doors in this project."
-  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Please specify the number of doors you are changing/adding."
-  validates_inclusion_of :wall, :in => [true, false], :if => :active_or_details?, :message => "Please select whether you are changing walls in this project."
-  validates_inclusion_of :siding, :in => [true, false], :if => :active_or_details?, :message => "Please select whether you are changing sidings in this project."
-  validates_inclusion_of :floor, :in => [true, false], :if => :active_or_details?, :message => "Please select whether you are changing floors in this project."
+  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are repairing."
+  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Please specify the number of doors you are repairing."
 
   def active?
     status == 'active'
