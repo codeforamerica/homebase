@@ -195,6 +195,7 @@
               </div>
             <% end %>
               <%= f.label :window_count, "How many windows are you changing?*", for: "window-count" %>
+                <p class="help-block">Please include windows you are adding and/or repairing.</p>
               <%= f.text_field :window_count, class: "form-control input-lg", id: "window-count" %>
             </div>
           </div> <!-- ./panel_body -->
@@ -220,6 +221,7 @@
               </div>
             <% end %>
               <%= f.label :door_count, "How many doors are you changing?*", for: "door-count" %>
+              <p class="help-block">Please include doors you are adding and/or repairing.</p>
               <%= f.text_field :door_count, class: "form-control input-lg", id: "door-count" %>
             </div>
           </div> <!-- ./panel_body -->
