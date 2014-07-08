@@ -19,6 +19,10 @@
     <% if @permit.errors.any? %>
       <div class="alert alert-danger">
         <p><strong>Sorry, there was a problem. Please check your answers.</strong></p>
+        <% @permit.errors.each do |attribute, message| %>
+        <p><%= attribute %>: </p>
+        <p><%= message %></p>
+        <% end %>
       </div>
     <% end %>
     <!-- ./error checking -->
