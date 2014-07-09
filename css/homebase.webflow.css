@@ -224,7 +224,7 @@ section {padding: 50px 0;}
   width: 40%;
   margin-right: 12px;
   margin-left: 20%;
-padding: 23px 20px 23px 48px;
+	padding: 11px 20px 11px 48px;
   float: left;
   border: 2px solid #adf7ff !important;
   border-radius: 8px;
@@ -233,12 +233,12 @@ padding: 23px 20px 23px 48px;
   color: #29646a;
   font-size: 19px;
 }
+#mce-EMAIL::-webkit-input-placeholder {
+  color: #29646a;
+}
 #mce-EMAIL:hover, #mce-EMAIL:focus {
 	box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
   transition: all .2s ease;
-}
-#mce-EMAIL[placeholder] {
-  color: #29646a;
 }
 #mc-embedded-subscribe {
   padding: 16px 31px;
