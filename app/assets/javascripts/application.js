@@ -18,3 +18,4 @@
 //= require landing
 //= require enter_details
 //= require bootstrap
+//= require paperjs-v0.9.18/dist/paper-full.min
