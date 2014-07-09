@@ -333,6 +333,9 @@ section {padding: 50px 0;}
 		margin-left: 0;
 		width: 100%;
 	}
+	#mce-EMAIL {
+		margin-bottom: 10px;
+	}	
 	#mc_embed_signup {
 	  padding-left: 16px;
 	  padding-right: 16px;
