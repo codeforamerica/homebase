@@ -8,10 +8,15 @@ before_install:
   - sudo find / -name "gdal"
   - sudo apt-get install libgeos-dev libproj-dev
   - sudo find / -name "geos"
+  - ls /usr/include/geos
   - sudo find / -name "proj"
+  - ls /usr/share/proj
+  - ls /usr/bin/proj
   - sudo find / -name "gdal"
+  - ls /usr/share/gdal
 
 before_script:
+  - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/bin/proj
   - psql -c 'create database "homebase_test";' -U postgres
   - psql -c 'create extension postgis;' -U postgres 
   - bundle exec rake db:migrate
