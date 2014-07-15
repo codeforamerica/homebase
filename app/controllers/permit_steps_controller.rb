@@ -7,7 +7,7 @@ class PermitStepsController < ApplicationController
   include PermitStepsHelper
 
   include Wicked::Wizard
-  steps :enter_address, :display_permits, :enter_details, :display_summary
+  steps :enter_address, :display_permits, :enter_details, :display_summary, :error_page
   
   def show
     @permit = current_permit
@@ -17,9 +17,12 @@ class PermitStepsController < ApplicationController
     when :display_summary
 
       @unique_key = SecureRandom.hex
-      create_permit "#{Rails.root}/tmp/#{@unique_key}.pdf"
-      # if ok, then show next wizard
-      # else should show error
+      permit_created = create_permit "#{Rails.root}/tmp/#{@unique_key}.pdf"
+
+      if ! permit_created
+        jump_to(:error_page)
+        
+      end
     end
     render_wizard
 

@@ -82,7 +82,7 @@ module PermitStepsHelper
 		end
 
 		return status
-		
+
 	end
 
 end
