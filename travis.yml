@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+  - ruby-2.0.0
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libgeos-dev libproj-dev
+  - sudo find / -name "libgeos"
+  - sudo find / -name "proj"
+  - sudo find / -name "gdal"
+
+before_script:
+  - psql -c 'create database "homebase_test";' -U postgres
+  - psql -c 'create extension postgis;' -U postgres 
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+notifications:
+  webhooks: http://project-monitor.codeforamerica.org/projects/98138ce2-1d31-4eac-91b8-55e763474cc9/status
