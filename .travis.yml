@@ -3,8 +3,11 @@ rvm:
   - ruby-2.0.0
 before_install:
   - sudo apt-get update
+  - sudo find / -name "geos"
+  - sudo find / -name "proj"
+  - sudo find / -name "gdal"
   - sudo apt-get install libgeos-dev libproj-dev
-  - sudo find / -name "libgeos"
+  - sudo find / -name "geos"
   - sudo find / -name "proj"
   - sudo find / -name "gdal"
 
