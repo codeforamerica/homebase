@@ -51,26 +51,23 @@ class PermitStepsController < ApplicationController
 
   def serve
     path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
-
-    # Need to revisit to make sure this will not loop forever
     begin
-      Timeout::timeout(15) do
+      Timeout::timeout(5) do
         while !(File.exist? path) do
           # Not doing anything, just waiting
         end
-        # @TODO: Not sure what to do with status just now
-        # status = true
+        send_file( path,
+          :disposition => 'inline',
+          :type => 'application/pdf',
+          :x_sendfile => true )
       end
     rescue Timeout::Error
-      # @TODO: Not sure what to do with status just now
-      # status = false
+      jump_to(:error_page)
+      render_wizard
     end
 
 
-    send_file( path,
-      :disposition => 'inline',
-      :type => 'application/pdf',
-      :x_sendfile => true )
+
   end
 
   private
