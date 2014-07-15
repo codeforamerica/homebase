@@ -52,7 +52,7 @@ class PermitStepsController < ApplicationController
   def serve
     path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
     begin
-      Timeout::timeout(60) do
+      Timeout::timeout(50) do
         while !(File.exist? path) do
           # Not doing anything, just waiting
         end
