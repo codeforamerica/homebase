@@ -28,6 +28,9 @@ before_script:
   - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/share/proj
   - psql -c 'create database "homebase_test";' -U postgres
   - psql -U postgres -c "create extension postgis"
+  - psql -c '\dt' -U postgres
+  - psql -c '\d' -U postgres
+  - psql -c 'select postgis_full_version()' -U postgres
   - bundle exec rake db:migrate RAILS_ENV=test
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/98138ce2-1d31-4eac-91b8-55e763474cc9/status
