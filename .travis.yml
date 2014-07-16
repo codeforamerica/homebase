@@ -2,10 +2,14 @@ language: ruby
 rvm:
   - ruby-2.0.0
 before_install:
+  - rvm ruby --version
   - sudo apt-get update
   - sudo find / -name "geos"
   - sudo find / -name "proj"
+  - ls /usr/share/proj
+  - ls /usr/bin/proj
   - sudo find / -name "gdal"
+  - ls /usr/share/gdal
   - sudo apt-get install -qq libgeos-dev libproj-dev
   - sudo apt-get -qq install libgeos++-dev
   - sudo find / -name "geos"
@@ -15,7 +19,7 @@ before_install:
   - ls /usr/bin/proj
   - sudo find / -name "gdal"
   - ls /usr/share/gdal
-  - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/bin/proj
+  - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/share/proj
 
 before_script:
   
