@@ -26,10 +26,6 @@ before_script:
   
   - gem uninstall rgeo
   - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/share/proj
-  - irb
-  - require 'rgeo'
-  - RGeo::Geos.supported?
-  - quit
   - psql -c 'create database "homebase_test";' -U postgres
   - psql -U postgres -c "create extension postgis"
   - bundle exec rake db:migrate RAILS_ENV=test
