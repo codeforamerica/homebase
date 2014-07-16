@@ -24,7 +24,6 @@ before_script:
   - gem uninstall rgeo
   - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/share/proj
   - psql -c 'create database "homebase_test";' -U postgres
-  - psql -c 'create extension postgis;' -U postgres 
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 notifications:
