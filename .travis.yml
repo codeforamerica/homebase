@@ -30,7 +30,6 @@ before_script:
   - psql -U postgres -c "create extension postgis"
   - psql -c '\dt' -U postgres
   - psql -c '\d' -U postgres
-  - psql -c 'select postgis_full_version()' -U postgres
   - psql -c 'DROP EXTENSION PostGIS;' -U postgres
   - psql -c 'CREATE SCHEMA postgis;' -U postgres
   - psql -c 'CREATE EXTENSION PostGIS WITH SCHEMA postgis;' -U postgres
