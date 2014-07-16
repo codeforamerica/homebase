@@ -2,7 +2,6 @@ language: ruby
 rvm:
   - ruby-2.0.0
 before_install:
-  - rvm ruby --version
   - sudo apt-get update
   - sudo find / -name "geos"
   - sudo find / -name "proj"
@@ -19,10 +18,11 @@ before_install:
   - ls /usr/bin/proj
   - sudo find / -name "gdal"
   - ls /usr/share/gdal
-  - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/share/proj
 
 before_script:
   
+  - gem uninstall rgeo
+  - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/share/proj
   - psql -c 'create database "homebase_test";' -U postgres
   - psql -c 'create extension postgis;' -U postgres 
   - bundle exec rake db:migrate
