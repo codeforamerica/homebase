@@ -8,26 +8,8 @@ describe PermitsController do
   describe "GET #new" do
 
     context "when addition is selected as true" do
-      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:permit, 
-                                                                                      owner_address: nil,
-                                                                                      house_area: nil,
-                                                                                      addition_area: nil,
-                                                                                      ac: nil,
-                                                                                      contractor: nil,
-                                                                                      contractor_name: nil,
-                                                                                      contractor_id: nil,
-                                                                                      escrow: nil,
-                                                                                      license_holder: nil,
-                                                                                      license_num: nil,
-                                                                                      agent_name: nil,
-                                                                                      contact_id: nil,
-                                                                                      other_contact_id: nil,
-                                                                                      phone: nil,
-                                                                                      fax: nil,
-                                                                                      email: nil,
-                                                                                      work_summary: nil,
-                                                                                      job_cost: nil,
-                                                                                      status: nil) }
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      addition: true) }
         
 
       it { expect(subject).to redirect_to(permit_steps_path) }
@@ -36,28 +18,117 @@ describe PermitsController do
       # it { should respond_with 200 }
     end
 
-    context "when addition is selected as false" do
-      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:permit, 
+    context "when window is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      window: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when door is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      door: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when wall is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      wall: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when siding is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      siding: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when floor is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      floor: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when cover is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      cover: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when pool is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      pool: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when deck is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      deck: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when acs_struct (accessory structure) is selected as true" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
+                                                                                      acs_struct: true) }
+        
+
+      it { expect(subject).to redirect_to(permit_steps_path) }
+
+
+      # it { should respond_with 200 }
+    end
+
+    context "when all improvement project is selected as false" do
+      subject { get :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
                                                                                       addition: false,
-                                                                                      owner_address: nil,
-                                                                                      house_area: nil,
-                                                                                      addition_area: nil,
-                                                                                      ac: nil,
-                                                                                      contractor: nil,
-                                                                                      contractor_name: nil,
-                                                                                      contractor_id: nil,
-                                                                                      escrow: nil,
-                                                                                      license_holder: nil,
-                                                                                      license_num: nil,
-                                                                                      agent_name: nil,
-                                                                                      contact_id: nil,
-                                                                                      other_contact_id: nil,
-                                                                                      phone: nil,
-                                                                                      fax: nil,
-                                                                                      email: nil,
-                                                                                      work_summary: nil,
-                                                                                      job_cost: nil,
-                                                                                      status: nil) }
+                                                                                      window: false,
+                                                                                      door: false,
+                                                                                      wall: false,
+                                                                                      siding: false,
+                                                                                      floor: false,
+                                                                                      cover: false,
+                                                                                      pool: false,
+                                                                                      deck: false,
+                                                                                      acs_struct: false) }
         
 
       it { expect(subject).to render_template("new") }
@@ -66,28 +137,8 @@ describe PermitsController do
       # it { should respond_with 200 }      
     end
 
-    context "when addition is not selected" do
-      subject { get :create, :format=> 'html', :permit => FactoryGirl.attributes_for( :permit,
-                                                                                      addition: nil,
-                                                                                      owner_address: nil,
-                                                                                      house_area: nil,
-                                                                                      addition_area: nil,
-                                                                                      ac: nil,
-                                                                                      contractor: nil,
-                                                                                      contractor_name: nil,
-                                                                                      contractor_id: nil,
-                                                                                      escrow: nil,
-                                                                                      license_holder: nil,
-                                                                                      license_num: nil,
-                                                                                      agent_name: nil,
-                                                                                      contact_id: nil,
-                                                                                      other_contact_id: nil,
-                                                                                      phone: nil,
-                                                                                      fax: nil,
-                                                                                      email: nil,
-                                                                                      work_summary: nil,
-                                                                                      job_cost: nil,
-                                                                                      status: nil) }
+    context "when all improvement project is not selected" do
+      subject { get :create, :format=> 'html', :permit => FactoryGirl.attributes_for(:empty_permit) }
 
       it { expect(subject).to render_template("new") }
     end

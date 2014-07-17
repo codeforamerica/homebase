@@ -56,8 +56,27 @@ describe Permit do
     it { expect(FactoryGirl.build(:permit, owner_address: "155 9th St, San Francisco, CA 94103")).to be_invalid }
     it { expect(FactoryGirl.build(:permit, owner_address: "155 9th St, San Francisco, CA 94103", status: "enter_address")).to be_invalid }
 
-    it { expect(FactoryGirl.build(:permit, addition: false)).to be_invalid }
-    it { expect(FactoryGirl.build(:permit, addition: nil)).to be_invalid }
+    it { expect(FactoryGirl.build(:permit,  addition: false, 
+                                            window: false, 
+                                            door: false, 
+                                            wall: false, 
+                                            siding: false, 
+                                            floor: false,
+                                            cover: false,
+                                            pool: false,
+                                            deck: false,
+                                            acs_struct: false)).to be_invalid }
+
+    it { expect(FactoryGirl.build(:permit,  addition: nil,
+                                            window: nil,
+                                            door: nil,
+                                            wall: nil,
+                                            siding: nil,
+                                            floor: nil,
+                                            cover: nil,
+                                            pool: nil,
+                                            deck: nil,
+                                            acs_struct: nil)).to be_invalid }
 
     it { expect(FactoryGirl.build(:permit, house_area: nil)).to be_invalid }
     it { expect(FactoryGirl.build(:permit, house_area: nil, status: "enter_details")).to be_invalid }
