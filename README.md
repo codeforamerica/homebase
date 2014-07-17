@@ -13,6 +13,12 @@ Homebase is a very young application still under rigorous development. It regula
 
 (But if you'd like to poke around, fix some things and make a pull request, take a look at Pull Requests Welcome section below.)
 
+### What it does now and where we're going
+
+Right now, we can help users decide what project they want to work on (i.e. building a new bedroom on to their house) and help them apply for the appropriate permits for that project.
+
+Going forward, we want to extend this functionality to include a number of different home repair and upgrade projects. We're also interested in using the information we collect during the application process to match users with free grants to fund their projects, and certified contractors to complete the work.
+
 # Install and deploy
 
 Homebase has been tested and deployed locally and on the Heroku platform. We'll cover local installation first, then Heroku deployment.
@@ -25,6 +31,7 @@ You'll need the following set up to run Homebase:
 * [Rails](https://github.com/codeforamerica/howto/blob/master/Rails.md)
 * [PostgreSQL](https://github.com/codeforamerica/howto/blob/master/PostgreSQL.md)
 * [GEOS](http://trac.osgeo.org/geos/) - You may need to adjust RGeo gem GEOS installation directory to point to your installation
+* [PDFtk](http://www.pdflabs.com/tools/pdftk-server/) - A tool Homebase uses to fill in PDF documents
 
 ### Local Installation
 
@@ -80,9 +87,11 @@ You'll also need to upgrade to the Standard Yanari package (this costs $50/month
 
     $ heroku addons:add heroku-postgresql:standard-yanari
 
-#### 3. Configure your buildpack
+#### 3. Add Heroku Config Vars
 
     $ heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
+    $ heroku config:set LD_LIBRARY_PATH=/app/lib
+    $ heroku config:set PDFTK_PATH=/vendor/pdftk/bin/pdftk
 
 #### 4. Change your database config
 
@@ -108,7 +117,7 @@ Make sure that's the URL for your actual datbase from the heroku config info. Ma
 
 #### 5. Push your repo up
 
-    $ git push heroku:master
+    $ git push heroku master
 
 #### 6. Enable PostGIS support
 
@@ -127,7 +136,7 @@ Make sure that's the URL for your actual datbase from the heroku config info. Ma
 
 #### 8. Load your data
 
-    $ heroku run cosa_boundaries:load
+    $ heroku run rake cosa_boundaries:load
 
 #### 9. Your app is good to go
 

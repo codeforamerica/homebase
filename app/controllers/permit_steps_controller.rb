@@ -1,15 +1,31 @@
 require 'permit_params'
 require 'geokit'
+require 'securerandom'
 
 class PermitStepsController < ApplicationController
   include PermitParams
+  include PermitStepsHelper
 
   include Wicked::Wizard
-  steps :enter_address, :display_permits, :enter_details, :display_summary
+  steps :enter_address, :display_permits, :enter_details, :display_summary, :error_page
   
   def show
     @permit = current_permit
+
+    case step
+
+    when :display_summary
+
+      @unique_key = SecureRandom.hex
+      permit_created = create_permit "#{Rails.root}/tmp/#{@unique_key}.pdf"
+
+      if ! permit_created
+        jump_to(:error_page)
+        
+      end
+    end
     render_wizard
+
   end
 
   def update
@@ -18,9 +34,7 @@ class PermitStepsController < ApplicationController
     params[:permit][:status] = step.to_s
     params[:permit][:status] = 'active' if step == steps.last
 
-    case step
-
-    when :enter_address
+    if step == :enter_address || step == :enter_details
       sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
       address = Geokit::Geocoders::MultiGeocoder.geocode(params[:permit][:owner_address], bias: sa_bounds)
 
@@ -33,6 +47,27 @@ class PermitStepsController < ApplicationController
 
     @permit.update_attributes(permit_params)
     render_wizard @permit
+  end
+
+  def serve
+    path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
+    begin
+      Timeout::timeout(15) do
+        while !(File.exist? path) do
+          # Not doing anything, just waiting
+        end
+        send_file( path,
+          :disposition => 'inline',
+          :type => 'application/pdf',
+          :x_sendfile => true )
+      end
+    rescue Timeout::Error
+      jump_to(:error_page)
+      render_wizard
+    end
+
+
+
   end
 
   private

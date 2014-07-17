@@ -6,63 +6,44 @@
 
   <!-- Intro text -->
   <div class="intro">
-    <h1>It's time to send in your permit</h1>
-    <p>To complete the permit process, you'll have to download the General Repairs permit application, fill it out and submit it to the City of San Antonio.</p>
+    <h1>Almost done! We filled in your permit</h1>
+    <p>You'll need to complete a few simple steps to submit your permit for approval.</p>
   </div>
 
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <h4>1. Download and print the General Repairs Permit</h4>
+      <h4>1. Download your finished permit</h4>
     </div>
 
-    <div class="panel-body">
-      <p>Please <a href="https://webapps1.sanantonio.gov/dsddocumentcentral/upload/GeneralRepairsMinorCommercialApplication.pdf">click this link</a> to download the permit application from the City of San Antonio website. Please print out the application.
+    <div class="panel-body container-fluid">
+      <div class="row">
 
-      <div class="alert alert-warning">
-        The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href="http://get.adobe.com/reader/">this link</a>.</p>
-      </div>
+        <div class="col-sm-12">
+          <div class="alert alert-warning"><!-- @TODO remove the need for this with pdf.js -->
+            <p>The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href="http://get.adobe.com/reader/">this link</a>.</p>
+          </div>
+        </div>
+      
+        <%= image_tag "general-repairs-template-preview-200px.png" , class: "hidden-xs col-sm-4" %>
+
+        <div class="col-sm-8">
+          <p><strong>Congrats! You filled out the General Repair/Residential Permit.</strong></p>
+          <p>We copied your details down to this form. Please click the button below to download and print this form.</p>
+          <a class="btn btn-primary btn-md" href="/serve_pdf/<%= @unique_key %>.pdf" target="_blank">Download then print</a>
+        </div>
+      </div><!-- ./row -->
     </div><!-- ./panel_body -->
-
   </div><!-- ./panel -->
 
   <div class="panel panel-default">
-
     <div class="panel-heading">
-      <h4>2. Fill out the permit with this information</h4>
+      <h4>2. Sign your printed permit</h4>
     </div>
 
     <div class="panel-body">
-
-      <p><strong>Write the following information on the printed permit.</strong></p>
-
-      <p class="small-text"><b>Job Cost:</b> $<%= @permit.job_cost %></p>
-      <p class="small-text"><b>Owner Name:</b> <%= @permit.owner_name %></p>
-      <p class="small-text"><b>Owner Address:</b> <%= @permit.owner_address %></p>
-
-      <% if @permit.addition %>
-        <p class="small-text"><b>House Square Feet:</b> <%= @permit.house_area %></p>
-        <p class="small-text"><b>Addition Square Feet:</b> <%= @permit.addition_area %></p>
-        <p class="small-text"><b>Air Conditioning Heating System:</b> <%= @permit.ac %></p>
-      <% end %>
-
-      <% if @permit.contractor %>
-        <p class="small-text"><b>Contractor?:</b> <%= @permit.contractor ? "Yes" : "No" %></p>
-        <p class="small-text"><b>Contractor Name:</b> <%= @permit.contractor_name %></p>
-        <p class="small-text"><b>Contractor ID#:</b> <%= @permit.contractor_id %></p>
-        <p class="small-text"><b>Escrow?:</b> <%= @permit.escrow ? "Yes" : "No" %></p>
-        <p class="small-text"><b>Registered License Holder:</b> <%= @permit.license_holder %></p>
-        <p class="small-text"><b>License #:</b> <%= @permit.license_num %></p>
-        <p class="small-text"><b>Authorized Agent Name:</b> <%= @permit.agent_name %></p>
-        <p class="small-text"><b>Contact ID #:</b> <%= @permit.contact_id %></p>
-        <p class="small-text"><b>Telephone:</b> <%= @permit.phone %></p>
-        <p class="small-text"><b>Fax:</b> <%= @permit.fax %></p>
-        <p class="small-text"><b>Email:</b> <%= @permit.email %></p>
-        <p class="small-text"><b>Oher Contact ID # Associated with Permit:</b> <%= @permit.other_contact_id %></p>
-      <% end %>
-
-      <p class="small-text"><b>Work Summary:</b> <%= @permit.work_summary %></p>
-
+      <%= image_tag "general-repairs-template-signhere.png", width: "100%" %>
+      <p>After you've printed your permit, sign your name in the appropriate field.</p>
     </div><!-- panel-body -->
   </div><!-- ./panel -->
 
@@ -71,26 +52,37 @@
       <h4>3. Make a detailed site plan</h4>
     </div>
     <div class="panel-body">
-      <p>Site plan must be drawn to scale showing the size of lot, location of existing structures, locations of easements, 
-      and proposed new structure with distances to all adjacent property lines and other existing structures.</p>
-      <p>For an example of a site plan, <a href="http://www.putnam-fl.com/uploads/uploads/forms/EXAMPLE_SITE_PLAN[1].pdf">click here</a>.</p>
+      <p>A site plan is a drawing of your property that includes  current buildings (like houses or sheds) and new structures (like an addition or shed).</p>
+      <p>You are required to draw and submit a detailed site plan with your permit.</p>
+      <p><a class="btn btn-primary btn-md" href="http://www.putnam-fl.com/uploads/uploads/forms/EXAMPLE_SITE_PLAN[1].pdf" target="_blank">See an example site plan</a></p>
+      <p><a class="btn btn-primary btn-md" href="../../assets/blank-siteplan.pdf" target="_blank">Download blank site plan</a></p>
+      <p>The following is a complete checklist of everything that should be drawn on your site plan:</p>
+      <ul>
+        <li>Size of your lot</li>
+        <li>Location of existing structures (like your house)</li>
+        <li>Location of easements</li>
+        <li>Location of new buildings (like an addition or shed)</li>
+        <li>Distances between all buildings</li>
+        <li>Distance between buildings and your property line</li>
+      </ul>
     </div>
   </div>
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>4. Bring your materials to Development Services Department</h4>
+      <h4>4. Bring your completed forms to the Development Services Department</h4>
     </div>
     <div class="panel-body">
-      <p>Bring the following materials with you:
+      <p>You will have to submit your materials in person to the Development Services Department One-Stop. You will also have to pay a fee to apply for your permit.</p>
+      <p><strong>Where:</strong> The Development Services Department One-Stop is located at <a href="https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393">1901 S. Alamo, San Antonio, Texas 78204</a>.</p>
+      <p><strong>What to bring:</strong> Please come prepared with the following items.
       <ul>
-        <li>Completed Permit Application</li>
-        <li>Completed Site Plan</li>
-        <li>A Form of Identification (i.e. Driver's license, passport)</li>
-        <li>Proof of Home Ownership (i.e. Grant Deed, Utility Bills)</li>
+        <li>Your printed and signed General Repairs/Residential Permit application</li>
+        <li>Your printed and completed site plan</li>
+        <li>A form of photo identification (i.e. driver's license, passport)</li>
+        <li>Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)</li>
       </ul>
-      <p>Development Services Department is located at <a href="https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393">1901 S. Alamo, San Antonio, Texas 78204</a>.</p>
-      <p>Questions? Call them at (210) 207-1111.</p>
+       <p><strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111.</p>
     </div>
   </div>
 

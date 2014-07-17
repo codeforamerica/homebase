@@ -33,6 +33,10 @@ $grid-gutter-width: 40px; // bump up the grid gutters
     ===========================
 */
 
+body {
+  padding-bottom: 100px; // add some padding at the bottom of the page
+}
+
 .container#content {
   margin-top: 40px; // offset all the content from the top of the page
 }
@@ -177,6 +181,26 @@ h1 {
     padding-right:25px;
     width:110px;
   }
+}
+.btn-initial {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  margin-bottom: 0;
+  width: 100%;
+}
+.btn-initial:hover {
+  background-color: rgba(237, 237, 237, 1);
+  cursor: pointer;
+}
+.btn-initial.btn-success {
+  background-color: #c9e6ed;
+}
+.new_permit .btn {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.new_permit {
+  padding-bottom: 30px;
 }
 
 /* styles for #enter_details */

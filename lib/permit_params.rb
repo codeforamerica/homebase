@@ -21,7 +21,18 @@ module PermitParams
     :email,
     :work_summary,
     :job_cost,
-    :status
+    :status,
+    :window,
+    :door,
+    :wall,
+    :siding,
+    :floor,
+    :window_count,
+    :door_count,
+    :cover,
+    :pool,
+    :deck,
+    :acs_struct
     )
  end
 end

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -71,4 +72,7 @@ gem 'rgeo-shapefile', '0.2.3'
 
 # Add bootstrap sass
 gem 'bootstrap-sass', '~> 3.1.1'
+
+# Fill out PDF Form
+gem 'pdf-forms', '0.5.7'
 

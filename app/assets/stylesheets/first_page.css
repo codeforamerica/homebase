@@ -1,0 +1,138 @@
+.btn-block {
+  margin-top: 15px;
+  font-family: Montserrat, sans-serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-block.long {
+  margin-top: -2px;
+  padding-top: 8px;
+  line-height: 1.4em;
+}
+.project-block {
+  width: 100%;
+  height: 116px;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  text-align: center;
+  text-decoration: none;
+}
+.project-row {
+  padding-bottom: 20px;
+}
+.project-text {
+  padding-right: 15px;
+  padding-left: 15px;
+  font-family:'Open Sans', sans-serif;
+  color: #333;
+  font-size: 11px;
+  line-height: 1.4em;
+}
+.project-icon {
+  max-height: 62px;
+  padding-top: 15px;
+}
+@media (max-width: 991px) {
+}
+@media (max-width: 767px) {
+  .chunk {
+    width: auto;
+  }
+  .test-prog-bar {
+    position: relative;
+    width: auto;
+    padding-right: 33px;
+    padding-left: 33px;
+  }
+  .btn-initial {
+    margin-bottom: 3px;
+  }
+  .project-row {
+    padding-bottom: 0px;
+  }
+}
+@media (max-width: 479px) {
+  .btn-block {
+    position: relative;
+    line-height: 32px;
+  }
+  .project-block {
+    height: 60px;
+  }
+  .project-icon {
+    padding: 12px 0px 12px 22px;
+    float: left;
+  }
+}
+
+
+
+.w-block {
+  display: block;
+}
+.w-inline-block {
+  max-width: 100%;
+  display: inline-block;
+}
+.w-clearfix:before,
+.w-clearfix:after {
+  content: " ";
+  display: table;
+}
+.w-clearfix:after {
+  clear: both;
+}
+.w-hidden {
+  display: none;
+}
+
+.w-row:before,
+.w-row:after {
+  content: " ";
+  display: table;
+}
+.w-row:after {
+  clear: both;
+}
+.w-row .w-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.w-col {
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.w-col .w-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+.w-col-4 {
+  width: 33.33333333333333%;
+}
+
+@media screen and (max-width: 767px) {
+  .w-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .w-col {
+    width: 100%;
+    left: auto;
+    right: auto;
+  }
+}
+@media screen and (max-width: 479px) {
+  .w-col {
+    width: 100%;
+  }
+  .project-block .w-clearfix {
+    display: none;
+  }
+}
