@@ -1,37 +1,38 @@
 language: ruby
 rvm:
   - ruby-2.0.0
+
 addons:
   postgresql: "9.3"
 
 before_install:
   - sudo apt-get update
-  - sudo find / -name "geos"
-  - sudo find / -name "proj"
-  - ls /usr/share/proj
-  - ls /usr/bin/proj
-  - sudo find / -name "gdal"
-  - ls /usr/share/gdal
+  # Can use the following for debugging to find where geos/proj are installed
+  # - sudo find / -name "geos"
+  # - sudo find / -name "proj"
+  # - ls /usr/share/proj
+  # - ls /usr/bin/proj
+  # - sudo find / -name "gdal"
+  # - ls /usr/share/gdal
   - sudo apt-get install -qq libgeos-dev libproj-dev
-  - sudo apt-get -qq install libgeos++-dev
-  - sudo find / -name "geos"
-  - ls /usr/include/geos
-  - sudo find / -name "proj"
-  - ls /usr/share/proj
-  - ls /usr/bin/proj
-  - sudo find / -name "gdal"
-  - ls /usr/share/gdal
+  - sudo apt-get -qq install libgeos++-dev  
+  # Can use the following for debugging to find where geos/proj are installed
+  # - sudo find / -name "geos"
+  # - ls /usr/include/geos
+  # - sudo find / -name "proj"
+  # - ls /usr/share/proj
+  # - ls /usr/bin/proj
+  # - sudo find / -name "gdal"
+  # - ls /usr/share/gdal
 
 before_script:
-  
+  # Since GEOS is installed in /usr/include and PROJ is already installed in /usr/share/proj
+  # Need to re-install rgeo so it can link to the correct paths
   - gem uninstall rgeo
   - gem install rgeo -- --with-geos-dir=/usr/include/geos --with-proj-dir=/usr/share/proj
   - psql -c 'create database "homebase_test";' -U postgres
   - psql -c "create extension postgis;" -U postgres -d homebase_test
-  - psql -c '\dt' -U postgres
-  - psql -c '\d' -U postgres
-  - psql -c '\dt' -U postgres -d homebase_test
-  - psql -c '\d' -U postgres -d homebase_test
   - bundle exec rake db:migrate RAILS_ENV=test
+  
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/98138ce2-1d31-4eac-91b8-55e763474cc9/status
