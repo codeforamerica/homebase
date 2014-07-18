@@ -45,6 +45,7 @@ describe Permit do
       @ipermit.valid?
       expect(@ipermit).to be_invalid
       expect(@ipermit.errors.count).to eq(1)
+      expect(@ipermit.errors).to have_key(:owner_name)
       expect(@ipermit.errors.messages[:owner_name]).to include("Please enter home owner name.")
     end
 
