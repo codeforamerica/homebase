@@ -1,5 +1,7 @@
 class Permit < ActiveRecord::Base
-  
+  has_many :permit_binary_details
+  has_many :binaries, through: :permit_binary_details
+
   # validates on permit_steps#new
   # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
   validate :at_least_one_chosen
