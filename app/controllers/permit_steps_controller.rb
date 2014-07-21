@@ -17,9 +17,18 @@ class PermitStepsController < ApplicationController
     when :display_summary
 
       @unique_key = SecureRandom.hex
-      permit_created = create_permit "#{Rails.root}/tmp/#{@unique_key}.pdf"
+      file_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
+      permit_created = create_permit file_path
 
-      if ! permit_created
+      if permit_created
+
+        content = IO.binread file_path
+        @permit_binary_detail = PermitBinaryDetail.create(file_data: content, 
+                                                          permit_id: @permit.id, 
+                                                          filename: "#{@unique_key}.pdf")
+        File.delete file_path
+
+      else
         jump_to(:error_page)
         
       end
@@ -50,22 +59,35 @@ class PermitStepsController < ApplicationController
   end
 
   def serve
-    path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
-    begin
-      Timeout::timeout(15) do
-        while !(File.exist? path) do
-          # Not doing anything, just waiting
-        end
-        send_file( path,
-          :disposition => 'inline',
-          :type => 'application/pdf',
-          :x_sendfile => true )
-      end
-    rescue Timeout::Error
-      jump_to(:error_page)
-      render_wizard
-    end
+    # path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
+    @permit = current_permit
+    # find permit details 
+    permit_binary_detail = PermitBinaryDetail.find_by permit_id: @permit.id
 
+    if permit_binary_detail
+      send_data(permit_binary_detail.binary.data,
+                :disposition => 'inline',
+                :type => permit_binary_detail.content_type,
+                :filename => permit_binary_detail.filename)
+    end
+  #   begin
+  #     Timeout::timeout(15) do
+  #       while !(File.exist? path) do
+  #         # Not doing anything, just waiting
+  #       end
+  #       send_file( path,
+  #         :disposition => 'inline',
+  #         :type => 'application/pdf',
+  #         :x_sendfile => true )
+  #     end
+  #   rescue Timeout::Error
+  #     jump_to(:error_page)
+  #     render_wizard
+  #   end
+
+
+  # @data = @upload.binary.data
+  # send_data(@data, :type => @upload.content_type, :filename => @upload.filename, :disposition => 'download')
 
 
   end

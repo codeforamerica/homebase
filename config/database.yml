@@ -47,11 +47,11 @@ development:
 test:
   adapter: postgis
   encoding: unicode
+  postgis_extension: true
   database: homebase_test
   pool: 5
   host: localhost
   schema_search_path: "public,postgis"
-  script_dir: "/Applications/Postgres.app/Contents/Versions/9.3/share/postgresql/contrib/postgis-2.1"
 
 production:
   adapter: postgis
