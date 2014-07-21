@@ -11,7 +11,7 @@ module PermitStepsHelper
 		                file_path, 
 		                { 
 		                  'DATE'                => Date.today.strftime("%m/%d/%Y"),
-		                  'JOB_COST'            => "$ #{@permit.job_cost}",
+		                  'JOB_COST'            => view_context.number_to_currency(@permit.job_cost),
 		                  'OWNER_NAME'          => @permit.owner_name, 
 		                  'ADDRESS'             => @permit.owner_address,
 
