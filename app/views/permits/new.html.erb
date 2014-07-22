@@ -7,7 +7,7 @@
   <!-- Intro text -->
   <div class="intro">
     <h1>How would you like to improve your house?</h1>
-    <p>Please select a home improvement project:</p>
+    <p>Please select all the projects that you would like to work on:</p>
   </div>
 
   <!-- Start the permit select form -->
@@ -32,7 +32,7 @@
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "addition.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
-                <p class="btn-block">Room Additions</p>
+                <p class="btn-block">Room Addition</p>
               </div>
             <% end %>               
             <%= f.check_box :addition, style: 'display:none' %>
@@ -76,9 +76,9 @@
                 <%= image_tag "carport.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
                 <p class="btn-block long">
-                  Carports and 
+                  Carport or 
                   <br>
-                  Outdoor Covers 
+                  Outdoor Cover 
                 </p>              
               </div>
             <% end %>
@@ -122,7 +122,7 @@
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "siding.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
-                <p class="btn-block">Siding Replacement</p>
+                <p class="btn-block">Replace siding</p>
               </div>              
             <% end %>              
             <%= f.check_box :siding, style: 'display:none' %>
@@ -158,7 +158,7 @@
       <!-- ./acs_struct -->
 
       <!-- Submit button -->
-      <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
+      <%= f.submit "Next step", class: "btn btn-primary btn-lg"%>
 
     <% end %>
   </div><!-- ./form -->
