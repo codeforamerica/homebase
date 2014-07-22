@@ -12,23 +12,29 @@ describe PermitsController do
     end
   end
   describe "POST #create" do
-
-  it "adds a permit" do 
-    expect{ 
-      post :create, permit: FactoryGirl.attributes_for(:empty_permit, addition: true) 
-    }.to change(Permit,:count).by(1)
-  end
-
     context "when addition is selected as true" do
-      subject { post :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, 
-                                                                                        addition: true) }  
-      it { expect(assigns(:permit)).to_not be_a_new(Permit) }
-      # it { expect(assigns(:permit)).to eq(permit1) }
-      #it { expect{post :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, addition: true)}.to change(Permit.count).from(0).to(1) }
-      it { expect(subject).to redirect_to(permit_steps_path) }
+      # let (:permit1) { FactoryGirl.attributes_for(:empty_permit, addition: true) }
+      # subject { post :create, :format => 'html', :permit => permit1}  
+      # it { expect(assigns(:permit)).to_not be_a_new(Permit) }
+      #  it { expect(assigns(:permit)).to eq(permit1) }
+      # #it { expect{post :create, :format => 'html', :permit => FactoryGirl.attributes_for(:empty_permit, addition: true)}.to change(Permit.count).from(0).to(1) }
+      # it { expect(subject).to redirect_to(permit_steps_path) }
 
 
       # it { should respond_with 200 }
+
+      context "success" do
+        it "adds a permit" do 
+          expect{ 
+            post :create, permit: FactoryGirl.attributes_for(:empty_permit, addition: true) 
+          }.to change(Permit,:count).by(1)
+        end
+
+        it "redirects to permit_steps_path" do
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, addition: true) 
+          expect(response).to redirect_to(permit_steps_path)
+        end
+      end
     end
 
     context "when window is selected as true" do
