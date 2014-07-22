@@ -76,7 +76,7 @@ class Permit < ActiveRecord::Base
 
   def at_least_one_chosen
     if !(addition || window || door || wall || siding || floor || cover || pool || deck || acs_struct)
-      errors[:base] << ("Plase choose an improvement.")
+      errors[:base] << ("Please choose at least one project to work on.")
     end
   end
 end
