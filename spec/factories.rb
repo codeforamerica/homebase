@@ -28,7 +28,7 @@ FactoryGirl.define do
     fax               "210-948-3432"
     email             "company@company.com"
     work_summary      "Adding a 500 square-foot room in the backyard"
-    job_cost          "2000"
+    job_cost          2000.40
     status            "active"
     window            true
     door              true
