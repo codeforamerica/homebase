@@ -5,9 +5,40 @@ describe PermitStepsController do
     @cosa = FactoryGirl.create(:cosa_boundary)
   end
 
-  describe "GET #new" do
+  describe "GET #show" do
+    context "when step is enter_address" do
+    end
 
+    context "when step is display_permit" do
+    end
+
+    context "when step is enter_details" do
+    end
+
+    context "when step is display_summary" do
+    end
   end
+
+  describe "GET #update" do
+    context "when step is enter_address" do
+    end
+
+    context "when step is display_permit" do
+    end
+
+    context "when step is enter_details" do
+    end
+
+    context "when step is display_summary" do
+    end
+  end
+
+
+# # Test find_friends block of show action
+# get :show, id: :find_friends
+
+# # Test find_friends block of update action
+# put :update, {'id' => 'find_friends', "user" => { "id" => @user.id.to_s }}
 
   # describe "GET #index" do
 
