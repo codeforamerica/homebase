@@ -24,6 +24,7 @@ before_install:
   # - ls /usr/bin/proj
   # - sudo find / -name "gdal"
   # - ls /usr/share/gdal
+  - sudo apt-get install pdftk
 
 before_script:
   # Since GEOS is installed in /usr/include and PROJ is already installed in /usr/share/proj
