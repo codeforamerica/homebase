@@ -7,7 +7,7 @@ class PermitStepsController < ApplicationController
   include PermitStepsHelper
 
   include Wicked::Wizard
-  steps :enter_address, :display_permits, :enter_details, :display_summary, :error_page
+  steps :answer_screener, :display_permits, :enter_details, :display_summary, :error_page, :cannot_help, :do_not_need_permit
   
   def show
     @permit = current_permit
