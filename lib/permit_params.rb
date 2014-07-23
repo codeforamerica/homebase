@@ -33,7 +33,6 @@ module PermitParams
     :pool,
     :deck,
     :acs_struct,
-    :confirmed_name,
     :accepted_terms
     )
  end
