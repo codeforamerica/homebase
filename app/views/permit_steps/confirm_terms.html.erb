@@ -1,0 +1,33 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 0} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1>Please digitally sign your permit</h1>
+    <p>If you'd like to sign your permit online, we can help you.</p>
+  </div>
+
+    <!-- Permit information -->
+    <div class="panel panel-default panel-info-addition">
+        <div class="panel-heading">
+            <h4>Please read the terms of your permit</h4>
+        </div>
+
+        <div class="panel-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et libero temporibus voluptates ducimus saepe obcaecati ad nesciunt animi cupiditate ea voluptas officiis eveniet, excepturi laborum quae, unde aliquam voluptate accusamus! Vero impedit unde, nisi rem rerum autem mollitia accusamus ad.</p>
+            
+            <div class="form-group">
+                <%= form_for @permit, url: wizard_path, html: { name: "confirm-form" } do |f| %>
+
+                    <%= f.text_field :confirmed_name, placeholder: "Type your first and last name", class: "form-control input-lg" %>
+                    
+                    <br />
+                    <%= f.submit "I agree to the terms", class: "btn btn-primary btn-lg"%>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div><!-- ./col-sm-9 -->
