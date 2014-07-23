@@ -27,7 +27,7 @@ before_install:
   - sudo apt-get install pdftk
   - ls
   - pwd
-  - chmod 777 tmp
+  - mkdir tmp
 before_script:
   # Since GEOS is installed in /usr/include and PROJ is already installed in /usr/share/proj
   # Need to re-install rgeo so it can link to the correct paths
