@@ -25,8 +25,7 @@ before_install:
   # - sudo find / -name "gdal"
   # - ls /usr/share/gdal
   - sudo apt-get install pdftk
-  - ls
-  - pwd
+  # Create tmp folder for test
   - mkdir tmp
 before_script:
   # Since GEOS is installed in /usr/include and PROJ is already installed in /usr/share/proj
