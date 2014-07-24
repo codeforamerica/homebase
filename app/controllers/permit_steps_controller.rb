@@ -14,6 +14,10 @@ class PermitStepsController < ApplicationController
 
     case step
 
+    when :confirm_terms
+        # do something
+    end
+
     when :display_summary
 
       @unique_key = SecureRandom.hex
