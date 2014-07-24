@@ -164,6 +164,17 @@ h1 {
       }    
 	}
   } // ./status
+  
+  /* styles for your project */
+  .project-label {
+    background: none repeat scroll 0 0 #b1b1b1;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 6px;
+    padding: 2px 7px 3px;
+    }
 
 } // ./sidebar
 
