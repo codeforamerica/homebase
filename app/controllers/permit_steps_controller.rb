@@ -18,7 +18,7 @@ class PermitStepsController < ApplicationController
 
       @unique_key = SecureRandom.hex
       file_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
-      permit_created = create_permit file_path
+      permit_created = create_permit(file_path, @permit)
 
       if permit_created
 
