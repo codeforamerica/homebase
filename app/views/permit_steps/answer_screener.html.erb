@@ -322,37 +322,40 @@
     </div>
   </div>
 
-  <!-- Intro text -->
-  <div class="intro">
-    <h1>Enter your address</h1>
-    <p>Type your address in the box below:</p>
-  </div>
-
-  <!-- Start the address form -->
-  <div class="form">
-    <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
-
-      <!-- error checking -->
-      <% if @permit.errors.any? %>
-        <div class="alert alert-danger">
-          <% @permit.errors.messages.values.each do |msg| %>
-            <%msg.each do  |m| %>
-              <strong><%= m %></strong>
-            <%end %>
-          <% end %>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Enter your address</h4>
         </div>
-      <% end %>
-      <!-- ./ error checking -->
+        <div class="panel-body">
 
-      <!-- address entry -->
-      <div class="form-group">
-        <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
-      </div>
+        <!-- Start the address form -->
+        <p>Enter the address of the property you're working on.</p>
+        <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
+
+        <!-- error checking -->
+        <% if @permit.errors.any? %>
+          <div class="alert alert-danger">
+            <% @permit.errors.messages.values.each do |msg| %>
+              <%msg.each do  |m| %>
+                <strong><%= m %></strong>
+              <%end %>
+            <% end %>
+          </div>
+        <% end %>
+        <!-- ./ error checking -->
+
+        <!-- address entry -->
+        <div class="form-group">
+          <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
+        </div>
+      </div><!-- ./panel_body -->
+    </div><!-- panel -->
+
       <!-- ./address entry -->
 
       <!-- submit button -->
       <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
     <% end %>
-  </div><!-- ./form -->
 </div> <!-- ./col-sm-9 -->
