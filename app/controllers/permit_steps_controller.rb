@@ -60,7 +60,7 @@ class PermitStepsController < ApplicationController
 
       # if the name in our db DOES NOT match the name they entered
       if !confirmed_name.eql?(owner_name)
-        @terms_error = "The name you entered did not match the name you used on your permit application (#{@permit.owner_name}). Please check your response."
+        @terms_error = "The name you entered did not match the name you used on your permit application (#{@permit.owner_name}). Please type your name again."
       end
 
     end
