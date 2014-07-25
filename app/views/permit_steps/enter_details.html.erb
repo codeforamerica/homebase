@@ -408,35 +408,3 @@
     <% end %>
   </div>
 </div>
-
-<script>
-  <% if @permit.contractor != nil %>
-
-    <% if @permit.contractor %>
-
-      $("#contractor-yes-btn").trigger('click');
-      if(!$('.contractor-details').is(':visible'))
-      {
-        $(".contractor-details").fadeToggle("fast","swing");
-      }
-
-    <% else %>
-
-      $("#contractor-no-btn").trigger('click');
-      if($('.contractor-details').is(':visible'))
-      {
-        $(".contractor-details").fadeToggle("fast","swing");
-      }
-
-    <% end %>
-  <% end %>
-
-  <% if @permit.escrow != nil %>
-    <% if @permit.escrow %>
-      $("#escrow-yes-btn").trigger('click');
-    <% else %>
-      $("#escrow-no-btn").trigger('click');
-    <% end %>
-  <% end %>
-
-</script>
