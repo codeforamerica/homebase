@@ -14,10 +14,6 @@ class PermitStepsController < ApplicationController
 
     case step
 
-    when :confirm_terms
-        # do something
-    end
-
     when :display_summary
 
       @unique_key = SecureRandom.hex
@@ -44,6 +40,7 @@ class PermitStepsController < ApplicationController
   def update
     @permit = current_permit
 
+    # checks if permit is done so model knows when to do validation
     params[:permit][:status] = step.to_s
     params[:permit][:status] = 'active' if step == steps.last
 
@@ -56,10 +53,20 @@ class PermitStepsController < ApplicationController
       else
         puts "erroring out"
       end
+      
+    elsif step == :confirm_terms
+      confirmed_name = params[:permit][:confirmed_name]
+      owner_name = @permit.owner_name
+
+      #if !confirmed_name.equal?(owner_name)
+      #  terms_error = "The name you entered did not match the name you used on your permit application (#{@permit.owner_name}). Please check your reponse."
+      #  jump_to(:error_page)
+      #end
+
     end
 
     @permit.update_attributes(permit_params)
-    render_wizard @permit
+    render_wizard(@permit)
   end
 
   def serve
