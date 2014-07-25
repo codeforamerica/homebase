@@ -78,7 +78,7 @@ class Permit < ActiveRecord::Base
   end
 
   def accepted_terms_acceptance?
-    status.to_s.include?('confirmed_details') || active?
+    status.to_s.include?('confirm_terms') || active?
   end
 
   def at_least_one_chosen

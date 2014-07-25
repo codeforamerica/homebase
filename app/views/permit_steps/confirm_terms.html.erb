@@ -9,6 +9,16 @@
     <h1>Please read these terms and sign your permit online</h1>
   </div>
 
+    <!-- Check for errors -->
+    <% if @permit.errors.any? || @terms_error != nil %>
+      <div class="alert alert-danger">
+        <p><strong>Sorry, there was a problem. Please check your answers.</strong></p>
+        <% if @terms_error != nil %>
+            <p><%= @terms_error %>
+        <% end %>
+      </div>
+    <% end %>
+
     <!-- Other requirements -->
     <div class="panel panel-default">
         <div class="panel-heading">

@@ -58,15 +58,19 @@ class PermitStepsController < ApplicationController
       confirmed_name = params[:permit][:confirmed_name]
       owner_name = @permit.owner_name
 
-      #if !confirmed_name.equal?(owner_name)
-      #  terms_error = "The name you entered did not match the name you used on your permit application (#{@permit.owner_name}). Please check your reponse."
-      #  jump_to(:error_page)
-      #end
+      # if the name in our db DOES NOT match the name they entered
+      if !confirmed_name.eql?(owner_name)
+        @terms_error = "The name you entered did not match the name you used on your permit application (#{@permit.owner_name}). Please check your response."
+      end
 
     end
 
     @permit.update_attributes(permit_params)
-    render_wizard(@permit)
+    if @terms_error != nil
+      render_wizard
+    else
+      render_wizard(@permit)
+    end
   end
 
   def serve
