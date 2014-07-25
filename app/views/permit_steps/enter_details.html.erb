@@ -88,16 +88,45 @@
 
           <div class="form-group">
             <%= f.label :email, "Contractor email address", for: "email" %>
+
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors.messages[:email].length >= 1 %>
+              <!-- create an errors div to style error message and make input red -->    
+              <div class="has-error">
+                <!-- Print out the error message (from validator) -->
+                <p><%= @permit.errors.messages[:email][0] %></p>
+            <% end %>
+
             <%= f.text_field :email, class: "form-control input-lg", id: "email" %>
+
+            <% if @permit.errors.messages[:email].length >= 1 %>
+              <!-- close the errors div -->
+              </div>
+            <% end %>
           </div>
 
         <!-- ./email -->
 
         <!-- phone -->
 
+
+
           <div class="form-group">
             <%= f.label :phone, "Contractor phone number", for: "phone" %>
+
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors.messages[:phone].length >= 1 %>
+              <!-- create an errors div to style error message and make input red -->    
+              <div class="has-error">
+                <!-- Print out the error message (from validator) -->
+                <p><%= @permit.errors.messages[:phone][0] %></p>
+            <% end %>
             <%= f.text_field :phone, class: "form-control input-lg", id: "phone" %>
+
+            <% if @permit.errors.messages[:email].length >= 1 %>
+              <!-- close the errors div -->
+              </div>
+            <% end %>
           </div>
 
         <!-- ./phone -->
