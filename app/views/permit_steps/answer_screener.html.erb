@@ -7,176 +7,185 @@
   <h1>Enter your project details</h1>
 
   <!-- Room Additions section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Room Additions</h4>
-    </div>
-    <div class="panel-body">
-      <p>What best describes your room addition that you are building?</p>
-      <label for="test-label">Size</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupRoomAdditions1" id="lessThan1000" value="lessThan1000">
-          Less than 1,000 sq ft
-        </label>
+  <% if @permit.addition %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Room Additions</h4>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupRoomAdditions1" id="greaterThan1000" value="greaterThan1000">
-          Greater than 1,000 sq ft
-        </label>
+      <div class="panel-body">
+        <p>What best describes your room addition that you are building?</p>
+        <label for="test-label">Size</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupRoomAdditions1" id="lessThan1000" value="lessThan1000">
+            Less than 1,000 sq ft
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupRoomAdditions1" id="greaterThan1000" value="greaterThan1000">
+            Greater than or equal to 1,000 sq ft
+          </label>
+        </div>
+        <label for="test-label">Stories</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupRoomAdditions2" id="1story" value="1story">
+            1 story
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupRoomAdditions2" id="2orMoreStories" value="2orMoreStories">
+            2 or more stories
+          </label>
+        </div>            
       </div>
-      <label for="test-label">Stories</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupRoomAdditions2" id="1story" value="1story">
-          1 story
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupRoomAdditions2" id="2orMoreStories" value="2orMoreStories">
-          2 or more stories
-        </label>
-      </div>            
-    </div>
-  </div>
+    </div> 
+  <% end %><!-- ./Room Additions section -->
 
   <!-- Shed/Garage Accessory Structure section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Shed/Garage</h4>
+  <% if @permit.acs_struct %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Shed/Garage</h4>
+      </div>
+      <div class="panel-body">
+        <p>What best describes your shed or garage that you are building?</p>
+        <label for="test-label">Size</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupAccessory1" id="lessThan120" value="lessThan120">
+            Less than or equal to 120 sq ft
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupAccessory1" id="greaterThan120" value="greaterThan120">
+            Greater than 120 sq ft
+          </label>
+        </div>
+        <label for="test-label">Stories</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupAccessory2" id="1story" value="1story">
+            1 story
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupAccessory2" id="2orMoreStories" value="2orMoreStories">
+            2 or more stories
+          </label>
+        </div>            
+      </div>
     </div>
-    <div class="panel-body">
-      <p>What best describes your shed or garage that you are building?</p>
-      <label for="test-label">Size</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupAccessory1" id="lessThan120" value="lessThan120">
-          Less than 120 sq ft
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupAccessory1" id="greaterThan120" value="greaterThan120">
-          Greater than 120 sq ft
-        </label>
-      </div>
-      <label for="test-label">Stories</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupAccessory2" id="1story" value="1story">
-          1 story
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupAccessory2" id="2orMoreStories" value="2orMoreStories">
-          2 or more stories
-        </label>
-      </div>            
-    </div>
-  </div>
+  <% end %><!-- ./Shed/Garage Accessory Structure -->
 
   <!-- Deck section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Deck</h4>
+  <% if @permit.deck %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Deck</h4>
+      </div>
+      <div class="panel-body">
+        <p>What best describes your deck that you are building?</p>
+        <label for="test-label">Size</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck1" id="lessThan120" value="lessThan120">
+            Less than or equal to 120 sq ft
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck1" id="greaterThan120" value="greaterThan120">
+            Greater than 120 sq ft
+          </label>
+        </div>
+        <label for="test-label">Grade</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck2" id="lessThan30" value="lessThan30">
+            Less than or equal to 30 inches above grade
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck2" id="moreThan30" value="moreThan30">
+            More than 30 inches above grade
+          </label>
+        </div>  
+        <label for="test-label">Dwelling Attachment</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck3" id="attachedToDwelling" value="attachedToDwelling">
+            Attached to dwelling
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck3" id="notAttachedToDwelling" value="notAttachedToDwelling">
+            Not attached to dwelling
+          </label>
+        </div>
+        <label for="test-label">Exit Door</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck4" id="exitDoor" value="exitDoor">
+            Serves a required exit door
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDeck4" id="noExitDoor" value="noExitDoor">
+            Does not serve a required exit door
+          </label>
+        </div>              
+      </div>
     </div>
-    <div class="panel-body">
-      <p>What best describes your deck that you are building?</p>
-      <label for="test-label">Size</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck1" id="lessThan120" value="lessThan120">
-          Less than 120 sq ft
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck1" id="greaterThan120" value="greaterThan120">
-          Greater than 120 sq ft
-        </label>
-      </div>
-      <label for="test-label">Grade</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck2" id="lessThan30" value="lessThan30">
-          Less than 30 inches above grade
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck2" id="moreThan30" value="moreThan30">
-          More than 30 inches above grade
-        </label>
-      </div>  
-      <label for="test-label">Dwelling Attachment</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck3" id="attachedToDwelling" value="attachedToDwelling">
-          Attached to dwelling
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck3" id="notAttachedToDwelling" value="notAttachedToDwelling">
-          Not attached to dwelling
-        </label>
-      </div>
-      <label for="test-label">Exit Door</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck4" id="exitDoor" value="exitDoor">
-          Serves a required exit door
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDeck4" id="noExitDoor" value="noExitDoor">
-          Does not serve a required exit door
-        </label>
-      </div>              
-    </div>
-  </div>
+  <% end %><!-- ./Deck section -->
 
   <!-- Swimming Pool section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Swimming Pool</h4>
+  <% if @permit.pool %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Swimming Pool</h4>
+      </div>
+      <div class="panel-body">
+        <p>What best describes your swimming pool that you are building?</p>
+        <label for="test-label">Ground</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupPool1" id="inGround" value="inGround">
+            Pool is in ground
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupPool1" id="aboveGround" value="aboveGround">
+            Pool is above ground
+          </label>
+        </div>
+        <label for="test-label">Water</label>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupPool2" id="lessThan5000" value="lessThan5000">
+            Less than or equal to 5,000 gallons
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupPool2" id="moreThan5000" value="moreThan5000">
+            More than 5,000 gallons
+          </label>
+        </div>            
+      </div>
     </div>
-    <div class="panel-body">
-      <p>What best describes your swimming pool that you are building?</p>
-      <label for="test-label">Ground</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupPool1" id="inGround" value="inGround">
-          Pool is in ground
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupPool1" id="aboveGround" value="aboveGround">
-          Pool is above ground
-        </label>
-      </div>
-      <label for="test-label">Water</label>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupPool2" id="lessThan5000" value="lessThan5000">
-          Less than 5,000 gallons
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupPool2" id="moreThan5000" value="moreThan5000">
-          More than 5,000 gallons
-        </label>
-      </div>            
-    </div>
-  </div>
+  <% end %><!-- ./Swimming Pool section -->
 
   <!-- Carports or Outdoor Covers section -->
+  <% if @permit.cover %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4>Carports or Outdoor Covers</h4>
@@ -211,146 +220,156 @@
       </div>            
     </div>
   </div>
+  <% end %><!-- ./Carports or Outdoor Covers section -->
 
   <!-- Windows section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Windows</h4>
-    </div>
-    <div class="panel-body">
-      <p>Are you <b>only</b> replacing broken glass?</p>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupWindows" id="yes" value="yes">
-          Yes
-        </label>
+  <% if @permit.window %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Windows</h4>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupWindows" id="no" value="no">
-          No
-        </label>
-      </div>           
+      <div class="panel-body">
+        <p>Are you <b>only</b> replacing broken glass?</p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupWindows" id="yes" value="yes">
+            Yes
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupWindows" id="no" value="no">
+            No
+          </label>
+        </div>           
+      </div>
     </div>
-  </div>
+    <% end %><!-- ./Windows section -->
 
   <!-- Doors section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Doors</h4>
-    </div>
-    <div class="panel-body">
-      <p>Are you <b>only</b> replacing the existing door on current hinges?</p>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDoors" id="yes" value="yes">
-          Yes
-        </label>
+  <% if @permit.door %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Doors</h4>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupDoors" id="no" value="no">
-          No
-        </label>
-      </div>           
+      <div class="panel-body">
+        <p>Are you <b>only</b> replacing the existing door on current hinges?</p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDoors" id="yes" value="yes">
+            Yes
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupDoors" id="no" value="no">
+            No
+          </label>
+        </div>           
+      </div>
     </div>
-  </div>
+  <% end %><!-- ./Doors section -->
 
   <!-- Walls section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Walls</h4>
-    </div>
-    <div class="panel-body">
-      <p>Are you <b>only</b> doing paint, wallpaper, or repair of sheetrock unless studs are moved or altered?</p>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupWalls" id="yes" value="yes">
-          Yes
-        </label>
+  <% if @permit.wall %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Walls</h4>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupWalls" id="no" value="no">
-          No
-        </label>
-      </div>           
+      <div class="panel-body">
+        <p>Are you <b>only</b> doing paint, wallpaper, or repair of sheetrock unless studs are moved or altered?</p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupWalls" id="yes" value="yes">
+            Yes
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupWalls" id="no" value="no">
+            No
+          </label>
+        </div>           
+      </div>
     </div>
-  </div>
+  <% end %><!-- ./Walls section -->
 
   <!-- Siding Replacement section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Siding Replacement</h4>
-    </div>
-    <div class="panel-body">
-      <p>Are you <b>only</b> placing new siding over existing siding?</p>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupSiding" id="yes" value="yes">
-          Yes
-        </label>
+  <% if @permit.siding %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Siding Replacement</h4>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupSiding" id="no" value="no">
-          No
-        </label>
-      </div>           
-    </div>
-  </div>
-
-    <!-- Floor - Structural Repairs section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Floor - Structural Repairs</h4>
-    </div>
-    <div class="panel-body">
-      <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupFloors" id="yes" value="yes">
-          Yes
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="groupFloors" id="no" value="no">
-          No
-        </label>
-      </div>           
-    </div>
-  </div>
-
-     
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>Enter your address</h4>
+      <div class="panel-body">
+        <p>Are you <b>only</b> placing new siding over existing siding?</p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupSiding" id="yes" value="yes">
+            Yes
+          </label>
         </div>
-        <div class="panel-body">
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupSiding" id="no" value="no">
+            No
+          </label>
+        </div>           
+      </div>
+    </div>
+  <% end %><!-- ./Siding Replacement section -->
 
-        <!-- Start the address form -->
-        <p>Enter the address of the property you're working on.</p>
-        <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
+  <!-- Floor - Structural Repairs section -->
+  <% if @permit.floor %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Floor - Structural Repairs</h4>
+      </div>
+      <div class="panel-body">
+        <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupFloors" id="yes" value="yes">
+            Yes
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="groupFloors" id="no" value="no">
+            No
+          </label>
+        </div>           
+      </div>
+    </div>
+  <% end %><!-- ./Floor-Structural Repairs section -->
+ 
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Enter your address</h4>
+    </div>
+    <div class="panel-body">
 
-        <!-- error checking -->
-        <% if @permit.errors.any? %>
-          <div class="alert alert-danger">
-            <% @permit.errors.messages.values.each do |msg| %>
-              <%msg.each do  |m| %>
-                <strong><%= m %></strong>
-              <%end %>
-            <% end %>
-          </div>
+    <!-- Start the address form -->
+    <p>Enter the address of the property you're working on.</p>
+    <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
+
+    <!-- error checking -->
+    <% if @permit.errors.any? %>
+      <div class="alert alert-danger">
+        <% @permit.errors.messages.values.each do |msg| %>
+          <%msg.each do  |m| %>
+            <strong><%= m %></strong>
+          <%end %>
         <% end %>
-        <!-- ./ error checking -->
+      </div>
+    <% end %>
+    <!-- ./ error checking -->
 
-        <!-- address entry -->
-        <div class="form-group">
-          <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
-        </div>
-      </div><!-- ./panel_body -->
-    </div><!-- panel -->
+    <!-- address entry -->
+    <div class="form-group">
+      <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
+    </div>
+  </div><!-- ./panel_body -->
+</div><!-- panel -->
 
       <!-- ./address entry -->
 
