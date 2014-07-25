@@ -58,6 +58,10 @@ h1 {
 /* styles for the sidebar */
 #sidebar {
   
+  .roof, .fence, .addition {
+    position: absolute; // allows us to position each improvement
+    display: none; // hide these on load; we reveal when they pick one
+  } 
   .visuals {
     position: relative; // allows us to position improvements
      // testing to keep icons tidy and inside sidebar
