@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root to: 'permits#new'
   get '/serve_pdf/:filename' => 'permit_steps#serve'
 
+  get '/.well-known/status' => 'status#check'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
