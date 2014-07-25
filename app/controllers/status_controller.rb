@@ -11,7 +11,7 @@ class StatusController < ApplicationController
   def check
     response_hash = Hash.new
     #{ :status => "ok", :updated => "", :dependencies => "", :resources => "" }
-    response_hash[:dependencies] = [ "postgres", "geos", "pdftk" ]
+    response_hash[:dependencies] = [ "postgres", "pdftk" ]
     response_hash[:status] = everything_ok? ? "ok" : "NOT OK"
     response_hash[:updated] = Time.now.to_i
     response_hash[:resources] = {}
@@ -21,16 +21,20 @@ class StatusController < ApplicationController
   private
   def everything_ok?
     # Check that we have some database presence and core data is available
-    database_okay? && geos_okay? && pdftk_okay?
+    database_okay? && 
+    # geos_okay? && 
+    pdftk_okay?
   end
 
   def database_okay?
     CosaBoundary.first.present?
   end
 
-  def geos_okay?
-    RGeo::Geos.supported?
-  end
+  # This is removed for now since we only use Geos at the first load for COSA Boundary.
+  # And will also wait until the buildpack is fixed, which caused this to fail.
+  # def geos_okay?
+  #   RGeo::Geos.supported?
+  # end
 
   def pdftk_okay?
     begin
