@@ -39,6 +39,7 @@
   <div class="status">
     <h4 class="hidden-xs">Your project</h4>  
     <span class="project-label addition">Addition</span>
+    <span class="project-label acs-struct">Shed or Garage</span>      
   </div>
 </div>
 
@@ -51,5 +52,11 @@
 
   <% end %>
  
+  <% if @permit.acs_struct %>
 
+    $(".acs-struct").fadeToggle("fast","swing");
+    $('.acs-struct-btn').toggleClass("toggle-on");
+
+  <% end %>
+          
 </script>
