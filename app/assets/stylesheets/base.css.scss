@@ -59,7 +59,7 @@ h1 {
 
 #sidebar {
   
-  .roof, .fence, .addition, .acs-struct {
+  .addition, .acs-struct, .deck, .pool, .cover, .window, .door, .wall, .siding, .floor {
     position: relative; // allows us to position each improvement
     display: none; // hide these on load; we reveal when they pick one
   } 
@@ -178,7 +178,8 @@ h1 {
     color: white;
     font-size: 12px;
     font-weight: 700;
-    margin-right: 6px;
+    line-height: 2.3em;
+    margin-right: 3px;
     padding: 2px 7px 3px;
     }
 
