@@ -16,5 +16,4 @@
 //= require modernizr
 //= require jquery-waypoints/waypoints.min
 //= require landing
-//= require enter_details
 //= require bootstrap
