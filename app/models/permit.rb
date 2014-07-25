@@ -32,6 +32,9 @@ class Permit < ActiveRecord::Base
   validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are repairing."
   validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Please specify the number of doors you are repairing."
 
+  # validates on permit_step#confirm_details
+  validates_acceptance_of :accepted_terms, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here"
+
   def active?
     status == 'active'
   end
@@ -72,6 +75,10 @@ class Permit < ActiveRecord::Base
 
   def only_if_door_true?
     active_or_details? && door
+  end
+
+  def accepted_terms_acceptance?
+    status.to_s.include?('confirmed_details') || active?
   end
 
   def at_least_one_chosen
