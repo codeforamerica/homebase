@@ -58,43 +58,43 @@
 <script>
 
   <% if @permit.addition %>
-    $(".addition").fadeToggle("fast","swing");
+    $(".addition").toggleClass("displayed");
   <% end %>
  
   <% if @permit.acs_struct %>
-    $(".acs-struct").fadeToggle("fast","swing");
+    $(".acs-struct").toggleClass("displayed");
   <% end %>
   
   <% if @permit.deck %>
-    $(".deck").fadeToggle("fast","swing");
+    $(".deck").toggleClass("displayed");
   <% end %>
 
   <% if @permit.pool %>
-    $(".pool").fadeToggle("fast","swing");
+    $(".pool").toggleClass("displayed");
   <% end %>
 
   <% if @permit.cover %>
-    $(".cover").fadeToggle("fast","swing");
+    $(".cover").toggleClass("displayed");
   <% end %>
 
   <% if @permit.window %>
-    $(".window").fadeToggle("fast","swing");
+    $(".window").toggleClass("displayed");
   <% end %>
   
   <% if @permit.door %>
-    $(".door").fadeToggle("fast","swing");
+    $(".door").toggleClass("displayed");
   <% end %>
 
   <% if @permit.wall %>
-    $(".wall").fadeToggle("fast","swing");
+    $(".wall").toggleClass("displayed");
   <% end %>
 
   <% if @permit.siding %>
-    $(".siding").fadeToggle("fast","swing");
+    $(".siding").toggleClass("displayed");
   <% end %>
 
   <% if @permit.floor %>
-    $(".floor").fadeToggle("fast","swing");
+    $(".floor").toggleClass("displayed");
   <% end %>
                   
 </script>
