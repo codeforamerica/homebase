@@ -62,7 +62,11 @@ h1 {
   .addition, .acs-struct, .deck, .pool, .cover, .window, .door, .wall, .siding, .floor {
     position: relative; // allows us to position each improvement
     display: none; // hide these on load; we reveal when they pick one
-  } 
+  }
+
+  .displayed {
+    display: inline-block;  // when user clicks, show the improvement icon
+  }
 
   .visuals {
     position: relative; // allows us to position improvements
@@ -180,7 +184,9 @@ h1 {
     font-weight: 700;
     line-height: 2.3em;
     margin-right: 3px;
+    margin-bottom: 5px;
     padding: 2px 7px 3px;
+    height: 30px;
     }
 
 } // ./sidebar
