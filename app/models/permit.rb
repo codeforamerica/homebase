@@ -86,7 +86,6 @@ class Permit < ActiveRecord::Base
   def ensure_name_confirmed
     if !confirmed_name.eql?(owner_name)
       errors[:confirmed_name] << ("The name you entered did not match the name you used on your permit application (#{owner_name}). Please type your name again.")
-      accepted_terms = false
     end
     confirmed_name.eql?(owner_name)
   end
