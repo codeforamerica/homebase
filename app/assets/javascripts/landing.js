@@ -16,20 +16,17 @@ $(document).ready(function()
       console.log("CLICKED:");
       console.log(clickedButton);
 
-      clickedButtonElement = (".").concat(clickedButton)
-      if($(clickedButtonId).is(':visible')) {
+      if(!$(clickedButtonElement).is(':visible')) {
         $(clickedButtonElement).fadeToggle("fast", "swing", function() {
           $(clickedButtonElement).css("display", "inline-block");
         });
+        console.log("IS VISIBLE, TURNING OFF")
       }
       else {
         $(clickedButtonElement).fadeToggle("fast", "swing");
+        console.log("IS INVISIBLE, TURNING OFF")
       }
 
-      console.log("DONE:");
-      console.log(clickedButtonElement);
-
-      clickedButtonActual = ("pick-").concat(clickedButton);
       $(clickedButtonActual).toggleClass("btn-success");
       console.log("DONE:");
       console.log(clickedButtonActual)
