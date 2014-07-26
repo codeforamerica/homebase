@@ -1,35 +1,13 @@
-$(document).ready(function() 
-  {
-
+$(document).ready(function() {
   $ (".project").each(function(i) {
-    //console.log("TEST!");
-    //console.log(this);
     $(this).click(function() {
-      // $(element.id).css("test", "test");
-      // targeted = element.target.id
-      // targeted_id = targeted.split("-");
       clickedButton = $(this).attr("id");
-      clickedButtonId = ("#").concat(clickedButton)
-      clickedButtonElement = (".").concat(clickedButton)
-      clickedButtonActual = ("pick-").concat(clickedButton);
+      buttonId = ("#").concat(clickedButton)
+      chosenProject = (".").concat(clickedButton)
+      clickedButtonClass = ("pick-").concat(clickedButton);
 
-      console.log("CLICKED:");
-      console.log(clickedButton);
-
-      if(!$(clickedButtonElement).is(':visible')) {
-        $(clickedButtonElement).fadeToggle("fast", "swing", function() {
-          $(clickedButtonElement).css("display", "inline-block");
-        });
-        console.log("IS VISIBLE, TURNING OFF")
-      }
-      else {
-        $(clickedButtonElement).fadeToggle("fast", "swing");
-        console.log("IS INVISIBLE, TURNING OFF")
-      }
-
-      $(clickedButtonActual).toggleClass("btn-success");
-      console.log("DONE:");
-      console.log(clickedButtonActual)
+      $(chosenProject).toggleClass("displayed");
+      $(clickedButtonClass).toggleClass("btn-success");
     });
   });
 
