@@ -2,6 +2,8 @@ class Permit < ActiveRecord::Base
   has_many :permit_binary_details
   has_many :binaries, through: :permit_binary_details
 
+  attr_accessor :confirmed_name
+
   # validates on permit_steps#new
   # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
   validate :at_least_one_chosen
@@ -34,6 +36,7 @@ class Permit < ActiveRecord::Base
 
   # validates on permit_step#confirm_details
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
+  before_validation :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
   def active?
     status == 'active'
@@ -75,6 +78,16 @@ class Permit < ActiveRecord::Base
 
   def only_if_door_true?
     active_or_details? && door
+  end
+
+  def ensure_name_confirmed
+    if !confirmed_name.eql?(owner_name)
+      errors[:confirmed_name] << ("The name you entered did not match the name you used on your permit application (#{owner_name}). Please type your name again.")
+    end
+    if !accepted_terms
+      errors[:accepted_terms] << ("Please accept the terms listed here by checking the box below.")
+    end
+    confirmed_name.eql?(owner_name)
   end
 
   def accepted_terms_acceptance?
