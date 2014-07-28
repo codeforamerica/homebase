@@ -18,3 +18,4 @@
 //= require landing
 //= require enter_details
 //= require bootstrap
+//= require timeout_modal
