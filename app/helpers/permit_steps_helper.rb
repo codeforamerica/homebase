@@ -2,7 +2,7 @@ require 'timeout'
 require 'pdf_forms'
 
 module PermitStepsHelper
-	def create_permit (file_path)
+	def create_permit (file_path, permit)
 		pdftk = PdfForms.new('pdftk')
 		template_path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"
 		field_names = pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
@@ -11,51 +11,53 @@ module PermitStepsHelper
 		                file_path, 
 		                { 
 		                  'DATE'                => Date.today.strftime("%m/%d/%Y"),
-		                  'JOB_COST'            => view_context.number_to_currency(@permit.job_cost),
-		                  'OWNER_NAME'          => @permit.owner_name, 
-		                  'ADDRESS'             => @permit.owner_address,
+		                  'JOB_COST'            => view_context.number_to_currency(permit.job_cost),
+		                  'OWNER_NAME'          => permit.owner_name, 
+		                  'ADDRESS'             => permit.owner_address,
 
-		                  'ADDITIONS_CHECKBOX'  => @permit.addition ? "X" : ' ',
-		                  'SQ_FOOT_HOUSE'       => @permit.house_area,
-		                  'SQ_FOOT_ADDITION'    => @permit.addition_area,
-		                  'AC_NONE'             => @permit.ac == "None" ? "X" : ' ',
-		                  'AC_WALL_UNIT'        => @permit.ac == "Wall Unit" ? "X" : ' ',
-		                  'AC_EXTENDED'         => @permit.ac == "Extended from Main House" ? "X" : ' ',
-		                  'AC_NEW_SPLIT'        => @permit.ac == "New Split System" ? "X" : ' ',
+		                  'ADDITIONS_CHECKBOX'  => permit.addition ? "X" : ' ',
+		                  'SQ_FOOT_HOUSE'       => permit.house_area,
+		                  'SQ_FOOT_ADDITION'    => permit.addition_area,
+		                  'AC_NONE'             => permit.ac == "None" ? "X" : ' ',
+		                  'AC_WALL_UNIT'        => permit.ac == "Wall Unit" ? "X" : ' ',
+		                  'AC_EXTENDED'         => permit.ac == "Extended from Main House" ? "X" : ' ',
+		                  'AC_NEW_SPLIT'        => permit.ac == "New Split System" ? "X" : ' ',
 
-		                  'ACCESSORY_STRUCTURE_CHECKBOX' => @permit.acs_struct ? "X" : ' ',
+		                  'ACCESSORY_STRUCTURE_CHECKBOX' => permit.acs_struct ? "X" : ' ',
 
-		                  'DECK_CHECKBOX'           => @permit.deck ? "X" : ' ',
+		                  'DECK_CHECKBOX'           => permit.deck ? "X" : ' ',
 
-		                  'POOL_CHECKBOX'           => @permit.pool ? "X" : ' ',
+		                  'POOL_CHECKBOX'           => permit.pool ? "X" : ' ',
 		                  
-		                  'CARPORT_COVER_CHECKBOX'  => @permit.cover ? "X" : ' ',
+		                  'CARPORT_COVER_CHECKBOX'  => permit.cover ? "X" : ' ',
 
-		                  'GENERAL_REPAIRS_CHECKBOX'  => (@permit.window ||
-		                                                  @permit.door ||
-		                                                  @permit.wall ||
-		                                                  @permit.siding ||
-		                                                  @permit.floor) ? "X" : ' ',
-		                  'WINDOWS_CHECKBOX'          => @permit.window ? "X" : ' ',
-		                  'NUMBER_WINDOWS'            => @permit.window_count,
-		                  'DOORS_CHECKBOX'            => @permit.door ? "X" : ' ',
-		                  'NUMBER_DOORS'              => @permit.door_count,
-		                  'WALLS_CHECKBOX'            => @permit.wall ? "X" : ' ',
-		                  'SIDING_CHECKBOX'           => @permit.siding ? "X" : ' ',
-		                  'FLOOR_STRUCTURAL_CHECKBOX' => @permit.floor ? "X" : ' ',
+		                  'GENERAL_REPAIRS_CHECKBOX'  => (permit.window ||
+		                                                  permit.door ||
+		                                                  permit.wall ||
+		                                                  permit.siding ||
+		                                                  permit.floor) ? "X" : ' ',
+		                  'WINDOWS_CHECKBOX'          => permit.window ? "X" : ' ',
+		                  'NUMBER_WINDOWS'            => permit.window_count,
+		                  'DOORS_CHECKBOX'            => permit.door ? "X" : ' ',
+		                  'NUMBER_DOORS'              => permit.door_count,
+		                  'WALLS_CHECKBOX'            => permit.wall ? "X" : ' ',
+		                  'SIDING_CHECKBOX'           => permit.siding ? "X" : ' ',
+		                  'FLOOR_STRUCTURAL_CHECKBOX' => permit.floor ? "X" : ' ',
 
-		                  'CONTRACTOR_NAME'           => @permit.contractor_name,
-		                  'CONTRACTOR_ID'             => @permit.contractor_id,
-		                  'ESCROW_YES_CHECKBOX'       => @permit.escrow ? "X" : ' ',
-		                  'ESCROW_NO_CHECKBOX'        => (!@permit.escrow && @permit.escrow != nil) ? "X" : ' ',
-		                  'REGISTERED_LICENSE_HOLDER' => @permit.license_holder,
-		                  'LICENSE_NUMBER'            => @permit.license_num,
-		                  'AUTHORIZED_AGENT_NAME'     => @permit.agent_name,
-		                  'CONTACT_ID_NUMBER'         => @permit.contact_id,
-		                  'PHONE'                     => @permit.phone,
-		                  'EMAIL'                     => @permit.email,
-		                  'OTHER_CONTACT_ID'          => @permit.other_contact_id,
-		                  'WORK_SUMMARY'              => @permit.work_summary
+		                  'CONTRACTOR_NAME'           => permit.contractor_name,
+		                  'CONTRACTOR_ID'             => permit.contractor_id,
+		                  'ESCROW_YES_CHECKBOX'       => permit.escrow ? "X" : ' ',
+		                  'ESCROW_NO_CHECKBOX'        => (!permit.escrow && permit.escrow != nil) ? "X" : ' ',
+		                  'REGISTERED_LICENSE_HOLDER' => permit.license_holder,
+		                  'LICENSE_NUMBER'            => permit.license_num,
+		                  'AUTHORIZED_AGENT_NAME'     => permit.agent_name,
+		                  'CONTACT_ID_NUMBER'         => permit.contact_id,
+		                  'PHONE'                     => permit.phone,
+		                  'EMAIL'                     => permit.email,
+		                  'OTHER_CONTACT_ID'          => permit.other_contact_id,
+		                  'WORK_SUMMARY'              => permit.work_summary,
+
+		                  'SIGNATURE'									=> "#{permit.owner_name}  - SIGNED WITH HOMEBASE #{Date.today.strftime('%m/%d/%Y')}"
 
 		                },
 		                flatten: true

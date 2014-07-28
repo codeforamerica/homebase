@@ -1,0 +1,40 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 1} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1>Enter your address</h1>
+    <p>Type your address in the box below:</p>
+  </div>
+
+  <!-- Start the address form -->
+  <div class="form">
+    <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
+
+      <!-- error checking -->
+      <% if @permit.errors.any? %>
+        <div class="alert alert-danger">
+          <% @permit.errors.messages.values.each do |msg| %>
+            <%msg.each do  |m| %>
+              <strong><%= m %></strong>
+            <%end %>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- ./ error checking -->
+
+      <!-- address entry -->
+      <div class="form-group">
+        <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
+      </div>
+      <!-- ./address entry -->
+
+      <!-- submit button -->
+      <%= f.submit "Next step", class: "btn btn-primary btn-lg"%>
+
+    <% end %>
+  </div><!-- ./form -->
+</div> <!-- ./col-sm-9 -->

@@ -5,66 +5,75 @@ describe PermitStepsController do
     @cosa = FactoryGirl.create(:cosa_boundary)
   end
 
-  describe "GET #new" do
+  describe "GET #show" do
+    context "when step is enter_address" do
+    end
 
+    context "when step is display_permit" do
+    end
+
+    context "when step is enter_details" do
+    end
+
+    context "when step is display_summary" do
+      it "add a generated pdf" do
+        permit1 = Permit.create(FactoryGirl.attributes_for(:permit))
+        session[:permit_id] = permit1.id
+        
+        expect {
+          get :show, id: :display_summary, permit: FactoryGirl.attributes_for(:permit)
+        }.to change(Binary,:count).by(1)
+        expect {
+          get :show, id: :display_summary, permit: FactoryGirl.attributes_for(:permit)
+        }.to change(PermitBinaryDetail,:count).by(1)        
+      end
+    end
   end
 
-  # describe "GET #index" do
+  describe "GET #update" do
+    context "when step is enter_address" do
+    end
 
-  #   context "when in district address is passed in" do
-  #     before { get :index, :format => 'json', :address =>"302 Madison St, San Antonio"}
+    context "when step is display_permit" do
+    end
 
-  #     it { expect(json['lat']).to be_within(0.01).of(29.414432) }
-  #     it { expect(json['lng']).to be_within(0.01).of(-98.491916) }
-  #     it { expect(json['in_hist_district']).to be_true }
-  #     it { expect(json['hist_district_polygon']).not_to be_nil }
-  #     it { expect(json['in_cosa_district']).to be_true }
-  #     it { expect(json['cosa_district_polygon']).not_to be_nil }
+    context "when step is enter_details" do 
+      # before(:each) do
+      #   permit1 = Permit.create(FactoryGirl.attributes_for(:permit, owner_address: "302 Madison St"))
+      #   session[:permit_id] = permit1.id
 
-  #     it { should respond_with 200 }
-  #   end
+      #   put :update, id: :enter_details, permit: permit1
+      #   permit1.reload
+      # end
 
-  #   context "when out of district address is passed in" do
-  #     before { get :index, :format => 'json', :address =>"155 9th St, San Francisco"}
+      # it "checks and changes the owner address to a full complete address" do
+      #   expect{ permit1.owner_address }.to eq("302 Madison Street, San Antonio, TX 78204, USA")
+      # end
+      # expect {
+      #   put :update, id: :enter_details, permit: FactoryGirl.attributes_for(:permit, owner_address: "302 Madison St")
+      # }
+      # before(:each) do
+      #   permit1 = 
+      #   put :update, { :id => 'enter_details', permit: Permit.create(FactoryGirl.attributes_for(:permit))}
+      #   @attr = { :title => "new title", :content => "new content" }
+      #   put :update, :id => @article.id, :article => @attr
+      #   @article.reload
+      # end
 
-  #     it { expect(json['lat']).to be_within(0.01).of(37.775518) }
-  #     it { expect(json['lng']).to be_within(0.01).of(-122.413821) }
-  #     it { expect(json['in_hist_district']).to be_false }
-  #     it { expect(json['hist_district_polygon']).to be_nil }
-  #     it { expect(json['in_cosa_district']).to be_false }
-  #     it { expect(json['cosa_district_polygon']).to be_nil }
+      # it { @article.title.should eql @attr[:title] }
+      # it { @article.content.should eql @attr[:content] }
+    end
 
-  #     it { should respond_with 200 }
-  #   end
+    context "when step is display_summary" do
+    end
+  end
 
-  #   context "when in district lat/long is passed in" do
-  #     before { get :index, :format => 'json', :lat => "29.414432", :long => "-98.491916" }
 
-  #     it { expect(json['lat']).to eq("29.414432") }
-  #     it { expect(json['lng']).to eq("-98.491916")}
-  #     # it { expect(json['lat']).to be_within(0.01).of(29.414432) }
-  #     # it { expect(json['lng']).to be_within(0.01).of(-98.491916) }
-  #     it { expect(json['in_hist_district']).to be_true }
-  #     it { expect(json['hist_district_polygon']).not_to be_nil }
-  #     it { expect(json['in_cosa_district']).to be_true }
-  #     it { expect(json['cosa_district_polygon']).not_to be_nil }
+# # Test find_friends block of show action
+# get :show, id: :find_friends
 
-  #     it { should respond_with 200 }
-  #   end
+# # Test find_friends block of update action
+# put :update, {'id' => 'find_friends', "user" => { "id" => @user.id.to_s }}
 
-  #   context "when out of district lat/long is passed in" do
-  #     before { get :index, :format => 'json', :lat => "37.775518", :long => "-122.413821" }
 
-  #     it { expect(json['lat']).to eq("37.775518") }
-  #     it { expect(json['lng']).to eq("-122.413821")}
-  #     # it { expect(json['lat']).to be_within(0.01).of(37.775518) }
-  #     # it { expect(json['lng']).to be_within(0.01).of(-122.413821) }
-  #     it { expect(json['in_hist_district']).to be_false }
-  #     it { expect(json['hist_district_polygon']).to be_nil }
-  #     it { expect(json['in_cosa_district']).to be_false }
-  #     it { expect(json['cosa_district_polygon']).to be_nil }
-
-  #     it { should respond_with 200 }
-  #   end
-  # end
 end

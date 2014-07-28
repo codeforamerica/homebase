@@ -7,7 +7,7 @@ class PermitStepsController < ApplicationController
   include PermitStepsHelper
 
   include Wicked::Wizard
-  steps :answer_screener, :display_permits, :enter_details, :display_summary, :error_page, :cannot_help, :do_not_need_permit
+  steps :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, :error_page, :cannot_help, :do_not_need_permit
   
   def show
     @permit = current_permit
@@ -18,7 +18,7 @@ class PermitStepsController < ApplicationController
 
       @unique_key = SecureRandom.hex
       file_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
-      permit_created = create_permit file_path
+      permit_created = create_permit(file_path, @permit)
 
       if permit_created
 
@@ -40,6 +40,7 @@ class PermitStepsController < ApplicationController
   def update
     @permit = current_permit
 
+    # checks if permit is done so model knows when to do validation
     params[:permit][:status] = step.to_s
     params[:permit][:status] = 'active' if step == steps.last
 
@@ -52,10 +53,19 @@ class PermitStepsController < ApplicationController
       else
         puts "erroring out"
       end
+      
+    elsif step == :confirm_terms
+      @permit.confirmed_name = params[:permit][:confirmed_name]
     end
 
     @permit.update_attributes(permit_params)
-    render_wizard @permit
+    if @permit.errors.any?
+      # render the same step
+      render_wizard
+    else
+      # render the next step
+      render_wizard(@permit)
+    end
   end
 
   def serve

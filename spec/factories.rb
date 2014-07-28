@@ -28,7 +28,57 @@ FactoryGirl.define do
     fax               "210-948-3432"
     email             "company@company.com"
     work_summary      "Adding a 500 square-foot room in the backyard"
-    job_cost          "2000"
+    job_cost          2000.40
     status            "active"
+    window            true
+    door              true
+    wall              true
+    siding            true
+    floor             true
+    window_count      true
+    door_count        true
+    cover             true
+    pool              true
+    deck              true
+    acs_struct        true
+    confirmed_name    "John Doe"
+    accepted_terms    true
   end
+
+  factory :empty_permit, parent: :permit do
+    owner_name        nil
+    owner_address     nil
+    addition          nil
+    house_area        nil
+    addition_area     nil
+    ac                nil
+    contractor        nil
+    contractor_name   nil
+    contractor_id     nil
+    escrow            nil
+    license_holder    nil
+    license_num       nil
+    agent_name        nil
+    contact_id        nil
+    other_contact_id  nil
+    phone             nil
+    fax               nil
+    email             nil
+    work_summary      nil
+    job_cost          nil
+    status            nil
+    window            nil
+    door              nil
+    wall              nil
+    siding            nil
+    floor             nil
+    window_count      nil
+    door_count        nil
+    cover             nil
+    pool              nil
+    deck              nil
+    acs_struct        nil
+    confirmed_name    nil
+    accepted_terms    nil
+  end    
 end

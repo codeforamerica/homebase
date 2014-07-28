@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-  
 
   resources :permits
   resources :permit_steps
   root to: 'permits#new'
   get '/serve_pdf/:filename' => 'permit_steps#serve'
 
+  get '/.well-known/status' => 'status#check'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

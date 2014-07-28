@@ -32,7 +32,8 @@ module PermitParams
     :cover,
     :pool,
     :deck,
-    :acs_struct
+    :acs_struct,
+    :accepted_terms
     )
  end
 end
