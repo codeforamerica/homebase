@@ -121,4 +121,5 @@ $(document).ready(function()
       { 
         offset: '70%' 
       });
+            
  });
