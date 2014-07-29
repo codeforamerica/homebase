@@ -4,18 +4,18 @@ class Permit < ActiveRecord::Base
 
  
                 # User selected projects
-  attr_accessor :selected_addition,
-                :selected_acs_struct,
-                :selected_deck,
-                :selected_pool,
-                :selected_cover,
-                :selected_window,
-                :selected_door,
-                :selected_wall,
-                :selected_siding,
-                :selected_floor,
+                # :selected_addition,
+                # :selected_acs_struct,
+                # :selected_deck,
+                # :selected_pool,
+                # :selected_cover,
+                # :selected_window,
+                # :selected_door,
+                # :selected_wall,
+                # :selected_siding,
+                # :selected_floor,
 
-                :confirmed_name,
+  attr_accessor :confirmed_name,
 
                 # Room Addition
                 :addition_size, :addition_num_story,
@@ -114,9 +114,9 @@ class Permit < ActiveRecord::Base
   # validates on permit_step#confirm_details
   
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
-  before_validation(on: :create) do
-    projects_to_bool
-  end
+  # before_validation(on: :create) do
+  #   projects_to_bool
+  # end
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
 
@@ -136,43 +136,43 @@ class Permit < ActiveRecord::Base
   end
 
   def only_if_screener_addition?
-    active_or_screener? && selected_addition
+    active_or_screener? && addition
   end
 
   def only_if_screener_acs_struct?
-    active_or_screener? && selected_acs_struct
+    active_or_screener? && acs_struct
   end
 
   def only_if_screener_deck?
-    active_or_screener? && selected_deck
+    active_or_screener? && deck
   end
 
   def only_if_screener_pool?
-    active_or_screener? && selected_pool
+    active_or_screener? && pool
   end
 
   def only_if_screener_cover?
-    active_or_screener? && selected_cover
+    active_or_screener? && cover
   end
 
   def only_if_screener_window?
-    active_or_screener? && selected_window
+    active_or_screener? && window
   end
 
   def only_if_screener_door?
-    active_or_screener? && selected_door
+    active_or_screener? && door
   end
 
   def only_if_screener_wall?
-    active_or_screener? && selected_wall
+    active_or_screener? && wall
   end
 
   def only_if_screener_siding?
-    active_or_screener? && selected_siding
+    active_or_screener? && siding
   end
 
   def only_if_screener_floor?
-    active_or_screener? && selected_floor
+    active_or_screener? && floor
   end
 
   def only_if_address_presence?
@@ -219,10 +219,10 @@ class Permit < ActiveRecord::Base
   end
 
   def at_least_one_chosen
-    if !( selected_addition || selected_window || selected_door || 
-          selected_wall || selected_siding || selected_floor || 
-          selected_cover || selected_pool || selected_deck || 
-          selected_acs_struct)
+    if !( addition || window || door || 
+          wall || siding || floor || 
+          cover || pool || deck || 
+          acs_struct)
 
       errors[:base] << ("Please choose at least one project to work on.")
     end
@@ -319,108 +319,118 @@ class Permit < ActiveRecord::Base
   def update_permit_needs_for_projects
     permit_needs = { :permit_needed => [], :permit_not_needed => [], :further_assistance_needed => [] }
 
-    if selected_addition 
+    if addition 
 
       if addition_permit_needed?
         addition = true
         permit_needs[:permit_needed].push("Addition")
       else
+        addition = nil
         permit_needs[:further_assistance_needed].push("Addition")
       end
 
     end
 
-    if selected_acs_struct 
+    if acs_struct 
 
       if acs_struct_permit_needed?
         acs_struct = true
         permit_needs[:permit_needed].push("Shed/Garage")
       else
+        acs_struct = nil
         permit_needs[:further_assistance_needed].push("Shed/Garage")
       end
 
     end
 
-    if selected_deck
+    if deck
 
       if deck_permit_needed?
         deck = true
         permit_needs[:permit_needed].push("Deck")
       else
+        deck = nil
         permit_needs[:further_assistance_needed].push("Deck")
       end
 
     end
 
-    if selected_pool
+    if pool
 
       if pool_permit_needed?
         pool = true
         permit_needs[:permit_needed].push("Swimming Pool")
       else
+        pool = nil
         permit_needs[:further_assistance_needed].push("Swimming Pool")
       end
 
     end
 
-    if selected_cover
+    if cover
 
       if cover_permit_needed?
         cover = true
         permit_needs[:permit_needed].push("Carport/Outdoor Cover")
       else
+        cover = nil
         permit_needs[:further_assistance_needed].push("Carport/Outdoor Cover")
       end
 
     end
 
-    if selected_window
+    if window
 
       if window_permit_needed?
         window = true
         permit_needs[:permit_needed].push("Windows")
       else
+        window = false
         permit_needs[:permit_not_needed].push("Windows")
       end
 
     end
 
-    if selected_door
+    if door
       if door_permit_needed?
         door = true
         permit_needs[:permit_needed].push("Doors")
       else
+        door = false
         permit_needs[:permit_not_needed].push("Doors")
       end
 
     end
 
-    if selected_wall
+    if wall
       if wall_permit_needed?
         wall = true
         permit_needs[:permit_needed].push("Walls")
       else
+        wall = false
         permit_needs[:permit_not_needed].push("Walls")
       end
 
     end
 
-    if selected_siding
+    if siding
 
       if siding_permit_needed?
         siding = true
         permit_needs[:permit_needed].push("Replace Siding")
       else
+        siding = false
         permit_needs[:permit_not_needed].push("Replace Siding")
       end
 
     end
 
-    if selected_floor
+    if floor
       if floor_permit_needed?
         floor = true
         permit_needs[:permit_needed].push("Floors")
       else
+        floor = false
         permit_needs[:permit_not_needed].push("Floors")
       end
 
@@ -437,19 +447,19 @@ class Permit < ActiveRecord::Base
     end
   end
     
-  def projects_to_bool
-    selected_addition = to_bool(selected_addition)
-    selected_acs_struct = to_bool(selected_acs_struct)
-    selected_deck = to_bool(selected_deck)
-    selected_pool = to_bool(selected_pool)
-    selected_cover = to_bool(selected_cover)
-    selected_window = to_bool(selected_window)
-    selected_door = to_bool(selected_door)
-    selected_wall = to_bool(selected_wall)
-    selected_siding = to_bool(selected_siding)
-    selected_floor = to_bool(selected_floor)
+  # def projects_to_bool
+  #   selected_addition = to_bool(selected_addition)
+  #   selected_acs_struct = to_bool(selected_acs_struct)
+  #   selected_deck = to_bool(selected_deck)
+  #   selected_pool = to_bool(selected_pool)
+  #   selected_cover = to_bool(selected_cover)
+  #   selected_window = to_bool(selected_window)
+  #   selected_door = to_bool(selected_door)
+  #   selected_wall = to_bool(selected_wall)
+  #   selected_siding = to_bool(selected_siding)
+  #   selected_floor = to_bool(selected_floor)
 
-    puts "selected_addition: #{selected_addition}"
-  end
+  #   puts "selected_addition: #{selected_addition}"
+  # end
 
 end
