@@ -30,6 +30,32 @@ class Permit < ActiveRecord::Base
   validate :at_least_one_chosen
 
   # validates on permit_steps#answer_screener
+  validates_presence_of :addition_size, :if => :only_if_screener_addition?, :message => "Please select the size of the room addition."
+  validates_presence_of :addition_num_story, :if => :only_if_screener_addition?, :message => "Please select the number of stories for the room addition."
+
+  validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?, :message => "Please select the size of the accessory structure."
+  validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?, :message => "Please select the number of stories for the accessory structure."
+
+  validates_presence_of :deck_size, :if => :only_if_screener_deck?, :message => "Please select the size of the deck."
+  validates_presence_of :deck_grade, :if => :only_if_screener_deck?, :message => "Please select the grade of the deck."
+  validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?, :message => "Please select whether the deck is attached to dwelling or not."
+  validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?, :message => "Please select whether the deck serves a required exit door or not."
+
+  validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Please select whether the swimming pool is in ground or above ground."
+  validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Please select the volume of the swimming pool."
+
+  validates_presence_of :cover_material, :if => :only_if_screener_cover?, :message => "Please select the material for the carport, patio cover, or porch cover."
+
+  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Please select whether you are only replacing broken glass or not."
+  
+  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?, :message => "Please select whether you are only replacing doors on their existing hinges or not."
+  
+  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?, :message => "Please select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+  
+  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?, :message => "Please select whether you are only placing new siding over existing siding or not."
+  
+  validates_presence_of :floor_covering, :if => :only_if_screener_floor?, :message => "Please select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+
   validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
   
   # validates on permit_steps#enter_details
@@ -73,6 +99,49 @@ class Permit < ActiveRecord::Base
     active?
   end
 
+  def active_or_screener?
+    status.to_s.include?('answer_screener') || active?
+  end
+
+  def only_if_screener_addition?
+    active_or_screener? && addition
+  end
+
+  def only_if_screener_acs_struct?
+    active_or_screener? && acs_struct
+  end
+
+  def only_if_screener_deck?
+    active_or_screener? && deck
+  end
+
+  def only_if_screener_pool?
+    active_or_screener? && pool
+  end
+
+  def only_if_screener_cover?
+    active_or_screener? && cover
+  end
+
+  def only_if_screener_window?
+    active_or_screener? && window
+  end
+
+  def only_if_screener_door?
+    active_or_screener? && door
+  end
+
+  def only_if_screener_wall?
+    active_or_screener? && wall
+  end
+
+  def only_if_screener_siding?
+    active_or_screener? && siding
+  end
+
+  def only_if_screener_floor?
+    active_or_screener? && floor
+  end
 
   def only_if_address_presence?
     active_or_screener_details? && ! owner_address.blank?
