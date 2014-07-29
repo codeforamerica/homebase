@@ -6,7 +6,7 @@ describe PermitStepsController do
   end
 
   describe "GET #show" do
-    context "when step is enter_address" do
+    context "when step is answer_screener" do
     end
 
     context "when step is display_permit" do

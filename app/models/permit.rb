@@ -8,8 +8,8 @@ class Permit < ActiveRecord::Base
   # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
   validate :at_least_one_chosen
 
-  # validates on permit_steps#enter_address
-  validates_presence_of :owner_address, :if => :active_or_address_details?, :message => "Please enter a San Antonio address."
+  # validates on permit_steps#answer_screener
+  validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
   
   # validates on permit_steps#enter_details
   validates :owner_address, :address => true, :if => :only_if_address_presence?
@@ -45,14 +45,15 @@ class Permit < ActiveRecord::Base
     status == 'active'
   end
 
-  def active_or_address_details?
-    status.to_s.include?('enter_address') || 
+  def active_or_screener_details?
+    status.to_s.include?('answer_screener') || 
     status.to_s.include?('enter_details') || 
     active?
   end
 
+
   def only_if_address_presence?
-    active_or_address_details? && ! owner_address.blank?
+    active_or_screener_details? && ! owner_address.blank?
   end
 
   def active_or_details?

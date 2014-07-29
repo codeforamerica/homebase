@@ -44,7 +44,7 @@ class PermitStepsController < ApplicationController
     params[:permit][:status] = step.to_s
     params[:permit][:status] = 'active' if step == steps.last
 
-    if step == :enter_address || step == :enter_details
+    if step == :answer_screener || step == :enter_details
       sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
       address = Geokit::Geocoders::MultiGeocoder.geocode(params[:permit][:owner_address], bias: sa_bounds)
 
