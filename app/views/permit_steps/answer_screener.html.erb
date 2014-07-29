@@ -13,6 +13,7 @@
         <% @permit.errors.messages.values.each do |msg| %>
           <%msg.each do  |m| %>
             <strong><%= m %></strong>
+            <br>
           <%end %>
         <% end %>
       </div>
@@ -20,7 +21,7 @@
     <!-- ./ error checking -->
 
   <!-- Room Additions section -->
-  <% if @permit.addition %>
+  <% if @permit.selected_addition %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Room Additions</h4>
@@ -37,7 +38,7 @@
         <div class="radio">
           <label>
             <%= f.radio_button :addition_size, 'greaterThanEqualTo1000', id: 'greaterThanEqualTo1000' %>
-            Greater than or eqal to 1,000 sq ft
+            Greater than or equal to 1,000 sq ft
           </label>
         </div>
 
@@ -59,7 +60,7 @@
   <% end %><!-- ./Room Additions section -->
 
   <!-- Shed/Garage Accessory Structure section -->
-  <% if @permit.acs_struct %>
+  <% if @permit.selected_acs_struct %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Shed/Garage</h4>
@@ -97,7 +98,7 @@
   <% end %><!-- ./Shed/Garage Accessory Structure -->
 
   <!-- Deck section -->
-  <% if @permit.deck %>
+  <% if @permit.selected_deck %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Deck</h4>
@@ -161,7 +162,7 @@
   <% end %><!-- ./Deck section -->
 
   <!-- Swimming Pool section -->
-  <% if @permit.pool %>
+  <% if @permit.selected_pool %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Swimming Pool</h4>
@@ -199,7 +200,7 @@
   <% end %><!-- ./Swimming Pool section -->
 
   <!-- Carports or Outdoor Covers section -->
-  <% if @permit.cover %>
+  <% if @permit.selected_cover %>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4>Carports or Outdoor Covers</h4>
@@ -230,7 +231,7 @@
   <% end %><!-- ./Carports or Outdoor Covers section -->
 
   <!-- Windows section -->
-  <% if @permit.window %>
+  <% if @permit.selected_window %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Windows</h4>
@@ -254,7 +255,7 @@
     <% end %><!-- ./Windows section -->
 
   <!-- Doors section -->
-  <% if @permit.door %>
+  <% if @permit.selected_door %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Doors</h4>
@@ -278,7 +279,7 @@
   <% end %><!-- ./Doors section -->
 
   <!-- Walls section -->
-  <% if @permit.wall %>
+  <% if @permit.selected_wall %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Walls</h4>
@@ -302,7 +303,7 @@
   <% end %><!-- ./Walls section -->
 
   <!-- Siding Replacement section -->
-  <% if @permit.siding %>
+  <% if @permit.selected_siding %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Siding Replacement</h4>
@@ -326,7 +327,7 @@
   <% end %><!-- ./Siding Replacement section -->
 
   <!-- Floor - Structural Repairs section -->
-  <% if @permit.floor %>
+  <% if @permit.selected_floor %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4>Floor - Structural Repairs</h4>

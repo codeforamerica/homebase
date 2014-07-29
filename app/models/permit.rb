@@ -2,7 +2,20 @@ class Permit < ActiveRecord::Base
   has_many :permit_binary_details
   has_many :binaries, through: :permit_binary_details
 
-  attr_accessor :confirmed_name,
+  attr_accessor 
+                # User selected projects
+                :selected_addition,
+                :selected_acs_struct,
+                :selected_deck,
+                :selected_pool,
+                :selected_cover,
+                :selected_window,
+                :selected_door,
+                :selected_wall,
+                :selected_siding,
+                :selected_floor,
+
+                :confirmed_name,
 
                 # Room Addition
                 :addition_size, :addition_num_story,
@@ -24,6 +37,22 @@ class Permit < ActiveRecord::Base
                 :siding_over_existing,
                 # Floor
                 :floor_covering
+
+  ADDITION_SIZE_OPTIONS = { 'lessThan1000' => "Less than 1,000 sq ft", 'greaterThanEqualTo1000' => "Greater than or equal to 1,000 sq ft" }
+  ADDITION_NUM_STORY_OPTIONS = { '1Story' => "1 Story", '2orMoreStories' => "2 or more stories" }
+
+  ACS_STRUCT_SIZE_OPTIONS = { 'lessThanEqualTo120' => "Less than or equal to 120 sq ft", 'greaterThan120' => "Greater than 120 sq ft" }
+  ACS_STRUCT_NUM_STORY_OPTIONS = { '1Story' => "1 Story", '2orMoreStories' => "2 or more stories" }
+
+  DECK_SIZE_OPTIONS = {'lessThanEqualTo120' => "Less than or equal to 120 sq ft", 'greaterThan120' => "Greater than 120 sq ft" }
+  DECK_GRADE_OPTIONS = {'lessThanEqualTo30' => "Less than or equal to 30 inches above grade", 'moreThan30' => "More than 30 inches above grade" }
+  DECK_DWELLING_ATTACH_OPTIONS = {'attachedToDwelling' => "Attached to dwelling", 'notAttachedToDwelling' => "Not attached to dwelling" }
+  DECK_EXIT_DOOR_OPTIONS = {'exitDoor' => "Serves a required exit door", 'noExitDoor' => "Does not serve a required exit door" }
+
+  POOL_LOCATION_OPTIONS = {'inGround' => "Pool is in ground", 'aboveGround' => "Pool is above ground" }
+  POOL_VOLUME_OPTIONS = {'lessThanEqualTo5000' => "Less than or equal to 5,000 gallons", 'moreThan5000' => "More than 5,000 gallons" }
+
+  COVER_MATERIAL_OPTIONS = {'metalType2' => "It's metal type II", 'woodType5' => "It's wood type V", 'other' => "Other" }
 
   # validates on permit_steps#new
   # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
@@ -104,43 +133,43 @@ class Permit < ActiveRecord::Base
   end
 
   def only_if_screener_addition?
-    active_or_screener? && addition
+    active_or_screener? && selected_addition
   end
 
   def only_if_screener_acs_struct?
-    active_or_screener? && acs_struct
+    active_or_screener? && selected_acs_struct
   end
 
   def only_if_screener_deck?
-    active_or_screener? && deck
+    active_or_screener? && selected_deck
   end
 
   def only_if_screener_pool?
-    active_or_screener? && pool
+    active_or_screener? && selected_pool
   end
 
   def only_if_screener_cover?
-    active_or_screener? && cover
+    active_or_screener? && selected_cover
   end
 
   def only_if_screener_window?
-    active_or_screener? && window
+    active_or_screener? && selected_window
   end
 
   def only_if_screener_door?
-    active_or_screener? && door
+    active_or_screener? && selected_door
   end
 
   def only_if_screener_wall?
-    active_or_screener? && wall
+    active_or_screener? && selected_wall
   end
 
   def only_if_screener_siding?
-    active_or_screener? && siding
+    active_or_screener? && selected_siding
   end
 
   def only_if_screener_floor?
-    active_or_screener? && floor
+    active_or_screener? && selected_floor
   end
 
   def only_if_address_presence?
@@ -187,8 +216,214 @@ class Permit < ActiveRecord::Base
   end
 
   def at_least_one_chosen
-    if !(addition || window || door || wall || siding || floor || cover || pool || deck || acs_struct)
+    if !( selected_addition || selected_window || selected_door || 
+          selected_wall || selected_siding || selected_floor || 
+          selected_cover || selected_pool || selected_deck || 
+          selected_acs_struct)
+
       errors[:base] << ("Please choose at least one project to work on.")
     end
   end
+
+  # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
+  def addition_permit_needed?
+    if addition_size.eql? 'lessThan1000' && addition_num_story.eql? '1Story'
+      return true
+    else
+      return nil
+    end
+  end
+
+  def acs_struct_permit_needed?
+    if acs_struct_size.eql? 'greaterThan120' && acs_struct_num_story.eql? '1Story'
+      return true
+    else
+      return nil
+    end
+  end
+
+  def deck_permit_needed?
+    if  deck_size.eql? 'greaterThan120' && 
+        deck_grade.eql? 'moreThan30' && 
+        deck_dwelling_attach.eql? 'attachedToDwelling' && 
+        deck_exit_door.eql? 'exitDoor'
+      return true
+    else
+      return nil
+    end
+  end
+
+  def pool_permit_needed?
+    if pool_location.eql? 'inGround'
+      return true
+    elsif pool_location.eql? 'aboveGround' && pool_volume.eql? 'moreThan5000'
+      return true
+    else
+      return nil
+    end
+  end
+
+  def cover_permit_needed?
+    if cover_material.eql? 'metalType2'
+      return true
+    elsif cover_material.eql? 'woodType5'
+      return true
+    else
+      return nil
+    end
+  end
+
+  def window_permit_needed?
+    if window_replace_glass
+      return true
+    else
+      return false
+    end
+  end
+
+  def door_permit_needed?
+    if door_replace_existing
+      return true
+    else
+      return false
+    end
+  end
+
+  def wall_permit_needed?
+    if wall_general_changes
+      return true
+    else
+      return false
+    end
+  end
+
+  def siding_permit_needed?
+    if siding_over_existing
+      return true
+    else
+      return false
+    end
+  end
+
+  def floor_permit_needed?
+    if floor_covering
+      return true
+    else
+      return false
+    end
+  end
+
+  def update_permit_needs_for_projects
+    permit_needs = { :permit_needed => [], :permit_not_needed => [], :further_assistance_needed => [] }
+
+    if selected_addition 
+
+      if addition_permit_needed?
+        addition = true
+        permit_needs[:permit_needed].push("Addition")
+      else
+        permit_needs[:further_assistance_needed].push("Addition")
+      end
+
+    end
+
+    if selected_acs_struct 
+
+      if acs_struct_permit_needed?
+        acs_struct = true
+        permit_needs[:permit_needed].push("Shed/Garage")
+      else
+        permit_needs[:further_assistance_needed].push("Shed/Garage")
+      end
+
+    end
+
+    if selected_deck
+
+      if deck_permit_needed?
+        deck = true
+        permit_needs[:permit_needed].push("Deck")
+      else
+        permit_needs[:further_assistance_needed].push("Deck")
+      end
+
+    end
+
+    if selected_pool
+
+      if pool_permit_needed?
+        pool = true
+        permit_needs[:permit_needed].push("Swimming Pool")
+      else
+        permit_needs[:further_assistance_needed].push("Swimming Pool")
+      end
+
+    end
+
+    if selected_cover
+
+      if cover_permit_needed?
+        cover = true
+        permit_needs[:permit_needed].push("Carport/Outdoor Cover")
+      else
+        permit_needs[:further_assistance_needed].push("Carport/Outdoor Cover")
+      end
+
+    end
+
+    if selected_window
+
+      if window_permit_needed?
+        window = true
+        permit_needs[:permit_needed].push("Windows")
+      else
+        permit_needs[:permit_not_needed].push("Windows")
+      end
+
+    end
+
+    if selected_door
+      if door_permit_needed?
+        door = true
+        permit_needs[:permit_needed].push("Doors")
+      else
+        permit_needs[:permit_not_needed].push("Doors")
+      end
+
+    end
+
+    if selected_wall
+      if wall_permit_needed?
+        wall = true
+        permit_needs[:permit_needed].push("Walls")
+      else
+        permit_needs[:permit_not_needed].push("Walls")
+      end
+
+    end
+
+    if selected_siding
+
+      if siding_permit_needed?
+        siding = true
+        permit_needs[:permit_needed].push("Replace Siding")
+      else
+        permit_needs[:permit_not_needed].push("Replace Siding")
+      end
+
+    end
+
+    if selected_floor
+      if floor_permit_needed?
+        floor = true
+        permit_needs[:permit_needed].push("Floors")
+      else
+        permit_needs[:permit_not_needed].push("Floors")
+      end
+
+    end
+
+    return permit_needs
+  end
+
 end
