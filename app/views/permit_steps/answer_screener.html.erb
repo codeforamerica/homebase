@@ -18,10 +18,6 @@
       </div>
     <% end %>
     <!-- ./ error checking -->
-<%= radio_button_tag(:age, "child") %>
-<%= label_tag(:age_child, "I am younger than 21") %>
-<%= radio_button_tag(:age, "adult") %>
-<%= label_tag(:age_adult, "I'm over 21") %>
 
   <!-- Room Additions section -->
   <% if @permit.addition %>
@@ -175,26 +171,26 @@
         <label for="test-label">Ground</label>
         <div class="radio">
           <label>
-            <input type="radio" name="groupPool1" id="inGround" value="inGround">
+            <%= f.radio_button :pool_location, 'inGround', id: "inGround" %>
             Pool is in ground
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="groupPool1" id="aboveGround" value="aboveGround">
+            <%= f.radio_button :pool_location, 'aboveGround', id: "aboveGround" %>
             Pool is above ground
           </label>
         </div>
         <label for="test-label">Volume</label>
         <div class="radio">
           <label>
-            <input type="radio" name="groupPool2" id="lessThan5000" value="lessThan5000">
+            <%= f.radio_button :pool_volume, 'lessThanEqualTo5000', id: "lessThanEqualTo5000" %>
             Less than or equal to 5,000 gallons
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="groupPool2" id="moreThan5000" value="moreThan5000">
+            <%= f.radio_button :pool_volume, 'moreThan5000', id: "moreThan5000" %>
             More than 5,000 gallons
           </label>
         </div>            
@@ -213,19 +209,19 @@
       <label for="test-label">Material</label>
       <div class="radio">
         <label>
-          <input type="radio" name="groupCovers" id="metalType2" value="metalType2">
+          <%= f.radio_button :cover_material, 'metalType2', id: "metalType2" %>
           It’s metal type II
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="groupCovers" id="woodType5" value="woodType5">
+          <%= f.radio_button :cover_material, 'woodType5', id: "woodType5" %>
           It’s wood type V
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="groupCovers" id="notWoodType5" value="notWoodType5">
+          <%= f.radio_button :cover_material, 'other', id: "other" %>
           Other
         </label>
       </div>            
@@ -243,13 +239,13 @@
         <p>Are you <b>only</b> replacing broken glass?</p>
         <div class="radio">
           <label>
-            <input type="radio" name="groupWindows" id="yes" value="yes">
+            <%= f.radio_button :window_replace_glass, true, id: "yes" %>
             Yes
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="groupWindows" id="no" value="no">
+            <%= f.radio_button :window_replace_glass, false, id: "no" %>
             No
           </label>
         </div>           
@@ -267,13 +263,13 @@
         <p>Are you <b>only</b> replacing the existing door on current hinges?</p>
         <div class="radio">
           <label>
-            <input type="radio" name="groupDoors" id="yes" value="yes">
+            <%= f.radio_button :door_replace_existing, true, id: "yes" %>
             Yes
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="groupDoors" id="no" value="no">
+            <%= f.radio_button :door_replace_existing, false, id: "no" %>
             No
           </label>
         </div>           
@@ -291,13 +287,13 @@
         <p>Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?</p>
         <div class="radio">
           <label>
-            <input type="radio" name="groupWalls" id="yes" value="yes">
+            <%= f.radio_button :wall_general_changes, true, id: "yes" %>
             Yes
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="groupWalls" id="no" value="no">
+            <%= f.radio_button :wall_general_changes, false, id: "no" %>
             No
           </label>
         </div>           
@@ -315,13 +311,13 @@
         <p>Are you <b>only</b> placing new siding over existing siding?</p>
         <div class="radio">
           <label>
-            <input type="radio" name="groupSiding" id="yes" value="yes">
+            <%= f.radio_button :siding_over_existing, true, id: "yes" %>
             Yes
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="groupSiding" id="no" value="no">
+            <%= f.radio_button :siding_over_existing, false, id: "false" %>
             No
           </label>
         </div>           
@@ -339,13 +335,13 @@
         <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
         <div class="radio">
           <label>
-            <input type="radio" name="groupFloors" id="yes" value="yes">
+            <%= f.radio_button :floor_covering, true, id: "yes" %>
             Yes
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="groupFloors" id="no" value="no">
+            <%= f.radio_button :floor_covering, false, id: "no" %>
             No
           </label>
         </div>           
@@ -362,13 +358,13 @@
       <p>Will you be hiring a contractor to work on your project?</p>
       <div class="radio">
         <label>
-          <input type="radio" name="groupContractor" id="yes" value="yes">
+          <%= f.radio_button :contractor, true, id: "yes" %>
           Yes
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="groupContractor" id="no" value="no">
+          <%= f.radio_button :contractor, false, id: "no" %>
           No
         </label>
       </div>           

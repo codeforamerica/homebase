@@ -9,7 +9,21 @@ class Permit < ActiveRecord::Base
                 # Accessory Structure
                 :acs_struct_size, :acs_struct_num_story,
                 # Deck
-                :deck_size, :deck_grade, :deck_dwelling_attach, :deck_exit_door
+                :deck_size, :deck_grade, :deck_dwelling_attach, :deck_exit_door,
+                # Pool
+                :pool_location, :pool_volume,
+                # Cover
+                :cover_material,
+                # Window
+                :window_replace_glass,
+                # Door
+                :door_replace_existing,
+                # Wall
+                :wall_general_changes,
+                # Siding
+                :siding_over_existing,
+                # Floor
+                :floor_covering
 
   # validates on permit_steps#new
   # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
