@@ -2,9 +2,9 @@ class Permit < ActiveRecord::Base
   has_many :permit_binary_details
   has_many :binaries, through: :permit_binary_details
 
-  attr_accessor 
+ 
                 # User selected projects
-                :selected_addition,
+  attr_accessor :selected_addition,
                 :selected_acs_struct,
                 :selected_deck,
                 :selected_pool,
@@ -114,6 +114,9 @@ class Permit < ActiveRecord::Base
   # validates on permit_step#confirm_details
   
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
+  before_validation(on: :create) do
+    projects_to_bool
+  end
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
 
@@ -227,7 +230,7 @@ class Permit < ActiveRecord::Base
 
   # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
   def addition_permit_needed?
-    if addition_size.eql? 'lessThan1000' && addition_num_story.eql? '1Story'
+    if addition_size.eql?('lessThan1000') && addition_num_story.eql?('1Story')
       return true
     else
       return nil
@@ -235,7 +238,7 @@ class Permit < ActiveRecord::Base
   end
 
   def acs_struct_permit_needed?
-    if acs_struct_size.eql? 'greaterThan120' && acs_struct_num_story.eql? '1Story'
+    if acs_struct_size.eql?('greaterThan120') && acs_struct_num_story.eql?('1Story')
       return true
     else
       return nil
@@ -243,10 +246,10 @@ class Permit < ActiveRecord::Base
   end
 
   def deck_permit_needed?
-    if  deck_size.eql? 'greaterThan120' && 
-        deck_grade.eql? 'moreThan30' && 
-        deck_dwelling_attach.eql? 'attachedToDwelling' && 
-        deck_exit_door.eql? 'exitDoor'
+    if  deck_size.eql?('greaterThan120') && 
+        deck_grade.eql?('moreThan30') && 
+        deck_dwelling_attach.eql?('attachedToDwelling') && 
+        deck_exit_door.eql?('exitDoor')
       return true
     else
       return nil
@@ -254,9 +257,9 @@ class Permit < ActiveRecord::Base
   end
 
   def pool_permit_needed?
-    if pool_location.eql? 'inGround'
+    if pool_location.eql?('inGround')
       return true
-    elsif pool_location.eql? 'aboveGround' && pool_volume.eql? 'moreThan5000'
+    elsif pool_location.eql?('aboveGround') && pool_volume.eql?('moreThan5000')
       return true
     else
       return nil
@@ -264,9 +267,9 @@ class Permit < ActiveRecord::Base
   end
 
   def cover_permit_needed?
-    if cover_material.eql? 'metalType2'
+    if cover_material.eql?('metalType2')
       return true
-    elsif cover_material.eql? 'woodType5'
+    elsif cover_material.eql?('woodType5')
       return true
     else
       return nil
@@ -424,6 +427,29 @@ class Permit < ActiveRecord::Base
     end
 
     return permit_needs
+  end
+
+  def to_bool(value)
+    if value == "0"
+      return false
+    else
+      return true
+    end
+  end
+    
+  def projects_to_bool
+    selected_addition = to_bool(selected_addition)
+    selected_acs_struct = to_bool(selected_acs_struct)
+    selected_deck = to_bool(selected_deck)
+    selected_pool = to_bool(selected_pool)
+    selected_cover = to_bool(selected_cover)
+    selected_window = to_bool(selected_window)
+    selected_door = to_bool(selected_door)
+    selected_wall = to_bool(selected_wall)
+    selected_siding = to_bool(selected_siding)
+    selected_floor = to_bool(selected_floor)
+
+    puts "selected_addition: #{selected_addition}"
   end
 
 end

@@ -15,7 +15,7 @@ class PermitStepsController < ApplicationController
     case step
 
     when :display_permits
-      @permit.update_permit_needs_for_projects
+      @permit_needs = @permit.update_permit_needs_for_projects
 
 
     when :display_summary
