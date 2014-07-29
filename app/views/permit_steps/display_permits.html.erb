@@ -11,15 +11,17 @@
   
   <!-- Permit Not Needed Projects -->
   <% if ! @permit_needs["permit_not_needed"].empty? %>
+
     <div class="alert alert-success" role="alert">
       <h4>You do not need a permit for these projects, build on!</h4>
-        <ul>
-          <% @permit_needs["permit_not_needed"].each do |project| %>
-            <li><%= project %></li>
-          <% end %>
-        </ul>
-        <p class="info-bottom">A permit is not needed for your project. If you have additional questions, please contact Development Services Department at (210) 207-1111.</p>  
+      <ul>
+        <% @permit_needs["permit_not_needed"].each do |project| %>
+          <li><%= project %></li>
+        <% end %>
+      </ul>
+      <p class="info-bottom">A permit is not needed for your project. If you have additional questions, please contact Development Services Department at (210) 207-1111.</p>  
     </div>
+
   <% end %>
   <!-- ./Permit Not Needed Project -->
   
@@ -35,11 +37,13 @@
         </ul>
         <p class="info-bottom">Please see below for more details.</p>  
     </div>
+
   <% end %>
   <!-- ./Permit Needed Project -->
   
   <!-- Further Assistance Needed Projects -->
   <% if ! @permit_needs["further_assistance_needed"].empty? %>
+
     <div class="alert alert-danger" role="alert">
       <h4>Sorry, we can't help you right now.</h4>
       <p class="info-top">These project(s) do not meet the requirements for the General Permit Application:</p>
@@ -50,41 +54,42 @@
         </ul> 
       <p class="info-bottom">Please contact Development Services Department at (210) 207-1111 to get the permit you need.</p>
     </div>
+
   <% end %>
 
   <% if ! @permit_needs["permit_needed"].empty? %>
 
-        <div class="panel panel-default panel-info-addition">
-          <div class="panel-heading">
-            <h4>General Repair/Residential Permit Application</h4>
-          </div>
-          <div class="panel-body">
-            <p>This permit is required for most residential repair projects. Separate permits are required for any mechanical, electrical, or plumbing work.</p>
-            <p><strong>This is the permit for the following project(s):</strong></p>    
-            <ul>
-              <% @permit_needs["permit_needed"].each do |project| %>
-                <li><%= project %></li>
-              <% end %>
-            </ul>            
-            <p><strong>Application cost:</strong> <br>Application costs are based on the Fee Schedule. <a href="http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf" target="_blank">Click here to view the Fee Schedule for more information.</a></p>
-            <p><strong>Required documents:</strong></p>
-            <p>
-              <ul>
-                <li>Completed permit application*</li>
-                <li>Completed site plan*</li>
-                <li>Form of photo identification (i.e. driver's license, passport)</li>
-                <li>Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)</li> 
-                <!-- @TODO make this language easier to understand -->
-              </ul>
-            </p>
-            <p>*We will help you fill these out</p>
-
-              <!-- Next button -->
-              <%= link_to "Apply for this permit", next_wizard_path, class: "btn btn-primary btn-lg" %>
-          </div>
-        </div>
+    <div class="panel panel-default panel-info-addition">
+      <div class="panel-heading">
+        <h4>General Repair/Residential Permit Application</h4>
       </div>
+      <div class="panel-body">
+        <p>This permit is required for most residential repair projects. Separate permits are required for any mechanical, electrical, or plumbing work.</p>
+        <p><strong>This is the permit for the following project(s):</strong></p>    
+        <ul>
+          <% @permit_needs["permit_needed"].each do |project| %>
+            <li><%= project %></li>
+          <% end %>
+        </ul>            
+        <p><strong>Application cost:</strong> <br>Application costs are based on the Fee Schedule. <a href="http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf" target="_blank">Click here to view the Fee Schedule for more information.</a></p>
+        <p><strong>Required documents:</strong></p>
+        <p>
+          <ul>
+            <li>Completed permit application*</li>
+            <li>Completed site plan*</li>
+            <li>Form of photo identification (i.e. driver's license, passport)</li>
+            <li>Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)</li> 
+            <!-- @TODO make this language easier to understand -->
+          </ul>
+        </p>
+        <p>*We will help you fill these out</p>
+
+        <!-- Next button -->
+        <%= link_to "Apply for this permit", next_wizard_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
 
   <% end %>
+
 
 </div><!-- ./col-sm-9 -->
