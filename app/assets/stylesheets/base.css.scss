@@ -224,6 +224,15 @@ h1 {
     }
   }
 }
+
+/* styles for #display_perimts */
+.info-bottom {
+  padding-top: 12.5px;
+}
+.info-top {
+  padding-bottom: 12.5px;
+}
+
 /* Mobile styles */
 
 @media (max-width: $screen-sm-min) {
