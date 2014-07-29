@@ -55,18 +55,7 @@ module PermitParams
     # Siding
     :siding_over_existing,
     # Floor
-    :floor_covering,
-    # User selected projects
-    :selected_addition,
-    :selected_acs_struct,
-    :selected_deck,
-    :selected_pool,
-    :selected_cover,
-    :selected_window,
-    :selected_door,
-    :selected_wall,
-    :selected_siding,
-    :selected_floor
+    :floor_covering
     )
  end
 end

@@ -136,43 +136,43 @@ class Permit < ActiveRecord::Base
   end
 
   def only_if_screener_addition?
-    active_or_screener? && addition
+    status.to_s.include?('answer_screener') && addition
   end
 
   def only_if_screener_acs_struct?
-    active_or_screener? && acs_struct
+    status.to_s.include?('answer_screener') && acs_struct
   end
 
   def only_if_screener_deck?
-    active_or_screener? && deck
+    status.to_s.include?('answer_screener') && deck
   end
 
   def only_if_screener_pool?
-    active_or_screener? && pool
+    status.to_s.include?('answer_screener') && pool
   end
 
   def only_if_screener_cover?
-    active_or_screener? && cover
+    status.to_s.include?('answer_screener') && cover
   end
 
   def only_if_screener_window?
-    active_or_screener? && window
+    status.to_s.include?('answer_screener') && window
   end
 
   def only_if_screener_door?
-    active_or_screener? && door
+    status.to_s.include?('answer_screener') && door
   end
 
   def only_if_screener_wall?
-    active_or_screener? && wall
+    status.to_s.include?('answer_screener') && wall
   end
 
   def only_if_screener_siding?
-    active_or_screener? && siding
+    status.to_s.include?('answer_screener') && siding
   end
 
   def only_if_screener_floor?
-    active_or_screener? && floor
+    status.to_s.include?('answer_screener') && floor
   end
 
   def only_if_address_presence?
