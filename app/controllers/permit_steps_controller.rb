@@ -7,7 +7,10 @@ class PermitStepsController < ApplicationController
   include PermitStepsHelper
 
   include Wicked::Wizard
-  steps :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, :error_page, :cannot_help, :do_not_need_permit
+  steps :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, 
+  
+  # The following are error pages that should only be jump to:
+  :error_page, :contractor, :cannot_help, :do_not_need_permit
   
   def show
     @permit = current_permit
@@ -15,7 +18,12 @@ class PermitStepsController < ApplicationController
     case step
 
     when :display_permits
-      @permit_needs = session[:permit_needs]
+
+      if (@permit.contractor)
+        jump_to(:contractor)
+      else
+        @permit_needs = session[:permit_needs]
+      end
 
 
     when :display_summary
@@ -55,7 +63,6 @@ class PermitStepsController < ApplicationController
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
       session[:permit_needs] = @permit.update_permit_needs_for_projects
-      puts "session[:permit_needs] = #{session[:permit_needs]}"
     when :enter_details
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
