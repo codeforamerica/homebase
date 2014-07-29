@@ -2,7 +2,14 @@ class Permit < ActiveRecord::Base
   has_many :permit_binary_details
   has_many :binaries, through: :permit_binary_details
 
-  attr_accessor :confirmed_name
+  attr_accessor :confirmed_name,
+
+                # Room Addition
+                :addition_size, :addition_num_story,
+                # Accessory Structure
+                :acs_struct_size, :acs_struct_num_story,
+                # Deck
+                :deck_size, :deck_grade, :deck_dwelling_attach, :deck_exit_door
 
   # validates on permit_steps#new
   # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
@@ -22,6 +29,7 @@ class Permit < ActiveRecord::Base
   #validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :message => "Job cost must be a number."
   validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/, :message => "Job cost has an invalid format, it should be like 1000000.00"
   validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000 , :message => "Job cost should be between the range of 0.00 to 1000000000000.00"  
+  
   # validates on permit_steps#enter_addition
   validates_presence_of :house_area, :if => :active_or_details_addition?, :message => "Please enter the size of house in square feet."
   validates_numericality_of :house_area, :if => :only_if_house_presence?, :message => "Please enter the size of house in square feet."
