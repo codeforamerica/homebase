@@ -230,7 +230,9 @@ class Permit < ActiveRecord::Base
 
   # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
   def addition_permit_needed?
-    if addition_size.eql?('lessThan1000') && addition_num_story.eql?('1Story')
+    puts "addition_size is #{addition_size}"
+    puts "addition_num_story is #{addition_num_story}"
+    if addition_size.eql?("lessThan1000") && addition_num_story.eql?("1Story")
       return true
     else
       return nil
@@ -277,56 +279,60 @@ class Permit < ActiveRecord::Base
   end
 
   def window_permit_needed?
+    puts "window_replace_glass: #{window_replace_glass}"
     if window_replace_glass
-      return true
-    else
       return false
+    else
+      return true
     end
   end
 
   def door_permit_needed?
     if door_replace_existing
-      return true
-    else
       return false
+    else
+      return true
     end
   end
 
   def wall_permit_needed?
     if wall_general_changes
-      return true
-    else
       return false
+    else
+      return true
     end
   end
 
   def siding_permit_needed?
     if siding_over_existing
-      return true
-    else
       return false
+    else
+      return true
     end
   end
 
   def floor_permit_needed?
     if floor_covering
-      return true
-    else
       return false
+    else
+      return true
     end
   end
 
   def update_permit_needs_for_projects
-    permit_needs = { :permit_needed => [], :permit_not_needed => [], :further_assistance_needed => [] }
+    permit_needs = { "permit_needed" => [], "permit_not_needed" => [], "further_assistance_needed" => [] }
 
     if addition 
 
+      puts "In Addition"
       if addition_permit_needed?
         addition = true
-        permit_needs[:permit_needed].push("Addition")
+        permit_needs["permit_needed"].push("Addition")
+        puts "Addition_Permit_Needed is true"
       else
         addition = nil
-        permit_needs[:further_assistance_needed].push("Addition")
+        permit_needs["further_assistance_needed"].push("Addition")
+        puts "Addition_Permit_Needed is false"
       end
 
     end
@@ -335,10 +341,10 @@ class Permit < ActiveRecord::Base
 
       if acs_struct_permit_needed?
         acs_struct = true
-        permit_needs[:permit_needed].push("Shed/Garage")
+        permit_needs["permit_needed"].push("Shed/Garage")
       else
         acs_struct = nil
-        permit_needs[:further_assistance_needed].push("Shed/Garage")
+        permit_needs["further_assistance_needed"].push("Shed/Garage")
       end
 
     end
@@ -347,10 +353,10 @@ class Permit < ActiveRecord::Base
 
       if deck_permit_needed?
         deck = true
-        permit_needs[:permit_needed].push("Deck")
+        permit_needs["permit_needed"].push("Deck")
       else
         deck = nil
-        permit_needs[:further_assistance_needed].push("Deck")
+        permit_needs["further_assistance_needed"].push("Deck")
       end
 
     end
@@ -359,10 +365,10 @@ class Permit < ActiveRecord::Base
 
       if pool_permit_needed?
         pool = true
-        permit_needs[:permit_needed].push("Swimming Pool")
+        permit_needs["permit_needed"].push("Swimming Pool")
       else
         pool = nil
-        permit_needs[:further_assistance_needed].push("Swimming Pool")
+        permit_needs["further_assistance_needed"].push("Swimming Pool")
       end
 
     end
@@ -371,10 +377,10 @@ class Permit < ActiveRecord::Base
 
       if cover_permit_needed?
         cover = true
-        permit_needs[:permit_needed].push("Carport/Outdoor Cover")
+        permit_needs["permit_needed"].push("Carport/Outdoor Cover")
       else
         cover = nil
-        permit_needs[:further_assistance_needed].push("Carport/Outdoor Cover")
+        permit_needs["further_assistance_needed"].push("Carport/Outdoor Cover")
       end
 
     end
@@ -383,10 +389,10 @@ class Permit < ActiveRecord::Base
 
       if window_permit_needed?
         window = true
-        permit_needs[:permit_needed].push("Windows")
+        permit_needs["permit_needed"].push("Windows")
       else
         window = false
-        permit_needs[:permit_not_needed].push("Windows")
+        permit_needs["permit_not_needed"].push("Windows")
       end
 
     end
@@ -394,10 +400,10 @@ class Permit < ActiveRecord::Base
     if door
       if door_permit_needed?
         door = true
-        permit_needs[:permit_needed].push("Doors")
+        permit_needs["permit_needed"].push("Doors")
       else
         door = false
-        permit_needs[:permit_not_needed].push("Doors")
+        permit_needs["permit_not_needed"].push("Doors")
       end
 
     end
@@ -405,10 +411,10 @@ class Permit < ActiveRecord::Base
     if wall
       if wall_permit_needed?
         wall = true
-        permit_needs[:permit_needed].push("Walls")
+        permit_needs["permit_needed"].push("Walls")
       else
         wall = false
-        permit_needs[:permit_not_needed].push("Walls")
+        permit_needs["permit_not_needed"].push("Walls")
       end
 
     end
@@ -417,10 +423,10 @@ class Permit < ActiveRecord::Base
 
       if siding_permit_needed?
         siding = true
-        permit_needs[:permit_needed].push("Replace Siding")
+        permit_needs["permit_needed"].push("Replace Siding")
       else
         siding = false
-        permit_needs[:permit_not_needed].push("Replace Siding")
+        permit_needs["permit_not_needed"].push("Replace Siding")
       end
 
     end
@@ -428,10 +434,10 @@ class Permit < ActiveRecord::Base
     if floor
       if floor_permit_needed?
         floor = true
-        permit_needs[:permit_needed].push("Floors")
+        permit_needs["permit_needed"].push("Floors")
       else
         floor = false
-        permit_needs[:permit_not_needed].push("Floors")
+        permit_needs["permit_not_needed"].push("Floors")
       end
 
     end

@@ -15,7 +15,7 @@ class PermitStepsController < ApplicationController
     case step
 
     when :display_permits
-      @permit_needs = @permit.update_permit_needs_for_projects
+      @permit_needs = session[:permit_needs]
 
 
     when :display_summary
@@ -53,15 +53,19 @@ class PermitStepsController < ApplicationController
     when :answer_screener
 
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
-
+      @permit.update_attributes(permit_params)
+      session[:permit_needs] = @permit.update_permit_needs_for_projects
+      puts "session[:permit_needs] = #{session[:permit_needs]}"
     when :enter_details
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
-      
+      @permit.update_attributes(permit_params)
     when :confirm_terms
       @permit.confirmed_name = params[:permit][:confirmed_name]
+      @permit.update_attributes(permit_params)
+    else
+      @permit.update_attributes(permit_params)
     end
 
-    @permit.update_attributes(permit_params)
     if @permit.errors.any?
       # render the same step
       render_wizard
