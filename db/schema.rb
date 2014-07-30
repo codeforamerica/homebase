@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20140723232313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "binaries", force: true do |t|
     t.binary   "data"

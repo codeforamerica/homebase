@@ -9,51 +9,51 @@ FactoryGirl.define do
   end
 
   factory :permit do
-    owner_name        "John Doe"
-    owner_address     "302 Madison St, San Antonio, TX 78204"
-    addition          true
-    house_area        1500
-    addition_area     500
-    ac                "Wall Unit"
-    contractor        true
-    contractor_name   "Rick Smith"
-    contractor_id     "A12345"
-    escrow            true
-    license_holder    "Jane Dolly"
-    license_num       "B34567"
-    agent_name        "Will Tom"
-    contact_id        "V03458"
-    other_contact_id  "U09356"
-    phone             "210-245-3453"
-    fax               "210-948-3432"
-    email             "company@company.com"
-    work_summary      "Adding a 500 square-foot room in the backyard"
-    job_cost          2000.40
-    status            "active"
-    window            true
-    door              true
-    wall              true
-    siding            true
-    floor             true
-    window_count      true
-    door_count        true
-    cover             true
-    pool              true
-    deck              true
-    acs_struct        true
-    confirmed_name    "John Doe"
-    accepted_terms    true
-    addition_size     'lessThan1000'
-    addition_num_story  '1Story'
-    acs_struct_size   'greaterThan120'
+    owner_name            "John Doe"
+    owner_address         "302 Madison St, San Antonio, TX 78204"
+    addition              true
+    house_area            1500
+    addition_area         500
+    ac                    "Wall Unit"
+    contractor            true
+    contractor_name       "Rick Smith"
+    contractor_id         "A12345"
+    escrow                true
+    license_holder        "Jane Dolly"
+    license_num           "B34567"
+    agent_name            "Will Tom"
+    contact_id            "V03458"
+    other_contact_id      "U09356"
+    phone                 "210-245-3453"
+    fax                   "210-948-3432"
+    email                 "company@company.com"
+    work_summary          "Adding a 500 square-foot room in the backyard"
+    job_cost              2000.40
+    status                "active"
+    window                true
+    door                  true
+    wall                  true
+    siding                true
+    floor                 true
+    window_count          true
+    door_count            true
+    cover                 true
+    pool                  true
+    deck                  true
+    acs_struct            true
+    confirmed_name        "John Doe"
+    accepted_terms        true
+    addition_size         'lessThan1000'
+    addition_num_story    '1Story'
+    acs_struct_size       'greaterThan120'
     acs_struct_num_story  '1Story'
-    deck_size          'greaterThan120'
-    deck_grade          'moreThan30'
+    deck_size             'greaterThan120'
+    deck_grade            'moreThan30'
     deck_dwelling_attach  'attachedToDwelling'
-    deck_exit_door      'exitDoor'
-    pool_location       'inGround'
-    pool_volume         'moreThan5000'
-    cover_material      'metalType2'
+    deck_exit_door        'exitDoor'
+    pool_location         'inGround'
+    pool_volume           'moreThan5000'
+    cover_material        'metalType2'
     window_replace_glass  false
     door_replace_existing false
     wall_general_changes  false
