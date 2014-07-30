@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140726060401) do
     t.text     "work_summary"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "job_cost",       precision: 15, scale: 2
+    t.decimal  "job_cost",      precision: 15, scale: 2
     t.string   "status"
     t.boolean  "window"
     t.boolean  "door"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20140726060401) do
     t.boolean  "pool"
     t.boolean  "deck"
     t.boolean  "acs_struct"
-    t.boolean  "accepted_terms"
   end
 
 end
