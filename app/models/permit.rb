@@ -4,18 +4,18 @@ class Permit < ActiveRecord::Base
 
  
                 # User selected projects
-                # :selected_addition,
-                # :selected_acs_struct,
-                # :selected_deck,
-                # :selected_pool,
-                # :selected_cover,
-                # :selected_window,
-                # :selected_door,
-                # :selected_wall,
-                # :selected_siding,
-                # :selected_floor,
+  attr_accessor :selected_addition,
+                :selected_acs_struct,
+                :selected_deck,
+                :selected_pool,
+                :selected_cover,
+                :selected_window,
+                :selected_door,
+                :selected_wall,
+                :selected_siding,
+                :selected_floor,
 
-  attr_accessor :confirmed_name,
+                :confirmed_name,
 
                 # Room Addition
                 :addition_size, :addition_num_story,
@@ -114,9 +114,9 @@ class Permit < ActiveRecord::Base
   # validates on permit_step#confirm_details
   
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
-  # before_validation(on: :create) do
-  #   projects_to_bool
-  # end
+  before_validation(on: :create) do
+    projects_to_bool
+  end
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
   def first_step?
@@ -221,10 +221,10 @@ class Permit < ActiveRecord::Base
   end
 
   def at_least_one_chosen
-    if !( addition || window || door || 
-          wall || siding || floor || 
-          cover || pool || deck || 
-          acs_struct)
+    if !( selected_addition || selected_window || selected_door || 
+          selected_wall || selected_siding || selected_floor || 
+          selected_cover || selected_pool || selected_deck || 
+          selected_acs_struct)
 
       errors[:base] << ("Please choose at least one project to work on.")
     end
@@ -324,7 +324,7 @@ class Permit < ActiveRecord::Base
   def update_permit_needs_for_projects
     permit_needs = { "permit_needed" => [], "permit_not_needed" => [], "further_assistance_needed" => [] }
 
-    if addition 
+    if selected_addition 
 
       puts "In Addition"
       if addition_permit_needed?
@@ -337,7 +337,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if acs_struct 
+    if selected_acs_struct 
 
       if acs_struct_permit_needed?
         permit_needs["permit_needed"].push("Shed/Garage")
@@ -349,7 +349,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if deck
+    if selected_deck
 
       if deck_permit_needed?
         permit_needs["permit_needed"].push("Deck")
@@ -361,7 +361,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if pool
+    if selected_pool
 
       if pool_permit_needed?
         permit_needs["permit_needed"].push("Swimming Pool")
@@ -373,7 +373,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if cover
+    if selected_cover
 
       if cover_permit_needed?
         permit_needs["permit_needed"].push("Carport/Outdoor Cover")
@@ -385,7 +385,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if window
+    if selected_window
 
       if window_permit_needed?
         permit_needs["permit_needed"].push("Windows")
@@ -397,7 +397,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if door
+    if selected_door
       if door_permit_needed?
         permit_needs["permit_needed"].push("Doors")
         update_attribute("door", true)
@@ -408,7 +408,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if wall
+    if selected_wall
       if wall_permit_needed?
         permit_needs["permit_needed"].push("Walls")
         update_attribute("wall", true)
@@ -419,7 +419,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if siding
+    if selected_siding
 
       if siding_permit_needed?
         permit_needs["permit_needed"].push("Replace Siding")
@@ -431,7 +431,7 @@ class Permit < ActiveRecord::Base
 
     end
 
-    if floor
+    if selected_floor
       if floor_permit_needed?
         permit_needs["permit_needed"].push("Floors")
         update_attribute("floor", true)
@@ -454,19 +454,19 @@ class Permit < ActiveRecord::Base
     end
   end
     
-  # def projects_to_bool
-  #   selected_addition = to_bool(selected_addition)
-  #   selected_acs_struct = to_bool(selected_acs_struct)
-  #   selected_deck = to_bool(selected_deck)
-  #   selected_pool = to_bool(selected_pool)
-  #   selected_cover = to_bool(selected_cover)
-  #   selected_window = to_bool(selected_window)
-  #   selected_door = to_bool(selected_door)
-  #   selected_wall = to_bool(selected_wall)
-  #   selected_siding = to_bool(selected_siding)
-  #   selected_floor = to_bool(selected_floor)
+  def projects_to_bool
+    selected_addition = to_bool(selected_addition)
+    selected_acs_struct = to_bool(selected_acs_struct)
+    selected_deck = to_bool(selected_deck)
+    selected_pool = to_bool(selected_pool)
+    selected_cover = to_bool(selected_cover)
+    selected_window = to_bool(selected_window)
+    selected_door = to_bool(selected_door)
+    selected_wall = to_bool(selected_wall)
+    selected_siding = to_bool(selected_siding)
+    selected_floor = to_bool(selected_floor)
 
-  #   puts "selected_addition: #{selected_addition}"
-  # end
+    puts "selected_addition: #{selected_addition}"
+  end
 
 end

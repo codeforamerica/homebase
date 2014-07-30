@@ -17,6 +17,18 @@ class PermitStepsController < ApplicationController
 
     case step
 
+    when :answer_screener
+      @permit.selected_addition = session[:selected_addition]
+      @permit.selected_acs_struct = session[:selected_acs_struct]
+      @permit.selected_deck = session[:selected_deck]
+      @permit.selected_pool = session[:selected_pool]
+      @permit.selected_cover = session[:selected_cover]
+      @permit.selected_window = session[:selected_window]
+      @permit.selected_door = session[:selected_door]
+      @permit.selected_wall = session[:selected_wall]
+      @permit.selected_siding = session[:selected_siding]
+      @permit.selected_floor = session[:selected_floor]
+
     when :display_permits
 
       if (@permit.contractor)
@@ -60,9 +72,21 @@ class PermitStepsController < ApplicationController
 
     when :answer_screener
 
+      params[:permit][:selected_addition] = session[:selected_addition]
+      params[:permit][:selected_acs_struct] = session[:selected_acs_struct]
+      params[:permit][:selected_deck] = session[:selected_deck]
+      params[:permit][:selected_pool] = session[:selected_pool]
+      params[:permit][:selected_cover] = session[:selected_cover]
+      params[:permit][:selected_window] = session[:selected_window]
+      params[:permit][:selected_door] = session[:selected_door]
+      params[:permit][:selected_wall] = session[:selected_wall]
+      params[:permit][:selected_siding] = session[:selected_siding]
+      params[:permit][:selected_floor] = session[:selected_floor]
+
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
       session[:permit_needs] = @permit.update_permit_needs_for_projects
+
     when :enter_details
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
