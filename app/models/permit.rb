@@ -221,10 +221,10 @@ class Permit < ActiveRecord::Base
   end
 
   def at_least_one_chosen
-    if !( to_bool(selected_addition) || to_bool(selected_window) || to_bool(selected_door) || 
-          to_bool(selected_wall) || to_bool(selected_siding) || to_bool(selected_floor) || 
-          to_bool(selected_cover) || to_bool(selected_pool) || to_bool(selected_deck) || 
-          to_bool(selected_acs_struct))
+    if !( selected_addition || selected_window || selected_door || 
+          selected_wall || selected_siding || selected_floor || 
+          selected_cover || selected_pool || selected_deck || 
+          selected_acs_struct)
 
       errors[:base] << ("Please choose at least one project to work on.")
     end
@@ -232,6 +232,8 @@ class Permit < ActiveRecord::Base
 
   # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
   def addition_permit_needed?
+    puts "addition_size is #{addition_size}"
+    puts "addition_num_story is #{addition_num_story}"
     if addition_size.eql?("lessThan1000") && addition_num_story.eql?("1Story")
       return true
     else
@@ -279,6 +281,7 @@ class Permit < ActiveRecord::Base
   end
 
   def window_permit_needed?
+    puts "window_replace_glass: #{window_replace_glass}"
     if window_replace_glass
       return false
     else
@@ -323,6 +326,7 @@ class Permit < ActiveRecord::Base
 
     if selected_addition 
 
+      puts "In Addition"
       if addition_permit_needed?
         permit_needs["permit_needed"].push("Addition")
         update_attribute("addition", true)
@@ -443,8 +447,8 @@ class Permit < ActiveRecord::Base
   end
 
   def to_bool(value)
-    if value == nil || value.eql?("0")
-      return false        
+    if value == "0"
+      return false
     else
       return true
     end
@@ -462,6 +466,7 @@ class Permit < ActiveRecord::Base
     selected_siding = to_bool(selected_siding)
     selected_floor = to_bool(selected_floor)
 
+    puts "selected_addition: #{selected_addition}"
   end
 
 end

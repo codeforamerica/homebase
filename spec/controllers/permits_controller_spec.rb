@@ -15,12 +15,12 @@ describe PermitsController do
     context "when addition is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_addition: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, addition: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_addition: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, addition: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -28,12 +28,12 @@ describe PermitsController do
     context "when window is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_window: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, window: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_window: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, window: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -41,12 +41,12 @@ describe PermitsController do
     context "when door is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_door: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, door: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_door: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, door: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -54,12 +54,12 @@ describe PermitsController do
     context "when wall is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_wall: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, wall: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_wall: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, wall: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -67,12 +67,12 @@ describe PermitsController do
     context "when siding is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_siding: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, siding: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_siding: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, siding: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -80,12 +80,12 @@ describe PermitsController do
     context "when floor is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_floor: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, floor: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_floor: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, floor: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -93,12 +93,12 @@ describe PermitsController do
     context "when cover is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_cover: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, cover: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_cover: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, cover: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -106,12 +106,12 @@ describe PermitsController do
     context "when pool is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_pool: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, pool: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_pool: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, pool: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -119,12 +119,12 @@ describe PermitsController do
     context "when deck is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_deck: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, deck: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_deck: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, deck: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -132,12 +132,12 @@ describe PermitsController do
     context "when acs_struct (accessory structure) is selected as true" do
       it "adds a permit" do 
         expect{ 
-          post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_deck: "1") 
+          post :create, permit: FactoryGirl.attributes_for(:empty_permit, deck: true) 
         }.to change(Permit,:count).by(1)
       end
 
       it "redirects to permit_steps_path" do
-        post :create, permit: FactoryGirl.attributes_for(:empty_permit, selected_deck: "1") 
+        post :create, permit: FactoryGirl.attributes_for(:empty_permit, deck: true) 
         expect(response).to redirect_to(permit_steps_path)
       end
     end
@@ -146,33 +146,31 @@ describe PermitsController do
       it "does not add a permit" do 
         expect{ 
           post :create, permit: FactoryGirl.attributes_for( :empty_permit, 
-                                                            selected_addition: "0",
-                                                            selected_window: "0",
-                                                            selected_door: "0",
-                                                            selected_wall: "0",
-                                                            selected_siding: "0",
-                                                            selected_floor: "0",
-                                                            selected_cover: "0",
-                                                            selected_pool: "0",
-                                                            selected_deck: "0",
-                                                            selected_acs_struct: "0",
-                                                            status: nil) 
+                                                            addition: false,
+                                                            window: false,
+                                                            door: false,
+                                                            wall: false,
+                                                            siding: false,
+                                                            floor: false,
+                                                            cover: false,
+                                                            pool: false,
+                                                            deck: false,
+                                                            acs_struct: false) 
         }.to change(Permit,:count).by(0)
       end
 
       it "renders permit#new" do
         post :create, permit: FactoryGirl.attributes_for( :empty_permit, 
-                                                          selected_addition: "0",
-                                                          selected_window: "0",
-                                                          selected_door: "0",
-                                                          selected_wall: "0",
-                                                          selected_siding: "0",
-                                                          selected_floor: "0",
-                                                          selected_cover: "0",
-                                                          selected_pool: "0",
-                                                          selected_deck: "0",
-                                                          selected_acs_struct: "0",
-                                                          status: nil) 
+                                                          addition: false,
+                                                          window: false,
+                                                          door: false,
+                                                          wall: false,
+                                                          siding: false,
+                                                          floor: false,
+                                                          cover: false,
+                                                          pool: false,
+                                                          deck: false,
+                                                          acs_struct: false) 
         expect(response).to render_template("new")
       end
     
