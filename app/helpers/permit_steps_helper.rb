@@ -2,6 +2,7 @@ require 'timeout'
 require 'pdf_forms'
 
 module PermitStepsHelper
+
   def create_permit (file_path, permit)
     pdftk = PdfForms.new('pdftk')
     template_path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"

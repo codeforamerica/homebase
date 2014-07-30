@@ -31,6 +31,8 @@ FactoryGirl.define do
     pool              true
     deck              true
     acs_struct        true
+    confirmed_name    "John Doe"
+    accepted_terms    true
   end
 
   factory :empty_permit, parent: :permit do
@@ -56,5 +58,7 @@ FactoryGirl.define do
     pool              nil
     deck              nil
     acs_struct        nil
+    confirmed_name    nil
+    accepted_terms    nil
   end    
 end
