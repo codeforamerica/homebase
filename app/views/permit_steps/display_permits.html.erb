@@ -6,14 +6,14 @@
 
   <!-- Intro text -->
   <div class="intro">
-    <h1>Permits are required for this project</h1>
+    <h1>This is how to start your project(s)</h1>
   </div>
   
   <!-- Permit Not Needed Projects -->
   <% if ! @permit_needs["permit_not_needed"].empty? %>
 
     <div class="alert alert-success" role="alert">
-      <h4>You do not need a permit for these projects, build on!</h4>
+      <h4>You do not need a permit for the following project(s), build on!</h4>
       <ul>
         <% @permit_needs["permit_not_needed"].each do |project| %>
           <li><%= project %></li>
@@ -46,7 +46,7 @@
 
     <div class="alert alert-danger" role="alert">
       <h4>Sorry, we can't help you right now.</h4>
-      <p class="info-top">These project(s) do not meet the requirements for the General Permit Application:</p>
+      <p class="info-top">The following project(s) do not meet the requirements for the General Permit Application:</p>
         <ul>
           <% @permit_needs["further_assistance_needed"].each do |project| %>
             <li><%= project %></li>

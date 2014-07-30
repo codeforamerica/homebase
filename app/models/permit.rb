@@ -56,7 +56,7 @@ class Permit < ActiveRecord::Base
 
   # validates on permit_steps#new
   # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
-  validate :at_least_one_chosen
+  validate :at_least_one_chosen, :if => :first_step?
 
   # validates on permit_steps#answer_screener
   validates_presence_of :addition_size, :if => :only_if_screener_addition?, :message => "Please select the size of the room addition."
@@ -119,7 +119,9 @@ class Permit < ActiveRecord::Base
   # end
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
-
+  def first_step?
+    status == nil
+  end
 
   def active?
     status == 'active'
@@ -326,13 +328,11 @@ class Permit < ActiveRecord::Base
 
       puts "In Addition"
       if addition_permit_needed?
-        addition = true
         permit_needs["permit_needed"].push("Addition")
-        puts "Addition_Permit_Needed is true"
+        update_attribute("addition", true)
       else
-        addition = nil
         permit_needs["further_assistance_needed"].push("Addition")
-        puts "Addition_Permit_Needed is false"
+        update_attribute("addition", nil)
       end
 
     end
@@ -340,11 +340,11 @@ class Permit < ActiveRecord::Base
     if acs_struct 
 
       if acs_struct_permit_needed?
-        acs_struct = true
         permit_needs["permit_needed"].push("Shed/Garage")
+        update_attribute("acs_struct", true)
       else
-        acs_struct = nil
         permit_needs["further_assistance_needed"].push("Shed/Garage")
+        update_attribute("acs_struct", nil)
       end
 
     end
@@ -352,11 +352,11 @@ class Permit < ActiveRecord::Base
     if deck
 
       if deck_permit_needed?
-        deck = true
         permit_needs["permit_needed"].push("Deck")
+        update_attribute("deck", true)
       else
-        deck = nil
         permit_needs["further_assistance_needed"].push("Deck")
+        update_attribute("deck", nil)
       end
 
     end
@@ -364,11 +364,11 @@ class Permit < ActiveRecord::Base
     if pool
 
       if pool_permit_needed?
-        pool = true
         permit_needs["permit_needed"].push("Swimming Pool")
+        update_attribute("pool", true)
       else
-        pool = nil
         permit_needs["further_assistance_needed"].push("Swimming Pool")
+        update_attribute("pool", nil)
       end
 
     end
@@ -376,11 +376,11 @@ class Permit < ActiveRecord::Base
     if cover
 
       if cover_permit_needed?
-        cover = true
         permit_needs["permit_needed"].push("Carport/Outdoor Cover")
+        update_attribute("cover", true)
       else
-        cover = nil
         permit_needs["further_assistance_needed"].push("Carport/Outdoor Cover")
+        update_attribute("cover", nil)
       end
 
     end
@@ -388,33 +388,33 @@ class Permit < ActiveRecord::Base
     if window
 
       if window_permit_needed?
-        window = true
         permit_needs["permit_needed"].push("Windows")
+        update_attribute("window", true)
       else
-        window = false
         permit_needs["permit_not_needed"].push("Windows")
+        update_attribute("window", false)
       end
 
     end
 
     if door
       if door_permit_needed?
-        door = true
         permit_needs["permit_needed"].push("Doors")
+        update_attribute("door", true)
       else
-        door = false
         permit_needs["permit_not_needed"].push("Doors")
+        update_attribute("door", false)
       end
 
     end
 
     if wall
       if wall_permit_needed?
-        wall = true
         permit_needs["permit_needed"].push("Walls")
+        update_attribute("wall", true)
       else
-        wall = false
         permit_needs["permit_not_needed"].push("Walls")
+        update_attribute("wall", false)
       end
 
     end
@@ -422,25 +422,26 @@ class Permit < ActiveRecord::Base
     if siding
 
       if siding_permit_needed?
-        siding = true
         permit_needs["permit_needed"].push("Replace Siding")
+        update_attribute("siding", true)
       else
-        siding = false
         permit_needs["permit_not_needed"].push("Replace Siding")
+        update_attribute("siding", false)
       end
 
     end
 
     if floor
       if floor_permit_needed?
-        floor = true
         permit_needs["permit_needed"].push("Floors")
+        update_attribute("floor", true)
       else
-        floor = false
         permit_needs["permit_not_needed"].push("Floors")
+        update_attribute("floor", false)
       end
 
     end
+
 
     return permit_needs
   end
