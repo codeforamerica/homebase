@@ -6,7 +6,6 @@ describe Permit do
   end
 
   context "with valid attributes" do
-
     it { expect(FactoryGirl.create(:permit)).to be_valid }
 
     it { expect(FactoryGirl.build(:permit, owner_address: nil, status: nil)).to be_valid }
@@ -57,28 +56,28 @@ describe Permit do
     it { expect(FactoryGirl.build(:permit, owner_address: "155 9th St, San Francisco, CA 94103")).to be_invalid }
     it { expect(FactoryGirl.build(:permit, owner_address: "155 9th St, San Francisco, CA 94103", status: "answer_screener")).to be_invalid }
 
-    it { expect(FactoryGirl.build(:permit,  addition: false, 
-                                            window: false, 
-                                            door: false, 
-                                            wall: false, 
-                                            siding: false, 
-                                            floor: false,
-                                            cover: false,
-                                            pool: false,
-                                            deck: false,
-                                            acs_struct: false,
-                                            status: nil)).to be_invalid }
+    # it { expect(FactoryGirl.build(:permit,  selected_addition: false, 
+    #                                         selected_window: false, 
+    #                                         selected_door: false, 
+    #                                         selected_wall: false, 
+    #                                         selected_siding: false, 
+    #                                         selected_floor: false,
+    #                                         selected_cover: false,
+    #                                         selected_pool: false,
+    #                                         selected_deck: false,
+    #                                         selected_acs_struct: false,
+    #                                         status: nil)).to be_invalid }
 
-    it { expect(FactoryGirl.build(:permit,  addition: nil,
-                                            window: nil,
-                                            door: nil,
-                                            wall: nil,
-                                            siding: nil,
-                                            floor: nil,
-                                            cover: nil,
-                                            pool: nil,
-                                            deck: nil,
-                                            acs_struct: nil,
+    it { expect(FactoryGirl.build(:permit,  selected_addition: nil,
+                                            selected_window: nil,
+                                            selected_door: nil,
+                                            selected_wall: nil,
+                                            selected_siding: nil,
+                                            selected_floor: nil,
+                                            selected_cover: nil,
+                                            selected_pool: nil,
+                                            selected_deck: nil,
+                                            selected_acs_struct: nil,
                                             status: nil)).to be_invalid }
 
     it { expect(FactoryGirl.build(:permit, house_area: nil)).to be_invalid }

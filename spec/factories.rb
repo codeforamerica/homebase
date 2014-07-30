@@ -59,6 +59,16 @@ FactoryGirl.define do
     wall_general_changes  false
     siding_over_existing  false
     floor_covering        false
+    selected_addition     "1"
+    selected_acs_struct   "1"
+    selected_deck         "1"
+    selected_pool         "1"
+    selected_cover        "1"
+    selected_window       "1"
+    selected_door         "1"
+    selected_wall         "1"
+    selected_siding       "1"
+    selected_floor        "1"
 
 
   end
@@ -98,5 +108,15 @@ FactoryGirl.define do
     acs_struct        nil
     confirmed_name    nil
     accepted_terms    nil
+    selected_addition     nil
+    selected_acs_struct   nil
+    selected_deck         nil
+    selected_pool         nil
+    selected_cover        nil
+    selected_window       nil
+    selected_door         nil
+    selected_wall         nil
+    selected_siding       nil
+    selected_floor        nil
   end    
 end
