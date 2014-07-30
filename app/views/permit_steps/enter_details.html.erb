@@ -87,7 +87,7 @@
         <!-- email -->
 
           <div class="form-group">
-            <%= f.label :email, "Contractor email address", for: "email" %>
+            <%= f.label :email, "Home owner email address", for: "email" %>
 
             <!-- check if there's an error for this field -->
             <% if @permit.errors.messages[:email].length >= 1 %>
@@ -112,7 +112,7 @@
 
 
           <div class="form-group">
-            <%= f.label :phone, "Contractor phone number", for: "phone" %>
+            <%= f.label :phone, "Home owner phone number", for: "phone" %>
 
             <!-- check if there's an error for this field -->
             <% if @permit.errors.messages[:phone].length >= 1 %>
