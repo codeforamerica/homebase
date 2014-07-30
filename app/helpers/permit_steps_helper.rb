@@ -46,7 +46,7 @@ module PermitStepsHelper
 
 		                  # according to DSD logic, homeowner is contractor if they're doing project
 		                  'CONTRACTOR_NAME'           => permit.owner_name,
-		                  'PHONE'                     => permit.phone,
+		                  'TELEPHONE'                     => permit.phone,
 		                  'EMAIL'                     => permit.email,
 		                  'WORK_SUMMARY'              => permit.work_summary
 
