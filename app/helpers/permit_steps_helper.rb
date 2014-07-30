@@ -44,17 +44,10 @@ module PermitStepsHelper
 		                  'SIDING_CHECKBOX'           => permit.siding ? "X" : ' ',
 		                  'FLOOR_STRUCTURAL_CHECKBOX' => permit.floor ? "X" : ' ',
 
-		                  'CONTRACTOR_NAME'           => permit.contractor_name,
-		                  'CONTRACTOR_ID'             => permit.contractor_id,
-		                  'ESCROW_YES_CHECKBOX'       => permit.escrow ? "X" : ' ',
-		                  'ESCROW_NO_CHECKBOX'        => (!permit.escrow && permit.escrow != nil) ? "X" : ' ',
-		                  'REGISTERED_LICENSE_HOLDER' => permit.license_holder,
-		                  'LICENSE_NUMBER'            => permit.license_num,
-		                  'AUTHORIZED_AGENT_NAME'     => permit.agent_name,
-		                  'CONTACT_ID_NUMBER'         => permit.contact_id,
+		                  # according to DSD logic, homeowner is contractor if they're doing project
+		                  'CONTRACTOR_NAME'           => permit.owner_name,
 		                  'PHONE'                     => permit.phone,
 		                  'EMAIL'                     => permit.email,
-		                  'OTHER_CONTACT_ID'          => permit.other_contact_id,
 		                  'WORK_SUMMARY'              => permit.work_summary
 
 		                },
