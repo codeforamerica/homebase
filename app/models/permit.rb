@@ -12,7 +12,6 @@ class Permit < ActiveRecord::Base
   # validates on permit_steps#enter_details
   validates :owner_address, :address => true, :if => :only_if_address_presence?
   validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
-  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_details?, :message => "Please select whether you are using a contractor or not in this project."
   validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
   validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
   #validates :job_cost, :if => :only_if_job_cost_presence?, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :message => "Job cost has an invalid format, it should be like 1000000.00"
