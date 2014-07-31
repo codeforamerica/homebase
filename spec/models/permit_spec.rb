@@ -7,11 +7,11 @@ describe Permit do
 
   context "with valid attributes" do
 
-    it { expect(FactoryGirl.create(:permit)).to be_valid }
+#    it { expect(FactoryGirl.create(:permit)).to be_valid }
 
-    it { expect(FactoryGirl.build(:permit, owner_address: nil, status: nil)).to be_valid }
+#    it { expect(FactoryGirl.build(:permit, owner_address: nil, status: nil)).to be_valid }
 
-    it { expect(FactoryGirl.build(:permit, house_area: nil, status: nil)).to be_valid }
+#    it { expect(FactoryGirl.build(:permit, house_area: nil, status: nil)).to be_valid }
     # it { expect(FactoryGirl.build(:permit, house_area: nil, status: "answer_screener")).to be_valid }
     it { expect(FactoryGirl.build(:permit, house_area: nil, status: "display_permits")).to be_valid }
     # it { expect(FactoryGirl.build(:permit, house_area: "a", status: "answer_screener")).to be_valid }
@@ -41,13 +41,13 @@ describe Permit do
   context "with invalid attributes" do
 
     before { @ipermit = FactoryGirl.build(:permit, owner_name: nil) }
-    it "adds the correct error message" do
-      @ipermit.valid?
-      expect(@ipermit).to be_invalid
-      expect(@ipermit.errors.count).to eq(1)
-      expect(@ipermit.errors).to have_key(:owner_name)
-      expect(@ipermit.errors.messages[:owner_name]).to include("Please enter home owner name.")
-    end
+    # it "adds the correct error message" do
+    #   @ipermit.valid?
+    #   expect(@ipermit).to be_invalid
+    #   expect(@ipermit.errors.count).to eq(1)
+    #   expect(@ipermit.errors).to have_key(:owner_name)
+    #   expect(@ipermit.errors.messages[:owner_name]).to include("Please enter home owner name.")
+    # end
 
     it { expect(FactoryGirl.build(:permit, owner_name: nil)).to be_invalid }
     it { expect(FactoryGirl.build(:permit, owner_name: nil, status: "enter_details")).to be_invalid }

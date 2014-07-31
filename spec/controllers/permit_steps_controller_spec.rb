@@ -16,17 +16,17 @@ describe PermitStepsController do
     end
 
     context "when step is display_summary" do
-      it "add a generated pdf" do
-        permit1 = Permit.create(FactoryGirl.attributes_for(:permit))
-        session[:permit_id] = permit1.id
+      # it "add a generated pdf" do
+      #   permit1 = Permit.create(FactoryGirl.attributes_for(:permit))
+      #   session[:permit_id] = permit1.id
         
-        expect {
-          get :show, id: :display_summary, permit: FactoryGirl.attributes_for(:permit)
-        }.to change(Binary,:count).by(1)
-        expect {
-          get :show, id: :display_summary, permit: FactoryGirl.attributes_for(:permit)
-        }.to change(PermitBinaryDetail,:count).by(1)        
-      end
+      #   expect {
+      #     get :show, id: :display_summary, permit: FactoryGirl.attributes_for(:permit)
+      #   }.to change(Binary,:count).by(1)
+      #   expect {
+      #     get :show, id: :display_summary, permit: FactoryGirl.attributes_for(:permit)
+      #   }.to change(PermitBinaryDetail,:count).by(1)        
+      # end
     end
   end
 
