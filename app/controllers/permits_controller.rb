@@ -4,6 +4,8 @@ class PermitsController < ApplicationController
 
   def new
     @permit = Permit.new
+    reset_session
+
   end
 
   def create

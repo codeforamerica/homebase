@@ -15,19 +15,20 @@ class PermitStepsController < ApplicationController
   def show
     @permit = current_permit
 
+    @permit.selected_addition = session[:selected_addition]
+    @permit.selected_acs_struct = session[:selected_acs_struct]
+    @permit.selected_deck = session[:selected_deck]
+    @permit.selected_pool = session[:selected_pool]
+    @permit.selected_cover = session[:selected_cover]
+    @permit.selected_window = session[:selected_window]
+    @permit.selected_door = session[:selected_door]
+    @permit.selected_wall = session[:selected_wall]
+    @permit.selected_siding = session[:selected_siding]
+    @permit.selected_floor = session[:selected_floor]
     case step
 
     when :answer_screener
-      @permit.selected_addition = session[:selected_addition]
-      @permit.selected_acs_struct = session[:selected_acs_struct]
-      @permit.selected_deck = session[:selected_deck]
-      @permit.selected_pool = session[:selected_pool]
-      @permit.selected_cover = session[:selected_cover]
-      @permit.selected_window = session[:selected_window]
-      @permit.selected_door = session[:selected_door]
-      @permit.selected_wall = session[:selected_wall]
-      @permit.selected_siding = session[:selected_siding]
-      @permit.selected_floor = session[:selected_floor]
+
       #@permit.contractor = session[:contractor]
 
     when :display_permits
