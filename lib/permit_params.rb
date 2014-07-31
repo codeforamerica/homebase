@@ -7,17 +7,7 @@ module PermitParams
     :house_area, 
     :addition_area, 
     :ac, 
-    :contractor,
-    :contractor_name, 
-    :contractor_id, 
-    :escrow, 
-    :license_holder,
-    :license_num,
-    :agent_name,
-    :contact_id,
-    :other_contact_id,
     :phone,
-    :fax,
     :email,
     :work_summary,
     :job_cost,
@@ -32,7 +22,8 @@ module PermitParams
     :cover,
     :pool,
     :deck,
-    :acs_struct
+    :acs_struct,
+    :accepted_terms
     )
  end
 end

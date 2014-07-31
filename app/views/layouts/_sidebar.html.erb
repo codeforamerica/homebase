@@ -3,7 +3,7 @@
   <!-- colorful house block -->
   <div class="visuals hidden-xs">
     <%= image_tag "house.png",                      class: "house"    %>
-    <%= image_tag "color-house-parts/addition.png", class: "addition" %>
+    <%#= image_tag "color-house-parts/addition.png", class: "addition" %>
   </div>
 
   <!-- progress through form -->
@@ -13,11 +13,12 @@
 
     <% steps = [
                   # description, controller, action, id
-                  [ "1. Choose your project", "permits", "new", nil ], 
-                  [ "2. Enter your address", "permit_steps", "show", "enter_address"  ], 
-                  [ "3. Select your permits", "permit_steps", "show", "display_permits" ], 
-                  [ "4. Fill out permits", "permit_steps", "show", "enter_details" ],
-                  [ "5. Submit your permits", "permit_steps", "show", "display_summary" ] 
+                  [ "1. Choose your project" ], 
+                  [ "2. Enter your address" ], 
+                  [ "3. Select your permits" ], 
+                  [ "4. Fill out permits" ],
+                  [ "5. Sign your permits" ],
+                  [ "6. Submit your permits" ] 
                 ] %>
     <ul>
       <li class="cur-step hidden-sm hidden-md hidden-lg"><strong>Current Step:</strong></li><!-- for mobile devices -->
@@ -35,16 +36,66 @@
     </ul>
   </div>
 
+  <!-- selected projects -->
+  <div class="status">
+    <h4 class="hidden-xs">Your project</h4>  
+    <span class="project-label addition">Addition</span>
+    <span class="project-label acs-struct">Shed or Garage</span>
+    <span class="project-label deck">Deck</span>
+    <span class="project-label pool">Pool</span>
+    <span class="project-label cover">Carport or Outdoor Cover</span>
+    <span class="project-label window">Windows</span>
+    <span class="project-label door">Doors</span>
+    <span class="project-label wall">Walls</span>
+    <span class="project-label siding">Siding</span>
+    <span class="project-label floor">Floors</span>    
+    
+    
+          
+  </div>
 </div>
 
 <!-- @TODO refactor this out to javascript asset pipeline -->
 <script>
+
   <% if @permit.addition %>
-
-    $(".addition").fadeToggle("fast","swing");
-    $('.addition-btn').toggleClass("toggle-on");
-
+    $(".addition").toggleClass("displayed");
   <% end %>
  
+  <% if @permit.acs_struct %>
+    $(".acs-struct").toggleClass("displayed");
+  <% end %>
+  
+  <% if @permit.deck %>
+    $(".deck").toggleClass("displayed");
+  <% end %>
 
+  <% if @permit.pool %>
+    $(".pool").toggleClass("displayed");
+  <% end %>
+
+  <% if @permit.cover %>
+    $(".cover").toggleClass("displayed");
+  <% end %>
+
+  <% if @permit.window %>
+    $(".window").toggleClass("displayed");
+  <% end %>
+  
+  <% if @permit.door %>
+    $(".door").toggleClass("displayed");
+  <% end %>
+
+  <% if @permit.wall %>
+    $(".wall").toggleClass("displayed");
+  <% end %>
+
+  <% if @permit.siding %>
+    $(".siding").toggleClass("displayed");
+  <% end %>
+
+  <% if @permit.floor %>
+    $(".floor").toggleClass("displayed");
+  <% end %>
+                  
 </script>

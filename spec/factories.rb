@@ -15,17 +15,7 @@ FactoryGirl.define do
     house_area        1500
     addition_area     500
     ac                "Wall Unit"
-    contractor        true
-    contractor_name   "Rick Smith"
-    contractor_id     "A12345"
-    escrow            true
-    license_holder    "Jane Dolly"
-    license_num       "B34567"
-    agent_name        "Will Tom"
-    contact_id        "V03458"
-    other_contact_id  "U09356"
     phone             "210-245-3453"
-    fax               "210-948-3432"
     email             "company@company.com"
     work_summary      "Adding a 500 square-foot room in the backyard"
     job_cost          2000.40
@@ -41,6 +31,8 @@ FactoryGirl.define do
     pool              true
     deck              true
     acs_struct        true
+    confirmed_name    "John Doe"
+    accepted_terms    true
   end
 
   factory :empty_permit, parent: :permit do
@@ -50,17 +42,7 @@ FactoryGirl.define do
     house_area        nil
     addition_area     nil
     ac                nil
-    contractor        nil
-    contractor_name   nil
-    contractor_id     nil
-    escrow            nil
-    license_holder    nil
-    license_num       nil
-    agent_name        nil
-    contact_id        nil
-    other_contact_id  nil
     phone             nil
-    fax               nil
     email             nil
     work_summary      nil
     job_cost          nil
@@ -76,5 +58,7 @@ FactoryGirl.define do
     pool              nil
     deck              nil
     acs_struct        nil
+    confirmed_name    nil
+    accepted_terms    nil
   end    
 end

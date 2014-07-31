@@ -8,11 +8,10 @@ var idleTime = 0;
 $(document).ready(function($) 
   {
 
-    // Only if not at the root
-    if (document.location.pathname != "/")
-    {
+
       //Increment the idle time counter every minute.
       var idleInterval = setInterval(timerIncrement, INTERVAL_TIME_IN_MS);
+
 
       //Zero the idle timer on mouse movement.
       $(this).mousemove(function (e) {
@@ -21,7 +20,7 @@ $(document).ready(function($)
       $(this).keypress(function (e) {
           idleTime = 0;
       });
-    }
+    
 });
 
 // call timeout modal after 7 minutes
@@ -31,12 +30,16 @@ function show_modal()
 }
 
 function timerIncrement() {
-  idleTime++;
-  if (idleTime == DISPLAY_MODAL_TIME_IN_S)
+  // Only if not at the root or if it is at root, only count if selection has been made
+  if (document.location.pathname != "/" || (document.location.pathname == "/" && document.getElementsByClassName('btn-success').length > 0))
   {
-    show_modal();
-  } else if (idleTime == RESET_TIME_IN_S)
-  {
-    location.href = "http://" + document.location.host;
+    idleTime++;
+    if (idleTime == DISPLAY_MODAL_TIME_IN_S)
+    {
+      show_modal();
+    } else if (idleTime == RESET_TIME_IN_S)
+    {
+      location.href = "http://" + document.location.host;
+    }
   }
 }
