@@ -17,5 +17,6 @@
 //= require jquery-waypoints/waypoints.min
 //= require landing
 //= require bootstrap
+//= require timeout_modal
 //= require masks
 //= require jquery.maskedinput
