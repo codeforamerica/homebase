@@ -48,7 +48,9 @@ module PermitStepsHelper
 		                  'CONTRACTOR_NAME'           => permit.owner_name,
 		                  'TELEPHONE'                     => permit.phone,
 		                  'EMAIL'                     => permit.email,
-		                  'WORK_SUMMARY'              => permit.work_summary
+		                  'WORK_SUMMARY'              => permit.work_summary,
+
+		                  'SIGNATURE'									=> "#{permit.owner_name}  - SIGNED WITH HOMEBASE #{Date.today.strftime('%m/%d/%Y')}"
 
 		                },
 		                flatten: true
