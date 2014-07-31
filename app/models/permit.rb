@@ -15,6 +15,8 @@ class Permit < ActiveRecord::Base
                 :selected_siding,
                 :selected_floor,
 
+                :contractor,
+                
                 :confirmed_name,
 
                 # Room Addition

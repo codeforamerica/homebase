@@ -10,7 +10,7 @@ class PermitStepsController < ApplicationController
   steps :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, 
   
   # The following are error pages that should only be jump to:
-  :error_page, :contractor, :cannot_help, :do_not_need_permit
+  :error_page, :use_contractor, :cannot_help, :do_not_need_permit
   
   def show
     @permit = current_permit
@@ -31,9 +31,13 @@ class PermitStepsController < ApplicationController
 
     when :display_permits
 
+      @permit.contractor = session[:contractor]
+
       if (@permit.contractor)
-        jump_to(:contractor)
+        puts "going to jump to contractor page"
+        jump_to(:use_contractor)
       else
+        puts "continue to next"
         @permit_needs = session[:permit_needs]
       end
 
@@ -82,7 +86,7 @@ class PermitStepsController < ApplicationController
       params[:permit][:selected_wall] = session[:selected_wall]
       params[:permit][:selected_siding] = session[:selected_siding]
       params[:permit][:selected_floor] = session[:selected_floor]
-
+      params[:permit][:contractor] = session[:contractor]
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
       session[:permit_needs] = @permit.update_permit_needs_for_projects
