@@ -1,4 +1,4 @@
-<!-- Render the sidebar partial -->
+Render the sidebar partial -->
 <%= render partial: "layouts/sidebar", locals: {cur_step: 1} %>
 
 <!-- Begin step -->
@@ -6,7 +6,7 @@
 <%#= session.inspect %>
   <h1>Enter your project details</h1>
   <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
-
+  <!-- Errors: <%#= @permit.errors.messages %> -->
     <!-- error checking -->
     <% if @permit.errors.any? %>
       <div class="alert alert-danger">
@@ -394,4 +394,4 @@
   <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
   <% end %>
-</div> <!-- ./col-sm-9 -->
+</div> <!-- ./col-sm-9

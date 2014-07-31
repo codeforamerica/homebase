@@ -28,7 +28,7 @@
 
         <div class="w-row project-row">
           <div class="w-col w-col-4">
-            <%= f.label :selected_addition, class: "pick-addition btn-initial" do %>
+            <%= f.label :selected_addition, id: "addition", class: "pick-addition btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "addition.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -38,7 +38,7 @@
             <%= f.check_box :selected_addition, style: 'display:none' %>
           </div>
           <div class="w-col w-col-4">
-            <%= f.label :selected_acs_struct, class: "pick-acs-struct btn-initial" do %>
+            <%= f.label :selected_acs_struct, id: "acs-struct", class: "pick-acs-struct btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "shed.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -48,7 +48,7 @@
             <%= f.check_box :selected_acs_struct, style: 'display:none' %>
           </div>
           <div class="w-col w-col-4">
-              <%= f.label :selected_deck, class: "pick-deck btn-initial" do %>
+              <%= f.label :selected_deck, id: "deck", class: "pick-deck btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "deck.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -61,7 +61,7 @@
 
         <div class="w-row project-row">
           <div class="w-col w-col-4">
-              <%= f.label :selected_pool, "Swimming Pool", class: "pick-pool btn-initial" do %>            
+              <%= f.label :selected_pool, "Swimming Pool", id: "pool", class: "pick-pool btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "pool.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -71,7 +71,7 @@
             <%= f.check_box :selected_pool, style: 'display:none' %>
           </div>
           <div class="w-col w-col-4">
-            <%= f.label :selected_cover, class: "pick-cover btn-initial" do %>
+            <%= f.label :selected_cover, id: "cover", class: "pick-cover btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "carport.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -85,7 +85,7 @@
             <%= f.check_box :selected_cover, style: 'display:none' %>
           </div>
           <div class="w-col w-col-4">
-            <%= f.label :selected_window, class: "pick-window btn-initial" do %>
+            <%= f.label :selected_window, id: "window", class: "pick-window btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "window.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -98,7 +98,7 @@
 
         <div class="w-row project-row">
           <div class="w-col w-col-4">
-            <%= f.label :selected_door, class: "pick-door btn-initial" do %>
+            <%= f.label :selected_door, id: "door", class: "pick-door btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "door.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -108,7 +108,7 @@
             <%= f.check_box :selected_door, style: 'display:none' %>
           </div>
           <div class="w-col w-col-4">
-            <%= f.label :selected_wall, class: "pick-wall btn-initial" do %>
+            <%= f.label :selected_wall, id: "wall", class: "pick-wall btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "wall.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -118,7 +118,7 @@
             <%= f.check_box :selected_wall, style: 'display:none' %>
           </div>
           <div class="w-col w-col-4">
-            <%= f.label :selected_siding, class: "pick-siding btn-initial" do %>
+            <%= f.label :selected_siding, id: "siding", class: "pick-siding btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "siding.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>
@@ -131,7 +131,7 @@
 
         <div class="w-row">
           <div class="w-col w-col-4">
-            <%= f.label :selected_floor, class: "pick-floor btn-initial" do %>
+            <%= f.label :selected_floor, id: "floor", class: "pick-floor btn-initial project" do %>
               <div class="w-clearfix w-inline-block project-block">
                 <%= image_tag "floor.png", class: "project-icon" %>
                 <div class="w-clearfix"></div>

@@ -28,13 +28,14 @@ class PermitStepsController < ApplicationController
       @permit.selected_wall = session[:selected_wall]
       @permit.selected_siding = session[:selected_siding]
       @permit.selected_floor = session[:selected_floor]
+      #@permit.contractor = session[:contractor]
 
     when :display_permits
 
-      @permit.contractor = session[:contractor]
-
+      #@permit.contractor = session[:contractor]
+      #puts "What is contractor? #{@permit.contractor}"
       if (@permit.contractor)
-        puts "going to jump to contractor page"
+        #puts "going to jump to contractor page"
         jump_to(:use_contractor)
       else
         puts "continue to next"
@@ -86,10 +87,10 @@ class PermitStepsController < ApplicationController
       params[:permit][:selected_wall] = session[:selected_wall]
       params[:permit][:selected_siding] = session[:selected_siding]
       params[:permit][:selected_floor] = session[:selected_floor]
-      params[:permit][:contractor] = session[:contractor]
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
       session[:permit_needs] = @permit.update_permit_needs_for_projects
+      # session[:contractor] = @permit.contractor
 
     when :enter_details
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
@@ -102,6 +103,8 @@ class PermitStepsController < ApplicationController
     end
 
     if @permit.errors.any?
+      puts "*****************************************"
+      puts "#{@permit.errors}"
       # render the same step
       render_wizard
     else

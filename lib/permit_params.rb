@@ -7,17 +7,7 @@ module PermitParams
     :house_area, 
     :addition_area, 
     :ac, 
-    :contractor,
-    :contractor_name, 
-    :contractor_id, 
-    :escrow, 
-    :license_holder,
-    :license_num,
-    :agent_name,
-    :contact_id,
-    :other_contact_id,
     :phone,
-    :fax,
     :email,
     :work_summary,
     :job_cost,
@@ -66,7 +56,10 @@ module PermitParams
     # Siding
     :siding_over_existing,
     # Floor
-    :floor_covering
+    :floor_covering,
+
+    :confirmed_name,
+    :contractor
     )
  end
 end

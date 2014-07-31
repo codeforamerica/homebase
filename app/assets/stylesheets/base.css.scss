@@ -56,8 +56,18 @@ h1 {
 }
 
 /* styles for the sidebar */
+
 #sidebar {
-  
+   
+  .addition, .acs-struct, .deck, .pool, .cover, .window, .door, .wall, .siding, .floor {
+    position: relative; // allows us to position each improvement
+    display: none; // hide these on load; we reveal when they pick one
+  }
+
+  .displayed {
+    display: inline-block;  // when user clicks, show the improvement icon
+  }
+
   .visuals {
     position: relative; // allows us to position improvements
      // testing to keep icons tidy and inside sidebar
@@ -164,6 +174,20 @@ h1 {
       }    
 	}
   } // ./status
+  
+  /* styles for your project */
+  .project-label {
+    background: none repeat scroll 0 0 #b1b1b1;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    height: 23px;
+    line-height: 23px;    
+    margin-right: 3px;
+    margin-bottom: 5px;
+    padding: 0 7px;
+    }
 
 } // ./sidebar
 
@@ -232,6 +256,8 @@ h1 {
 .info-top {
   padding-bottom: 12.5px;
 }
+
+/* Timeout modal styles */
 
 /* Mobile styles */
 

@@ -15,7 +15,7 @@ class Permit < ActiveRecord::Base
                 :selected_siding,
                 :selected_floor,
 
-                :contractor,
+                #:contractor,
                 
                 :confirmed_name,
 
@@ -92,6 +92,7 @@ class Permit < ActiveRecord::Base
   # validates on permit_steps#enter_details
   validates :owner_address, :address => true, :if => :only_if_address_presence?
   validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
+  #validates_presence_of :contractor, :if  => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
   validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
   validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
   validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
@@ -108,6 +109,8 @@ class Permit < ActiveRecord::Base
   validates_numericality_of :addition_area, :if => :only_if_addition_presence?, :message => "Please enter the size of addition in square feet."
   validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
   validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Please select an air conditioning / heating system."
+  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Please enter your valid email address (for example, john@email.com)"
+  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i, :message => "Please enter a valid phone number (for example, 210-555-5555)"
 
   # validates on permit_steps#enter_repair
   validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are repairing."
@@ -116,6 +119,9 @@ class Permit < ActiveRecord::Base
   # validates on permit_step#confirm_details
   
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
+  # before_validation(on: :update) do
+  #   contractor_to_bool#, :if => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
+  # end
   before_validation(on: :create) do
     projects_to_bool
   end
@@ -449,10 +455,10 @@ class Permit < ActiveRecord::Base
   end
 
   def to_bool(value)
-    if value == "0"
-      return false
-    else
+    if value == "1"
       return true
+    else
+      return false
     end
   end
     
@@ -470,5 +476,13 @@ class Permit < ActiveRecord::Base
 
     puts "selected_addition: #{selected_addition}"
   end
+
+  # def contractor_to_bool
+  #   if contractor == "true"
+  #     return true
+  #   else
+  #     return false
+  #   end
+  # end
 
 end

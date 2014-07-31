@@ -27,8 +27,8 @@ describe Permit do
     # it { expect(FactoryGirl.build(:permit, ac: nil, status: "answer_screener")).to be_valid }
     it { expect(FactoryGirl.build(:permit, ac: nil, status: "display_permits")).to be_valid }
 
-    # it { expect(FactoryGirl.build(:permit, contractor: nil, status: "answer_screener")).to be_valid }
-    it { expect(FactoryGirl.build(:permit, contractor: nil, status: "display_permits")).to be_valid }
+    # it { expect(FactoryGirl.build(:permit, contractor: nil, status: "enter_address")).to be_valid }
+    # it { expect(FactoryGirl.build(:permit, contractor: nil, status: "display_permits")).to be_valid }
 
     # it { expect(FactoryGirl.build(:permit, work_summary: nil, status: "answer_screener")).to be_valid }
     it { expect(FactoryGirl.build(:permit, work_summary: nil, status: "display_permits")).to be_valid }
@@ -96,8 +96,8 @@ describe Permit do
     it { expect(FactoryGirl.build(:permit, ac: nil)).to be_invalid }
     it { expect(FactoryGirl.build(:permit, ac: nil, status: "enter_details")).to be_invalid }
 
-    it { expect(FactoryGirl.build(:permit, contractor: nil)).to be_invalid }
-    it { expect(FactoryGirl.build(:permit, contractor: nil, status: "answer_screener")).to be_invalid }
+    # it { expect(FactoryGirl.build(:permit, contractor: nil)).to be_invalid }
+    # it { expect(FactoryGirl.build(:permit, contractor: nil, status: "enter_details")).to be_invalid }
 
     it { expect(FactoryGirl.build(:permit, work_summary: nil)).to be_invalid }
     it { expect(FactoryGirl.build(:permit, work_summary: nil, status: "enter_details")).to be_invalid }
