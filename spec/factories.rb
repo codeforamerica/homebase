@@ -33,6 +33,22 @@ FactoryGirl.define do
     acs_struct        true
     confirmed_name    "John Doe"
     accepted_terms    true
+    addition_size         'lessThan1000'
+    addition_num_story    '1Story'
+    acs_struct_size       'greaterThan120'
+    acs_struct_num_story  '1Story'
+    deck_size             'greaterThan120'
+    deck_grade            'moreThan30'
+    deck_dwelling_attach  'attachedToDwelling'
+    deck_exit_door        'exitDoor'
+    pool_location         'inGround'
+    pool_volume           'moreThan5000'
+    cover_material        'metalType2'
+    window_replace_glass  false
+    door_replace_existing false
+    wall_general_changes  false
+    siding_over_existing  false
+    floor_covering        false
   end
 
   factory :empty_permit, parent: :permit do
@@ -60,5 +76,21 @@ FactoryGirl.define do
     acs_struct        nil
     confirmed_name    nil
     accepted_terms    nil
+    addition_size         nil
+    addition_num_story    nil
+    acs_struct_size       nil
+    acs_struct_num_story  nil
+    deck_size             nil
+    deck_grade            nil
+    deck_dwelling_attach  nil
+    deck_exit_door        nil
+    pool_location         nil
+    pool_volume           nil
+    cover_material        nil
+    window_replace_glass  nil
+    door_replace_existing nil
+    wall_general_changes  nil
+    siding_over_existing  nil
+    floor_covering        nil
   end    
 end

@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726060401) do
+ActiveRecord::Schema.define(version: 20140731083910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "binaries", force: true do |t|
     t.binary   "data"
@@ -73,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140726060401) do
     t.boolean  "deck"
     t.boolean  "acs_struct"
     t.boolean  "accepted_terms"
+    t.boolean  "contractor"
   end
 
 end

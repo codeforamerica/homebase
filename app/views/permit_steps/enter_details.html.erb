@@ -44,7 +44,10 @@
           <%= f.label :owner_name, "Home owner name*", for: "owner-name" %>
 
           <!-- check if there's an error for this field -->
-          <% if @permit.errors.messages[:owner_name].length >= 1 %>
+<!--           @permit.errors: <%#= @permit.errors %>
+          @permit.errors.messages <%#= @permit.errors.messages %>
+  -->
+           <% if @permit.errors.messages[:owner_name].length >= 1 %>
             <!-- create an errors div to style error message and make input red -->    
             <div class="has-error">
               <!-- Print out the error message (from validator) -->
@@ -69,17 +72,14 @@
             <!-- check if there's an error for this field -->
             <% if @permit.errors.messages[:owner_address].length >= 1 %>
               <!-- create an errors div to style error message and make input red -->    
-              <div class="has-error">
+              <div class="field_with_errors">
                 <!-- Print out the error message (from validator) -->
                 <p><%= @permit.errors.messages[:owner_address][0] %></p>
+              </div>
             <% end %>
 
             <%= f.text_field :owner_address, class: "form-control input-lg", id: "owner-address" %>
 
-            <% if @permit.errors.messages[:owner_address].length >= 1 %>
-              <!-- close the errors div -->
-              </div>
-            <% end %>
           </div>
 
         <!-- ./owner_address -->

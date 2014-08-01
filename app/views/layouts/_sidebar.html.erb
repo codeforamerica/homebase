@@ -14,7 +14,7 @@
     <% steps = [
                   # description, controller, action, id
                   [ "1. Choose your project" ], 
-                  [ "2. Enter your address" ], 
+                  [ "2. Enter project details" ], 
                   [ "3. Select your permits" ], 
                   [ "4. Fill out permits" ],
                   [ "5. Sign your permits" ],
@@ -58,43 +58,43 @@
 <!-- @TODO refactor this out to javascript asset pipeline -->
 <script>
 
-  <% if @permit.addition %>
+  <% if @permit.to_bool(@permit.selected_addition) %>
     $(".addition").toggleClass("displayed");
   <% end %>
  
-  <% if @permit.acs_struct %>
+  <% if @permit.to_bool(@permit.selected_acs_struct) %>
     $(".acs-struct").toggleClass("displayed");
   <% end %>
   
-  <% if @permit.deck %>
+  <% if @permit.to_bool(@permit.selected_deck) %>
     $(".deck").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.pool %>
+  <% if @permit.to_bool(@permit.selected_pool) %>
     $(".pool").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.cover %>
+  <% if @permit.to_bool(@permit.selected_cover) %>
     $(".cover").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.window %>
+  <% if @permit.to_bool(@permit.selected_window) %>
     $(".window").toggleClass("displayed");
   <% end %>
   
-  <% if @permit.door %>
+  <% if @permit.to_bool(@permit.selected_door) %>
     $(".door").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.wall %>
+  <% if @permit.to_bool(@permit.selected_wall) %>
     $(".wall").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.siding %>
+  <% if @permit.to_bool(@permit.selected_siding) %>
     $(".siding").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.floor %>
+  <% if @permit.to_bool(@permit.selected_floor) %>
     $(".floor").toggleClass("displayed");
   <% end %>
                   
