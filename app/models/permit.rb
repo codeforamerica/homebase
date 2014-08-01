@@ -146,43 +146,43 @@ class Permit < ActiveRecord::Base
   end
 
   def only_if_screener_addition?
-    status.to_s.include?('answer_screener') && addition
+    status.to_s.include?('answer_screener') && to_bool(selected_addition)
   end
 
   def only_if_screener_acs_struct?
-    status.to_s.include?('answer_screener') && acs_struct
+    status.to_s.include?('answer_screener') && to_bool(selected_acs_struct)
   end
 
   def only_if_screener_deck?
-    status.to_s.include?('answer_screener') && deck
+    status.to_s.include?('answer_screener') && to_bool(selected_deck)
   end
 
   def only_if_screener_pool?
-    status.to_s.include?('answer_screener') && pool
+    status.to_s.include?('answer_screener') && to_bool(selected_pool)
   end
 
   def only_if_screener_cover?
-    status.to_s.include?('answer_screener') && cover
+    status.to_s.include?('answer_screener') && to_bool(selected_cover)
   end
 
   def only_if_screener_window?
-    status.to_s.include?('answer_screener') && window
+    status.to_s.include?('answer_screener') && to_bool(selected_window)
   end
 
   def only_if_screener_door?
-    status.to_s.include?('answer_screener') && door
+    status.to_s.include?('answer_screener') && to_bool(selected_door)
   end
 
   def only_if_screener_wall?
-    status.to_s.include?('answer_screener') && wall
+    status.to_s.include?('answer_screener') && to_bool(selected_wall)
   end
 
   def only_if_screener_siding?
-    status.to_s.include?('answer_screener') && siding
+    status.to_s.include?('answer_screener') && to_bool(selected_siding)
   end
 
   def only_if_screener_floor?
-    status.to_s.include?('answer_screener') && floor
+    status.to_s.include?('answer_screener') && to_bool(selected_floor)
   end
 
   def only_if_address_presence?

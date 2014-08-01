@@ -10,15 +10,9 @@
     <!-- error checking -->
     <% if @permit.errors.any? %>
       <div class="alert alert-danger">
-        <% @permit.errors.messages.values.each do |msg| %>
-          <%msg.each do  |m| %>
-            <strong><%= m %></strong>
-            <br>
-          <%end %>
-        <% end %>
+        <p><strong>Sorry, there was a problem.  Please check your answers.</strong></p>
       </div>
     <% end %>
-    <!-- ./ error checking -->
 
   <!-- Room Additions section -->
   <% if @permit.selected_addition %>
@@ -28,35 +22,25 @@
       </div>
       <div class="panel-body">
         <p>What best describes your room addition that you are building?</p>
-        <label for="test-label">Size</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :addition_size, 'lessThan1000', id: "lessThan1000" %>
-            Less than 1,000 sq ft
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :addition_size, 'greaterThanEqualTo1000', id: 'greaterThanEqualTo1000' %>
-            Greater than or equal to 1,000 sq ft
-          </label>
-        </div>
 
-        <label for="test-label">Stories</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :addition_num_story, '1Story', id: '1Story' %>
-            1 story
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :addition_num_story, '2orMoreStories', id: '2orMoreStories' %>
-            2 or more stories
-          </label>
-        </div>            
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Size", 
+                                                            attribute: :addition_size, 
+                                                            option: [ { value: 'lessThan1000', 
+                                                                        label: "Less than 1,000 sq ft" }, 
+                                                                      { value: 'greaterThanEqualTo1000', 
+                                                                        label: "Greater than or equal to 1,000 sq ft" }]} %>
+
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Stories", 
+                                                            attribute: :addition_num_story, 
+                                                            option: [ { value: '1Story', 
+                                                                        label: "1 Story" }, 
+                                                                      { value: '2orMoreStories', 
+                                                                        label: "2 or more stories" }]} %>
       </div>
-    </div> 
+    </div>
   <% end %><!-- ./Room Additions section -->
 
   <!-- Shed/Garage Accessory Structure section -->
@@ -67,32 +51,22 @@
       </div>
       <div class="panel-body">
         <p>What best describes your shed or garage that you are building?</p>
-        <label for="test-label">Size</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :acs_struct_size, 'lessThanEqualTo120', id: "lessThanEqualTo120" %>
-            Less than or equal to 120 sq ft
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :acs_struct_size, 'greaterThan120', id: "greaterThan120" %>
-            Greater than 120 sq ft
-          </label>
-        </div>
-        <label for="test-label">Stories</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :acs_struct_num_story, '1Story', id: "1Story" %>
-            1 story
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :acs_struct_num_story, '2orMoreStories', id: "2orMoreStories" %>
-            2 or more stories
-          </label>
-        </div>            
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Size", 
+                                                            attribute: :acs_struct_size, 
+                                                            option: [ { value: 'lessThanEqualTo120', 
+                                                                        label: "Less than or equal to 120 sq ft" }, 
+                                                                      { value: 'greaterThan120', 
+                                                                        label: "Greater than 120 sq ft" }]} %>
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Stories", 
+                                                            attribute: :acs_struct_num_story, 
+                                                            option: [ { value: '1Story', 
+                                                                        label: "1 Story" }, 
+                                                                      { value: '2orMoreStories', 
+                                                                        label: "2 or more stories" }]} %>       
       </div>
     </div>
   <% end %><!-- ./Shed/Garage Accessory Structure -->
@@ -105,58 +79,46 @@
       </div>
       <div class="panel-body">
         <p>What best describes your deck that you are building?</p>
-        <label for="test-label">Size</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_size, 'lessThanEqualTo120', id: "lessThanEqualTo120" %>
-            Less than or equal to 120 sq ft
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_size, 'greaterThan120', id: "greaterThan120" %>
-            Greater than 120 sq ft
-          </label>
-        </div>
-        <label for="test-label">Grade</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_grade, 'lessThanEqualTo30', id: "lessThanEqualTo30" %>
-            Less than or equal to 30 inches above grade
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_grade, 'moreThan30', id: "moreThan30" %>
-            More than 30 inches above grade
-          </label>
-        </div>  
-        <label for="test-label">Dwelling Attachment</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_dwelling_attach, 'attachedToDwelling', id: "attachedToDwelling" %>
-            Attached to dwelling
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_dwelling_attach, 'notAttachedToDwelling', id: "notAttachedToDwelling" %>
-            Not attached to dwelling
-          </label>
-        </div>
-        <label for="test-label">Exit Door</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_exit_door, 'exitDoor', id: "exitDoor" %>
-            Serves a required exit door
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :deck_exit_door, 'noExitDoor', id: "noExitDoor" %>
-            Does not serve a required exit door
-          </label>
-        </div>              
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Size", 
+                                                            attribute: :deck_size, 
+                                                            option: [ { value: 'lessThanEqualTo120', 
+                                                                        label: "Less than or equal to 120 sq ft" }, 
+                                                                      { value: 'greaterThan120', 
+                                                                        label: "Greater than 120 sq ft" }]} %>
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Grade", 
+                                                            attribute: :deck_grade, 
+                                                            option: [ { value: 'lessThanEqualTo30', 
+                                                                        label: "Less than or equal to 30 inches above grade" }, 
+                                                                      { value: 'moreThan30', 
+                                                                        label: "More than 30 inches above grade" }]} %>
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Dwelling Attachment", 
+                                                            attribute: :deck_dwelling_attach, 
+                                                            option: [ { value: 'attachedToDwelling', 
+                                                                        label: "Attached to dwelling" }, 
+                                                                      { value: 'notAttachedToDwelling', 
+                                                                        label: "Not attached to dwelling" }]} %>
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Dwelling Attachment", 
+                                                            attribute: :deck_grade, 
+                                                            option: [ { value: 'attachedToDwelling', 
+                                                                        label: "Attached to dwelling" }, 
+                                                                      { value: 'notAttachedToDwelling', 
+                                                                        label: "Not attached to dwelling" }]} %>
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Exit Door", 
+                                                            attribute: :deck_exit_door, 
+                                                            option: [ { value: 'exitDoor', 
+                                                                        label: "Serves a required exit door" }, 
+                                                                      { value: 'noExitDoor', 
+                                                                        label: "Does not serve a required exit door" }]} %>
+             
       </div>
     </div>
   <% end %><!-- ./Deck section -->
@@ -169,32 +131,22 @@
       </div>
       <div class="panel-body">
         <p>What best describes your swimming pool that you are building?</p>
-        <label for="test-label">Ground</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :pool_location, 'inGround', id: "inGround" %>
-            Pool is in ground
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :pool_location, 'aboveGround', id: "aboveGround" %>
-            Pool is above ground
-          </label>
-        </div>
-        <label for="test-label">Volume</label>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :pool_volume, 'lessThanEqualTo5000', id: "lessThanEqualTo5000" %>
-            Less than or equal to 5,000 gallons
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :pool_volume, 'moreThan5000', id: "moreThan5000" %>
-            More than 5,000 gallons
-          </label>
-        </div>            
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Location", 
+                                                            attribute: :pool_location, 
+                                                            option: [ { value: 'inGround', 
+                                                                        label: "Pool is in ground" }, 
+                                                                      { value: 'aboveGround', 
+                                                                        label: "Pool is above ground" }]} %>
+
+          <%= render partial: "screener_question", locals: {f: f, 
+                                                            question: "Volume", 
+                                                            attribute: :pool_volume, 
+                                                            option: [ { value: 'lessThanEqualTo5000', 
+                                                                        label: "Less than or equal to 5,000 gallons" }, 
+                                                                      { value: 'moreThan5000', 
+                                                                        label: "More than 5,000 gallons" }]} %>           
       </div>
     </div>
   <% end %><!-- ./Swimming Pool section -->
@@ -207,25 +159,16 @@
     </div>
     <div class="panel-body">
       <p>What best describes your carport, patio cover, or porch cover that you are building?</p>
-      <label for="test-label">Material</label>
-      <div class="radio">
-        <label>
-          <%= f.radio_button :cover_material, 'metalType2', id: "metalType2" %>
-          It’s metal type II
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <%= f.radio_button :cover_material, 'woodType5', id: "woodType5" %>
-          It’s wood type V
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <%= f.radio_button :cover_material, 'other', id: "other" %>
-          Other
-        </label>
-      </div>            
+
+        <%= render partial: "screener_question", locals: {f: f, 
+                                                          question: "Material", 
+                                                          attribute: :cover_material, 
+                                                          option: [ { value: 'metalType2', 
+                                                                      label: "It’s metal type II" }, 
+                                                                    { value: 'woodType5', 
+                                                                      label: "It’s wood type V" },
+                                                                    { value: 'other',
+                                                                      label: "Other"}]} %>    
     </div>
   </div>
   <% end %><!-- ./Carports or Outdoor Covers section -->
@@ -238,18 +181,14 @@
       </div>
       <div class="panel-body">
         <p>Are you <b>only</b> replacing broken glass?</p>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :window_replace_glass, true, id: "yes" %>
-            Yes
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :window_replace_glass, false, id: "no" %>
-            No
-          </label>
-        </div>           
+
+        <%= render partial: "screener_question", locals: {f: f,
+                                                          question: nil,
+                                                          attribute: :window_replace_glass, 
+                                                          option: [ { value: true, 
+                                                                      label: "Yes" }, 
+                                                                    { value: false, 
+                                                                      label: "No" }]} %>         
       </div>
     </div>
     <% end %><!-- ./Windows section -->
@@ -262,18 +201,13 @@
       </div>
       <div class="panel-body">
         <p>Are you <b>only</b> replacing the existing door on current hinges?</p>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :door_replace_existing, true, id: "yes" %>
-            Yes
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :door_replace_existing, false, id: "no" %>
-            No
-          </label>
-        </div>           
+        <%= render partial: "screener_question", locals: {f: f,
+                                                          question: nil,
+                                                          attribute: :door_replace_existing, 
+                                                          option: [ { value: true, 
+                                                                      label: "Yes" }, 
+                                                                    { value: false, 
+                                                                      label: "No" }]} %>        
       </div>
     </div>
   <% end %><!-- ./Doors section -->
@@ -286,18 +220,13 @@
       </div>
       <div class="panel-body">
         <p>Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?</p>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :wall_general_changes, true, id: "yes" %>
-            Yes
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :wall_general_changes, false, id: "no" %>
-            No
-          </label>
-        </div>           
+        <%= render partial: "screener_question", locals: {f: f,
+                                                          question: nil,
+                                                          attribute: :wall_general_changes, 
+                                                          option: [ { value: true, 
+                                                                      label: "Yes" }, 
+                                                                    { value: false, 
+                                                                      label: "No" }]} %>          
       </div>
     </div>
   <% end %><!-- ./Walls section -->
@@ -310,18 +239,14 @@
       </div>
       <div class="panel-body">
         <p>Are you <b>only</b> placing new siding over existing siding?</p>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :siding_over_existing, true, id: "yes" %>
-            Yes
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :siding_over_existing, false, id: "false" %>
-            No
-          </label>
-        </div>           
+
+        <%= render partial: "screener_question", locals: {f: f,
+                                                          question: nil,
+                                                          attribute: :siding_over_existing, 
+                                                          option: [ { value: true, 
+                                                                      label: "Yes" }, 
+                                                                    { value: false, 
+                                                                      label: "No" }]} %>  
       </div>
     </div>
   <% end %><!-- ./Siding Replacement section -->
@@ -334,18 +259,14 @@
       </div>
       <div class="panel-body">
         <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :floor_covering, true, id: "yes" %>
-            Yes
-          </label>
-        </div>
-        <div class="radio">
-          <label>
-            <%= f.radio_button :floor_covering, false, id: "no" %>
-            No
-          </label>
-        </div>           
+
+        <%= render partial: "screener_question", locals: {f: f,
+                                                          question: nil,
+                                                          attribute: :floor_covering, 
+                                                          option: [ { value: true, 
+                                                                      label: "Yes" }, 
+                                                                    { value: false, 
+                                                                      label: "No" }]} %>       
       </div>
     </div>
   <% end %><!-- ./Floor-Structural Repairs section -->
@@ -357,18 +278,13 @@
     </div>
     <div class="panel-body">
       <p>Will you be hiring a contractor to work on your project?</p>
-      <div class="radio">
-        <label>
-          <%= f.radio_button :contractor, true, id: "yes" %>
-          Yes
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <%= f.radio_button :contractor, false, id: "no" %>
-          No
-        </label>
-      </div>           
+      <%= render partial: "screener_question", locals: {f: f,
+                                                        question: nil,
+                                                        attribute: :contractor, 
+                                                        option: [ { value: true, 
+                                                                    label: "Yes" }, 
+                                                                  { value: false, 
+                                                                    label: "No" }]} %>            
     </div>
   </div><!-- ./Contractor section -->
 
@@ -394,4 +310,4 @@
   <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
   <% end %>
-</div> <!-- ./col-sm-9
+</div> <!-- ./col-sm-9 -->
