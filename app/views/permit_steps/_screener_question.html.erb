@@ -1,0 +1,23 @@
+<% if question %>
+  <label for="test-label"><%= question %></label>
+<% end %>
+<% if @permit.errors[attribute].length >= 1 %>
+
+  <!-- create an errors div to style error message and make input red -->    
+  <div class="field_with_errors">
+    <!-- Print out the error message (from validator) -->
+    <% permit.errors[attribute].each do | msg | %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<% option.each do | op | %>
+
+  <div class="radio">
+    <%= f.label attribute, op[:value], value: op[:value] do %>
+      <%= f.radio_button attribute, op[:value], id: op[:value] %>
+      <%= op[:label] %>
+    <% end %>
+  </div>
+<% end %>

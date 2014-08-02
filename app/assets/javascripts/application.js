@@ -16,5 +16,7 @@
 //= require modernizr
 //= require jquery-waypoints/waypoints.min
 //= require landing
-//= require enter_details
 //= require bootstrap
+//= require timeout_modal
+//= require masks
+//= require jquery.maskedinput

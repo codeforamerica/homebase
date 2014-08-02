@@ -227,6 +227,11 @@ h1 {
   padding-bottom: 30px;
 }
 
+/* styles for #project_details */
+.radio input[type="radio"] {
+	margin-top: 7px;
+}
+
 /* styles for #enter_details */
 
 .has-error p { //styles error helper text
@@ -234,6 +239,10 @@ h1 {
   color: $brand-danger;
 }
 
+.field_with_errors { //styles error helper text
+  font-weight: 900;
+  color: $brand-danger;
+}
 .multi-form {
   .form-group {
     padding-top: 25px; // space out the form fields
@@ -243,6 +252,17 @@ h1 {
     }
   }
 }
+
+/* styles for #display_perimts */
+.info-bottom {
+  padding-top: 12.5px;
+}
+.info-top {
+  padding-bottom: 12.5px;
+}
+
+/* Timeout modal styles */
+
 /* Mobile styles */
 
 @media (max-width: $screen-sm-min) {

@@ -15,17 +15,7 @@ FactoryGirl.define do
     house_area        1500
     addition_area     500
     ac                "Wall Unit"
-    contractor        true
-    contractor_name   "Rick Smith"
-    contractor_id     "A12345"
-    escrow            true
-    license_holder    "Jane Dolly"
-    license_num       "B34567"
-    agent_name        "Will Tom"
-    contact_id        "V03458"
-    other_contact_id  "U09356"
     phone             "210-245-3453"
-    fax               "210-948-3432"
     email             "company@company.com"
     work_summary      "Adding a 500 square-foot room in the backyard"
     job_cost          2000.40
@@ -43,6 +33,22 @@ FactoryGirl.define do
     acs_struct        true
     confirmed_name    "John Doe"
     accepted_terms    true
+    addition_size         'lessThan1000'
+    addition_num_story    '1Story'
+    acs_struct_size       'greaterThan120'
+    acs_struct_num_story  '1Story'
+    deck_size             'greaterThan120'
+    deck_grade            'moreThan30'
+    deck_dwelling_attach  'attachedToDwelling'
+    deck_exit_door        'exitDoor'
+    pool_location         'inGround'
+    pool_volume           'moreThan5000'
+    cover_material        'metalType2'
+    window_replace_glass  false
+    door_replace_existing false
+    wall_general_changes  false
+    siding_over_existing  false
+    floor_covering        false
   end
 
   factory :empty_permit, parent: :permit do
@@ -52,17 +58,7 @@ FactoryGirl.define do
     house_area        nil
     addition_area     nil
     ac                nil
-    contractor        nil
-    contractor_name   nil
-    contractor_id     nil
-    escrow            nil
-    license_holder    nil
-    license_num       nil
-    agent_name        nil
-    contact_id        nil
-    other_contact_id  nil
     phone             nil
-    fax               nil
     email             nil
     work_summary      nil
     job_cost          nil
@@ -80,5 +76,21 @@ FactoryGirl.define do
     acs_struct        nil
     confirmed_name    nil
     accepted_terms    nil
+    addition_size         nil
+    addition_num_story    nil
+    acs_struct_size       nil
+    acs_struct_num_story  nil
+    deck_size             nil
+    deck_grade            nil
+    deck_dwelling_attach  nil
+    deck_exit_door        nil
+    pool_location         nil
+    pool_volume           nil
+    cover_material        nil
+    window_replace_glass  nil
+    door_replace_existing nil
+    wall_general_changes  nil
+    siding_over_existing  nil
+    floor_covering        nil
   end    
 end

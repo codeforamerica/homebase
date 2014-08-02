@@ -7,12 +7,42 @@ class PermitStepsController < ApplicationController
   include PermitStepsHelper
 
   include Wicked::Wizard
-  steps :enter_address, :display_permits, :enter_details, :confirm_terms, :display_summary, :error_page
+  steps :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, 
+  
+  # The following are error pages that should only be jump to:
+  :error_page, :use_contractor, :cannot_help, :do_not_need_permit
   
   def show
     @permit = current_permit
 
+    @permit.selected_addition = session[:selected_addition]
+    @permit.selected_acs_struct = session[:selected_acs_struct]
+    @permit.selected_deck = session[:selected_deck]
+    @permit.selected_pool = session[:selected_pool]
+    @permit.selected_cover = session[:selected_cover]
+    @permit.selected_window = session[:selected_window]
+    @permit.selected_door = session[:selected_door]
+    @permit.selected_wall = session[:selected_wall]
+    @permit.selected_siding = session[:selected_siding]
+    @permit.selected_floor = session[:selected_floor]
     case step
+
+    when :answer_screener
+
+      #@permit.contractor = session[:contractor]
+
+    when :display_permits
+
+      #@permit.contractor = session[:contractor]
+      #puts "What is contractor? #{@permit.contractor}"
+      if (@permit.contractor)
+        #puts "going to jump to contractor page"
+        jump_to(:use_contractor)
+      else
+        puts "continue to next"
+        @permit_needs = session[:permit_needs]
+      end
+
 
     when :display_summary
 
@@ -44,22 +74,38 @@ class PermitStepsController < ApplicationController
     params[:permit][:status] = step.to_s
     params[:permit][:status] = 'active' if step == steps.last
 
-    if step == :enter_address || step == :enter_details
-      sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
-      address = Geokit::Geocoders::MultiGeocoder.geocode(params[:permit][:owner_address], bias: sa_bounds)
+    case step
 
-      if valid_address?(address)
-        params[:permit][:owner_address] = address.full_address
-      else
-        puts "erroring out"
-      end
-      
-    elsif step == :confirm_terms
+    when :answer_screener
+
+      params[:permit][:selected_addition] = session[:selected_addition]
+      params[:permit][:selected_acs_struct] = session[:selected_acs_struct]
+      params[:permit][:selected_deck] = session[:selected_deck]
+      params[:permit][:selected_pool] = session[:selected_pool]
+      params[:permit][:selected_cover] = session[:selected_cover]
+      params[:permit][:selected_window] = session[:selected_window]
+      params[:permit][:selected_door] = session[:selected_door]
+      params[:permit][:selected_wall] = session[:selected_wall]
+      params[:permit][:selected_siding] = session[:selected_siding]
+      params[:permit][:selected_floor] = session[:selected_floor]
+      params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
+      @permit.update_attributes(permit_params)
+      session[:permit_needs] = @permit.update_permit_needs_for_projects
+      # session[:contractor] = @permit.contractor
+
+    when :enter_details
+      params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
+      @permit.update_attributes(permit_params)
+    when :confirm_terms
       @permit.confirmed_name = params[:permit][:confirmed_name]
+      @permit.update_attributes(permit_params)
+    else
+      @permit.update_attributes(permit_params)
     end
 
-    @permit.update_attributes(permit_params)
     if @permit.errors.any?
+      puts "*****************************************"
+      puts "#{@permit.errors}"
       # render the same step
       render_wizard
     else
@@ -103,6 +149,17 @@ class PermitStepsController < ApplicationController
   end
 
   private
+
+  def full_address address
+    sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
+    address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: sa_bounds)
+
+    if valid_address?(address_details)
+      return address_details.full_address
+    else
+      return nil
+    end
+  end
 
   def valid_address? address
     address != nil && address.lat != nil && address.lng != nil && address.full_address != nil && address.street_name != nil
