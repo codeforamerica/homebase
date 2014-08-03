@@ -104,14 +104,6 @@
                                                                         label: "Not attached to dwelling" }]} %>
 
           <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Dwelling Attachment", 
-                                                            attribute: :deck_grade, 
-                                                            option: [ { value: 'attachedToDwelling', 
-                                                                        label: "Attached to dwelling" }, 
-                                                                      { value: 'notAttachedToDwelling', 
-                                                                        label: "Not attached to dwelling" }]} %>
-
-          <%= render partial: "screener_question", locals: {f: f, 
                                                             question: "Exit Door", 
                                                             attribute: :deck_exit_door, 
                                                             option: [ { value: 'exitDoor', 
@@ -164,9 +156,9 @@
                                                           question: "Material", 
                                                           attribute: :cover_material, 
                                                           option: [ { value: 'metalType2', 
-                                                                      label: "It’s metal type II" }, 
+                                                                      label: "It's metal type II" }, 
                                                                     { value: 'woodType5', 
-                                                                      label: "It’s wood type V" },
+                                                                      label: "It's wood type V" },
                                                                     { value: 'other',
                                                                       label: "Other"}]} %>    
     </div>
