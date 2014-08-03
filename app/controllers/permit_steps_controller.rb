@@ -46,6 +46,7 @@ class PermitStepsController < ApplicationController
 
     when :display_summary
 
+      puts "in display summary"
       @unique_key = SecureRandom.hex
       file_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
       permit_created = create_permit(file_path, @permit)
@@ -97,8 +98,11 @@ class PermitStepsController < ApplicationController
       params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
     when :confirm_terms
+      puts "in confirm_terms"
       @permit.confirmed_name = params[:permit][:confirmed_name]
       @permit.update_attributes(permit_params)
+      puts "@permit.confirmed_name: #{@permit.confirmed_name}"
+      puts "params[:permit][:confirmed_name]: #{parmas[:permit][:confirmed_name]}"
     else
       @permit.update_attributes(permit_params)
     end

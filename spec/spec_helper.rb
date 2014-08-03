@@ -43,4 +43,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   Capybara.ignore_hidden_elements = false
+
+  #Capybara.default_driver = :selenium
 end

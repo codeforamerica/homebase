@@ -73,7 +73,7 @@
 
 
                   
-    <div class="form-group">
+    <div class="form-group submit-form">
         <%= f.submit "I agree", class: "btn btn-primary btn-lg" %>
     </div>
     <% end %>
@@ -81,6 +81,7 @@
 </div><!-- ./col-sm-9 -->
 
 <!-- Unchecks the checkbox on load -->
+<!-- TODO: This really shouldn't be here, should use rails to update not javascript -->
 <script>
 $(document).ready(function(){
     $('#accepted-terms').prop('checked',false);

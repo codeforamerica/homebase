@@ -11,7 +11,7 @@
     </div>
 
 
-  <!-- Room additions fields -->
+  <!-- Form -->
   <div class="form">
     <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
 
@@ -286,7 +286,7 @@
 
       <!-- work_summary -->
         <div class="form-group">
-          <%= f.label :work_summary, "Work summary*", for: "work-summary" %>
+          <%= f.label :work_summary, "Work summary*", id: "work-summary", for: "work-summary" %>
           <p class="help-block">Please describe the project you are working on.</p>
 
           <!-- check if there's an error for this field -->
