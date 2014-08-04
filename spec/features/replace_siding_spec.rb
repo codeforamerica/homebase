@@ -2,12 +2,12 @@ require 'spec_helper'
 
 feature "Replace sidings" do
 
-  scenario "when user selects replace siding that doesn't need permit (Only placing new siding over existing)" do
+  scenario "when user selects Replace siding that doesn't need permit (Only placing new siding over existing)" do
 
     visit new_permit_path
 
     # permit#new
-    check "Replace Siding"
+    check "Replace siding"
     click_on "Next step"
 
     expect(current_path).to eq('/permit_steps/answer_screener')
@@ -38,12 +38,12 @@ feature "Replace sidings" do
 
   end
   
-  scenario "when user selects replace siding that needs permit (Only placing new siding over existing)" do
+  scenario "when user selects Replace siding that needs permit (Only placing new siding over existing)" do
 
     visit new_permit_path
 
     # permit#new
-    check "Replace Siding"
+    check "Replace siding"
     click_on "Next step"
 
     expect(current_path).to eq('/permit_steps/answer_screener')

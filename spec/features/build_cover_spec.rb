@@ -6,7 +6,7 @@ feature "Build a cover" do
     visit new_permit_path
 
     # permit#new
-    check "Carports or Outdoor Covers"
+    check "Carport or Outdoor Cover"
     click_on "Next step"
 
     expect(current_path).to eq('/permit_steps/answer_screener')
@@ -69,7 +69,7 @@ feature "Build a cover" do
     visit new_permit_path
 
     # permit#new
-    check "Carports or Outdoor Covers"
+    check "Carport or Outdoor Cover"
     click_on "Next step"
 
     expect(current_path).to eq('/permit_steps/answer_screener')
@@ -135,7 +135,7 @@ feature "Build a cover" do
     visit new_permit_path
 
     # permit#new
-    check "Carports or Outdoor Covers"
+    check "Carport or Outdoor Cover"
     click_on "Next step"
 
     expect(current_path).to eq('/permit_steps/answer_screener')

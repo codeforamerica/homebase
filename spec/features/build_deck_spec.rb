@@ -159,7 +159,7 @@ feature "Build a deck" do
     end
 
     within "div.deck_exit_door" do
-      choose "Serve a required exit door"
+      choose "Serves a required exit door"
     end
 
     within "div.contractor" do
@@ -439,10 +439,10 @@ feature "Build a deck" do
 
 
 
-  scenario "when user selects a Deck that needs permit (Less than or equal to 120 sq ft & 
-                                                        More than 30 inches above grade & 
-                                                        attached to dwelling & 
-                                                        serve a required exit door)" do
+  scenario "when user selects a Deck that needs further assistance (Less than or equal to 120 sq ft & 
+                                                                    More than 30 inches above grade & 
+                                                                    attached to dwelling & 
+                                                                    serve a required exit door)" do
 
     visit new_permit_path
 
@@ -484,36 +484,9 @@ feature "Build a deck" do
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.further_assistance_needed').should have_content('Deck')
 
-    click_on "Apply for this permit"
-
-    expect(current_path).to eq('/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
-
-    #permit_steps#enter_details
-    fill_in "Home owner name*", with: "John Doe"
-    page.has_field?('Address*', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Home owner email address*", with: "john@johndoe.com"
-    fill_in "Home owner phone number*", with: "413-456-3456"
-
-    fill_in "work_summary", with: "Building a new shed in my backyard"
-    fill_in "Job cost*", with: "10000"
-
-    click_on "Next step"
-
-    expect(current_path).to eq('/permit_steps/confirm_terms')
-    expect(page).to have_content("Please read these terms and sign your permit online")
-
-    #permit_steps#confirm_terms
-    check "accepted-terms"
-    fill_in "Enter your name", with: "John Doe"
-
-    click_on "I agree"
-
-  #   # This is odd it is not working, as if button wasn't clicked
-  #   # expect(current_path).to eq('/permit_steps/display_summary')
-  #   # expect(page).to have_content("Almost done! We filled in your permit applications")
+    page.has_no_button? "Apply for this permit"
 
   end
 
@@ -597,7 +570,7 @@ feature "Build a deck" do
     end
 
     within "div.deck_exit_door" do
-      choose "Serve a required exit door"
+      choose "Serves a required exit door"
     end
 
     within "div.contractor" do
