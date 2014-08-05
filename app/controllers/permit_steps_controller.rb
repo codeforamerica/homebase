@@ -116,10 +116,10 @@ class PermitStepsController < ApplicationController
 
   def serve
     # path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
-    @permit = current_permit
+    # @permit = current_permit
     # find permit details 
-    permit_binary_detail = PermitBinaryDetail.find_by permit_id: @permit.id
-
+    #permit_binary_detail = PermitBinaryDetail.find_by permit_id: @permit.id
+    permit_binary_detail = PermitBinaryDetail.find_by filename: "#{params[:filename]}.pdf"
     if permit_binary_detail
       send_data(permit_binary_detail.binary.data,
                 :disposition => 'inline',
