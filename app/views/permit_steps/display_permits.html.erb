@@ -12,7 +12,7 @@
   <div class="row">
    
     <!-- Permit information -->
-    <div class="col-sm-8 col-xs-12"> 
+    <div class="col-md-8 col-sm-12 col-xs-12"> 
 
       <!-- Permit Not Needed Projects -->
       <% if ! @permit_needs["permit_not_needed"].empty? %>
@@ -98,35 +98,36 @@
     </div><!-- ./permit information -->
 
     <!-- LEAN: Coming Soon Items -->
-    <div class="col-sm-4 col-xs-12">
       
-      <!-- Coming soon: Grants -->
-      <div class="panel panel-default panel-disabled">
-        <div class="panel-heading">
-          <h6>Apply for grants to pay for your project</h6>
-        </div>
-        <div class="panel-body">
-          <p class="small"><strong>$25,000</strong> in grants and forgivable loans are available to help pay for some projects in some neighborhoods.</p>
-          <p class="small">In the future, Homebase will help you sort through and apply for improvement grants.</p>
-          <button type="button" class="btn btn-sm btn-disabled">Coming soon</button>
-        </div>
-      </div><!-- ./grants -->
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <!-- Coming soon: Grants -->
+        <div class="panel panel-default panel-disabled">
+          <div class="panel-heading">
+            <h6>Apply for grants to pay for your project</h6>
+          </div>
+          <div class="panel-body">
+            <p class="small"><strong>$25,000</strong> in grants and forgivable loans are available to help pay for some projects in some neighborhoods.</p>
+            <p class="small">In the future, Homebase will help you sort through and apply for improvement grants.</p>
+            <button type="button" class="btn btn-sm btn-default">Keep me updated</button>
+          </div>
+        </div><!-- ./grants -->
+      </div>
 
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <!-- Coming soon: Contractors -->
+        <div class="panel panel-default panel-disabled">
+          <div class="panel-heading">
+            <h6>Find a contractor for this project</h6>
+          </div>
+          <div class="panel-body">
+            <p class="small">The city keeps a list of registered contractors</p>
+            <p class="small">Soon, Homebase will help you browse through this list to find the right contractor for your job.</p>
+            <button type="button" class="btn btn-sm btn-default">Keep me updated</button>
+          </div>
+        </div><!-- ./contractors -->
+      </div>
 
-      <!-- Coming soon: Contractors -->
-      <div class="panel panel-default panel-disabled">
-        <div class="panel-heading">
-          <h6>Find a contractor for this project</h6>
-        </div>
-        <div class="panel-body">
-          <p class="small">The city keeps a list of registered contractors</p>
-          <p class="small">Soon, Homebase will help you browse through this list to find the right contractor for your job.</p>
-          <button type="button" class="btn btn-sm btn-disabled">Coming soon</button>
-        </div>
-      </div><!-- ./contractors -->
-
-    </div><!-- ./lean -->
+    <!-- ./lean -->
 
   </div><!-- ./row -->
-  
-</div><!-- ./col-sm-9 -->
+</div><!-- ./col-sm-9
