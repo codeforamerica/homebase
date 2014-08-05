@@ -26,7 +26,7 @@ $(document).ready(function($)
 // call timeout modal after 7 minutes
 function show_modal() 
 {
-  $('#myModal').modal();
+  $('#timeoutModal').modal();
 }
 
 function timerIncrement() {
