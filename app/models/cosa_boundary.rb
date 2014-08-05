@@ -18,4 +18,24 @@ class CosaBoundary < ActiveRecord::Base
     
     return inCosa
   end
+
+  def self.full_address address
+    begin
+      sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
+      address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: sa_bounds)
+    rescue Geokit::Geocoders::TooManyQueriesError
+      puts "Error with Geocoders!!!"
+      return nil
+    end
+
+    if CosaBoundary.valid_address?(address_details)
+      return address_details.full_address
+    else
+      return nil
+    end
+  end
+
+  def self.valid_address? address
+    address != nil && address.lat != nil && address.lng != nil && address.full_address != nil && address.street_name != nil
+  end
 end

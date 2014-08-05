@@ -20,3 +20,4 @@
 //= require timeout_modal
 //= require masks
 //= require jquery.maskedinput
+//= require main

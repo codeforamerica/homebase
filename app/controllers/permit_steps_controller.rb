@@ -88,13 +88,13 @@ class PermitStepsController < ApplicationController
       params[:permit][:selected_wall] = session[:selected_wall]
       params[:permit][:selected_siding] = session[:selected_siding]
       params[:permit][:selected_floor] = session[:selected_floor]
-      params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
+      params[:permit][:owner_address] = CosaBoundary.full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
       session[:permit_needs] = @permit.update_permit_needs_for_projects
       # session[:contractor] = @permit.contractor
 
     when :enter_details
-      params[:permit][:owner_address] = full_address(params[:permit][:owner_address])
+      params[:permit][:owner_address] = CosaBoundary.full_address(params[:permit][:owner_address])
       @permit.update_attributes(permit_params)
     when :confirm_terms
       @permit.confirmed_name = params[:permit][:confirmed_name]
@@ -116,10 +116,10 @@ class PermitStepsController < ApplicationController
 
   def serve
     # path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
-    @permit = current_permit
+    # @permit = current_permit
     # find permit details 
-    permit_binary_detail = PermitBinaryDetail.find_by permit_id: @permit.id
-
+    #permit_binary_detail = PermitBinaryDetail.find_by permit_id: @permit.id
+    permit_binary_detail = PermitBinaryDetail.find_by filename: "#{params[:filename]}.pdf"
     if permit_binary_detail
       send_data(permit_binary_detail.binary.data,
                 :disposition => 'inline',
@@ -150,18 +150,23 @@ class PermitStepsController < ApplicationController
 
   private
 
-  def full_address address
-    sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
-    address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: sa_bounds)
+#   def full_address address
 
-    if valid_address?(address_details)
-      return address_details.full_address
-    else
-      return nil
-    end
-  end
+#     begin
+#       sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
+#       address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: sa_bounds)
+#     rescue Geokit::Geocoders::TooManyQueriesError
+#       return nil
+#     end
 
-  def valid_address? address
-    address != nil && address.lat != nil && address.lng != nil && address.full_address != nil && address.street_name != nil
-  end
+#     if valid_address?(address_details)
+#       return address_details.full_address
+#     else
+#       return nil
+#     end
+#   end
+
+#   def valid_address? address
+#     address != nil && address.lat != nil && address.lng != nil && address.full_address != nil && address.street_name != nil
+#   end
 end
