@@ -57,8 +57,9 @@ h1 {
 
 .logo {
   color: $text-color;
-  :hover {
+  &:hover {
     color: $text-color;
+    opacity: .8;
     text-decoration: none;
   }
 }
