@@ -207,6 +207,14 @@ h1 {
   margin-bottom: 25px; // put some space between the intro text and the form content
 }
 
+.checkbox {
+  margin-bottom: -20px; // tighten up between checkboxes
+
+  &:last-child {
+    margin-bottom: 0; // but not the last check box
+  }
+}
+
 /* styles for #new (first step) */
 
 .panel-info-addition { // styles for little green house ... @TODO refactor this to make it work for more project panels
