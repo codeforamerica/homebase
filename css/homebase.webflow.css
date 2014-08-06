@@ -167,6 +167,7 @@ footer .white a {
 	color: #fff;
 }
 footer .white {
+  margin-bottom: 22px;
   padding-top: 4px;
   font-size: 16px;
 }
