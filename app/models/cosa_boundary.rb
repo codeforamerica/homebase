@@ -2,6 +2,7 @@ class CosaBoundary < ActiveRecord::Base
 
   COORD_SYS_REF = 4326;   # The coordinate system that will be used as the reference and is now Latitude and Longitude Coord System
   COORD_SYS_AREA = 2278;  # The coordinate system used in the data Texas South Central Coordinate System
+  SA_BOUNDS = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
 
   def self.inCosa? lat, long
     inCosa = false
@@ -19,17 +20,17 @@ class CosaBoundary < ActiveRecord::Base
     return inCosa
   end
 
-  def self.full_address address
+  def self.address_details address
     begin
-      sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
-      address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: sa_bounds)
+      #sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
+      address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: SA_BOUNDS)
     rescue Geokit::Geocoders::TooManyQueriesError
       puts "Error with Geocoders!!!"
       return nil
     end
 
     if CosaBoundary.valid_address?(address_details)
-      return address_details.full_address
+      return { :full_address => address_details.full_address, :lat => address_details.lat, :lng => address_details.lng }
     else
       return nil
     end

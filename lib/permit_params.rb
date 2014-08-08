@@ -3,6 +3,8 @@ module PermitParams
    params.require(:permit).permit(
     :owner_name, 
     :owner_address, 
+    :lat,
+    :lng,
     :addition, 
     :house_area, 
     :addition_area, 

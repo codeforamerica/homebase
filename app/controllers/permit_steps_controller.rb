@@ -88,17 +88,25 @@ class PermitStepsController < ApplicationController
       params[:permit][:selected_wall] = session[:selected_wall]
       params[:permit][:selected_siding] = session[:selected_siding]
       params[:permit][:selected_floor] = session[:selected_floor]
-      params[:permit][:owner_address] = CosaBoundary.full_address(params[:permit][:owner_address])
+
+      fill_in_address_details
+
       @permit.update_attributes(permit_params)
       session[:permit_needs] = @permit.update_permit_needs_for_projects
       # session[:contractor] = @permit.contractor
 
     when :enter_details
-      params[:permit][:owner_address] = CosaBoundary.full_address(params[:permit][:owner_address])
+
+      # This will limit the number of times Geocoder is called as there is a limit on the number of times this is being called per day
+      if params[:permit][:owner_address].strip != @permit.owner_address
+        fill_in_address_details
+      end
       @permit.update_attributes(permit_params)
+
     when :confirm_terms
-      @permit.confirmed_name = params[:permit][:confirmed_name]
+      @permit.confirmed_name = params[:permit][:confirmed_name].strip
       @permit.update_attributes(permit_params)
+      
     else
       @permit.update_attributes(permit_params)
     end
@@ -115,10 +123,6 @@ class PermitStepsController < ApplicationController
   end
 
   def serve
-    # path = "#{Rails.root}/tmp/#{params[:filename]}.pdf"
-    # @permit = current_permit
-    # find permit details 
-    #permit_binary_detail = PermitBinaryDetail.find_by permit_id: @permit.id
     permit_binary_detail = PermitBinaryDetail.find_by filename: "#{params[:filename]}.pdf"
     if permit_binary_detail
       send_data(permit_binary_detail.binary.data,
@@ -126,47 +130,14 @@ class PermitStepsController < ApplicationController
                 :type => permit_binary_detail.content_type,
                 :filename => permit_binary_detail.filename)
     end
-  #   begin
-  #     Timeout::timeout(15) do
-  #       while !(File.exist? path) do
-  #         # Not doing anything, just waiting
-  #       end
-  #       send_file( path,
-  #         :disposition => 'inline',
-  #         :type => 'application/pdf',
-  #         :x_sendfile => true )
-  #     end
-  #   rescue Timeout::Error
-  #     jump_to(:error_page)
-  #     render_wizard
-  #   end
-
-
-  # @data = @upload.binary.data
-  # send_data(@data, :type => @upload.content_type, :filename => @upload.filename, :disposition => 'download')
-
-
   end
 
   private
+  def fill_in_address_details
 
-#   def full_address address
-
-#     begin
-#       sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
-#       address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: sa_bounds)
-#     rescue Geokit::Geocoders::TooManyQueriesError
-#       return nil
-#     end
-
-#     if valid_address?(address_details)
-#       return address_details.full_address
-#     else
-#       return nil
-#     end
-#   end
-
-#   def valid_address? address
-#     address != nil && address.lat != nil && address.lng != nil && address.full_address != nil && address.street_name != nil
-#   end
+    address_details = CosaBoundary.address_details(params[:permit][:owner_address])
+    params[:permit][:owner_address] = address_details[:full_address]
+    params[:permit][:lat] = address_details[:lat]
+    params[:permit][:lng] = address_details[:lng]
+  end
 end
