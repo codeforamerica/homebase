@@ -15,9 +15,7 @@
 <% option.each do | op | %>
 
   <div class="radio">
-    <%= f.label attribute, op[:value], value: op[:value] do %>
-      <%= f.radio_button attribute, op[:value], id: op[:value] %>
-      <%= op[:label] %>
-    <% end %>
+    <%= f.radio_button attribute, op[:value] %>
+    <%= f.label attribute, op[:label], value: op[:value] %>
   </div>
 <% end %>
