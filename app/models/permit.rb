@@ -1,8 +1,10 @@
-class Permit < ActiveRecord::Base
+class Permit < ActiveRecord::Base 
   has_many :permit_binary_details
   has_many :binaries, through: :permit_binary_details
 
  
+  include ActiveModel::Validations
+  
                 # User selected projects
   attr_accessor :selected_addition,
                 :selected_acs_struct,
@@ -90,7 +92,7 @@ class Permit < ActiveRecord::Base
   validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
   
   # validates on permit_steps#enter_details
-  validates :owner_address, :address => true, :if => :only_if_address_presence?
+  validates_with AddressValidator, :if => :only_if_address_presence?
   validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
   #validates_presence_of :contractor, :if  => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
   validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
@@ -237,6 +239,8 @@ class Permit < ActiveRecord::Base
       errors[:base] << ("Please choose at least one project to work on.")
     end
   end
+
+
 
   # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
   def addition_permit_needed?

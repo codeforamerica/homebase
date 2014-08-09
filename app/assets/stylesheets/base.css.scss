@@ -55,6 +55,16 @@ h1 {
   margin-top: 0px; // reset the top margin for h1. not sure why this is a thing in bootstrap/normalize
 }
 
+.logo {
+  color: $text-color;
+  font-weight: bold;
+  &:hover {
+    color: $text-color;
+    opacity: .8;
+    text-decoration: none;
+  }
+}
+
 /* styles for the sidebar */
 
 #sidebar {
@@ -262,6 +272,14 @@ h1 {
 }
 
 /* Timeout modal styles */
+
+/* Screener styles */
+.radio {
+  padding-left: 20px;
+}
+.radio label {
+  padding-left: 6px;
+}
 
 /* Mobile styles */
 

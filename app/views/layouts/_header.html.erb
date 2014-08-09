@@ -1,8 +1,13 @@
 <!-- header content -->
 <div class="page-header">
   <div class="clearfix">
-    <span class="logo"><strong>HOMEBASE</strong></span>
-    <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#about">About this project</button>
+
+    <div class="btn-toolbar">
+      <%= link_to 'HOMEBASE', root_url, class: 'logo', 'data-toggle'=> 'tooltip', 'data-placement'=> 'right', title: 'Back to first step' %>
+
+      <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#about">About this project</button>
+      <%= link_to 'Start over', root_url, class: 'btn btn-default btn-xs pull-right' %>
+    </div>
   </div>
 
   <div class="about-container">

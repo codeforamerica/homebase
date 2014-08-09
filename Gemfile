@@ -60,7 +60,7 @@ gem 'spring', '1.1.2',       group: :development
 gem 'wicked', '1.0.3'
 
 # Geocoding
-gem 'geokit', '1.8.4'
+gem 'geokit', '1.8.5'
 
 # GIS   
 gem 'rgeo', '0.3.20'
