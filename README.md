@@ -59,7 +59,11 @@ Homebase checks if a user's address is in San Antonio (that's the only city we'r
 
     $ bundle exec rake cosa_boundaries:load
 
-#### 4. Start your web service
+#### 4. Add your API keys
+
+Copy the file .env_example to .env, and change all the API keys on the files.  Remember to not check in this file to a public repository, as you don't want other to have these information.
+
+#### 5. Start your web service
 
 Homebase uses the [Foreman](http://theforeman.org/) web server. It's easy to start up.
 
