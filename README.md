@@ -66,7 +66,7 @@ Copy the file .env_example to .env, and change all the API keys on the files.  R
 Our application currently uses the following services: 
 
 * GOOGLE_GEOCODER_API_KEY:
-..* You can get your own Geocoder Server Key from here: [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
+  * You can get your own Geocoder Server Key from here: [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
 
 #### 5. Start your web service
 
