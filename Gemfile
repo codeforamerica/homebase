@@ -16,6 +16,7 @@ group :test do
   gem 'capybara', '2.2.1'
   gem 'factory_girl_rails', '4.4.1'
   gem 'launchy'
+  gem 'dotenv'
 end
 
 # Use postgresql as the database for Active Record
@@ -76,4 +77,3 @@ gem 'bootstrap-sass', '~> 3.1.1'
 
 # Fill out PDF Form
 gem 'pdf-forms', '0.5.7'
-
