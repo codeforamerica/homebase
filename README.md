@@ -63,6 +63,11 @@ Homebase checks if a user's address is in San Antonio (that's the only city we'r
 
 Copy the file .env_example to .env, and change all the API keys on the files.  Remember to not check in this file to a public repository, as you don't want other to have these information.
 
+Our application currently uses the following services: 
+
+* GOOGLE_GEOCODER_API_KEY:
+..* You can get your own Geocoder Server Key from here: [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
+
 #### 5. Start your web service
 
 Homebase uses the [Foreman](http://theforeman.org/) web server. It's easy to start up.
