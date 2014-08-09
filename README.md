@@ -59,7 +59,16 @@ Homebase checks if a user's address is in San Antonio (that's the only city we'r
 
     $ bundle exec rake cosa_boundaries:load
 
-#### 4. Start your web service
+#### 4. Add your API keys
+
+Copy the file .env_example to .env, and change all the API keys on the files.  Remember to not check in this file to a public repository, as you don't want other to have these information.
+
+Our application currently uses the following services: 
+
+* GOOGLE_GEOCODER_API_KEY:
+..* You can get your own Geocoder Server Key from here: [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
+
+#### 5. Start your web service
 
 Homebase uses the [Foreman](http://theforeman.org/) web server. It's easy to start up.
 
@@ -94,6 +103,7 @@ You'll also need to upgrade to the Standard Yanari package (this costs $50/month
     $ heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
     $ heroku config:set LD_LIBRARY_PATH=/app/lib
     $ heroku config:set PDFTK_PATH=/vendor/pdftk/bin/pdftk
+    $ heroku config:set GOOGLE_GEOCODER_API_KEY=REPLACE YOUR API KEY HERE
 
 #### 4. Change your database config
 
