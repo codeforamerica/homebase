@@ -103,6 +103,7 @@ You'll also need to upgrade to the Standard Yanari package (this costs $50/month
     $ heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
     $ heroku config:set LD_LIBRARY_PATH=/app/lib
     $ heroku config:set PDFTK_PATH=/vendor/pdftk/bin/pdftk
+    $ heroku config:set GOOGLE_GEOCODER_API_KEY=REPLACE YOUR API KEY HERE
 
 #### 4. Change your database config
 
