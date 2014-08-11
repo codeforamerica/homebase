@@ -74,7 +74,6 @@ class Permit < ActiveRecord::Base
   end
   validate :at_least_one_chosen, :if => :first_step?
 
-
   ## Validations on permit_steps#answer_screener ##
 
   # Addition Section
@@ -147,10 +146,9 @@ class Permit < ActiveRecord::Base
   validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
   validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/, :message => "Job cost has an invalid format, it should be like 1000000.00"
   validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000 , :message => "Job cost should be between the range of 0.00 to 1000000000000.00"  
-  
 
-  ## Validations on permit_step#confirm_terms
-  
+  ## Validations on permit_step#confirm_terms ##
+
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
@@ -373,6 +371,9 @@ class Permit < ActiveRecord::Base
 
     end
 
+    ####### Helpers Methods to change virtual attributes values to booleans ########
+    # @TODO: Check if these are necessary anymore
+
     if to_bool(selected_acs_struct)
 
       if acs_struct_permit_needed?
@@ -505,12 +506,5 @@ class Permit < ActiveRecord::Base
     return nil
   end
 
-  # def contractor_to_bool
-  #   if contractor == "true"
-  #     return true
-  #   else
-  #     return false
-  #   end
-  # end
 
 end
