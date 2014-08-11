@@ -1,5 +1,4 @@
 require 'permit_params'
-require 'geokit'
 require 'securerandom'
 
 class PermitStepsController < ApplicationController
@@ -15,6 +14,7 @@ class PermitStepsController < ApplicationController
   def show
     @permit = current_permit
 
+    # Re-populate the permit project selection from session variables
     @permit.selected_addition = session[:selected_addition]
     @permit.selected_acs_struct = session[:selected_acs_struct]
     @permit.selected_deck = session[:selected_deck]
@@ -25,21 +25,17 @@ class PermitStepsController < ApplicationController
     @permit.selected_wall = session[:selected_wall]
     @permit.selected_siding = session[:selected_siding]
     @permit.selected_floor = session[:selected_floor]
+
     case step
-
-    when :answer_screener
-
-      #@permit.contractor = session[:contractor]
 
     when :display_permits
 
-      #@permit.contractor = session[:contractor]
-      #puts "What is contractor? #{@permit.contractor}"
       if (@permit.contractor)
-        #puts "going to jump to contractor page"
         jump_to(:use_contractor)
       else
-        puts "continue to next"
+
+        # Get hash of permit needs that was saved in session that will be used
+        # to display permits in categories
         @permit_needs = session[:permit_needs]
       end
 
@@ -47,22 +43,28 @@ class PermitStepsController < ApplicationController
     when :display_summary
 
       @unique_key = SecureRandom.hex
+
+      # Will temporarily save the generated permit pdf in tmp folder
       file_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
       permit_created = create_permit(file_path, @permit)
 
       if permit_created
 
+        # Save the generated permit pdf in the model
         content = IO.binread file_path
         @permit_binary_detail = PermitBinaryDetail.create(file_data: content, 
                                                           permit_id: @permit.id, 
                                                           filename: "#{@unique_key}.pdf")
+
+        # Delete the temporary file after saved in the model
+
         File.delete file_path
 
       else
-        jump_to(:error_page)
-        
+        jump_to(:error_page)       
       end
     end
+
     render_wizard
 
   end
@@ -70,14 +72,18 @@ class PermitStepsController < ApplicationController
   def update
     @permit = current_permit
 
-    # checks if permit is done so model knows when to do validation
+    # Update status so model can perform validation accordingly
     params[:permit][:status] = step.to_s
-    params[:permit][:status] = 'active' if step == steps.last
+
+    # Currently the last step is display_summary, because the later pages
+    # are used as error paths, so will not use the steps.last for this
+    params[:permit][:status] = 'active' if step == :display_summary 
 
     case step
 
     when :answer_screener
 
+      # Re-populate the permit project selection from session variables
       params[:permit][:selected_addition] = session[:selected_addition]
       params[:permit][:selected_acs_struct] = session[:selected_acs_struct]
       params[:permit][:selected_deck] = session[:selected_deck]
@@ -89,25 +95,35 @@ class PermitStepsController < ApplicationController
       params[:permit][:selected_siding] = session[:selected_siding]
       params[:permit][:selected_floor] = session[:selected_floor]
 
+      # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
 
       @permit.update_attributes(permit_params)
+
+      # Save hash of permit needs in session which will be used
+      # to display permits in categories
       session[:permit_needs] = @permit.update_permit_needs_for_projects
-      # session[:contractor] = @permit.contractor
 
     when :enter_details
 
-      # This will limit the number of times Geocoder is called as there is a limit on the number of times this is being called per day
+      # This will limit the number of times Geocoder is called as there is a 
+      # limit on the number of times this is being called per day
+      # @TODO: May want to make all caps comparison so to prevent case sensitive issue"
       if params[:permit][:owner_address].strip != @permit.owner_address
+
+        # This will fill out all the address information (address, latitude, longitude)
         fill_in_address_details
       end
       @permit.update_attributes(permit_params)
 
     when :confirm_terms
-      @permit.confirmed_name = params[:permit][:confirmed_name].strip
+
+      # Remove leading or trailing spaces
+      # @TODO: May want to make it all caps to prevent case sensitive compare later
+      params[:permit][:confirmed_name] = params[:permit][:confirmed_name].strip
       @permit.update_attributes(permit_params)
       
-    else
+    else # Default case
       @permit.update_attributes(permit_params)
     end
 
@@ -115,6 +131,7 @@ class PermitStepsController < ApplicationController
       puts "*****************************************"
       puts "#{@permit.errors}"
       # render the same step
+      # @TODO: What does this mean?
       render_wizard
     else
       # render the next step
@@ -123,16 +140,24 @@ class PermitStepsController < ApplicationController
   end
 
   def serve
+
+    # @TODO: I don't understand why I need to attach this .pdf there.
     permit_binary_detail = PermitBinaryDetail.find_by filename: "#{params[:filename]}.pdf"
+
     if permit_binary_detail
       send_data(permit_binary_detail.binary.data,
                 :disposition => 'inline',
                 :type => permit_binary_detail.content_type,
                 :filename => permit_binary_detail.filename)
+    else
+      # @TODO: Need to display an error page
+      # render :error_page
     end
   end
 
   private
+
+  # This will help fill in all associated address information in params (address, lat, lng)
   def fill_in_address_details
 
     address_details = CosaBoundary.address_details(params[:permit][:owner_address])

@@ -22,20 +22,22 @@ class CosaBoundary < ActiveRecord::Base
 
   def self.address_details address
     begin
-      #sa_bounds = Geokit::Geocoders::MultiGeocoder.geocode('San Antonio, TX').suggested_bounds
       address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: SA_BOUNDS)
+    # @TODO: Is this necessary still?
     rescue Geokit::Geocoders::TooManyQueriesError
       puts "Error with Geocoders!!!"
       return nil
     end
 
-    if CosaBoundary.valid_address?(address_details)
+    if valid_address?(address_details)
       return { :full_address => address_details.full_address, :lat => address_details.lat, :lng => address_details.lng }
     else
       return nil
     end
   end
 
+  private
+  
   def self.valid_address? address
     address != nil && address.lat != nil && address.lng != nil && address.full_address != nil && address.street_name != nil
   end
