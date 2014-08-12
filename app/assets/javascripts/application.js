@@ -21,3 +21,8 @@
 //= require masks
 //= require jquery.maskedinput
 //= require main
+
+
+
+
+//= require permit_steps/display_permits.js

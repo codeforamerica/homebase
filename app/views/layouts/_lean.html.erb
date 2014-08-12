@@ -9,7 +9,7 @@
       
       <div class="modal-body">
         
-        <form action="//techzans.us8.list-manage.com/subscribe/post?u=a51df0416eed89be630c22fd4&amp;id=da30a00040" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank" role="form">
+        <form action="http://techzans.us8.list-manage.com/subscribe/post-json?u=a51df0416eed89be630c22fd4&amp;id=da30a00040" class="validate" id="mc-embedded-subscribe-form" method="get" name="mc-embedded-subscribe-form" novalidate="" target="_blank" role="form">
 
           <p>We're still adding features to Homebase. If you'd like us to send you emails from time-to-time updating you on the status of the app, please enter your contact information below.</p>
 
@@ -62,10 +62,11 @@
         
         </div><!-- ./modal-body -->
 
-        <div class="modal-footer">
+        <div class="modal-footer">    
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <!-- <button type="button" class="btn btn-primary" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe">Sign up</button> -->
-          <input class="button btn btn-primary" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Sign up" data-dismiss="modal">
+          <button type="submit" class="btn btn-primary" id="mc-embedded-subscribe" name="subscribe" value="Subscribe" value="Sign up" data-loading-text="Signing up...">Sign up</button>
+          <!-- <input class="button btn btn-primary" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Sign up" data-dismiss="modal"> -->
+
         </div>
 
       </form>
