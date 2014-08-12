@@ -281,6 +281,14 @@ h1 {
 
 /* Timeout modal styles */
 
+/* Screener styles */
+.radio {
+  padding-left: 20px;
+}
+.radio label {
+  padding-left: 6px;
+}
+
 /* Mobile styles */
 
 @media (max-width: $screen-sm-min) {
