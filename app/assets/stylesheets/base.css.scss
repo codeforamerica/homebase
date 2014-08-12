@@ -22,6 +22,8 @@ $font-size-h1: 50px;
 
 $grid-gutter-width: 40px; // bump up the grid gutters
 
+$brand-danger: #a94442;
+
 /* now let's important the base bootstrap styles */
 @import "bootstrap";
 
@@ -38,7 +40,7 @@ body {
 }
 
 .container#content {
-  margin-top: 40px; // offset all the content from the top of the page
+  margin-top: 30px; // offset all the content from the top of the page
 }
 
 .container#header {
@@ -245,12 +247,12 @@ h1 {
 /* styles for #enter_details */
 
 .has-error p { //styles error helper text
-  font-weight: 900;
+  font-weight: 700;
   color: $brand-danger;
 }
 
-.field_with_errors { //styles error helper text
-  font-weight: 900;
+.field_with_errors .form-control { //styles error helper text
+  font-weight: 700;
   color: $brand-danger;
 }
 .multi-form {
@@ -285,6 +287,9 @@ input[type=radio]:checked + label {
 }
 .radio > input:hover, .checkbox > input:hover {
     cursor: pointer;
+}
+label {
+  margin-bottom: 0;
 }
 
 /* Mobile styles */
