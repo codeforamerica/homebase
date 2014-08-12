@@ -14,6 +14,22 @@
       </div>
     <% end %>
 
+  <!-- address entry -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Enter your home address</h4>
+    </div>
+    <div class="panel-body">
+      <!-- Start the address form -->
+      <p>Enter the address of the property you're working on.</p>
+      <div class="form-group">
+        <%= f.text_field :owner_address, placeholder: "ex. 123 Main St. San Antonio, TX", class: "form-control input-lg" %>
+      </div>
+    </div><!-- ./panel_body -->
+  </div><!-- panel -->
+ 
+  <!-- ./address entry -->
+  
   <!-- Room Additions section -->
   <% if @permit.selected_addition %>
     <div class="panel panel-default">
@@ -281,23 +297,7 @@
     </div>
   </div><!-- ./Contractor section -->
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Enter your home address</h4>
-    </div>
-    <div class="panel-body">
-      <!-- Start the address form -->
-      <p>Enter the address of the property you're working on.</p>
 
-
-      <!-- address entry -->
-      <div class="form-group">
-        <%= f.text_field :owner_address, placeholder: "ex. 123 Main St. San Antonio, TX", class: "form-control input-lg" %>
-      </div>
-    </div><!-- ./panel_body -->
-  </div><!-- panel -->
- 
-  <!-- ./address entry -->
 
   <!-- submit button -->
   <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
