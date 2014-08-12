@@ -280,6 +280,9 @@ h1 {
 .radio label {
   padding-left: 6px;
 }
+input[type=radio]:checked + label {
+  font-weight: bold;
+}
 
 /* Mobile styles */
 
