@@ -41,7 +41,7 @@
       <!-- owner_name -->
         
         <div class="form-group">
-          <%= f.label :owner_name, "Home owner name*", for: "owner-name" %>
+          <%= f.label :owner_name, "Homeowner name*", for: "owner-name" %>
 
           <!-- check if there's an error for this field -->
 <!--           @permit.errors: <%#= @permit.errors %>
@@ -87,7 +87,7 @@
         <!-- email -->
 
           <div class="form-group">
-            <%= f.label :email, "Home owner email address*", for: "email" %>
+            <%= f.label :email, "Homeowner email address*", for: "email" %>
 
             <!-- check if there's an error for this field -->
             <% if @permit.errors.messages[:email].length >= 1 %>
@@ -112,7 +112,7 @@
 
 
           <div class="form-group">
-            <%= f.label :phone, "Home owner phone number*", for: "phone" %>
+            <%= f.label :phone, "Homeowner phone number*", for: "phone" %>
 
             <!-- check if there's an error for this field -->
             <% if @permit.errors.messages[:phone].length >= 1 %>
