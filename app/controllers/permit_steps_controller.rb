@@ -28,6 +28,14 @@ class PermitStepsController < ApplicationController
 
     case step
 
+    when :answer_screener
+      @permit_addition_screener = Permit::ADDITION
+      @permit_acs_struct_screener = Permit::ACS_STRUCT
+      @permit_deck_screener = Permit::DECK
+      @permit_pool_screener = Permit::POOL
+      @permit_cover_screener = Permit::COVER
+
+
     when :display_permits
 
       if (@permit.contractor)
@@ -39,6 +47,9 @@ class PermitStepsController < ApplicationController
         @permit_needs = session[:permit_needs]
       end
 
+    when :enter_details
+
+      @permit_ac_options = Permit::AC_OPTIONS
 
     when :display_summary
 

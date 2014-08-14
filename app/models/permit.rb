@@ -47,22 +47,51 @@ class Permit < ActiveRecord::Base
 
   ######## Attribute Options Hashes ########
 
-  ADDITION_SIZE_OPTIONS = { 'lessThan1000' => "Less than 1,000 sq ft", 'greaterThanEqualTo1000' => "Greater than or equal to 1,000 sq ft" }
-  ADDITION_NUM_STORY_OPTIONS = { '1Story' => "1 Story", '2orMoreStories' => "2 or more stories" }
+  # Projects
 
-  ACS_STRUCT_SIZE_OPTIONS = { 'lessThanEqualTo120' => "Less than or equal to 120 sq ft", 'greaterThan120' => "Greater than 120 sq ft" }
-  ACS_STRUCT_NUM_STORY_OPTIONS = { '1Story' => "1 Story", '2orMoreStories' => "2 or more stories" }
+  ADDITION = {  :addition_size => { label:    "Size", 
+                                    options:  [ { value: 'lessThan1000', label: "Less than 1,000 sq ft" }, 
+                                                { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 sq ft" }]},
+                :addition_num_story =>  { label:    "Stories",
+                                          options:  [ { value: '1Story', label: "1 story" }, 
+                                                      { value: '2orMoreStories', label: "2 or more stories" }]}}
 
-  DECK_SIZE_OPTIONS = {'lessThanEqualTo120' => "Less than or equal to 120 sq ft", 'greaterThan120' => "Greater than 120 sq ft" }
-  DECK_GRADE_OPTIONS = {'lessThanEqualTo30' => "Less than or equal to 30 inches above grade", 'moreThan30' => "More than 30 inches above grade" }
-  DECK_DWELLING_ATTACH_OPTIONS = {'attachedToDwelling' => "Attached to dwelling", 'notAttachedToDwelling' => "Not attached to dwelling" }
-  DECK_EXIT_DOOR_OPTIONS = {'exitDoor' => "Serves a required exit door", 'noExitDoor' => "Does not serve a required exit door" }
+  ACS_STRUCT = {  :acs_struct_size => { label:    "Size",
+                                        options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" }, 
+                                                    { value: 'greaterThan120', label: "Greater than 120 sq ft" }]},
+                  :acs_struct_num_story => { label:     "Stories",
+                                              options:  [ { value: '1Story', label: "1 Story" }, 
+                                                          { value: '2orMoreStories', label: "2 or more stories" }]}}
 
-  POOL_LOCATION_OPTIONS = {'inGround' => "Pool is in ground", 'aboveGround' => "Pool is above ground" }
-  POOL_VOLUME_OPTIONS = {'lessThanEqualTo5000' => "Less than or equal to 5,000 gallons", 'moreThan5000' => "More than 5,000 gallons" }
+  DECK = {  :deck_size => { label:    "Size",
+                            options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" },
+                                        { value: 'greaterThan120', label: "Greater than 120 sq ft" }]},
+            :deck_grade => {  label:    "Grade",
+                              options:  [ { value: 'lessThanEqualTo30', label: "Less than or equal to 30 inches above grade"},
+                                          { value: 'moreThan30', label: "More than 30 inches above grade"}]},
+            :deck_dwelling_attach => {  label:    "Dwelling Attachment",
+                                        options:  [ { value: 'attachedToDwelling', label: "Attached to dwelling"},
+                                                    { value: 'notAttachedToDwelling', label: "Not attached to dwelling"}]},
+            :deck_exit_door => {  label:    "Exit Door",
+                                  options:  [ { value: 'exitDoor', label: "Serves a required exit door"},
+                                              { value: 'noExitDoor', label: "Does not serve a required exit door"}]}}
 
-  COVER_MATERIAL_OPTIONS = {'metalType2' => "It's metal type II", 'woodType5' => "It's wood type V", 'other' => "Other" }
+  POOL = {  :pool_location =>   { label:    "Location",
+                                  options:  [ { value: 'inGround', label: "Pool is in ground"}, 
+                                              { value: 'aboveGround', label: "Pool is above ground" }]},
+            :pool_volume => { label:    "Volume",
+                              options:  [ { value: 'lessThanEqualTo5000', label: "Less than or equal to 5,000 gallons"}, 
+                                          { value: 'moreThan5000', label: "More than 5,000 gallons"}]}}
 
+  COVER = { :cover_material =>  { label:    "Material",
+                                  options:  [ { value: 'metalType2', label: "It's metal type II"}, 
+                                              {value: 'woodType5', label: "It's wood type V"}, 
+                                              {value: 'other', label: "Other"}]}}
+
+
+  # Room Addition
+  AC_OPTIONS = ["None", "Wall Unit", "Extended from Main House", "New Split System"]
+  
   ######## Validations #######
 
   # @TODO: Should I group these in terms of each view, should model have an idea of how the views look like

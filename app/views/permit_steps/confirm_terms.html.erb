@@ -35,15 +35,17 @@
               <p><strong>If you have any questions or are unsure about this information, please call Development Services Department at (210) 207-1111.</strong></p>
 
                 <!-- check if there's an error for this field -->
-                <% if @permit.errors.messages[:accepted_terms] != nil %>
+                <% if @permit.errors[:accepted_terms].length >= 1 %>
                   <div class="alert alert-danger">
-                    <p><strong><%= @permit.errors.messages[:accepted_terms][0] %></strong></p>
+                    <% @permit.errors[:accepted_terms].each do | msg | %>
+                      <p><strong><%= msg %></strong></p>
+                    <% end %>
                   </div>
                 <% end %>
 
               <div class="checkbox">
-                <%= f.label :accepted_terms, for: "accepted-terms" do %>
-                  <%= f.check_box :accepted_terms, value: "true", class: "", id: "accepted-terms" %> I understand that other permit and inspections may be required
+                <%= f.label :accepted_terms do %>
+                  <%= f.check_box :accepted_terms, value: "true" %> I understand that other permit and inspections may be required
                 <% end %>
               </div>
 
@@ -56,22 +58,24 @@
         </div>
 
         <div class="panel-body">
-                <p>I have read the rules and information listed on this online application and know the same to be true and correct and hereby agree that if the permit is issued, all provisions of the City Ordinance will be complied with whether herein specified or not. I understand that the permit belongs to the property owner and I am an authorized agent.</p>
-                
-                <p><strong>If you agree, please type your full name as you listed it on the permit application (<%= @permit.owner_name %>) in the box below.</strong></p>
+          <p>I have read the rules and information listed on this online application and know the same to be true and correct and hereby agree that if the permit is issued, all provisions of the City Ordinance will be complied with whether herein specified or not. I understand that the permit belongs to the property owner and I am an authorized agent.</p>
 
-                <% if @permit.errors.messages[:confirmed_name] != nil %>
-                  <div class="alert alert-danger">
-                    <p><strong><%= @permit.errors.messages[:confirmed_name][0] %></strong></p>
-                  </div>
+          <%= f.label :confirmed_name do %>                
+            <p><strong>If you agree, please type your full name as you listed it on the permit application (<%= @permit.owner_name %>) in the box below.</strong></p>
+
+            <!-- check if there's an error for this field -->
+            <% if @permit.errors[:confirmed_name].length >= 1 %>
+              <div class="alert alert-danger">
+                <% @permit.errors[:confirmed_name].each do | msg | %>
+                  <p><strong><%= msg %></strong></p>
                 <% end %>
+              </div>
+            <% end %>
 
-                <%= f.text_field :confirmed_name, value: "", placeholder: "Enter your name", class: "form-control input-lg" %>
-
+            <%= f.text_field :confirmed_name, value: "", placeholder: "Enter your name", class: "form-control input-lg" %>
+          <% end %>
         </div><!-- ./panel_body -->
     </div><!-- ./panel -->
-
-
                   
     <div class="form-group">
         <%= f.submit "I agree", class: "btn btn-primary btn-lg" %>
@@ -79,10 +83,3 @@
     <% end %>
 
 </div><!-- ./col-sm-9 -->
-
-<!-- Unchecks the checkbox on load -->
-<script>
-$(document).ready(function(){
-    $('#accepted-terms').prop('checked',false);
-});
-</script>

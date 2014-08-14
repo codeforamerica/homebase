@@ -32,3 +32,4 @@
 //
 //// Permit_Steps
 //= require permit_steps/enter_details
+//= require permit_steps/confirm_terms
