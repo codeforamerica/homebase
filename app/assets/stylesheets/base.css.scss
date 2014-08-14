@@ -311,6 +311,7 @@ input[type=radio]:checked + label {
 }
 label {
   margin-bottom: 0;
+  display: block;
 }
 
 /* Mobile styles */
