@@ -106,6 +106,13 @@ class PermitStepsController < ApplicationController
       params[:permit][:selected_siding] = session[:selected_siding]
       params[:permit][:selected_floor] = session[:selected_floor]
 
+      # Need to show screener again if errors occur
+      @permit_addition_screener = Permit::ADDITION
+      @permit_acs_struct_screener = Permit::ACS_STRUCT
+      @permit_deck_screener = Permit::DECK
+      @permit_pool_screener = Permit::POOL
+      @permit_cover_screener = Permit::COVER
+
       # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
 
@@ -172,8 +179,15 @@ class PermitStepsController < ApplicationController
   def fill_in_address_details
 
     address_details = CosaBoundary.address_details(params[:permit][:owner_address])
-    params[:permit][:owner_address] = address_details[:full_address]
-    params[:permit][:lat] = address_details[:lat]
-    params[:permit][:lng] = address_details[:lng]
+    
+    if address_details
+      params[:permit][:owner_address] = address_details[:full_address]
+      params[:permit][:lat] = address_details[:lat]
+      params[:permit][:lng] = address_details[:lng]
+    else
+      params[:permit][:owner_address] = nil
+      params[:permit][:lat] = nil
+      params[:permit][:lng] = nil
+    end
   end
 end

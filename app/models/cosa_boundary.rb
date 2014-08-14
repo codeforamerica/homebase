@@ -22,7 +22,9 @@ class CosaBoundary < ActiveRecord::Base
 
   def self.address_details address
     begin
-      address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: SA_BOUNDS)
+      if address
+        address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: SA_BOUNDS)
+      end
     # @TODO: Is this necessary still?
     rescue Geokit::Geocoders::TooManyQueriesError
       puts "Error with Geocoders!!!"

@@ -1,4 +1,7 @@
-<%= f.label attribute, question %>
+<% if question %>
+  <%= f.label attribute, question %>
+<% end %>
+
 <% if @permit.errors[attribute].length >= 1 %>
 
   <!-- create an errors div to style error message and make input red -->    
@@ -17,9 +20,9 @@
   <% if input_addon %>
     <div class="input-group">
       <div class="input-group-addon"><%= input_addon %></div>
-      <%= f.text_field attribute, class: "form-control input-lg" %>
+      <%= f.text_field attribute, placeholder: placeholder, class: "form-control input-lg"%>
     </div>
   <% else %>
-    <%= f.text_field attribute, class: "form-control input-lg" %>
+    <%= f.text_field attribute, placeholder: placeholder, class: "form-control input-lg" %>
   <% end %>
 </div>
