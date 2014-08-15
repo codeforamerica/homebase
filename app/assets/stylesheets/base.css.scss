@@ -22,6 +22,12 @@ $font-size-h1: 50px;
 
 $grid-gutter-width: 40px; // bump up the grid gutters
 
+/* color variables */
+
+$brand-primary: #428bca;
+$brand-success: #5cb85c;
+$brand-danger: #d9534f;
+
 /* now let's important the base bootstrap styles */
 @import "bootstrap";
 
