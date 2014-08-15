@@ -10,14 +10,26 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Vendor JavaScript
 //= require jquery
 //= require jquery_ujs
 //= require webflow
 //= require modernizr
 //= require jquery-waypoints/waypoints.min
-//= require landing
 //= require bootstrap
-//= require timeout_modal
-//= require masks
 //= require jquery.maskedinput
-//= require main
+//= require webfont.min
+//
+// Application JavaScript
+//
+//// Site
+//= require site/logotooltip
+//= require site/timeoutmodal
+//= require site/webfontloader
+//
+//// Permits
+//= require permits/new
+//
+//// Permit_Steps
+//= require permit_steps/enter_details
+//= require permit_steps/confirm_terms

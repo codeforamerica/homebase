@@ -1,6 +1,7 @@
 class AddressValidator < ActiveModel::Validator
   def validate(record)
 
+    # @TODO: Check if this is valid
   	if record.lat != nil && record.lng != nil
 	    unless CosaBoundary.inCosa?(record.lat, record.lng)
 	      record.errors[:owner_address] << ("Sorry, the address you entered is not in San Antonio.  Please enter a San Antonio address.")

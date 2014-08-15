@@ -12,17 +12,6 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-
-  <!-- load webfonts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-  <script>
-    WebFont.load({
-      google: {
-        families: ["Montserrat:400,700","Open Sans:300,400,600,700,800"]
-      }
-    });
-  </script>
-
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
 
@@ -30,20 +19,25 @@
 
   <!-- modal -->
   <%= render partial: "layouts/timeout" %>
+  <!-- ./modal -->
 
   <!-- header -->
   <div class="container" id="header">
     <!-- render the header partial -->
     <%= render partial: "layouts/header" %>
   </div>
+  <!-- ./header -->
 
-  <!-- body -->
   <div class="container" id="content">
     <div class="row">
       <%= yield %>
     </div>
   </div>
 
+  <!-- footer -->
   <%= render "layouts/footer"%>
+  <!-- ./footer -->
+
   </body>
+
 </html>

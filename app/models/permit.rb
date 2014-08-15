@@ -5,6 +5,9 @@ class Permit < ActiveRecord::Base
  
   include ActiveModel::Validations
   
+
+  ######## Virtual Attributes ########
+
                 # User selected projects
   attr_accessor :selected_addition,
                 :selected_acs_struct,
@@ -42,93 +45,144 @@ class Permit < ActiveRecord::Base
                 # Floor
                 :floor_covering
 
-  ADDITION_SIZE_OPTIONS = { 'lessThan1000' => "Less than 1,000 sq ft", 'greaterThanEqualTo1000' => "Greater than or equal to 1,000 sq ft" }
-  ADDITION_NUM_STORY_OPTIONS = { '1Story' => "1 Story", '2orMoreStories' => "2 or more stories" }
+  ######## Attribute Options Hashes ########
 
-  ACS_STRUCT_SIZE_OPTIONS = { 'lessThanEqualTo120' => "Less than or equal to 120 sq ft", 'greaterThan120' => "Greater than 120 sq ft" }
-  ACS_STRUCT_NUM_STORY_OPTIONS = { '1Story' => "1 Story", '2orMoreStories' => "2 or more stories" }
+  # Projects
 
-  DECK_SIZE_OPTIONS = {'lessThanEqualTo120' => "Less than or equal to 120 sq ft", 'greaterThan120' => "Greater than 120 sq ft" }
-  DECK_GRADE_OPTIONS = {'lessThanEqualTo30' => "Less than or equal to 30 inches above grade", 'moreThan30' => "More than 30 inches above grade" }
-  DECK_DWELLING_ATTACH_OPTIONS = {'attachedToDwelling' => "Attached to dwelling", 'notAttachedToDwelling' => "Not attached to dwelling" }
-  DECK_EXIT_DOOR_OPTIONS = {'exitDoor' => "Serves a required exit door", 'noExitDoor' => "Does not serve a required exit door" }
+  ADDITION = {  :addition_size => { label:    "Size", 
+                                    options:  [ { value: 'lessThan1000', label: "Less than 1,000 sq ft" }, 
+                                                { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 sq ft" }]},
+                :addition_num_story =>  { label:    "Stories",
+                                          options:  [ { value: '1Story', label: "1 story" }, 
+                                                      { value: '2orMoreStories', label: "2 or more stories" }]}}
 
-  POOL_LOCATION_OPTIONS = {'inGround' => "Pool is in ground", 'aboveGround' => "Pool is above ground" }
-  POOL_VOLUME_OPTIONS = {'lessThanEqualTo5000' => "Less than or equal to 5,000 gallons", 'moreThan5000' => "More than 5,000 gallons" }
+  ACS_STRUCT = {  :acs_struct_size => { label:    "Size",
+                                        options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" }, 
+                                                    { value: 'greaterThan120', label: "Greater than 120 sq ft" }]},
+                  :acs_struct_num_story => { label:     "Stories",
+                                              options:  [ { value: '1Story', label: "1 Story" }, 
+                                                          { value: '2orMoreStories', label: "2 or more stories" }]}}
 
-  COVER_MATERIAL_OPTIONS = {'metalType2' => "It's metal type II", 'woodType5' => "It's wood type V", 'other' => "Other" }
+  DECK = {  :deck_size => { label:    "Size",
+                            options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" },
+                                        { value: 'greaterThan120', label: "Greater than 120 sq ft" }]},
+            :deck_grade => {  label:    "Grade",
+                              options:  [ { value: 'lessThanEqualTo30', label: "Less than or equal to 30 inches above grade"},
+                                          { value: 'moreThan30', label: "More than 30 inches above grade"}]},
+            :deck_dwelling_attach => {  label:    "Dwelling Attachment",
+                                        options:  [ { value: 'attachedToDwelling', label: "Attached to dwelling"},
+                                                    { value: 'notAttachedToDwelling', label: "Not attached to dwelling"}]},
+            :deck_exit_door => {  label:    "Exit Door",
+                                  options:  [ { value: 'exitDoor', label: "Serves a required exit door"},
+                                              { value: 'noExitDoor', label: "Does not serve a required exit door"}]}}
 
-  # validates on permit_steps#new
-  # validates_inclusion_of :addition, :in => [true], :message => "Please choose an improvement."
+  POOL = {  :pool_location =>   { label:    "Location",
+                                  options:  [ { value: 'inGround', label: "Pool is in ground"}, 
+                                              { value: 'aboveGround', label: "Pool is above ground" }]},
+            :pool_volume => { label:    "Volume",
+                              options:  [ { value: 'lessThanEqualTo5000', label: "Less than or equal to 5,000 gallons"}, 
+                                          { value: 'moreThan5000', label: "More than 5,000 gallons"}]}}
+
+  COVER = { :cover_material =>  { label:    "Material",
+                                  options:  [ { value: 'metalType2', label: "It's metal type II"}, 
+                                              {value: 'woodType5', label: "It's wood type V"}, 
+                                              {value: 'other', label: "Other"}]}}
+
+
+  # Room Addition
+  AC_OPTIONS = ["None", "Wall Unit", "Extended from Main House", "New Split System"]
+  
+  ######## Validations #######
+
+  # @TODO: Should I group these in terms of each view, should model have an idea of how the views look like
+
+  ## Validations on permit_steps#new ##
+
+  before_validation(on: :create) do
+    projects_to_bool
+  end
   validate :at_least_one_chosen, :if => :first_step?
 
-  # validates on permit_steps#answer_screener
+  ## Validations on permit_steps#answer_screener ##
+
+  # Addition Section
   validates_presence_of :addition_size, :if => :only_if_screener_addition?, :message => "Please select the size of the room addition."
   validates_presence_of :addition_num_story, :if => :only_if_screener_addition?, :message => "Please select the number of stories for the room addition."
 
+  # Accessory Structure Section
   validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?, :message => "Please select the size of the accessory structure."
   validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?, :message => "Please select the number of stories for the accessory structure."
 
+  # Deck Section
   validates_presence_of :deck_size, :if => :only_if_screener_deck?, :message => "Please select the size of the deck."
   validates_presence_of :deck_grade, :if => :only_if_screener_deck?, :message => "Please select the grade of the deck."
   validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?, :message => "Please select whether the deck is attached to dwelling or not."
   validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?, :message => "Please select whether the deck serves a required exit door or not."
 
+  # Pool Section
   validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Please select whether the swimming pool is in ground or above ground."
   validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Please select the volume of the swimming pool."
 
+  # Cover Section
   validates_presence_of :cover_material, :if => :only_if_screener_cover?, :message => "Please select the material for the carport, patio cover, or porch cover."
 
+  # Window Section
   validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Please select whether you are only replacing broken glass or not."
   
+  # Door Section
   validates_presence_of :door_replace_existing, :if => :only_if_screener_door?, :message => "Please select whether you are only replacing doors on their existing hinges or not."
   
+  # Wall Section
   validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?, :message => "Please select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
   
+  # Siding Section
   validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?, :message => "Please select whether you are only placing new siding over existing siding or not."
   
+  # Floor Section
   validates_presence_of :floor_covering, :if => :only_if_screener_floor?, :message => "Please select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
 
-  validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
-  
-  # validates on permit_steps#enter_details
-  validates_with AddressValidator, :if => :only_if_address_presence?
-  validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
-  #validates_presence_of :contractor, :if  => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
+  # Contractor Section
   validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
-  validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
-  validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
-  #validates :job_cost, :if => :only_if_job_cost_presence?, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :message => "Job cost has an invalid format, it should be like 1000000.00"
-  #validates :job_cost, :if => :only_if_job_cost_presence?, :numericality => {:greater_than => 0, :less_than => 1000000000000}, :message => "Job cost should be between the range of 0.00 to 1000000000000.00"
-  #validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :message => "Job cost must be a number."
-  validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/, :message => "Job cost has an invalid format, it should be like 1000000.00"
-  validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000 , :message => "Job cost should be between the range of 0.00 to 1000000000000.00"  
+
+  # Home Address Section
+  validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
+  validates_with AddressValidator, :if => :only_if_address_presence?
   
-  # validates on permit_steps#enter_addition
+  ## Validations on permit_steps#enter_details ##
+
+  # Basic Information Section
+  validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
+  # Validator for owner_address above at permit_steps#answer_screener
+  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Please enter your valid email address (for example, john@email.com)"
+  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i, :message => "Please enter a valid phone number (for example, 210-555-5555)"
+
+  # Addition Section
   validates_presence_of :house_area, :if => :active_or_details_addition?, :message => "Please enter the size of house in square feet."
   validates_numericality_of :house_area, :if => :only_if_house_presence?, :message => "Please enter the size of house in square feet."
   validates_presence_of :addition_area, :if => :active_or_details_addition?, :message => "Please enter the size of addition in square feet."
   validates_numericality_of :addition_area, :if => :only_if_addition_presence?, :message => "Please enter the size of addition in square feet."
   validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
   validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Please select an air conditioning / heating system."
-  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Please enter your valid email address (for example, john@email.com)"
-  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i, :message => "Please enter a valid phone number (for example, 210-555-5555)"
 
-  # validates on permit_steps#enter_repair
+  # Window Section
   validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are repairing."
+  
+  # Door Section
   validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Please specify the number of doors you are repairing."
 
-  # validates on permit_step#confirm_details
-  
+  # Final Info Section
+  validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
+  validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
+  validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/, :message => "Job cost has an invalid format, it should be like 1000000.00"
+  validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000 , :message => "Job cost should be between the range of 0.00 to 1000000000000.00"  
+
+  ## Validations on permit_step#confirm_terms ##
+
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
-  # before_validation(on: :update) do
-  #   contractor_to_bool#, :if => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
-  # end
-  before_validation(on: :create) do
-    projects_to_bool
-  end
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
+
+  ######## Conditions for Validation ########
   def first_step?
     status == nil
   end
@@ -240,12 +294,11 @@ class Permit < ActiveRecord::Base
     end
   end
 
-
+  
+  ########  Business Logic for when Permit is needed ########
 
   # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
   def addition_permit_needed?
-    puts "addition_size is #{addition_size}"
-    puts "addition_num_story is #{addition_num_story}"
     if addition_size.eql?("lessThan1000") && addition_num_story.eql?("1Story")
       return true
     else
@@ -293,7 +346,6 @@ class Permit < ActiveRecord::Base
   end
 
   def window_permit_needed?
-    puts "window_replace_glass: #{window_replace_glass}"
     if to_bool(window_replace_glass)
       return false
     else
@@ -338,7 +390,6 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_addition) 
 
-      puts "In Addition"
       if addition_permit_needed?
         permit_needs["permit_needed"].push("Addition")
         update_attribute("addition", true)
@@ -348,6 +399,9 @@ class Permit < ActiveRecord::Base
       end
 
     end
+
+    ####### Helpers Methods to change virtual attributes values to booleans ########
+    # @TODO: Check if these are necessary anymore
 
     if to_bool(selected_acs_struct)
 
@@ -478,15 +532,8 @@ class Permit < ActiveRecord::Base
     selected_siding = to_bool(selected_siding)
     selected_floor = to_bool(selected_floor)
 
-    puts "selected_addition: #{selected_addition}"
+    return nil
   end
 
-  # def contractor_to_bool
-  #   if contractor == "true"
-  #     return true
-  #   else
-  #     return false
-  #   end
-  # end
 
 end
