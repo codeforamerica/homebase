@@ -23,12 +23,12 @@
     <% end %>
     <!-- ./error checking -->
 
-    <!-- Basic info section --> 
+    <!-- Homeowner info section --> 
 
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <h4>Basic information</h4>
+        <h4>Homeowner information</h4>
       </div>
 
       <div class="panel-body">
@@ -38,7 +38,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Home owner name", 
+                        question: "Homeowner name", 
                         helper_text: nil,
                         attribute: :owner_name,
                         placeholder: nil,
@@ -52,7 +52,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Address", 
+                        question: "Home address", 
                         helper_text: nil,
                         attribute: :owner_address, 
                         placeholder: nil,
@@ -64,7 +64,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Home owner email address",
+                        question: "Homeowner email address",
                         helper_text: nil, 
                         attribute: :email, 
                         placeholder: nil,
@@ -78,7 +78,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Home owner phone number", 
+                        question: "Homeowner phone number", 
                         helper_text: nil,
                         attribute: :phone, 
                         placeholder: nil,
@@ -90,7 +90,7 @@
         </div><!-- ./panel_body -->
       </div><!-- ./panel -->
 
-    <!-- ./Basic info section -->
+    <!-- ./Homeowner info section -->
 
     <% if @permit.addition %>
       <!-- Addition section --> 

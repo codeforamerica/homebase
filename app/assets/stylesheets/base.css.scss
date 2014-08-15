@@ -22,6 +22,8 @@ $font-size-h1: 50px;
 
 $grid-gutter-width: 40px; // bump up the grid gutters
 
+$brand-danger: #a94442;
+
 /* now let's important the base bootstrap styles */
 @import "bootstrap";
 
@@ -34,11 +36,11 @@ $grid-gutter-width: 40px; // bump up the grid gutters
 */
 
 body {
-  padding-bottom: 100px; // add some padding at the bottom of the page
+  padding-bottom: 30px; // add some padding at the bottom of the page
 }
 
 .container#content {
-  margin-top: 40px; // offset all the content from the top of the page
+  margin-top: 30px; // offset all the content from the top of the page
 }
 
 .container#header {
@@ -63,6 +65,14 @@ h1 {
     opacity: .8;
     text-decoration: none;
   }
+}
+
+.tagline {
+  color: #999;
+  font-size: 12px;
+  margin-left: 4px;
+  position: relative;
+  top: -1px;
 }
 
 /* styles for the sidebar */
@@ -110,22 +120,34 @@ h1 {
 
   .status {
     margin-top: 30px; // move the progress/steps down from the house block
+    &:last-child {
+      border-top: none;
+      .cur-step {
+        margin-bottom: 7px;
+        margin-left: 7px;
+      }
+    }
     ul {
       padding: 0 0 0 26px; // fixes the indentation for the steps/progress
       margin-left: 7px;
       position: relative;
       z-index: 1;
-	  &:before {
-	    background-color: #f1f1f1;
-	    bottom: 0;
-	    content: "";
-	    left: 1px;
-	    position: absolute;
-	    top: 0;
-	    width: 4px;
-	    z-index: -1;
+      
+  	  &:before {
+  	    background-color: #f1f1f1;
+  	    bottom: 0;
+  	    content: "";
+  	    left: 1px;
+  	    position: absolute;
+  	    top: 0;
+  	    width: 4px;
+  	    z-index: -1;
+        }
+    }
+    h4 {
+	    text-transform: uppercase;
+	    font-size: 17px;
 	  }
-	}    
     a {
       color: #c2c2c2;
     }
@@ -169,7 +191,7 @@ h1 {
 	    border-color: #c2c2c2;
 	    position: absolute;
 	    z-index: 2;		
-	}
+	}	
     .cur-step {
       color: #222; // darken the current step
       font-weight: 700; // bold the current step
@@ -177,6 +199,7 @@ h1 {
 	    background: none repeat scroll 0 0 #222;
 	    border: 2px solid #222;
 	}
+
       &:after {
 	    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE3LjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA3LjMgMTAuMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNy4zIDEwLjIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMi4xLDBMMCwyLjFsMywzbC0zLDNsMi4xLDIuMWw1LjItNS4xTDIuMSwweiIvPgo8L3N2Zz4=) no-repeat scroll 0 0 transparent;
 	    left: -2em;
@@ -238,19 +261,19 @@ h1 {
 }
 
 /* styles for #project_details */
-.radio input[type="radio"] {
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
 	margin-top: 7px;
 }
 
 /* styles for #enter_details */
 
 .has-error p { //styles error helper text
-  font-weight: 900;
+  font-weight: 700;
   color: $brand-danger;
 }
 
-.field_with_errors { //styles error helper text
-  font-weight: 900;
+.field_with_errors .form-control { //styles error helper text
+  font-weight: 700;
   color: $brand-danger;
 }
 .multi-form {
@@ -271,7 +294,16 @@ h1 {
   padding-bottom: 12.5px;
 }
 
-/* Timeout modal styles */
+/* Footer styles */
+.footer {
+  border-top: 1px solid #eeeeee;
+  margin-top: 50px;
+  padding-top: 30px;
+}
+.footer-logo {
+  padding-right: 10px;
+  height: 65px;
+}
 
 /* Screener styles */
 .radio {
@@ -279,6 +311,16 @@ h1 {
 }
 .radio label {
   padding-left: 6px;
+}
+input[type=radio]:checked + label {
+  font-weight: bold;
+}
+.radio > input:hover, .checkbox > input:hover {
+    cursor: pointer;
+}
+label {
+  margin-bottom: 0;
+  display: block;
 }
 
 /* Mobile styles */

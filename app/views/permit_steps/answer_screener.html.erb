@@ -13,6 +13,25 @@
     <% end %>
     <!-- ./error checking -->
 
+    <!-- address entry -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Enter your home address</h4>
+      </div>
+      <div class="panel-body">
+        <!-- Start the address form -->
+        <div class="form-group">
+          <%= render  partial: "permit_steps/form_helper/text_field", 
+              locals: { f: f, 
+                        question: "Enter the address of the property you're working on.", 
+                        helper_text: nil,
+                        attribute: :owner_address, 
+                        placeholder: "ex. 123 Main St. San Antonio, TX",
+                        input_addon: nil } %>
+        </div>
+      </div><!-- ./panel_body -->
+    </div><!-- panel -->   
+    <!-- ./address entry -->
 
     <% if @permit.selected_addition %>
       <!-- Room Additions section -->
@@ -260,27 +279,6 @@
                                           label: "No" }]} %>            
       </div>
     </div><!-- ./Contractor section -->
-
-    <!-- address entry -->
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Enter your address</h4>
-      </div>
-      <div class="panel-body">
-        <!-- Start the address form -->
-        <div class="form-group">
-          <%= render  partial: "permit_steps/form_helper/text_field", 
-              locals: { f: f, 
-                        question: "Enter the address of the property you're working on.", 
-                        helper_text: nil,
-                        attribute: :owner_address, 
-                        placeholder: "Enter your address",
-                        input_addon: nil } %>
-        </div>
-      </div><!-- ./panel_body -->
-    </div><!-- panel -->
-   
-    <!-- ./address entry -->
 
     <!-- submit button -->
     <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
