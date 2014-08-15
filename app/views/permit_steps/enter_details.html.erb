@@ -1,5 +1,5 @@
 <!-- Render the sidebar partial -->
-<%= render partial: "layouts/sidebar", locals: {cur_step: 3} %>
+<%= render partial: "layouts/sidebar", locals: {cur_step: PermitStepsController::STEPS.index(:enter_details) + 1} %>
 
 <!-- Begin step -->
 <div class="col-sm-9 multi-form"> <!-- multi-form adds some nice padding for long form groupings -->

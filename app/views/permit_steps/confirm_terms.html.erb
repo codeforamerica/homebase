@@ -1,5 +1,5 @@
 <!-- Render the sidebar partial -->
-<%= render partial: "layouts/sidebar", locals: {cur_step: 4} %>
+<%= render partial: "layouts/sidebar", locals: {cur_step: PermitStepsController::STEPS.index(:confirm_terms) + 1} %>
 
 <!-- Begin step -->
 <div class="col-sm-9">

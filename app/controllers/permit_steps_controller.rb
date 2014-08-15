@@ -6,10 +6,14 @@ class PermitStepsController < ApplicationController
   include PermitStepsHelper
 
   include Wicked::Wizard
-  steps :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, 
-  
-  # The following are error pages that should only be jump to:
-  :error_page, :use_contractor, :cannot_help, :do_not_need_permit
+
+  # Regular steps
+  STEPS = [ :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary ]
+
+  # Error steps, steps that should only be jumped to when there's an error
+  ERROR_STEPS = [ :error_page, :use_contractor, :cannot_help, :do_not_need_permit ]
+
+  steps *(STEPS + ERROR_STEPS)
   
   def show
     @permit = current_permit
