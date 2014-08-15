@@ -14,6 +14,22 @@
       </div>
     <% end %>
 
+  <!-- address entry -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Enter your home address</h4>
+    </div>
+    <div class="panel-body">
+      <!-- Start the address form -->
+      <p>Enter the address of the property you're working on.</p>
+      <div class="form-group">
+        <%= f.text_field :owner_address, placeholder: "ex. 123 Main St. San Antonio, TX", class: "form-control input-lg" %>
+      </div>
+    </div><!-- ./panel_body -->
+  </div><!-- panel -->
+ 
+  <!-- ./address entry -->
+  
   <!-- Room Additions section -->
   <% if @permit.selected_addition %>
     <div class="panel panel-default">
@@ -21,7 +37,7 @@
         <h4>Room Additions</h4>
       </div>
       <div class="panel-body">
-        <p>What best describes your room addition that you are building?</p>
+        <p>What best describes the room addition that you are building?</p>
 
           <%= render partial: "screener_question", locals: {f: f, 
                                                             question: "Size", 
@@ -50,7 +66,7 @@
         <h4>Shed/Garage</h4>
       </div>
       <div class="panel-body">
-        <p>What best describes your shed or garage that you are building?</p>
+        <p>What best describes the shed or garage that you are building?</p>
 
           <%= render partial: "screener_question", locals: {f: f, 
                                                             question: "Size", 
@@ -78,7 +94,7 @@
         <h4>Deck</h4>
       </div>
       <div class="panel-body">
-        <p>What best describes your deck that you are building?</p>
+        <p>What best describes the deck that you are building?</p>
           <%= render partial: "screener_question", locals: {f: f, 
                                                             question: "Size", 
                                                             attribute: :deck_size, 
@@ -123,7 +139,7 @@
         <h4>Swimming Pool</h4>
       </div>
       <div class="panel-body">
-        <p>What best describes your swimming pool that you are building?</p>
+        <p>What best describes the swimming pool that you are building?</p>
 
           <%= render partial: "screener_question", locals: {f: f, 
                                                             question: "Location", 
@@ -151,7 +167,7 @@
       <h4>Carports or Outdoor Covers</h4>
     </div>
     <div class="panel-body">
-      <p>What best describes your carport, patio cover, or porch cover that you are building?</p>
+      <p>What best describes the carport, patio cover, or porch cover that you are building?</p>
 
         <%= render partial: "screener_question", locals: {f: f, 
                                                           question: "Material", 
@@ -281,23 +297,7 @@
     </div>
   </div><!-- ./Contractor section -->
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Enter your address</h4>
-    </div>
-    <div class="panel-body">
-      <!-- Start the address form -->
-      <p>Enter the address of the property you're working on.</p>
 
-
-      <!-- address entry -->
-      <div class="form-group">
-        <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
-      </div>
-    </div><!-- ./panel_body -->
-  </div><!-- panel -->
- 
-  <!-- ./address entry -->
 
   <!-- submit button -->
   <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
