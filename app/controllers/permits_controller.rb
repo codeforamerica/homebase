@@ -3,11 +3,36 @@ class PermitsController < ApplicationController
   include PermitParams
 
   def new
-    @permit = Permit.new
-    reset_session
+    puts "========in permit_new: full path: #{request.fullpath}"
+    @permit = Permit.new do | pt |
+      pt.selected_addition = session[:selected_addition]
+      pt.selected_acs_struct = session[:selected_acs_struct]
+      pt.selected_deck = session[:selected_deck]
+      pt.selected_pool = session[:selected_pool]
+      pt.selected_cover = session[:selected_cover]
+      pt.selected_window = session[:selected_window]
+      pt.selected_door = session[:selected_door]
+      pt.selected_wall = session[:selected_wall]
+      pt.selected_siding = session[:selected_siding]
+      pt.selected_floor = session[:selected_floor]
+    end
+    puts "*****************selected_addition: #{session[:selected_addition]}"
+    puts "***********going to clear out session"
+    # session.delete :selected_addition
+    # session.delete :selected_acs_struct
+    # session.delete :selected_deck
+    # session.delete :selected_pool
+    # session.delete :selected_cover
+    # session.delete :selected_window
+    # session.delete :selected_door
+    # session.delete :selected_wall
+    # session.delete :selected_siding
+    # session.delete :selected_floor
+    puts "*****************selected_addition: #{session[:selected_addition]}"
   end
 
   def create
+    puts "========in permit_create: full path: #{request.fullpath}"
     @permit = Permit.new(permit_params)
     if @permit.save
       session[:permit_id] = @permit.id

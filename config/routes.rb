@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :permits
   resources :permit_steps
 
+  # This will reset session variables
+  get '/reset' => 'application#reset'
 
   # This will serve the generated permit PDF
   get '/generated_permits/:filename' => 'permit_steps#serve'

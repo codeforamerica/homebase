@@ -1,4 +1,9 @@
+// alert("new.js called"); // neither is this called in IE11
+// alert("In new.js: " + document.referrer);
+
 $(document).ready(function() {
+  // alert("In new.js in ready: " + document.referrer);
+  // alert("new.js document ready"); // does not get fired after hitting back on IE11
 
   // trigger when user clicks any of the "select a project" buttons
   $ (".project").each(function(i) {
@@ -10,7 +15,7 @@ $(document).ready(function() {
       clickedButton = $(this).attr("id");
 
       // turn the id we got from clickedButton into a class, so we can show the correct "Your Project" sidebar icon
-      chosenProject = (".").concat(clickedButton)
+      chosenProject = (".").concat(clickedButton);
 
       // grab the class for the clickedButton, so we can add the success class and change its color
       clickedButtonClass = (".pick-").concat(clickedButton);

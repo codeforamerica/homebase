@@ -16,6 +16,8 @@ class PermitStepsController < ApplicationController
   steps *(STEPS + ERROR_STEPS)
   
   def show
+
+    puts "========in permit_step: full path: #{request.fullpath}"
     @permit = current_permit
 
     # Re-populate the permit project selection from session variables

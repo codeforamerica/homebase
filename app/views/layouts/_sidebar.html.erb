@@ -56,46 +56,49 @@
 
 </div>
 
+<%= @permit.to_yaml %>
+session[:selected_addition]: <%#= session[:selected_addition] %>
 <!-- @TODO refactor this out to javascript asset pipeline -->
 <script>
-
-  <% if @permit.to_bool(@permit.selected_addition) %>
+// alert("Ahh! sidebar");
+  <% if session[:selected_addition] %>
     $(".addition").toggleClass("displayed");
+    //$(".pick-addition").toggleClass("btn-success");
   <% end %>
  
-  <% if @permit.to_bool(@permit.selected_acs_struct) %>
+  <% if session[:selected_acs_struct] %>
     $(".acs-struct").toggleClass("displayed");
   <% end %>
   
-  <% if @permit.to_bool(@permit.selected_deck) %>
+  <% if session[:selected_deck] %>
     $(".deck").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.to_bool(@permit.selected_pool) %>
+  <% if session[:selected_pool] %>
     $(".pool").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.to_bool(@permit.selected_cover) %>
+  <% if session[:selected_cover] %>
     $(".cover").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.to_bool(@permit.selected_window) %>
+  <% if session[:selected_window] %>
     $(".window").toggleClass("displayed");
   <% end %>
   
-  <% if @permit.to_bool(@permit.selected_door) %>
+  <% if session[:selected_door] %>
     $(".door").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.to_bool(@permit.selected_wall) %>
+  <% if session[:selected_wall] %>
     $(".wall").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.to_bool(@permit.selected_siding) %>
+  <% if session[:selected_siding] %>
     $(".siding").toggleClass("displayed");
   <% end %>
 
-  <% if @permit.to_bool(@permit.selected_floor) %>
+  <% if session[:selected_floor] %>
     $(".floor").toggleClass("displayed");
   <% end %>
                   
