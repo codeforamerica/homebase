@@ -320,24 +320,6 @@ label {
   display: block;
 }
 
-/* Uservoice styles */
-
-.uv-link {
-  position: fixed;
-  right: 40px;
-  bottom: 0;
-  background-color: #428bca;
-  border-radius: 5px 5px 0 0;
-  color: white;
-  padding: 6px 12px;
-}
-.uv-link:hover, .uv-link:focus {
-  background-color: #3071a9;
-  color: #fff;
-  text-decoration: none;
-}
-
-
 /* Mobile styles */
 
 @media (max-width: $screen-sm-min) {
@@ -379,8 +361,5 @@ label {
         opacity: .5;
       }
     }
-  }
-  .uv-link {
-    display: none;
   }
 }
