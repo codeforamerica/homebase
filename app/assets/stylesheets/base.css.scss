@@ -267,14 +267,11 @@ h1 {
 
 /* styles for #enter_details */
 
-.has-error p { //styles error helper text
-  font-weight: 700;
+.has-error p, .field_with_errors .form-control, .field_with_errors { //styles error helper text
   color: $brand-danger;
 }
-
-.field_with_errors .form-control { //styles error helper text
+.has-error p, .field_with_errors .form-control { //styles error helper text
   font-weight: 700;
-  color: $brand-danger;
 }
 .multi-form {
   .form-group {
