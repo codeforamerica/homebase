@@ -291,13 +291,16 @@ h1 {
 }
 .new_permit .btn {
   margin-top: 20px;
-  margin-left: 10px;
 }
 .new_permit {
   padding-bottom: 30px;
 }
 .new_permit .col-md-4 {
   padding: 0 10px 20px 10px;
+}
+.new_permit .row {
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 /* styles for #project_details */
@@ -378,7 +381,7 @@ label {
   .tagline {
     display: block;
     margin: 0;
-  }    
+  }     
   #sidebar {
     margin-bottom: 25px;
     text-transform: uppercase;
