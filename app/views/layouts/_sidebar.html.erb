@@ -56,48 +56,4 @@
 
 </div>
 
-<!-- @TODO refactor this out to javascript asset pipeline -->
-<script>
-// alert("Ahh! sidebar");
-  <% if session[:selected_addition] %>
-    $(".addition").toggleClass("displayed");
-    //$(".pick-addition").toggleClass("btn-success");
-  <% end %>
- 
-  <% if session[:selected_acs_struct] %>
-    $(".acs-struct").toggleClass("displayed");
-  <% end %>
-  
-  <% if session[:selected_deck] %>
-    $(".deck").toggleClass("displayed");
-  <% end %>
 
-  <% if session[:selected_pool] %>
-    $(".pool").toggleClass("displayed");
-  <% end %>
-
-  <% if session[:selected_cover] %>
-    $(".cover").toggleClass("displayed");
-  <% end %>
-
-  <% if session[:selected_window] %>
-    $(".window").toggleClass("displayed");
-  <% end %>
-  
-  <% if session[:selected_door] %>
-    $(".door").toggleClass("displayed");
-  <% end %>
-
-  <% if session[:selected_wall] %>
-    $(".wall").toggleClass("displayed");
-  <% end %>
-
-  <% if session[:selected_siding] %>
-    $(".siding").toggleClass("displayed");
-  <% end %>
-
-  <% if session[:selected_floor] %>
-    $(".floor").toggleClass("displayed");
-  <% end %>
-                  
-</script>
