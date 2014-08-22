@@ -1,3 +1,4 @@
+/*
 .btn-block {
   margin-top: 15px;
   font-family: Montserrat, sans-serif;
@@ -38,15 +39,6 @@
 @media (max-width: 991px) {
 }
 @media (max-width: 767px) {
-  .chunk {
-    width: auto;
-  }
-  .test-prog-bar {
-    position: relative;
-    width: auto;
-    padding-right: 33px;
-    padding-left: 33px;
-  }
   .btn-initial {
     margin-bottom: 3px;
   }
