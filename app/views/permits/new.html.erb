@@ -26,32 +26,32 @@
       <% end %>
       <!-- ./ error checking -->
 
-        <div class="w-row project-row">
-          <div class="w-col w-col-4">
+        <div class="row">
+          <div class="col-md-4">
             <%= f.label :selected_addition, id: "addition", class: "pick-addition btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/addition.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Room Addition</p>
               </div>
             <% end %>               
             <%= f.check_box :selected_addition, style: 'display:none' %>
           </div>
-          <div class="w-col w-col-4">
+          <div class="col-md-4">
             <%= f.label :selected_acs_struct, id: "acs-struct", class: "pick-acs-struct btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/shed.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Shed or Garage</p>
               </div>
             <% end %>               
             <%= f.check_box :selected_acs_struct, style: 'display:none' %>
           </div>
-          <div class="w-col w-col-4">
+          <div class="col-md-4">
               <%= f.label :selected_deck, id: "deck", class: "pick-deck btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/deck.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Deck</p>
               </div>
             <% end %>               
@@ -59,22 +59,22 @@
           </div>
         </div>
 
-        <div class="w-row project-row">
-          <div class="w-col w-col-4">
+        <div class="row">
+          <div class="col-md-4">
               <%= f.label :selected_pool, "Swimming Pool", id: "pool", class: "pick-pool btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/pool.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Swimming Pool</p>
               </div>
             <% end %>              
             <%= f.check_box :selected_pool, style: 'display:none' %>
           </div>
-          <div class="w-col w-col-4">
+          <div class="col-md-4">
             <%= f.label :selected_cover, id: "cover", class: "pick-cover btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/carport.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block long">
                   Carport or 
                   <br>
@@ -84,11 +84,11 @@
             <% end %>
             <%= f.check_box :selected_cover, style: 'display:none' %>
           </div>
-          <div class="w-col w-col-4">
+          <div class="col-md-4">
             <%= f.label :selected_window, id: "window", class: "pick-window btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/window.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Windows</p>
               </div>
             <% end %>
@@ -96,32 +96,32 @@
           </div>
         </div>
 
-        <div class="w-row project-row">
-          <div class="w-col w-col-4">
+        <div class="row">
+          <div class="col-md-4">
             <%= f.label :selected_door, id: "door", class: "pick-door btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/door.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Doors</p>
               </div>
             <% end %>
             <%= f.check_box :selected_door, style: 'display:none' %>
           </div>
-          <div class="w-col w-col-4">
+          <div class="col-md-4">
             <%= f.label :selected_wall, id: "wall", class: "pick-wall btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/wall.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Walls</p> 
               </div>             
             <% end %>
             <%= f.check_box :selected_wall, style: 'display:none' %>
           </div>
-          <div class="w-col w-col-4">
+          <div class="col-md-4">
             <%= f.label :selected_siding, id: "siding", class: "pick-siding btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/siding.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Replace siding</p>
               </div>              
             <% end %>              
@@ -129,33 +129,20 @@
           </div>
         </div>
 
-        <div class="w-row">
-          <div class="w-col w-col-4">
+        <div class="row">
+          <div class="col-md-4">
             <%= f.label :selected_floor, id: "floor", class: "pick-floor btn-initial project" do %>
-              <div class="w-clearfix w-inline-block project-block">
+              <div class="clearfix project-block">
                 <%= image_tag "projects/floor.png", class: "project-icon" %>
-                <div class="w-clearfix"></div>
+                <div class="clearfix"></div>
                 <p class="btn-block">Floors</p> 
               </div>             
             <% end %>              
             <%= f.check_box :selected_floor, style: 'display:none' %>
           </div>
-          <div class="w-col w-col-4"></div>
-          <div class="w-col w-col-4"></div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
         </div>
-
-
-      <!-- Pick and option: ACS_STRUCT -->
-      <!-- <div class="panel panel-default panel-info-acs-struct"> -->
-        <!-- <div class="panel-heading"><h4>Accessory Structure</h4></div> -->
-        <!-- <div class="panel-body"> -->
-          <%#= image_tag "#", class: 'hidden-xs' %>
-          <!-- <p>Adding Deck.</p> -->
-          <%#= f.label :acs_struct, "I want to add accessory structure", class: 'btn btn-default btn-small pick-acs-struct'%>
-          <%#= f.check_box :acs_struct, style: 'display:none;' %>
-        <!-- </div> -->
-      <!-- </div> -->
-      <!-- ./acs_struct -->
 
       <!-- Submit button -->
       <%= f.submit "Next step", class: "btn btn-primary btn-lg"%>
