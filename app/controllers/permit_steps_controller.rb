@@ -127,7 +127,9 @@ class PermitStepsController < ApplicationController
       session[:permit_needs] = @permit.update_permit_needs_for_projects
 
     when :enter_details
-
+      # Need to show ac options if errors occur
+      @permit_ac_options = Permit::AC_OPTIONS
+      
       # This will limit the number of times Geocoder is called as there is a 
       # limit on the number of times this is being called per day
       # @TODO: May want to make all caps comparison so to prevent case sensitive issue"
