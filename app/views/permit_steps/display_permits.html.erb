@@ -45,14 +45,14 @@
   <% if ! @permit_needs["further_assistance_needed"].empty? %>
 
     <div class="alert alert-danger" role="alert">
-      <h4>Sorry, we can't help you right now.</h4>
-      <p class="info-top">The following project(s) do not meet the requirements for the General Permit Application:</p>
-        <ul>
+      <p class="info-top">We’re sorry, the residential permit application is not appropriate for the 
+          
           <% @permit_needs["further_assistance_needed"].each do |project| %>
-            <li><%= project %></li>
+            <span class="project-title"><%= project %></span>
           <% end %>
-        </ul> 
-      <p class="info-bottom">Please contact Development Services Department at (210) 207-1111 to get the permit you need.</p>
+          
+      that you want to build.
+      <p>We can help you apply for the right permit for this project. Call us at (210) 207-1111 and we will help you.</p>
     </div>
 
   <% end %>

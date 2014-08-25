@@ -320,6 +320,21 @@ label {
   display: block;
 }
 
+/* Step 3 - Display permits */
+
+.project-title {
+  background-color: #ebccd1;
+  border-radius: 3px;
+  font-weight: 600;
+  padding: 0 5px;
+}
+.project-title:after {
+  content: ",";
+}
+.project-title:last-child:after {
+  content: none;
+}
+
 /* Mobile styles */
 
 @media (max-width: $screen-sm-min) {
