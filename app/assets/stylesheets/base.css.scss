@@ -367,6 +367,7 @@ label {
 }
 
 /* Alert styles */
+
 .alert-ie {
   border-radius: 0;
   text-align: center;
@@ -380,7 +381,25 @@ label {
   margin-bottom: 12.5px;
 }
 
+/* Uservoice styles */
+
+.uv-link {
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+  background-color: #df4949;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  padding: 6px 12px;
+}
+.uv-link:hover, .uv-link:focus {
+  background-color: #da2c2c;
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Mobile styles (tablets, 768px and down) */
+
 
 @media (max-width: $screen-sm-min) {
   h1 {
@@ -426,6 +445,9 @@ label {
         opacity: .5;
       }
     }
+  }
+  .uv-link {
+    display: none;
   }
 }
 
