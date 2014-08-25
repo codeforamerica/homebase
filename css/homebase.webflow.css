@@ -77,7 +77,7 @@ a {
   font-weight: 400;
 }
 .hero-heading {
-  margin-top: 33px;
+  margin-top: 8px;
   margin-bottom: 6px;
   font-family: proxima-nova-soft, sans-serif;
   color: #062d32;
@@ -138,9 +138,12 @@ a {
   padding-top: 8px;
 }
 .footer {
-  padding-top: 18px;
-  padding-bottom: 0px;
   background-color: #34383b;
+  bottom: 0;
+  padding-bottom: 0;
+  padding-top: 18px;
+  position: fixed;
+  width: 100%;
 }
 .footer.suzy-sec {
   padding-top: 10px;
@@ -183,6 +186,9 @@ footer .white {
 section.gray {
   background-color: #e0e0e0;
 }
+section.white.last {
+  padding-bottom: 100px;
+}
 .suzy-sec, section.white {
 
 }
@@ -194,10 +200,11 @@ section {padding: 50px 0;}
 .hero {
   padding-bottom: 52px;
   background-color: #5fb9c1;
+  text-align: center;
 }
 .sub-header {
   margin-top: 0px;
-  padding-bottom: 28px;
+  padding-bottom: 18px;
   font-family: proxima-nova-soft, sans-serif;
   color: #29646a;
   font-size: 27px;
@@ -205,12 +212,12 @@ section {padding: 50px 0;}
   text-align: center;
 }
 .sub-header.description {
-  padding-top: 16px;
-  padding-bottom: 21px;
+  padding-top: 14px;
+  padding-bottom: 18px;
   font-weight: 500;
 }
 .hero-img {
-  padding: 0 20%;
+  padding: 0 26%;
 }
 .house-img {
   padding-top: 39px;
@@ -241,7 +248,7 @@ section {padding: 50px 0;}
 	box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
   transition: all .2s ease;
 }
-#mc-embedded-subscribe {
+#mc-embedded-subscribe, .btn-get-started {
   padding: 16px 31px;
   background-color: #1879d4;
   background-clip: padding-box;
@@ -255,8 +262,12 @@ section {padding: 50px 0;}
   font-family: proxima-nova-soft, sans-serif;
   font-size: 14px;
   font-weight: 700;
+  text-decoration: none;  
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
+}
+.btn-get-started {
+  text-align: center;
 }
 #mc-embedded-subscribe:hover {
     background-image: linear-gradient(to top, #2a76c8 0%, #419ae5 100%);
@@ -321,6 +332,9 @@ section {padding: 50px 0;}
 		margin-bottom: 0;
 		margin-top: 0 !important;
 	}
+	.hero-img {
+    padding: 0 10%;
+  }
 	.inner .hero {
 		min-height: 0;
 	}

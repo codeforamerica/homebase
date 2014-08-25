@@ -1,1 +1,3 @@
 tmp/**
+# Ignore all environment variables.
+/.env
