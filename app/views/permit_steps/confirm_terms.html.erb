@@ -6,7 +6,7 @@
 
   <!-- Intro text -->
   <div class="intro">
-    <h1>Please read these terms and sign your permit online</h1>
+    <h1>Read these terms and sign your permit online</h1>
   </div>
 
     <!-- Check for errors -->
@@ -25,14 +25,14 @@
         <div class="panel-body">
             <%= form_for @permit, url: wizard_path, html: { name: "confirm-form" } do |f| %>
 
-              <p>Additional permits, inspections and documents may be required to complete your project. Separate permits are required for electrical, plumbing and other parts of the project.</p>
+              <p>Additional permits, inspections, and documents may be required to complete your project. Separate permits are required for electrical, plumbing, and other parts of the project.</p>
               
               <!-- Only display slab information if this project will have a foundation -->
               <% if @permit.addition || @permit.acs_struct || @permit.cover %>
                 <p>A profession engineer usually has to inspect new concrete slabs before the concrete is poured. To find a professional engineer, visit the <a href="http://engineers.texas.gov" target="_blank">Texas Board of Professional Engineers website</a>.</p>              
               <% end %>
 
-              <p><strong>If you have any questions or are unsure about this information, please call Development Services Department at (210) 207-1111.</strong></p>
+              <p><strong>If you have any questions or are unsure about this information, you can call Development Services Department at (210) 207-1111.</strong></p>
 
                 <!-- check if there's an error for this field -->
                 <% if @permit.errors[:accepted_terms].length >= 1 %>
@@ -61,7 +61,7 @@
           <p>I have read the rules and information listed on this online application and know the same to be true and correct and hereby agree that if the permit is issued, all provisions of the City Ordinance will be complied with whether herein specified or not. I understand that the permit belongs to the property owner and I am an authorized agent.</p>
 
           <%= f.label :confirmed_name do %>                
-            <p><strong>If you agree, please type your full name as you listed it on the permit application (<%= @permit.owner_name %>) in the box below.</strong></p>
+            <p><strong>To sign this permit, type your full name (<%= @permit.owner_name %>) in the box below:</strong></p>
 
             <!-- check if there's an error for this field -->
             <% if @permit.errors[:confirmed_name].length >= 1 %>
