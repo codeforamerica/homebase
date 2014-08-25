@@ -16,14 +16,14 @@
     <!-- address entry -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Enter your home address</h4>
+        <h4>Where you're building this</h4>
       </div>
       <div class="panel-body">
         <!-- Start the address form -->
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Enter the address of the property you're working on.", 
+                        question: "Enter the address of your home you'll do work on.", 
                         helper_text: nil,
                         attribute: :owner_address, 
                         placeholder: "ex. 123 Main St. San Antonio, TX",
