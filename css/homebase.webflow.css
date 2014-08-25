@@ -192,6 +192,9 @@ section.gray.last {
 .white .w-container, .gray .w-container {
   max-width: 770px;
 }
+.full .w-container {
+  max-width: 940px;
+}
 .suzy-sec, section.white {
 
 }
