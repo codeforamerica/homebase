@@ -106,43 +106,43 @@ class Permit < ActiveRecord::Base
   ## Validations on permit_steps#answer_screener ##
 
   # Addition Section
-  validates_presence_of :addition_size, :if => :only_if_screener_addition?, :message => "Please select the size of the room addition."
-  validates_presence_of :addition_num_story, :if => :only_if_screener_addition?, :message => "Please select the number of stories for the room addition."
+  validates_presence_of :addition_size, :if => :only_if_screener_addition?, :message => "Select the size of the room addition."
+  validates_presence_of :addition_num_story, :if => :only_if_screener_addition?, :message => "Select the number of stories for the room addition."
 
   # Accessory Structure Section
-  validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?, :message => "Please select the size of the accessory structure."
-  validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?, :message => "Please select the number of stories for the accessory structure."
+  validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?, :message => "Select the size of the accessory structure."
+  validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?, :message => "Select the number of stories for the accessory structure."
 
   # Deck Section
-  validates_presence_of :deck_size, :if => :only_if_screener_deck?, :message => "Please select the size of the deck."
-  validates_presence_of :deck_grade, :if => :only_if_screener_deck?, :message => "Please select the grade of the deck."
-  validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?, :message => "Please select whether the deck is attached to dwelling or not."
-  validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?, :message => "Please select whether the deck serves a required exit door or not."
+  validates_presence_of :deck_size, :if => :only_if_screener_deck?, :message => "Select the size of the deck."
+  validates_presence_of :deck_grade, :if => :only_if_screener_deck?, :message => "Select the grade of the deck."
+  validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?, :message => "Select whether the deck is attached to dwelling or not."
+  validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?, :message => "Select whether the deck serves a required exit door or not."
 
   # Pool Section
-  validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Please select whether the swimming pool is in ground or above ground."
-  validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Please select the volume of the swimming pool."
+  validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Select whether the swimming pool is in ground or above ground."
+  validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Select the volume of the swimming pool."
 
   # Cover Section
-  validates_presence_of :cover_material, :if => :only_if_screener_cover?, :message => "Please select the material for the carport, patio cover, or porch cover."
+  validates_presence_of :cover_material, :if => :only_if_screener_cover?, :message => "Select the material for the carport, patio cover, or porch cover."
 
   # Window Section
-  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Please select whether you are only replacing broken glass or not."
+  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Select whether you are only replacing broken glass or not."
   
   # Door Section
-  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?, :message => "Please select whether you are only replacing doors on their existing hinges or not."
+  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?, :message => "Select whether you are only replacing doors on their existing hinges or not."
   
   # Wall Section
-  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?, :message => "Please select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?, :message => "Select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
   
   # Siding Section
-  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?, :message => "Please select whether you are only placing new siding over existing siding or not."
+  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?, :message => "Select whether you are only placing new siding over existing siding or not."
   
   # Floor Section
-  validates_presence_of :floor_covering, :if => :only_if_screener_floor?, :message => "Please select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+  validates_presence_of :floor_covering, :if => :only_if_screener_floor?, :message => "Select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
 
   # Contractor Section
-  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
+  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Select whether you are using a contractor or not in this project."
 
   # Home Address Section
   validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
@@ -162,13 +162,13 @@ class Permit < ActiveRecord::Base
   validates_presence_of :addition_area, :if => :active_or_details_addition?, :message => "Please enter the size of addition in square feet."
   validates_numericality_of :addition_area, :if => :only_if_addition_presence?, :message => "Please enter the size of addition in square feet."
   validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
-  validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Please select an air conditioning / heating system."
+  validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Select an air conditioning / heating system."
 
   # Window Section
-  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are repairing."
+  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Specify the number of windows you are repairing."
   
   # Door Section
-  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Please specify the number of doors you are repairing."
+  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Specify the number of doors you are repairing."
 
   # Final Info Section
   validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
