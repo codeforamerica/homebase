@@ -14,7 +14,7 @@
   <% if helper_text %>
     <p class="help-block"><%= helper_text %></p>
   <% end %>
-  
+
   <% if model_attribute.blank? %>
     <%= f.select  attribute, 
                   options_for_select(options), 
