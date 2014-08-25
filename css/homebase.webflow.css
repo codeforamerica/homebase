@@ -248,7 +248,7 @@ section {padding: 50px 0;}
 	box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
   transition: all .2s ease;
 }
-#mc-embedded-subscribe, .btn-get-started {
+#mc-embedded-subscribe, .btn-main {
   padding: 16px 31px;
   background-color: #1879d4;
   background-clip: padding-box;
@@ -266,13 +266,11 @@ section {padding: 50px 0;}
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
-.btn-get-started {
-  text-align: center;
-}
-#mc-embedded-subscribe:hover {
+
+#mc-embedded-subscribe:hover, .btn-main:hover {
     background-image: linear-gradient(to top, #2a76c8 0%, #419ae5 100%);
 }
-#mc-embedded-subscribe:active {
+#mc-embedded-subscribe:active, .btn-main:active {
     background-image: linear-gradient(to top, #2c8fe3 0%, #1367c2 100%);
     transform: translateY(1px);
 }
