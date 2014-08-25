@@ -145,22 +145,22 @@ class Permit < ActiveRecord::Base
   validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Select whether you are using a contractor or not in this project."
 
   # Home Address Section
-  validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
+  validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Enter a San Antonio address."
   validates_with AddressValidator, :if => :only_if_address_presence?
   
   ## Validations on permit_steps#enter_details ##
 
   # Basic Information Section
-  validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
+  validates_presence_of :owner_name, :if => :active_or_details?, :message => "Enter home owner name."
   # Validator for owner_address above at permit_steps#answer_screener
-  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Please enter your valid email address (for example, john@email.com)"
-  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i, :message => "Please enter a valid phone number (for example, 210-555-5555)"
+  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Enter your valid email address (for example, john@email.com)"
+  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i, :message => "Enter a valid phone number (for example, 210-555-5555)"
 
   # Addition Section
-  validates_presence_of :house_area, :if => :active_or_details_addition?, :message => "Please enter the size of house in square feet."
-  validates_numericality_of :house_area, :if => :only_if_house_presence?, :message => "Please enter the size of house in square feet."
-  validates_presence_of :addition_area, :if => :active_or_details_addition?, :message => "Please enter the size of addition in square feet."
-  validates_numericality_of :addition_area, :if => :only_if_addition_presence?, :message => "Please enter the size of addition in square feet."
+  validates_presence_of :house_area, :if => :active_or_details_addition?, :message => "Enter the size of house in square feet."
+  validates_numericality_of :house_area, :if => :only_if_house_presence?, :message => "Enter the size of house in square feet."
+  validates_presence_of :addition_area, :if => :active_or_details_addition?, :message => "Enter the size of addition in square feet."
+  validates_numericality_of :addition_area, :if => :only_if_addition_presence?, :message => "Enter the size of addition in square feet."
   validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
   validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Select an air conditioning / heating system."
 
@@ -171,8 +171,8 @@ class Permit < ActiveRecord::Base
   validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Specify the number of doors you are repairing."
 
   # Final Info Section
-  validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
-  validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
+  validates_presence_of :work_summary, :if => :active_or_details?, :message => "Enter a work summary."
+  validates_presence_of :job_cost, :if => :active_or_details?, :message => "Enter the job cost."
   validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/, :message => "Job cost has an invalid format, it should be like 1000000.00"
   validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000 , :message => "Job cost should be between the range of 0.00 to 1000000000000.00"  
 
