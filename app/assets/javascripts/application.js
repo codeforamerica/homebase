@@ -26,7 +26,6 @@
 //= require site/logotooltip
 //= require site/timeoutmodal
 //= require site/webfontloader
-//= require site/uservoice
 //
 //// Permits
 //= require permits/new

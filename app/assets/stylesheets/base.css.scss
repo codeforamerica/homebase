@@ -267,14 +267,11 @@ h1 {
 
 /* styles for #enter_details */
 
-.has-error p { //styles error helper text
-  font-weight: 700;
+.has-error p, .field_with_errors * { //styles error helper text
   color: $brand-danger;
 }
-
-.field_with_errors .form-control { //styles error helper text
+.has-error p, .field_with_errors .form-control { //styles error helper text
   font-weight: 700;
-  color: $brand-danger;
 }
 .multi-form {
   .form-group {
@@ -323,24 +320,6 @@ label {
   display: block;
 }
 
-/* Uservoice styles */
-
-.uv-link {
-  position: fixed;
-  right: 40px;
-  bottom: 0;
-  background-color: #df4949;
-  border-radius: 5px 5px 0 0;
-  color: white;
-  padding: 6px 12px;
-}
-.uv-link:hover, .uv-link:focus {
-  background-color: #da2c2c;
-  color: #fff;
-  text-decoration: none;
-}
-
-
 /* Mobile styles */
 
 @media (max-width: $screen-sm-min) {
@@ -382,8 +361,5 @@ label {
         opacity: .5;
       }
     }
-  }
-  .uv-link {
-    display: none;
   }
 }
