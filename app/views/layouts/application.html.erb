@@ -7,6 +7,8 @@
         [DEVELOPMENT]
       <% end %>
     </title>
+    <meta http-equiv="Cache-control" content="public">
+    <META HTTP-EQUIV="Expires" CONTENT="-1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Webflow">
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -20,8 +22,6 @@
     <!-- modal -->
     <%= render partial: "layouts/timeout" %>
     <!-- ./modal -->
-
-
 
     <!-- alert -->
     <%= render partial: "layouts/alert" %>
