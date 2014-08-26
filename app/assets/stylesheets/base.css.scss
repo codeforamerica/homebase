@@ -70,7 +70,7 @@ h1 {
 .tagline {
   color: #999;
   font-size: 12px;
-  margin-left: 4px;
+  margin-left: 7px;
   position: relative;
   top: -1px;
 }
@@ -232,6 +232,43 @@ h1 {
 
 /* styles for #new (first step) */
 
+.btn-block {
+  margin-top: 15px;
+  font-family: Montserrat, sans-serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+.btn-block.long {
+  margin-top: -2px;
+  padding-top: 8px;
+  line-height: 1.4em;
+}
+.project-block {
+  width: 100%;
+  height: 116px;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  text-align: center;
+  text-decoration: none;
+}
+.project-row {
+  padding-bottom: 20px;
+}
+.project-text {
+  padding-right: 15px;
+  padding-left: 15px;
+  font-family:'Open Sans', sans-serif;
+  color: #333;
+  font-size: 11px;
+  line-height: 1.4em;
+}
+.project-icon {
+  max-height: 62px;
+  padding-top: 15px;
+}
 .panel-info-addition { // styles for little green house ... @TODO refactor this to make it work for more project panels
   img { // 
     float:left;
@@ -254,10 +291,16 @@ h1 {
 }
 .new_permit .btn {
   margin-top: 20px;
-  margin-left: 10px;
 }
 .new_permit {
   padding-bottom: 30px;
+}
+.new_permit .col-md-4 {
+  padding: 0 10px 20px 10px;
+}
+.new_permit .row {
+  margin-left: -10px;
+  margin-right: -10px;
 }
 
 /* styles for #project_details */
@@ -323,17 +366,54 @@ label {
   display: block;
 }
 
-/* Mobile styles */
+/* Alert styles */
+.alert-ie {
+  border-radius: 0;
+  text-align: center;
+}
+.alert-ie * {
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: left;
+}
+.alert-ie h4 {
+  margin-bottom: 12.5px;
+}
+
+/* Uservoice styles */
+
+.uv-link {
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+  background-color: #df4949;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  padding: 6px 12px;
+}
+.uv-link:hover, .uv-link:focus {
+  background-color: #da2c2c;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* Mobile styles (tablets, 768px and down) */
 
 @media (max-width: $screen-sm-min) {
   h1 {
     font-size: 2em; // shrink the section headers
   }
-
   .container#content {
     margin-top:0; // we don't need this margin anymore
   }
-
+  .new_permit .col-md-4 {
+    padding-bottom: 5px;
+  }
+  .tagline {
+    display: block;
+    margin: 0;
+  }     
   #sidebar {
     margin-bottom: 25px;
     text-transform: uppercase;
@@ -365,4 +445,30 @@ label {
       }
     }
   }
+  .uv-link {
+    display: none;
+  }
+}
+
+/* Extra small devices (phones, less than 479px) */
+
+@media (max-width: 479px) {
+  .new_permit .col-md-4 {
+    padding-bottom: 3px;
+  }
+  .btn-block {
+    position: relative;
+    line-height: 32px;
+  }
+  .project-block {
+    height: 60px;
+    display: inline-block;
+  }
+  .project-icon {
+    padding: 12px 0px 12px 22px;
+    float: left;
+  }
+  .project-block .clearfix {
+    display: none;
+  }  
 }
