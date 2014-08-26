@@ -1,40 +1,49 @@
-<div class="session">
+
   <% if session[:selected_addition] || session[:selected_acs_struct] || session[:selected_deck] || session[:selected_pool] || session[:selected_cover] || session[:selected_window] || session[:selected_door] || session[:selected_wall] || session[:floor] || session[:siding] %>
-    <p>Welcome back!  Do you want to continue with your selected project from last time?</p>
-    <ul>
-      <% if session[:selected_addition] %>
-        <li>Room Addition</li>
-      <% end %>
-      <% if session[:selected_acs_struct] %>
-        <li>Shed and Garage</li>
-      <% end %> 
-      <% if session[:selected_deck] %>
-        <li>Deck</li>
-      <% end %> 
-      <% if session[:selected_pool] %>
-        <li>Swimming Pool</li>
-      <% end %>
-      <% if session[:selected_cover] %>
-        <li>Carports and Outdoor Cover</li>
-      <% end %>
-      <% if session[:selected_window] %>
-        <li>Window</li>
-      <% end %>
-      <% if session[:selected_door] %>
-        <li>Door</li>
-      <% end %>
-      <% if session[:selected_wall] %>
-        <li>Wall</li>
-      <% end %>
-      <% if session[:selected_floor] %>
-        <li>Floor</li>
-      <% end %>
-      <% if session[:selected_siding] %>
-        <li>Replace Siding</li>
-      <% end %>
-    </ul>
-    <button type="button" class="btn btn-default">YES, I want to continue!</button>
-    <%= link_to 'NO, I want to restart the session', '/reset', class: "btn btn-primary" %>
+
+    <div class="alert alert-warning session" role="alert">
+    <button class="close" data-dismiss="alert" type="button">
+      <span aria-hidden="true">×</span>
+      <span class="sr-only">Close</span>
+    </button> 
+    <h4>Welcome back!  Do you want to continue with your selected project from last time?</h4>
+    <p>
+      <ul>
+        <% if session[:selected_addition] %>
+          <li>Room Addition</li>
+        <% end %>
+        <% if session[:selected_acs_struct] %>
+          <li>Shed and Garage</li>
+        <% end %> 
+        <% if session[:selected_deck] %>
+          <li>Deck</li>
+        <% end %> 
+        <% if session[:selected_pool] %>
+          <li>Swimming Pool</li>
+        <% end %>
+        <% if session[:selected_cover] %>
+          <li>Carports and Outdoor Cover</li>
+        <% end %>
+        <% if session[:selected_window] %>
+          <li>Window</li>
+        <% end %>
+        <% if session[:selected_door] %>
+          <li>Door</li>
+        <% end %>
+        <% if session[:selected_wall] %>
+          <li>Wall</li>
+        <% end %>
+        <% if session[:selected_floor] %>
+          <li>Floor</li>
+        <% end %>
+        <% if session[:selected_siding] %>
+          <li>Replace Siding</li>
+        <% end %>
+      </ul>
+    </p>
+    <br>
+    <button type="button" data-dismiss="alert" class="btn btn-warning">Continue application</button>
+    <%= link_to 'Start over', '/reset', class: "btn btn-primary" %>
   <% end %>
 </div>
 
