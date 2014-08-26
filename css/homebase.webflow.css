@@ -73,8 +73,9 @@ a {
   background-color: transparent;
   font-family: Montserrat, sans-serif;
   color: white;
-  font-size: 26px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .hero-heading {
   margin-top: 33px;
@@ -211,6 +212,9 @@ section {padding: 50px 0;}
 }
 .hero-img {
   padding: 0 20%;
+  display: table;
+  margin: 0 auto;
+  width: 80%;
 }
 .house-img {
   padding-top: 39px;
@@ -222,16 +226,15 @@ section {padding: 50px 0;}
 }
 #mce-EMAIL {
 	background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMTEiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMyQzRGNkQiIGQ9Ik0wIDB2MTFoMTZWMEgwek0xMy43IDFMNy45IDYuOCAyLjIgMUgxMy43ek0xNSA5TDEyLjEgNmwtMC43IDAuN0wxNC42IDEwSDEuNGwzLjMtMy4zTDMuOSA2IDEgOVYxLjJMNy4yIDcuNWwwLjcgMC43TDguNyA3LjUgMTUgMS4xVjl6Ii8+PC9zdmc+Cg==") no-repeat scroll 15px 18px padding-box rgba(11, 20, 26, 0.2);
-  width: 40%;
-  margin-right: 12px;
-  margin-left: 20%;
+  width: 100%;
+  margin-bottom: 15px;
 	padding: 11px 20px 11px 48px;
   float: left;
-  border: 2px solid #adf7ff !important;
+  border: 2px solid gray !important;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.36);
   font-family: proxima-nova-soft, sans-serif;
-  color: #29646a;
+  color: gray;
   font-size: 19px;
 }
 #mce-EMAIL::-webkit-input-placeholder {
@@ -241,7 +244,7 @@ section {padding: 50px 0;}
 	box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
   transition: all .2s ease;
 }
-#mc-embedded-subscribe {
+.lets-go {
   padding: 16px 31px;
   background-color: #1879d4;
   background-clip: padding-box;
@@ -258,21 +261,15 @@ section {padding: 50px 0;}
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
-#mc-embedded-subscribe:hover {
+.lets-go:hover {
     background-image: linear-gradient(to top, #2a76c8 0%, #419ae5 100%);
 }
-#mc-embedded-subscribe:active {
+.lets-go:active {
     background-image: linear-gradient(to top, #2c8fe3 0%, #1367c2 100%);
     transform: translateY(1px);
 }
 #mc_embed_signup {
 	padding-bottom: 15px;
-}
-.form-text {
-  font-family: proxima-nova-soft, sans-serif;
-  color: #29646a;
-  font-size: 16px;
-  text-align: center;
 }
 .w--nav-menu-open, .w-nav-button.w--open {
     background: none repeat scroll 0 0 #062d32;
@@ -304,6 +301,10 @@ section {padding: 50px 0;}
 .inner .highlight {
 	color: yellow;
 }
+
+/* Some additions from david */
+
+
 
 /* CONTACT */
 .contact .hero {
@@ -337,12 +338,61 @@ section {padding: 50px 0;}
 	#mce-EMAIL {
 		margin-bottom: 10px;
 	}	
-	#mc_embed_signup {
-	  padding-left: 16px;
-	  padding-right: 16px;
-	}
 	section {
 	    padding: 20px 0;
 	}
-	
+  .hero-img {
+      width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .w-container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+/* david stuff */
+
+.hero-heading {
+  margin-top: 50px;
+}
+
+a.button.lets-go {
+  display: table;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.divider {
+  background-color: #428287;
+  height: 1px;
+  border: none;
+  margin: 50px 0;
+}
+
+.subhead {
+  text-align: center;
+}
+
+.comics {
+  text-align: center;
+}
+
+.bottom-trailer p {
+  font-size: 16px;
+  color: black;
+}
+
+.footer-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h6 {
+  color: black;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
 }
