@@ -159,7 +159,7 @@ function test()
   var stateObj = {};
   stateObj.selected_projects = selected_projects;
   console.log(stateObj);
-  history.pushState(stateObj);
+  history.pushState(stateObj, "Homebase", document.URL);
   console.log(History.state);
   console.log("Test");
 }
