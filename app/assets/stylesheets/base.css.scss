@@ -323,6 +323,20 @@ label {
   display: block;
 }
 
+/* Alert styles */
+.alert-ie {
+  border-radius: 0;
+  text-align: center;
+}
+.alert-ie * {
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: left;
+}
+.alert-ie h4 {
+  margin-bottom: 12.5px;
+}
+
 /* Uservoice styles */
 
 .uv-link {
