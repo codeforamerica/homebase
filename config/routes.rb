@@ -5,9 +5,12 @@ Rails.application.routes.draw do
 
   root to: 'permits#new'
 
-  resources :permits
+  #resources :permits
   resources :permit_steps
 
+  get '/permits', to: 'permits#new'
+  post '/permits', to: 'permits#create'
+  
   # This will reset session variables
   get '/reset' => 'application#reset'
 

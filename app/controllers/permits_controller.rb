@@ -4,18 +4,18 @@ class PermitsController < ApplicationController
 
   def new
     puts "========in permit_new: full path: #{request.fullpath}"
-    @permit = Permit.new do | pt |
-      pt.selected_addition = session[:selected_addition]
-      pt.selected_acs_struct = session[:selected_acs_struct]
-      pt.selected_deck = session[:selected_deck]
-      pt.selected_pool = session[:selected_pool]
-      pt.selected_cover = session[:selected_cover]
-      pt.selected_window = session[:selected_window]
-      pt.selected_door = session[:selected_door]
-      pt.selected_wall = session[:selected_wall]
-      pt.selected_siding = session[:selected_siding]
-      pt.selected_floor = session[:selected_floor]
-    end
+    @permit = Permit.new #do | pt |
+    #   pt.selected_addition = session[:selected_addition]
+    #   pt.selected_acs_struct = session[:selected_acs_struct]
+    #   pt.selected_deck = session[:selected_deck]
+    #   pt.selected_pool = session[:selected_pool]
+    #   pt.selected_cover = session[:selected_cover]
+    #   pt.selected_window = session[:selected_window]
+    #   pt.selected_door = session[:selected_door]
+    #   pt.selected_wall = session[:selected_wall]
+    #   pt.selected_siding = session[:selected_siding]
+    #   pt.selected_floor = session[:selected_floor]
+    # end
     puts "*****************selected_addition: #{session[:selected_addition]}"
     puts "***********going to clear out session"
     # session.delete :selected_addition
