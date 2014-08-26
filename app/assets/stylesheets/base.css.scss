@@ -366,6 +366,38 @@ label {
   display: block;
 }
 
+/* Alert styles */
+.alert-ie {
+  border-radius: 0;
+  text-align: center;
+}
+.alert-ie * {
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: left;
+}
+.alert-ie h4 {
+  margin-bottom: 12.5px;
+}
+
+/* Uservoice styles */
+
+.uv-link {
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+  background-color: #df4949;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  padding: 6px 12px;
+}
+.uv-link:hover, .uv-link:focus {
+  background-color: #da2c2c;
+  color: #fff;
+  text-decoration: none;
+}
+
+
 /* Mobile styles (tablets, 768px and down) */
 
 @media (max-width: $screen-sm-min) {
@@ -412,6 +444,9 @@ label {
         opacity: .5;
       }
     }
+  }
+  .uv-link {
+    display: none;
   }
 }
 
