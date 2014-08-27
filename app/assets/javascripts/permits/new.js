@@ -1,5 +1,3 @@
-// alert("new.js called"); // neither is this called in IE11
-// alert("In new.js: " + document.referrer);
 var selected_projects = [];
 
 $(document).ready(function() {
@@ -18,25 +16,15 @@ $(document).ready(function() {
       if (proj_index == -1) {
         // add item to array
         selected_projects.push(clickedButton);
+        selectProject(clickedButton);
       } else {
         // remove item from array
         selected_projects.splice(proj_index, 1);
+        unselectProject(clickedButton);
       }
 
       console.log(selected_projects);
-
-      // turn the id we got from clickedButton into a class, so we can show the correct "Your Project" sidebar icon
-      chosenProject = (".").concat(clickedButton);
-
-      // grab the class for the clickedButton, so we can add the success class and change its color
-      clickedButtonClass = (".pick-").concat(clickedButton);
-
-      // show the correct "Your Project" icon in sidebar
-      $(chosenProject).toggleClass("displayed");
-
-      // give the clicked button the success class, so it will change color
-      $(clickedButtonClass).toggleClass("btn-success");
-
+    
     });
   });
 });
@@ -48,27 +36,44 @@ window.addEventListener('popstate', function(event) {
     selected_projects = event.state["selected_projects"];
     for (i = 0; i < selected_projects.length; i++) {
       console.log(selected_projects[i]);
-      clickedButtonClass = (".pick-").concat(selected_projects[i]);
-      $(clickedButtonClass).toggleClass("btn-success", true);
+      selectProject(selected_projects[i]);
 
-      chosenProject = (".").concat(selected_projects[i]);
-      $(chosenProject).toggleClass("displayed", true);
-
-      proj_index = selected_projects.indexOf(selected_projects[i]);
-      if (proj_index == -1) {
-        selected_projects.push(selected_projects[i]);
-      }
-
+      // @TODO: don't really understand why once I move the following to toggleProject, first page behaves super weird
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
     }
   }
 });
 
-  // $("btn-success").each(function()) {
-  //   existingClickedButton = $(this).attr.("id");
-  //   proj_index = selected_projects.indexOf(existingClickedButton);
-  //   if (proj_index == -1) {
-  //     selected_projects.push(existingClickedButton);
-  //   }
-  // };
+function selectProject(project)
+{
+  toggleProject(project, true);
+}
+
+function unselectProject(project)
+{
+  toggleProject(project, false);
+}
+
+function toggleProject(project, toggle)
+{
+  // grab the class for the clickedButton, so we can add the success class and change its color
+  clickedButtonClass = (".pick-").concat(project);
+  // give the clicked button the success class, so it will change color
+  $(clickedButtonClass).toggleClass("btn-success", toggle);
+
+  // turn the id we got from clickedButton into a class, so we can show the correct "Your Project" sidebar icon
+  chosenProject = (".").concat(project);
+  // show the correct "Your Project" icon in sidebar
+  $(chosenProject).toggleClass("displayed", toggle);
+}
+
+function saveProjects()
+{
+  var stateObj = {};
+  stateObj.selected_projects = selected_projects;
+  console.log(stateObj);
+  history.pushState(stateObj, "Homebase", document.URL);
+  console.log(History.state);
+  console.log("Test");
+}
