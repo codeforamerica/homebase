@@ -30,15 +30,12 @@ $(document).ready(function() {
 });
 
 window.addEventListener('popstate', function(event) {
-  console.log('popstate fired');
-  console.log(event.state);
   if (event.state) {
     selected_projects = event.state["selected_projects"];
     for (i = 0; i < selected_projects.length; i++) {
-      console.log(selected_projects[i]);
       selectProject(selected_projects[i]);
 
-      // @TODO: don't really understand why once I move the following to toggleProject, first page behaves super weird
+      // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
     }
@@ -72,8 +69,5 @@ function saveProjects()
 {
   var stateObj = {};
   stateObj.selected_projects = selected_projects;
-  console.log(stateObj);
   history.pushState(stateObj, "Homebase", document.URL);
-  console.log(History.state);
-  console.log("Test");
 }
