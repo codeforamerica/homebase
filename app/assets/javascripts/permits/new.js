@@ -30,6 +30,8 @@ $(document).ready(function() {
 });
 
 window.addEventListener('popstate', function(event) {
+  console.log("poping state triggered");
+  console.log(event.state);
   if (event.state) {
     selected_projects = event.state["selected_projects"];
     for (i = 0; i < selected_projects.length; i++) {
@@ -67,7 +69,9 @@ function toggleProject(project, toggle)
 
 function saveProjects()
 {
+  console.log("pushing states");
   var stateObj = {};
   stateObj.selected_projects = selected_projects;
   history.pushState(stateObj, "Homebase", document.URL);
+  console.log(stateObj);
 }
