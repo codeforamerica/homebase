@@ -299,6 +299,8 @@ class Permit < ActiveRecord::Base
   def acs_struct_permit_needed?
     if acs_struct_size.eql?('greaterThan120') && acs_struct_num_story.eql?('1Story')
       return true
+    elsif acs_struct_size.eql?('lessThanEqualTo120') && acs_struct_num_story.eql?('1Story')
+      return false
     else
       return nil
     end
@@ -394,6 +396,8 @@ class Permit < ActiveRecord::Base
       if acs_struct_permit_needed?
         permit_needs["permit_needed"].push("Shed/Garage")
         update_attribute("acs_struct", true)
+      elsif acs_struct_permit_needed? == false
+        permit_needs["permit_not_needed"].push("Shed/Garage")
       else
         permit_needs["further_assistance_needed"].push("Shed/Garage")
         update_attribute("acs_struct", nil)
