@@ -29,6 +29,14 @@ $(document).ready(function() {
   });
 });
 
+$(document).on("pagecreate",function(){
+  console.log("pagecreate event fired!");
+});
+
+window.addEventListener("load", function(event) {
+  console.log("page loaded!");
+});
+
 window.addEventListener('popstate', function(event) {
   console.log("poping state triggered");
   console.log(event.state);
