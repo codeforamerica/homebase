@@ -37,6 +37,10 @@ window.addEventListener("load", function(event) {
   console.log("page loaded!");
 });
 
+window.addEventListener('hashchange', function()  {
+  console.log('hashchange fired');
+});
+
 window.addEventListener('popstate', function(event) {
   console.log("poping state triggered");
   console.log(event.state);
@@ -77,6 +81,7 @@ function toggleProject(project, toggle)
 
 function saveProjects()
 {
+  debugger
   console.log("pushing states");
   var stateObj = {};
   stateObj.selected_projects = selected_projects;
