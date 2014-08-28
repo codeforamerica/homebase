@@ -320,6 +320,8 @@ class Permit < ActiveRecord::Base
       return true
     elsif pool_location.eql?('aboveGround') && pool_volume.eql?('moreThan5000')
       return true
+    elsif pool_location.eql?('aboveGround') && pool_volume.eql?('lessThanEqualTo5000')
+      return false
     else
       return nil
     end
@@ -416,6 +418,9 @@ class Permit < ActiveRecord::Base
       if pool_permit_needed?
         permit_needs["permit_needed"].push("Swimming Pool")
         update_attribute("pool", true)
+      elsif pool_permit_needed? == false
+        permit_needs["permit_not_needed"].push("Swimming Pool")
+        update_attribute("pool", false)
       else
         permit_needs["further_assistance_needed"].push("Swimming Pool")
         update_attribute("pool", nil)
