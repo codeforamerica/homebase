@@ -85,6 +85,7 @@ function blah()
 }
 function saveProjects()
 {
+  alert("saving projects");
   debugger
   console.log("pushing states");
   var stateObj = {};
