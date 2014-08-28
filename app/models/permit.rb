@@ -32,8 +32,6 @@ class Permit < ActiveRecord::Base
                 :deck_size, :deck_grade, :deck_dwelling_attach, :deck_exit_door,
                 # Pool
                 :pool_location, :pool_volume,
-                # Cover
-                :cover_material,
                 # Window
                 :window_replace_glass,
                 # Door
@@ -83,11 +81,6 @@ class Permit < ActiveRecord::Base
                               options:  [ { value: 'lessThanEqualTo5000', label: "Less than or equal to 5,000 gallons"}, 
                                           { value: 'moreThan5000', label: "More than 5,000 gallons"}]}}
 
-  COVER = { :cover_material =>  { label:    "Material",
-                                  options:  [ { value: 'metalType2', label: "It's metal type II"}, 
-                                              {value: 'woodType5', label: "It's wood type V"}, 
-                                              {value: 'other', label: "Other"}]}}
-
 
   # Room Addition
   AC_OPTIONS = ["None", "Wall Unit", "Extended from Main House", "New Split System"]
@@ -122,9 +115,6 @@ class Permit < ActiveRecord::Base
   # Pool Section
   validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Please select whether the swimming pool is in ground or above ground."
   validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Please select the volume of the swimming pool."
-
-  # Cover Section
-  validates_presence_of :cover_material, :if => :only_if_screener_cover?, :message => "Please select the material for the carport, patio cover, or porch cover."
 
   # Window Section
   validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Please select whether you are only replacing broken glass or not."
@@ -336,13 +326,7 @@ class Permit < ActiveRecord::Base
   end
 
   def cover_permit_needed?
-    if cover_material.eql?('metalType2')
-      return true
-    elsif cover_material.eql?('woodType5')
-      return true
-    else
-      return nil
-    end
+    return true
   end
 
   def window_permit_needed?
