@@ -79,6 +79,10 @@ function toggleProject(project, toggle)
   $(chosenProject).toggleClass("displayed", toggle);
 }
 
+function blah()
+{
+  console.log("floor has been clicked!");
+}
 function saveProjects()
 {
   debugger
