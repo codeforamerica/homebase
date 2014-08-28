@@ -43,7 +43,6 @@ FactoryGirl.define do
     deck_exit_door        'exitDoor'
     pool_location         'inGround'
     pool_volume           'moreThan5000'
-    cover_material        'metalType2'
     window_replace_glass  false
     door_replace_existing false
     wall_general_changes  false
@@ -86,7 +85,6 @@ FactoryGirl.define do
     deck_exit_door        nil
     pool_location         nil
     pool_volume           nil
-    cover_material        nil
     window_replace_glass  nil
     door_replace_existing nil
     wall_general_changes  nil
