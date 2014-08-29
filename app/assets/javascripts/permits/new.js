@@ -77,33 +77,39 @@ window.addEventListener('hashchange', function()  {
   console.log('hashchange fired');
 });
 
-window.onpopstate = function (e) {
- console.log("in onpopstate");
-  // if (e.state) {
-  //   if (e.state.type == 'product-detail' && $('.product-container').length == 1) {
-  //     updateProductDetail(e.state.html);
-  //   }
-  //   else {
-  //     location.reload();
-  //   }
-  // }
-};
-window.addEventListener('popstate', function(event) {
-  console.log("in popstate event");
-  console.log("poping state triggered");
-  console.log(event.state);
-  if (event.state) {
-    selected_projects = event.state["selected_projects"];
-    for (i = 0; i < selected_projects.length; i++) {
-      selectProject(selected_projects[i]);
+// window.onpopstate = function (e) {
+//  console.log("in onpopstate");
+//   // if (e.state) {
+//   //   if (e.state.type == 'product-detail' && $('.product-container').length == 1) {
+//   //     updateProductDetail(e.state.html);
+//   //   }
+//   //   else {
+//   //     location.reload();
+//   //   }
+//   // }
+// };
 
-      // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
-      selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
-      document.getElementById(selectedCheckBox).checked = true;
-      console.log("finish popstate in listener");
-    }
-  }
+window.addEventListener("popstate", function(e) {
+  console.log("in double quote popstate");
 });
+
+
+// window.addEventListener('popstate', function(event) {
+//   console.log("in popstate event");
+//   console.log("poping state triggered");
+//   console.log(event.state);
+//   if (event.state) {
+//     selected_projects = event.state["selected_projects"];
+//     for (i = 0; i < selected_projects.length; i++) {
+//       selectProject(selected_projects[i]);
+
+//       // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
+//       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
+//       document.getElementById(selectedCheckBox).checked = true;
+//       console.log("finish popstate in listener");
+//     }
+//   }
+// });
 
 function selectProject(project)
 {
