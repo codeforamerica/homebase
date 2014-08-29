@@ -19,17 +19,17 @@ window.addEventListener("load", function(event) {
       // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
-      alert("finish popstate in load");
+      console.log("finish popstate in load");
       //History.Adapter.trigger(window,'popstate');
     }
   }
 });
 $("#new_permit_submit").click(function(e){
-    alert("before preventing default");
+    console.log("before preventing default");
      e.preventDefault();
-     alert("before saving projects");
+     console.log("before saving projects");
      saveProjects();
-     alert("before submiting");
+     console.log("before submiting");
      $('#new_permit').submit();
  });
 // $("#new_permit").submit(function(e) {
@@ -78,7 +78,7 @@ window.addEventListener('hashchange', function()  {
 });
 
 window.onpopstate = function (e) {
- alert("in onpopstate");
+ console.log("in onpopstate");
   // if (e.state) {
   //   if (e.state.type == 'product-detail' && $('.product-container').length == 1) {
   //     updateProductDetail(e.state.html);
@@ -89,7 +89,7 @@ window.onpopstate = function (e) {
   // }
 };
 window.addEventListener('popstate', function(event) {
-  alert("in popstate event");
+  console.log("in popstate event");
   console.log("poping state triggered");
   console.log(event.state);
   if (event.state) {
@@ -100,7 +100,7 @@ window.addEventListener('popstate', function(event) {
       // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
-      alert("finish popstate in listener");
+      console.log("finish popstate in listener");
     }
   }
 });
@@ -134,7 +134,7 @@ function blah()
 }
 function saveProjects()
 {
-  //alert("saving projects");
+  console.log("saving projects");
   //debugger
   console.log("pushing states");
   var stateObj = {};
