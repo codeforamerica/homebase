@@ -2,6 +2,19 @@ var selected_projects = [];
 
 $(document).ready(function() {
 
+$("#new_permit_submit").click(function(e){
+     e.preventDefault();
+     saveProjects();
+     $('#new_permit').submit();
+ });
+// $("#new_permit").submit(function(e) {
+//   e.preventDefault();
+//   //alert("about to submit");
+//   saveProjects();
+//   //return true;
+//   $(this).trigger('submit');
+// });
+
   // trigger when user clicks any of the "select a project" buttons
   $ (".project").each(function(i) {
 
@@ -85,11 +98,17 @@ function blah()
 }
 function saveProjects()
 {
-  alert("saving projects");
-  debugger
+  //alert("saving projects");
+  //debugger
   console.log("pushing states");
   var stateObj = {};
   stateObj.selected_projects = selected_projects;
   history.pushState(stateObj, "Homebase", document.URL);
   console.log(stateObj);
 }
+ // $('#new_permit').click(function(e){
+ //     e.preventDefault();
+ //     //do ur stuff.
+ //     $('#formId').submit();
+ // });
+
