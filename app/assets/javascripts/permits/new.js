@@ -20,10 +20,10 @@ window.addEventListener("load", function(event) {
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
       console.log("finish popstate in load");
-      //History.Adapter.trigger(window,'popstate');
     }
   }
 });
+
 $("#new_permit_submit").click(function(e){
     console.log("before preventing default");
     e.stopPropagation();
@@ -33,13 +33,6 @@ $("#new_permit_submit").click(function(e){
      console.log("before submiting");
      $('#new_permit').submit();
  });
-// $("#new_permit").submit(function(e) {
-//   e.preventDefault();
-//   //alert("about to submit");
-//   saveProjects();
-//   //return true;
-//   $(this).trigger('submit');
-// });
 
   // trigger when user clicks any of the "select a project" buttons
   $ (".project").each(function(i) {
@@ -68,33 +61,6 @@ $("#new_permit_submit").click(function(e){
   });
 });
 
-$(document).on("pagecreate",function(){
-  console.log("pagecreate event fired!");
-});
-
-
-
-window.addEventListener('hashchange', function()  {
-  console.log('hashchange fired');
-});
-
-// window.onpopstate = function (e) {
-//  console.log("in onpopstate");
-//   // if (e.state) {
-//   //   if (e.state.type == 'product-detail' && $('.product-container').length == 1) {
-//   //     updateProductDetail(e.state.html);
-//   //   }
-//   //   else {
-//   //     location.reload();
-//   //   }
-//   // }
-// };
-
-window.addEventListener("popstate", function(e) {
-  console.log("in double quote popstate");
-});
-
-
 // window.addEventListener('popstate', function(event) {
 //   console.log("in popstate event");
 //   console.log("poping state triggered");
@@ -112,19 +78,6 @@ window.addEventListener("popstate", function(e) {
 //   }
 // });
 
-    //     $(function() {
-    //         $(window).hashchange(function() {
-    //             alert("hashchange = " + selected_projects); // do something on hashchange
-    //         });
- 
-    //         $(window).hashchange(); // force hashchange onload
- 
-    //         $('#link').click(function(e) {
-    // e.stopPropagation();
-    //             e.preventDefault();
-    //             window.location.hash = '!hello';
-    //         });
-    //     });
 
 function selectProject(project)
 {
@@ -149,10 +102,6 @@ function toggleProject(project, toggle)
   $(chosenProject).toggleClass("displayed", toggle);
 }
 
-function blah()
-{
-  console.log("floor has been clicked!");
-}
 function saveProjects()
 {
   console.log("saving projects");
@@ -163,9 +112,5 @@ function saveProjects()
   history.pushState(stateObj, "Homebase", document.URL);
   console.log(stateObj);
 }
- // $('#new_permit').click(function(e){
- //     e.preventDefault();
- //     //do ur stuff.
- //     $('#formId').submit();
- // });
+
 
