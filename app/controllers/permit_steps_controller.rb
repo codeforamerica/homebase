@@ -38,7 +38,6 @@ class PermitStepsController < ApplicationController
       @permit_acs_struct_screener = Permit::ACS_STRUCT
       @permit_deck_screener = Permit::DECK
       @permit_pool_screener = Permit::POOL
-      @permit_cover_screener = Permit::COVER
 
 
     when :display_permits
@@ -116,7 +115,6 @@ class PermitStepsController < ApplicationController
       @permit_acs_struct_screener = Permit::ACS_STRUCT
       @permit_deck_screener = Permit::DECK
       @permit_pool_screener = Permit::POOL
-      @permit_cover_screener = Permit::COVER
 
       # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
