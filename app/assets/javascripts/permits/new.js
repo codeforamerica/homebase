@@ -16,7 +16,7 @@ window.addEventListener("load", function(event) {
     for (i = 0; i < selected_projects.length; i++) {
       selectProject(selected_projects[i]);
 
-      // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
+      // @TODO: may want to re-visit to see why once I move the following to toggleProject, proj doesn't get selected
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
       console.log("finish popstate in load");
@@ -25,13 +25,13 @@ window.addEventListener("load", function(event) {
 });
 
 $("#new_permit_submit").click(function(e){
-    console.log("before preventing default");
-    e.stopPropagation();
-     e.preventDefault();
-     console.log("before saving projects");
-     saveProjects();
-     console.log("before submiting");
-     $('#new_permit').submit();
+  console.log("before preventing default");
+  e.stopPropagation();
+  e.preventDefault();
+  console.log("before saving projects");
+  saveProjects();
+  console.log("before submiting");
+  $('#new_permit').submit();
  });
 
   // trigger when user clicks any of the "select a project" buttons
