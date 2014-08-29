@@ -51,6 +51,9 @@ $(document).on("pagecreate",function(){
 
 window.addEventListener("load", function(event) {
   console.log("page loaded!");
+  var state = history.state;
+  console.log("state");
+  console.log(state);
 });
 
 window.addEventListener('hashchange', function()  {
