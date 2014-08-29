@@ -3,8 +3,7 @@ class PermitsController < ApplicationController
   include PermitParams
 
   def new
-    @permit = Permit.new
-    reset_session
+    @permit = Permit.new 
   end
 
   def create
