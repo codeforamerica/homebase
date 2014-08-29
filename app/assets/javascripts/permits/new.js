@@ -57,6 +57,17 @@ window.addEventListener('hashchange', function()  {
   console.log('hashchange fired');
 });
 
+window.onpopstate = function (e) {
+ alert("in onpopstate");
+  // if (e.state) {
+  //   if (e.state.type == 'product-detail' && $('.product-container').length == 1) {
+  //     updateProductDetail(e.state.html);
+  //   }
+  //   else {
+  //     location.reload();
+  //   }
+  // }
+};
 window.addEventListener('popstate', function(event) {
   alert("in popstate event");
   console.log("poping state triggered");
