@@ -26,6 +26,7 @@ window.addEventListener("load", function(event) {
 });
 $("#new_permit_submit").click(function(e){
     console.log("before preventing default");
+    e.stopPropagation();
      e.preventDefault();
      console.log("before saving projects");
      saveProjects();
@@ -110,6 +111,20 @@ window.addEventListener("popstate", function(e) {
 //     }
 //   }
 // });
+
+    //     $(function() {
+    //         $(window).hashchange(function() {
+    //             alert("hashchange = " + selected_projects); // do something on hashchange
+    //         });
+ 
+    //         $(window).hashchange(); // force hashchange onload
+ 
+    //         $('#link').click(function(e) {
+    // e.stopPropagation();
+    //             e.preventDefault();
+    //             window.location.hash = '!hello';
+    //         });
+    //     });
 
 function selectProject(project)
 {
