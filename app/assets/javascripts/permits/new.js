@@ -2,6 +2,23 @@ var selected_projects = [];
 
 $(document).ready(function() {
 
+window.addEventListener("load", function(event) {
+  console.log("page loaded!");
+  var state = history.state;
+  console.log("state");
+  console.log(state);
+    if (state) {
+    selected_projects = state["selected_projects"];
+    for (i = 0; i < selected_projects.length; i++) {
+      selectProject(selected_projects[i]);
+
+      // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
+      selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
+      document.getElementById(selectedCheckBox).checked = true;
+      alert("finish popstate");
+    }
+  }
+});
 $("#new_permit_submit").click(function(e){
     alert("before preventing default");
      e.preventDefault();
@@ -49,12 +66,7 @@ $(document).on("pagecreate",function(){
   console.log("pagecreate event fired!");
 });
 
-window.addEventListener("load", function(event) {
-  console.log("page loaded!");
-  var state = history.state;
-  console.log("state");
-  console.log(state);
-});
+
 
 window.addEventListener('hashchange', function()  {
   console.log('hashchange fired');
