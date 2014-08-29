@@ -5,7 +5,11 @@ $(document).ready(function() {
 window.addEventListener("load", function(event) {
   console.log("page loaded!");
   var state = history.state;
-  console.log("state");
+  history.state = null;
+  console.log("state after setting history.state");
+  console.log(state);
+  history.replaceState(null, null, null);
+  console.log("state after replacing state");
   console.log(state);
     if (state) {
     selected_projects = state["selected_projects"];
@@ -16,6 +20,7 @@ window.addEventListener("load", function(event) {
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
       alert("finish popstate in load");
+      //History.Adapter.trigger(window,'popstate');
     }
   }
 });
