@@ -58,6 +58,7 @@ window.addEventListener('hashchange', function()  {
 });
 
 window.addEventListener('popstate', function(event) {
+  alert("in popstate event");
   console.log("poping state triggered");
   console.log(event.state);
   if (event.state) {
@@ -68,6 +69,7 @@ window.addEventListener('popstate', function(event) {
       // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
+      alert("finish popstate");
     }
   }
 });
