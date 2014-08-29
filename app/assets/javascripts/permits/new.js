@@ -3,8 +3,11 @@ var selected_projects = [];
 $(document).ready(function() {
 
 $("#new_permit_submit").click(function(e){
+    alert("before preventing default");
      e.preventDefault();
+     alert("before saving projects");
      saveProjects();
+     alert("before submiting");
      $('#new_permit').submit();
  });
 // $("#new_permit").submit(function(e) {
