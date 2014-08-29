@@ -15,7 +15,7 @@ window.addEventListener("load", function(event) {
       // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
-      alert("finish popstate");
+      alert("finish popstate in load");
     }
   }
 });
@@ -95,7 +95,7 @@ window.addEventListener('popstate', function(event) {
       // @TODO: may want to re-visit to see why once I move the following to toggleProject, first page behaves super weird
       selectedCheckBox = ("permit_selected_").concat(selected_projects[i]).replace("-", "_");
       document.getElementById(selectedCheckBox).checked = true;
-      alert("finish popstate");
+      alert("finish popstate in listener");
     }
   }
 });
