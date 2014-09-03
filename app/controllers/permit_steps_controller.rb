@@ -75,6 +75,12 @@ class PermitStepsController < ApplicationController
 
         File.delete file_path
 
+        @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
+                              @permit.acs_struct ||
+                              @permit.deck ||
+                              @permit.pool ||
+                              @permit.cover
+
       else
         jump_to(:error_page)       
       end
