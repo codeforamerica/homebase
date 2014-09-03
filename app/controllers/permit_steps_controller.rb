@@ -16,6 +16,7 @@ class PermitStepsController < ApplicationController
   steps *(STEPS + ERROR_STEPS)
   
   def show
+
     @permit = current_permit
 
     # Re-populate the permit project selection from session variables
