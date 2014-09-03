@@ -3,9 +3,7 @@ class PermitsController < ApplicationController
   include PermitParams
 
   def new
-    @permit = Permit.new
-    reset_session
-
+    @permit = Permit.new 
   end
 
   def create
@@ -14,7 +12,6 @@ class PermitsController < ApplicationController
       session[:permit_id] = @permit.id
       
       session[:selected_addition] = @permit.to_bool(@permit.selected_addition)
-      puts "in create selected_addition: #{@permit.selected_addition}"
       session[:selected_acs_struct] = @permit.to_bool(@permit.selected_acs_struct)
       session[:selected_deck] = @permit.to_bool(@permit.selected_deck)
       session[:selected_pool] = @permit.to_bool(@permit.selected_pool)

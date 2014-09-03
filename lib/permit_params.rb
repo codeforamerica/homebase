@@ -47,8 +47,6 @@ module PermitParams
     :deck_size, :deck_grade, :deck_dwelling_attach, :deck_exit_door,
     # Pool
     :pool_location, :pool_volume,
-    # Cover
-    :cover_material,
     # Window
     :window_replace_glass,
     # Door

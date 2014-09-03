@@ -4,7 +4,7 @@ feature "Replace walls" do
 
   scenario "when user selects walls that doesn't need permit (Only paint, wallpaper, etc.)" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Walls"
@@ -23,7 +23,7 @@ feature "Replace walls" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -40,7 +40,7 @@ feature "Replace walls" do
   
   scenario "when user selects walls that needs permit (Only paint, wallpaper, etc.)" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Walls"
@@ -59,7 +59,7 @@ feature "Replace walls" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -77,13 +77,13 @@ feature "Replace walls" do
 
     #permit_steps#enter_details
 
-    fill_in "Home owner name*", with: "John Doe"
-    page.has_field?('Address*', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Home owner email address*", with: "john@johndoe.com"
-    fill_in "Home owner phone number*", with: "413-456-3456"
+    fill_in "Homeowner name", with: "John Doe"
+    page.has_field?('Home address', with: "302 Madison St, San Antonio, TX 78204")
+    fill_in "Homeowner email address", with: "john@johndoe.com"
+    fill_in "Homeowner phone number", with: "413-456-3456"
 
-    fill_in "work_summary", with: "Building an addition in my backyard"
-    fill_in "Job cost*", with: "10000"
+    fill_in "Work Summary", with: "Building an addition in my backyard"
+    fill_in "Job Cost", with: "10000"
 
     click_on "Next step"
 
@@ -91,7 +91,7 @@ feature "Replace walls" do
     expect(page).to have_content("Please read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
-    check "accepted-terms"
+    check "permit_accepted_terms"
     fill_in "Enter your name", with: "John Doe"
 
     click_on "I agree"

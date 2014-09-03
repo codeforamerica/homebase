@@ -1,306 +1,264 @@
 <!-- Render the sidebar partial -->
-<%= render partial: "layouts/sidebar", locals: {cur_step: 1} %>
+<%= render partial: "layouts/sidebar", locals: {cur_step: PermitStepsController::STEPS.index(:answer_screener) + 1} %>
 
 <!-- Begin step -->
 <div class="col-sm-9">
-<%#= session.inspect %>
   <h1>Enter your project details</h1>
   <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
-  <!-- Errors: <%#= @permit.errors.messages %> -->
     <!-- error checking -->
     <% if @permit.errors.any? %>
       <div class="alert alert-danger">
         <p><strong>Sorry, there was a problem.  Please check your answers.</strong></p>
       </div>
     <% end %>
+    <!-- ./error checking -->
 
-  <!-- Room Additions section -->
-  <% if @permit.selected_addition %>
+    <!-- address entry -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Room Additions</h4>
+        <h4>Enter your home address</h4>
       </div>
       <div class="panel-body">
-        <p>What best describes your room addition that you are building?</p>
+        <!-- Start the address form -->
+        <div class="form-group">
+          <%= render  partial: "permit_steps/form_helper/text_field", 
+              locals: { f: f, 
+                        question: "Enter the address of the property you're working on.", 
+                        helper_text: nil,
+                        attribute: :owner_address, 
+                        placeholder: "ex. 123 Main St. San Antonio, TX",
+                        input_addon: nil } %>
+        </div>
+      </div><!-- ./panel_body -->
+    </div><!-- panel -->   
+    <!-- ./address entry -->
 
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Size", 
-                                                            attribute: :addition_size, 
-                                                            option: [ { value: 'lessThan1000', 
-                                                                        label: "Less than 1,000 sq ft" }, 
-                                                                      { value: 'greaterThanEqualTo1000', 
-                                                                        label: "Greater than or equal to 1,000 sq ft" }]} %>
+    <% if @permit.selected_addition %>
+      <!-- Room Additions section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Room Additions</h4>
+        </div>
+        <div class="panel-body">
+          <p>What best describes your room addition that you are building?</p>
 
+            <% @permit_addition_screener.each do |attribute, details| %>
 
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Stories", 
-                                                            attribute: :addition_num_story, 
-                                                            option: [ { value: '1Story', 
-                                                                        label: "1 Story" }, 
-                                                                      { value: '2orMoreStories', 
-                                                                        label: "2 or more stories" }]} %>
+              <%= render  partial: "permit_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+
+        </div>
       </div>
-    </div>
-  <% end %><!-- ./Room Additions section -->
+      <!-- ./Room Additions section -->
+    <% end %>
 
-  <!-- Shed/Garage Accessory Structure section -->
-  <% if @permit.selected_acs_struct %>
+    <% if @permit.selected_acs_struct %>
+      <!-- Shed/Garage Accessory Structure section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Shed/Garage</h4>
+        </div>
+        <div class="panel-body">
+          <p>What best describes your shed or garage that you are building?</p>
+
+            <% @permit_acs_struct_screener.each do |attribute, details| %>
+
+              <%= render  partial: "permit_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+
+        </div>
+      </div>
+      <!-- ./Shed/Garage Accessory Structure -->
+    <% end %>
+
+    <% if @permit.selected_deck %>
+      <!-- Deck section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Deck</h4>
+        </div>
+        <div class="panel-body">
+          <p>What best describes your deck that you are building?</p>
+
+            <% @permit_deck_screener.each do |attribute, details| %>
+
+              <%= render  partial: "permit_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+               
+        </div>
+      </div>
+      <!-- ./Deck section -->
+    <% end %>
+
+    <% if @permit.selected_pool %>
+      <!-- Swimming Pool section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Swimming Pool</h4>
+        </div>
+        <div class="panel-body">
+          <p>What best describes your swimming pool that you are building?</p>
+
+            <% @permit_pool_screener.each do |attribute, details| %>
+              
+              <%= render  partial: "permit_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+
+        </div>
+      </div>
+      <!-- ./Swimming Pool section -->
+    <% end %>
+    
+    <% if @permit.selected_window %>
+      <!-- Windows section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Windows</h4>
+        </div>
+        <div class="panel-body">
+          <p>Are you <b>only</b> replacing broken glass?</p>
+
+          <%= render  partial: "permit_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :window_replace_glass, 
+                                option: [ { value: true, 
+                                            label: "Yes" }, 
+                                          { value: false, 
+                                            label: "No" }]} %>         
+        </div>
+      </div>
+      <!-- ./Windows section -->
+    <% end %>
+
+    
+    <% if @permit.selected_door %>
+      <!-- Doors section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Doors</h4>
+        </div>
+        <div class="panel-body">
+          <p>Are you <b>only</b> replacing the existing door on current hinges?</p>
+          <%= render  partial: "permit_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :door_replace_existing, 
+                                option: [ { value: true, 
+                                            label: "Yes" }, 
+                                          { value: false, 
+                                            label: "No" }]} %>        
+        </div>
+      </div>
+      <!-- ./Doors section -->
+    <% end %>
+
+    
+    <% if @permit.selected_wall %>
+      <!-- Walls section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Walls</h4>
+        </div>
+        <div class="panel-body">
+          <p>Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?</p>
+          <%= render  partial: "permit_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :wall_general_changes, 
+                                option: [ { value: true, 
+                                            label: "Yes" }, 
+                                          { value: false, 
+                                            label: "No" }]} %>          
+        </div>
+      </div>
+      <!-- ./Walls section -->
+    <% end %>
+
+    
+    <% if @permit.selected_siding %>
+      <!-- Siding Replacement section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Siding Replacement</h4>
+        </div>
+        <div class="panel-body">
+          <p>Are you <b>only</b> placing new siding over existing siding?</p>
+
+          <%= render  partial: "permit_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :siding_over_existing, 
+                                option: [ { value: true, 
+                                            label: "Yes" }, 
+                                          { value: false, 
+                                            label: "No" }]} %>  
+        </div>
+      </div>
+      <!-- ./Siding Replacement section -->
+    <% end %>
+
+    
+    <% if @permit.selected_floor %>
+      <!-- Floor - Structural Repairs section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Floor - Structural Repairs</h4>
+        </div>
+        <div class="panel-body">
+          <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
+
+          <%= render  partial: "permit_steps/form_helper/radio",
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :floor_covering, 
+                                option: [ { value: true, 
+                                            label: "Yes" }, 
+                                          { value: false, 
+                                            label: "No" }]} %>       
+        </div>
+      </div>
+      <!-- ./Floor-Structural Repairs section -->
+    <% end %>
+   
+    <!-- Contractor section -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Shed/Garage</h4>
+        <h4>Contractor</h4>
       </div>
       <div class="panel-body">
-        <p>What best describes your shed or garage that you are building?</p>
 
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Size", 
-                                                            attribute: :acs_struct_size, 
-                                                            option: [ { value: 'lessThanEqualTo120', 
-                                                                        label: "Less than or equal to 120 sq ft" }, 
-                                                                      { value: 'greaterThan120', 
-                                                                        label: "Greater than 120 sq ft" }]} %>
+        <p>Will you be hiring a contractor to work on your project?</p>
+        <%= render  partial: "permit_steps/form_helper/radio", 
+                    locals: { f: f,
+                              question: nil,
+                              attribute: :contractor, 
+                              option: [ { value: true, 
+                                          label: "Yes" }, 
+                                        { value: false, 
+                                          label: "No" }]} %>            
 
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Stories", 
-                                                            attribute: :acs_struct_num_story, 
-                                                            option: [ { value: '1Story', 
-                                                                        label: "1 Story" }, 
-                                                                      { value: '2orMoreStories', 
-                                                                        label: "2 or more stories" }]} %>       
       </div>
-    </div>
-  <% end %><!-- ./Shed/Garage Accessory Structure -->
+    </div><!-- ./Contractor section -->
 
-  <!-- Deck section -->
-  <% if @permit.selected_deck %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Deck</h4>
-      </div>
-      <div class="panel-body">
-        <p>What best describes your deck that you are building?</p>
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Size", 
-                                                            attribute: :deck_size, 
-                                                            option: [ { value: 'lessThanEqualTo120', 
-                                                                        label: "Less than or equal to 120 sq ft" }, 
-                                                                      { value: 'greaterThan120', 
-                                                                        label: "Greater than 120 sq ft" }]} %>
-
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Grade", 
-                                                            attribute: :deck_grade, 
-                                                            option: [ { value: 'lessThanEqualTo30', 
-                                                                        label: "Less than or equal to 30 inches above grade" }, 
-                                                                      { value: 'moreThan30', 
-                                                                        label: "More than 30 inches above grade" }]} %>
-
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Dwelling Attachment", 
-                                                            attribute: :deck_dwelling_attach, 
-                                                            option: [ { value: 'attachedToDwelling', 
-                                                                        label: "Attached to dwelling" }, 
-                                                                      { value: 'notAttachedToDwelling', 
-                                                                        label: "Not attached to dwelling" }]} %>
-
-
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Exit Door", 
-                                                            attribute: :deck_exit_door, 
-                                                            option: [ { value: 'exitDoor', 
-                                                                        label: "Serves a required exit door" }, 
-                                                                      { value: 'noExitDoor', 
-                                                                        label: "Does not serve a required exit door" }]} %>
-             
-      </div>
-    </div>
-  <% end %><!-- ./Deck section -->
-
-  <!-- Swimming Pool section -->
-  <% if @permit.selected_pool %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Swimming Pool</h4>
-      </div>
-      <div class="panel-body">
-        <p>What best describes your swimming pool that you are building?</p>
-
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Location", 
-                                                            attribute: :pool_location, 
-                                                            option: [ { value: 'inGround', 
-                                                                        label: "Pool is in ground" }, 
-                                                                      { value: 'aboveGround', 
-                                                                        label: "Pool is above ground" }]} %>
-
-          <%= render partial: "screener_question", locals: {f: f, 
-                                                            question: "Volume", 
-                                                            attribute: :pool_volume, 
-                                                            option: [ { value: 'lessThanEqualTo5000', 
-                                                                        label: "Less than or equal to 5,000 gallons" }, 
-                                                                      { value: 'moreThan5000', 
-                                                                        label: "More than 5,000 gallons" }]} %>           
-      </div>
-    </div>
-  <% end %><!-- ./Swimming Pool section -->
-
-  <!-- Carports or Outdoor Covers section -->
-  <% if @permit.selected_cover %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Carports or Outdoor Covers</h4>
-    </div>
-    <div class="panel-body">
-      <p>What best describes your carport, patio cover, or porch cover that you are building?</p>
-
-        <%= render partial: "screener_question", locals: {f: f, 
-                                                          question: "Material", 
-                                                          attribute: :cover_material, 
-                                                          option: [ { value: 'metalType2', 
-                                                                      label: "It's metal type II" }, 
-                                                                    { value: 'woodType5', 
-                                                                      label: "It's wood type V" },
-                                                                    { value: 'other',
-                                                                      label: "Other"}]} %>    
-    </div>
-  </div>
-  <% end %><!-- ./Carports or Outdoor Covers section -->
-
-  <!-- Windows section -->
-  <% if @permit.selected_window %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Windows</h4>
-      </div>
-      <div class="panel-body">
-        <p>Are you <b>only</b> replacing broken glass?</p>
-
-        <%= render partial: "screener_question", locals: {f: f,
-                                                          question: nil,
-                                                          attribute: :window_replace_glass, 
-                                                          option: [ { value: true, 
-                                                                      label: "Yes" }, 
-                                                                    { value: false, 
-                                                                      label: "No" }]} %>         
-      </div>
-    </div>
-    <% end %><!-- ./Windows section -->
-
-  <!-- Doors section -->
-  <% if @permit.selected_door %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Doors</h4>
-      </div>
-      <div class="panel-body">
-        <p>Are you <b>only</b> replacing the existing door on current hinges?</p>
-        <%= render partial: "screener_question", locals: {f: f,
-                                                          question: nil,
-                                                          attribute: :door_replace_existing, 
-                                                          option: [ { value: true, 
-                                                                      label: "Yes" }, 
-                                                                    { value: false, 
-                                                                      label: "No" }]} %>        
-      </div>
-    </div>
-  <% end %><!-- ./Doors section -->
-
-  <!-- Walls section -->
-  <% if @permit.selected_wall %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Walls</h4>
-      </div>
-      <div class="panel-body">
-        <p>Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?</p>
-        <%= render partial: "screener_question", locals: {f: f,
-                                                          question: nil,
-                                                          attribute: :wall_general_changes, 
-                                                          option: [ { value: true, 
-                                                                      label: "Yes" }, 
-                                                                    { value: false, 
-                                                                      label: "No" }]} %>          
-      </div>
-    </div>
-  <% end %><!-- ./Walls section -->
-
-  <!-- Siding Replacement section -->
-  <% if @permit.selected_siding %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Siding Replacement</h4>
-      </div>
-      <div class="panel-body">
-        <p>Are you <b>only</b> placing new siding over existing siding?</p>
-
-        <%= render partial: "screener_question", locals: {f: f,
-                                                          question: nil,
-                                                          attribute: :siding_over_existing, 
-                                                          option: [ { value: true, 
-                                                                      label: "Yes" }, 
-                                                                    { value: false, 
-                                                                      label: "No" }]} %>  
-      </div>
-    </div>
-  <% end %><!-- ./Siding Replacement section -->
-
-  <!-- Floor - Structural Repairs section -->
-  <% if @permit.selected_floor %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>Floor - Structural Repairs</h4>
-      </div>
-      <div class="panel-body">
-        <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
-
-        <%= render partial: "screener_question", locals: {f: f,
-                                                          question: nil,
-                                                          attribute: :floor_covering, 
-                                                          option: [ { value: true, 
-                                                                      label: "Yes" }, 
-                                                                    { value: false, 
-                                                                      label: "No" }]} %>       
-      </div>
-    </div>
-  <% end %><!-- ./Floor-Structural Repairs section -->
- 
-  <!-- Contractor section -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Contractor</h4>
-    </div>
-    <div class="panel-body">
-      <p>Will you be hiring a contractor to work on your project?</p>
-      <%= render partial: "screener_question", locals: {f: f,
-                                                        question: nil,
-                                                        attribute: :contractor, 
-                                                        option: [ { value: true, 
-                                                                    label: "Yes" }, 
-                                                                  { value: false, 
-                                                                    label: "No" }]} %>            
-    </div>
-  </div><!-- ./Contractor section -->
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Enter your address</h4>
-    </div>
-    <div class="panel-body">
-      <!-- Start the address form -->
-      <p>Enter the address of the property you're working on.</p>
-
-
-      <!-- address entry -->
-      <div class="form-group <%= :owner_address %>">
-        <%= f.text_field :owner_address, placeholder: "Enter your address", class: "form-control input-lg" %>
-      </div>
-    </div><!-- ./panel_body -->
-  </div><!-- panel -->
- 
-  <!-- ./address entry -->
-
-  <!-- submit button -->
-  <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
+    <!-- submit button -->
+    <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
 
   <% end %>
 </div> <!-- ./col-sm-9 -->

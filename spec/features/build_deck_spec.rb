@@ -6,7 +6,7 @@ feature "Build a deck" do
                                                         attached to dwelling & 
                                                         serve a required exit door)" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -37,7 +37,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -54,13 +54,13 @@ feature "Build a deck" do
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
-    fill_in "Home owner name*", with: "John Doe"
-    page.has_field?('Address*', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Home owner email address*", with: "john@johndoe.com"
-    fill_in "Home owner phone number*", with: "413-456-3456"
+    fill_in "Homeowner name", with: "John Doe"
+    page.has_field?('Home address', with: "302 Madison St, San Antonio, TX 78204")
+    fill_in "Homeowner email address", with: "john@johndoe.com"
+    fill_in "Homeowner phone number", with: "413-456-3456"
 
-    fill_in "work_summary", with: "Building a new shed in my backyard"
-    fill_in "Job cost*", with: "10000"
+    fill_in "Work Summary", with: "Building a new shed in my backyard"
+    fill_in "Job Cost", with: "10000"
 
     click_on "Next step"
 
@@ -68,14 +68,14 @@ feature "Build a deck" do
     expect(page).to have_content("Please read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
-    check "accepted-terms"
+    check "permit_accepted_terms"
     fill_in "Enter your name", with: "John Doe"
 
     click_on "I agree"
 
-  #   # This is odd it is not working, as if button wasn't clicked
-  #   # expect(current_path).to eq('/permit_steps/display_summary')
-  #   # expect(page).to have_content("Almost done! We filled in your permit applications")
+    # This is odd it is not working, as if button wasn't clicked
+    # expect(current_path).to eq('/permit_steps/display_summary')
+    # expect(page).to have_content("Almost done! We filled in your permit applications")
 
   end
 
@@ -84,7 +84,7 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -115,7 +115,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -136,7 +136,7 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -167,7 +167,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -187,7 +187,7 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -218,7 +218,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -238,7 +238,7 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -269,7 +269,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -289,7 +289,7 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -320,7 +320,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -340,7 +340,7 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -371,7 +371,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -391,7 +391,7 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -422,7 +422,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -444,7 +444,7 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     serve a required exit door)" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -475,7 +475,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -495,7 +495,7 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -526,7 +526,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -547,7 +547,7 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -578,7 +578,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -598,7 +598,7 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -629,7 +629,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -649,7 +649,7 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -680,7 +680,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -700,7 +700,7 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -731,7 +731,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -751,7 +751,7 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -782,7 +782,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
@@ -802,7 +802,7 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit new_permit_path
+    visit '/permits'
 
     # permit#new
     check "Deck"
@@ -833,7 +833,7 @@ feature "Build a deck" do
     end
 
     within "div.owner_address" do
-      fill_in "Enter your address", with: "302 Madison St, San Antonio"
+      fill_in "Enter the address of the property you're working on.", with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"

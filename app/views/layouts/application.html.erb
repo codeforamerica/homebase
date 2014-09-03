@@ -1,49 +1,97 @@
 <!DOCTYPE html>
 <html data-wf-site="532cb8f39ff60e067100012a">
-<head>
-  <meta charset="utf-8">
-  <title>Homebase
-    <% if Rails.env.development? %>
-      [DEVELOPMENT]
-    <% end %>
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Webflow">
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
+  <head>
+    <meta charset="utf-8">
+    <title>Homebase
+      <% if Rails.env.development? %>
+        [DEVELOPMENT]
+      <% end %>
+    </title>
+    <!--
+    <meta http-equiv="Cache-control" content="no-store">
+    <META HTTP-EQUIV="Expires" CONTENT="-1">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Webflow">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
 
-  <!-- load webfonts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-  <script>
-    WebFont.load({
-      google: {
-        families: ["Montserrat:400,700","Open Sans:300,400,600,700,800"]
-      }
-    });
-  </script>
+  <body>
 
-  <%= favicon_link_tag 'favicon.ico' %>
-</head>
+    <!-- modal -->
+    <%= render partial: "layouts/timeout" %>
+    <!-- ./modal -->
 
-<body>
+    <!-- alert -->
+    <%= render partial: "layouts/alert" %>
+    <!-- ./alert -->
 
-  <!-- modal -->
-  <%= render partial: "layouts/timeout" %>
+    <!-- Any page-specific header should go here --> 
+    <%= yield :head %>
+    <!-- ./page-specific header -->
 
-  <!-- header -->
-  <div class="container" id="header">
-    <!-- render the header partial -->
-    <%= render partial: "layouts/header" %>
-  </div>
-
-  <!-- body -->
-  <div class="container" id="content">
-    <div class="row">
-      <%= yield %>
+    <!-- header -->
+    <div class="container" id="header">
+      <!-- render the header partial -->
+      <%= render partial: "layouts/header" %>
     </div>
-  </div>
+    <!-- ./header -->
 
-  <%= render "layouts/footer"%>
+    <div class="container" id="content">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <%= render "layouts/footer"%>
+    <!-- ./footer -->
+
+    <!-- @TODO refactor this out to javascript asset pipeline -->
+    <script>
+      <% if @permit.to_bool(@permit.selected_addition) %>
+        $(".addition").toggleClass("displayed", true);
+        $(".pick-addition").toggleClass("btn-success", true);
+      <% end %>
+      <% if @permit.to_bool(@permit.selected_acs_struct) %>
+        $(".acs-struct").toggleClass("displayed", true);
+        $(".pick-acs-struct").toggleClass("btn-success", true);
+      <% end %>    
+      <% if @permit.to_bool(@permit.selected_deck) %>
+        $(".deck").toggleClass("displayed", true);
+        $(".pick-deck").toggleClass("btn-success", true);
+      <% end %>
+      <% if @permit.to_bool(@permit.selected_pool) %>
+        $(".pool").toggleClass("displayed", true);
+        $(".pick-pool").toggleClass("btn-success", true);
+      <% end %>
+      <% if @permit.to_bool(@permit.selected_cover) %>
+        $(".cover").toggleClass("displayed", true);
+        $(".pick-cover").toggleClass("btn-success", true);
+      <% end %>
+      <% if @permit.to_bool(@permit.selected_window) %>
+        $(".window").toggleClass("displayed", true);
+        $(".pick-window").toggleClass("btn-success", true);
+      <% end %>    
+      <% if @permit.to_bool(@permit.selected_door) %>
+        $(".door").toggleClass("displayed", true);
+        $(".pick-door").toggleClass("btn-success", true);
+      <% end %>
+      <% if @permit.to_bool(@permit.selected_wall) %>
+        $(".wall").toggleClass("displayed", true);
+        $(".pick-wall").toggleClass("btn-success", true);
+      <% end %>
+      <% if @permit.to_bool(@permit.selected_siding) %>
+        $(".siding").toggleClass("displayed", true);
+        $(".pick-siding").toggleClass("btn-success", true);
+      <% end %>
+      <% if @permit.to_bool(@permit.selected_floor) %>
+        $(".floor").toggleClass("displayed", true);
+        $(".pick-floor").toggleClass("btn-success", true);
+      <% end %>
+    </script>
   </body>
 </html>
