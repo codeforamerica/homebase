@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'stub_geocoder'
 
 feature "Replace windows" do
 
@@ -92,9 +93,9 @@ feature "Replace windows" do
     expect(page).to have_content("Please read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
-
+    check "permit[accepted_terms]"
+    fill_in "permit_confirmed_name", with: "John Doe"
+    # require 'debugger';debugger
     click_on "I agree"
 
     # This is odd it is not working, as if button wasn't clicked

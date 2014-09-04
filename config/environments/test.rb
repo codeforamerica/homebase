@@ -1,4 +1,5 @@
 require 'dotenv'
+require 'stub_geocoder'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -44,5 +45,10 @@ Rails.application.configure do
 
   # Loading any environment variables for testing
   Dotenv.load
+
+  #Use fake geocoder
+  puts "adding order of provider for geokit"
+
+  Geokit::Geocoders::provider_order = [:stub]
 
 end
