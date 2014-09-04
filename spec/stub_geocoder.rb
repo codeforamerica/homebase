@@ -32,16 +32,16 @@ require "geokit"
                 :accuracy => 9,
                 :neighborhood => "Arsenal" }
 
-          # puts "In StubGeocoder: Finish putting geo here: address: " + address
+          puts "In StubGeocoder: Finish putting geo here: address: " + address
           geo = GeoLoc.new(h)
           # puts "geo.to_s: " + geo.to_s
           geo.provider = "stub"
           geo.success = true
           geo.precision = 9
 
-          # puts "is success? " + geo.success?.to_s
-          # puts "full addr: " + geo.full_address
-          # puts "to hash: " + geo.hash.to_s
+          puts "is success? " + geo.success?.to_s
+          puts "full addr: " + geo.full_address
+          puts "to hash: " + geo.hash.to_s
           return geo
         end
 

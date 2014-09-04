@@ -25,11 +25,11 @@ class CosaBoundary < ActiveRecord::Base
       if address
         # puts "in self.address_details => address: " + address
         address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: SA_BOUNDS)
-        # puts "in self.address_details after geocoding: "
-        # puts address_details.to_s
-        # puts "in self.address_details full_address: " + address_details.full_address
-        # puts "in self.address_details lat: " + address_details.lat.to_s
-        # puts "in self.address_details lng: " + address_details.lng.to_s
+        puts "in self.address_details after geocoding: "
+        puts address_details.to_s
+        puts "in self.address_details full_address: " + address_details.full_address
+        puts "in self.address_details lat: " + address_details.lat.to_s
+        puts "in self.address_details lng: " + address_details.lng.to_s
       end
     # @TODO: Is this necessary still?
     rescue Geokit::Geocoders::TooManyQueriesError
