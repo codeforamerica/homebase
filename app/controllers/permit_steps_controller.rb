@@ -155,7 +155,7 @@ class PermitStepsController < ApplicationController
 
     if @permit.errors.any?
       puts "*****************************************"
-      puts "#{@permit.errors}"
+      puts "#{@permit.errors.to_hash.to_s}"
       # render the same step
       # @TODO: What does this mean?
       render_wizard
