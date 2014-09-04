@@ -8,13 +8,16 @@ class CosaBoundary < ActiveRecord::Base
     inCosa = false
     if lat != nil && long != nil
     # figure out if it is in a specific area in 
+      puts "CosaBoundary::inCosa => lat: " + lat.to_s + " lng: " + long.to_s
       @spec_area = CosaBoundary.where("ST_Contains(geom, ST_Transform(ST_SetSRID(ST_MakePoint(?, ?), ?), ?))",
                                                 long,
                                                 lat,
                                                 COORD_SYS_REF,
                                                 COORD_SYS_AREA)
+      #puts "#{@spec_area.to_a}"  
 
       inCosa = @spec_area.exists?
+      puts "in the boundary: " + inCosa.to_s
     end
     
     return inCosa

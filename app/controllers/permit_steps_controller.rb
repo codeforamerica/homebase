@@ -188,6 +188,7 @@ class PermitStepsController < ApplicationController
 
     address_details = CosaBoundary.address_details(params[:permit][:owner_address])
     
+    puts "Inside fill_in_address_details => address_details: " + address_details.to_s
     if address_details
       params[:permit][:owner_address] = address_details[:full_address]
       params[:permit][:lat] = address_details[:lat]
