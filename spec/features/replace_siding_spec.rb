@@ -2,6 +2,10 @@ require 'spec_helper'
 
 feature "Replace sidings" do
 
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+  
   scenario "when user selects Replace siding that doesn't need permit (Only placing new siding over existing)" do
 
     visit '/permits'
@@ -102,4 +106,7 @@ feature "Replace sidings" do
 
   end
 
+  after(:all) do
+    @cosa.destroy
+  end
 end

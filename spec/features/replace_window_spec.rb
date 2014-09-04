@@ -1,8 +1,11 @@
 require 'spec_helper'
-require 'stub_geocoder'
 
 feature "Replace windows" do
 
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+  
   scenario "when user selects windows that doesn't need permit (Replace Broken Glass only)" do
 
     visit '/permits'
@@ -104,4 +107,7 @@ feature "Replace windows" do
 
   end
 
+  after(:all) do
+    @cosa.destroy
+  end
 end

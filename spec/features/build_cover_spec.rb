@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 feature "Build a cover" do
+
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+  
   scenario "when user selects a carport, patio cover, or porch cover that needs permit" do
 
     visit '/permits'
@@ -60,4 +65,7 @@ feature "Build a cover" do
 
   end
 
+  after(:all) do
+    @cosa.destroy
+  end
 end

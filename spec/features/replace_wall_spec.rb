@@ -2,6 +2,10 @@ require 'spec_helper'
 
 feature "Replace walls" do
 
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+  
   scenario "when user selects walls that doesn't need permit (Only paint, wallpaper, etc.)" do
 
     visit '/permits'
@@ -102,4 +106,7 @@ feature "Replace walls" do
 
   end
 
+  after(:all) do
+    @cosa.destroy
+  end
 end

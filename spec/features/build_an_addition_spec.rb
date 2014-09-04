@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 feature "Build an addition" do
+  
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+
   scenario "when user selects a Room Addition that needs permit (Greater than or equal to 1000 sq ft & 1 story)" do
 
     visit '/permits'
@@ -228,4 +233,7 @@ feature "Build an addition" do
 
   end
 
+  after(:all) do
+    @cosa.destroy
+  end
 end

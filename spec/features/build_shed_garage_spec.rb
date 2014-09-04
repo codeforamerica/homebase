@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 feature "Build a shed or garage" do
+
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+  
   scenario "when user selects a Shed or Garage that needs permit (Greater than 120 sq ft & 1 story)" do
 
     visit '/permits'
@@ -189,4 +194,7 @@ feature "Build a shed or garage" do
 
   end
 
+  after(:all) do
+    @cosa.destroy
+  end
 end

@@ -2,6 +2,10 @@ require 'spec_helper'
 
 feature "Replace doors" do
 
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+
   scenario "when user selects doors that doesn't need permit (Replace door on current hinges)" do
 
     visit '/permits'
@@ -103,4 +107,7 @@ feature "Replace doors" do
 
   end
 
+  after(:all) do
+    @cosa.destroy
+  end
 end

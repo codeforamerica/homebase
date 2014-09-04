@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 feature "Build a deck" do
+
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+  
   scenario "when user selects a Deck that needs permit (Greater than 120 sq ft & 
                                                         More than 30 inches above grade & 
                                                         attached to dwelling & 
@@ -846,5 +851,9 @@ feature "Build a deck" do
 
     page.has_no_button? "Apply for this permit"
 
+  end
+
+  after(:all) do
+    @cosa.destroy
   end
 end
