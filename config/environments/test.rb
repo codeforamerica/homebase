@@ -47,8 +47,6 @@ Rails.application.configure do
   Dotenv.load
 
   #Use fake geocoder
-  puts "adding order of provider for geokit"
-
   Geokit::Geocoders::provider_order = [:stub]
 
 end

@@ -7,17 +7,14 @@ class CosaBoundary < ActiveRecord::Base
   def self.inCosa? lat, long
     inCosa = false
     if lat != nil && long != nil
-    # figure out if it is in a specific area in 
-      puts "CosaBoundary::inCosa => lat: " + lat.to_s + " lng: " + long.to_s
+      # figure out if it is in a specific area in 
       @spec_area = CosaBoundary.where("ST_Contains(geom, ST_Transform(ST_SetSRID(ST_MakePoint(?, ?), ?), ?))",
                                                 long,
                                                 lat,
                                                 COORD_SYS_REF,
                                                 COORD_SYS_AREA)
-      #puts "#{@spec_area.to_a}"  
 
       inCosa = @spec_area.exists?
-      puts "in the boundary: " + inCosa.to_s
     end
     
     return inCosa
@@ -26,13 +23,7 @@ class CosaBoundary < ActiveRecord::Base
   def self.address_details address
     begin
       if address
-        # puts "in self.address_details => address: " + address
         address_details = Geokit::Geocoders::MultiGeocoder.geocode(address, bias: SA_BOUNDS)
-        puts "in self.address_details after geocoding: "
-        puts address_details.to_s
-        puts "in self.address_details full_address: " + address_details.full_address
-        puts "in self.address_details lat: " + address_details.lat.to_s
-        puts "in self.address_details lng: " + address_details.lng.to_s
       end
     # @TODO: Is this necessary still?
     rescue Geokit::Geocoders::TooManyQueriesError

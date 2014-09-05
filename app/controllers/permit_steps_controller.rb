@@ -57,7 +57,6 @@ class PermitStepsController < ApplicationController
 
     when :display_summary
 
-      puts "in display summary"
       @unique_key = SecureRandom.hex
 
       # Will temporarily save the generated permit pdf in tmp folder
@@ -154,8 +153,6 @@ class PermitStepsController < ApplicationController
     end
 
     if @permit.errors.any?
-      puts "*****************************************"
-      puts "#{@permit.errors.to_hash.to_s}"
       # render the same step
       # @TODO: What does this mean?
       render_wizard
@@ -188,7 +185,6 @@ class PermitStepsController < ApplicationController
 
     address_details = CosaBoundary.address_details(params[:permit][:owner_address])
     
-    puts "Inside fill_in_address_details => address_details: " + address_details.to_s
     if address_details
       params[:permit][:owner_address] = address_details[:full_address]
       params[:permit][:lat] = address_details[:lat]
