@@ -67,9 +67,9 @@ feature "Build a shed or garage" do
 
     click_on "I agree"
 
-  #   # This is odd it is not working, as if button wasn't clicked
-  #   # expect(current_path).to eq('/permit_steps/display_summary')
-  #   # expect(page).to have_content("Almost done! We filled in your permit applications")
+    # This is odd it is not working, as if button wasn't clicked
+    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(page).to have_content("Almost done! We filled in your permit applications")
 
   end
 
