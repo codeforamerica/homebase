@@ -1,0 +1,16 @@
+.radio {
+  padding-left: 20px;
+}
+.radio label {
+  padding-left: 6px;
+}
+input[type=radio]:checked + label {
+  font-weight: bold;
+}
+.radio > input:hover, .checkbox > input:hover {
+    cursor: pointer;
+}
+label {
+  margin-bottom: 0;
+  display: block;
+}

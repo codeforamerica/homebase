@@ -1,0 +1,74 @@
+// @TODO: Refactor these to be with their appropriate files
+
+@media (max-width: $screen-sm-min) {
+  h1 {
+    font-size: 2em; // shrink the section headers
+  }
+  .container#content {
+    margin-top:0; // we don't need this margin anymore
+  }
+  .new_permit .col-md-4 {
+    padding-bottom: 5px;
+  }
+  .tagline {
+    display: block;
+    margin: 0;
+  }     
+  #sidebar {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+
+    .status {
+      margin-top: 0; // we don't need this margin anymore
+      border: 1px solid $gray-lighter;
+      padding: 5px 15px;
+      
+      ul {
+        margin-bottom: 7px;
+        padding: 0;
+        &:before {
+          display: none;
+        }
+      }
+      li {
+        display:none; // hide all the steps
+        margin:0; // we don't need this margin anymore
+        &:before {
+          display: none;
+        }        
+      }
+      .cur-step {
+        display:inline-block; // show the step we're on, settle them on the same line
+        font-weight: 700;
+        font-size:12px;
+        opacity: .5;
+      }
+    }
+  }
+  .uv-link {
+    display: none;
+  }
+}
+
+/* Extra small devices (phones, less than 479px) */
+
+@media (max-width: 479px) {
+  .new_permit .col-md-4 {
+    padding-bottom: 3px;
+  }
+  .btn-block {
+    position: relative;
+    line-height: 32px;
+  }
+  .project-block {
+    height: 60px;
+    display: inline-block;
+  }
+  .project-icon {
+    padding: 12px 0px 12px 22px;
+    float: left;
+  }
+  .project-block .clearfix {
+    display: none;
+  }  
+}

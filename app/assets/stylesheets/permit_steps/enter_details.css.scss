@@ -1,0 +1,18 @@
+.has-error p { //styles error helper text
+  font-weight: 700;
+  color: $brand-danger;
+}
+
+.field_with_errors .form-control { //styles error helper text
+  font-weight: 700;
+  color: $brand-danger;
+}
+.multi-form {
+  .form-group {
+    padding-top: 25px; // space out the form fields
+
+    &:first-of-type {
+      padding-top:0px; // but not the first form field
+    }
+  }
+}
