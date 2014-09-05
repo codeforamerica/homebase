@@ -148,12 +148,11 @@ class PermitStepsController < ApplicationController
       @permit.update_attributes(permit_params)
       
     else # Default case
+      
       @permit.update_attributes(permit_params)
     end
 
     if @permit.errors.any?
-      puts "*****************************************"
-      puts "#{@permit.errors}"
       # render the same step
       # @TODO: What does this mean?
       render_wizard

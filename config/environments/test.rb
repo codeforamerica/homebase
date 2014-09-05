@@ -1,3 +1,6 @@
+require 'dotenv'
+require 'geokit'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -39,5 +42,11 @@ Rails.application.configure do
 
   # Print only warn/error/fatal/unkown on stdout
   config.log_level = :warn
+
+  # Loading any environment variables for testing
+  Dotenv.load
+
+  #Use fake geocoder
+  Geokit::Geocoders::provider_order = [:stub]
 
 end

@@ -112,7 +112,7 @@
           <p>What best describes your swimming pool that you are building?</p>
 
             <% @permit_pool_screener.each do |attribute, details| %>
-
+              
               <%= render  partial: "permit_steps/form_helper/radio", 
                           locals: { f: f, 
                                     question: details[:label], 
@@ -243,6 +243,7 @@
         <h4>Contractor</h4>
       </div>
       <div class="panel-body">
+
         <p>Will you be hiring a contractor to work on your project?</p>
         <%= render  partial: "permit_steps/form_helper/radio", 
                     locals: { f: f,
@@ -252,6 +253,7 @@
                                           label: "Yes" }, 
                                         { value: false, 
                                           label: "No" }]} %>            
+
       </div>
     </div><!-- ./Contractor section -->
 
