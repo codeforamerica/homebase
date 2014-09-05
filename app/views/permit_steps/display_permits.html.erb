@@ -12,7 +12,7 @@
   <!-- Permit Not Needed Projects -->
   <% if ! @permit_needs["permit_not_needed"].empty? %>
 
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success permit_not_needed" role="alert">
       <h4>You do not need a permit for the following project(s), build on!</h4>
       <ul>
         <% @permit_needs["permit_not_needed"].each do |project| %>
@@ -28,7 +28,7 @@
   <!-- Permit Needed Projects -->
   <% if ! @permit_needs["permit_needed"].empty? %>
   
-    <div class="alert alert-warning" role="alert">
+    <div class="alert alert-warning permit_needed" role="alert">
       <h4>You need a permit for the following project(s):</h4>
         <ul>
           <% @permit_needs["permit_needed"].each do |project| %>
@@ -44,7 +44,7 @@
   <!-- Further Assistance Needed Projects -->
   <% if ! @permit_needs["further_assistance_needed"].empty? %>
 
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger further_assistance_needed" role="alert">
       <h4>Sorry, we can't help you right now.</h4>
       <p class="info-top">The following project(s) do not meet the requirements for the General Permit Application:</p>
         <ul>

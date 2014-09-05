@@ -11,7 +11,7 @@
     </div>
 
 
-  <!-- Room additions fields -->
+  <!-- Form -->
   <div class="form">
     <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
 
@@ -206,8 +206,7 @@
 
       <div class="panel-body">
 
-        <!-- work_summary -->
-
+      <!-- work_summary -->
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_area", 
               locals: { f: f, 

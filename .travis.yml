@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - ruby-2.0.0
 
+env:
+  - secure: "YkIdCFC4cSej6LwLCJMKuznNuFNhh8JEi4nFki6WpcHaDnkpyKfUunaj/x1qASEQyiCkb5riINTN/uYDzF8XWGaVurOhLSEFh6NrNuNQum/YyvEXhtWjwbrzsDd4KJYcuyClRAp8tdkN2oKchWAd/N0XA8rUSyfPjrCbGMgeUZY="  
+
 addons:
   postgresql: "9.3"
 
@@ -35,6 +38,9 @@ before_script:
   - psql -c 'create database "homebase_test";' -U postgres
   - psql -c "create extension postgis;" -U postgres -d homebase_test
   - bundle exec rake db:migrate RAILS_ENV=test
+
+env:
+  - secure: "YkIdCFC4cSej6LwLCJMKuznNuFNhh8JEi4nFki6WpcHaDnkpyKfUunaj/x1qASEQyiCkb5riINTN/uYDzF8XWGaVurOhLSEFh6NrNuNQum/YyvEXhtWjwbrzsDd4KJYcuyClRAp8tdkN2oKchWAd/N0XA8rUSyfPjrCbGMgeUZY="  
   
 notifications:
   webhooks: http://project-monitor.codeforamerica.org/projects/98138ce2-1d31-4eac-91b8-55e763474cc9/status
