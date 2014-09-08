@@ -369,129 +369,35 @@ class Permit < ActiveRecord::Base
     end
   end
 
+  def update_permit_needs(selected_proj, displayed_proj_text, attribute, is_permit_needed, permit_needs)
+    if to_bool(selected_proj)
+      is_needed = is_permit_needed.call
+      if is_needed
+        permit_needs["permit_needed"].push(displayed_proj_text)
+        update_attribute(attribute, true)
+      elsif is_needed == false
+        permit_needs["permit_not_needed"].push(displayed_proj_text)
+        update_attribute(attribute, false)
+      else
+        permit_needs["further_assistance_needed"].push(displayed_proj_text)
+        update_attribute(attribute, nil)
+      end
+    end
+  end
+
   def update_permit_needs_for_projects
     permit_needs = { "permit_needed" => [], "permit_not_needed" => [], "further_assistance_needed" => [] }
 
-    if to_bool(selected_addition) 
-
-      if addition_permit_needed?
-        permit_needs["permit_needed"].push("Addition")
-        update_attribute("addition", true)
-      else
-        permit_needs["further_assistance_needed"].push("Addition")
-        update_attribute("addition", nil)
-      end
-
-    end
-
-    ####### Helpers Methods to change virtual attributes values to booleans ########
-    # @TODO: Check if these are necessary anymore
-
-    if to_bool(selected_acs_struct)
-
-      if acs_struct_permit_needed?
-        permit_needs["permit_needed"].push("Shed/Garage")
-        update_attribute("acs_struct", true)
-      else
-        permit_needs["further_assistance_needed"].push("Shed/Garage")
-        update_attribute("acs_struct", nil)
-      end
-
-    end
-
-    if to_bool(selected_deck)
-
-      if deck_permit_needed?
-        permit_needs["permit_needed"].push("Deck")
-        update_attribute("deck", true)
-      else
-        permit_needs["further_assistance_needed"].push("Deck")
-        update_attribute("deck", nil)
-      end
-
-    end
-
-    if to_bool(selected_pool)
-
-      if pool_permit_needed?
-        permit_needs["permit_needed"].push("Swimming Pool")
-        update_attribute("pool", true)
-      else
-        permit_needs["further_assistance_needed"].push("Swimming Pool")
-        update_attribute("pool", nil)
-      end
-
-    end
-
-    if to_bool(selected_cover)
-
-      if cover_permit_needed?
-        permit_needs["permit_needed"].push("Carport/Outdoor Cover")
-        update_attribute("cover", true)
-      else
-        permit_needs["further_assistance_needed"].push("Carport/Outdoor Cover")
-        update_attribute("cover", nil)
-      end
-
-    end
-
-    if to_bool(selected_window)
-
-      if window_permit_needed?
-        permit_needs["permit_needed"].push("Windows")
-        update_attribute("window", true)
-      else
-        permit_needs["permit_not_needed"].push("Windows")
-        update_attribute("window", false)
-      end
-
-    end
-
-    if to_bool(selected_door)
-      if door_permit_needed?
-        permit_needs["permit_needed"].push("Doors")
-        update_attribute("door", true)
-      else
-        permit_needs["permit_not_needed"].push("Doors")
-        update_attribute("door", false)
-      end
-
-    end
-
-    if to_bool(selected_wall)
-      if wall_permit_needed?
-        permit_needs["permit_needed"].push("Walls")
-        update_attribute("wall", true)
-      else
-        permit_needs["permit_not_needed"].push("Walls")
-        update_attribute("wall", false)
-      end
-
-    end
-
-    if to_bool(selected_siding)
-
-      if siding_permit_needed?
-        permit_needs["permit_needed"].push("Replace Siding")
-        update_attribute("siding", true)
-      else
-        permit_needs["permit_not_needed"].push("Replace Siding")
-        update_attribute("siding", false)
-      end
-
-    end
-
-    if to_bool(selected_floor)
-      if floor_permit_needed?
-        permit_needs["permit_needed"].push("Floors")
-        update_attribute("floor", true)
-      else
-        permit_needs["permit_not_needed"].push("Floors")
-        update_attribute("floor", false)
-      end
-
-    end
-
+    update_permit_needs(selected_addition, "Addition", "addition", method(:addition_permit_needed?), permit_needs)
+    update_permit_needs(selected_acs_struct, "Shed/Garage", "acs_struct", method(:acs_struct_permit_needed?), permit_needs)
+    update_permit_needs(selected_deck, "Deck", "deck", method(:deck_permit_needed?), permit_needs)
+    update_permit_needs(selected_pool, "Swimming Pool", "pool", method(:pool_permit_needed?), permit_needs)
+    update_permit_needs(selected_cover, "Carport/Outdoor Cover", "cover", method(:pool_permit_needed?), permit_needs)
+    update_permit_needs(selected_window, "Windows", "window", method(:window_permit_needed?), permit_needs)
+    update_permit_needs(selected_door, "Doors", "door", method(:door_permit_needed?), permit_needs)
+    update_permit_needs(selected_wall, "Walls", "wall", method(:wall_permit_needed?), permit_needs)
+    update_permit_needs(selected_siding, "Replace Siding", "siding", method(:siding_permit_needed?), permit_needs)
+    update_permit_needs(selected_floor, "Floors", "floor", method(:floor_permit_needed?), permit_needs)
 
     return permit_needs
   end
