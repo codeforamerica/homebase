@@ -67,9 +67,9 @@ feature "Build a swimming pool" do
 
     click_on "I agree"
 
-    # This is odd it is not working, as if button wasn't clicked
     expect(current_path).to eq('/permit_steps/display_summary')
     expect(page).to have_content("Almost done! We filled in your permit applications")
+    expect(page).to have_content("Make a detailed site plan")
 
   end
 
@@ -134,9 +134,9 @@ feature "Build a swimming pool" do
 
     click_on "I agree"
 
-    # This is odd it is not working, as if button wasn't clicked
     expect(current_path).to eq('/permit_steps/display_summary')
     expect(page).to have_content("Almost done! We filled in your permit applications")
+    expect(page).to have_content("Make a detailed site plan")
 
   end
 
@@ -241,9 +241,9 @@ feature "Build a swimming pool" do
 
     click_on "I agree"
 
-    # This is odd it is not working, as if button wasn't clicked
     expect(current_path).to eq('/permit_steps/display_summary')
     expect(page).to have_content("Almost done! We filled in your permit applications")
+    expect(page).to have_content("Make a detailed site plan")
 
   end
 
