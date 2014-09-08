@@ -36,16 +36,18 @@
     </div><!-- ./panel_body -->
   </div><!-- ./panel -->
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4>Make a detailed site plan</h4>
+  <% if @site_plan_required %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Make a detailed site plan</h4>
+      </div>
+      <div class="panel-body">
+        <p>A site plan is a drawing of your property that includes current buildings (like houses or sheds) and new structures (like an addition or shed).</p>
+        <p>You are required to draw and submit a detailed site plan with your permit.</p>
+        <p><a class="btn btn-primary btn-md" href="<%= asset_path('siteplan-packet-1.0.pdf') %>" target="_blank">Download and fill out the site plan form</a></p>
+      </div>
     </div>
-    <div class="panel-body">
-      <p>A site plan is a drawing of your property that includes current buildings (like houses or sheds) and new structures (like an addition or shed).</p>
-      <p>You are required to draw and submit a detailed site plan with your permit.</p>
-      <p><a class="btn btn-primary btn-md" href="<%= asset_path('siteplan-packet-1.0.pdf') %>" target="_blank">Download and fill out the site plan form</a></p>
-    </div>
-  </div>
+  <% end %>
 
   <div class="panel panel-default">
     <div class="panel-heading">

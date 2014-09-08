@@ -32,8 +32,6 @@ class Permit < ActiveRecord::Base
                 :deck_size, :deck_grade, :deck_dwelling_attach, :deck_exit_door,
                 # Pool
                 :pool_location, :pool_volume,
-                # Cover
-                :cover_material,
                 # Window
                 :window_replace_glass,
                 # Door
@@ -64,8 +62,8 @@ class Permit < ActiveRecord::Base
                                                           { value: '2orMoreStories', label: "2 or more stories" }]}}
 
   DECK = {  :deck_size => { label:    "Size",
-                            options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" },
-                                        { value: 'greaterThan120', label: "Greater than 120 sq ft" }]},
+                            options:  [ { value: 'lessThanEqualTo200', label: "Less than or equal to 200 sq ft" },
+                                        { value: 'greaterThan200', label: "Greater than 200 sq ft" }]},
             :deck_grade => {  label:    "Grade",
                               options:  [ { value: 'lessThanEqualTo30', label: "Less than or equal to 30 inches above grade"},
                                           { value: 'moreThan30', label: "More than 30 inches above grade"}]},
@@ -82,11 +80,6 @@ class Permit < ActiveRecord::Base
             :pool_volume => { label:    "Volume",
                               options:  [ { value: 'lessThanEqualTo5000', label: "Less than or equal to 5,000 gallons"}, 
                                           { value: 'moreThan5000', label: "More than 5,000 gallons"}]}}
-
-  COVER = { :cover_material =>  { label:    "Material",
-                                  options:  [ { value: 'metalType2', label: "It's metal type II"}, 
-                                              {value: 'woodType5', label: "It's wood type V"}, 
-                                              {value: 'other', label: "Other"}]}}
 
 
   # Room Addition
@@ -122,9 +115,6 @@ class Permit < ActiveRecord::Base
   # Pool Section
   validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Select whether the swimming pool is in ground or above ground."
   validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Select the volume of the swimming pool."
-
-  # Cover Section
-  validates_presence_of :cover_material, :if => :only_if_screener_cover?, :message => "Select the material for the carport, patio cover, or porch cover."
 
   # Window Section
   validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Select whether you are only replacing broken glass or not."
@@ -309,19 +299,21 @@ class Permit < ActiveRecord::Base
   def acs_struct_permit_needed?
     if acs_struct_size.eql?('greaterThan120') && acs_struct_num_story.eql?('1Story')
       return true
+    elsif acs_struct_size.eql?('lessThanEqualTo120') && acs_struct_num_story.eql?('1Story')
+      return false
     else
       return nil
     end
   end
 
   def deck_permit_needed?
-    if  deck_size.eql?('greaterThan120') && 
-        deck_grade.eql?('moreThan30') && 
-        deck_dwelling_attach.eql?('attachedToDwelling') && 
-        deck_exit_door.eql?('exitDoor')
-      return true
+    if  deck_size.eql?('lessThanEqualTo200') && 
+        deck_grade.eql?('lessThanEqualTo30') && 
+        deck_dwelling_attach.eql?('notAttachedToDwelling') && 
+        deck_exit_door.eql?('noExitDoor')
+      return false
     else
-      return nil
+      return true
     end
   end
 
@@ -330,19 +322,15 @@ class Permit < ActiveRecord::Base
       return true
     elsif pool_location.eql?('aboveGround') && pool_volume.eql?('moreThan5000')
       return true
+    elsif pool_location.eql?('aboveGround') && pool_volume.eql?('lessThanEqualTo5000')
+      return false
     else
       return nil
     end
   end
 
   def cover_permit_needed?
-    if cover_material.eql?('metalType2')
-      return true
-    elsif cover_material.eql?('woodType5')
-      return true
-    else
-      return nil
-    end
+    return true
   end
 
   def window_permit_needed?
@@ -408,6 +396,8 @@ class Permit < ActiveRecord::Base
       if acs_struct_permit_needed?
         permit_needs["permit_needed"].push("Shed/Garage")
         update_attribute("acs_struct", true)
+      elsif acs_struct_permit_needed? == false
+        permit_needs["permit_not_needed"].push("Shed/Garage")
       else
         permit_needs["further_assistance_needed"].push("Shed/Garage")
         update_attribute("acs_struct", nil)
@@ -420,6 +410,8 @@ class Permit < ActiveRecord::Base
       if deck_permit_needed?
         permit_needs["permit_needed"].push("Deck")
         update_attribute("deck", true)
+      elsif deck_permit_needed? == false
+        permit_needs["permit_not_needed"].push("Deck")
       else
         permit_needs["further_assistance_needed"].push("Deck")
         update_attribute("deck", nil)
@@ -432,6 +424,9 @@ class Permit < ActiveRecord::Base
       if pool_permit_needed?
         permit_needs["permit_needed"].push("Swimming Pool")
         update_attribute("pool", true)
+      elsif pool_permit_needed? == false
+        permit_needs["permit_not_needed"].push("Swimming Pool")
+        update_attribute("pool", false)
       else
         permit_needs["further_assistance_needed"].push("Swimming Pool")
         update_attribute("pool", nil)

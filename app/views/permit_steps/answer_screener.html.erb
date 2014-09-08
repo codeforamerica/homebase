@@ -112,7 +112,7 @@
           <p>What best describes your swimming pool that you are building?</p>
 
             <% @permit_pool_screener.each do |attribute, details| %>
-
+              
               <%= render  partial: "permit_steps/form_helper/radio", 
                           locals: { f: f, 
                                     question: details[:label], 
@@ -124,31 +124,6 @@
       </div>
       <!-- ./Swimming Pool section -->
     <% end %>
-
-    
-    <% if @permit.selected_cover %>
-      <!-- Carports or Outdoor Covers section -->
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>About your carport or outdoor cover</h4>
-        </div>
-        <div class="panel-body">
-          <p>What best describes your carport, patio cover, or porch cover that you are building?</p>
-
-            <% @permit_cover_screener.each do |attribute, details| %>
-
-              <%= render  partial: "permit_steps/form_helper/radio", 
-                          locals: { f: f, 
-                                    question: details[:label], 
-                                    attribute: attribute, 
-                                    option:  details[:options]} %>
-            <% end %>
-
-        </div>
-      </div>
-      <!-- ./Carports or Outdoor Covers section -->
-    <% end %>
-
     
     <% if @permit.selected_window %>
       <!-- Windows section -->
@@ -269,14 +244,16 @@
       </div>
       <div class="panel-body">
         <p>Who will be doing the work?</p>
+
         <%= render  partial: "permit_steps/form_helper/radio", 
                     locals: { f: f,
                               question: nil,
                               attribute: :contractor, 
-                              option: [ { value: true, 
-                                          label: "Yes" }, 
-                                        { value: false, 
-                                          label: "No" }]} %>            
+                              option: [ { value: false, 
+                                          label: "I'm doing the work myself (with help my friends or family)" },
+                                        { value: true, 
+                                          label: "I'm hiring a contractor" }]} %>            
+
       </div>
     </div><!-- ./Contractor section -->
 

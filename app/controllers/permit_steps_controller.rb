@@ -16,6 +16,7 @@ class PermitStepsController < ApplicationController
   steps *(STEPS + ERROR_STEPS)
   
   def show
+
     @permit = current_permit
 
     # Re-populate the permit project selection from session variables
@@ -37,7 +38,6 @@ class PermitStepsController < ApplicationController
       @permit_acs_struct_screener = Permit::ACS_STRUCT
       @permit_deck_screener = Permit::DECK
       @permit_pool_screener = Permit::POOL
-      @permit_cover_screener = Permit::COVER
 
 
     when :display_permits
@@ -74,6 +74,12 @@ class PermitStepsController < ApplicationController
         # Delete the temporary file after saved in the model
 
         File.delete file_path
+
+        @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
+                              @permit.acs_struct ||
+                              @permit.deck ||
+                              @permit.pool ||
+                              @permit.cover
 
       else
         jump_to(:error_page)       
@@ -115,7 +121,6 @@ class PermitStepsController < ApplicationController
       @permit_acs_struct_screener = Permit::ACS_STRUCT
       @permit_deck_screener = Permit::DECK
       @permit_pool_screener = Permit::POOL
-      @permit_cover_screener = Permit::COVER
 
       # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
@@ -127,9 +132,10 @@ class PermitStepsController < ApplicationController
       session[:permit_needs] = @permit.update_permit_needs_for_projects
 
     when :enter_details
+
       # Need to show ac options if errors occur
       @permit_ac_options = Permit::AC_OPTIONS
-      
+
       # This will limit the number of times Geocoder is called as there is a 
       # limit on the number of times this is being called per day
       # @TODO: May want to make all caps comparison so to prevent case sensitive issue"
@@ -148,12 +154,11 @@ class PermitStepsController < ApplicationController
       @permit.update_attributes(permit_params)
       
     else # Default case
+      
       @permit.update_attributes(permit_params)
     end
 
     if @permit.errors.any?
-      puts "*****************************************"
-      puts "#{@permit.errors}"
       # render the same step
       # @TODO: What does this mean?
       render_wizard
