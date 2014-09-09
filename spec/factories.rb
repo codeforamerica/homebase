@@ -90,5 +90,11 @@ FactoryGirl.define do
     wall_general_changes  nil
     siding_over_existing  nil
     floor_covering        nil
-  end    
+  end 
+
+  factory :permit_binary_detail do
+    file_data   IO.binread "#{Rails.root}/spec/test.pdf"
+    permit_id   1
+    filename    "test.pdf"
+  end  
 end

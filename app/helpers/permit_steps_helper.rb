@@ -2,6 +2,55 @@ require 'timeout'
 require 'pdf_forms'
 
 module PermitStepsHelper
+
+    def get_data_fields(permit)
+    { 
+      'DATE'                => Date.today.strftime("%m/%d/%Y"),
+      'JOB_COST'            => view_context.number_to_currency(permit.job_cost),
+      'OWNER_NAME'          => permit.owner_name, 
+      'ADDRESS'             => permit.owner_address,
+
+      'ADDITIONS_CHECKBOX'  => permit.addition ? "X" : ' ',
+      'SQ_FOOT_HOUSE'       => permit.house_area,
+      'SQ_FOOT_ADDITION'    => permit.addition_area,
+      # @TODO: I may need to put all these choices in shared file
+      'AC_NONE'             => permit.ac == "None" ? "X" : ' ',
+      'AC_WALL_UNIT'        => permit.ac == "Wall Unit" ? "X" : ' ',
+      'AC_EXTENDED'         => permit.ac == "Extended from Main House" ? "X" : ' ',
+      'AC_NEW_SPLIT'        => permit.ac == "New Split System" ? "X" : ' ',
+
+      'ACCESSORY_STRUCTURE_CHECKBOX' => permit.acs_struct ? "X" : ' ',
+
+      'DECK_CHECKBOX'           => permit.deck ? "X" : ' ',
+
+      'POOL_CHECKBOX'           => permit.pool ? "X" : ' ',
+      
+      'CARPORT_COVER_CHECKBOX'  => permit.cover ? "X" : ' ',
+
+      'GENERAL_REPAIRS_CHECKBOX'  => (permit.window ||
+                                      permit.door ||
+                                      permit.wall ||
+                                      permit.siding ||
+                                      permit.floor) ? "X" : ' ',
+      'WINDOWS_CHECKBOX'          => permit.window ? "X" : ' ',
+      'NUMBER_WINDOWS'            => permit.window_count,
+      'DOORS_CHECKBOX'            => permit.door ? "X" : ' ',
+      'NUMBER_DOORS'              => permit.door_count,
+      'WALLS_CHECKBOX'            => permit.wall ? "X" : ' ',
+      'SIDING_CHECKBOX'           => permit.siding ? "X" : ' ',
+      'FLOOR_STRUCTURAL_CHECKBOX' => permit.floor ? "X" : ' ',
+
+      # According to DSD logic, homeowner is contractor if they're doing project
+      'CONTRACTOR_NAME'           => permit.owner_name,
+      'TELEPHONE'                 => permit.phone,
+      'EMAIL'                     => permit.email,
+      'WORK_SUMMARY'              => permit.work_summary,
+
+      'SIGNATURE'                 => "#{permit.owner_name}  - SIGNED WITH HOMEBASE #{Date.today.strftime('%m/%d/%Y')}"
+
+    }
+  end
+  
   def create_permit (file_path, permit)
     pdftk = PdfForms.new('pdftk')
     template_path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"
@@ -17,51 +66,7 @@ module PermitStepsHelper
 
     pdftk.fill_form template_path, 
                     file_path, 
-                    { 
-                      'DATE'                => Date.today.strftime("%m/%d/%Y"),
-                      'JOB_COST'            => view_context.number_to_currency(permit.job_cost),
-                      'OWNER_NAME'          => permit.owner_name, 
-                      'ADDRESS'             => permit.owner_address,
-
-                      'ADDITIONS_CHECKBOX'  => permit.addition ? "X" : ' ',
-                      'SQ_FOOT_HOUSE'       => permit.house_area,
-                      'SQ_FOOT_ADDITION'    => permit.addition_area,
-                      # @TODO: I may need to put all these choices in shared file
-                      'AC_NONE'             => permit.ac == "None" ? "X" : ' ',
-                      'AC_WALL_UNIT'        => permit.ac == "Wall Unit" ? "X" : ' ',
-                      'AC_EXTENDED'         => permit.ac == "Extended from Main House" ? "X" : ' ',
-                      'AC_NEW_SPLIT'        => permit.ac == "New Split System" ? "X" : ' ',
-
-                      'ACCESSORY_STRUCTURE_CHECKBOX' => permit.acs_struct ? "X" : ' ',
-
-                      'DECK_CHECKBOX'           => permit.deck ? "X" : ' ',
-
-                      'POOL_CHECKBOX'           => permit.pool ? "X" : ' ',
-                      
-                      'CARPORT_COVER_CHECKBOX'  => permit.cover ? "X" : ' ',
-
-                      'GENERAL_REPAIRS_CHECKBOX'  => (permit.window ||
-                                                      permit.door ||
-                                                      permit.wall ||
-                                                      permit.siding ||
-                                                      permit.floor) ? "X" : ' ',
-                      'WINDOWS_CHECKBOX'          => permit.window ? "X" : ' ',
-                      'NUMBER_WINDOWS'            => permit.window_count,
-                      'DOORS_CHECKBOX'            => permit.door ? "X" : ' ',
-                      'NUMBER_DOORS'              => permit.door_count,
-                      'WALLS_CHECKBOX'            => permit.wall ? "X" : ' ',
-                      'SIDING_CHECKBOX'           => permit.siding ? "X" : ' ',
-                      'FLOOR_STRUCTURAL_CHECKBOX' => permit.floor ? "X" : ' ',
-
-                      # According to DSD logic, homeowner is contractor if they're doing project
-                      'CONTRACTOR_NAME'           => permit.owner_name,
-                      'TELEPHONE'                 => permit.phone,
-                      'EMAIL'                     => permit.email,
-                      'WORK_SUMMARY'              => permit.work_summary,
-
-                      'SIGNATURE'                 => "#{permit.owner_name}  - SIGNED WITH HOMEBASE #{Date.today.strftime('%m/%d/%Y')}"
-
-                    },
+                    get_data_fields(permit),
                     flatten: true
 
 
@@ -83,6 +88,8 @@ module PermitStepsHelper
     return status
 
   end
+
+
 
 end
 
