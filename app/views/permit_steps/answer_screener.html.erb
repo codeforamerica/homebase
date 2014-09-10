@@ -16,18 +16,19 @@
     <!-- address entry -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Where you're building this</h4>
+        <h4>Where you're doing the work</h4>
       </div>
       <div class="panel-body">
         <!-- Start the address form -->
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Enter the address of your home you'll do work on.", 
+                        question: "Enter the address of the home you're working on.", 
                         helper_text: nil,
                         attribute: :owner_address, 
                         placeholder: "ex. 123 Main St. San Antonio, TX",
                         input_addon: nil } %>
+          <span class="help-block">You must own this home.</span>
         </div>
       </div><!-- ./panel_body -->
     </div><!-- panel -->   
@@ -37,7 +38,7 @@
       <!-- Room Additions section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your room addition</h4>
+          <h4>About your new space</h4>
         </div>
         <div class="panel-body">
           <p>What best describes your room addition that you are building?</p>
@@ -60,7 +61,7 @@
       <!-- Shed/Garage Accessory Structure section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your shed or garage</h4>
+          <h4>About your new shed or garage</h4>
         </div>
         <div class="panel-body">
           <p>What best describes your shed or garage that you are building?</p>
@@ -83,7 +84,7 @@
       <!-- Deck section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your deck</h4>
+          <h4>About your new deck</h4>
         </div>
         <div class="panel-body">
           <p>What best describes your deck that you are building?</p>
@@ -106,7 +107,7 @@
       <!-- Swimming Pool section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your swimming pool</h4>
+          <h4>About your new swimming pool</h4>
         </div>
         <div class="panel-body">
           <p>What best describes your swimming pool that you are building?</p>
@@ -219,7 +220,7 @@
       <!-- Floor - Structural Repairs section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your floor</h4>
+          <h4>About your floors</h4>
         </div>
         <div class="panel-body">
           <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
@@ -240,7 +241,7 @@
     <!-- Contractor section -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Contractor</h4>
+        <h4>Who is helping</h4>
       </div>
       <div class="panel-body">
         <p>Who will be doing the work?</p>
@@ -250,7 +251,7 @@
                               question: nil,
                               attribute: :contractor, 
                               option: [ { value: false, 
-                                          label: "I'm doing the work myself (with help my friends or family)" },
+                                          label: "I'm doing the work myself (with help from my friends or family)" },
                                         { value: true, 
                                           label: "I'm hiring a contractor" }]} %>            
 
