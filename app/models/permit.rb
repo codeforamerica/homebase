@@ -48,22 +48,22 @@ class Permit < ActiveRecord::Base
   # Projects
 
   ADDITION = {  :addition_size => { label:    "Size", 
-                                    options:  [ { value: 'lessThan1000', label: "Less than 1,000 sq ft" }, 
-                                                { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 sq ft" }]},
-                :addition_num_story =>  { label:    "Stories",
-                                          options:  [ { value: '1Story', label: "1 story" }, 
-                                                      { value: '2orMoreStories', label: "2 or more stories" }]}}
+                                    options:  [ { value: 'lessThan1000', label: "Less than 1,000 square feet" }, 
+                                                { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 square feet" }]},
+                :addition_num_story =>  { label:    "Floors",
+                                          options:  [ { value: '1Story', label: "1 floor" }, 
+                                                      { value: '2orMoreStories', label: "2 or more floors" }]}}
 
   ACS_STRUCT = {  :acs_struct_size => { label:    "Size",
-                                        options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" }, 
-                                                    { value: 'greaterThan120', label: "Greater than 120 sq ft" }]},
-                  :acs_struct_num_story => { label:     "Stories",
-                                              options:  [ { value: '1Story', label: "1 Story" }, 
-                                                          { value: '2orMoreStories', label: "2 or more stories" }]}}
+                                        options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 square feet" }, 
+                                                    { value: 'greaterThan120', label: "Greater than 120 square feet" }]},
+                  :acs_struct_num_story => { label:     "Floors",
+                                              options:  [ { value: '1Story', label: "1 floor" }, 
+                                                          { value: '2orMoreStories', label: "2 or more floors" }]}}
 
   DECK = {  :deck_size => { label:    "Size",
-                            options:  [ { value: 'lessThanEqualTo200', label: "Less than or equal to 200 sq ft" },
-                                        { value: 'greaterThan200', label: "Greater than 200 sq ft" }]},
+                            options:  [ { value: 'lessThanEqualTo200', label: "Less than or equal to 200 square feet" },
+                                        { value: 'greaterThan200', label: "Greater than 200 square feet" }]},
             :deck_grade => {  label:    "Grade",
                               options:  [ { value: 'lessThanEqualTo30', label: "Less than or equal to 30 inches above grade"},
                                           { value: 'moreThan30', label: "More than 30 inches above grade"}]},
