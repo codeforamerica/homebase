@@ -77,7 +77,7 @@ class Permit < ActiveRecord::Base
   POOL = {  :pool_location =>   { label:    "Location",
                                   options:  [ { value: 'inGround', label: "Pool is in ground"}, 
                                               { value: 'aboveGround', label: "Pool is above ground" }]},
-            :pool_volume => { label:    "Volume",
+            :pool_volume => { label:    "Number of gallons",
                               options:  [ { value: 'lessThanEqualTo5000', label: "Less than or equal to 5,000 gallons"}, 
                                           { value: 'moreThan5000', label: "More than 5,000 gallons"}]}}
 
@@ -114,7 +114,7 @@ class Permit < ActiveRecord::Base
 
   # Pool Section
   validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Select whether the swimming pool is in ground or above ground."
-  validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Select the volume of the swimming pool."
+  validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Select the size of the swimming pool."
 
   # Window Section
   validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Select whether you are only replacing broken glass or not."

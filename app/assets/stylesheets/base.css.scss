@@ -315,7 +315,7 @@ h1 {
   color: $brand-danger;
 }
 
-.field_with_errors .form-control { //styles error helper text
+.field_with_errors .form-control, .field_with_errors p { //styles error helper text
   font-weight: 700;
   color: $brand-danger;
 }
