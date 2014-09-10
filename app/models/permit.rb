@@ -66,7 +66,7 @@ class Permit < ActiveRecord::Base
                                         { value: 'greaterThan200', label: "Greater than 200 square feet" }]},
             :deck_grade => {  label:    "Grade",
                               options:  [ { value: 'lessThanEqualTo30', label: "Less than or equal to 30 inches above grade"},
-                                          { value: 'moreThan30', label: "More than 30 inches above grade"}]},
+                                          { value: 'moreThan30', label: "Greater than 30 inches above grade"}]},
             :deck_dwelling_attach => {  label:    "Dwelling Attachment",
                                         options:  [ { value: 'attachedToDwelling', label: "Attached to dwelling"},
                                                     { value: 'notAttachedToDwelling', label: "Not attached to dwelling"}]},
