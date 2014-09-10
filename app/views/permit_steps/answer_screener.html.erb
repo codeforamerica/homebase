@@ -8,7 +8,7 @@
     <!-- error checking -->
     <% if @permit.errors.any? %>
       <div class="alert alert-danger">
-        <p><strong>Oops. Check your answers below.</strong></p>
+        <p><strong>Check your answers below and try again.</strong></p>
       </div>
     <% end %>
     <!-- ./error checking -->
@@ -41,7 +41,7 @@
           <h4>About your new space</h4>
         </div>
         <div class="panel-body">
-          <p>What best describes your room addition that you are building?</p>
+          <p>What best describes the space you are building?</p>
 
             <% @permit_addition_screener.each do |attribute, details| %>
 
@@ -64,7 +64,7 @@
           <h4>About your new shed or garage</h4>
         </div>
         <div class="panel-body">
-          <p>What best describes your shed or garage that you are building?</p>
+          <p>What best describes the shed or garage you are building?</p>
 
             <% @permit_acs_struct_screener.each do |attribute, details| %>
 
@@ -87,7 +87,7 @@
           <h4>About your new deck</h4>
         </div>
         <div class="panel-body">
-          <p>What best describes your deck that you are building?</p>
+          <p>What best describes the deck you are building?</p>
 
             <% @permit_deck_screener.each do |attribute, details| %>
 
@@ -110,7 +110,7 @@
           <h4>About your new swimming pool</h4>
         </div>
         <div class="panel-body">
-          <p>What best describes your swimming pool that you are building?</p>
+          <p>What best describes the swimming pool you are building?</p>
 
             <% @permit_pool_screener.each do |attribute, details| %>
               
@@ -178,15 +178,15 @@
           <h4>About your walls</h4>
         </div>
         <div class="panel-body">
-          <p>Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?</p>
+          <p>How are you changing your walls?</p>
           <%= render  partial: "permit_steps/form_helper/radio", 
                       locals: { f: f,
                                 question: nil,
                                 attribute: :wall_general_changes, 
                                 option: [ { value: true, 
-                                            label: "Yes" }, 
+                                            label: "I am only painting, adding wallpaper, or repairing sheetrock — I am not moving or altering studs" }, 
                                           { value: false, 
-                                            label: "No" }]} %>          
+                                            label: "I am doing something else" }]} %>          
         </div>
       </div>
       <!-- ./Walls section -->
@@ -223,16 +223,16 @@
           <h4>About your floors</h4>
         </div>
         <div class="panel-body">
-          <p>Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?</p>
+          <p>How are you changing your floors?</p>
 
           <%= render  partial: "permit_steps/form_helper/radio",
                       locals: { f: f,
                                 question: nil,
                                 attribute: :floor_covering, 
                                 option: [ { value: true, 
-                                            label: "Yes" }, 
+                                            label: "I am only replacing or adding carpet, tile, wood, or laminate flooring" }, 
                                           { value: false, 
-                                            label: "No" }]} %>       
+                                            label: "I am doing something else" }]} %>       
         </div>
       </div>
       <!-- ./Floor-Structural Repairs section -->
