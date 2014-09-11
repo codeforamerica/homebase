@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-root to: 'permits#new'
+
   scope "(:locale)", locale: /en|es/ do
     get '/:locale' => 'permits#new'
     
-
+    root to: 'permits#new'
     resources :permit_steps
 
     # This is different than the Rails intended used of get '/permits', which it should
