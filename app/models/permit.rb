@@ -47,7 +47,7 @@ class Permit < ActiveRecord::Base
 
   # Projects
 
-  ADDITION = {  :addition_size => { label:    "Size", 
+  ADDITION = {  :addition_size => { label:    (I18n.t 'hello'), 
                                     options:  [ { value: 'lessThan1000', label: "Less than 1,000 sq ft" }, 
                                                 { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 sq ft" }]},
                 :addition_num_story =>  { label:    "Stories",
