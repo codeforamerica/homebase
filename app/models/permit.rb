@@ -47,12 +47,7 @@ class Permit < ActiveRecord::Base
 
   # Projects
 
-  ADDITION = {  :addition_size => { label:    (I18n.t 'hello'), 
-                                    options:  [ { value: 'lessThan1000', label: "Less than 1,000 sq ft" }, 
-                                                { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 sq ft" }]},
-                :addition_num_story =>  { label:    "Stories",
-                                          options:  [ { value: '1Story', label: "1 story" }, 
-                                                      { value: '2orMoreStories', label: "2 or more stories" }]}}
+
 
   ACS_STRUCT = {  :acs_struct_size => { label:    "Size",
                                         options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" }, 
@@ -99,7 +94,7 @@ class Permit < ActiveRecord::Base
   ## Validations on permit_steps#answer_screener ##
 
   # Addition Section
-  validates_presence_of :addition_size, :if => :only_if_screener_addition?, :message => "Please select the size of the room addition."
+  validates_presence_of :addition_size, :if => :only_if_screener_addition?
   validates_presence_of :addition_num_story, :if => :only_if_screener_addition?, :message => "Please select the number of stories for the room addition."
 
   # Accessory Structure Section
@@ -171,6 +166,15 @@ class Permit < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
+  ##############
+  def addition_details
+    {  :addition_size => { label:    I18n.t(:addition_size), 
+                                  options:  [ { value: 'lessThan1000', label: "Less than 1,000 sq ft" }, 
+                                              { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 sq ft" }]},
+              :addition_num_story =>  { label:    "Stories",
+                                        options:  [ { value: '1Story', label: "1 story" }, 
+                                                    { value: '2orMoreStories', label: "2 or more stories" }]}}
+  end
 
   ######## Conditions for Validation ########
   def first_step?

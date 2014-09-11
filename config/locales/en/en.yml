@@ -19,5 +19,23 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-es:
-  hello: "hola mundo"
+en:
+  hello: "Hello world"
+
+  addition_size: "EN Size"
+  
+  activerecord:
+    # models:
+    #   permit:
+    #     size_msg: 
+    #       one: "This is i18n controlled. Size"
+    #       other: "This is i18n controlled. Size"
+    attributes:
+      permit:
+        addition_size: "Size of room addtion"
+    errors:
+      models:
+        permit:
+          attributes:
+            addition_size:
+              blank: "Please select the size of the room addition."

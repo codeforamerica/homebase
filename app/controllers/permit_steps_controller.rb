@@ -34,7 +34,7 @@ class PermitStepsController < ApplicationController
     case step
 
     when :answer_screener
-      @permit_addition_screener = Permit::ADDITION
+      @permit_addition_screener = @permit.addition_details#Permit::ADDITION
       @permit_acs_struct_screener = Permit::ACS_STRUCT
       @permit_deck_screener = Permit::DECK
       @permit_pool_screener = Permit::POOL
