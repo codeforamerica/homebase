@@ -2,11 +2,7 @@
 <html data-wf-site="532cb8f39ff60e067100012a">
   <head>
     <meta charset="utf-8">
-    <title>Homebase
-      <% if Rails.env.development? %>
-        [DEVELOPMENT]
-      <% end %>
-    </title>
+    <title><%= t('application.title') %> <%= Rails.env.development? ? '[DEVELOPMENT]' : '' %></title>
     <!--
     <meta http-equiv="Cache-control" content="no-store">
     <META HTTP-EQUIV="Expires" CONTENT="-1">
