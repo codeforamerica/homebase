@@ -11,7 +11,7 @@ class PermitStepsController < ApplicationController
   STEPS = [ :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary ]
 
   # Error steps, steps that should only be jumped to when there's an error
-  ERROR_STEPS = [ :error_page, :use_contractor, :cannot_help, :do_not_need_permit ]
+  ERROR_STEPS = [ :error_page, :use_contractor ]
 
   steps *(STEPS + ERROR_STEPS)
   
