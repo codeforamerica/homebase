@@ -42,18 +42,6 @@ class Permit < ActiveRecord::Base
                 :siding_over_existing,
                 # Floor
                 :floor_covering
-
-
-
-
-
-
-
-
-
-
-
-
   
   ######## Validations #######
 
@@ -70,77 +58,80 @@ class Permit < ActiveRecord::Base
 
   # Addition Section
   validates_presence_of :addition_size, :if => :only_if_screener_addition?
-  validates_presence_of :addition_num_story, :if => :only_if_screener_addition?, :message => "Please select the number of stories for the room addition."
+  validates_presence_of :addition_num_story, :if => :only_if_screener_addition?
 
   # Accessory Structure Section
-  validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?, :message => "Please select the size of the accessory structure."
-  validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?, :message => "Please select the number of stories for the accessory structure."
+  validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?
+  validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?
 
   # Deck Section
-  validates_presence_of :deck_size, :if => :only_if_screener_deck?, :message => "Please select the size of the deck."
-  validates_presence_of :deck_grade, :if => :only_if_screener_deck?, :message => "Please select the grade of the deck."
-  validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?, :message => "Please select whether the deck is attached to dwelling or not."
-  validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?, :message => "Please select whether the deck serves a required exit door or not."
+  validates_presence_of :deck_size, :if => :only_if_screener_deck?
+  validates_presence_of :deck_grade, :if => :only_if_screener_deck?
+  validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?
+  validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?
 
   # Pool Section
-  validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Please select whether the swimming pool is in ground or above ground."
-  validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Please select the volume of the swimming pool."
+  validates_presence_of :pool_location, :if => :only_if_screener_pool?
+  validates_presence_of :pool_volume, :if => :only_if_screener_pool?
 
   # Window Section
-  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Please select whether you are only replacing broken glass or not."
+  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?
   
   # Door Section
-  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?, :message => "Please select whether you are only replacing doors on their existing hinges or not."
+  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?
   
   # Wall Section
-  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?, :message => "Please select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?
   
   # Siding Section
-  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?, :message => "Please select whether you are only placing new siding over existing siding or not."
+  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?
   
   # Floor Section
-  validates_presence_of :floor_covering, :if => :only_if_screener_floor?, :message => "Please select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+  validates_presence_of :floor_covering, :if => :only_if_screener_floor?
 
   # Contractor Section
-  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Please select whether you are using a contractor or not in this project."
+  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?
 
   # Home Address Section
-  validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Please enter a San Antonio address."
+  validates_presence_of :owner_address, :if => :active_or_screener_details?
   validates_with AddressValidator, :if => :only_if_address_presence?
   
   ## Validations on permit_steps#enter_details ##
 
   # Basic Information Section
-  validates_presence_of :owner_name, :if => :active_or_details?, :message => "Please enter home owner name."
+  validates_presence_of :owner_name, :if => :active_or_details?
   # Validator for owner_address above at permit_steps#answer_screener
-  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Please enter your valid email address (for example, john@email.com)"
-  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i, :message => "Please enter a valid phone number (for example, 210-555-5555)"
+  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i
 
   # Addition Section
-  validates_presence_of :house_area, :if => :active_or_details_addition?, :message => "Please enter the size of house in square feet."
-  validates_numericality_of :house_area, :if => :only_if_house_presence?, :message => "Please enter the size of house in square feet."
-  validates_presence_of :addition_area, :if => :active_or_details_addition?, :message => "Please enter the size of addition in square feet."
-  validates_numericality_of :addition_area, :if => :only_if_addition_presence?, :message => "Please enter the size of addition in square feet."
-  validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
-  validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Please select an air conditioning / heating system."
+  validates_presence_of :house_area, :if => :active_or_details_addition?
+  validates_numericality_of :house_area, :if => :only_if_house_presence?
+  validates_presence_of :addition_area, :if => :active_or_details_addition?
+  validates_numericality_of :addition_area, :if => :only_if_addition_presence?
+  validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?
+  validates_presence_of :ac, :if => :active_or_details_addition?
 
   # Window Section
-  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Please specify the number of windows you are repairing."
+  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?
   
   # Door Section
-  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Please specify the number of doors you are repairing."
+  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?
 
   # Final Info Section
-  validates_presence_of :work_summary, :if => :active_or_details?, :message => "Please enter a work summary."
-  validates_presence_of :job_cost, :if => :active_or_details?, :message => "Please enter the job cost."
-  validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/, :message => "Job cost has an invalid format, it should be like 1000000.00"
-  validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000 , :message => "Job cost should be between the range of 0.00 to 1000000000000.00"  
-
+  validates_presence_of :work_summary, :if => :active_or_details?
+  validates_presence_of :job_cost, :if => :active_or_details?
+  validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
+  validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
   ## Validations on permit_step#confirm_terms ##
 
-  validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
-  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
-
+  validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
+  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('ensure_name_confirmed_msg')
+  # @TODO: may want to do this instead of before_save
+  # class Person < ActiveRecord::Base
+  #   validates :email, confirmation: true
+  #   validates :email_confirmation, presence: true
+  # end
   ######## Attribute Options Hashes ########
 
   # Projects
@@ -285,7 +276,7 @@ class Permit < ActiveRecord::Base
 
   def ensure_name_confirmed
     if !confirmed_name.eql?(owner_name)
-      errors[:confirmed_name] << ("The name you entered did not match the name you used on your permit application (#{owner_name}). Please type your name again.")
+      errors[:confirmed_name] << (I18n.t('confirmed_name_msg', name: owner_name))
     end
     confirmed_name.eql?(owner_name)
   end
@@ -300,7 +291,7 @@ class Permit < ActiveRecord::Base
           to_bool(selected_cover) || to_bool(selected_pool) || to_bool(selected_deck) || 
           to_bool(selected_acs_struct))
 
-      errors[:base] << ("Please choose at least one project to work on.")
+      errors[:base] << (I18n.t('no_proj_chosen_msg'))
     end
   end
 
