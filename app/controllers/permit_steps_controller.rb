@@ -34,10 +34,10 @@ class PermitStepsController < ApplicationController
     case step
 
     when :answer_screener
-      @permit_addition_screener = @permit.addition_details#Permit::ADDITION
-      @permit_acs_struct_screener = Permit::ACS_STRUCT
-      @permit_deck_screener = Permit::DECK
-      @permit_pool_screener = Permit::POOL
+      @permit_addition_screener = @permit.addition_details
+      @permit_acs_struct_screener = @permit.acs_struct_details
+      @permit_deck_screener = @permit.deck_details
+      @permit_pool_screener = @permit.pool_details
 
 
     when :display_permits
@@ -53,7 +53,7 @@ class PermitStepsController < ApplicationController
 
     when :enter_details
 
-      @permit_ac_options = Permit::AC_OPTIONS
+      @permit_ac_options = @permit.ac_options
 
     when :display_summary
 
@@ -117,10 +117,10 @@ class PermitStepsController < ApplicationController
       params[:permit][:selected_floor] = session[:selected_floor]
 
       # Need to show screener again if errors occur
-      @permit_addition_screener = Permit::ADDITION
-      @permit_acs_struct_screener = Permit::ACS_STRUCT
-      @permit_deck_screener = Permit::DECK
-      @permit_pool_screener = Permit::POOL
+      @permit_addition_screener = @permit.addition_details
+      @permit_acs_struct_screener = @permit.acs_struct_details
+      @permit_deck_screener = @permit.deck_details
+      @permit_pool_screener = @permit.pool_details
 
       # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
@@ -134,7 +134,7 @@ class PermitStepsController < ApplicationController
     when :enter_details
 
       # Need to show ac options if errors occur
-      @permit_ac_options = Permit::AC_OPTIONS
+      @permit_ac_options = @permit.ac_options
 
       # This will limit the number of times Geocoder is called as there is a 
       # limit on the number of times this is being called per day

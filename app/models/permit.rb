@@ -43,42 +43,17 @@ class Permit < ActiveRecord::Base
                 # Floor
                 :floor_covering
 
-  ######## Attribute Options Hashes ########
-
-  # Projects
 
 
 
-  ACS_STRUCT = {  :acs_struct_size => { label:    "Size",
-                                        options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 sq ft" }, 
-                                                    { value: 'greaterThan120', label: "Greater than 120 sq ft" }]},
-                  :acs_struct_num_story => { label:     "Stories",
-                                              options:  [ { value: '1Story', label: "1 Story" }, 
-                                                          { value: '2orMoreStories', label: "2 or more stories" }]}}
-
-  DECK = {  :deck_size => { label:    "Size",
-                            options:  [ { value: 'lessThanEqualTo200', label: "Less than or equal to 200 sq ft" },
-                                        { value: 'greaterThan200', label: "Greater than 200 sq ft" }]},
-            :deck_grade => {  label:    "Grade",
-                              options:  [ { value: 'lessThanEqualTo30', label: "Less than or equal to 30 inches above grade"},
-                                          { value: 'moreThan30', label: "More than 30 inches above grade"}]},
-            :deck_dwelling_attach => {  label:    "Dwelling Attachment",
-                                        options:  [ { value: 'attachedToDwelling', label: "Attached to dwelling"},
-                                                    { value: 'notAttachedToDwelling', label: "Not attached to dwelling"}]},
-            :deck_exit_door => {  label:    "Exit Door",
-                                  options:  [ { value: 'exitDoor', label: "Serves a required exit door"},
-                                              { value: 'noExitDoor', label: "Does not serve a required exit door"}]}}
-
-  POOL = {  :pool_location =>   { label:    "Location",
-                                  options:  [ { value: 'inGround', label: "Pool is in ground"}, 
-                                              { value: 'aboveGround', label: "Pool is above ground" }]},
-            :pool_volume => { label:    "Volume",
-                              options:  [ { value: 'lessThanEqualTo5000', label: "Less than or equal to 5,000 gallons"}, 
-                                          { value: 'moreThan5000', label: "More than 5,000 gallons"}]}}
 
 
-  # Room Addition
-  AC_OPTIONS = ["None", "Wall Unit", "Extended from Main House", "New Split System"]
+
+
+
+
+
+
   
   ######## Validations #######
 
@@ -166,14 +141,55 @@ class Permit < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
 
-  ##############
+  ######## Attribute Options Hashes ########
+
+  # Projects
   def addition_details
-    {  :addition_size => { label:    I18n.t(:addition_size), 
-                                  options:  [ { value: 'lessThan1000', label: "Less than 1,000 sq ft" }, 
-                                              { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 sq ft" }]},
-              :addition_num_story =>  { label:    "Stories",
-                                        options:  [ { value: '1Story', label: "1 story" }, 
-                                                    { value: '2orMoreStories', label: "2 or more stories" }]}}
+    { :addition_size => { label:    I18n.t('addition.size.label'), 
+                          options:  [ { value: 'lessThan1000', label: I18n.t('addition.size.options.lt_1000') }, 
+                                      { value: 'greaterThanEqualTo1000',  label: I18n.t('addition.size.options.gte_1000')}]},
+      :addition_num_story =>  { label:    I18n.t('addition.num_story.label'),
+                                options:  [ { value: '1Story', label: I18n.t('addition.num_story.options.one') }, 
+                                            { value: '2orMoreStories', label: I18n.t('addition.num_story.options.two_or_more') }]}}
+  end
+
+  def acs_struct_details
+    { :acs_struct_size =>  {  label:    I18n.t('acs_struct.size.label'),
+                              options:  [ { value: 'lessThanEqualTo120', label: I18n.t('acs_struct.size.options.lte_120') }, 
+                                          { value: 'greaterThan120', label: I18n.t('acs_struct.size.options.gt_120') }]},
+      :acs_struct_num_story => {  label:     I18n.t('acs_struct.num_story.label'),
+                                  options:  [ { value: '1Story', label: I18n.t('acs_struct.num_story.options.one') }, 
+                                              { value: '2orMoreStories', label: I18n.t('acs_struct.num_story.options.two_or_more') }]}}
+
+  end
+
+  def deck_details
+    { :deck_size => { label:    I18n.t('deck.size.label'),
+                      options:  [ { value: 'lessThanEqualTo200', label: I18n.t('deck.size.options.lte_200') },
+                                  { value: 'greaterThan200', label: I18n.t('deck.size.options.gt_200') }]},
+      :deck_grade => {  label:    I18n.t('deck.grade.label'),
+                        options:  [ { value: 'lessThanEqualTo30', label: I18n.t('deck.grade.options.lte_30')},
+                                    { value: 'moreThan30', label: I18n.t('deck.grade.options.gt_30')}]},
+      :deck_dwelling_attach => {  label:    I18n.t('deck.dwelling_attach.label'),
+                                  options:  [ { value: 'attachedToDwelling', label: I18n.t('deck.dwelling_attach.options.attached')},
+                                              { value: 'notAttachedToDwelling', label: I18n.t('deck.dwelling_attach.options.not_attached')}]},
+      :deck_exit_door => {  label:    I18n.t('deck.exit_door.label'),
+                            options:  [ { value: 'exitDoor', label: I18n.t('deck.exit_door.options.served')},
+                                        { value: 'noExitDoor', label: I18n.t('deck.exit_door.options.not_served')}]}}
+  end
+
+  def pool_details
+    { :pool_location => { label:    I18n.t('pool.location.label'),
+                          options:  [ { value: 'inGround', label: I18n.t('pool.location.options.in_ground')}, 
+                                      { value: 'aboveGround', label: I18n.t('pool.location.options.above_ground') }]},
+      :pool_volume => { label:    I18n.t('pool.volume.label'),
+                        options:  [ { value: 'lessThanEqualTo5000', label: I18n.t('pool.volume.options.lte_5000')}, 
+                                    { value: 'moreThan5000', label: I18n.t('pool.volume.options.gt_5000')}]}}
+  end
+
+  # Room Addition
+  def ac_options
+    [I18n.t('ac.options.none'), I18n.t('ac.options.wall'), I18n.t('ac.options.extended'), I18n.t('ac.options.split')]
   end
 
   ######## Conditions for Validation ########

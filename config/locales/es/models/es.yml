@@ -1,0 +1,105 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+
+  addition:
+    size:
+      label: "ES Size"
+      options:
+        lt_1000:   "ES Less than 1,000 sq ft"
+        gte_1000:  "ES Greater than or equal to 1,000 sq ft"
+
+    num_story:
+      label: "ES Stories"
+      options:
+        one:          "ES 1 story"
+        two_or_more:  "ES 2 or more stories"
+
+  acs_struct:
+    size:
+      label: "ES Size"
+      options:
+        lte_120:  "ES Less than or equal to 120 sq ft" 
+        gt_120:   "ES Greater than 120 sq ft"
+
+    num_story:
+      label: "ES Stories"
+      options:
+        one:          "ES 1 story"
+        two_or_more:  "ES 2 or more stories"
+
+  deck:
+    size:
+      label: "ES Size"
+      options:
+        lte_200: "ES Less than or equal to 200 sq ft"
+        gt_200: "ES Greater than 200 sq ft"
+    grade:
+      label: "ES Grade"
+      options:
+        lte_30: "ES Less than or equal to 30 inches above grade"
+        gt_30:  "ES More than 30 inches above grade"
+    dwelling_attach:
+      label: "ES Dwelling Attachement"
+      options:
+        attached:     "ES Attached to dwelling"
+        not_attached: "ES Not attached to dwelling"
+    exit_door:
+      label: "ES Exit Door"
+      options:
+        served:   "ES Serves a required exit door"
+        not_served: "ES Does not serve a required exit door"
+
+  pool:
+    location:
+      label: "ES Location"
+      options:
+        in_ground:    "ES Pool is in ground"
+        above_ground: "ES Pool is above ground"
+    volume:
+      label: "ES Volume"
+      options:
+        lte_5000: "ES Less than or equal to 5,000 gallons"
+        gt_5000:  "ES More than 5,000 gallons"
+
+  ac:
+    options:
+      none:     "ES None"
+      wall:     "ES Wall unit"
+      extended: "ES Extended from main house"
+      split:    "ES New split system"
+
+  activerecord: 
+    # models:
+    #   permit:
+    #     # size_msg:
+    #     #   one: "ES: This is i18n controlled. Size"
+    #     #   other: "ES: This is i18n controlled. Size"
+    attributes:
+      permit:
+        addition_size: "ES Size of room addtion"
+    errors:
+      models:
+        permit:
+          attributes:
+            addition_size:
+              blank: "ES Please select the size of the room addition."

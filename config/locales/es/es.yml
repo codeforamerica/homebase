@@ -21,21 +21,3 @@
 
 es:
   hello: "hola mundo"
-
-  addition_size: "ES Size"
-
-  activerecord: 
-    # models:
-    #   permit:
-    #     # size_msg:
-    #     #   one: "ES: This is i18n controlled. Size"
-    #     #   other: "ES: This is i18n controlled. Size"
-    attributes:
-      permit:
-        addition_size: "Size of room addtion"
-    errors:
-      models:
-        permit:
-          attributes:
-            addition_size:
-              blank: "Spanish Please select the size of the room addition."
