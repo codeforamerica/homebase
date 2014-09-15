@@ -1,2 +1,25 @@
 es:
-  display_permits: ""
+  display_permits:
+    intro_text: "ES This is how to start your project(s)"
+    permit_not_needed:
+      heading: "ES You do not need a permit for the following project(s), build on!"
+      body: "ES A permit is not needed for your project. If you have additional questions, please contact Development Services Department at (210) 207-1111."
+    permit_needed:
+      heading: "ES You need a permit for the following project(s):"
+      body: "ES Please see below for more details."
+    further_assistance_needed:
+      heading: "ES Sorry, we can't help you right now."
+      helper_text: "ES The following project(s) do not meet the requirements for the General Permit Application:"
+      body: "ES Please contact Development Services Department at (210) 207-1111 to get the permit you need."
+    detail_permit_info:
+      heading: "ES General Repair/Residential Permit Application"
+      body: "ES This permit is required for most residential repair projects. Separate permits are required for any mechanical, electrical, or plumbing work."
+      helper_text: "ES This is the permit for the following project(s):"
+      app_cost_html: "ES <strong>Application cost:</strong> <br>Application costs are based on the Fee Schedule. <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Click here to view the Fee Schedule for more information.</a>"
+      req_docs: "ES Required documents:"
+      permit_app: "ES Completed permit application"
+      site_plan: "ES Completed site plan"
+      photo_id: "ES Form of photo identification (i.e. driver's license, passport)"
+      ownership_proof: "ES Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
+      misc_text: "ES We will help you fill these out"
+    submit: "ES Apply for this permit"

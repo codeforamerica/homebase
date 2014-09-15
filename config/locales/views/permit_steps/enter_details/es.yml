@@ -1,2 +1,42 @@
 es:
-  enter_details: ""
+  enter_details:
+    intro:
+      heading: "ES General Repair/Residential Permit Application"
+      body: "ES This permit covers many home repair and renovation projects."
+    homeowner_info:
+      heading: "ES Homeowner information"
+      name:
+        question: "ES Homeowner name"
+      address:
+        question: "ES Home address"
+      email:
+        question: "ES Homeowner email address"
+      phone:
+        question: "ES Homeowner phone number"
+    addition_info:
+      heading: "ES Addition information"
+      house_area:
+        question: "ES Size of existing house in square feet"
+      addition_area:
+        question: "ES Size of new addition in square feet"
+      ac:
+        question: "ES Air conditioning / heating system"
+        helper_text: "ES Please select the system you plan to install in your addition."
+    window_info:
+      window_count:
+        question: "ES How many windows are you changing?"
+        helper_text: "ES Please include windows you are repairing."
+    door_info:
+      door_count:
+        question: "ES How many doors are you changing?"
+        helper_text: "ES Please include doors you are repairing."
+    final_info:
+      work_summary:
+        question: "ES Work Summary"
+        helper_text: "ES Please describe the project you are working on."
+      job_cost:
+        question: "ES Job Cost"
+        helper_text: "ES Please enter the total cost of labor and materials for your project."
+
+
+    submit: "ES Next step"

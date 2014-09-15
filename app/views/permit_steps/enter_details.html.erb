@@ -6,8 +6,8 @@
 
   <!-- Intro text -->
     <div class="intro">
-      <h1>General Repair/Residential Permit Application</h1>
-      <p>This permit covers many home repair and renovation projects.</p>
+      <h1><%= t('enter_details.intro.heading') %></h1>
+      <p><%= t('enter_details.intro.body') %></p>
     </div>
 
 
@@ -18,7 +18,7 @@
     <!-- error checking -->
     <% if @permit.errors.any? %>
       <div class="alert alert-danger">
-        <p><strong>Sorry, there was a problem. Please check your answers.</strong></p>
+        <p><strong><%= t('defaults.error_statement') %></strong></p>
       </div>
     <% end %>
     <!-- ./error checking -->
@@ -28,7 +28,7 @@
     <div class="panel panel-default">
 
       <div class="panel-heading">
-        <h4>Homeowner information</h4>
+        <h4><%= t('enter_details.homeowner_info.heading') %></h4>
       </div>
 
       <div class="panel-body">
@@ -38,7 +38,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Homeowner name", 
+                        question: t('enter_details.homeowner_info.name.question'), 
                         helper_text: nil,
                         attribute: :owner_name,
                         placeholder: nil,
@@ -52,7 +52,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Home address", 
+                        question: t('enter_details.homeowner_info.address.question'), 
                         helper_text: nil,
                         attribute: :owner_address, 
                         placeholder: nil,
@@ -64,7 +64,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Homeowner email address",
+                        question: t('enter_details.homeowner_info.email.question'),
                         helper_text: nil, 
                         attribute: :email, 
                         placeholder: nil,
@@ -78,7 +78,7 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Homeowner phone number", 
+                        question: t('enter_details.homeowner_info.phone.question'), 
                         helper_text: nil,
                         attribute: :phone, 
                         placeholder: nil,
@@ -98,7 +98,7 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h4>Addition information</h4>
+          <h4><%= t('enter_details.addition_info.heading') %></h4>
         </div>
 
         <div class="panel-body">
@@ -108,7 +108,7 @@
           <div class="form-group">
             <%= render  partial: "permit_steps/form_helper/text_field", 
                 locals: { f: f, 
-                          question: "Size of existing house in square feet",
+                          question: t('enter_details.addition_info.house_area.question'),
                           helper_text: nil,
                           attribute: :house_area, 
                           placeholder: nil,
@@ -122,7 +122,7 @@
           <div class="form-group">
             <%= render  partial: "permit_steps/form_helper/text_field", 
                 locals: { f: f, 
-                          question: "Size of new addition in square feet",
+                          question: t('enter_details.addition_info.addition_area.question'),
                           helper_text: nil,
                           attribute: :addition_area, 
                           placeholder: nil,
@@ -136,8 +136,8 @@
           <div class="form-group">
             <%= render  partial: "permit_steps/form_helper/select", 
                 locals: { f: f, 
-                          question: "Air conditioning / heating system",
-                          helper_text: "Please select the system you plan to install in your addition.",
+                          question: t('enter_details.addition_info.ac.question'),
+                          helper_text: t('enter_details.addition_info.ac.helper_text'),
                           attribute: :ac, 
                           options: @permit_ac_options,
                           model_attribute: @permit.ac} %>
@@ -162,8 +162,8 @@
             <div class="form-group">
               <%= render  partial: "permit_steps/form_helper/text_field", 
                   locals: { f: f, 
-                            question: "How many windows are you changing?",
-                            helper_text: "Please include windows you are repairing.",
+                            question: t('enter_details.window_info.window_count.question'),
+                            helper_text: t('enter_details.window_info.window_count.helper_text'),
                             attribute: :window_count, 
                             placeholder: nil,
                             input_addon: nil } %>
@@ -185,8 +185,8 @@
             <div class="form-group">
               <%= render  partial: "permit_steps/form_helper/text_field", 
                   locals: { f: f, 
-                            question: "How many doors are you changing?",
-                            helper_text: "Please include doors you are repairing.",
+                            question: t('enter_details.door_info.door_count.question'),
+                            helper_text: t('enter_details.door_info.door_count.helper_text'),
                             attribute: :door_count, 
                             placeholder: nil,
                             input_addon: nil } %>
@@ -210,8 +210,8 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_area", 
               locals: { f: f, 
-                        question: "Work Summary",
-                        helper_text: "Please describe the project you are working on.",
+                        question: t('enter_details.final_info.work_summary.question'),
+                        helper_text: t('enter_details.final_info.work_summary.helper_text'),
                         attribute: :work_summary } %>
         </div>
 
@@ -221,8 +221,8 @@
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Job Cost",
-                        helper_text: "Please enter the total cost of labor and materials for your project.",
+                        question: t('enter_details.final_info.job_cost.question'),
+                        helper_text: t('enter_details.final_info.job_cost.helper_text'),
                         attribute: :job_cost, 
                         placeholder: nil,
                         input_addon: "$" } %>
@@ -234,7 +234,7 @@
 
     <!-- ./Final info section-->   
 
-    <%= f.submit "Next step", class: "btn btn-primary btn-lg" %> 
+    <%= f.submit t('enter_details.submit'), class: "btn btn-primary btn-lg" %> 
 
     <% end %>
   </div>
