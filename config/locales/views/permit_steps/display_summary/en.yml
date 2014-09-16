@@ -3,15 +3,14 @@ en:
     permit_steps:
       display_summary:
         intro:
-          heading: "Almost done! We filled in your permit applications"
-          body: "You'll need to complete a few simple steps to submit your application:"
+          heading: "Almost done! Time to send in your application"
+          body: "You're ready to email your application to the city. Just follow the steps below:"
         permit:
-          heading: "Download your finished permit application"
-          adobe_download:
-            html: "The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
-          congrat_text: "Congratulations! You filled out the General Repair/Residential Permit Application."
-          download_instruction: "We filled in the permit application form for you. Please click the button below to download and print this application."
-          download_button: "Download then print"
+          heading: "Review and send your permit application"
+          congrat_text: "We filled in your permit application. Check your responses below."
+          download_instruction: "When you're ready, we'll submit your application to the Development Services Department."
+          send_button: "Send my application"
+          problem_button: "Go back and fix my answers"
         site_plan:
           heading: "Make a detailed site plan"
           description: "A site plan is a drawing of your property that includes current buildings (like houses or sheds) and new structures (like an addition or shed)."

@@ -7,8 +7,6 @@ es:
           body: "ES You'll need to complete a few simple steps to submit your application:"
         permit:
           heading: "ES Download your finished permit application"
-          adobe_download:
-            html: "ES The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
           congrat_text: "ES Congratulations! You filled out the General Repair/Residential Permit Application."
           download_instruction: "ES We filled in the permit application form for you. Please click the button below to download and print this application."
           download_button: "ES Download then print"

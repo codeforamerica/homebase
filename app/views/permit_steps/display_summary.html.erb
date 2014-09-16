@@ -17,22 +17,12 @@
     </div>
 
     <div class="panel-body container-fluid">
-      <div class="row">
+    
+      <p><strong><%= t('views.permit_steps.display_summary.permit.congrat_text') %></strong></p>
+      <p><%= t('views.permit_steps.display_summary.permit.download_instruction') %></p>
+      <a class="btn btn-danger btn-lg" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.send_button') %></a>
+      <a class="btn btn-default btn-sm" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.problem_button') %></a>
 
-        <div class="col-sm-12">
-          <div class="alert alert-warning"><!-- @TODO remove the need for this with pdf.js -->
-            <p><%= t('views.permit_steps.display_summary.permit.adobe_download.html') %></p>
-          </div>
-        </div>
-      
-        <%= image_tag "permits/general-repairs-template-preview-200px.png" , class: "hidden-xs col-sm-4" %>
-
-        <div class="col-sm-8">
-          <p><strong><%= t('views.permit_steps.display_summary.permit.congrat_text') %></strong></p>
-          <p><%= t('views.permit_steps.display_summary.permit.download_instruction') %></p>
-          <a class="btn btn-primary btn-md" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.download_button') %></a>
-        </div>
-      </div><!-- ./row -->
     </div><!-- ./panel_body -->
   </div><!-- ./panel -->
 
