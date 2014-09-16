@@ -50,3 +50,37 @@ label.project {
     top: 0;
   }
 }
+
+/* Extra small devices (phones, less than 479px) */
+
+@media (max-width: 479px) {
+  .new_permit .col-md-4 {
+    padding-bottom: 3px;
+  }
+  .btn-block {
+    position: relative;
+    line-height: 32px;
+  }
+  label.project {
+    height: 50px;
+    padding: 0;
+    p {
+      left: 44%;
+      padding-top: 17px;
+      padding-right: 22px;
+      position: absolute;
+      text-align: left;
+      br {
+        display: none;
+      }
+    }
+  }
+  .project img {
+    padding: 8px 0 8px 22px;
+    float: left;
+    margin: 0;
+  }
+  .project-block .clearfix {
+    display: none;
+  }  
+}
