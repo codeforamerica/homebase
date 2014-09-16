@@ -11,7 +11,7 @@ es:
           deck: "ES Deck"
           pool: "ES Swimming Pool"
           cover:
-            html: "ES Carport or<br>Outdoor Cover"
+            html: "ES Carport or <br> Outdoor Cover "
           window: "ES Windows"
           door: "ES Doors"
           wall: "ES Walls"

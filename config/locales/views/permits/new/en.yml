@@ -11,7 +11,7 @@ en:
           deck: "Deck"
           pool: "Swimming Pool"
           cover:
-            html: "Carport or<br>Outdoor Cover"
+            html: " Carport or <br> Outdoor Cover "
           window: "Windows"
           door: "Doors"
           wall: "Walls"

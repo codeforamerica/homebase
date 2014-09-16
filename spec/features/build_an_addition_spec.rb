@@ -14,7 +14,7 @@ feature "Build an addition" do
     check "Room Addition"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -36,7 +36,7 @@ feature "Build an addition" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -44,7 +44,7 @@ feature "Build an addition" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -55,14 +55,14 @@ feature "Build an addition" do
 
     fill_in "Size of existing house in square feet", with: "1234"
     fill_in "Size of new addition in square feet", with: "350"
-    select "Wall Unit", from: "Air conditioning / heating system"
+    select "Wall unit", from: "Air conditioning / heating system"
 
     fill_in "Work Summary", with: "Building an addition in my backyard"
     fill_in "Job Cost", with: "10000"
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Please read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -71,7 +71,7 @@ feature "Build an addition" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Almost done! We filled in your permit applications")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -85,7 +85,7 @@ feature "Build an addition" do
     check "Room Addition"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -107,7 +107,7 @@ feature "Build an addition" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -115,7 +115,7 @@ feature "Build an addition" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -126,14 +126,14 @@ feature "Build an addition" do
 
     fill_in "Size of existing house in square feet", with: "1234"
     fill_in "Size of new addition in square feet", with: "125"
-    select "Wall Unit", from: "Air conditioning / heating system"
+    select "Wall unit", from: "Air conditioning / heating system"
 
     fill_in "Work Summary", with: "Building an addition in my backyard"
     fill_in "Job Cost", with: "10000"
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Please read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -142,7 +142,7 @@ feature "Build an addition" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Almost done! We filled in your permit applications")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -156,7 +156,7 @@ feature "Build an addition" do
     check "Room Addition"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -178,7 +178,7 @@ feature "Build an addition" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -186,7 +186,7 @@ feature "Build an addition" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -197,14 +197,14 @@ feature "Build an addition" do
 
     fill_in "Size of existing house in square feet", with: "1234"
     fill_in "Size of new addition in square feet", with: "124"
-    select "Wall Unit", from: "Air conditioning / heating system"
+    select "Wall unit", from: "Air conditioning / heating system"
 
     fill_in "Work Summary", with: "Building an addition in my backyard"
     fill_in "Job Cost", with: "10000"
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Please read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -213,7 +213,7 @@ feature "Build an addition" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Almost done! We filled in your permit applications")
     expect(page).not_to have_content("Make a detailed site plan")
 
@@ -231,7 +231,7 @@ feature "Build an addition" do
     check "Room Addition"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -253,7 +253,7 @@ feature "Build an addition" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -272,7 +272,7 @@ feature "Build an addition" do
     check "Room Addition"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -294,7 +294,7 @@ feature "Build an addition" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -312,7 +312,7 @@ feature "Build an addition" do
     check "Room Addition"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -334,7 +334,7 @@ feature "Build an addition" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -352,7 +352,7 @@ feature "Build an addition" do
     check "Room Addition"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -374,7 +374,7 @@ feature "Build an addition" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/use_contractor')
+    expect(current_path).to eq('/en/permit_steps/use_contractor')
     expect(page).to have_content("Sorry, we can't help you right now.")
 
   end

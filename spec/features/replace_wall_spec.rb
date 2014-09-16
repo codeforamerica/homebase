@@ -14,7 +14,7 @@ feature "Replace walls" do
     check "Walls"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -32,7 +32,7 @@ feature "Replace walls" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -50,7 +50,7 @@ feature "Replace walls" do
     check "Walls"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -68,7 +68,7 @@ feature "Replace walls" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -76,7 +76,7 @@ feature "Replace walls" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -91,7 +91,7 @@ feature "Replace walls" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Please read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -100,7 +100,7 @@ feature "Replace walls" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Almost done! We filled in your permit applications")
     expect(page).not_to have_content("Make a detailed site plan")
 
