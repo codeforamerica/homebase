@@ -21,31 +21,36 @@ en:
           question: "What best describes your swimming pool that you are building?"
         window:
           header: "Windows"
-          question_html: "Are you <b>only</b> replacing broken glass?"
+          question:
+            html: "Are you <b>only</b> replacing broken glass?"
           options:
             yes_statement: "Yes"
             no_statement: "No"
         door:
           header: "Doors"
-          question_html: "Are you <b>only</b> replacing the existing door on current hinges?"
+          question:
+            html: "Are you <b>only</b> replacing the existing door on current hinges?"
           options:
             yes_statement: "Yes"
             no_statement: "No"
         wall:
           header: "Walls"
-          question_html: "Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
+          question:
+            html: "Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
           options:
             yes_statement: "Yes"
             no_statement: "No"
         siding:
           header: "Siding Replacement"
-          question_html: "Are you <b>only</b> placing new siding over existing siding?"
+          question:
+            html: "Are you <b>only</b> placing new siding over existing siding?"
           options:
             yes_statement: "Yes"
             no_statement: "No"
         floor:
           header: "Floor - Structural Repairs"
-          question_html: "Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
+          question:
+            html: "Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
           options:
             yes_statement: "Yes"
             no_statement: "No"

@@ -6,7 +6,8 @@ es:
         requirement:
           heading: "ES There may be other requirements"
           body: "ES Additional permits, inspections and documents may be required to complete your project. Separate permits are required for electrical, plumbing and other parts of the project."
-          engineer_letter_html: "ES A profession engineer usually has to inspect new concrete slabs before the concrete is poured. To find a professional engineer, visit the <a href=\"http://engineers.texas.gov\" target=\"_blank\">Texas Board of Professional Engineers website</a>."
+          engineer_letter:
+            html: "ES A profession engineer usually has to inspect new concrete slabs before the concrete is poured. To find a professional engineer, visit the <a href=\"http://engineers.texas.gov\" target=\"_blank\">Texas Board of Professional Engineers website</a>."
           dsd_contact: "ES If you have any questions or are unsure about this information, please call Development Services Department at (210) 207-1111."
           accept_text: "ES I understand that other permit and inspections may be required."
         signature:

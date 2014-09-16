@@ -7,7 +7,8 @@ es:
           body: "ES You'll need to complete a few simple steps to submit your application:"
         permit:
           heading: "ES Download your finished permit application"
-          adobe_download_html: "ES The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
+          adobe_download:
+            html: "ES The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
           congrat_text: "ES Congratulations! You filled out the General Repair/Residential Permit Application."
           download_instruction: "ES We filled in the permit application form for you. Please click the button below to download and print this application."
           download_button: "ES Download then print"
@@ -19,12 +20,16 @@ es:
         forms_to_dsd:
           heading: "ES Bring your completed forms to the Development Services Department"
           instruction: "ES You will have to submit your materials in person to the Development Services Department One-Stop. You will also have to pay a fee to apply for your permit."
-          location_html: "ES <strong>Where:</strong> The Development Services Department One-Stop is located at <a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo, San Antonio, Texas 78204</a>."
-          hour_html: "ES <strong>Office hours:</strong> 7:45am–4:30pm (Monday–Friday)"
-          bring_html: "ES <strong>What to bring:</strong> Please come prepared with the following items."
+          location:
+            html: "ES <strong>Where:</strong> The Development Services Department One-Stop is located at <a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo, San Antonio, Texas 78204</a>."
+          hour:
+            html: "ES <strong>Office hours:</strong> 7:45am–4:30pm (Monday–Friday)"
+          bring:
+            html: "ES <strong>What to bring:</strong> Please come prepared with the following items."
           permit_app: "ES Your printed General Repairs/Residential Permit application"
           site_plan: "ES Your printed and completed site plan"
           photo_id: "ES A form of photo identification (i.e. driver's license, passport)"
           ownership_proof: "ES Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
           payment: "ES A form of payment (i.e. credit card, check or cash)"
-          contact_html: "ES <strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111."
+          contact:
+            html: "ES <strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111."

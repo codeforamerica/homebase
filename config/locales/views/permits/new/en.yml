@@ -10,7 +10,8 @@ en:
           acs_struct: "Shed or Garage"
           deck: "Deck"
           pool: "Swimming Pool"
-          cover_html: "Carport or<br>Outdoor Cover"
+          cover:
+            html: "Carport or<br>Outdoor Cover"
           window: "Windows"
           door: "Doors"
           wall: "Walls"

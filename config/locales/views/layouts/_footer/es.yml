@@ -2,5 +2,6 @@ es:
   views:
     layouts:
       footer:
-        author_html: "ES Created by <a href=\"http://codeforamerica.org\">Code for America</a> and the <a href=\"http://sanantonio.gov\">City of San Antonio</a>."
+        author:
+          html: "ES Created by <a href=\"http://codeforamerica.org\">Code for America</a> and the <a href=\"http://sanantonio.gov\">City of San Antonio</a>."
         help_and_feedback: "ES Help & Feedback"

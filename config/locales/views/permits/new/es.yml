@@ -10,7 +10,8 @@ es:
           acs_struct: "ES Shed or Garage"
           deck: "ES Deck"
           pool: "ES Swimming Pool"
-          cover_html: "ES Carport or<br>Outdoor Cover"
+          cover:
+            html: "ES Carport or<br>Outdoor Cover"
           window: "ES Windows"
           door: "ES Doors"
           wall: "ES Walls"
