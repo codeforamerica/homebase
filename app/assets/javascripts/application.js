@@ -19,7 +19,6 @@
 //= require bootstrap
 //= require jquery.maskedinput
 //= require webfont.min
-//= require viewerjs
 //
 // Application JavaScript
 //
