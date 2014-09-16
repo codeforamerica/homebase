@@ -19,7 +19,7 @@ label.project {
 }
 
 // color the label when checked
-:checked + label {
+:checked + label.project {
   background-color: #c9e6ed;
 }
 
