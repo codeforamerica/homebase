@@ -7,6 +7,7 @@ es:
         tagline: "ES Apply for a building permit in San Antonio"
         about: "ES About this project"
         start_over: "ES Start over"
+        translate: "English"
         author: "ES Created by Code for America and the City of San Antonio"
         link_to_domain:
           html: "ES <a href=\"http://homebasefix.com\">Click here</a> to read more about Homebase and how we're simplifying the home repair process in San Antonio."
