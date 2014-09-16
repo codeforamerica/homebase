@@ -1,2 +1,17 @@
 es:
-  new: ""
+  new:
+    intro:
+      heading: "ES How would you like to improve your house?"
+      helper_text: "ES Please select all the projects that you would like to work on:"
+    project:
+      addition: "ES Room Addition"
+      acs_struct: "ES Shed or Garage"
+      deck: "ES Deck"
+      pool: "ES Swimming Pool"
+      cover_html: "ES Carport or<br>Outdoor Cover"
+      window: "ES Windows"
+      door: "ES Doors"
+      wall: "ES Walls"
+      siding: "ES Replace siding"
+      floor: "ES Floors"
+    submit: "ES Next step"

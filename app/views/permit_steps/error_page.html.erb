@@ -6,11 +6,11 @@
 
   <!-- Intro text -->
   <div class="intro">
-    <h1>Sorry, something isn't working correctly.</h1>
+    <h1><%= t('error_page.heading') %></h1>
     <div class="alert alert-danger">
-        <p>We weren't able to fill out your permit application.</p>
-        <p><strong>Try hitting the back button then clicking on the "Download then print" button again. That might fix the problem for you.</strong></p>
-        <p>If you're still having problems, please let us know by email at <a href="mailto:sanantonio@codeforamerica.org">sanantonio@codeforamerica.org</a>.</p>
+        <p><%= t('error_page.description') %></p>
+        <p><strong><%= t('error_page.instruction') %></strong></p>
+        <p><%= t('error_page.contact_html') %></p>
     </div>
   </div>
  </div>

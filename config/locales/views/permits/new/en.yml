@@ -1,2 +1,17 @@
 en:
-  new: ""
+  new:
+    intro:
+      heading: "How would you like to improve your house?"
+      helper_text: "Please select all the projects that you would like to work on:"
+    project:
+      addition: "Room Addition"
+      acs_struct: "Shed or Garage"
+      deck: "Deck"
+      pool: "Swimming Pool"
+      cover_html: "Carport or<br>Outdoor Cover"
+      window: "Windows"
+      door: "Doors"
+      wall: "Walls"
+      siding: "Replace siding"
+      floor: "Floors"
+    submit: "Next step"

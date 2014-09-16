@@ -20,79 +20,102 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  model:
+    permit:
+      addition:
+        name: "ES Addition"
+        size:
+          label: "ES Size"
+          options:
+            lt_1000:    "ES Less than 1,000 sq ft"
+            gte_1000:  "ES Greater than or equal to 1,000 sq ft"
 
-  addition:
-    size:
-      label: "ES Size"
-      options:
-        lt_1000:   "ES Less than 1,000 sq ft"
-        gte_1000:  "ES Greater than or equal to 1,000 sq ft"
+        num_story:
+          label: "ES Stories"
+          options:
+            one:          "ES 1 story"
+            two_or_more:  "ES 2 or more stories"
 
-    num_story:
-      label: "ES Stories"
-      options:
-        one:          "ES 1 story"
-        two_or_more:  "ES 2 or more stories"
+      acs_struct:
+        name: "ES Shed/Garage"
+        size:
+          label: "ES Size"
+          options:
+            lte_120:  "ES Less than or equal to 120 sq ft" 
+            gt_120:   "ES Greater than 120 sq ft"
 
-  acs_struct:
-    size:
-      label: "ES Size"
-      options:
-        lte_120:  "ES Less than or equal to 120 sq ft" 
-        gt_120:   "ES Greater than 120 sq ft"
+        num_story:
+          label: "ES Stories"
+          options:
+            one:          "ES 1 story"
+            two_or_more:  "ES 2 or more stories"
 
-    num_story:
-      label: "ES Stories"
-      options:
-        one:          "ES 1 story"
-        two_or_more:  "ES 2 or more stories"
+      deck:
+        name: "ES Deck"
+        size:
+          label: "ES Size"
+          options:
+            lte_200: "ES Less than or equal to 200 sq ft"
+            gt_200: "ES Greater than 200 sq ft"
+        grade:
+          label: "ES Grade"
+          options:
+            lte_30: "ES Less than or equal to 30 inches above grade"
+            gt_30:  "ES More than 30 inches above grade"
+        dwelling_attach:
+          label: "ES Dwelling Attachement"
+          options:
+            attached:     "ES Attached to dwelling"
+            not_attached: "ES Not attached to dwelling"
+        exit_door:
+          label: "ES Exit Door"
+          options:
+            served:   "ES Serves a required exit door"
+            not_served: "ES Does not serve a required exit door"
 
-  deck:
-    size:
-      label: "ES Size"
-      options:
-        lte_200: "ES Less than or equal to 200 sq ft"
-        gt_200: "ES Greater than 200 sq ft"
-    grade:
-      label: "ES Grade"
-      options:
-        lte_30: "ES Less than or equal to 30 inches above grade"
-        gt_30:  "ES More than 30 inches above grade"
-    dwelling_attach:
-      label: "ES Dwelling Attachement"
-      options:
-        attached:     "ES Attached to dwelling"
-        not_attached: "ES Not attached to dwelling"
-    exit_door:
-      label: "ES Exit Door"
-      options:
-        served:   "ES Serves a required exit door"
-        not_served: "ES Does not serve a required exit door"
+      pool:
+        name: "ES Swimming Pool"
+        location:
+          label: "ES Location"
+          options:
+            in_ground:    "ES Pool is in ground"
+            above_ground: "ES Pool is above ground"
+        volume:
+          label: "ES Volume"
+          options:
+            lte_5000: "ES Less than or equal to 5,000 gallons"
+            gt_5000:  "ES More than 5,000 gallons"
 
-  pool:
-    location:
-      label: "ES Location"
-      options:
-        in_ground:    "ES Pool is in ground"
-        above_ground: "ES Pool is above ground"
-    volume:
-      label: "ES Volume"
-      options:
-        lte_5000: "ES Less than or equal to 5,000 gallons"
-        gt_5000:  "ES More than 5,000 gallons"
+      cover:
+        name: "ES Carport/Outdoor Cover"
 
-  ac:
-    options:
-      none:     "ES None"
-      wall:     "ES Wall unit"
-      extended: "ES Extended from main house"
-      split:    "ES New split system"
+      window:
+        name: "ES Windows"
 
-  ensure_name_confirmed_msg: "ES The name didn't validate."
+      door:
+        name: "ES Doors"
 
-  confirmed_name_msg: "ES The name you entered did not match the name you used on your permit application (%{name}). Please type your name again."
+      wall:
+        name: "ES Walls"
 
-  no_proj_chosen_msg: "ES Please choose at least one project to work on."
+      siding:
+        name: "ES Replace Siding"
+
+      floor:
+        name: "ES Floors"
+
+      ac:
+        options:
+          none:     "ES None"
+          wall:     "ES Wall unit"
+          extended: "ES Extended from main house"
+          split:    "ES New split system"
+
+      ensure_name_confirmed_msg: "ES The name didn't validate."
+
+      confirmed_name_msg: "ES The name you entered did not match the name you used on your permit application (%{name}). Please type your name again."
+
+      no_proj_chosen_msg: "ES Please choose at least one project to work on."
 
   activerecord: 
     # models:

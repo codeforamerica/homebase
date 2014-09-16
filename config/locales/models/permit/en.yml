@@ -20,79 +20,102 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  model:
+    permit:
+      addition:
+        name: "Addition"
+        size:
+          label: "Size"
+          options:
+            lt_1000:    "Less than 1,000 sq ft"
+            gte_1000:  "Greater than or equal to 1,000 sq ft"
 
-  addition:
-    size:
-      label: "Size"
-      options:
-        lt_1000:    "Less than 1,000 sq ft"
-        gte_1000:  "Greater than or equal to 1,000 sq ft"
+        num_story:
+          label: "Stories"
+          options:
+            one:          "1 story"
+            two_or_more:  "2 or more stories"
 
-    num_story:
-      label: "Stories"
-      options:
-        one:          "1 story"
-        two_or_more:  "2 or more stories"
+      acs_struct:
+        name: "Shed/Garage"
+        size:
+          label: "Size"
+          options:
+            lte_120:  "Less than or equal to 120 sq ft" 
+            gt_120:   "Greater than 120 sq ft"
 
-  acs_struct:
-    size:
-      label: "Size"
-      options:
-        lte_120:  "Less than or equal to 120 sq ft" 
-        gt_120:   "Greater than 120 sq ft"
+        num_story:
+          label: "Stories"
+          options:
+            one:          "1 story"
+            two_or_more:  "2 or more stories"
 
-    num_story:
-      label: "Stories"
-      options:
-        one:          "1 story"
-        two_or_more:  "2 or more stories"
+      deck:
+        name: "Deck"
+        size:
+          label: "Size"
+          options:
+            lte_200: "Less than or equal to 200 sq ft"
+            gt_200: "Greater than 200 sq ft"
+        grade:
+          label: "Grade"
+          options:
+            lte_30: "Less than or equal to 30 inches above grade"
+            gt_30:  "More than 30 inches above grade"
+        dwelling_attach:
+          label: "Dwelling Attachement"
+          options:
+            attached:     "Attached to dwelling"
+            not_attached: "Not attached to dwelling"
+        exit_door:
+          label: "Exit Door"
+          options:
+            served:   "Serves a required exit door"
+            not_served: "Does not serve a required exit door"
 
-  deck:
-    size:
-      label: "Size"
-      options:
-        lte_200: "Less than or equal to 200 sq ft"
-        gt_200: "Greater than 200 sq ft"
-    grade:
-      label: "Grade"
-      options:
-        lte_30: "Less than or equal to 30 inches above grade"
-        gt_30:  "More than 30 inches above grade"
-    dwelling_attach:
-      label: "Dwelling Attachement"
-      options:
-        attached:     "Attached to dwelling"
-        not_attached: "Not attached to dwelling"
-    exit_door:
-      label: "Exit Door"
-      options:
-        served:   "Serves a required exit door"
-        not_served: "Does not serve a required exit door"
+      pool:
+        name: "Swimming Pool"
+        location:
+          label: "Location"
+          options:
+            in_ground:    "Pool is in ground"
+            above_ground: "Pool is above ground"
+        volume:
+          label: "Volume"
+          options:
+            lte_5000: "Less than or equal to 5,000 gallons"
+            gt_5000:  "More than 5,000 gallons"
 
-  pool:
-    location:
-      label: "Location"
-      options:
-        in_ground:    "Pool is in ground"
-        above_ground: "Pool is above ground"
-    volume:
-      label: "Volume"
-      options:
-        lte_5000: "Less than or equal to 5,000 gallons"
-        gt_5000:  "More than 5,000 gallons"
+      cover:
+        name: "Carport/Outdoor Cover"
 
-  ac:
-    options:
-      none:     "None"
-      wall:     "Wall unit"
-      extended: "Extended from main house"
-      split:    "New split system"
+      window:
+        name: "Windows"
 
-  ensure_name_confirmed_msg: "The name didn't validate."
+      door:
+        name: "Doors"
 
-  confirmed_name_msg: "The name you entered did not match the name you used on your permit application (%{name}). Please type your name again."
+      wall:
+        name: "Walls"
 
-  no_proj_chosen_msg: "Please choose at least one project to work on."
+      siding:
+        name: "Replace Siding"
+
+      floor:
+        name: "Floors"
+
+      ac:
+        options:
+          none:     "None"
+          wall:     "Wall unit"
+          extended: "Extended from main house"
+          split:    "New split system"
+
+      ensure_name_confirmed_msg: "The name didn't validate."
+
+      confirmed_name_msg: "The name you entered did not match the name you used on your permit application (%{name}). Please type your name again."
+
+      no_proj_chosen_msg: "Please choose at least one project to work on."
 
   activerecord:
     # models:

@@ -126,7 +126,7 @@ class Permit < ActiveRecord::Base
   ## Validations on permit_step#confirm_terms ##
 
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
-  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('ensure_name_confirmed_msg')
+  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('model.permit.ensure_name_confirmed_msg')
   # @TODO: may want to do this instead of before_save
   # class Person < ActiveRecord::Base
   #   validates :email, confirmation: true
@@ -136,51 +136,51 @@ class Permit < ActiveRecord::Base
 
   # Projects
   def addition_details
-    { :addition_size => { label:    I18n.t('addition.size.label'), 
-                          options:  [ { value: 'lessThan1000', label: I18n.t('addition.size.options.lt_1000') }, 
-                                      { value: 'greaterThanEqualTo1000',  label: I18n.t('addition.size.options.gte_1000')}]},
-      :addition_num_story =>  { label:    I18n.t('addition.num_story.label'),
-                                options:  [ { value: '1Story', label: I18n.t('addition.num_story.options.one') }, 
-                                            { value: '2orMoreStories', label: I18n.t('addition.num_story.options.two_or_more') }]}}
+    { :addition_size => { label:    I18n.t('model.permit.addition.size.label'), 
+                          options:  [ { value: 'lessThan1000', label: I18n.t('model.permit.addition.size.options.lt_1000') }, 
+                                      { value: 'greaterThanEqualTo1000',  label: I18n.t('model.permit.addition.size.options.gte_1000')}]},
+      :addition_num_story =>  { label:    I18n.t('model.permit.addition.num_story.label'),
+                                options:  [ { value: '1Story', label: I18n.t('model.permit.addition.num_story.options.one') }, 
+                                            { value: '2orMoreStories', label: I18n.t('model.permit.addition.num_story.options.two_or_more') }]}}
   end
 
   def acs_struct_details
-    { :acs_struct_size =>  {  label:    I18n.t('acs_struct.size.label'),
-                              options:  [ { value: 'lessThanEqualTo120', label: I18n.t('acs_struct.size.options.lte_120') }, 
-                                          { value: 'greaterThan120', label: I18n.t('acs_struct.size.options.gt_120') }]},
-      :acs_struct_num_story => {  label:     I18n.t('acs_struct.num_story.label'),
-                                  options:  [ { value: '1Story', label: I18n.t('acs_struct.num_story.options.one') }, 
-                                              { value: '2orMoreStories', label: I18n.t('acs_struct.num_story.options.two_or_more') }]}}
+    { :acs_struct_size =>  {  label:    I18n.t('model.permit.acs_struct.size.label'),
+                              options:  [ { value: 'lessThanEqualTo120', label: I18n.t('model.permit.acs_struct.size.options.lte_120') }, 
+                                          { value: 'greaterThan120', label: I18n.t('model.permit.acs_struct.size.options.gt_120') }]},
+      :acs_struct_num_story => {  label:     I18n.t('model.permit.acs_struct.num_story.label'),
+                                  options:  [ { value: '1Story', label: I18n.t('model.permit.acs_struct.num_story.options.one') }, 
+                                              { value: '2orMoreStories', label: I18n.t('model.permit.acs_struct.num_story.options.two_or_more') }]}}
 
   end
 
   def deck_details
-    { :deck_size => { label:    I18n.t('deck.size.label'),
-                      options:  [ { value: 'lessThanEqualTo200', label: I18n.t('deck.size.options.lte_200') },
-                                  { value: 'greaterThan200', label: I18n.t('deck.size.options.gt_200') }]},
-      :deck_grade => {  label:    I18n.t('deck.grade.label'),
-                        options:  [ { value: 'lessThanEqualTo30', label: I18n.t('deck.grade.options.lte_30')},
-                                    { value: 'moreThan30', label: I18n.t('deck.grade.options.gt_30')}]},
-      :deck_dwelling_attach => {  label:    I18n.t('deck.dwelling_attach.label'),
-                                  options:  [ { value: 'attachedToDwelling', label: I18n.t('deck.dwelling_attach.options.attached')},
-                                              { value: 'notAttachedToDwelling', label: I18n.t('deck.dwelling_attach.options.not_attached')}]},
-      :deck_exit_door => {  label:    I18n.t('deck.exit_door.label'),
-                            options:  [ { value: 'exitDoor', label: I18n.t('deck.exit_door.options.served')},
-                                        { value: 'noExitDoor', label: I18n.t('deck.exit_door.options.not_served')}]}}
+    { :deck_size => { label:    I18n.t('model.permit.deck.size.label'),
+                      options:  [ { value: 'lessThanEqualTo200', label: I18n.t('model.permit.deck.size.options.lte_200') },
+                                  { value: 'greaterThan200', label: I18n.t('model.permit.deck.size.options.gt_200') }]},
+      :deck_grade => {  label:    I18n.t('model.permit.deck.grade.label'),
+                        options:  [ { value: 'lessThanEqualTo30', label: I18n.t('model.permit.deck.grade.options.lte_30')},
+                                    { value: 'moreThan30', label: I18n.t('model.permit.deck.grade.options.gt_30')}]},
+      :deck_dwelling_attach => {  label:    I18n.t('model.permit.deck.dwelling_attach.label'),
+                                  options:  [ { value: 'attachedToDwelling', label: I18n.t('model.permit.deck.dwelling_attach.options.attached')},
+                                              { value: 'notAttachedToDwelling', label: I18n.t('model.permit.deck.dwelling_attach.options.not_attached')}]},
+      :deck_exit_door => {  label:    I18n.t('model.permit.deck.exit_door.label'),
+                            options:  [ { value: 'exitDoor', label: I18n.t('model.permit.deck.exit_door.options.served')},
+                                        { value: 'noExitDoor', label: I18n.t('model.permit.deck.exit_door.options.not_served')}]}}
   end
 
   def pool_details
-    { :pool_location => { label:    I18n.t('pool.location.label'),
-                          options:  [ { value: 'inGround', label: I18n.t('pool.location.options.in_ground')}, 
-                                      { value: 'aboveGround', label: I18n.t('pool.location.options.above_ground') }]},
-      :pool_volume => { label:    I18n.t('pool.volume.label'),
-                        options:  [ { value: 'lessThanEqualTo5000', label: I18n.t('pool.volume.options.lte_5000')}, 
-                                    { value: 'moreThan5000', label: I18n.t('pool.volume.options.gt_5000')}]}}
+    { :pool_location => { label:    I18n.t('model.permit.pool.location.label'),
+                          options:  [ { value: 'inGround', label: I18n.t('model.permit.pool.location.options.in_ground')}, 
+                                      { value: 'aboveGround', label: I18n.t('model.permit.pool.location.options.above_ground') }]},
+      :pool_volume => { label:    I18n.t('model.permit.pool.volume.label'),
+                        options:  [ { value: 'lessThanEqualTo5000', label: I18n.t('model.permit.pool.volume.options.lte_5000')}, 
+                                    { value: 'moreThan5000', label: I18n.t('model.permit.pool.volume.options.gt_5000')}]}}
   end
 
   # Room Addition
   def ac_options
-    [I18n.t('ac.options.none'), I18n.t('ac.options.wall'), I18n.t('ac.options.extended'), I18n.t('ac.options.split')]
+    [I18n.t('model.permit.ac.options.none'), I18n.t('model.permit.ac.options.wall'), I18n.t('model.permit.ac.options.extended'), I18n.t('model.permit.ac.options.split')]
   end
 
   ######## Conditions for Validation ########
@@ -276,7 +276,7 @@ class Permit < ActiveRecord::Base
 
   def ensure_name_confirmed
     if !confirmed_name.eql?(owner_name)
-      errors[:confirmed_name] << (I18n.t('confirmed_name_msg', name: owner_name))
+      errors[:confirmed_name] << (I18n.t('model.permit.confirmed_name_msg', name: owner_name))
     end
     confirmed_name.eql?(owner_name)
   end
@@ -291,7 +291,7 @@ class Permit < ActiveRecord::Base
           to_bool(selected_cover) || to_bool(selected_pool) || to_bool(selected_deck) || 
           to_bool(selected_acs_struct))
 
-      errors[:base] << (I18n.t('no_proj_chosen_msg'))
+      errors[:base] << (I18n.t('model.permit.no_proj_chosen_msg'))
     end
   end
 
@@ -390,10 +390,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_addition) 
 
       if addition_permit_needed?
-        permit_needs["permit_needed"].push("Addition")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.addition.name'))
         update_attribute("addition", true)
       else
-        permit_needs["further_assistance_needed"].push("Addition")
+        permit_needs["further_assistance_needed"].push(I18n.t('model.permit.addition.name'))
         update_attribute("addition", nil)
       end
 
@@ -405,12 +405,12 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_acs_struct)
 
       if acs_struct_permit_needed?
-        permit_needs["permit_needed"].push("Shed/Garage")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.acs_struct.name'))
         update_attribute("acs_struct", true)
       elsif acs_struct_permit_needed? == false
-        permit_needs["permit_not_needed"].push("Shed/Garage")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.acs_struct.name'))
       else
-        permit_needs["further_assistance_needed"].push("Shed/Garage")
+        permit_needs["further_assistance_needed"].push(I18n.t('model.permit.acs_struct.name'))
         update_attribute("acs_struct", nil)
       end
 
@@ -419,12 +419,12 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_deck)
 
       if deck_permit_needed?
-        permit_needs["permit_needed"].push("Deck")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.deck.name'))
         update_attribute("deck", true)
       elsif deck_permit_needed? == false
-        permit_needs["permit_not_needed"].push("Deck")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.deck.name'))
       else
-        permit_needs["further_assistance_needed"].push("Deck")
+        permit_needs["further_assistance_needed"].push(I18n.t('model.permit.deck.name'))
         update_attribute("deck", nil)
       end
 
@@ -433,13 +433,13 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_pool)
 
       if pool_permit_needed?
-        permit_needs["permit_needed"].push("Swimming Pool")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.pool.name'))
         update_attribute("pool", true)
       elsif pool_permit_needed? == false
-        permit_needs["permit_not_needed"].push("Swimming Pool")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.pool.name'))
         update_attribute("pool", false)
       else
-        permit_needs["further_assistance_needed"].push("Swimming Pool")
+        permit_needs["further_assistance_needed"].push(I18n.t('model.permit.pool.name'))
         update_attribute("pool", nil)
       end
 
@@ -448,10 +448,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_cover)
 
       if cover_permit_needed?
-        permit_needs["permit_needed"].push("Carport/Outdoor Cover")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.cover.name'))
         update_attribute("cover", true)
       else
-        permit_needs["further_assistance_needed"].push("Carport/Outdoor Cover")
+        permit_needs["further_assistance_needed"].push(I18n.t('model.permit.cover.name'))
         update_attribute("cover", nil)
       end
 
@@ -460,10 +460,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_window)
 
       if window_permit_needed?
-        permit_needs["permit_needed"].push("Windows")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.window.name'))
         update_attribute("window", true)
       else
-        permit_needs["permit_not_needed"].push("Windows")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.window.name'))
         update_attribute("window", false)
       end
 
@@ -471,10 +471,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_door)
       if door_permit_needed?
-        permit_needs["permit_needed"].push("Doors")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.door.name'))
         update_attribute("door", true)
       else
-        permit_needs["permit_not_needed"].push("Doors")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.door.name'))
         update_attribute("door", false)
       end
 
@@ -482,10 +482,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_wall)
       if wall_permit_needed?
-        permit_needs["permit_needed"].push("Walls")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.wall.name'))
         update_attribute("wall", true)
       else
-        permit_needs["permit_not_needed"].push("Walls")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.wall.name'))
         update_attribute("wall", false)
       end
 
@@ -494,10 +494,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_siding)
 
       if siding_permit_needed?
-        permit_needs["permit_needed"].push("Replace Siding")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.siding.name'))
         update_attribute("siding", true)
       else
-        permit_needs["permit_not_needed"].push("Replace Siding")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.siding.name'))
         update_attribute("siding", false)
       end
 
@@ -505,10 +505,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_floor)
       if floor_permit_needed?
-        permit_needs["permit_needed"].push("Floors")
+        permit_needs["permit_needed"].push(I18n.t('model.permit.floor.name'))
         update_attribute("floor", true)
       else
-        permit_needs["permit_not_needed"].push("Floors")
+        permit_needs["permit_not_needed"].push(I18n.t('model.permit.floor.name'))
         update_attribute("floor", false)
       end
 
