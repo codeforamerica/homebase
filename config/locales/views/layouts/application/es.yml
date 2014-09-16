@@ -1,3 +1,5 @@
 es:
-  application:
-    title: "ES Homebase"
+  views:
+    layouts:
+      application:
+        title: "ES Homebase"

@@ -1,56 +1,58 @@
 es:
-  answer_screener:
-    header: "ES Enter your project details"
-    owner_address:
-      header: "ES Enter your home address"
-      question: "ES Enter the address of the property you're working on."
-      placeholder: "ES ex. 123 Main St. San Antonio, TX"
-    addition:
-      header: "ES Room Additions"
-      question: "ES What best describes your room addition that you are building?"
-    acs_struct:
-      header: "ES Shed/Garage"
-      question: "ES What best describes your shed or garage that you are building?"
-    deck:
-      header: "ES Deck"
-      question: "ES What best describes your deck that you are building?"
-    pool:
-      header: "ES Swimming Pool"
-      question: "ES What best describes your swimming pool that you are building?"
-    window:
-      header: "ES Windows"
-      question_html: "ES Are you <b>only</b> replacing broken glass?"
-      options:
-        yes_statement: "ES Yes"
-        no_statement: "ES No"
-    door:
-      header: "ES Doors"
-      question_html: "ES Are you <b>only</b> replacing the existing door on current hinges?"
-      options:
-        yes_statement: "ES Yes"
-        no_statement: "ES No"
-    wall:
-      header: "ES Walls"
-      question_html: "ES Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
-      options:
-        yes_statement: "ES Yes"
-        no_statement: "ES No"
-    siding:
-      header: "ES Siding Replacement"
-      question_html: "ES Are you <b>only</b> placing new siding over existing siding?"
-      options:
-        yes_statement: "ES Yes"
-        no_statement: "ES No"
-    floor:
-      header: "ES Floor - Structural Repairs"
-      question_html: "ES Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
-      options:
-        yes_statement: "ES Yes"
-        no_statement: "ES No"
-    contractor:
-      header: "ES Contractor"
-      question: "ES Will you be hiring a contractor to work on your project?"
-      options:
-        yes_statement: "ES Yes"
-        no_statement: "ES No"
-    submit: "ES Submit"
+  views:
+    permit_steps:
+      answer_screener:
+        header: "ES Enter your project details"
+        owner_address:
+          header: "ES Enter your home address"
+          question: "ES Enter the address of the property you're working on."
+          placeholder: "ES ex. 123 Main St. San Antonio, TX"
+        addition:
+          header: "ES Room Additions"
+          question: "ES What best describes your room addition that you are building?"
+        acs_struct:
+          header: "ES Shed/Garage"
+          question: "ES What best describes your shed or garage that you are building?"
+        deck:
+          header: "ES Deck"
+          question: "ES What best describes your deck that you are building?"
+        pool:
+          header: "ES Swimming Pool"
+          question: "ES What best describes your swimming pool that you are building?"
+        window:
+          header: "ES Windows"
+          question_html: "ES Are you <b>only</b> replacing broken glass?"
+          options:
+            yes_statement: "ES Yes"
+            no_statement: "ES No"
+        door:
+          header: "ES Doors"
+          question_html: "ES Are you <b>only</b> replacing the existing door on current hinges?"
+          options:
+            yes_statement: "ES Yes"
+            no_statement: "ES No"
+        wall:
+          header: "ES Walls"
+          question_html: "ES Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
+          options:
+            yes_statement: "ES Yes"
+            no_statement: "ES No"
+        siding:
+          header: "ES Siding Replacement"
+          question_html: "ES Are you <b>only</b> placing new siding over existing siding?"
+          options:
+            yes_statement: "ES Yes"
+            no_statement: "ES No"
+        floor:
+          header: "ES Floor - Structural Repairs"
+          question_html: "ES Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
+          options:
+            yes_statement: "ES Yes"
+            no_statement: "ES No"
+        contractor:
+          header: "ES Contractor"
+          question: "ES Will you be hiring a contractor to work on your project?"
+          options:
+            yes_statement: "ES Yes"
+            no_statement: "ES No"
+        submit: "ES Submit"

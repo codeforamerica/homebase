@@ -5,16 +5,16 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
-          <span class="sr-only"><%= t('timeout.close') %></span>
+          <span class="sr-only"><%= t('views.layouts.timeout.close') %></span>
         </button>
-        <h4 class="modal-title" id="myModalLabel"><%= t('timeout.session_expiring') %></h4>
+        <h4 class="modal-title" id="myModalLabel"><%= t('views.layouts.timeout.session_expiring') %></h4>
       </div>
       <div class="modal-body">
-        <p><%= t('timeout.alert_statement') %></p>
+        <p><%= t('views.layouts.timeout.alert_statement') %></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('timeout.yes_continue') %></button>
-        <%= link_to t('timeout.no_restart'), '/' + I18n.locale.to_s + '/reset', class: "btn btn-primary" %>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('views.layouts.timeout.yes_continue') %></button>
+        <%= link_to t('views.layouts.timeout.no_restart'), '/' + I18n.locale.to_s + '/reset', class: "btn btn-primary" %>
       </div>
     </div>
   </div>

@@ -1,3 +1,5 @@
 en:
-  application:
-    title: "Homebase"
+  views:
+    layouts:
+      application:
+        title: "Homebase"

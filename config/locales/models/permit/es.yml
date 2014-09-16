@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  model:
+  models:
     permit:
       addition:
         name: "ES Addition"

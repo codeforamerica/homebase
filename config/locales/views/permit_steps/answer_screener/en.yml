@@ -1,56 +1,58 @@
 en:
-  answer_screener:
-    header: "Enter your project details"
-    owner_address:
-      header: "Enter your home address"
-      question: "Enter the address of the property you're working on."
-      placeholder: "ex. 123 Main St. San Antonio, TX"
-    addition:
-      header: "Room Additions"
-      question: "What best describes your room addition that you are building?"
-    acs_struct:
-      header: "Shed/Garage"
-      question: "What best describes your shed or garage that you are building?"
-    deck:
-      header: "Deck"
-      question: "What best describes your deck that you are building?"
-    pool:
-      header: "Swimming Pool"
-      question: "What best describes your swimming pool that you are building?"
-    window:
-      header: "Windows"
-      question_html: "Are you <b>only</b> replacing broken glass?"
-      options:
-        yes_statement: "Yes"
-        no_statement: "No"
-    door:
-      header: "Doors"
-      question_html: "Are you <b>only</b> replacing the existing door on current hinges?"
-      options:
-        yes_statement: "Yes"
-        no_statement: "No"
-    wall:
-      header: "Walls"
-      question_html: "Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
-      options:
-        yes_statement: "Yes"
-        no_statement: "No"
-    siding:
-      header: "Siding Replacement"
-      question_html: "Are you <b>only</b> placing new siding over existing siding?"
-      options:
-        yes_statement: "Yes"
-        no_statement: "No"
-    floor:
-      header: "Floor - Structural Repairs"
-      question_html: "Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
-      options:
-        yes_statement: "Yes"
-        no_statement: "No"
-    contractor:
-      header: "Contractor"
-      question: "Will you be hiring a contractor to work on your project?"
-      options:
-        yes_statement: "Yes"
-        no_statement: "No"
-    submit: "Submit"
+  views:
+    permit_steps:
+      answer_screener:
+        header: "Enter your project details"
+        owner_address:
+          header: "Enter your home address"
+          question: "Enter the address of the property you're working on."
+          placeholder: "ex. 123 Main St. San Antonio, TX"
+        addition:
+          header: "Room Additions"
+          question: "What best describes your room addition that you are building?"
+        acs_struct:
+          header: "Shed/Garage"
+          question: "What best describes your shed or garage that you are building?"
+        deck:
+          header: "Deck"
+          question: "What best describes your deck that you are building?"
+        pool:
+          header: "Swimming Pool"
+          question: "What best describes your swimming pool that you are building?"
+        window:
+          header: "Windows"
+          question_html: "Are you <b>only</b> replacing broken glass?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        door:
+          header: "Doors"
+          question_html: "Are you <b>only</b> replacing the existing door on current hinges?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        wall:
+          header: "Walls"
+          question_html: "Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        siding:
+          header: "Siding Replacement"
+          question_html: "Are you <b>only</b> placing new siding over existing siding?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        floor:
+          header: "Floor - Structural Repairs"
+          question_html: "Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        contractor:
+          header: "Contractor"
+          question: "Will you be hiring a contractor to work on your project?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        submit: "Submit"

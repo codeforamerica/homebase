@@ -18,12 +18,12 @@
   <% if model_attribute.blank? %>
     <%= f.select  attribute, 
                   options_for_select(options), 
-                  { include_blank: t('select.select_one') }, 
+                  { include_blank: t('views.permit_steps.form_helper.select.select_one') }, 
                   { class: "form-control" } %>
   <% else %>
     <%= f.select  attribute, 
                   options_for_select(options, model_attribute), 
-                  { include_blank: t('select.select_one') }, 
+                  { include_blank: t('views.permit_steps.form_helper.select.select_one') }, 
                   { class: "form-control" } %>
   <% end %>  
 </div>

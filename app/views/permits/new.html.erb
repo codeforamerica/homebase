@@ -6,8 +6,8 @@
 
   <!-- Intro text -->
   <div class="intro">
-    <h1><%= t('new.intro.heading') %></h1>
-    <p><%= t('new.intro.helper_text') %></p>
+    <h1><%= t('views.permits.new.intro.heading') %></h1>
+    <p><%= t('views.permits.new.intro.helper_text') %></p>
   </div>
 
   <!-- Start the permit select form -->
@@ -32,7 +32,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/addition.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.addition') %></p>
+                <p class="btn-block"><%= t('views.permits.new.project.addition') %></p>
               </div>
             <% end %>               
             <%= f.check_box :selected_addition, style: 'display:none' %>
@@ -42,7 +42,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/shed.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.acs_struct') %></p>
+                <p class="btn-block"><%= t('views.permits.new.project.acs_struct') %></p>
               </div>
             <% end %>               
             <%= f.check_box :selected_acs_struct, style: 'display:none' %>
@@ -52,7 +52,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/deck.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.deck') %></p>
+                <p class="btn-block"><%= t('views.permits.new.project.deck') %></p>
               </div>
             <% end %>               
             <%= f.check_box :selected_deck, style: 'display:none' %>
@@ -65,7 +65,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/pool.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.pool') %></p>
+                <p class="btn-block"><%= t('views.permits.new.project.pool') %></p>
               </div>
             <% end %>              
             <%= f.check_box :selected_pool, style: 'display:none' %>
@@ -75,7 +75,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/carport.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block long"><%= t('new.project.cover_html') %></p>              
+                <p class="btn-block long"><%= t('views.permits.new.project.cover_html') %></p>              
               </div>
             <% end %>
             <%= f.check_box :selected_cover, style: 'display:none' %>
@@ -85,7 +85,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/window.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.window') %></p>
+                <p class="btn-block"><%= t('views.permits.new.project.window') %></p>
               </div>
             <% end %>
             <%= f.check_box :selected_window, style: 'display:none' %>
@@ -98,7 +98,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/door.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.door') %></p>
+                <p class="btn-block"><%= t('views.permits.new.project.door') %></p>
               </div>
             <% end %>
             <%= f.check_box :selected_door, style: 'display:none' %>
@@ -108,7 +108,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/wall.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.wall') %></p> 
+                <p class="btn-block"><%= t('views.permits.new.project.wall') %></p> 
               </div>             
             <% end %>
             <%= f.check_box :selected_wall, style: 'display:none' %>
@@ -118,7 +118,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/siding.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.siding') %></p>
+                <p class="btn-block"><%= t('views.permits.new.project.siding') %></p>
               </div>              
             <% end %>              
             <%= f.check_box :selected_siding, style: 'display:none' %>
@@ -131,7 +131,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/floor.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('new.project.floor') %></p> 
+                <p class="btn-block"><%= t('views.permits.new.project.floor') %></p> 
               </div>             
             <% end %>              
             <%= f.check_box :selected_floor, style: 'display:none' %>
@@ -141,7 +141,7 @@
         </div>
 
       <!-- Submit button -->
-      <%= f.submit t('new.submit'), class: "btn btn-primary btn-lg", id: "new_permit_submit" %><!--, onclick: "saveProjects()"-->
+      <%= f.submit t('views.permits.new.submit'), class: "btn btn-primary btn-lg", id: "new_permit_submit" %><!--, onclick: "saveProjects()"-->
 
     <% end %>
   </div><!-- ./form -->

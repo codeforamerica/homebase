@@ -3,12 +3,14 @@
   <div class="clearfix">
 
     <div class="btn-toolbar">
-      <%= link_to t('header.app_name'), '/' + I18n.locale.to_s + '/reset', class: 'logo', 'data-toggle'=> 'tooltip', 'data-placement'=> 'right', title: t('header.reset') %>
+      <%= link_to t('views.layouts.header.app_name'), '/' + I18n.locale.to_s + '/reset', class: 'logo', 'data-toggle'=> 'tooltip', 'data-placement'=> 'right', title: t('views.layouts.header.reset') %>
       
-      <span class="tagline"><%= t('header.tagline') %></span>
+      <span class="tagline"><%= t('views.layouts.header.tagline') %></span>
       
-      <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#about"><%= t('header.about') %></button>
-      <%= link_to t('header.start_over'), '/' + I18n.locale.to_s + '/reset', class: 'btn btn-default btn-xs pull-right' %>
+      <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="collapse" data-target="#about">
+        <%= t('views.layouts.header.about') %>
+      </button>
+      <%= link_to t('views.layouts.header.start_over'), '/' + I18n.locale.to_s + '/reset', class: 'btn btn-default btn-xs pull-right' %>
     </div>
   </div>
 
@@ -17,12 +19,12 @@
       <hr><!-- adds the line above this section -->
       <div class="row">
         <div class="col-sm-6">
-          <h4><%= t('header.author') %></h4>
-          <p class="small"><%= t('header.link_to_domain_html') %></p>
+          <h4><%= t('views.layouts.header.author') %></h4>
+          <p class="small"><%= t('views.layouts.header.link_to_domain_html') %></p>
         </div>
         <div class="col-sm-6">
-          <h4><%= t('header.help_instruction') %></h4>
-          <p class="small"><%= t('header.help_instruction_html') %></p>
+          <h4><%= t('views.layouts.header.help_instruction') %></h4>
+          <p class="small"><%= t('views.layouts.header.help_instruction_html') %></p>
         </div>
       </div><!-- ./row -->
     </div><!-- ./#about -->

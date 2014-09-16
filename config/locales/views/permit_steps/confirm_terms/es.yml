@@ -1,16 +1,18 @@
 es:
-  confirm_terms:
-    intro_text: "ES Please read these terms and sign your permit online"
-    requirement:
-      heading: "ES There may be other requirements"
-      body: "ES Additional permits, inspections and documents may be required to complete your project. Separate permits are required for electrical, plumbing and other parts of the project."
-      engineer_letter_html: "ES A profession engineer usually has to inspect new concrete slabs before the concrete is poured. To find a professional engineer, visit the <a href=\"http://engineers.texas.gov\" target=\"_blank\">Texas Board of Professional Engineers website</a>."
-      dsd_contact: "ES If you have any questions or are unsure about this information, please call Development Services Department at (210) 207-1111."
-      accept_text: "ES I understand that other permit and inspections may be required."
-    signature:
-      heading: "ES Agree to the permit application terms"
-      body: "ES I have read the rules and information listed on this online application and know the same to be true and correct and hereby agree that if the permit is issued, all provisions of the City Ordinance will be complied with whether herein specified or not. I understand that the permit belongs to the property owner and I am an authorized agent."
-      confirmed_name:
-        text: "ES If you agree, please type your full name as you listed it on the permit application (%{name}) in the box below."
-        placeholder: "ES Enter your name"
-    submit: "ES I agree"
+  views:
+    permit_steps:
+      confirm_terms:
+        intro_text: "ES Please read these terms and sign your permit online"
+        requirement:
+          heading: "ES There may be other requirements"
+          body: "ES Additional permits, inspections and documents may be required to complete your project. Separate permits are required for electrical, plumbing and other parts of the project."
+          engineer_letter_html: "ES A profession engineer usually has to inspect new concrete slabs before the concrete is poured. To find a professional engineer, visit the <a href=\"http://engineers.texas.gov\" target=\"_blank\">Texas Board of Professional Engineers website</a>."
+          dsd_contact: "ES If you have any questions or are unsure about this information, please call Development Services Department at (210) 207-1111."
+          accept_text: "ES I understand that other permit and inspections may be required."
+        signature:
+          heading: "ES Agree to the permit application terms"
+          body: "ES I have read the rules and information listed on this online application and know the same to be true and correct and hereby agree that if the permit is issued, all provisions of the City Ordinance will be complied with whether herein specified or not. I understand that the permit belongs to the property owner and I am an authorized agent."
+          confirmed_name:
+            text: "ES If you agree, please type your full name as you listed it on the permit application (%{name}) in the box below."
+            placeholder: "ES Enter your name"
+        submit: "ES I agree"

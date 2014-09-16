@@ -1,3 +1,6 @@
 en:
-  select:
-    select_one: "Select one..."
+  views:
+    permit_steps:
+      form_helper:
+        select:
+          select_one: "Select one..."

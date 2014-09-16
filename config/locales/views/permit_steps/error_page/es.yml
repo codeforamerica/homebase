@@ -1,6 +1,8 @@
 es:
-  error_page:
-    heading: "ES Sorry, something isn't working correctly."
-    description: "ES We weren't able to fill out your permit application."
-    instruction: "ES Try hitting the back button then clicking on the \"Download then print\" button again. That might fix the problem for you."
-    contact_html: "ES If you're still having problems, please let us know by email at <a href=\"mailto:sanantonio@codeforamerica.org\">sanantonio@codeforamerica.org</a>."
+  views:
+    permit_steps:
+      error_page:
+        heading: "ES Sorry, something isn't working correctly."
+        description: "ES We weren't able to fill out your permit application."
+        instruction: "ES Try hitting the back button then clicking on the \"Download then print\" button again. That might fix the problem for you."
+        contact_html: "ES If you're still having problems, please let us know by email at <a href=\"mailto:sanantonio@codeforamerica.org\">sanantonio@codeforamerica.org</a>."
