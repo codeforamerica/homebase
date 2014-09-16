@@ -27,10 +27,10 @@ module PermitStepsHelper
                       'SQ_FOOT_HOUSE'       => permit.house_area,
                       'SQ_FOOT_ADDITION'    => permit.addition_area,
                       # @TODO: I may need to put all these choices in shared file
-                      'AC_NONE'             => permit.ac == "None" ? "X" : ' ',
-                      'AC_WALL_UNIT'        => permit.ac == "Wall Unit" ? "X" : ' ',
-                      'AC_EXTENDED'         => permit.ac == "Extended from Main House" ? "X" : ' ',
-                      'AC_NEW_SPLIT'        => permit.ac == "New Split System" ? "X" : ' ',
+                      'AC_NONE'             => permit.ac == I18n.t('ac.options.none') ? "X" : ' ',
+                      'AC_WALL_UNIT'        => permit.ac == I18n.t('ac.options.wall') ? "X" : ' ',
+                      'AC_EXTENDED'         => permit.ac == I18n.t('ac.options.extended') ? "X" : ' ',
+                      'AC_NEW_SPLIT'        => permit.ac == I18n.t('ac.options.split') ? "X" : ' ',
 
                       'ACCESSORY_STRUCTURE_CHECKBOX' => permit.acs_struct ? "X" : ' ',
 
