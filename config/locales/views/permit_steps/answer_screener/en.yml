@@ -59,6 +59,6 @@ en:
           header: "Who is helping"
           question: "Who will be doing the work?"
           options:
-            yes_statement: "I'm doing the work myself (with help from my friends or family)"
-            no_statement: "I'm hiring a contractor"
+            no_statement: "I'm doing the work myself (with help from my friends or family)"
+            yes_statement: "I'm hiring a contractor"
         submit: "Submit"
