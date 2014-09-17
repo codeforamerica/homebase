@@ -1,0 +1,64 @@
+en:
+  views:
+    permit_steps:
+      answer_screener:
+        header: "Where you're doing the work"
+        owner_address:
+          header: "Enter your home address"
+          question: "Enter the address of the home you're working on."
+          placeholder: "ex. 123 Main St. San Antonio, TX"
+          helper_text: "You must own this home."
+        addition:
+          header: "About your new space"
+          question: "What best describes the space you are building?"
+        acs_struct:
+          header: "About your new shed or garage"
+          question: "What best describes the shed or garage you are building?"
+        deck:
+          header: "About your new deck"
+          question: "What best describes the deck you are building?"
+        pool:
+          header: "About your new swimming pool"
+          question: "What best describes the swimming pool you are building?"
+        window:
+          header: "About your windows"
+          question:
+            html: "Are you <b>only</b> replacing broken glass?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        door:
+          header: "About your doors"
+          question:
+            html: "Are you <b>only</b> replacing the existing door on current hinges?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        wall:
+          header: "About your walls"
+          question:
+            html: "How are you changing your walls?"
+          options:
+            yes_statement: "I am only painting, adding wallpaper, or repairing sheetrock — I am not moving or altering studs"
+            no_statement: "I am doing something else"
+        siding:
+          header: "About your siding replacement"
+          question:
+            html: "Are you <b>only</b> placing new siding over existing siding?"
+          options:
+            yes_statement: "Yes"
+            no_statement: "No"
+        floor:
+          header: "About your floors"
+          question:
+            html: "How are you changing your floors?"
+          options:
+            yes_statement: "I am only replacing or adding carpet, tile, wood, or laminate flooring"
+            no_statement: "I am doing something else"
+        contractor:
+          header: "Who is helping"
+          question: "Who will be doing the work?"
+          options:
+            yes_statement: "I'm doing the work myself (with help from my friends or family)"
+            no_statement: "I'm hiring a contractor"
+        submit: "Submit"

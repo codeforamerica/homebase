@@ -42,48 +42,6 @@ class Permit < ActiveRecord::Base
                 :siding_over_existing,
                 # Floor
                 :floor_covering
-
-  ######## Attribute Options Hashes ########
-
-  # Projects
-
-  ADDITION = {  :addition_size => { label:    "Size", 
-                                    options:  [ { value: 'lessThan1000', label: "Less than 1,000 square feet" }, 
-                                                { value: 'greaterThanEqualTo1000',  label: "Greater than or equal to 1,000 square feet" }]},
-                :addition_num_story =>  { label:    "Floors",
-                                          options:  [ { value: '1Story', label: "1 floor" }, 
-                                                      { value: '2orMoreStories', label: "2 or more floors" }]}}
-
-  ACS_STRUCT = {  :acs_struct_size => { label:    "Size",
-                                        options:  [ { value: 'lessThanEqualTo120', label: "Less than or equal to 120 square feet" }, 
-                                                    { value: 'greaterThan120', label: "Greater than 120 square feet" }]},
-                  :acs_struct_num_story => { label:     "Floors",
-                                              options:  [ { value: '1Story', label: "1 floor" }, 
-                                                          { value: '2orMoreStories', label: "2 or more floors" }]}}
-
-  DECK = {  :deck_size => { label:    "Size",
-                            options:  [ { value: 'lessThanEqualTo200', label: "Less than or equal to 200 square feet" },
-                                        { value: 'greaterThan200', label: "Greater than 200 square feet" }]},
-            :deck_grade => {  label:    "Grade",
-                              options:  [ { value: 'lessThanEqualTo30', label: "Less than or equal to 30 inches above grade"},
-                                          { value: 'moreThan30', label: "Greater than 30 inches above grade"}]},
-            :deck_dwelling_attach => {  label:    "Dwelling Attachment",
-                                        options:  [ { value: 'attachedToDwelling', label: "Attached to dwelling"},
-                                                    { value: 'notAttachedToDwelling', label: "Not attached to dwelling"}]},
-            :deck_exit_door => {  label:    "Exit Door",
-                                  options:  [ { value: 'exitDoor', label: "Serves a required exit door"},
-                                              { value: 'noExitDoor', label: "Does not serve a required exit door"}]}}
-
-  POOL = {  :pool_location =>   { label:    "Location",
-                                  options:  [ { value: 'inGround', label: "Pool is in ground"}, 
-                                              { value: 'aboveGround', label: "Pool is above ground" }]},
-            :pool_volume => { label:    "Number of gallons",
-                              options:  [ { value: 'lessThanEqualTo5000', label: "Less than or equal to 5,000 gallons"}, 
-                                          { value: 'moreThan5000', label: "More than 5,000 gallons"}]}}
-
-
-  # Room Addition
-  AC_OPTIONS = ["None", "Wall Unit", "Extended from Main House", "New Split System"]
   
   ######## Validations #######
 
@@ -99,78 +57,132 @@ class Permit < ActiveRecord::Base
   ## Validations on permit_steps#answer_screener ##
 
   # Addition Section
-  validates_presence_of :addition_size, :if => :only_if_screener_addition?, :message => "Select the size of the room addition."
-  validates_presence_of :addition_num_story, :if => :only_if_screener_addition?, :message => "Select the number of stories for the room addition."
+  validates_presence_of :addition_size, :if => :only_if_screener_addition?
+  validates_presence_of :addition_num_story, :if => :only_if_screener_addition?
 
   # Accessory Structure Section
-  validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?, :message => "Select the size of the accessory structure."
-  validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?, :message => "Select the number of stories for the accessory structure."
+  validates_presence_of :acs_struct_size, :if => :only_if_screener_acs_struct?
+  validates_presence_of :acs_struct_num_story, :if => :only_if_screener_acs_struct?
 
   # Deck Section
-  validates_presence_of :deck_size, :if => :only_if_screener_deck?, :message => "Select the size of the deck."
-  validates_presence_of :deck_grade, :if => :only_if_screener_deck?, :message => "Select the grade of the deck."
-  validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?, :message => "Select whether the deck is attached to dwelling or not."
-  validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?, :message => "Select whether the deck serves a required exit door or not."
+  validates_presence_of :deck_size, :if => :only_if_screener_deck?
+  validates_presence_of :deck_grade, :if => :only_if_screener_deck?
+  validates_presence_of :deck_dwelling_attach, :if => :only_if_screener_deck?
+  validates_presence_of :deck_exit_door, :if => :only_if_screener_deck?
 
   # Pool Section
-  validates_presence_of :pool_location, :if => :only_if_screener_pool?, :message => "Select whether the swimming pool is in ground or above ground."
-  validates_presence_of :pool_volume, :if => :only_if_screener_pool?, :message => "Select the size of the swimming pool."
+  validates_presence_of :pool_location, :if => :only_if_screener_pool?
+  validates_presence_of :pool_volume, :if => :only_if_screener_pool?
 
   # Window Section
-  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?, :message => "Select whether you are only replacing broken glass or not."
+  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?
   
   # Door Section
-  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?, :message => "Select whether you are only replacing doors on their existing hinges or not."
+  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?
   
   # Wall Section
-  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?, :message => "Select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?
   
   # Siding Section
-  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?, :message => "Select whether you are only placing new siding over existing siding or not."
+  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?
   
   # Floor Section
-  validates_presence_of :floor_covering, :if => :only_if_screener_floor?, :message => "Select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+  validates_presence_of :floor_covering, :if => :only_if_screener_floor?
 
   # Contractor Section
-  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?, :message => "Select whether you are using a contractor or not in this project."
+  validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?
 
   # Home Address Section
-  validates_presence_of :owner_address, :if => :active_or_screener_details?, :message => "Enter a San Antonio address."
+  validates_presence_of :owner_address, :if => :active_or_screener_details?
   validates_with AddressValidator, :if => :only_if_address_presence?
   
   ## Validations on permit_steps#enter_details ##
 
   # Basic Information Section
-  validates_presence_of :owner_name, :if => :active_or_details?, :message => "Enter home owner name."
+  validates_presence_of :owner_name, :if => :active_or_details?
   # Validator for owner_address above at permit_steps#answer_screener
-  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Enter your valid email address (for example, john@email.com)"
-  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i, :message => "Enter a valid phone number (for example, 210-555-5555)"
+  validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i
 
   # Addition Section
-  validates_presence_of :house_area, :if => :active_or_details_addition?, :message => "Enter the size of house in square feet."
-  validates_numericality_of :house_area, :if => :only_if_house_presence?, :message => "Enter the size of house in square feet."
-  validates_presence_of :addition_area, :if => :active_or_details_addition?, :message => "Enter the size of addition in square feet."
-  validates_numericality_of :addition_area, :if => :only_if_addition_presence?, :message => "Enter the size of addition in square feet."
-  validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?, :message => "Addition must be less than 1,000 Square Feet."
-  validates_presence_of :ac, :if => :active_or_details_addition?, :message => "Select an air conditioning / heating system."
+  validates_presence_of :house_area, :if => :active_or_details_addition?
+  validates_numericality_of :house_area, :if => :only_if_house_presence?
+  validates_presence_of :addition_area, :if => :active_or_details_addition?
+  validates_numericality_of :addition_area, :if => :only_if_addition_presence?
+  validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?
+  validates_presence_of :ac, :if => :active_or_details_addition?
 
   # Window Section
-  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?, :message => "Specify the number of windows you are repairing."
+  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?
   
   # Door Section
-  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?, :message => "Specify the number of doors you are repairing."
+  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?
 
   # Final Info Section
-  validates_presence_of :work_summary, :if => :active_or_details?, :message => "Enter a work summary."
-  validates_presence_of :job_cost, :if => :active_or_details?, :message => "Enter the job cost."
-  validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/, :message => "Job cost has an invalid format, it should be like 1000000.00"
-  validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000 , :message => "Job cost should be between the range of 0.00 to 1000000000000.00"  
+  validates_presence_of :work_summary, :if => :active_or_details?
+  validates_presence_of :job_cost, :if => :active_or_details?
+  validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
+  validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
 
   ## Validations on permit_step#confirm_terms ##
 
-  validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?, :message => "Please accept the terms listed here by checking the box below."
-  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => "The name didn't validate."
+  validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
+  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.permit.ensure_name_confirmed_msg')
+  # @TODO: may want to do this instead of before_save
+  # class Person < ActiveRecord::Base
+  #   validates :email, confirmation: true
+  #   validates :email_confirmation, presence: true
+  # end
+  ######## Attribute Options Hashes ########
 
+  # Projects
+  def addition_details
+    { :addition_size => { label:    I18n.t('models.permit.addition.size.label'), 
+                          options:  [ { value: 'lessThan1000', label: I18n.t('models.permit.addition.size.options.lt_1000') }, 
+                                      { value: 'greaterThanEqualTo1000',  label: I18n.t('models.permit.addition.size.options.gte_1000')}]},
+      :addition_num_story =>  { label:    I18n.t('models.permit.addition.num_story.label'),
+                                options:  [ { value: '1Story', label: I18n.t('models.permit.addition.num_story.options.one') }, 
+                                            { value: '2orMoreStories', label: I18n.t('models.permit.addition.num_story.options.two_or_more') }]}}
+  end
+
+  def acs_struct_details
+    { :acs_struct_size =>  {  label:    I18n.t('models.permit.acs_struct.size.label'),
+                              options:  [ { value: 'lessThanEqualTo120', label: I18n.t('models.permit.acs_struct.size.options.lte_120') }, 
+                                          { value: 'greaterThan120', label: I18n.t('models.permit.acs_struct.size.options.gt_120') }]},
+      :acs_struct_num_story => {  label:     I18n.t('models.permit.acs_struct.num_story.label'),
+                                  options:  [ { value: '1Story', label: I18n.t('models.permit.acs_struct.num_story.options.one') }, 
+                                              { value: '2orMoreStories', label: I18n.t('models.permit.acs_struct.num_story.options.two_or_more') }]}}
+
+  end
+
+  def deck_details
+    { :deck_size => { label:    I18n.t('models.permit.deck.size.label'),
+                      options:  [ { value: 'lessThanEqualTo200', label: I18n.t('models.permit.deck.size.options.lte_200') },
+                                  { value: 'greaterThan200', label: I18n.t('models.permit.deck.size.options.gt_200') }]},
+      :deck_grade => {  label:    I18n.t('models.permit.deck.grade.label'),
+                        options:  [ { value: 'lessThanEqualTo30', label: I18n.t('models.permit.deck.grade.options.lte_30')},
+                                    { value: 'moreThan30', label: I18n.t('models.permit.deck.grade.options.gt_30')}]},
+      :deck_dwelling_attach => {  label:    I18n.t('models.permit.deck.dwelling_attach.label'),
+                                  options:  [ { value: 'attachedToDwelling', label: I18n.t('models.permit.deck.dwelling_attach.options.attached')},
+                                              { value: 'notAttachedToDwelling', label: I18n.t('models.permit.deck.dwelling_attach.options.not_attached')}]},
+      :deck_exit_door => {  label:    I18n.t('models.permit.deck.exit_door.label'),
+                            options:  [ { value: 'exitDoor', label: I18n.t('models.permit.deck.exit_door.options.served')},
+                                        { value: 'noExitDoor', label: I18n.t('models.permit.deck.exit_door.options.not_served')}]}}
+  end
+
+  def pool_details
+    { :pool_location => { label:    I18n.t('models.permit.pool.location.label'),
+                          options:  [ { value: 'inGround', label: I18n.t('models.permit.pool.location.options.in_ground')}, 
+                                      { value: 'aboveGround', label: I18n.t('models.permit.pool.location.options.above_ground') }]},
+      :pool_volume => { label:    I18n.t('models.permit.pool.volume.label'),
+                        options:  [ { value: 'lessThanEqualTo5000', label: I18n.t('models.permit.pool.volume.options.lte_5000')}, 
+                                    { value: 'moreThan5000', label: I18n.t('models.permit.pool.volume.options.gt_5000')}]}}
+  end
+
+  # Room Addition
+  def ac_options
+    [I18n.t('models.permit.ac.options.none'), I18n.t('models.permit.ac.options.wall'), I18n.t('models.permit.ac.options.extended'), I18n.t('models.permit.ac.options.split')]
+  end
 
   ######## Conditions for Validation ########
   def first_step?
@@ -265,7 +277,7 @@ class Permit < ActiveRecord::Base
 
   def ensure_name_confirmed
     if !confirmed_name.eql?(owner_name)
-      errors[:confirmed_name] << ("The name you entered did not match the name you used on your permit application (#{owner_name}). Please type your name again.")
+      errors[:confirmed_name] << (I18n.t('models.permit.confirmed_name_msg', name: owner_name))
     end
     confirmed_name.eql?(owner_name)
   end
@@ -280,7 +292,7 @@ class Permit < ActiveRecord::Base
           to_bool(selected_cover) || to_bool(selected_pool) || to_bool(selected_deck) || 
           to_bool(selected_acs_struct))
 
-      errors[:base] << ("Please choose at least one project to work on.")
+      errors[:base] << (I18n.t('models.permit.no_proj_chosen_msg'))
     end
   end
 
@@ -379,10 +391,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_addition) 
 
       if addition_permit_needed?
-        permit_needs["permit_needed"].push("Addition")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.addition.name'))
         update_attribute("addition", true)
       else
-        permit_needs["further_assistance_needed"].push("Addition")
+        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.addition.name'))
         update_attribute("addition", nil)
       end
 
@@ -394,12 +406,12 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_acs_struct)
 
       if acs_struct_permit_needed?
-        permit_needs["permit_needed"].push("Shed/Garage")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.acs_struct.name'))
         update_attribute("acs_struct", true)
       elsif acs_struct_permit_needed? == false
-        permit_needs["permit_not_needed"].push("Shed/Garage")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.acs_struct.name'))
       else
-        permit_needs["further_assistance_needed"].push("Shed/Garage")
+        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.acs_struct.name'))
         update_attribute("acs_struct", nil)
       end
 
@@ -408,12 +420,12 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_deck)
 
       if deck_permit_needed?
-        permit_needs["permit_needed"].push("Deck")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.deck.name'))
         update_attribute("deck", true)
       elsif deck_permit_needed? == false
-        permit_needs["permit_not_needed"].push("Deck")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.deck.name'))
       else
-        permit_needs["further_assistance_needed"].push("Deck")
+        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.deck.name'))
         update_attribute("deck", nil)
       end
 
@@ -422,13 +434,13 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_pool)
 
       if pool_permit_needed?
-        permit_needs["permit_needed"].push("Swimming Pool")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.pool.name'))
         update_attribute("pool", true)
       elsif pool_permit_needed? == false
-        permit_needs["permit_not_needed"].push("Swimming Pool")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.pool.name'))
         update_attribute("pool", false)
       else
-        permit_needs["further_assistance_needed"].push("Swimming Pool")
+        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.pool.name'))
         update_attribute("pool", nil)
       end
 
@@ -437,10 +449,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_cover)
 
       if cover_permit_needed?
-        permit_needs["permit_needed"].push("Carport/Outdoor Cover")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.cover.name'))
         update_attribute("cover", true)
       else
-        permit_needs["further_assistance_needed"].push("Carport/Outdoor Cover")
+        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.cover.name'))
         update_attribute("cover", nil)
       end
 
@@ -449,10 +461,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_window)
 
       if window_permit_needed?
-        permit_needs["permit_needed"].push("Windows")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.window.name'))
         update_attribute("window", true)
       else
-        permit_needs["permit_not_needed"].push("Windows")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.window.name'))
         update_attribute("window", false)
       end
 
@@ -460,10 +472,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_door)
       if door_permit_needed?
-        permit_needs["permit_needed"].push("Doors")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.door.name'))
         update_attribute("door", true)
       else
-        permit_needs["permit_not_needed"].push("Doors")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.door.name'))
         update_attribute("door", false)
       end
 
@@ -471,10 +483,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_wall)
       if wall_permit_needed?
-        permit_needs["permit_needed"].push("Walls")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.wall.name'))
         update_attribute("wall", true)
       else
-        permit_needs["permit_not_needed"].push("Walls")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.wall.name'))
         update_attribute("wall", false)
       end
 
@@ -483,10 +495,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_siding)
 
       if siding_permit_needed?
-        permit_needs["permit_needed"].push("Replace Siding")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.siding.name'))
         update_attribute("siding", true)
       else
-        permit_needs["permit_not_needed"].push("Replace Siding")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.siding.name'))
         update_attribute("siding", false)
       end
 
@@ -494,10 +506,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_floor)
       if floor_permit_needed?
-        permit_needs["permit_needed"].push("Floors")
+        permit_needs["permit_needed"].push(I18n.t('models.permit.floor.name'))
         update_attribute("floor", true)
       else
-        permit_needs["permit_not_needed"].push("Floors")
+        permit_needs["permit_not_needed"].push(I18n.t('models.permit.floor.name'))
         update_attribute("floor", false)
       end
 

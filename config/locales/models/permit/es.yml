@@ -1,0 +1,180 @@
+es:
+  models:
+    permit:
+      addition:
+        name: "ES Addition"
+        size:
+          label: "ES Size"
+          options:
+            lt_1000:    "ES Less than 1,000 square feet"
+            gte_1000:  "ES Greater than or equal to 1,000 square feet"
+
+        num_story:
+          label: "ES Floors"
+          options:
+            one:          "ES 1 floor"
+            two_or_more:  "ES 2 or more floors"
+
+      acs_struct:
+        name: "ES Shed/Garage"
+        size:
+          label: "ES Size"
+          options:
+            lte_120:  "ES Less than or equal to 120 square feet" 
+            gt_120:   "ES Greater than 120 square feet"
+
+        num_story:
+          label: "ES Floors"
+          options:
+            one:          "ES 1 floor"
+            two_or_more:  "ES 2 or more floors"
+
+      deck:
+        name: "ES Deck"
+        size:
+          label: "ES Size"
+          options:
+            lte_200: "ES Less than or equal to 200 square feet"
+            gt_200: "ES Greater than 200 square feet"
+        grade:
+          label: "ES Grade"
+          options:
+            lte_30: "ES Less than or equal to 30 inches above grade"
+            gt_30:  "Greater than 30 inches above grade"
+        dwelling_attach:
+          label: "ES Dwelling Attachement"
+          options:
+            attached:     "ES Attached to dwelling"
+            not_attached: "ES Not attached to dwelling"
+        exit_door:
+          label: "ES Exit Door"
+          options:
+            served:   "ES Serves a required exit door"
+            not_served: "ES Does not serve a required exit door"
+
+      pool:
+        name: "ES Swimming Pool"
+        location:
+          label: "ES Location"
+          options:
+            in_ground:    "ES Pool is in ground"
+            above_ground: "ES Pool is above ground"
+        volume:
+          label: "ES Number of gallons"
+          options:
+            lte_5000: "ES Less than or equal to 5,000 gallons"
+            gt_5000:  "ES More than 5,000 gallons"
+
+      cover:
+        name: "ES Carport/Outdoor Cover"
+
+      window:
+        name: "ES Windows"
+
+      door:
+        name: "ES Doors"
+
+      wall:
+        name: "ES Walls"
+
+      siding:
+        name: "ES Replace Siding"
+
+      floor:
+        name: "ES Floors"
+
+      ac:
+        options:
+          none:     "ES None"
+          wall:     "ES Wall unit"
+          extended: "ES Extended from main house"
+          split:    "ES New split system"
+
+      ensure_name_confirmed_msg: "ES The name didn't validate."
+
+      confirmed_name_msg: "ES The name you entered did not match the name you used on your permit application (%{name}). Please type your name again."
+
+      no_proj_chosen_msg: "ES Please choose at least one project to work on."
+
+  activerecord:
+    # models:
+    #   permit:
+    #     size_msg: 
+    #       one: "ES This is i18n controlled. Size"
+    #       other: "ES This is i18n controlled. Size"
+    attributes:
+      permit:
+        addition_size: "ES Size of room addtion"
+    errors:
+      models:
+        permit:
+          attributes:
+            addition_size:
+              blank: "ES Select the size of the room addition."
+            addition_num_story:
+              blank: "ES Select the number of stories for the room addition."
+            acs_struct_size:
+              blank: "ES Select the size of the accessory structure."
+            acs_struct_num_story:
+              blank: "ES Select the number of stories for the accessory structure."
+            deck_size:
+              blank: "ES Select the size of the deck."
+            deck_grade:
+              blank: "ES Select the grade of the deck."
+            deck_dwelling_attach:
+              blank: "ES Select whether the deck is attached to dwelling or not."
+            deck_exit_door:
+              blank: "ES Select whether the deck serves a required exit door or not."
+            pool_location:
+              blank: "ES Select whether the swimming pool is in ground or above ground."
+            pool_volume:
+              blank: "ES Select the size of the swimming pool."
+            window_replace_glass:
+              blank: "ES Select whether you are only replacing broken glass or not."
+            door_replace_existing:
+              blank: "ES Select whether you are only replacing doors on their existing hinges or not."
+            wall_general_changes:
+              blank: "ES Select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+            siding_over_existing:
+              blank: "ES Select whether you are only placing new siding over existing siding or not."
+            floor_covering:
+              blank: "ES Select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+            contractor:
+              inclusion: "ES Select whether you are using a contractor or not in this project."
+            owner_address:
+              blank: "ES Enter a San Antonio address."
+            owner_name:
+              blank: "ES Enter home owner name."
+            email:
+              invalid: "ES Enter your valid email address (for example, john@email.com)"
+            phone:
+              invalid: "ES Enter a valid phone number (for example, 210-555-5555)"
+            house_area:
+              blank: "ES Enter the size of house in square feet."
+              not_a_number: "ES Enter the size of house in square feet."
+            addition_area:
+              blank: "ES Enter the size of addition in square feet."
+              not_a_number: "ES Enter the size of addition in square feet."
+              less_than: "ES Addition must be less than 1,000 square feet."
+            ac:
+              blank: "ES Select an air conditioning / heating system."
+            window_count:
+              not_a_number: "ES Specify the number of windows you are repairing."
+              greater_than: "ES Specify the number of windows you are repairing."
+            door_count:
+              not_a_number: "ES Specify the number of doors you are repairing."
+              greater_than: "ES Specify the number of doors you are repairing."
+            work_summary:
+              blank: "ES Enter a work summary."
+            job_cost:
+              blank: "ES Enter the job cost."
+              invalid: "ES Job cost has an invalid format, it should be like 1000000.00"
+              not_a_number: "ES Job cost should be between the range of 0.00 to 1000000000000.00 and in format like 100000.00"
+              greater_than: "ES Job cost should be between the range of 0.00 to 1000000000000.00"
+              less_than: "ES Job cost should be between the range of 0.00 to 1000000000000.00"
+            accepted_terms:
+              accepted: "ES Accept the terms listed here by checking the box below."
+
+  
+
+

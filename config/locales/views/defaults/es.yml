@@ -1,0 +1,4 @@
+es:
+  views:
+    defaults:
+      error_statement: "ES Oops. Check your answers below and try again."

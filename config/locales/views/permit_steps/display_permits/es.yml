@@ -1,0 +1,33 @@
+es:
+  views:
+    permit_steps:
+      display_permits:
+        intro_text: "ES This is how to start your project(s)"
+        permit_not_needed:
+          heading: "ES You do not need a permit for the following project(s), build on!"
+          body: "ES A permit is not needed for your project. If you have additional questions, please contact Development Services Department at (210) 207-1111."
+        permit_needed:
+          heading: "ES You need a permit for the following project(s):"
+          body: "ES Please see below for more details."
+        further_assistance_needed:
+          heading: "ES Sorry, we can't help you right now."
+          helper_text:
+            part_1: "ES We’re sorry, the residential permit application is not appropriate for the"
+            part_2: "ES that you want to build."
+          body: "ES We can help you apply for the right permit for this project. Call us at (210) 207-1111 and we will help you."
+        detail_permit_info:
+          heading: "ES General Repair/Residential Permit Application"
+          body: "ES You will need a General Repair/Residential permit for most residential repair. Separate permits are required for any mechanical, electrical, or plumbing work."
+          helper_text: "ES This is the permit for the following project(s):"
+          app_cost:
+            heading:"This is the application cost:"
+            html: "ES Application costs are based on the <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Fee Schedule [PDF]</a>."
+          req_docs: "ES These are the required documents:"
+          misc_text: "ES We will help you fill these out"
+          permit_app: "ES Permit application"
+          site_plan: "ES Site plan"
+          bring_id: "ES You will also need:"
+          photo_id: "ES Form of photo identification (i.e. driver's license, passport)"
+          ownership_proof: "ES Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
+          
+        submit: "ES Apply for this permit"

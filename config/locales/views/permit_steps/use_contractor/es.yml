@@ -1,0 +1,7 @@
+es:
+  views:
+    permit_steps:
+      use_contractor:
+        heading: "ES Good news!"
+        description: "ES You said you’re using a contractor. They will fill out and submit the permits for you. Let them know that they’ll need to do this."
+        contact: "ES For additional questions, contact Development Services Department at (210) 207-1111."

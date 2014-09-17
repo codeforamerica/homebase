@@ -3,12 +3,12 @@
 
 <!-- Begin step -->
 <div class="col-sm-9">
-  <h1>Enter your project details</h1>
+  <h1><%= t('views.permit_steps.answer_screener.header') %></h1>
   <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
     <!-- error checking -->
     <% if @permit.errors.any? %>
       <div class="alert alert-danger">
-        <p><strong>Oops. Check your answers below and try again.</strong></p>
+        <p><strong><%= t('views.defaults.error_statement') %></strong></p>
       </div>
     <% end %>
     <!-- ./error checking -->
@@ -16,19 +16,19 @@
     <!-- address entry -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Where you're doing the work</h4>
+        <h4><%= t('views.permit_steps.answer_screener.owner_address.header') %></h4>
       </div>
       <div class="panel-body">
         <!-- Start the address form -->
         <div class="form-group">
           <%= render  partial: "permit_steps/form_helper/text_field", 
               locals: { f: f, 
-                        question: "Enter the address of the home you're working on.", 
+                        question: t('views.permit_steps.answer_screener.owner_address.question'), 
                         helper_text: nil,
                         attribute: :owner_address, 
-                        placeholder: "ex. 123 Main St. San Antonio, TX",
+                        placeholder: t('views.permit_steps.answer_screener.owner_address.placeholder'),
                         input_addon: nil } %>
-          <span class="help-block">You must own this home.</span>
+          <span class="help-block"><%= t('views.permit_steps.answer_screener.owner_address.helper_text') %></span>
         </div>
       </div><!-- ./panel_body -->
     </div><!-- panel -->   
@@ -38,10 +38,10 @@
       <!-- Room Additions section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your new space</h4>
+          <h4><%= t('views.permit_steps.answer_screener.addition.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>What best describes the space you are building?</p>
+          <p><%= t('views.permit_steps.answer_screener.addition.question') %></p>
 
             <% @permit_addition_screener.each do |attribute, details| %>
 
@@ -61,10 +61,10 @@
       <!-- Shed/Garage Accessory Structure section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your new shed or garage</h4>
+          <h4><%= t('views.permit_steps.answer_screener.acs_struct.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>What best describes the shed or garage you are building?</p>
+          <p><%= t('views.permit_steps.answer_screener.acs_struct.question') %></p>
 
             <% @permit_acs_struct_screener.each do |attribute, details| %>
 
@@ -84,10 +84,10 @@
       <!-- Deck section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your new deck</h4>
+          <h4><%= t('views.permit_steps.answer_screener.deck.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>What best describes the deck you are building?</p>
+          <p><%= t('views.permit_steps.answer_screener.deck.question') %></p>
 
             <% @permit_deck_screener.each do |attribute, details| %>
 
@@ -107,10 +107,10 @@
       <!-- Swimming Pool section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your new swimming pool</h4>
+          <h4><%= t('views.permit_steps.answer_screener.pool.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>What best describes the swimming pool you are building?</p>
+          <p><%= t('views.permit_steps.answer_screener.pool.question') %></p>
 
             <% @permit_pool_screener.each do |attribute, details| %>
               
@@ -130,19 +130,19 @@
       <!-- Windows section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your windows</h4>
+          <h4><%= t('views.permit_steps.answer_screener.window.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>Are you <b>only</b> replacing broken glass?</p>
+          <p><%= t('views.permit_steps.answer_screener.window.question.html') %></p>
 
           <%= render  partial: "permit_steps/form_helper/radio", 
                       locals: { f: f,
                                 question: nil,
                                 attribute: :window_replace_glass, 
                                 option: [ { value: true, 
-                                            label: "Yes" }, 
+                                            label: t('views.permit_steps.answer_screener.window.options.yes_statement') }, 
                                           { value: false, 
-                                            label: "No" }]} %>         
+                                            label: t('views.permit_steps.answer_screener.window.options.no_statement') }]} %>        
         </div>
       </div>
       <!-- ./Windows section -->
@@ -153,18 +153,18 @@
       <!-- Doors section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your doors</h4>
+          <h4><%= t('views.permit_steps.answer_screener.door.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>Are you <b>only</b> replacing the existing door on current hinges?</p>
+          <p><%= t('views.permit_steps.answer_screener.door.question.html') %></p>
           <%= render  partial: "permit_steps/form_helper/radio", 
                       locals: { f: f,
                                 question: nil,
                                 attribute: :door_replace_existing, 
                                 option: [ { value: true, 
-                                            label: "Yes" }, 
+                                            label: t('views.permit_steps.answer_screener.door.options.yes_statement') }, 
                                           { value: false, 
-                                            label: "No" }]} %>        
+                                            label: t('views.permit_steps.answer_screener.door.options.no_statement') }]} %>   
         </div>
       </div>
       <!-- ./Doors section -->
@@ -175,18 +175,18 @@
       <!-- Walls section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your walls</h4>
+          <h4><%= t('views.permit_steps.answer_screener.wall.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>How are you changing your walls?</p>
+          <p><%= t('views.permit_steps.answer_screener.wall.question.html') %></p>
           <%= render  partial: "permit_steps/form_helper/radio", 
                       locals: { f: f,
                                 question: nil,
                                 attribute: :wall_general_changes, 
                                 option: [ { value: true, 
-                                            label: "I am only painting, adding wallpaper, or repairing sheetrock — I am not moving or altering studs" }, 
+                                            label: t('views.permit_steps.answer_screener.wall.options.yes_statement') }, 
                                           { value: false, 
-                                            label: "I am doing something else" }]} %>          
+                                            label: t('views.permit_steps.answer_screener.wall.options.no_statement') }]} %>         
         </div>
       </div>
       <!-- ./Walls section -->
@@ -197,19 +197,19 @@
       <!-- Siding Replacement section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your siding replacement</h4>
+          <h4><%= t('views.permit_steps.answer_screener.siding.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>Are you <b>only</b> placing new siding over existing siding?</p>
+          <p><%= t('views.permit_steps.answer_screener.siding.question.html') %></p>
 
           <%= render  partial: "permit_steps/form_helper/radio", 
                       locals: { f: f,
                                 question: nil,
                                 attribute: :siding_over_existing, 
                                 option: [ { value: true, 
-                                            label: "Yes" }, 
+                                            label: t('views.permit_steps.answer_screener.siding.options.yes_statement') }, 
                                           { value: false, 
-                                            label: "No" }]} %>  
+                                            label: t('views.permit_steps.answer_screener.siding.options.no_statement') }]} %>  
         </div>
       </div>
       <!-- ./Siding Replacement section -->
@@ -220,19 +220,19 @@
       <!-- Floor - Structural Repairs section -->
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>About your floors</h4>
+          <h4><%= t('views.permit_steps.answer_screener.floor.header') %></h4>
         </div>
         <div class="panel-body">
-          <p>How are you changing your floors?</p>
+          <p><%= t('views.permit_steps.answer_screener.floor.question.html') %></p>
 
           <%= render  partial: "permit_steps/form_helper/radio",
                       locals: { f: f,
                                 question: nil,
                                 attribute: :floor_covering, 
                                 option: [ { value: true, 
-                                            label: "I am only replacing or adding carpet, tile, wood, or laminate flooring" }, 
+                                            label: t('views.permit_steps.answer_screener.floor.options.yes_statement') }, 
                                           { value: false, 
-                                            label: "I am doing something else" }]} %>       
+                                            label: t('views.permit_steps.answer_screener.floor.options.no_statement') }]} %>     
         </div>
       </div>
       <!-- ./Floor-Structural Repairs section -->
@@ -241,25 +241,23 @@
     <!-- Contractor section -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Who is helping</h4>
+        <h4><%= t('views.permit_steps.answer_screener.contractor.header') %></h4>
       </div>
       <div class="panel-body">
-        <p>Who will be doing the work?</p>
-
+        <p><%= t('views.permit_steps.answer_screener.contractor.question') %></p>
         <%= render  partial: "permit_steps/form_helper/radio", 
                     locals: { f: f,
                               question: nil,
                               attribute: :contractor, 
-                              option: [ { value: false, 
-                                          label: "I'm doing the work myself (with help from my friends or family)" },
-                                        { value: true, 
-                                          label: "I'm hiring a contractor" }]} %>            
-
+                              option: [ { value: true, 
+                                          label: t('views.permit_steps.answer_screener.contractor.options.yes_statement') }, 
+                                        { value: false, 
+                                          label: t('views.permit_steps.answer_screener.contractor.options.no_statement') }]} %>            
       </div>
     </div><!-- ./Contractor section -->
 
     <!-- submit button -->
-    <%= f.submit "Submit", class: "btn btn-primary btn-lg"%>
+    <%= f.submit t('views.permit_steps.answer_screener.submit'), class: "btn btn-primary btn-lg"%>
 
   <% end %>
 </div> <!-- ./col-sm-9 -->

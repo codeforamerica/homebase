@@ -17,7 +17,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -47,7 +47,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -55,7 +55,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -69,7 +69,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -78,7 +78,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -95,7 +95,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -125,7 +125,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -133,7 +133,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -147,7 +147,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -156,7 +156,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -174,7 +174,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -204,7 +204,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -212,7 +212,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -226,7 +226,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -235,7 +235,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -252,7 +252,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -282,7 +282,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -290,7 +290,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -304,7 +304,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -313,7 +313,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -330,7 +330,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -360,7 +360,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -368,7 +368,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -382,7 +382,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -391,7 +391,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -408,7 +408,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -438,7 +438,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -446,7 +446,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -460,7 +460,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -469,7 +469,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -486,7 +486,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -516,7 +516,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -524,7 +524,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -538,7 +538,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -547,7 +547,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -564,7 +564,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -594,7 +594,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -602,7 +602,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -616,7 +616,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -625,7 +625,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -644,7 +644,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -674,7 +674,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -682,7 +682,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -696,7 +696,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -705,7 +705,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -722,7 +722,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -752,7 +752,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -760,7 +760,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -774,7 +774,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -783,7 +783,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -801,7 +801,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -831,7 +831,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -839,7 +839,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -853,7 +853,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -862,7 +862,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -879,7 +879,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -909,7 +909,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -917,7 +917,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -931,7 +931,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -940,7 +940,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -957,7 +957,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -987,7 +987,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -995,7 +995,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -1009,7 +1009,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -1018,7 +1018,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -1035,7 +1035,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -1065,7 +1065,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -1073,7 +1073,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -1087,7 +1087,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -1096,7 +1096,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -1113,7 +1113,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -1143,7 +1143,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits
@@ -1151,7 +1151,7 @@ feature "Build a deck" do
 
     click_on "Apply for this permit"
 
-    expect(current_path).to eq('/permit_steps/enter_details')
+    expect(current_path).to eq('/en/permit_steps/enter_details')
     expect(page).to have_content("General Repair/Residential Permit Application")
 
     #permit_steps#enter_details
@@ -1165,7 +1165,7 @@ feature "Build a deck" do
 
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/confirm_terms')
+    expect(current_path).to eq('/en/permit_steps/confirm_terms')
     expect(page).to have_content("Read these terms and sign your permit online")
 
     #permit_steps#confirm_terms
@@ -1174,7 +1174,7 @@ feature "Build a deck" do
 
     click_on "I agree"
 
-    expect(current_path).to eq('/permit_steps/display_summary')
+    expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content("Congrats! You filled out your permit application")
     expect(page).to have_content("Make a detailed site plan")
 
@@ -1191,7 +1191,7 @@ feature "Build a deck" do
     check "Deck"
     click_on "Next step"
 
-    expect(current_path).to eq('/permit_steps/answer_screener')
+    expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content("Enter your project details")
 
     #permit_steps#answer_screener
@@ -1221,7 +1221,7 @@ feature "Build a deck" do
 
     click_on "Submit"
 
-    expect(current_path).to eq('/permit_steps/display_permits')
+    expect(current_path).to eq('/en/permit_steps/display_permits')
     expect(page).to have_content("This is how to start your project(s)")
 
     #permit_steps#display_permits

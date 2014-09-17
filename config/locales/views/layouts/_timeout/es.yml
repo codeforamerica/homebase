@@ -1,0 +1,9 @@
+es:
+  views:
+    layouts:
+      timeout:
+        close: "ES Close"
+        session_expiring: "ES Session expiring"
+        alert_statement: "ES Are you still there? This session will restart after 3 minutes."
+        yes_continue: "ES YES, I'm still here"
+        no_restart: "ES NO, restart the session"
