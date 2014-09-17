@@ -7,6 +7,7 @@ es:
           body: "ES This permit covers many home repair and renovation projects."
         homeowner_info:
           heading: "ES Homeowner information"
+          helper_text: "ES Provide the homeowner’s info below:"
           name:
             question: "ES Name"
           address:

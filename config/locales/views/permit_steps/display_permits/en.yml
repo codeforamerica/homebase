@@ -20,7 +20,7 @@ en:
           body: "You will need a General Repair/Residential permit for most residential repair. Separate permits are required for any mechanical, electrical, or plumbing work."
           helper_text: "This is the permit for the following project(s):"
           app_cost:
-            heading:"This is the application cost:"
+            heading: "This is the application cost:"
             html: "Application costs are based on the <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Fee Schedule [PDF]</a>."
           req_docs: "These are the required documents:"
           misc_text: "We will help you fill these out"
