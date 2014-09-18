@@ -376,5 +376,23 @@ section {padding: 50px 0;}
 	section {
 	    padding: 20px 0;
 	}
+
 	
 }
+/* Smartphones (portrait) ----------- */
+@media (max-width: 360px) {
+	.hero-heading {
+		font-size: 23px;
+  }
+	footer .white {
+  	font-size: 9px;
+  	margin-bottom: 12px;
+	}
+	.footer {
+  	padding-top: 12px;
+	}
+	.cfa-logo {
+  	width: 110px;
+	}
+}
+
