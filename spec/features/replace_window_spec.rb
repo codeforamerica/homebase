@@ -11,11 +11,11 @@ feature "Replace windows" do
     visit '/permits'
 
     # permit#new
-    check "Windows"
+    check I18n.t('views.permits.new.project.window')
     click_on "Next step"
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.window_replace_glass" do
@@ -51,7 +51,7 @@ feature "Replace windows" do
     click_on "Next step"
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.window_replace_glass" do
@@ -59,11 +59,11 @@ feature "Replace windows" do
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
     click_on "Submit"
