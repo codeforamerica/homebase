@@ -6,11 +6,13 @@ es:
           heading: "ES How would you like to improve your house?"
         project:
           addition:
+            raw: "ES Add space or build a new room"
             html: "ES Add space or <br>build a new room"
           acs_struct: "ES Build a shed or garage"
           deck: "ES Build a deck"
           pool: "ES Build a swimming pool"
           cover:
+            raw: "ES Build a carport or outdoor cover"
             html: "ES Build a carport <br>or outdoor cover"
           window: "ES Replace my windows"
           door: "ES Replace my doors"

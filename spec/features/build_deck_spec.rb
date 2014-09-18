@@ -14,73 +14,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -92,73 +92,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -171,73 +171,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -249,73 +249,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -327,73 +327,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?('Steet address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -405,73 +405,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -483,73 +483,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -561,73 +561,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Greater than 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -641,73 +641,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -719,73 +719,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -798,73 +798,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -876,73 +876,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "More than 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -954,73 +954,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -1032,73 +1032,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -1110,73 +1110,73 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Serves a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content('Deck')
+    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    click_on "Apply for this permit"
+    click_on I18n.t('views.permit_steps.display_permits.submit')
 
     expect(current_path).to eq('/en/permit_steps/enter_details')
-    expect(page).to have_content("General Repair/Residential Permit Application")
+    expect(page).to have_content(I18n.t('views.permit_steps.enter_details.intro.heading'))
 
     #permit_steps#enter_details
-    fill_in "Name", with: "John Doe"
-    page.has_field?('Street address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in "Email address", with: "john@johndoe.com"
-    fill_in "Phone number", with: "413-456-3456"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
+    page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
-    fill_in "Work Summary", with: "Building a new shed in my backyard"
-    fill_in "Job Cost", with: "10000"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
+    fill_in I18n.t('views.permit_steps.enter_details.final_info.job_cost.question'), with: "10000"
 
-    click_on "Next step"
+    click_on I18n.t('views.permit_steps.enter_details.submit')
 
     expect(current_path).to eq('/en/permit_steps/confirm_terms')
-    expect(page).to have_content("Read these terms and sign your permit online")
+    expect(page).to have_content(I18n.t('views.permit_steps.confirm_terms.intro_text'))
 
     #permit_steps#confirm_terms
-    check "permit_accepted_terms"
-    fill_in "Enter your name", with: "John Doe"
+    check I18n.t('views.permit_steps.confirm_terms.requirement.accept_text')
+    fill_in I18n.t('views.permit_steps.confirm_terms.signature.confirmed_name.placeholder'), with: "John Doe"
 
-    click_on "I agree"
+    click_on I18n.t('views.permit_steps.confirm_terms.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
-    expect(page).to have_content("Congrats! You filled out your permit application")
-    expect(page).to have_content("Make a detailed site plan")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
@@ -1188,46 +1188,46 @@ feature "Build a deck" do
     visit '/permits'
 
     # permit#new
-    check "Deck"
-    click_on "Next step"
+    check I18n.t('views.permits.new.project.deck')
+    click_on I18n.t('views.permits.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
-    expect(page).to have_content("Enter your project details")
+    expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose "Less than or equal to 200 sq ft"
+      choose I18n.t('models.permit.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose "Less than or equal to 30 inches above grade"
+      choose I18n.t('models.permit.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose "Not attached to dwelling"
+      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose "Does not serve a required exit door"
+      choose I18n.t('models.permit.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
-      choose "I'm doing the work myself (with help my friends or family)"
+      choose I18n.t('views.permit_steps.answer_screener.contractor.options.no_statement')
     end
 
     within "div.owner_address" do
-      fill_in "Enter the address of your home you'll do work on.", with: "302 Madison St, San Antonio"
+      fill_in I18n.t('views.permit_steps.answer_screener.owner_address.question'), with: "302 Madison St, San Antonio"
     end
 
-    click_on "Submit"
+    click_on I18n.t('views.permit_steps.answer_screener.submit')
 
     expect(current_path).to eq('/en/permit_steps/display_permits')
-    expect(page).to have_content("This is how to start your project(s)")
+    expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_not_needed').should have_content('Deck')
+    page.find('div.permit_not_needed').should have_content(I18n.t('models.permit.deck.name'))
 
-    page.has_no_button? "Apply for this permit"
+    page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 
   end
 
