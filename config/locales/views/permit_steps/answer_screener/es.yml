@@ -2,62 +2,63 @@ es:
   views:
     permit_steps:
       answer_screener:
-        header: "ES Enter your project details"
+        header: "ES Where you're doing the work"
         owner_address:
           header: "ES Enter your home address"
-          question: "ES Enter the address of the property you're working on."
+          question: "ES Enter the address of the home you're working on."
           placeholder: "ES ex. 123 Main St. San Antonio, TX"
+          helper_text: "ES You must own this home."
         addition:
-          header: "ES Room Additions"
-          question: "ES What best describes your room addition that you are building?"
+          header: "ES About your new space"
+          question: "ES What best describes the space you are building?"
         acs_struct:
-          header: "ES Shed/Garage"
-          question: "ES What best describes your shed or garage that you are building?"
+          header: "ES About your new shed or garage"
+          question: "ES What best describes the shed or garage you are building?"
         deck:
-          header: "ES Deck"
-          question: "ES What best describes your deck that you are building?"
+          header: "ES About your new deck"
+          question: "ES What best describes the deck you are building?"
         pool:
-          header: "ES Swimming Pool"
-          question: "ES What best describes your swimming pool that you are building?"
+          header: "ES About your new swimming pool"
+          question: "ES What best describes the swimming pool you are building?"
         window:
-          header: "ES Windows"
+          header: "ES About your windows"
           question:
             html: "ES Are you <b>only</b> replacing broken glass?"
           options:
             yes_statement: "ES Yes"
             no_statement: "ES No"
         door:
-          header: "ES Doors"
+          header: "ES About your doors"
           question:
             html: "ES Are you <b>only</b> replacing the existing door on current hinges?"
           options:
             yes_statement: "ES Yes"
             no_statement: "ES No"
         wall:
-          header: "ES Walls"
+          header: "ES About your walls"
           question:
-            html: "ES Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
+            html: "ES How are you changing your walls?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "ES I am only painting, adding wallpaper, or repairing sheetrock — I am not moving or altering studs"
+            no_statement: "ES I am doing something else"
         siding:
-          header: "ES Siding Replacement"
+          header: "ES About your siding replacement"
           question:
             html: "ES Are you <b>only</b> placing new siding over existing siding?"
           options:
             yes_statement: "ES Yes"
             no_statement: "ES No"
         floor:
-          header: "ES Floor - Structural Repairs"
+          header: "ES About your floors"
           question:
-            html: "ES Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
+            html: "ES How are you changing your floors?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "ES I am only replacing or adding carpet, tile, wood, or laminate flooring"
+            no_statement: "ES I am doing something else"
         contractor:
-          header: "ES Contractor"
-          question: "ES Will you be hiring a contractor to work on your project?"
+          header: "ES Who is helping"
+          question: "ES Who will be doing the work?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "ES I'm hiring a contractor"
+            no_statement: "ES I'm doing the work myself (with help from my friends or family)"
         submit: "ES Submit"

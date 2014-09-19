@@ -4,17 +4,19 @@ en:
       new:
         intro:
           heading: "How would you like to improve your house?"
-          helper_text: "Please select all the projects that you would like to work on:"
         project:
-          addition: "Room Addition"
-          acs_struct: "Shed or Garage"
-          deck: "Deck"
-          pool: "Swimming Pool"
+          addition:
+            raw: "Add space or build a new room"
+            html: "Add space or <br>build a new room"
+          acs_struct: "Build a shed or garage"
+          deck: "Build a deck"
+          pool: "Build a swimming pool"
           cover:
-            html: " Carport or <br> Outdoor Cover "
-          window: "Windows"
-          door: "Doors"
-          wall: "Walls"
-          siding: "Replace siding"
-          floor: "Floors"
+            raw: "Build a carport or outdoor cover"
+            html: "Build a carport <br>or outdoor cover"
+          window: "Replace my windows"
+          door: "Replace my doors"
+          wall: "Replace or fix my walls"
+          siding: "Replace my siding"
+          floor: "Replace or fix my floors"
         submit: "Next step"

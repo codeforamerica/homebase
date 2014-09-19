@@ -2,5 +2,6 @@ en:
   views:
     permit_steps:
       use_contractor:
-        heading: "Sorry, we can't help you right now."
-        contact: "The contractor you are using needs to apply for the building permit. Please have your contractor contact Development Services Department at (210) 207-1111 to get the permit you need."
+        heading: "Good news!"
+        description: "You said you’re using a contractor. They will fill out and submit the permits for you. Let them know that they’ll need to do this."
+        contact: "For additional questions, contact Development Services Department at (210) 207-1111."

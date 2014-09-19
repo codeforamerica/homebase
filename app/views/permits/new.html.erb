@@ -7,7 +7,6 @@
   <!-- Intro text -->
   <div class="intro">
     <h1><%= t('views.permits.new.intro.heading') %></h1>
-    <p><%= t('views.permits.new.intro.helper_text') %></p>
   </div>
 
   <!-- Start the permit select form -->
@@ -32,7 +31,7 @@
               <div class="clearfix project-block">
                 <%= image_tag "projects/addition.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.addition') %></p>
+                <p class="btn-block long"><%= t('views.permits.new.project.addition.html') %></p>
               </div>
             <% end %>               
             <%= f.check_box :selected_addition, style: 'display:none' %>
