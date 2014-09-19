@@ -46,10 +46,10 @@
 
     <div class="alert alert-danger further_assistance_needed" role="alert">
       <p class="info-top"><%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_1') %>
-          <% @permit_needs["further_assistance_needed"].each do |project| %>
-            <span class="project-title"><%= project %></span>
-          <% end %>
-          <%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_2') %>
+        <% @permit_needs["further_assistance_needed"].each do |project| %>
+          <span class="project-title"><%= project %></span>
+        <% end %>
+        <%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_2') %>
       </p>
       <p class="info-bottom"><%= t('views.permit_steps.display_permits.further_assistance_needed.body') %></p>
     </div>
