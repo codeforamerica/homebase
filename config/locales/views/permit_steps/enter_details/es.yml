@@ -3,7 +3,7 @@ es:
     permit_steps:
       enter_details:
         intro:
-          heading: "ReparacionGeneral/ Residencial Solicitud de Permiso"
+          heading: "Permiso de Reparación General / Residencial"
           body: "Este permiso abarca muchos proyectos de reparación de viviendas y renovación."
         homeowner_info:
           heading: "La información del propietario"
