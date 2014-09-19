@@ -13,10 +13,10 @@ es:
           pool: "Construya una piscina"
           cover:
             raw: "Construya una cubierta de coche o la cubierta al aire libre"
-            html: "Construya una cubierta de coche <br>o la cubierta al aire libre"
+            html: "Construya una cubierta de coche o la cubierta al aire libre"
           window: "Cambie el ventanas"
           door: "Cambie las puertas"
           wall: "Cambie o repare las paredes"
           siding: "Cambie el revestimiento"
           floor: "Cambie o arreglar los pisos"
-        submit: "Siguiente paso"
+        submit: "Enviar"

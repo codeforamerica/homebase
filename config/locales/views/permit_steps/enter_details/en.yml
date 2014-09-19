@@ -9,7 +9,7 @@ en:
           heading: "Homeowner information"
           helper_text: "Provide the homeowner’s info below:"
           name:
-            question: "Name"
+            question: "Name (First and last name)"
           address:
             question: "Street address"
           email:

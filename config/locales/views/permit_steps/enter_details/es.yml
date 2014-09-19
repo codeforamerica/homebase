@@ -9,7 +9,7 @@ es:
           heading: "La información del propietario"
           helper_text: "Proporcionar información del dueño de casa aquí:"
           name:
-            question: "Nombre"
+            question: "Nombre (Nombre y apellido)"
           address:
             question: "Dirección"
           email:
@@ -42,4 +42,4 @@ es:
             helper_text: "Por favor introduce el costo total de la mano de obra y los materialpara su proyecto."
 
 
-        submit: "El siguiente paso"
+        submit: "Enviar"
