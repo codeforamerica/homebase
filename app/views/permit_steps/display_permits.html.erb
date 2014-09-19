@@ -45,14 +45,12 @@
   <% if ! @permit_needs["further_assistance_needed"].empty? %>
 
     <div class="alert alert-danger further_assistance_needed" role="alert">
-      <p class="info-top"><%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_1') %></p>
-        <ul>
+      <p class="info-top"><%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_1') %>
           <% @permit_needs["further_assistance_needed"].each do |project| %>
             <span class="project-title"><%= project %></span>
           <% end %>
-        </ul>
-          
-      <p><%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_2') %></p>
+          <%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_2') %>
+      </p>
       <p class="info-bottom"><%= t('views.permit_steps.display_permits.further_assistance_needed.body') %></p>
     </div>
 
