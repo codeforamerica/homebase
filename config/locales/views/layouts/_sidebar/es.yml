@@ -2,8 +2,8 @@ es:
   views:
     layouts:
       sidebar:
-        progress: "ES Your progress"
-        step_1: "ES 1. Choose your project"
+        progress: "Su progreso"
+        step_1: "ES 1. Elige tu proyecto"
         step_2: "ES 2. Enter project details"
         step_3: "ES 3. Select your permits"
         step_4: "ES 4. Fill out permits"
