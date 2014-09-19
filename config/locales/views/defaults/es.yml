@@ -1,4 +1,4 @@
 es:
   views:
     defaults:
-      error_statement: "ES Sorry, there was a problem.  Please check your answers."
+      error_statement: "ES Oops. Check your answers below and try again."

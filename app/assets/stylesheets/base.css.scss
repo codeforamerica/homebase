@@ -315,7 +315,7 @@ h1 {
   color: $brand-danger;
 }
 
-.field_with_errors .form-control { //styles error helper text
+.field_with_errors .form-control, .field_with_errors p { //styles error helper text
   font-weight: 700;
   color: $brand-danger;
 }
@@ -364,6 +364,21 @@ input[type=radio]:checked + label {
 label {
   margin-bottom: 0;
   display: block;
+}
+
+/* Step 3 - Display permits */
+
+.project-title {
+  background-color: #ebccd1;
+  border-radius: 3px;
+  font-weight: 600;
+  padding: 0 5px;
+}
+.project-title:after {
+  content: ",";
+}
+.project-title:last-child:after {
+  content: none;
 }
 
 /* Alert styles */
