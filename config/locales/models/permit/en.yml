@@ -42,7 +42,7 @@ en:
             lte_30: "Less than or equal to 30 inches above grade"
             gt_30:  "Greater than 30 inches above grade"
         dwelling_attach:
-          label: "Dwelling Attachement"
+          label: "Dwelling Attachment"
           options:
             attached:     "Attached to dwelling"
             not_attached: "Not attached to dwelling"
@@ -110,13 +110,13 @@ en:
         permit:
           attributes:
             addition_size:
-              blank: "Select the size of the room addition."
+              blank: "Select the size of the new space or room."
             addition_num_story:
-              blank: "Select the number of stories for the room addition."
+              blank: "Select the number of stories of the new space or room."
             acs_struct_size:
-              blank: "Select the size of the accessory structure."
+              blank: "Select the size of the shed or garage."
             acs_struct_num_story:
-              blank: "Select the number of stories for the accessory structure."
+              blank: "Select the number of stories of the accessory structure."
             deck_size:
               blank: "Select the size of the deck."
             deck_grade:
@@ -134,13 +134,13 @@ en:
             door_replace_existing:
               blank: "Select whether you are only replacing doors on their existing hinges or not."
             wall_general_changes:
-              blank: "Select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+              blank: "Select whether you are only painting, adding wallpaper, or repairing sheetrock — not moving or altering studs."
             siding_over_existing:
               blank: "Select whether you are only placing new siding over existing siding or not."
             floor_covering:
-              blank: "Select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+              blank: "Select whether you are only replacing or adding carpet, tile, wood, or laminate flooring."
             contractor:
-              inclusion: "Select whether you are using a contractor or not in this project."
+              inclusion: "Select whether you are doing the work yourself or hiring a contractor in this project."
             owner_address:
               blank: "Enter a San Antonio address."
             owner_name:
@@ -168,8 +168,8 @@ en:
               blank: "Enter a work summary."
             job_cost:
               blank: "Enter the job cost."
-              invalid: "Job cost has an invalid format, it should be like 1000000.00"
-              not_a_number: "Job cost should be between the range of 0.00 to 1000000000000.00 and in format like 100000.00"
+              invalid: "Job cost has an invalid format, it should be like 1000.00"
+              not_a_number: "Job cost should be between the range of 0.00 to 1000000000000.00 and in format like 1000.00"
               greater_than: "Job cost should be between the range of 0.00 to 1000000000000.00"
               less_than: "Job cost should be between the range of 0.00 to 1000000000000.00"
             accepted_terms:

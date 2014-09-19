@@ -3,20 +3,20 @@ es:
     permits:
       new:
         intro:
-          heading: "ES How would you like to improve your house?"
+          heading: "¿Cómo le gustaría mejorar su casa?"
         project:
           addition:
-            raw: "ES Add space or build a new room"
-            html: "ES Add space or <br>build a new room"
-          acs_struct: "ES Build a shed or garage"
-          deck: "ES Build a deck"
-          pool: "ES Build a swimming pool"
+            raw: "Añada espacio o construya una nueva sala "
+            html: "Añada espacio o <br>construya una nueva sala "
+          acs_struct: "Construya un cobertizo o garaje "
+          deck: "Construya una cubierta o patio"
+          pool: "Construya una piscina"
           cover:
-            raw: "ES Build a carport or outdoor cover"
-            html: "ES Build a carport <br>or outdoor cover"
-          window: "ES Replace my windows"
-          door: "ES Replace my doors"
-          wall: "ES Replace or fix my walls"
-          siding: "ES Replace my siding"
-          floor: "ES Replace or fix my floors"
-        submit: "ES Next step"
+            raw: "Construya una cubierta de coche o la cubierta al aire libre"
+            html: "Construya una cubierta de coche <br>o la cubierta al aire libre"
+          window: "Cambie el ventanas"
+          door: "Cambie las puertas"
+          wall: "Cambie o repare las paredes"
+          siding: "Cambie el revestimiento"
+          floor: "Cambie o arreglar los pisos"
+        submit: "Siguiente paso"

@@ -3,4 +3,4 @@ en:
     address_validator:
       error:
         not_in_cosa: "Sorry, we think we got your address wrong here. Would you mind double checking it's in San Antonio?"
-        internal: "Sorry, we can't validate your address right now.  Would you mind trying again later?"
+        internal: "Sorry, we can't validate your address right now. Would you mind trying again later?"

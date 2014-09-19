@@ -2,178 +2,178 @@ es:
   models:
     permit:
       addition:
-        name: "ES Addition"
+        name: "Addition"
         size:
-          label: "ES Size"
+          label: "Tamaño"
           options:
-            lt_1000:    "ES Less than 1,000 square feet"
-            gte_1000:  "ES Greater than or equal to 1,000 square feet"
+            lt_1000:    "Menos de 1.000 picuadrados"
+            gte_1000:  "Mayor o igual a 1.000 picuadrados"
 
         num_story:
-          label: "ES Floors"
+          label: "Pisos"
           options:
-            one:          "ES 1 floor"
-            two_or_more:  "ES 2 or more floors"
+            one:          "1 piso"
+            two_or_more:  "2 o más pisos"
 
       acs_struct:
-        name: "ES Shed/Garage"
+        name: "Cobertizo/garaje"
         size:
-          label: "ES Size"
+          label: "Tamaño"
           options:
-            lte_120:  "ES Less than or equal to 120 square feet" 
-            gt_120:   "ES Greater than 120 square feet"
+            lte_120:  "Less than or equal to 120 square feet" 
+            gt_120:   "Greater than 120 square feet"
 
         num_story:
-          label: "ES Floors"
+          label: "Pisos"
           options:
-            one:          "ES 1 floor"
-            two_or_more:  "ES 2 or more floors"
+            one:          "1 piso"
+            two_or_more:  "2 o más pisos"
 
       deck:
-        name: "ES Deck"
+        name: "Cubierta"
         size:
-          label: "ES Size"
+          label: "Tamaño"
           options:
-            lte_200: "ES Less than or equal to 200 square feet"
-            gt_200: "ES Greater than 200 square feet"
+            lte_200: "Menor o igual a 200 metros cuadrados"
+            gt_200: "Más de 200 metros cuadrados"
         grade:
-          label: "ES Grade"
+          label: "Grado"
           options:
-            lte_30: "ES Less than or equal to 30 inches above grade"
-            gt_30:  "Greater than 30 inches above grade"
+            lte_30: "Menor o igual a 30 centímetros por encima de grado"
+            gt_30:  "Mayor de 30 pulgadas sobre el grado"
         dwelling_attach:
-          label: "ES Dwelling Attachement"
+          label: "Adjunto vivienda"
           options:
-            attached:     "ES Attached to dwelling"
-            not_attached: "ES Not attached to dwelling"
+            attached:     "Se adjunta a la vivienda"
+            not_attached: "No apegado vivienda"
         exit_door:
-          label: "ES Exit Door"
+          label: "Puerta de salida"
           options:
-            served:   "ES Serves a required exit door"
-            not_served: "ES Does not serve a required exit door"
+            served:   "Sirve una puerta de salida requerida"
+            not_served: "No sirve una puerta de salida requerida"
 
       pool:
-        name: "ES Swimming Pool"
+        name: "Piscina"
         location:
-          label: "ES Location"
+          label: "Ubicación"
           options:
-            in_ground:    "ES Pool is in ground"
-            above_ground: "ES Pool is above ground"
+            in_ground:    "La piscina está en el suelo"
+            above_ground: "La piscina está sobre el suelo"
         volume:
-          label: "ES Number of gallons"
+          label: "Número de galones"
           options:
-            lte_5000: "ES Less than or equal to 5,000 gallons"
-            gt_5000:  "ES More than 5,000 gallons"
+            lte_5000: "Menor o igual a 5.000 galones"
+            gt_5000:  "Más de 5.000 galones"
 
       cover:
-        name: "ES Carport/Outdoor Cover"
+        name: "Cubierta de coche/la cubierta al aire libre"
 
       window:
-        name: "ES Windows"
+        name: "Ventanas"
 
       door:
-        name: "ES Doors"
+        name: "Puertas"
 
       wall:
-        name: "ES Walls"
+        name: "Paredes"
 
       siding:
-        name: "ES Replace Siding"
+        name: "Reemplazo de Siding"
 
       floor:
-        name: "ES Floors"
+        name: "Pisos"
 
       ac:
         options:
-          none:     "ES None"
-          wall:     "ES Wall unit"
-          extended: "ES Extended from main house"
-          split:    "ES New split system"
+          none:     "Ninguno"
+          wall:     "Unidad de pared"
+          extended: "Extendido desde la casa principal"
+          split:    "Nuevo sistema dividido"
 
-      ensure_name_confirmed_msg: "ES The name didn't validate."
+      ensure_name_confirmed_msg: "El nombre no valida."
 
-      confirmed_name_msg: "ES The name you entered did not match the name you used on your permit application (%{name}). Please type your name again."
+      confirmed_name_msg: "El nombre que ha introducido no coincide con el nombre que usó en su solicitud de permiso (%{name}). Por favor escriba su nombre otra vez."
 
-      no_proj_chosen_msg: "ES Please choose at least one project to work on."
+      no_proj_chosen_msg: "Por favor, elija al menos un proyecto para trabajar en."
 
   activerecord:
     # models:
     #   permit:
     #     size_msg: 
-    #       one: "ES This is i18n controlled. Size"
-    #       other: "ES This is i18n controlled. Size"
+    #       one: "This is i18n controlled. Size"
+    #       other: "This is i18n controlled. Size"
     attributes:
       permit:
-        addition_size: "ES Size of room addtion"
+        addition_size: "Size of room addtion"
     errors:
       models:
         permit:
           attributes:
             addition_size:
-              blank: "ES Select the size of the room addition."
+              blank: "Seleccione el tamaño del nuevo espacio o sala."
             addition_num_story:
-              blank: "ES Select the number of stories for the room addition."
+              blank: "Seleccione el número de plantas del nuevo espacio o sala."
             acs_struct_size:
-              blank: "ES Select the size of the accessory structure."
+              blank: "Seleccione el tamaño de la nave o en el garaje."
             acs_struct_num_story:
-              blank: "ES Select the number of stories for the accessory structure."
+              blank: "Seleccione el número de plantas del cobertizo o garaje."
             deck_size:
-              blank: "ES Select the size of the deck."
+              blank: "Seleccione el tamaño de la cubierta."
             deck_grade:
-              blank: "ES Select the grade of the deck."
+              blank: "Seleccionar el grado de la cubierta."
             deck_dwelling_attach:
-              blank: "ES Select whether the deck is attached to dwelling or not."
+              blank: "Seleccione si la cubierta está unida a la vivienda o no."
             deck_exit_door:
-              blank: "ES Select whether the deck serves a required exit door or not."
+              blank: "Seleccione si la cubierta sirve una puerta de salida requerida o no."
             pool_location:
-              blank: "ES Select whether the swimming pool is in ground or above ground."
+              blank: "Seleccione si la piscina está en el suelo o sobre el suelo."
             pool_volume:
-              blank: "ES Select the size of the swimming pool."
+              blank: "Seleccione el tamaño de la piscina."
             window_replace_glass:
-              blank: "ES Select whether you are only replacing broken glass or not."
+              blank: "Seleccione si sólo está reemplazando el vidrio roto o no"
             door_replace_existing:
-              blank: "ES Select whether you are only replacing doors on their existing hinges or not."
+              blank: "Seleccione si sólo va a sustituir las puertas de sus bisagras existento no"
             wall_general_changes:
-              blank: "ES Select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+              blank: "Seleccione si sólo está pintando, añadiendo fondos de escritorio, o la reparación de placas de yeso - No mover o alterar montantes."
             siding_over_existing:
-              blank: "ES Select whether you are only placing new siding over existing siding or not."
+              blank: "Seleccione si sólo va a poner nuevo revestimiento sobre el revestimiento existente o no."
             floor_covering:
-              blank: "ES Select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+              blank: "Seleccione si sólo está reemplazando o añadiendo alfombras, baldosas, madera o suelo laminado."
             contractor:
-              inclusion: "ES Select whether you are using a contractor or not in this project."
+              inclusion: "Seleccione si usted está haciendo el trabajo usted mismo o contratar a un contratista en este proyecto."
             owner_address:
-              blank: "ES Enter a San Antonio address."
+              blank: "Ingrese una dirección San Antonio."
             owner_name:
-              blank: "ES Enter home owner name."
+              blank: "Ingresa dueño de la casa."
             email:
-              invalid: "ES Enter your valid email address (for example, john@email.com)"
+              invalid: "Escribe tu dirección de correo electrónico válida (por ejemplo, john@email.com)"
             phone:
-              invalid: "ES Enter a valid phone number (for example, 210-555-5555)"
+              invalid: "Ingrese un número de teléfono válido (por ejemplo, 210-555-5555)"
             house_area:
-              blank: "ES Enter the size of house in square feet."
-              not_a_number: "ES Enter the size of house in square feet."
+              blank: "Ingrese el tamaño de la casa en picuadrados."
+              not_a_number: "Ingrese el tamaño de la casa en picuadrados."
             addition_area:
-              blank: "ES Enter the size of addition in square feet."
-              not_a_number: "ES Enter the size of addition in square feet."
-              less_than: "ES Addition must be less than 1,000 square feet."
+              blank: "Ingrese el tamaño de la suma en picuadrados."
+              not_a_number: "Ingrese el tamaño de la suma en picuadrados."
+              less_than: "La adición debe ser inferior a 1.000 picuadrados."
             ac:
-              blank: "ES Select an air conditioning / heating system."
+              blank: "Seleccionar un sistema de aire acondicionado / calefacción."
             window_count:
-              not_a_number: "ES Specify the number of windows you are repairing."
-              greater_than: "ES Specify the number of windows you are repairing."
+              not_a_number: "Especifique el número de ventanas que está reparando."
+              greater_than: "Especifique el número de ventanas que está reparando."
             door_count:
-              not_a_number: "ES Specify the number of doors you are repairing."
-              greater_than: "ES Specify the number of doors you are repairing."
+              not_a_number: "Especifique el número de puertas que está reparando."
+              greater_than: "Especifique el número de puertas que está reparando."
             work_summary:
-              blank: "ES Enter a work summary."
+              blank: "Ingrese un resumen del trabajo."
             job_cost:
-              blank: "ES Enter the job cost."
-              invalid: "ES Job cost has an invalid format, it should be like 1000000.00"
-              not_a_number: "ES Job cost should be between the range of 0.00 to 1000000000000.00 and in format like 100000.00"
-              greater_than: "ES Job cost should be between the range of 0.00 to 1000000000000.00"
-              less_than: "ES Job cost should be between the range of 0.00 to 1000000000000.00"
+              blank: "Ingrese el costo del trabajo."
+              invalid: "costo de empleo tiene un formato no válido, debe ser como 1000.00"
+              not_a_number: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00 y en formato como 1000.00"
+              greater_than: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00"
+              less_than: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00"
             accepted_terms:
-              accepted: "ES Accept the terms listed here by checking the box below."
+              accepted: "Acepte los términos que figuran aquí, marcando la casilla de abajo."
 
   
 
