@@ -123,6 +123,7 @@ class Permit < ActiveRecord::Base
   validates_presence_of :job_cost, :if => :active_or_details?
   validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
   validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
+
   ## Validations on permit_step#confirm_terms ##
 
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?

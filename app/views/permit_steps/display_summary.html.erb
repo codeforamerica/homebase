@@ -25,7 +25,7 @@
           </div>
         </div>
       
-        <%= image_tag "permits/general-repairs-template-preview-200px.png" , class: "hidden-xs col-sm-4" %>
+        <%= image_tag "layouts/permit_steps/display_summary/general-repairs-template-preview-200px.png" , class: "hidden-xs col-sm-4" %>
 
         <div class="col-sm-8">
           <p><strong><%= t('views.permit_steps.display_summary.permit.congrat_text') %></strong></p>
@@ -58,18 +58,19 @@
       <h4><%= t('views.permit_steps.display_summary.forms_to_dsd.heading') %></h4>
     </div>
     <div class="panel-body">
-      <p><%= t('views.permit_steps.display_summary.forms_to_dsd.instruction') %></p>
+      <p><%= t('views.permit_steps.display_summary.forms_to_dsd.instruction.html') %></p>
       <p><%= t('views.permit_steps.display_summary.forms_to_dsd.location.html') %></p>
       <p><%= t('views.permit_steps.display_summary.forms_to_dsd.hour.html') %></p>
       <p><%= t('views.permit_steps.display_summary.forms_to_dsd.bring.html') %>
-      <ul>
-        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.permit_app') %></li>
-        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.site_plan') %></li>
-        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.photo_id') %></li>
-        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.ownership_proof') %></li>
-        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.payment') %></li>
-      </ul>
-       <p><%= t('views.permit_steps.display_summary.forms_to_dsd.contact.html') %></p>
+        <ul>
+          <li><%= t('views.permit_steps.display_summary.forms_to_dsd.permit_app') %></li>
+          <li><%= t('views.permit_steps.display_summary.forms_to_dsd.site_plan') %></li>
+          <li><%= t('views.permit_steps.display_summary.forms_to_dsd.photo_id') %></li>
+          <li><%= t('views.permit_steps.display_summary.forms_to_dsd.ownership_proof') %></li>
+          <li><%= t('views.permit_steps.display_summary.forms_to_dsd.payment') %></li>
+        </ul>
+      </p>
+      <p><%= t('views.permit_steps.display_summary.forms_to_dsd.contact.html') %></p>
     </div>
   </div>
 

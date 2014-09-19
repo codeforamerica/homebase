@@ -3,7 +3,7 @@
   <div class="clearfix">
 
     <div class="btn-toolbar">
-      <%= link_to t('views.layouts.header.app_name'), '/' + I18n.locale.to_s + '/reset', class: 'logo', 'data-toggle'=> 'tooltip', 'data-placement'=> 'right', title: t('views.layouts.header.reset') %>
+      <%= link_to "#{image_tag 'layouts/_header/logo.png'}#{t('views.layouts.header.app_name')}".html_safe, '/' + I18n.locale.to_s + '/reset', class: 'logo', 'data-toggle'=> 'tooltip', 'data-placement'=> 'right', title: t('views.layouts.header.reset') %>
       
       <span class="tagline"><%= t('views.layouts.header.tagline') %></span>
       <%= link_to t('views.layouts.header.translate'), '/' + I18n.locale.to_s + '/reset', class: 'btn btn-default btn-xs pull-right btn-primary' %>            

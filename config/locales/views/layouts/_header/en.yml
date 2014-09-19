@@ -10,7 +10,7 @@ en:
         translate: "Español"
         author: "Created by Code for America and the City of San Antonio"
         link_to_domain:
-          html: "<a href=\"http://homebasefix.com\">Click here</a> to read more about Homebase and how we're simplifying the home repair process in San Antonio."
+          html: "This app lets you apply for the permits you’ll need to improve your home legally. <a href=\"http://homebasefix.com\">Click here</a> to read more about Homebase and how we're simplifying the home repair process in San Antonio."
         help_instruction: 
           heading: "Do you need help? Send us an email with your issue"
           html: "Please send us an email at <a href=\"mailto:sanantonio@codeforamerica.org\">sanantonio@codeforamerica.org</a> with questions and issues."

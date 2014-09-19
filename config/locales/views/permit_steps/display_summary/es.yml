@@ -3,14 +3,14 @@ es:
     permit_steps:
       display_summary:
         intro:
-          heading: "ES Almost done! We filled in your permit applications"
+          heading: "ES Congrats! You filled out your permit application"
           body: "ES You'll need to complete a few simple steps to submit your application:"
         permit:
           heading: "ES Download your finished permit application"
           adobe_download:
             html: "ES The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
-          congrat_text: "ES Congratulations! You filled out the General Repair/Residential Permit Application."
-          download_instruction: "ES We filled in the permit application form for you. Please click the button below to download and print this application."
+          congrat_text: "ES Almost there! We filled in the General Repair/Residential Permit Application for you."
+          download_instruction: "ES Please click the button below to download and print this application."
           download_button: "ES Download then print"
         site_plan:
           heading: "ES Make a detailed site plan"
@@ -19,17 +19,18 @@ es:
           download_button: "ES Download and fill out the site plan form"
         forms_to_dsd:
           heading: "ES Bring your completed forms to the Development Services Department"
-          instruction: "ES You will have to submit your materials in person to the Development Services Department One-Stop. You will also have to pay a fee to apply for your permit."
+          instruction: 
+            html: "ES Submit your permit at the Development Services Department One-Stop. You will also have to pay a <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">fee [PDF]</a> to apply for your permit."
           location:
-            html: "ES <strong>Where:</strong> The Development Services Department One-Stop is located at <a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo, San Antonio, Texas 78204</a>."
+            html: "ES <strong>Where to go:</strong> <p>The Development Services Department One-Stop is located at:</p><a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo St. <br>San Antonio, Texas 78204</a>"
           hour:
             html: "ES <strong>Office hours:</strong> 7:45am–4:30pm (Monday–Friday)"
           bring:
-            html: "ES <strong>What to bring:</strong> Please come prepared with the following items."
+            html: "ES <strong>What to bring:</strong>"
           permit_app: "ES Your printed General Repairs/Residential Permit application"
           site_plan: "ES Your printed and completed site plan"
           photo_id: "ES A form of photo identification (i.e. driver's license, passport)"
           ownership_proof: "ES Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
-          payment: "ES A form of payment (i.e. credit card, check or cash)"
+          payment: "ES A credit card, check, or cash to pay your fee"
           contact:
             html: "ES <strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111."

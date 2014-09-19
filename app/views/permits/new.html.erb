@@ -7,7 +7,6 @@
   <!-- Intro text -->
   <div class="intro">
     <h1><%= t('views.permits.new.intro.heading') %></h1>
-    <p><%= t('views.permits.new.intro.helper_text') %></p>
   </div>
 
   <!-- Start the permit select form -->
@@ -30,9 +29,9 @@
           <div class="col-md-4">
             <%= f.label :selected_addition, id: "addition", class: "pick-addition btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/addition.png", class: "project-icon" %>
+                <%= image_tag "permits/new/addition.png", class: "project-icon" %>
                 <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.addition') %></p>
+                <p class="btn-block long"><%= t('views.permits.new.project.addition.html') %></p>
               </div>
             <% end %>               
             <%= f.check_box :selected_addition, style: 'display:none' %>
@@ -40,7 +39,7 @@
           <div class="col-md-4">
             <%= f.label :selected_acs_struct, id: "acs-struct", class: "pick-acs-struct btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/shed.png", class: "project-icon" %>
+                <%= image_tag "permits/new/shed.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.acs_struct') %></p>
               </div>
@@ -50,7 +49,7 @@
           <div class="col-md-4">
               <%= f.label :selected_deck, id: "deck", class: "pick-deck btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/deck.png", class: "project-icon" %>
+                <%= image_tag "permits/new/deck.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.deck') %></p>
               </div>
@@ -63,7 +62,7 @@
           <div class="col-md-4">
               <%= f.label :selected_pool, "Swimming Pool", id: "pool", class: "pick-pool btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/pool.png", class: "project-icon" %>
+                <%= image_tag "permits/new/pool.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.pool') %></p>
               </div>
@@ -73,7 +72,7 @@
           <div class="col-md-4">
             <%= f.label :selected_cover, id: "cover", class: "pick-cover btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/carport.png", class: "project-icon" %>
+                <%= image_tag "permits/new/carport.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block long"><%= t('views.permits.new.project.cover.html') %></p>              
               </div>
@@ -83,7 +82,7 @@
           <div class="col-md-4">
             <%= f.label :selected_window, id: "window", class: "pick-window btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/window.png", class: "project-icon" %>
+                <%= image_tag "permits/new/window.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.window') %></p>
               </div>
@@ -96,7 +95,7 @@
           <div class="col-md-4">
             <%= f.label :selected_door, id: "door", class: "pick-door btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/door.png", class: "project-icon" %>
+                <%= image_tag "permits/new/door.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.door') %></p>
               </div>
@@ -106,7 +105,7 @@
           <div class="col-md-4">
             <%= f.label :selected_wall, id: "wall", class: "pick-wall btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/wall.png", class: "project-icon" %>
+                <%= image_tag "permits/new/wall.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.wall') %></p> 
               </div>             
@@ -116,7 +115,7 @@
           <div class="col-md-4">
             <%= f.label :selected_siding, id: "siding", class: "pick-siding btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/siding.png", class: "project-icon" %>
+                <%= image_tag "permits/new/siding.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.siding') %></p>
               </div>              
@@ -129,7 +128,7 @@
           <div class="col-md-4">
             <%= f.label :selected_floor, id: "floor", class: "pick-floor btn-initial project" do %>
               <div class="clearfix project-block">
-                <%= image_tag "projects/floor.png", class: "project-icon" %>
+                <%= image_tag "permits/new/floor.png", class: "project-icon" %>
                 <div class="clearfix"></div>
                 <p class="btn-block"><%= t('views.permits.new.project.floor') %></p> 
               </div>             

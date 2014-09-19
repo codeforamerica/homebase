@@ -28,6 +28,7 @@
                         attribute: :owner_address, 
                         placeholder: t('views.permit_steps.answer_screener.owner_address.placeholder'),
                         input_addon: nil } %>
+          <span class="help-block"><%= t('views.permit_steps.answer_screener.owner_address.helper_text') %></span>
         </div>
       </div><!-- ./panel_body -->
     </div><!-- panel -->   
@@ -243,17 +244,15 @@
         <h4><%= t('views.permit_steps.answer_screener.contractor.header') %></h4>
       </div>
       <div class="panel-body">
-
         <p><%= t('views.permit_steps.answer_screener.contractor.question') %></p>
         <%= render  partial: "permit_steps/form_helper/radio", 
                     locals: { f: f,
                               question: nil,
                               attribute: :contractor, 
-                              option: [ { value: true, 
-                                          label: t('views.permit_steps.answer_screener.contractor.options.yes_statement') }, 
-                                        { value: false, 
-                                          label: t('views.permit_steps.answer_screener.contractor.options.no_statement') }]} %>            
-
+                              option: [ { value: false, 
+                                          label: t('views.permit_steps.answer_screener.contractor.options.no_statement') },
+                                        { value: true, 
+                                          label: t('views.permit_steps.answer_screener.contractor.options.yes_statement') }]} %>            
       </div>
     </div><!-- ./Contractor section -->
 
