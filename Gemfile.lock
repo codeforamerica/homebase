@@ -204,7 +204,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.1)
   capybara (= 2.2.1)
   coffee-rails (= 4.0.1)
-  debugger
+  debugger (= 1.6.8)
   dotenv
   factory_girl_rails (= 4.4.1)
   foreman (= 0.66.0)
