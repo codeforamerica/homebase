@@ -6,7 +6,7 @@ es:
           heading: "¡Felicitaciones! Usted completó el Permiso de Reparación General / Residencial."
           body: "Usted tendrá que completar unos pocos pasos sencillos para presentar su permiso para aprobación."
         permit:
-          heading: "Download your finished permit application"
+          heading: "Descarga tu solicitud de permiso acabado"
           adobe_download:
             html: "El permiso se encuentra en formato PDF y requiere un lector de PDF. Usted puede descargar el lector de PDF Adobe Acrobat de forma gratuita en <a href=\"http://get.adobe.com/reader/\">este enlace</a>."
           congrat_text: "Casi allí! Llenamos en la Permiso de Reparación General / Residencial para usted."
