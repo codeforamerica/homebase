@@ -12,7 +12,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'debugger'
+  #gem 'debugger', '1.6.8'
   gem 'selenium-webdriver', '2.42.0'
   gem 'capybara', '2.2.1'
   gem 'factory_girl_rails', '4.4.1'

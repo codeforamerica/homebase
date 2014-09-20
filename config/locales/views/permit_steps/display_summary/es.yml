@@ -3,34 +3,34 @@ es:
     permit_steps:
       display_summary:
         intro:
-          heading: "ES Congrats! You filled out your permit application"
-          body: "ES You'll need to complete a few simple steps to submit your application:"
+          heading: "¡Felicitaciones! Usted completó el Permiso de Reparación General / Residencial."
+          body: "Usted tendrá que completar unos pocos pasos sencillos para presentar su permiso para aprobación."
         permit:
-          heading: "ES Download your finished permit application"
+          heading: "Descarga tu solicitud de permiso acabado"
           adobe_download:
-            html: "ES The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
-          congrat_text: "ES Almost there! We filled in the General Repair/Residential Permit Application for you."
-          download_instruction: "ES Please click the button below to download and print this application."
-          download_button: "ES Download then print"
+            html: "El permiso se encuentra en formato PDF y requiere un lector de PDF. Usted puede descargar el lector de PDF Adobe Acrobat de forma gratuita en <a href=\"http://get.adobe.com/reader/\">este enlace</a>."
+          congrat_text: "Casi allí! Llenamos en la Permiso de Reparación General / Residencial para usted."
+          download_instruction: "Por favor, haga clic en el botón de abajo para descargar e imprimir esta aplicación."
+          download_button: "Descarga luego imprime"
         site_plan:
-          heading: "ES Make a detailed site plan"
-          description: "ES A site plan is a drawing of your property that includes current buildings (like houses or sheds) and new structures (like an addition or shed)."
-          instruction: "ES You are required to draw and submit a detailed site plan with your permit."
-          download_button: "ES Download and fill out the site plan form"
+          heading: "Haga un plan detallado del sitio"
+          description: "Un plan de sitio un dibujo de su propiedad que incluye los edificios actual(como las casas o cabañas) y nuevas estructuras (como una adición o una nave)."
+          instruction: "Usted está obligado a elaborar y presentar un plan detallado del sitio, con su permiso."
+          download_button: "Descarga y rellena el formulario de plan de sitio"
         forms_to_dsd:
-          heading: "ES Bring your completed forms to the Development Services Department"
+          heading: "Lleve sus formularios completados al Departamento de Servicios de Desarrollo"
           instruction: 
-            html: "ES Submit your permit at the Development Services Department One-Stop. You will also have to pay a <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">fee [PDF]</a> to apply for your permit."
+            html: "Envía tu permiso en el Departamento de Servicios de Desarrollo de One-Stop. Usted también tendrá que pagar una <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">cuota [PDF]</a> para solicitar su permiso."
           location:
-            html: "ES <strong>Where to go:</strong> <p>The Development Services Department One-Stop is located at:</p><a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo St. <br>San Antonio, Texas 78204</a>"
+            html: "<strong>Dónde ir:</strong> <p>El Departamento de Servicios de Desarrollo de One-Stop está situado en la calle:</p><a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo St. <br>San Antonio, Texas 78204</a>"
           hour:
-            html: "ES <strong>Office hours:</strong> 7:45am–4:30pm (Monday–Friday)"
+            html: "<strong>Las horas de oficina:</strong> 7:45am–4:30pm (Lunes-Viernes)"
           bring:
-            html: "ES <strong>What to bring:</strong>"
-          permit_app: "ES Your printed General Repairs/Residential Permit application"
-          site_plan: "ES Your printed and completed site plan"
-          photo_id: "ES A form of photo identification (i.e. driver's license, passport)"
-          ownership_proof: "ES Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
-          payment: "ES A credit card, check, or cash to pay your fee"
+            html: "<strong>Qué llevar:</strong>"
+          permit_app: "Su permiso de Reparacion/ General Residencial impreso y firmado"
+          site_plan: "Su plan de sitio impresos y completados"
+          photo_id: "Identificación con fotografía (por ejemplo, licencia de conducir, pasaporte)"
+          ownership_proof: "Prueba de la propiedad de la vivienda que está trabajando (decir, título de propiedad, los papelde Condado Bexar Appraisal District)"
+          payment: "Una tarjeta de crédito, cheque o dinero en efectivo para pagar la cuota"
           contact:
-            html: "ES <strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111."
+            html: "<strong>¿Tiene alguna pregunta?</strong> Llame al Departamento de Servicios de Desarrollo al (210) 207-1111."
