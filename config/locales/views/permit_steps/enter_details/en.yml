@@ -9,7 +9,7 @@ en:
           heading: "Homeowner information"
           helper_text: "Provide the homeowner’s info below:"
           name:
-            question: "Name"
+            question: "Name (First and last name)"
           address:
             question: "Street address"
           email:
@@ -26,14 +26,17 @@ en:
             question: "Air conditioning / heating system"
             helper_text: "Select the system you plan to install in your addition."
         window_info:
+          heading: "Window Information"
           window_count:
             question: "How many windows are you changing?"
             helper_text: "Include windows you are repairing."
         door_info:
+          heading: "Door Information"
           door_count:
             question: "How many doors are you changing?"
             helper_text: "Include doors you are repairing."
         final_info:
+          heading: "Summary and cost"
           work_summary:
             question: "Work Summary"
             helper_text: "Describe the project you are working on."
