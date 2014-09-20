@@ -2,7 +2,7 @@ es:
   models:
     permit:
       addition:
-        name: "Espacio/Habitación"
+        name: "Espacio/habitación"
         size:
           label: "Tamaño"
           options:
