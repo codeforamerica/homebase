@@ -6,9 +6,9 @@ en:
           heading: "Congrats! You filled out your permit application"
           body: "You'll need to complete a few simple steps to submit your application:"
         permit:
-          heading: "Descarga tu solicitud de permiso acabado"
+          heading: "Download your finished permit application"
           adobe_download:
-            html: "ES The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
+            html: "The permit is in PDF form and requires a PDF reader. You can download the Adobe Acrobat PDF reader for free at <a href=\"http://get.adobe.com/reader/\">this link</a>."
           congrat_text: "Almost there! We filled in the General Repair/Residential Permit Application for you."
           download_instruction: "Please click the button below to download and print this application."
           download_button: "Download then print"
