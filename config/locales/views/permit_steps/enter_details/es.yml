@@ -36,7 +36,7 @@ es:
             question: "¿Cuántas puertas estás cambiando?"
             helper_text: "Por favor incluya puertas que está agregando reparación."
         final_info:
-          heading: "ES Summary and cost"
+          heading: "Resumen y costo"
           work_summary:
             question: "Resumen del trabajo"
             helper_text: "Por favor, describa el proyecto que se está trabajando."
