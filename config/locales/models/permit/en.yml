@@ -2,7 +2,7 @@ en:
   models:
     permit:
       addition:
-        name: "Addition"
+        name: "Space/room"
         size:
           label: "Size"
           options:
@@ -16,7 +16,7 @@ en:
             two_or_more:  "2 or more floors"
 
       acs_struct:
-        name: "Shed/Garage"
+        name: "Shed/garage"
         size:
           label: "Size"
           options:
@@ -53,7 +53,7 @@ en:
             not_served: "Does not serve a required exit door"
 
       pool:
-        name: "Swimming Pool"
+        name: "Swimming pool"
         location:
           label: "Location"
           options:
@@ -66,7 +66,7 @@ en:
             gt_5000:  "More than 5,000 gallons"
 
       cover:
-        name: "Carport/Outdoor Cover"
+        name: "Carport/outdoor over"
 
       window:
         name: "Windows"
@@ -97,14 +97,6 @@ en:
       no_proj_chosen_msg: "Please choose at least one project to work on."
 
   activerecord:
-    # models:
-    #   permit:
-    #     size_msg: 
-    #       one: "This is i18n controlled. Size"
-    #       other: "This is i18n controlled. Size"
-    attributes:
-      permit:
-        addition_size: "Size of room addtion"
     errors:
       models:
         permit:
