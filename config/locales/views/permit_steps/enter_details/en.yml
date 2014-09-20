@@ -26,10 +26,12 @@ en:
             question: "Air conditioning / heating system"
             helper_text: "Select the system you plan to install in your addition."
         window_info:
+          heading: "Window Information"
           window_count:
             question: "How many windows are you changing?"
             helper_text: "Include windows you are repairing."
         door_info:
+          heading: "Door Information"
           door_count:
             question: "How many doors are you changing?"
             helper_text: "Include doors you are repairing."

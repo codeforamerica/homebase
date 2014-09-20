@@ -26,10 +26,12 @@ es:
             question: "Aire acondicionado / calefacción"
             helper_text: "Por favor, seleccione el sistema que va a instalar en su adición."
         window_info:
+          heading: "ES Window Information"
           window_count:
             question: "¿Cuántas ventanas estás cambiando?"
             helper_text: "Por favor incluya ventanas que está reparando."
         door_info:
+          heading: "ES Door Information"
           door_count:
             question: "¿Cuántas puertas estás cambiando?"
             helper_text: "Por favor incluya puertas que está agregando reparación."

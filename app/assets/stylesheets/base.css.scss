@@ -65,6 +65,11 @@ h1 {
     opacity: .8;
     text-decoration: none;
   }
+  img {
+    margin-top: -7px;
+    padding-right: 4px;
+    width: 20px;    
+  }
 }
 
 .tagline {
@@ -250,7 +255,6 @@ h1 {
 .project-block {
   width: 100%;
   height: 116px;
-  padding: 0 12px;
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   text-align: center;
   text-decoration: none;
