@@ -45,39 +45,5 @@
     <!-- footer -->
     <%= render "layouts/footer"%>
     <!-- ./footer -->
-
-    <!-- @TODO refactor this out to javascript asset pipeline -->
-    <script>
-      <% if @permit.to_bool(@permit.selected_addition) %>
-        $(".addition").toggleClass("displayed", true);
-      <% end %>
-      <% if @permit.to_bool(@permit.selected_acs_struct) %>
-        $(".acs-struct").toggleClass("displayed", true);
-      <% end %>    
-      <% if @permit.to_bool(@permit.selected_deck) %>
-        $(".deck").toggleClass("displayed", true);
-      <% end %>
-      <% if @permit.to_bool(@permit.selected_pool) %>
-        $(".pool").toggleClass("displayed", true);
-      <% end %>
-      <% if @permit.to_bool(@permit.selected_cover) %>
-        $(".cover").toggleClass("displayed", true);
-      <% end %>
-      <% if @permit.to_bool(@permit.selected_window) %>
-        $(".window").toggleClass("displayed", true);
-      <% end %>    
-      <% if @permit.to_bool(@permit.selected_door) %>
-        $(".door").toggleClass("displayed", true);
-      <% end %>
-      <% if @permit.to_bool(@permit.selected_wall) %>
-        $(".wall").toggleClass("displayed", true);
-      <% end %>
-      <% if @permit.to_bool(@permit.selected_siding) %>
-        $(".siding").toggleClass("displayed", true);
-      <% end %>
-      <% if @permit.to_bool(@permit.selected_floor) %>
-        $(".floor").toggleClass("displayed", true);
-      <% end %>
-    </script>
   </body>
 </html>

@@ -27,9 +27,7 @@
 //= require site/timeoutmodal
 //= require site/webfontloader
 //= require site/uservoice
-//
-//// Permits
-//= require permits/new
+
 //
 //// Permit_Steps
 //= require permit_steps/enter_details
