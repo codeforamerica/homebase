@@ -7,6 +7,7 @@ es:
         tagline: "Solicite un permiso de construcción en San Antonio"
         about: "Sobre este proyecto"
         start_over: "Empezar de nuevo"
+        translate: "English"
         author: "Creado por Code for America y la Ciudad de San Antonio"
         link_to_domain:
           html: "Esta aplicación le permite aplicar para los permisos que necesita para mejorar su hogar legalmente. <a href=\"http://homebasefix.com\">Clic aquí </a> para leer más sobre Homebase y cómo estamos simplificando el proceso de reparación de su casa en San Antonio."
