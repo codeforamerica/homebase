@@ -1,2 +1,8 @@
 tmp/**
-.env
+
+# Ignore all environment variables.
+/.env
+
+/log
+_site
+

@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: open sans, Arial, 'Helvetica Neue', Helvetica, sans-serif;
   color: #333;
   font-size: 14px;
   line-height: 20px;
@@ -32,9 +32,11 @@ h3 {
 h4 {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
+  font-family: proxima-nova-soft,sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
 }
 h5 {
   margin-top: 10px;
@@ -52,13 +54,13 @@ h6 {
 }
 p {
   font-family:'Open Sans', sans-serif;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.4em;
   font-weight: 400;
   margin-bottom: 15px;
 }
 a {
-	color: #0f57a3;
+  color: #0f57a3;
 }
 .nav {
   height: 49px;
@@ -66,19 +68,19 @@ a {
   font-size: 13px;
 }
 .logo {
-  width: 167px;
   margin-top: 0px;
   margin-bottom: 0px;
   float: left;
   background-color: transparent;
-  font-family: Montserrat, sans-serif;
   color: white;
-  font-size: 20px;
-  font-weight: 600;
+  font-family: open sans;
+  font-size: 24px;
+  font-weight: bold;
   text-transform: uppercase;
 }
+
 .hero-heading {
-  margin-top: 33px;
+  margin-top: 8px;
   margin-bottom: 6px;
   font-family: proxima-nova-soft, sans-serif;
   color: #062d32;
@@ -119,7 +121,7 @@ a {
   font-weight: 500;
 }
 .nav-link {
-	opacity: .7;
+  opacity: .7;
   padding-top: 14px;
   padding-bottom: 14px;
   background-color: transparent;
@@ -128,20 +130,23 @@ a {
   text-transform: uppercase;
 }
 .nav-link:hover {
-	opacity: 1;
-	transition: ease .1s all;
+  opacity: 1;
+  transition: ease .1s all;
 }
 .w-nav-link.w--current {
   color: #fff;
-	opacity: 1;
+  opacity: 1;
 }
 .navbar {
   padding-top: 8px;
 }
 .footer {
-  padding-top: 18px;
-  padding-bottom: 0px;
   background-color: #34383b;
+  bottom: 0;
+  padding-bottom: 0;
+  padding-top: 18px;
+  position: fixed;
+  width: 100%;
 }
 .footer.suzy-sec {
   padding-top: 10px;
@@ -160,29 +165,43 @@ a {
 p.white {
   font-family:'Open Sans', sans-serif;
   color: white;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1.4em;
   font-weight: 400;
 }
+.bottom-trailer p {
+  font-size: 16px;
+}
 footer .white a {
-	color: #fff;
+  color: #fff;
 }
 footer .white {
   margin-bottom: 22px;
   padding-top: 4px;
   font-size: 16px;
 }
-.tools {
-  margin-right: 7px;
+.icon {
+  margin-right: 5px;
   padding-top: 10px;
   float: left;
   background-color: transparent;
+  width: 19px;
 }
 .suzy-circle {
   padding: 16px 8px;
 }
 section.gray {
   background-color: #e0e0e0;
+}
+section.last {
+  padding-bottom: 100px;
+}
+/*.white .w-container, .gray .w-container {
+  max-width: 770px;
+}
+*/
+.full .w-container {
+  max-width: 940px;
 }
 .suzy-sec, section.white {
 
@@ -195,10 +214,11 @@ section {padding: 50px 0;}
 .hero {
   padding-bottom: 52px;
   background-color: #5fb9c1;
+  text-align: center;
 }
 .sub-header {
   margin-top: 0px;
-  padding-bottom: 28px;
+  padding-bottom: 18px;
   font-family: proxima-nova-soft, sans-serif;
   color: #29646a;
   font-size: 27px;
@@ -206,15 +226,12 @@ section {padding: 50px 0;}
   text-align: center;
 }
 .sub-header.description {
-  padding-top: 16px;
-  padding-bottom: 21px;
+  padding-top: 14px;
+  padding-bottom: 18px;
   font-weight: 500;
 }
 .hero-img {
-  padding: 0 20%;
-  display: table;
-  margin: 0 auto;
-  width: 80%;
+  padding: 0 26%;
 }
 .house-img {
   padding-top: 39px;
@@ -225,26 +242,32 @@ section {padding: 50px 0;}
 
 }
 #mce-EMAIL {
-	background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMTEiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMyQzRGNkQiIGQ9Ik0wIDB2MTFoMTZWMEgwek0xMy43IDFMNy45IDYuOCAyLjIgMUgxMy43ek0xNSA5TDEyLjEgNmwtMC43IDAuN0wxNC42IDEwSDEuNGwzLjMtMy4zTDMuOSA2IDEgOVYxLjJMNy4yIDcuNWwwLjcgMC43TDguNyA3LjUgMTUgMS4xVjl6Ii8+PC9zdmc+Cg==") no-repeat scroll 15px 18px padding-box rgba(11, 20, 26, 0.2);
-  width: 100%;
-  margin-bottom: 15px;
-	padding: 11px 20px 11px 48px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMTEiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMyQzRGNkQiIGQ9Ik0wIDB2MTFoMTZWMEgwek0xMy43IDFMNy45IDYuOCAyLjIgMUgxMy43ek0xNSA5TDEyLjEgNmwtMC43IDAuN0wxNC42IDEwSDEuNGwzLjMtMy4zTDMuOSA2IDEgOVYxLjJMNy4yIDcuNWwwLjcgMC43TDguNyA3LjUgMTUgMS4xVjl6Ii8+PC9zdmc+Cg==") no-repeat scroll 15px 18px padding-box rgba(11, 20, 26, 0.2);
+  width: 40%;
+  margin-right: 12px;
+  margin-left: 20%;
+  padding: 11px 20px 11px 48px;
   float: left;
-  border: 2px solid gray !important;
+  border: 2px solid white !important;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.36);
   font-family: proxima-nova-soft, sans-serif;
-  color: gray;
-  font-size: 19px;
+  color: #29646a;
+  font-size: 20px;
+}
+.home #mce-EMAIL {
+  margin-bottom: 15px;
+  margin-left: 0;
+  width: 100%;
 }
 #mce-EMAIL::-webkit-input-placeholder {
   color: #29646a;
 }
 #mce-EMAIL:hover, #mce-EMAIL:focus {
-	box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
   transition: all .2s ease;
 }
-.lets-go {
+#mc-embedded-subscribe, .btn-main {
   padding: 16px 31px;
   background-color: #1879d4;
   background-clip: padding-box;
@@ -258,34 +281,42 @@ section {padding: 50px 0;}
   font-family: proxima-nova-soft, sans-serif;
   font-size: 14px;
   font-weight: 700;
+  text-decoration: none;  
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
 }
-.lets-go:hover {
+
+#mc-embedded-subscribe:hover, .btn-main:hover {
     background-image: linear-gradient(to top, #2a76c8 0%, #419ae5 100%);
 }
-.lets-go:active {
+#mc-embedded-subscribe:active, .btn-main:active {
     background-image: linear-gradient(to top, #2c8fe3 0%, #1367c2 100%);
     transform: translateY(1px);
 }
 #mc_embed_signup {
-	padding-bottom: 15px;
+  padding-bottom: 15px;
+}
+.form-text {
+  font-family: proxima-nova-soft, sans-serif;
+  color: #29646a;
+  font-size: 16px;
+  text-align: center;
 }
 .w--nav-menu-open, .w-nav-button.w--open {
     background: none repeat scroll 0 0 #062d32;
 }
 .w-nav {
-	background: none;
+  background: none;
+}
+.home h2 {
+  text-align: center;
 }
 
 /* ABOUT */
 
-.about #mce-EMAIL {
-	border: 2px solid #fff !important;
-}
 .inner .sub-header {
-	color: #b4edf2;
-	padding: 0 85px;	
+  color: #b4edf2;
+  padding: 0 85px;  
 }
 .inner .hero {
     background-image: url("/images/b-about.jpg");
@@ -295,15 +326,12 @@ section {padding: 50px 0;}
     width: 100%;
 }
 .inner .hero-heading {
-	color: #fff;
-	margin-top: 120px;
+  color: #fff;
+  margin-top: 120px;
 }
 .inner .highlight {
-	color: yellow;
+  color: yellow;
 }
-
-/* Some additions from david */
-
 
 
 /* CONTACT */
@@ -312,87 +340,58 @@ section {padding: 50px 0;}
 }
 
 @media (max-width: 991px) {
-	.about .sub-header {
-		padding: 0;
-	}
+  .about .sub-header {
+    padding: 0;
+  }
 }    
 @media (max-width: 767px) {
-	.hero-heading {
-		font-size: 26px;
-		margin-bottom: 0;
-		margin-top: 0 !important;
-	}
-	.inner .hero {
-		min-height: 0;
-	}
-	.sub-header {
-		font-size: 16px;
-	}
-	.sub-header.description {
-		margin-bottom: 0;
-	}
-	#mce-EMAIL, #mc-embedded-subscribe {
-		margin-left: 0;
-		width: 100%;
-	}
-	#mce-EMAIL {
-		margin-bottom: 10px;
-	}	
-	section {
-	    padding: 20px 0;
-	}
+  .hero-heading {
+    font-size: 26px;
+    margin-bottom: 0;
+    margin-top: 0 !important;
+  }
   .hero-img {
-      width: 100%;
+    padding: 0 10%;
   }
-}
-
-@media (max-width: 767px) {
-  .w-container {
-    margin-left: 10px;
-    margin-right: 10px;
+  .inner .hero {
+    min-height: 0;
   }
+  .sub-header {
+    font-size: 16px;
+  }
+  .sub-header.description {
+    margin-bottom: 0;
+  }
+  #mce-EMAIL, #mc-embedded-subscribe {
+    margin-left: 0;
+    width: 100%;
+  }
+  #mce-EMAIL {
+    margin-bottom: 10px;
+  } 
+  #mc_embed_signup {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  section {
+      padding: 20px 0;
+  }
+
+  
 }
-
-/* david stuff */
-
-.hero-heading {
-  margin-top: 50px;
-}
-
-a.button.lets-go {
-  display: table;
-  text-decoration: none;
-  margin: 0 auto;
-}
-
-.divider {
-  background-color: #428287;
-  height: 1px;
-  border: none;
-  margin: 50px 0;
-}
-
-.subhead {
-  text-align: center;
-}
-
-.comics {
-  text-align: center;
-}
-
-.bottom-trailer p {
-  font-size: 16px;
-  color: black;
-}
-
-.footer-heading {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-h6 {
-  color: black;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: 600;
+/* Smartphones (portrait) ----------- */
+@media (max-width: 360px) {
+  .hero-heading {
+    font-size: 23px;
+  }
+  footer .white {
+    font-size: 9px;
+    margin-bottom: 12px;
+  }
+  .footer {
+    padding-top: 12px;
+  }
+  .cfa-logo {
+    width: 110px;
+  }
 }
