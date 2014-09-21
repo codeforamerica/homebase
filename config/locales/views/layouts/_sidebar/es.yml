@@ -1,0 +1,23 @@
+es:
+  views:
+    layouts:
+      sidebar:
+        progress: "Su progreso"
+        step_1: "1. Elige tu proyecto"
+        step_2: "2. Ingrese los detalles del proyecto"
+        step_3: "3. Seleccione sus permisos"
+        step_4: "4. Llene permisos"
+        step_5: "5. Firme sus permisos"
+        step_6: "6. Envíe sus permisos"
+        current_step: "Paso actual"
+        project: "Su proyecto"
+        addition: "Añadir Cuartos"
+        acs_struct: "Cobertizo o garaje"
+        deck: "Cubierta / Patio"
+        pool: "Piscina"
+        cover: "Cubierta de coche y al aire libre"
+        window: "Ventanas"
+        door: "Puertas"
+        wall: "Paredes"
+        siding: "Reemplazo de Siding"
+        floor: "Pisos"

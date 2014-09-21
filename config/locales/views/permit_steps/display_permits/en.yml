@@ -1,0 +1,33 @@
+en:
+  views:
+    permit_steps:
+      display_permits:
+        intro_text: "This is how to start your project(s)"
+        permit_not_needed:
+          heading: "You do not need a permit for the following project(s), build on!"
+          body: "A permit is not needed for your project. If you have additional questions, please contact Development Services Department at (210) 207-1111."
+        permit_needed:
+          heading: "You need a permit for the following project(s):"
+          body: "Please see below for more details."
+        further_assistance_needed:
+          heading: "Sorry, we can't help you right now."
+          helper_text:
+            part_1: "We’re sorry, the residential permit application is not appropriate for the"
+            part_2: "that you want to build."
+          body: "We can help you apply for the right permit for this project. Call us at (210) 207-1111 and we will help you."
+        detail_permit_info:
+          heading: "General Repair/Residential Permit Application"
+          body: "You will need a General Repair/Residential permit for most residential repair. Separate permits are required for any mechanical, electrical, or plumbing work."
+          helper_text: "This is the permit for the following project(s):"
+          app_cost:
+            heading: "This is the application cost:"
+            html: "Application costs are based on the <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Fee Schedule [PDF]</a>."
+          req_docs: "These are the required documents:"
+          misc_text: "We will help you fill these out"
+          permit_app: "Permit application"
+          site_plan: "Site plan"
+          bring_id: "You will also need:"
+          photo_id: "Form of photo identification (i.e. driver's license, passport)"
+          ownership_proof: "Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
+          
+        submit: "Apply for this permit"

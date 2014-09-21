@@ -1,0 +1,7 @@
+es:
+  views:
+    layouts:
+      footer:
+        author:
+          html: "Creado por <a href=\"http://codeforamerica.org\">Code for America</a> y la <a href=\"http://sanantonio.gov\">Ciudad de San Antonio</a>."
+        help_and_feedback: "Ayuda y Sugerencias"

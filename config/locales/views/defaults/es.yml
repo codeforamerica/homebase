@@ -1,0 +1,4 @@
+es:
+  views:
+    defaults:
+      error_statement: "Revise sus respuestas a continuación y vuelva a intentarlo."

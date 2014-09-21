@@ -1,0 +1,6 @@
+es:
+  validators:
+    address_validator:
+      error:
+        not_in_cosa: "Lo sentimos, creo que nos dieron su dirección incorrecta aquí. ¿Te importaría doble control que se encuentra en San Antonio?"
+        internal: "Lo sentimos, no podemos validar su dirección en este momento. ¿Te importaría volver a intentarlo más tarde?"

@@ -1,0 +1,48 @@
+es:
+  views:
+    permit_steps:
+      enter_details:
+        intro:
+          heading: "Permiso de Reparación General / Residencial"
+          body: "Este permiso abarca muchos proyectos de reparación de viviendas y renovación."
+        homeowner_info:
+          heading: "La información del propietario"
+          helper_text: "Proporcionar información del dueño de casa aquí:"
+          name:
+            question: "Nombre (Nombre y apellido)"
+          address:
+            question: "Dirección"
+          email:
+            question: "Dirección de correo electrónico"
+          phone:
+            question: "Número de teléfono"
+        addition_info:
+          heading: "Información de la adición"
+          house_area:
+            question: "Tamaño de la casa existente en picuadrados"
+          addition_area:
+            question: "Tamaño de nueva addición en picuadrados"
+          ac:
+            question: "Aire acondicionado / calefacción"
+            helper_text: "Por favor, seleccione el sistema que va a instalar en su adición."
+        window_info:
+          heading: "Información de ventanas"
+          window_count:
+            question: "¿Cuántas ventanas estás cambiando?"
+            helper_text: "Por favor incluya ventanas que está reparando."
+        door_info:
+          heading: "Información de puertas"
+          door_count:
+            question: "¿Cuántas puertas estás cambiando?"
+            helper_text: "Por favor incluya puertas que está agregando reparación."
+        final_info:
+          heading: "Resumen y costo"
+          work_summary:
+            question: "Resumen del trabajo"
+            helper_text: "Por favor, describa el proyecto que se está trabajando."
+          job_cost:
+            question: "Costo del trabajo"
+            helper_text: "Por favor introduce el costo total de la mano de obra y los materialpara su proyecto."
+
+
+        submit: "Enviar"

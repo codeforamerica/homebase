@@ -6,8 +6,7 @@
 
   <!-- Intro text -->
   <div class="intro">
-    <h1>How would you like to improve your house?</h1>
-    <p>Please select all the projects that you would like to work on:</p>
+    <h1><%= t('views.permits.new.intro.heading') %></h1>
   </div>
 
   <!-- Start the permit select form -->
@@ -30,22 +29,22 @@
           <div class="col-md-4">
             <%= f.check_box :selected_addition %>              
             <%= f.label :selected_addition, id: "addition", class: "project" do %>
-              <%= image_tag "projects/addition.png" %>
-              <p>Room Addition</p>
+              <%= image_tag "permits/new/addition.png" %>
+              <p class="long"><%= t('views.permits.new.project.addition.html') %></p>
             <% end %>
           </div>
           <div class="col-md-4">
             <%= f.check_box :selected_acs_struct %>
             <%= f.label :selected_acs_struct, id: "acs-struct", class: "project" do %>
-              <%= image_tag "projects/shed.png" %>
-              <p>Shed or Garage</p>
+              <%= image_tag "permits/new/shed.png" %>
+              <p><%= t('views.permits.new.project.acs_struct') %></p>
             <% end %>               
           </div>
           <div class="col-md-4">
             <%= f.check_box :selected_deck %>
             <%= f.label :selected_deck, id: "deck", class: "project" do %>
-              <%= image_tag "projects/deck.png" %>
-              <p>Deck</p>
+              <%= image_tag "permits/new/deck.png" %>
+              <p><%= t('views.permits.new.project.deck') %></p>
             <% end %>               
           </div>
         </div><!-- ./row -->
@@ -54,22 +53,22 @@
           <div class="col-md-4">
             <%= f.check_box :selected_pool %>
             <%= f.label :selected_pool, "Swimming Pool", id: "pool", class: "project" do %>
-              <%= image_tag "projects/pool.png" %>
-              <p>Swimming Pool</p>
+              <%= image_tag "permits/new/pool.png" %>
+              <p><%= t('views.permits.new.project.pool') %></p>
             <% end %>              
           </div>
           <div class="col-md-4">
             <%= f.check_box :selected_cover %>
             <%= f.label :selected_cover, id: "cover", class: "project" do %>
-              <%= image_tag "projects/carport.png" %>
-              <p class="long">Carport or <br>Outdoor Cover</p>              
+              <%= image_tag "permits/new/carport.png" %>
+              <p class="long"><%= t('views.permits.new.project.cover.html') %>
             <% end %>
           </div>
           <div class="col-md-4">
             <%= f.check_box :selected_window %>
             <%= f.label :selected_window, id: "window", class: "project" do %>
-              <%= image_tag "projects/window.png" %>
-              <p>Windows</p>
+              <%= image_tag "permits/new/window.png" %>
+              <p><%= t('views.permits.new.project.window') %></p>
             <% end %>
           </div>
         </div><!-- ./row -->
@@ -78,22 +77,22 @@
           <div class="col-md-4">
             <%= f.check_box :selected_door %>
             <%= f.label :selected_door, id: "door", class: "project" do %>
-              <%= image_tag "projects/door.png" %>
-              <p>Doors</p>
+              <%= image_tag "permits/new/door.png" %>
+              <p><%= t('views.permits.new.project.door') %></p>
             <% end %>
           </div>
           <div class="col-md-4">
             <%= f.check_box :selected_wall %>
             <%= f.label :selected_wall, id: "wall", class: "project" do %>
-              <%= image_tag "projects/wall.png" %>
-              <p>Walls</p> 
+              <%= image_tag "permits/new/wall.png" %>
+              <p><%= t('views.permits.new.project.wall') %></p>
             <% end %>
           </div>
           <div class="col-md-4">
             <%= f.check_box :selected_siding %>
             <%= f.label :selected_siding, id: "siding", class: "project" do %>
-              <%= image_tag "projects/siding.png" %>
-              <p>Replace siding</p>
+              <%= image_tag "permits/new/siding.png" %>
+              <p><%= t('views.permits.new.project.siding') %></p>
             <% end %>              
           </div>
         </div>
@@ -102,8 +101,8 @@
           <div class="col-md-4">
             <%= f.check_box :selected_floor %>
             <%= f.label :selected_floor, id: "floor", class: "project" do %>
-              <%= image_tag "projects/floor.png" %>
-              <p>Floors</p> 
+              <%= image_tag "permits/new/floor.png" %>
+              <p><%= t('views.permits.new.project.floor') %></p> 
             <% end %>              
           </div>
           <div class="col-md-4"></div>
@@ -111,7 +110,7 @@
         </div>
 
       <!-- Submit button -->
-      <%= f.submit "Next step", class: "btn btn-primary btn-lg", id: "new_permit_submit" %><!--, onclick: "saveProjects()"-->
+      <%= f.submit t('views.permits.new.submit'), class: "btn btn-primary btn-lg", id: "new_permit_submit" %><!--, onclick: "saveProjects()"-->
 
     <% end %>
   </div><!-- ./form -->

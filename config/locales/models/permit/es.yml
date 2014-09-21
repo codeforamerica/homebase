@@ -1,0 +1,172 @@
+es:
+  models:
+    permit:
+      addition:
+        name: "Espacio/habitación"
+        size:
+          label: "Tamaño"
+          options:
+            lt_1000: "Menos de 1,000 picuadrados"
+            gte_1000: "Mayor o igual a 1,000 picuadrados"
+
+        num_story:
+          label: "Pisos"
+          options:
+            one: "1 piso"
+            two_or_more: "2 o más pisos"
+
+      acs_struct:
+        name: "Cobertizo/garaje"
+        size:
+          label: "Tamaño"
+          options:
+            lte_120: "Menor o igual a 120 metros cuadrados" 
+            gt_120: "Más de 120 metros cuadrados"
+
+        num_story:
+          label: "Pisos"
+          options:
+            one:          "1 piso"
+            two_or_more:  "2 o más pisos"
+
+      deck:
+        name: "Cubierta"
+        size:
+          label: "Tamaño"
+          options:
+            lte_200: "Menor o igual a 200 metros cuadrados"
+            gt_200: "Más de 200 metros cuadrados"
+        grade:
+          label: "Grado"
+          options:
+            lte_30: "Menor o igual a 30 centímetros por encima de grado"
+            gt_30:  "Mayor de 30 pulgadas sobre el grado"
+        dwelling_attach:
+          label: "Adjunto vivienda"
+          options:
+            attached:     "Se adjunta a la vivienda"
+            not_attached: "No apegado vivienda"
+        exit_door:
+          label: "Puerta de salida"
+          options:
+            served:   "Sirve una puerta de salida requerida"
+            not_served: "No sirve una puerta de salida requerida"
+
+      pool:
+        name: "Piscina"
+        location:
+          label: "Ubicación"
+          options:
+            in_ground:    "La piscina está en el suelo"
+            above_ground: "La piscina está sobre el suelo"
+        volume:
+          label: "Número de galones"
+          options:
+            lte_5000: "Menor o igual a 5,000 galones"
+            gt_5000:  "Más de 5,000 galones"
+
+      cover:
+        name: "Cubierta de coche/la cubierta al aire libre"
+
+      window:
+        name: "Ventanas"
+
+      door:
+        name: "Puertas"
+
+      wall:
+        name: "Paredes"
+
+      siding:
+        name: "Reemplazo de Siding"
+
+      floor:
+        name: "Pisos"
+
+      ac:
+        options:
+          none:     "Ninguno"
+          wall:     "Unidad de pared"
+          extended: "Extendido desde la casa principal"
+          split:    "Nuevo sistema dividido"
+
+      ensure_name_confirmed_msg: "El nombre no valida."
+
+      confirmed_name_msg: "El nombre que ha introducido no coincide con el nombre que usó en su solicitud de permiso (%{name}). Por favor escriba su nombre otra vez."
+
+      no_proj_chosen_msg: "Por favor, elija al menos un proyecto para trabajar en."
+
+  activerecord:
+    errors:
+      models:
+        permit:
+          attributes:
+            addition_size:
+              blank: "Seleccione el tamaño del nuevo espacio o sala."
+            addition_num_story:
+              blank: "Seleccione el número de plantas del nuevo espacio o sala."
+            acs_struct_size:
+              blank: "Seleccione el tamaño de la nave o en el garaje."
+            acs_struct_num_story:
+              blank: "Seleccione el número de plantas del cobertizo o garaje."
+            deck_size:
+              blank: "Seleccione el tamaño de la cubierta."
+            deck_grade:
+              blank: "Seleccionar el grado de la cubierta."
+            deck_dwelling_attach:
+              blank: "Seleccione si la cubierta está unida a la vivienda o no."
+            deck_exit_door:
+              blank: "Seleccione si la cubierta sirve una puerta de salida requerida o no."
+            pool_location:
+              blank: "Seleccione si la piscina está en el suelo o sobre el suelo."
+            pool_volume:
+              blank: "Seleccione el tamaño de la piscina."
+            window_replace_glass:
+              blank: "Seleccione si sólo está reemplazando el vidrio roto o no"
+            door_replace_existing:
+              blank: "Seleccione si sólo va a sustituir las puertas de sus bisagras existento no"
+            wall_general_changes:
+              blank: "Seleccione si sólo está pintando, añadiendo fondos de escritorio, o la reparación de placas de yeso - No mover o alterar montantes."
+            siding_over_existing:
+              blank: "Seleccione si sólo va a poner nuevo revestimiento sobre el revestimiento existente o no."
+            floor_covering:
+              blank: "Seleccione si sólo está reemplazando o añadiendo alfombras, baldosas, madera o suelo laminado."
+            contractor:
+              inclusion: "Seleccione si usted está haciendo el trabajo usted mismo o contratar a un contratista en este proyecto."
+            owner_address:
+              blank: "Ingrese una dirección San Antonio."
+            owner_name:
+              blank: "Ingresa dueño de la casa."
+            email:
+              invalid: "Escribe tu dirección de correo electrónico válida (por ejemplo, john@email.com)"
+            phone:
+              invalid: "Ingrese un número de teléfono válido (por ejemplo, 210-555-5555)"
+            house_area:
+              blank: "Ingrese el tamaño de la casa en picuadrados."
+              not_a_number: "Ingrese el tamaño de la casa en picuadrados."
+            addition_area:
+              blank: "Ingrese el tamaño de la suma en picuadrados."
+              not_a_number: "Ingrese el tamaño de la suma en picuadrados."
+              less_than: "La adición debe ser inferior a 1,000 picuadrados."
+            ac:
+              blank: "Seleccionar un sistema de aire acondicionado / calefacción."
+            window_count:
+              not_a_number: "Especifique el número de ventanas que está reparando."
+              greater_than: "Especifique el número de ventanas que está reparando."
+            door_count:
+              not_a_number: "Especifique el número de puertas que está reparando."
+              greater_than: "Especifique el número de puertas que está reparando."
+            work_summary:
+              blank: "Ingrese un resumen del trabajo."
+            job_cost:
+              blank: "Ingrese el costo del trabajo."
+              invalid: "costo de empleo tiene un formato no válido, debe ser como 1000.00"
+              not_a_number: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00 y en formato como 1000.00"
+              greater_than: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00"
+              less_than: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00"
+            accepted_terms:
+              accepted: "Acepte los términos que figuran aquí, marcando la casilla de abajo."
+
+  
+
+
