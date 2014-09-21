@@ -9,15 +9,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_translation_path
-    puts "before path: #{@path}"
     @path = Rails.application.routes.recognize_path(request.path)
     if @path[:locale] == 'es'
       @path[:locale] = 'en'
     elsif # path[:locale] == 'en'
       @path[:locale] = 'es'
     end
-
-    puts "this is path **********: #{@path}"
 
   end
 
@@ -34,7 +31,6 @@ class ApplicationController < ActionController::Base
     session.delete :selected_siding
     session.delete :selected_floor
 
-    puts root_url
     redirect_to root_url
   end
 
