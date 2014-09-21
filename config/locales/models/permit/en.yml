@@ -78,7 +78,7 @@ en:
         name: "Walls"
 
       siding:
-        name: "Replace Siding"
+        name: "Replace siding"
 
       floor:
         name: "Floors"
