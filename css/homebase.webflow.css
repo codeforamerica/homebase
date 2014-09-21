@@ -1,5 +1,5 @@
 body {
-  font-family: open sans, Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Open Sans', Arial, 'Helvetica Neue', Helvetica, sans-serif;
   color: #333;
   font-size: 14px;
   line-height: 20px;
@@ -73,7 +73,7 @@ a {
   float: left;
   background-color: transparent;
   color: white;
-  font-family: open sans;
+  font-family: 'Open Sans';
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
