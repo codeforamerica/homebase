@@ -60,7 +60,7 @@ p {
   margin-bottom: 15px;
 }
 a {
-	color: #0f57a3;
+  color: #0f57a3;
 }
 .nav {
   height: 49px;
@@ -121,7 +121,7 @@ a {
   font-weight: 500;
 }
 .nav-link {
-	opacity: .7;
+  opacity: .7;
   padding-top: 14px;
   padding-bottom: 14px;
   background-color: transparent;
@@ -130,12 +130,12 @@ a {
   text-transform: uppercase;
 }
 .nav-link:hover {
-	opacity: 1;
-	transition: ease .1s all;
+  opacity: 1;
+  transition: ease .1s all;
 }
 .w-nav-link.w--current {
   color: #fff;
-	opacity: 1;
+  opacity: 1;
 }
 .navbar {
   padding-top: 8px;
@@ -173,7 +173,7 @@ p.white {
   font-size: 16px;
 }
 footer .white a {
-	color: #fff;
+  color: #fff;
 }
 footer .white {
   margin-bottom: 22px;
@@ -242,11 +242,11 @@ section {padding: 50px 0;}
 
 }
 #mce-EMAIL {
-	background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMTEiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMyQzRGNkQiIGQ9Ik0wIDB2MTFoMTZWMEgwek0xMy43IDFMNy45IDYuOCAyLjIgMUgxMy43ek0xNSA5TDEyLjEgNmwtMC43IDAuN0wxNC42IDEwSDEuNGwzLjMtMy4zTDMuOSA2IDEgOVYxLjJMNy4yIDcuNWwwLjcgMC43TDguNyA3LjUgMTUgMS4xVjl6Ii8+PC9zdmc+Cg==") no-repeat scroll 15px 18px padding-box rgba(11, 20, 26, 0.2);
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMTEiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMyQzRGNkQiIGQ9Ik0wIDB2MTFoMTZWMEgwek0xMy43IDFMNy45IDYuOCAyLjIgMUgxMy43ek0xNSA5TDEyLjEgNmwtMC43IDAuN0wxNC42IDEwSDEuNGwzLjMtMy4zTDMuOSA2IDEgOVYxLjJMNy4yIDcuNWwwLjcgMC43TDguNyA3LjUgMTUgMS4xVjl6Ii8+PC9zdmc+Cg==") no-repeat scroll 15px 18px padding-box rgba(11, 20, 26, 0.2);
   width: 40%;
   margin-right: 12px;
   margin-left: 20%;
-	padding: 11px 20px 11px 48px;
+  padding: 11px 20px 11px 48px;
   float: left;
   border: 2px solid white !important;
   border-radius: 8px;
@@ -264,7 +264,7 @@ section {padding: 50px 0;}
   color: #29646a;
 }
 #mce-EMAIL:hover, #mce-EMAIL:focus {
-	box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
   transition: all .2s ease;
 }
 #mc-embedded-subscribe, .btn-main {
@@ -294,7 +294,7 @@ section {padding: 50px 0;}
     transform: translateY(1px);
 }
 #mc_embed_signup {
-	padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 .form-text {
   font-family: proxima-nova-soft, sans-serif;
@@ -306,7 +306,7 @@ section {padding: 50px 0;}
     background: none repeat scroll 0 0 #062d32;
 }
 .w-nav {
-	background: none;
+  background: none;
 }
 .home h2 {
   text-align: center;
@@ -315,8 +315,8 @@ section {padding: 50px 0;}
 /* ABOUT */
 
 .inner .sub-header {
-	color: #b4edf2;
-	padding: 0 85px;	
+  color: #b4edf2;
+  padding: 0 85px;  
 }
 .inner .hero {
     background-image: url("/images/b-about.jpg");
@@ -326,11 +326,11 @@ section {padding: 50px 0;}
     width: 100%;
 }
 .inner .hero-heading {
-	color: #fff;
-	margin-top: 120px;
+  color: #fff;
+  margin-top: 120px;
 }
 .inner .highlight {
-	color: yellow;
+  color: yellow;
 }
 
 
@@ -340,59 +340,58 @@ section {padding: 50px 0;}
 }
 
 @media (max-width: 991px) {
-	.about .sub-header {
-		padding: 0;
-	}
+  .about .sub-header {
+    padding: 0;
+  }
 }    
 @media (max-width: 767px) {
-	.hero-heading {
-		font-size: 26px;
-		margin-bottom: 0;
-		margin-top: 0 !important;
-	}
-	.hero-img {
+  .hero-heading {
+    font-size: 26px;
+    margin-bottom: 0;
+    margin-top: 0 !important;
+  }
+  .hero-img {
     padding: 0 10%;
   }
-	.inner .hero {
-		min-height: 0;
-	}
-	.sub-header {
-		font-size: 16px;
-	}
-	.sub-header.description {
-		margin-bottom: 0;
-	}
-	#mce-EMAIL, #mc-embedded-subscribe {
-		margin-left: 0;
-		width: 100%;
-	}
-	#mce-EMAIL {
-		margin-bottom: 10px;
-	}	
-	#mc_embed_signup {
-	  padding-left: 16px;
-	  padding-right: 16px;
-	}
-	section {
-	    padding: 20px 0;
-	}
+  .inner .hero {
+    min-height: 0;
+  }
+  .sub-header {
+    font-size: 16px;
+  }
+  .sub-header.description {
+    margin-bottom: 0;
+  }
+  #mce-EMAIL, #mc-embedded-subscribe {
+    margin-left: 0;
+    width: 100%;
+  }
+  #mce-EMAIL {
+    margin-bottom: 10px;
+  } 
+  #mc_embed_signup {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  section {
+      padding: 20px 0;
+  }
 
-	
+  
 }
 /* Smartphones (portrait) ----------- */
 @media (max-width: 360px) {
-	.hero-heading {
-		font-size: 23px;
+  .hero-heading {
+    font-size: 23px;
   }
-	footer .white {
-  	font-size: 9px;
-  	margin-bottom: 12px;
-	}
-	.footer {
-  	padding-top: 12px;
-	}
-	.cfa-logo {
-  	width: 110px;
-	}
+  footer .white {
+    font-size: 9px;
+    margin-bottom: 12px;
+  }
+  .footer {
+    padding-top: 12px;
+  }
+  .cfa-logo {
+    width: 110px;
+  }
 }
-
