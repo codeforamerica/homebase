@@ -50,43 +50,33 @@
     <script>
       <% if @permit.to_bool(@permit.selected_addition) %>
         $(".addition").toggleClass("displayed", true);
-        $(".pick-addition").toggleClass("btn-success", true);
       <% end %>
       <% if @permit.to_bool(@permit.selected_acs_struct) %>
         $(".acs-struct").toggleClass("displayed", true);
-        $(".pick-acs-struct").toggleClass("btn-success", true);
       <% end %>    
       <% if @permit.to_bool(@permit.selected_deck) %>
         $(".deck").toggleClass("displayed", true);
-        $(".pick-deck").toggleClass("btn-success", true);
       <% end %>
       <% if @permit.to_bool(@permit.selected_pool) %>
         $(".pool").toggleClass("displayed", true);
-        $(".pick-pool").toggleClass("btn-success", true);
       <% end %>
       <% if @permit.to_bool(@permit.selected_cover) %>
         $(".cover").toggleClass("displayed", true);
-        $(".pick-cover").toggleClass("btn-success", true);
       <% end %>
       <% if @permit.to_bool(@permit.selected_window) %>
         $(".window").toggleClass("displayed", true);
-        $(".pick-window").toggleClass("btn-success", true);
       <% end %>    
       <% if @permit.to_bool(@permit.selected_door) %>
         $(".door").toggleClass("displayed", true);
-        $(".pick-door").toggleClass("btn-success", true);
       <% end %>
       <% if @permit.to_bool(@permit.selected_wall) %>
         $(".wall").toggleClass("displayed", true);
-        $(".pick-wall").toggleClass("btn-success", true);
       <% end %>
       <% if @permit.to_bool(@permit.selected_siding) %>
         $(".siding").toggleClass("displayed", true);
-        $(".pick-siding").toggleClass("btn-success", true);
       <% end %>
       <% if @permit.to_bool(@permit.selected_floor) %>
         $(".floor").toggleClass("displayed", true);
-        $(".pick-floor").toggleClass("btn-success", true);
       <% end %>
     </script>
   </body>
