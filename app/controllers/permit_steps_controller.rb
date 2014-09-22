@@ -79,6 +79,9 @@ class PermitStepsController < ApplicationController
         # to display permits in categories
         @permit_needs = session[:permit_needs]
 
+        # Execute/send the permit email
+        # PermitSender.send_permit_application(@permit).deliver
+
         @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
                               @permit.acs_struct ||
                               @permit.deck ||
@@ -187,6 +190,14 @@ class PermitStepsController < ApplicationController
       # render :error_page
     end
   end
+
+  def send_email
+
+    # Send my email
+    PermitSender.send_permit_application(@permit).deliver
+
+  end
+
 
   private
 

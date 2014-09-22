@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     # This will reset session variables
     get '/reset' => 'application#reset'
 
+    # Send an email
+    get '/send_email' => 'permit_steps#send_email'
+
     # This will serve the generated permit PDF
     get '/generated_permits/:filename' => 'permit_steps#serve'
 
