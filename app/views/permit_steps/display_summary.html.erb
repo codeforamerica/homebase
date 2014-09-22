@@ -115,11 +115,19 @@
             </tr>
           <% end %>
 
-          <!-- Job cost -->
-          <% if @permit.job_cost != nil %>
+          <!-- Window count -->
+          <% if @permit.window_count != nil %>
             <tr>
-              <td>Job Cost</td>
-              <td>$<%= @permit.job_cost %></td>
+              <td>Number of windows under repair</td>
+              <td>$<%= @permit.window_count %></td>
+            </tr>
+          <% end %>
+
+          <!-- Door count -->
+          <% if @permit.door_count != nil %>
+            <tr>
+              <td>Number of doors under repair</td>
+              <td>$<%= @permit.door_count %></td>
             </tr>
           <% end %>
 
