@@ -59,6 +59,22 @@
             </tr>
           <% end %>
 
+          <!-- Phone number -->
+          <% if @permit.phone.length >= 1 %>
+            <tr>
+              <td>Phone number</td>
+              <td><%= @permit.phone %></td>
+            </tr>
+          <% end %>
+
+          <!-- Email address -->
+          <% if @permit.email.length >= 1 %>
+            <tr>
+              <td>Email Address</td>
+              <td><%= @permit.email %></td>
+            </tr>
+          <% end %>
+
           <!-- House area -->
           <% if @permit.house_area != nil %>
             <tr>
@@ -83,22 +99,6 @@
             </tr>
           <% end %>
 
-          <!-- Phone number -->
-          <% if @permit.phone.length >= 1 %>
-            <tr>
-              <td>Phone number</td>
-              <td><%= @permit.phone %></td>
-            </tr>
-          <% end %>
-
-          <!-- Project address -->
-          <% if @permit.email.length >= 1 %>
-            <tr>
-              <td>Email Address</td>
-              <td><%= @permit.email %></td>
-            </tr>
-          <% end %>
-
           <!-- Window count -->
           <% if @permit.window_count != nil %>
             <tr>
@@ -115,7 +115,7 @@
             </tr>
           <% end %>
 
-          <!-- Project address -->
+          <!-- Work summary -->
           <% if @permit.work_summary.length >= 1 %>
             <tr>
               <td>Work Summary</td>
