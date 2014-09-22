@@ -9,6 +9,7 @@ es:
         step_4: "ES 4. Fill out permits"
         step_5: "ES 5. Sign your permits"
         step_6: "ES 6. Submit your permits"
+        step_7: "7. Your next steps"
         current_step: "ES Current Step"
         project: "ES Your project"
         addition: "ES Addition"

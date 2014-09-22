@@ -8,10 +8,10 @@ class PermitStepsController < ApplicationController
   include Wicked::Wizard
 
   # Regular steps
-  STEPS = [ :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary ]
+  STEPS = [ :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, :application_submitted ]
 
   # Error steps, steps that should only be jumped to when there's an error
-  ERROR_STEPS = [ :error_page, :use_contractor ]
+  ERROR_STEPS = [ :error_page, :use_contractor, :send_email_success ]
 
   steps *(STEPS + ERROR_STEPS)
   
@@ -197,7 +197,7 @@ class PermitStepsController < ApplicationController
 
     # Send my email
     PermitSender.send_permit_application(@permit).deliver
-    jump_to(:send_email_success)
+    return :json
 
   end
 
