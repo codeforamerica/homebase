@@ -238,18 +238,19 @@ h1 {
 /* styles for #new (first step) */
 
 .btn-block {
-  margin-top: 15px;
+  bottom: 15px;
   font-family: Montserrat, sans-serif;
   color: #333;
   font-size: 16px;
   line-height: 23px;
   font-weight: 700;
+  padding-left: 12px;
+  padding-right: 32px;
+  position: absolute;
   text-align: center;
   text-decoration: none;
 }
 .btn-block.long {
-  margin-top: -2px;
-  padding-top: 8px;
   line-height: 1.4em;
 }
 .project-block {
@@ -309,6 +310,14 @@ h1 {
 .new_permit .row {
   margin-left: -10px;
   margin-right: -10px;
+}
+
+/* Style for checkbox as background image for IE fix on ADDITION */
+.pick-addition {
+    background-image: url("/assets/permits/new/addition.png");
+    background-position: center 15px;
+    background-repeat: no-repeat;
+    background-size: 40px auto;
 }
 
 /* styles for #project_details */
