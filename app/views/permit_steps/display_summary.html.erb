@@ -136,7 +136,7 @@
       </table>
 
       <a class="btn btn-danger btn-md" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.send_button') %></a>
-      <a class="btn btn-default btn-md" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.problem_button') %></a>
+      <a class="btn btn-default btn-md" href="<%= wizard_path(:enter_details) %>"><%= t('views.permit_steps.display_summary.permit.problem_button') %></a>
 
     </div><!-- ./panel_body -->
   </div><!-- ./panel -->
