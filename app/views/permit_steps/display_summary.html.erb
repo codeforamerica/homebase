@@ -99,22 +99,6 @@
             </tr>
           <% end %>
 
-          <!-- Project address -->
-          <% if @permit.work_summary.length >= 1 %>
-            <tr>
-              <td>Work Summary</td>
-              <td><%= @permit.work_summary %></td>
-            </tr>
-          <% end %>
-
-          <!-- Job cost -->
-          <% if @permit.job_cost != nil %>
-            <tr>
-              <td>Job Cost</td>
-              <td>$<%= @permit.job_cost %></td>
-            </tr>
-          <% end %>
-
           <!-- Window count -->
           <% if @permit.window_count != nil %>
             <tr>
@@ -128,6 +112,22 @@
             <tr>
               <td>Number of doors under repair</td>
               <td>$<%= @permit.door_count %></td>
+            </tr>
+          <% end %>
+
+          <!-- Project address -->
+          <% if @permit.work_summary.length >= 1 %>
+            <tr>
+              <td>Work Summary</td>
+              <td><%= @permit.work_summary %></td>
+            </tr>
+          <% end %>
+
+          <!-- Job cost -->
+          <% if @permit.job_cost != nil %>
+            <tr>
+              <td>Job Cost</td>
+              <td>$<%= @permit.job_cost %></td>
             </tr>
           <% end %>
 
