@@ -2,9 +2,9 @@ class PermitSender < ActionMailer::Base
   default from: "donotreply@homebasefix.com"
 
   # send the permit email to San Antonio Gov, pass in the user object that contains the user's email address
-  def send_permit_application(user)
+  def send_permit_application(permit)
     @permit = permit
     mail( :to => @permit.email,
-    :subject => 'Thanks for signing up for our amazing app' )
+    :subject => 'This is a test email, this is a test' )
   end
 end

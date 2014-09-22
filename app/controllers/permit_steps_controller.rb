@@ -193,8 +193,11 @@ class PermitStepsController < ApplicationController
 
   def send_email
 
+    @permit = current_permit
+
     # Send my email
     PermitSender.send_permit_application(@permit).deliver
+    jump_to(:send_email_success)
 
   end
 
