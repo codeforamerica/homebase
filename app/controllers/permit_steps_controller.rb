@@ -75,6 +75,10 @@ class PermitStepsController < ApplicationController
 
         File.delete file_path
 
+        # Get hash of permit needs that was saved in session that will be used
+        # to display permits in categories
+        @permit_needs = session[:permit_needs]
+
         @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
                               @permit.acs_struct ||
                               @permit.deck ||

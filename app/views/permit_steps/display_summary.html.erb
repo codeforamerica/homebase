@@ -20,8 +20,115 @@
     
       <p><strong><%= t('views.permit_steps.display_summary.permit.congrat_text') %></strong></p>
       <p><%= t('views.permit_steps.display_summary.permit.download_instruction') %></p>
-      <a class="btn btn-danger btn-lg" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.send_button') %></a>
-      <a class="btn btn-default btn-sm" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.problem_button') %></a>
+      
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Field Name</th>
+            <th>Your Response</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- Required permits -->
+          <% if ! @permit_needs["permit_needed"].empty? %>
+            <tr>
+              <td>Projects</td>
+              <td>
+                <% @permit_needs["permit_needed"].each do |project| %>
+                  <li><%= project %></li>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+
+          <!-- Homeowner name -->
+          <% if @permit.owner_name.length >= 1 %>
+            <tr>
+              <td>Owner name</td>
+              <td><%= @permit.owner_name %></td>
+            </tr>
+          <% end %>
+
+          <!-- Project address -->
+          <% if @permit.owner_address.length >= 1 %>
+            <tr>
+              <td>Address</td>
+              <td><%= @permit.owner_address %></td>
+            </tr>
+          <% end %>
+
+          <!-- House area -->
+          <% if @permit.house_area != nil %>
+            <tr>
+              <td>House size</td>
+              <td><%= @permit.house_area %> square feet</td>
+            </tr>
+          <% end %>
+
+          <!-- Addition area -->
+          <% if @permit.addition_area != nil %>
+            <tr>
+              <td>Addition size</td>
+              <td><%= @permit.addition_area %> square feet</td>
+            </tr>
+          <% end %>
+
+          <!-- Air conditioning type -->
+          <% if @permit.ac.length >= 1 %>
+            <tr>
+              <td>Air conditioning type</td>
+              <td><%= @permit.ac %></td>
+            </tr>
+          <% end %>
+
+          <!-- Phone number -->
+          <% if @permit.phone.length >= 1 %>
+            <tr>
+              <td>Phone number</td>
+              <td><%= @permit.phone %></td>
+            </tr>
+          <% end %>
+
+          <!-- Project address -->
+          <% if @permit.email.length >= 1 %>
+            <tr>
+              <td>Email Address</td>
+              <td><%= @permit.email %></td>
+            </tr>
+          <% end %>
+
+          <!-- Project address -->
+          <% if @permit.work_summary.length >= 1 %>
+            <tr>
+              <td>Work Summary</td>
+              <td><%= @permit.work_summary %></td>
+            </tr>
+          <% end %>
+
+          <!-- Job cost -->
+          <% if @permit.job_cost != nil %>
+            <tr>
+              <td>Job Cost</td>
+              <td>$<%= @permit.job_cost %></td>
+            </tr>
+          <% end %>
+
+          <!-- Job cost -->
+          <% if @permit.job_cost != nil %>
+            <tr>
+              <td>Job Cost</td>
+              <td>$<%= @permit.job_cost %></td>
+            </tr>
+          <% end %>
+
+        </tbody>
+
+      </table>
+
+      <a class="btn btn-danger btn-md" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.send_button') %></a>
+      <a class="btn btn-default btn-md" href="/generated_permits/<%= @unique_key %>.pdf" target="_blank"><%= t('views.permit_steps.display_summary.permit.problem_button') %></a>
 
     </div><!-- ./panel_body -->
   </div><!-- ./panel -->
