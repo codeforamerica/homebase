@@ -3,7 +3,7 @@ es:
     layouts:
       sidebar:
         progress: "Su progreso"
-        step_1: "1. Elige tu proyecto"
+        step_1: "1. Elige su proyecto"
         step_2: "2. Ingrese los detalles del proyecto"
         step_3: "3. Seleccione sus permisos"
         step_4: "4. Llene permisos"
