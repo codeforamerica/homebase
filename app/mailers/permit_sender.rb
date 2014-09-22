@@ -1,5 +1,5 @@
 class PermitSender < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "donotreply@homebasefix.com"
 
   # send the permit email to San Antonio Gov, pass in the user object that contains the user's email address
   def send_permit_application(user)
