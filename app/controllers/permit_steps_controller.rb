@@ -8,7 +8,7 @@ class PermitStepsController < ApplicationController
   include Wicked::Wizard
 
   # Regular steps
-  STEPS = [ :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, :application_submitted ]
+  STEPS = [ :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, :submit_application ]
 
   # Error steps, steps that should only be jumped to when there's an error
   ERROR_STEPS = [ :error_page, :use_contractor, :send_email_success ]
@@ -79,18 +79,19 @@ class PermitStepsController < ApplicationController
         # to display permits in categories
         @permit_needs = session[:permit_needs]
 
-        # Execute/send the permit email
-        # PermitSender.send_permit_application(@permit).deliver
+      else
+        jump_to(:error_page)       
+      end
 
-        @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
+    when :submit_application
+      PermitSender.send_permit_application(@permit).deliver
+
+      @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
                               @permit.acs_struct ||
                               @permit.deck ||
                               @permit.pool ||
                               @permit.cover
 
-      else
-        jump_to(:error_page)       
-      end
     end
 
     render_wizard
@@ -159,7 +160,7 @@ class PermitStepsController < ApplicationController
       # @TODO: May want to make it all caps to prevent case sensitive compare later
       params[:permit][:confirmed_name] = params[:permit][:confirmed_name].strip
       @permit.update_attributes(permit_params)
-      
+
     else # Default case
       
       @permit.update_attributes(permit_params)
@@ -190,17 +191,6 @@ class PermitStepsController < ApplicationController
       # render :error_page
     end
   end
-
-  def send_email
-
-    @permit = current_permit
-
-    # Send my email
-    PermitSender.send_permit_application(@permit).deliver
-    return :json
-
-  end
-
 
   private
 
