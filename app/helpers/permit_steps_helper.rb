@@ -14,7 +14,7 @@ module PermitStepsHelper
     # "DECK_CHECKBOX", "POOL_CHECKBOX", "CARPORT_COVER_CHECKBOX", "GENERAL_REPAIRS_CHECKBOX", "WINDOWS_CHECKBOX", "DOORS_CHECKBOX", 
     # "WALLS_CHECKBOX", "SIDING_CHECKBOX", "FLOOR_STRUCTURAL_CHECKBOX", "ESCROW_YES_CHECKBOX", "ESCROW_NO_CHECKBOX", 
     # "ACCESSORY_STRUCTURE_CHECKBOX", "AC_NONE", "AC_WALL_UNIT", "AC_EXTENDED", "AC_NEW_SPLIT", "OTHER_CONTACT_ID"]
-
+    
     pdftk.fill_form template_path, 
                     file_path, 
                     { 
@@ -27,10 +27,10 @@ module PermitStepsHelper
                       'SQ_FOOT_HOUSE'       => permit.house_area,
                       'SQ_FOOT_ADDITION'    => permit.addition_area,
                       # @TODO: I may need to put all these choices in shared file
-                      'AC_NONE'             => permit.ac == I18n.t('ac.options.none') ? "X" : ' ',
-                      'AC_WALL_UNIT'        => permit.ac == I18n.t('ac.options.wall') ? "X" : ' ',
-                      'AC_EXTENDED'         => permit.ac == I18n.t('ac.options.extended') ? "X" : ' ',
-                      'AC_NEW_SPLIT'        => permit.ac == I18n.t('ac.options.split') ? "X" : ' ',
+                      'AC_NONE'             => permit.ac == I18n.t('models.permit.ac.options.none') ? "X" : ' ',
+                      'AC_WALL_UNIT'        => permit.ac == I18n.t('models.permit.ac.options.wall') ? "X" : ' ',
+                      'AC_EXTENDED'         => permit.ac == I18n.t('models.permit.ac.options.extended') ? "X" : ' ',
+                      'AC_NEW_SPLIT'        => permit.ac == I18n.t('models.permit.ac.options.split') ? "X" : ' ',
 
                       'ACCESSORY_STRUCTURE_CHECKBOX' => permit.acs_struct ? "X" : ' ',
 
