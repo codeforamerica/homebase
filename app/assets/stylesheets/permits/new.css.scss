@@ -6,14 +6,17 @@ label.project {
   background-color: whitesmoke;
 
   p {
+    bottom: 15px;
     text-align: center;
     font-size: 16px;
     font-family: montserrat, sans-serif;
+    left: 0;
     line-height: 18px;
     padding-top: 15px;
+    position: absolute;
+    right: 0;
   }
   .long {
-    padding-top: 8px;
   }
 
   // hand pointer on hover for label buttons
@@ -49,6 +52,13 @@ label.project {
     position: absolute;
     top: 0;
   }
+}
+
+#addition {
+  background-image: url("/assets/permits/new/addition.png");
+  background-position: center 15px;
+  background-repeat: no-repeat;
+  background-size: 40px auto;
 }
 
 /* Extra small devices (phones, less than 479px) */
