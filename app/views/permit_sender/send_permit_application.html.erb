@@ -1,10 +1,117 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>This is a test of the email system, <%= @permit.owner_name %>!</h1>
-    <p>This is a test. Thank you.</p>
-  </body>
-</html>
+<h1>A new permit has been created</h1>
+<p>We've created a new permit. The permit details are below. A finished print application is attached.</p>
+<p>If you have any questions, contact us at help@homebasefix.com.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Field Name</th>
+      <th>Your Response</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <!-- Required permits -->
+    <% if ! @permit_needs["permit_needed"].empty? %>
+      <tr>
+        <td>Projects</td>
+        <td>
+          <% @permit_needs["permit_needed"].each do |project| %>
+            <li><%= project %></li>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+    <!-- Homeowner name -->
+    <% if @permit.owner_name.length >= 1 %>
+      <tr>
+        <td>Owner name</td>
+        <td><%= @permit.owner_name %></td>
+      </tr>
+    <% end %>
+
+    <!-- Project address -->
+    <% if @permit.owner_address.length >= 1 %>
+      <tr>
+        <td>Address</td>
+        <td><%= @permit.owner_address %></td>
+      </tr>
+    <% end %>
+
+    <!-- Phone number -->
+    <% if @permit.phone.length >= 1 %>
+      <tr>
+        <td>Phone number</td>
+        <td><%= @permit.phone %></td>
+      </tr>
+    <% end %>
+
+    <!-- Email address -->
+    <% if @permit.email.length >= 1 %>
+      <tr>
+        <td>Email Address</td>
+        <td><%= @permit.email %></td>
+      </tr>
+    <% end %>
+
+    <!-- House area -->
+    <% if @permit.house_area != nil %>
+      <tr>
+        <td>House size</td>
+        <td><%= @permit.house_area %> square feet</td>
+      </tr>
+    <% end %>
+
+    <!-- Addition area -->
+    <% if @permit.addition_area != nil %>
+      <tr>
+        <td>Addition size</td>
+        <td><%= @permit.addition_area %> square feet</td>
+      </tr>
+    <% end %>
+
+    <!-- Air conditioning type -->
+    <% if @permit.ac.length >= 1 %>
+      <tr>
+        <td>Air conditioning type</td>
+        <td><%= @permit.ac %></td>
+      </tr>
+    <% end %>
+
+    <!-- Window count -->
+    <% if @permit.window_count != nil %>
+      <tr>
+        <td>Number of windows under repair</td>
+        <td>$<%= @permit.window_count %></td>
+      </tr>
+    <% end %>
+
+    <!-- Door count -->
+    <% if @permit.door_count != nil %>
+      <tr>
+        <td>Number of doors under repair</td>
+        <td>$<%= @permit.door_count %></td>
+      </tr>
+    <% end %>
+
+    <!-- Work summary -->
+    <% if @permit.work_summary.length >= 1 %>
+      <tr>
+        <td>Work Summary</td>
+        <td><%= @permit.work_summary %></td>
+      </tr>
+    <% end %>
+
+    <!-- Job cost -->
+    <% if @permit.job_cost != nil %>
+      <tr>
+        <td>Job Cost</td>
+        <td>$<%= @permit.job_cost %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+
+</table>
