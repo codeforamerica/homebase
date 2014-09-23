@@ -11,16 +11,16 @@ es:
           instruction: "Usted está obligado a elaborar y presentar un plan detallado del sitio, con su permiso."
           download_button: "Descarga y rellena el formulario de plan de sitio"
         next_steps:
-          heading: "ES You'll receive an update by email soon"
-          timeframe: "ES 1-2 days"
-          instruction: "ES Your permit application is under review by the Development Services Department. You may receive an email soon asking you for more information."
-          details: "ES You will likely receive a response in 1-2 days. If you have any questions, please reach out to DSD or visit the One-Stop. Contact information is below."
+          heading: "Usted recibirá una actualización por correo electrónico pronto"
+          timeframe: "1-2 días"
+          instruction: "Su solicitud de permiso se encuentra en revisión por el Departamento de Servicios de Desarrollo. Puede recibir un correo electrónico antes pidiendo más información."
+          details: "Es probable que reciba una respuesta en 1-2 días. Si usted tiene alguna pregunta, por favor, llegar a DSD o visite el One-Stop. La información de contacto está abajo."
           location:
             html: "<strong>Dónde ir:</strong> <p>El Departamento de Servicios de Desarrollo de One-Stop está situado en la calle:</p><a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo St. <br>San Antonio, Texas 78204</a>"
           hour:
             html: "<strong>Las horas de oficina:</strong> 7:45am–4:30pm (Lunes-Viernes)"
           bring:
-            html: "<strong>Qué llevar:</strong> If you visit the One-Stop, please bring the following:"
+            html: "<strong>Qué llevar:</strong> Si usted visita el One-Stop, por favor traiga lo siguiente:"
           site_plan: "Su plan de sitio impresos y completados"
           photo_id: "Identificación con fotografía (por ejemplo, licencia de conducir, pasaporte)"
           ownership_proof: "Prueba de la propiedad de la vivienda que está trabajando (decir, título de propiedad, los papelde Condado Bexar Appraisal District)"
