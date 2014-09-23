@@ -48,6 +48,10 @@
   .uv-link {
     display: none;
   }
+  .page-header {
+    border: none;
+    margin-bottom: 10px;
+  }  
 }
 
 /* Extra small devices (phones, less than 479px) */
@@ -70,5 +74,5 @@
   }
   .project-block .clearfix {
     display: none;
-  }  
+  }
 }
