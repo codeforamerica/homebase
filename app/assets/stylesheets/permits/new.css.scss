@@ -4,17 +4,18 @@ label.project {
   height: 120px;
   border-radius: 4px;
   background-color: whitesmoke;
+  position: relative;
 
   p {
-    bottom: 15px;
-    text-align: center;
+    bottom: 0;
+    font-family: montserrat,sans-serif;
     font-size: 16px;
-    font-family: montserrat, sans-serif;
     left: 0;
     line-height: 18px;
-    padding-top: 15px;
+    padding: 0 12px;
     position: absolute;
     right: 0;
+    text-align: center;
   }
   .long {
   }
@@ -72,56 +73,56 @@ label.project {
   background-image: url("/assets/permits/new/deck.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 115px auto;
 }
 
 #pool {
   background-image: url("/assets/permits/new/pool.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 55px auto;
 }
 
 #cover {
   background-image: url("/assets/permits/new/carport.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 46px auto;
 }
 
 #window {
   background-image: url("/assets/permits/new/window.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 44px auto;
 }
 
 #door {
   background-image: url("/assets/permits/new/door.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 37px auto;
 }
 
 #wall {
   background-image: url("/assets/permits/new/wall.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 50px auto;
 }
 
 #siding {
   background-image: url("/assets/permits/new/siding.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 68px auto;
 }
 
 #floor {
   background-image: url("/assets/permits/new/floor.png");
   background-position: center 15px;
   background-repeat: no-repeat;
-  background-size: 40px auto;
+  background-size: 75px auto;
 }
 /* Extra small devices (phones, less than 479px) */
 
@@ -134,14 +135,19 @@ label.project {
     line-height: 32px;
   }
   label.project {
+    background-position: 12px center !important;
+    background-size: contain !important;
+    border: 10px solid transparent;
     height: 50px;
     padding: 0;
     p {
-      left: 44%;
-      padding-top: 17px;
-      padding-right: 22px;
-      position: absolute;
+      padding-top: 0;
+      padding-left: 38%;
+      padding-right: 0;
+      position: relative;
       text-align: left;
+      top: 50%;
+      transform: translateY(-50%);      
       br {
         display: none;
       }
@@ -151,6 +157,9 @@ label.project {
     padding: 8px 0 8px 22px;
     float: left;
     margin: 0;
+  }
+  .project-icon {
+  padding-left: 0;
   }
   .project-block .clearfix {
     display: none;
