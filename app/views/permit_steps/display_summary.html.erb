@@ -44,7 +44,7 @@
           <% end %>
 
           <!-- Homeowner name -->
-          <% if @permit.owner_name.length >= 1 %>
+          <% if @permit.owner_name != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.owner_name') %></td>
               <td><%= @permit.owner_name %></td>
@@ -52,7 +52,7 @@
           <% end %>
 
           <!-- Project address -->
-          <% if @permit.owner_address.length >= 1 %>
+          <% if @permit.owner_address != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.address') %></td>
               <td><%= @permit.owner_address %></td>
@@ -60,7 +60,7 @@
           <% end %>
 
           <!-- Phone number -->
-          <% if @permit.phone.length >= 1 %>
+          <% if @permit.phone != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.phone') %></td>
               <td><%= @permit.phone %></td>
@@ -68,7 +68,7 @@
           <% end %>
 
           <!-- Email address -->
-          <% if @permit.email.length >= 1 %>
+          <% if @permit.email != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.email') %></td>
               <td><%= @permit.email %></td>
@@ -92,7 +92,7 @@
           <% end %>
 
           <!-- Air conditioning type -->
-          <% if @permit.ac.length >= 1 %>
+          <% if @permit.ac != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.ac') %></td>
               <td><%= @permit.ac %></td>
@@ -116,7 +116,7 @@
           <% end %>
 
           <!-- Work summary -->
-          <% if @permit.work_summary.length >= 1 %>
+          <% if @permit.work_summary != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.summary') %></td>
               <td><%= @permit.work_summary %></td>
