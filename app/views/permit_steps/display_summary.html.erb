@@ -24,8 +24,8 @@
       <table class="table table-condensed">
         <thead>
           <tr>
-            <th>Field Name</th>
-            <th>Your Response</th>
+            <th><%= t('views.permit_steps.display_summary.table.head.description') %></th>
+            <th><%= t('views.permit_steps.display_summary.table.head.response') %></th>
           </tr>
         </thead>
 
@@ -34,7 +34,7 @@
           <!-- Required permits -->
           <% if ! @permit_needs["permit_needed"].empty? %>
             <tr>
-              <td>Projects</td>
+              <td><%= t('views.permit_steps.display_summary.table.list') %></td>
               <td>
                 <% @permit_needs["permit_needed"].each do |project| %>
                   <li><%= project %></li>
@@ -46,7 +46,7 @@
           <!-- Homeowner name -->
           <% if @permit.owner_name.length >= 1 %>
             <tr>
-              <td>Owner name</td>
+              <td><%= t('views.permit_steps.display_summary.table.owner_name') %></td>
               <td><%= @permit.owner_name %></td>
             </tr>
           <% end %>
@@ -54,7 +54,7 @@
           <!-- Project address -->
           <% if @permit.owner_address.length >= 1 %>
             <tr>
-              <td>Address</td>
+              <td><%= t('views.permit_steps.display_summary.table.address') %></td>
               <td><%= @permit.owner_address %></td>
             </tr>
           <% end %>
@@ -62,7 +62,7 @@
           <!-- Phone number -->
           <% if @permit.phone.length >= 1 %>
             <tr>
-              <td>Phone number</td>
+              <td><%= t('views.permit_steps.display_summary.table.phone') %></td>
               <td><%= @permit.phone %></td>
             </tr>
           <% end %>
@@ -70,7 +70,7 @@
           <!-- Email address -->
           <% if @permit.email.length >= 1 %>
             <tr>
-              <td>Email Address</td>
+              <td><%= t('views.permit_steps.display_summary.table.email') %></td>
               <td><%= @permit.email %></td>
             </tr>
           <% end %>
@@ -78,7 +78,7 @@
           <!-- House area -->
           <% if @permit.house_area != nil %>
             <tr>
-              <td>House size</td>
+              <td><%= t('views.permit_steps.display_summary.table.size') %></td>
               <td><%= @permit.house_area %> square feet</td>
             </tr>
           <% end %>
@@ -86,15 +86,15 @@
           <!-- Addition area -->
           <% if @permit.addition_area != nil %>
             <tr>
-              <td>Addition size</td>
-              <td><%= @permit.addition_area %> square feet</td>
+              <td><%= t('views.permit_steps.display_summary.table.added_size') %></td>
+              <td><%= @permit.addition_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
             </tr>
           <% end %>
 
           <!-- Air conditioning type -->
           <% if @permit.ac.length >= 1 %>
             <tr>
-              <td>Air conditioning type</td>
+              <td><%= t('views.permit_steps.display_summary.table.ac') %></td>
               <td><%= @permit.ac %></td>
             </tr>
           <% end %>
@@ -102,7 +102,7 @@
           <!-- Window count -->
           <% if @permit.window_count != nil %>
             <tr>
-              <td>Number of windows under repair</td>
+              <td><%= t('views.permit_steps.display_summary.table.number_windows') %></td>
               <td>$<%= @permit.window_count %></td>
             </tr>
           <% end %>
@@ -110,7 +110,7 @@
           <!-- Door count -->
           <% if @permit.door_count != nil %>
             <tr>
-              <td>Number of doors under repair</td>
+              <td><%= t('views.permit_steps.display_summary.table.number_doors') %></td>
               <td>$<%= @permit.door_count %></td>
             </tr>
           <% end %>
@@ -118,7 +118,7 @@
           <!-- Work summary -->
           <% if @permit.work_summary.length >= 1 %>
             <tr>
-              <td>Work Summary</td>
+              <td><%= t('views.permit_steps.display_summary.table.summary') %></td>
               <td><%= @permit.work_summary %></td>
             </tr>
           <% end %>
@@ -126,7 +126,7 @@
           <!-- Job cost -->
           <% if @permit.job_cost != nil %>
             <tr>
-              <td>Job Cost</td>
+              <td><%= t('views.permit_steps.display_summary.table.cost') %></td>
               <td>$<%= @permit.job_cost %></td>
             </tr>
           <% end %>

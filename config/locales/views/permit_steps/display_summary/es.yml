@@ -3,10 +3,27 @@ es:
     permit_steps:
       display_summary:
         intro:
-          heading: "ES Almost done! We filled in your permit applications"
-          body: "ES You'll need to complete a few simple steps to submit your application:"
+          heading: "Almost done! Time to send in your application"
+          body: "You're ready to email your application to the city. Just follow the steps below:"
         permit:
-          heading: "ES Download your finished permit application"
-          congrat_text: "ES Congratulations! You filled out the General Repair/Residential Permit Application."
-          download_instruction: "ES We filled in the permit application form for you. Please click the button below to download and print this application."
-          download_button: "ES Download then print"
+          heading: "Review and send your permit application"
+          congrat_text: "Check your responses below."
+          download_instruction: "If you see any problems, go back and fix your answer. If everything looks good, send your application."
+          send_button: "Send my application"
+          problem_button: "Go back and fix my answers"
+        table:
+          head:
+            description: "Field Name"
+            response: "Your Responses"
+          list: "Projects"
+          address: "Address"
+          phone: "Phone number"
+          email: "Email address"
+          size: "House size"
+          added_size: "Addition size"
+          units: "square feet"
+          ac: "Air conditioning type"
+          number_windows: "Number of windows under repair"
+          number_doors: "Number of doors under repair"
+          summary: "Work summary"
+          cost: "Job cost"
