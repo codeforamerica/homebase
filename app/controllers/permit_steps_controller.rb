@@ -56,6 +56,12 @@ class PermitStepsController < ApplicationController
       @permit_ac_options = @permit.ac_options
 
     when :display_summary
+      # Get hash of permit needs that was saved in session that will be used
+      # to display permits in categories
+      @permit_needs = session[:permit_needs]
+      
+
+    when :submit_application
 
       @unique_key = SecureRandom.hex
 
@@ -79,20 +85,19 @@ class PermitStepsController < ApplicationController
         # to display permits in categories
         @permit_needs = session[:permit_needs]
 
+        PermitSender.send_permit_application(@permit, @permit_needs, @unique_key).deliver
+
+        @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
+                                @permit.acs_struct ||
+                                @permit.deck ||
+                                @permit.pool ||
+                                @permit.cover
+
       else
         jump_to(:error_page)       
       end
 
-    when :submit_application
-      @permit_needs = session[:permit_needs]
-
-      PermitSender.send_permit_application(@permit, @permit_needs, @unique_key).deliver
-
-      @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
-                              @permit.acs_struct ||
-                              @permit.deck ||
-                              @permit.pool ||
-                              @permit.cover
+      
 
     end
 
