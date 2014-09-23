@@ -2,6 +2,7 @@ label.project {
   background-color: grey;
   background-position: center 15px;
   background-repeat: no-repeat;  
+  background-image: none\9 !important;
   padding: 20px;
   height: 120px;
   border-radius: 4px;
@@ -62,6 +63,8 @@ label.project {
 
 #addition {
   background-image: url("/assets/permits/new/addition.png");
+    background-image: none\9;
+  
   background-size: 40px auto;
 }
 
