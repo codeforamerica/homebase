@@ -3,8 +3,8 @@ es:
     permit_steps:
       submit_application:
         intro:
-          heading: "ES Success! Your permit application is on its way"
-          body: "ES We sent your permit application to the city. We sent a copy to your email at %{email}. There are few things to do next."
+          heading: "Éxito! Su solicitud de permiso está en camino."
+          body: "Hemos enviado tu solicitud de permiso a la ciudad. Enviamos una copia a su correo electrónico en %{email}. Hay pocas cosas que hacer a continuación."
         site_plan:
           heading: "Haga un plan detallado del sitio"
           description: "Un plan de sitio un dibujo de su propiedad que incluye los edificios actual(como las casas o cabañas) y nuevas estructuras (como una adición o una nave)."
