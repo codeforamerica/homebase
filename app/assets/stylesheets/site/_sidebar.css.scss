@@ -41,11 +41,8 @@
 
   .status {
     margin-top: 30px; // move the progress/steps down from the house block
-    &:last-child {
-      border-top: none;
       .cur-step {
         margin-bottom: 7px;
-      }
     }
     ul {
       padding: 0 0 0 26px; // fixes the indentation for the steps/progress
@@ -105,7 +102,9 @@
       z-index: 2;
       }      
     } //./li
-  
+  .status-project {
+    border-top: none;
+  }  
   .entry-future:before {
       background: none repeat scroll 0 0 white;
       border-color: #c2c2c2;
