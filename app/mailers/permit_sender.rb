@@ -14,6 +14,11 @@ class PermitSender < ActionMailer::Base
     :template_path => 'permit_sender',
     :template_name => 'send_permit_application' )
 
-    mail.attachments['permit.pdf'] = PermitBinaryDetail.find_by filename: "#{unique_key}.pdf"
+    # permit_binary_detail = PermitBinaryDetail.find_by filename: "#{unique_key}.pdf"
+    # mail.attachments['permit.pdf'] = {  :mime_type => permit_binary_detail.content_type,
+    #                                     :content => permit_binary_detail.binary.data,
+    #                                     :content_disposition => "attachment; filename=\"permit.pdf\""}
+
+                                    
   end
 end
