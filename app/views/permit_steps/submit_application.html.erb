@@ -1,0 +1,52 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 4} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1><%= t('views.permit_steps.display_summary.intro.heading') %></h1>
+    <p><%= t('views.permit_steps.display_summary.intro.body') %></p>
+  </div><!-- ./intro -->
+
+  <!-- Site plan section -->
+  <% if @site_plan_required %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><%= t('views.permit_steps.display_summary.site_plan.heading') %></h4>
+      </div>
+      <div class="panel-body">
+        <p><%= t('views.permit_steps.display_summary.site_plan.description') %></p>
+        <p><%= t('views.permit_steps.display_summary.site_plan.instruction') %></p>
+        <p>
+          <a class="btn btn-primary btn-md" href="<%= asset_path('siteplan-packet-1.0.pdf') %>" target="_blank">
+            <%= t('views.permit_steps.display_summary.site_plan.download_button') %>
+          </a>
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- This is here and here and here -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><%= t('views.permit_steps.display_summary.forms_to_dsd.heading') %></h4>
+    </div>
+    <div class="panel-body">
+      <p><%= t('views.permit_steps.display_summary.forms_to_dsd.instruction') %></p>
+      <p><%= t('views.permit_steps.display_summary.forms_to_dsd.location.html') %></p>
+      <p><%= t('views.permit_steps.display_summary.forms_to_dsd.hour.html') %></p>
+      <p><%= t('views.permit_steps.display_summary.forms_to_dsd.bring.html') %>
+      <ul>
+        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.permit_app') %></li>
+        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.site_plan') %></li>
+        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.photo_id') %></li>
+        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.ownership_proof') %></li>
+        <li><%= t('views.permit_steps.display_summary.forms_to_dsd.payment') %></li>
+      </ul>
+       <p><%= t('views.permit_steps.display_summary.forms_to_dsd.contact.html') %></p>
+    </div>
+  </div>
+
+</div><!-- ./col-sm-9 -->
