@@ -3,23 +3,23 @@ en:
     permit_steps:
       display_summary:
         site_plan:
-            heading: "Make a detailed site plan"
-            description: "A site plan is a drawing of your property that includes current buildings (like houses or sheds) and new structures (like an addition or shed)."
-            instruction: "You are required to draw and submit a detailed site plan with your permit."
-            download_button: "Download and fill out the site plan form"
-          forms_to_dsd:
-            heading: "Bring your completed forms to the Development Services Department"
-            instruction: "You will have to submit your materials in person to the Development Services Department One-Stop. You will also have to pay a fee to apply for your permit."
-            location:
-              html: "<strong>Where:</strong> The Development Services Department One-Stop is located at <a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo, San Antonio, Texas 78204</a>."
-            hour:
-              html: "<strong>Office hours:</strong> 7:45am–4:30pm (Monday–Friday)"
-            bring:
-              html: "<strong>What to bring:</strong> Please come prepared with the following items."
-            permit_app: "Your printed General Repairs/Residential Permit application"
-            site_plan: "Your printed and completed site plan"
-            photo_id: "A form of photo identification (i.e. driver's license, passport)"
-            ownership_proof: "Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
-            payment: "A form of payment (i.e. credit card, check or cash)"
-            contact:
-              html: "<strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111."
+          heading: "Make a detailed site plan"
+          description: "A site plan is a drawing of your property that includes current buildings (like houses or sheds) and new structures (like an addition or shed)."
+          instruction: "You are required to draw and submit a detailed site plan with your permit."
+          download_button: "Download and fill out the site plan form"
+        forms_to_dsd:
+          heading: "Bring your completed forms to the Development Services Department"
+          instruction: "You will have to submit your materials in person to the Development Services Department One-Stop. You will also have to pay a fee to apply for your permit."
+          location:
+            html: "<strong>Where:</strong> The Development Services Department One-Stop is located at <a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo, San Antonio, Texas 78204</a>."
+          hour:
+            html: "<strong>Office hours:</strong> 7:45am–4:30pm (Monday–Friday)"
+          bring:
+            html: "<strong>What to bring:</strong> Please come prepared with the following items."
+          permit_app: "Your printed General Repairs/Residential Permit application"
+          site_plan: "Your printed and completed site plan"
+          photo_id: "A form of photo identification (i.e. driver's license, passport)"
+          ownership_proof: "Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
+          payment: "A form of payment (i.e. credit card, check or cash)"
+          contact:
+            html: "<strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111."
