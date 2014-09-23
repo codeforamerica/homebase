@@ -27,6 +27,9 @@ label.project {
     cursor: hand;
   }
 }
+.es label.project {
+  height: 135px;
+}
 
 // color the label when checked
 :checked + label.project {

@@ -10,7 +10,7 @@
   </div>
 
   <!-- Start the permit select form -->
-  <div class="form">
+  <div class="form <%= I18n.locale.to_s %>">
     <%= form_for @permit, html: {name: "select-improvement"} do |f| %>
 
       <!-- error checking -->
