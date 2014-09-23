@@ -86,7 +86,7 @@ class PermitStepsController < ApplicationController
     when :submit_application
       @permit_needs = session[:permit_needs]
 
-      PermitSender.send_permit_application(@permit, @permit_needs).deliver
+      PermitSender.send_permit_application(@permit, @permit_needs, @unique_key).deliver
 
       @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
                               @permit.acs_struct ||
