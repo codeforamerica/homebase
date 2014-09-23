@@ -122,7 +122,8 @@ label.project {
 }
 
 #floor {
-  background-image: url("/assets/permits/new/floor.png");
+  /*background-image: url("/assets/permits/new/floor.png");*/
+  background-image: image-url("permits/new/floor.png");
   background-position: center 15px;
   background-repeat: no-repeat;
   background-size: 75px auto;
