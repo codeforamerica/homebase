@@ -1,69 +1,48 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   models:
     permit:
       addition:
-        name: "Addition"
+        name: "Space/room"
         size:
           label: "Size"
           options:
-            lt_1000:    "Less than 1,000 sq ft"
-            gte_1000:  "Greater than or equal to 1,000 sq ft"
+            lt_1000:    "Less than 1,000 square feet"
+            gte_1000:  "Greater than or equal to 1,000 square feet"
 
         num_story:
-          label: "Stories"
+          label: "Floors"
           options:
-            one:          "1 story"
-            two_or_more:  "2 or more stories"
+            one:          "1 floor"
+            two_or_more:  "2 or more floors"
 
       acs_struct:
-        name: "Shed/Garage"
+        name: "Shed/garage"
         size:
           label: "Size"
           options:
-            lte_120:  "Less than or equal to 120 sq ft" 
-            gt_120:   "Greater than 120 sq ft"
+            lte_120:  "Less than or equal to 120 square feet" 
+            gt_120:   "Greater than 120 square feet"
 
         num_story:
-          label: "Stories"
+          label: "Floors"
           options:
-            one:          "1 story"
-            two_or_more:  "2 or more stories"
+            one:          "1 floor"
+            two_or_more:  "2 or more floors"
 
       deck:
         name: "Deck"
         size:
           label: "Size"
           options:
-            lte_200: "Less than or equal to 200 sq ft"
-            gt_200: "Greater than 200 sq ft"
+            lte_200: "Less than or equal to 200 square feet"
+            gt_200: "Greater than 200 square feet"
         grade:
           label: "Grade"
           options:
             lte_30: "Less than or equal to 30 inches above grade"
-            gt_30:  "More than 30 inches above grade"
+            gt_30:  "Greater than 30 inches above grade"
         dwelling_attach:
-          label: "Dwelling Attachement"
+          label: "Dwelling Attachment"
           options:
             attached:     "Attached to dwelling"
             not_attached: "Not attached to dwelling"
@@ -74,20 +53,20 @@ en:
             not_served: "Does not serve a required exit door"
 
       pool:
-        name: "Swimming Pool"
+        name: "Swimming pool"
         location:
           label: "Location"
           options:
             in_ground:    "Pool is in ground"
             above_ground: "Pool is above ground"
         volume:
-          label: "Volume"
+          label: "Number of gallons"
           options:
             lte_5000: "Less than or equal to 5,000 gallons"
             gt_5000:  "More than 5,000 gallons"
 
       cover:
-        name: "Carport/Outdoor Cover"
+        name: "Carport/outdoor over"
 
       window:
         name: "Windows"
@@ -99,7 +78,7 @@ en:
         name: "Walls"
 
       siding:
-        name: "Replace Siding"
+        name: "Replace siding"
 
       floor:
         name: "Floors"
@@ -118,83 +97,75 @@ en:
       no_proj_chosen_msg: "Please choose at least one project to work on."
 
   activerecord:
-    # models:
-    #   permit:
-    #     size_msg: 
-    #       one: "This is i18n controlled. Size"
-    #       other: "This is i18n controlled. Size"
-    attributes:
-      permit:
-        addition_size: "Size of room addtion"
     errors:
       models:
         permit:
           attributes:
             addition_size:
-              blank: "Please select the size of the room addition."
+              blank: "Select the size of the new space or room."
             addition_num_story:
-              blank: "Please select the number of stories for the room addition."
+              blank: "Select the number of stories of the new space or room."
             acs_struct_size:
-              blank: "Please select the size of the accessory structure."
+              blank: "Select the size of the shed or garage."
             acs_struct_num_story:
-              blank: "Please select the number of stories for the accessory structure."
+              blank: "Select the number of stories of the accessory structure."
             deck_size:
-              blank: "Please select the size of the deck."
+              blank: "Select the size of the deck."
             deck_grade:
-              blank: "Please select the grade of the deck."
+              blank: "Select the grade of the deck."
             deck_dwelling_attach:
-              blank: "Please select whether the deck is attached to dwelling or not."
+              blank: "Select whether the deck is attached to dwelling or not."
             deck_exit_door:
-              blank: "Please select whether the deck serves a required exit door or not."
+              blank: "Select whether the deck serves a required exit door or not."
             pool_location:
-              blank: "Please select whether the swimming pool is in ground or above ground."
+              blank: "Select whether the swimming pool is in ground or above ground."
             pool_volume:
-              blank: "Please select the volume of the swimming pool."
+              blank: "Select the size of the swimming pool."
             window_replace_glass:
-              blank: "Please select whether you are only replacing broken glass or not."
+              blank: "Select whether you are only replacing broken glass or not."
             door_replace_existing:
-              blank: "Please select whether you are only replacing doors on their existing hinges or not."
+              blank: "Select whether you are only replacing doors on their existing hinges or not."
             wall_general_changes:
-              blank: "Please select whether you are only doing paint, wallpaper, or repairing sheetrock without moving or altering studs."
+              blank: "Select whether you are only painting, adding wallpaper, or repairing sheetrock — not moving or altering studs."
             siding_over_existing:
-              blank: "Please select whether you are only placing new siding over existing siding or not."
+              blank: "Select whether you are only placing new siding over existing siding or not."
             floor_covering:
-              blank: "Please select whether you are only doing floor covering such as carpet, tile, wood/laminate flooring or not."
+              blank: "Select whether you are only replacing or adding carpet, tile, wood, or laminate flooring."
             contractor:
-              inclusion: "Please select whether you are using a contractor or not in this project."
+              inclusion: "Select whether you are doing the work yourself or hiring a contractor in this project."
             owner_address:
-              blank: "Please enter a San Antonio address."
+              blank: "Enter a San Antonio address."
             owner_name:
-              blank: "Please enter home owner name."
+              blank: "Enter home owner name."
             email:
-              invalid: "Please enter your valid email address (for example, john@email.com)"
+              invalid: "Enter your valid email address (for example, john@email.com)"
             phone:
-              invalid: "Please enter a valid phone number (for example, 210-555-5555)"
+              invalid: "Enter a valid phone number (for example, 210-555-5555)"
             house_area:
-              blank: "Please enter the size of house in square feet."
-              not_a_number: "Please enter the size of house in square feet."
+              blank: "Enter the size of house in square feet."
+              not_a_number: "Enter the size of house in square feet."
             addition_area:
-              blank: "Please enter the size of addition in square feet."
-              not_a_number: "Please enter the size of addition in square feet."
+              blank: "Enter the size of addition in square feet."
+              not_a_number: "Enter the size of addition in square feet."
               less_than: "Addition must be less than 1,000 square feet."
             ac:
-              blank: "Please select an air conditioning / heating system."
+              blank: "Select an air conditioning / heating system."
             window_count:
-              not_a_number: "Please specify the number of windows you are repairing."
-              greater_than: "Please specify the number of windows you are repairing."
+              not_a_number: "Specify the number of windows you are repairing."
+              greater_than: "Specify the number of windows you are repairing."
             door_count:
-              not_a_number: "Please specify the number of doors you are repairing."
-              greater_than: "Please specify the number of doors you are repairing."
+              not_a_number: "Specify the number of doors you are repairing."
+              greater_than: "Specify the number of doors you are repairing."
             work_summary:
-              blank: "Please enter a work summary."
+              blank: "Enter a work summary."
             job_cost:
-              blank: "Please enter the job cost."
-              invalid: "Job cost has an invalid format, it should be like 1000000.00"
-              not_a_number: "Job cost should be between the range of 0.00 to 1000000000000.00 and in format like 100000.00"
+              blank: "Enter the job cost."
+              invalid: "Job cost has an invalid format, it should be like 1000.00"
+              not_a_number: "Job cost should be between the range of 0.00 to 1000000000000.00 and in format like 1000.00"
               greater_than: "Job cost should be between the range of 0.00 to 1000000000000.00"
               less_than: "Job cost should be between the range of 0.00 to 1000000000000.00"
             accepted_terms:
-              accepted: "Please accept the terms listed here by checking the box below."
+              accepted: "Accept the terms listed here by checking the box below."
 
   
 

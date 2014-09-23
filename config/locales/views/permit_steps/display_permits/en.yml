@@ -11,18 +11,23 @@ en:
           body: "Please see below for more details."
         further_assistance_needed:
           heading: "Sorry, we can't help you right now."
-          helper_text: "The following project(s) do not meet the requirements for the General Permit Application:"
-          body: "Please contact Development Services Department at (210) 207-1111 to get the permit you need."
+          helper_text:
+            part_1: "We’re sorry, the residential permit application is not appropriate for the"
+            part_2: "that you want to build."
+          body: "We can help you apply for the right permit for this project. Call us at (210) 207-1111 and we will help you."
         detail_permit_info:
           heading: "General Repair/Residential Permit Application"
-          body: "This permit is required for most residential repair projects. Separate permits are required for any mechanical, electrical, or plumbing work."
+          body: "You will need a General Repair/Residential permit for most residential repair. Separate permits are required for any mechanical, electrical, or plumbing work."
           helper_text: "This is the permit for the following project(s):"
           app_cost:
-            html: "<strong>Application cost:</strong> <br>Application costs are based on the Fee Schedule. <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Click here to view the Fee Schedule for more information.</a>"
-          req_docs: "Required documents:"
-          permit_app: "Completed permit application"
-          site_plan: "Completed site plan"
+            heading: "This is the application cost:"
+            html: "Application costs are based on the <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Fee Schedule [PDF]</a>."
+          req_docs: "These are the required documents:"
+          misc_text: "We will help you fill these out"
+          permit_app: "Permit application"
+          site_plan: "Site plan"
+          bring_id: "You will also need:"
           photo_id: "Form of photo identification (i.e. driver's license, passport)"
           ownership_proof: "Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
-          misc_text: "We will help you fill these out"
+          
         submit: "Apply for this permit"

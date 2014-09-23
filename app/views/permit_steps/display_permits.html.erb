@@ -16,7 +16,7 @@
       <h4><%= t('views.permit_steps.display_permits.permit_not_needed.heading') %></h4>
       <ul>
         <% @permit_needs["permit_not_needed"].each do |project| %>
-          <li><%= project %></li>
+          <li><%= t(project) %></li>
         <% end %>
       </ul>
       <p class="info-bottom"><%= t('views.permit_steps.display_permits.permit_not_needed.body') %></p>  
@@ -32,7 +32,7 @@
       <h4><%= t('views.permit_steps.display_permits.permit_needed.heading') %></h4>
         <ul>
           <% @permit_needs["permit_needed"].each do |project| %>
-            <li><%= project %></li>
+            <li><%= t(project) %></li>
           <% end %>
         </ul>
         <p class="info-bottom"><%= t('views.permit_steps.display_permits.permit_needed.body') %></p>  
@@ -45,13 +45,12 @@
   <% if ! @permit_needs["further_assistance_needed"].empty? %>
 
     <div class="alert alert-danger further_assistance_needed" role="alert">
-      <h4>Sorry, we can't help you right now.</h4>
-      <p class="info-top"><%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text') %></p>
-        <ul>
-          <% @permit_needs["further_assistance_needed"].each do |project| %>
-            <li><%= project %></li>
-          <% end %>
-        </ul> 
+      <p class="info-top"><%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_1') %>
+        <% @permit_needs["further_assistance_needed"].each do |project| %>
+          <span class="project-title"><%= t(project) %></span>
+        <% end %>
+        <%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_2') %>
+      </p>
       <p class="info-bottom"><%= t('views.permit_steps.display_permits.further_assistance_needed.body') %></p>
     </div>
 
@@ -68,21 +67,22 @@
         <p><strong><%= t('views.permit_steps.display_permits.detail_permit_info.helper_text') %></strong></p>    
         <ul>
           <% @permit_needs["permit_needed"].each do |project| %>
-            <li><%= project %></li>
+            <li><%= t(project) %></li>
           <% end %>
         </ul>            
+        <p><strong><%= t('views.permit_steps.display_permits.detail_permit_info.app_cost.heading') %></strong></p>
         <p><%= t('views.permit_steps.display_permits.detail_permit_info.app_cost.html') %></p>
         <p><strong><%= t('views.permit_steps.display_permits.detail_permit_info.req_docs') %></strong></p>
-        <p>
+        <p><%= t('views.permit_steps.display_permits.detail_permit_info.misc_text') %></p>
           <ul>
-            <li><%= t('views.permit_steps.display_permits.detail_permit_info.permit_app') %>*</li>
-            <li><%= t('views.permit_steps.display_permits.detail_permit_info.site_plan') %>*</li>
+            <li><%= t('views.permit_steps.display_permits.detail_permit_info.permit_app') %></li>
+            <li><%= t('views.permit_steps.display_permits.detail_permit_info.site_plan') %></li>
+          </ul>        
+        <p><%= t('views.permit_steps.display_permits.detail_permit_info.bring_id') %></p>
+          <ul>
             <li><%= t('views.permit_steps.display_permits.detail_permit_info.photo_id') %></li>
             <li><%= t('views.permit_steps.display_permits.detail_permit_info.ownership_proof') %></li> 
-            <!-- @TODO make this language easier to understand -->
           </ul>
-        </p>
-        <p>*<%= t('views.permit_steps.display_permits.detail_permit_info.misc_text') %></p>
 
         <!-- Next button -->
         <%= link_to t('views.permit_steps.display_permits.submit'), next_wizard_path, class: "btn btn-primary btn-lg" %>

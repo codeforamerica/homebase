@@ -37,7 +37,7 @@
               <td><%= t('views.permit_steps.display_summary.table.list') %></td>
               <td>
                 <% @permit_needs["permit_needed"].each do |project| %>
-                  <li><%= project %></li>
+                  <li><%= t(project) %></li>
                 <% end %>
               </td>
             </tr>
@@ -79,7 +79,7 @@
           <% if @permit.house_area != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.size') %></td>
-              <td><%= @permit.house_area %> square feet</td>
+              <td><%= @permit.house_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
             </tr>
           <% end %>
 

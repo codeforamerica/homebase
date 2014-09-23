@@ -2,7 +2,7 @@ es:
   views:
     layouts:
       alert:
-        not_supported_ie_version: "ES This website no longer supports Internet Explorer versions 9 or older."
+        not_supported_ie_version: "Esta página web no es compatible con las versiones de Internet Explorer 8 o más."
         upgrade_recommendation:
-          html: 'ES We recomend upgrading to the latest <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">Internet Explorer</a>, <a href="https://www.google.com/chrome/browser/">Google Chrome</a>, or <a href="https://www.mozilla.org/firefox/">Firefox</a>.'
-        turn_off_compatibility_view: 'ES If you are using Internet Explorer 10 or later, make sure you turn off "Compatibility View"'
+          html: 'Recomendamos actualizar a la última <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">Internet Explorer</a>, <a href="https://www.google.com/chrome/browser/">Google Chrome</a>, o <a href="https://www.mozilla.org/firefox/">Firefox</a>.'
+        turn_off_compatibility_view: 'Si usas Internet Explorer 9 o posterior, asegúrese de apagar "Vista de compatibilidad"'

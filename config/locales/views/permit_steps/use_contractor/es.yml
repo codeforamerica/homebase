@@ -2,5 +2,6 @@ es:
   views:
     permit_steps:
       use_contractor:
-        heading: "ES Sorry, we can't help you right now."
-        contact: "ES The contractor you are using needs to apply for the building permit. Please have your contractor contact Development Services Department at (210) 207-1111 to get the permit you need."
+        heading: "¡Buenas noticias!"
+        description: "Usted dijo que usted está usando un contratista. Ellos llenar y presentar los permisos para ti. Que sepan que van a necesitar para hacer esto."
+        contact: "Si tiene preguntas adicionales, comuníquese con el Departamento de Servicios de Desarrollo al (210) 207-1111."

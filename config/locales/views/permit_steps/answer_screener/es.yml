@@ -2,62 +2,63 @@ es:
   views:
     permit_steps:
       answer_screener:
-        header: "ES Enter your project details"
+        header: "Donde usted está haciendo el trabajo"
         owner_address:
-          header: "ES Enter your home address"
-          question: "ES Enter the address of the property you're working on."
-          placeholder: "ES ex. 123 Main St. San Antonio, TX"
+          header: "Ingrese su dirección de casa"
+          question: "Ingrese la dirección de la casa que usted está trabajando."
+          placeholder: "ex. 123 Main St. San Antonio, TX"
+          helper_text: "Debe ser dueño de la casa"
         addition:
-          header: "ES Room Additions"
-          question: "ES What best describes your room addition that you are building?"
+          header: "Sobre su nuevo espacio"
+          question: "¿Como describiría  mejor el espacio que está construyendo?"
         acs_struct:
-          header: "ES Shed/Garage"
-          question: "ES What best describes your shed or garage that you are building?"
+          header: "Sobre su nuevo cobertizo o garaje"
+          question: "Lo que mejor describe el cobertizo o garaje que está construyendo?"
         deck:
-          header: "ES Deck"
-          question: "ES What best describes your deck that you are building?"
+          header: "Sobre su nueva cubierta"
+          question: "¿Cómo describirías la cubierta que está construyendo?"
         pool:
-          header: "ES Swimming Pool"
-          question: "ES What best describes your swimming pool that you are building?"
+          header: "Sobre su nueva piscina"
+          question: "Lo que mejor describe a la piscina que está construyendo? "
         window:
-          header: "ES Windows"
+          header: "Sobre su ventanas"
           question:
-            html: "ES Are you <b>only</b> replacing broken glass?"
+            html: "<b>Sólo</b> va a reemplazar los vidrios rotos?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "Sí"
+            no_statement: "No"
         door:
-          header: "ES Doors"
+          header: "Sobre sus puertas"
           question:
-            html: "ES Are you <b>only</b> replacing the existing door on current hinges?"
+            html: "<b>Sólo</b> va a sustituir la puerta existente en las bisagras actuales?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "Sí"
+            no_statement: "No"
         wall:
-          header: "ES Walls"
+          header: "Sobre sus paredes"
           question:
-            html: "ES Are you <b>only</b> doing paint, wallpaper, or repairing sheetrock without moving or altering studs?"
+            html: "¿Cómo está cambiando sus paredes?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "Sólo estoy pintando, añadiendo fondos de escritorio, o la reparación de placas de yeso - No voy a mudar o alterar tacos de madera"
+            no_statement: "Estoy haciendo algo más"
         siding:
-          header: "ES Siding Replacement"
+          header: "Sobre su reemplazo de revestimiento"
           question:
-            html: "ES Are you <b>only</b> placing new siding over existing siding?"
+            html: "<b>Sólo</b> va a colocandar nuevo revestimiento sobre el revestimiento existente?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "Sí"
+            no_statement: "No"
         floor:
-          header: "ES Floor - Structural Repairs"
+          header: "Sobre sus pisos"
           question:
-            html: "ES Are you <b>only</b> doing floor covering such as carpet, tile, wood/laminate flooring?"
+            html: "¿Cómo está cambiando sus pisos? "
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
+            yes_statement: "Sólo estoy reemplazando o añadiendo alfombras, baldosas, madera o suelo laminado"
+            no_statement: "Estoy haciendo algo más"
         contractor:
-          header: "ES Contractor"
-          question: "ES Will you be hiring a contractor to work on your project?"
+          header: "Quién lo está ayudando"
+          question: "¿Quién va a hacer el trabajo?"
           options:
-            yes_statement: "ES Yes"
-            no_statement: "ES No"
-        submit: "ES Submit"
+            yes_statement: "Voy a contratar a un contratista"
+            no_statement: "Estoy haciendo el trabajo yo mismo (con la ayuda de mis amigos o familia)"
+        submit: "Enviar"

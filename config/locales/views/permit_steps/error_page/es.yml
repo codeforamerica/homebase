@@ -2,8 +2,8 @@ es:
   views:
     permit_steps:
       error_page:
-        heading: "ES Sorry, something isn't working correctly."
-        description: "ES We weren't able to fill out your permit application."
-        instruction: "ES Try hitting the back button then clicking on the \"Download then print\" button again. That might fix the problem for you."
+        heading: "Lo siento, algo no está funcionando correctamente."
+        description: "No fueron capacde llenar su solicitud de permiso."
+        instruction: "Trate de golpear el botón trasero entonchacer clic en el \" Descargar y luego imprimir\" botón de nuevo Eso podría solucionar el problema para usted."
         contact:
-          html: "ES If you're still having problems, please let us know by email at <a href=\"mailto:sanantonio@codeforamerica.org\">sanantonio@codeforamerica.org</a>."
+          html: "Si siguteniendo problemas, por favor háganoslo saber por correo electrónico a <a href=\"mailto:sanantonio@codeforamerica.org\">sanantonio@codeforamerica.org</a>."

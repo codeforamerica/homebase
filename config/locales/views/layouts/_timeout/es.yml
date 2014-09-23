@@ -2,8 +2,8 @@ es:
   views:
     layouts:
       timeout:
-        close: "ES Close"
-        session_expiring: "ES Session expiring"
-        alert_statement: "ES Are you still there? This session will restart after 3 minutes."
-        yes_continue: "ES YES, I'm still here"
-        no_restart: "ES NO, restart the session"
+        close: "Cerrar"
+        session_expiring: "Sesión expira"
+        alert_statement: "¿Sigues ahí? Esta sesión se reiniciará después de 3 minutos."
+        yes_continue: "Sí, todavía estoy aquí"
+        no_restart: "NO, reiniciar la sesión"

@@ -2,7 +2,7 @@
 
   <!-- colorful house block -->
   <div class="visuals hidden-xs">
-    <%= image_tag "sidebar/house.png",                      class: "house"    %>
+    <%= image_tag "layouts/_sidebar/house.png",                      class: "house"    %>
   </div>
 
   <!-- progress through form -->
@@ -37,23 +37,44 @@
   </div>
 
   <!-- selected projects -->
-  <div class="status">
-    <span class="cur-step your-project hidden-sm hidden-md hidden-lg">
-      <strong><%= t('views.layouts.sidebar.project') %>:</strong>
-    </span><!-- for mobile devices -->
-    <h4 class="hidden-xs"><%= t('views.layouts.sidebar.project') %></h4>  
-    <span class="project-label addition"><%= t('views.layouts.sidebar.addition') %></span>
-    <span class="project-label acs-struct"><%= t('views.layouts.sidebar.acs_struct') %></span>
-    <span class="project-label deck"><%= t('views.layouts.sidebar.deck') %></span>
-    <span class="project-label pool"><%= t('views.layouts.sidebar.pool') %></span>
-    <span class="project-label cover"><%= t('views.layouts.sidebar.cover') %></span>
-    <span class="project-label window"><%= t('views.layouts.sidebar.window') %></span>
-    <span class="project-label door"><%= t('views.layouts.sidebar.door') %></span>
-    <span class="project-label wall"><%= t('views.layouts.sidebar.wall') %></span>
-    <span class="project-label siding"><%= t('views.layouts.sidebar.siding') %></span>
-    <span class="project-label floor"><%= t('views.layouts.sidebar.floor') %></span>              
-  </div>
-
+  <% if cur_step != 0 %>
+    <div class="status status-project">
+      <span class="cur-step your-project hidden-sm hidden-md hidden-lg">
+        <strong><%= t('views.layouts.sidebar.project') %>:</strong>
+      </span><!-- for mobile devices -->
+      <h4 class="hidden-xs"><%= t('views.layouts.sidebar.project') %></h4>  
+      <span class="project-label addition <%= @permit.selected_addition ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.addition') %>
+      </span>
+      <span class="project-label acs-struct <%= @permit.selected_acs_struct ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.acs_struct') %>
+      </span>
+      <span class="project-label deck <%= @permit.selected_deck ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.deck') %>
+      </span>
+      <span class="project-label pool <%= @permit.selected_pool ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.pool') %>
+      </span>
+      <span class="project-label cover <%= @permit.selected_cover ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.cover') %>
+      </span>
+      <span class="project-label window <%= @permit.selected_window ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.window') %>
+      </span>
+      <span class="project-label door <%= @permit.selected_door ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.door') %>
+      </span>
+      <span class="project-label wall <%= @permit.selected_wall ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.wall') %>
+      </span>
+      <span class="project-label siding <%= @permit.selected_siding ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.siding') %>
+      </span>
+      <span class="project-label floor <%= @permit.selected_floor ? 'displayed' : '' %>">
+        <%= t('views.layouts.sidebar.floor') %>
+      </span>              
+    </div>
+  <% end %>
 </div>
 
 

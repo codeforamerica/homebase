@@ -123,6 +123,7 @@ class Permit < ActiveRecord::Base
   validates_presence_of :job_cost, :if => :active_or_details?
   validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
   validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
+
   ## Validations on permit_step#confirm_terms ##
 
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
@@ -390,10 +391,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_addition) 
 
       if addition_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.addition.name'))
+        permit_needs["permit_needed"].push('models.permit.addition.name')
         update_attribute("addition", true)
       else
-        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.addition.name'))
+        permit_needs["further_assistance_needed"].push('models.permit.addition.name')
         update_attribute("addition", nil)
       end
 
@@ -405,12 +406,12 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_acs_struct)
 
       if acs_struct_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.acs_struct.name'))
+        permit_needs["permit_needed"].push('models.permit.acs_struct.name')
         update_attribute("acs_struct", true)
       elsif acs_struct_permit_needed? == false
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.acs_struct.name'))
+        permit_needs["permit_not_needed"].push('models.permit.acs_struct.name')
       else
-        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.acs_struct.name'))
+        permit_needs["further_assistance_needed"].push('models.permit.acs_struct.name')
         update_attribute("acs_struct", nil)
       end
 
@@ -419,12 +420,12 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_deck)
 
       if deck_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.deck.name'))
+        permit_needs["permit_needed"].push('models.permit.deck.name')
         update_attribute("deck", true)
       elsif deck_permit_needed? == false
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.deck.name'))
+        permit_needs["permit_not_needed"].push('models.permit.deck.name')
       else
-        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.deck.name'))
+        permit_needs["further_assistance_needed"].push('models.permit.deck.name')
         update_attribute("deck", nil)
       end
 
@@ -433,13 +434,13 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_pool)
 
       if pool_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.pool.name'))
+        permit_needs["permit_needed"].push('models.permit.pool.name')
         update_attribute("pool", true)
       elsif pool_permit_needed? == false
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.pool.name'))
+        permit_needs["permit_not_needed"].push('models.permit.pool.name')
         update_attribute("pool", false)
       else
-        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.pool.name'))
+        permit_needs["further_assistance_needed"].push('models.permit.pool.name')
         update_attribute("pool", nil)
       end
 
@@ -448,10 +449,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_cover)
 
       if cover_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.cover.name'))
+        permit_needs["permit_needed"].push('models.permit.cover.name')
         update_attribute("cover", true)
       else
-        permit_needs["further_assistance_needed"].push(I18n.t('models.permit.cover.name'))
+        permit_needs["further_assistance_needed"].push('models.permit.cover.name')
         update_attribute("cover", nil)
       end
 
@@ -460,10 +461,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_window)
 
       if window_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.window.name'))
+        permit_needs["permit_needed"].push('models.permit.window.name')
         update_attribute("window", true)
       else
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.window.name'))
+        permit_needs["permit_not_needed"].push('models.permit.window.name')
         update_attribute("window", false)
       end
 
@@ -471,10 +472,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_door)
       if door_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.door.name'))
+        permit_needs["permit_needed"].push('models.permit.door.name')
         update_attribute("door", true)
       else
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.door.name'))
+        permit_needs["permit_not_needed"].push('models.permit.door.name')
         update_attribute("door", false)
       end
 
@@ -482,10 +483,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_wall)
       if wall_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.wall.name'))
+        permit_needs["permit_needed"].push('models.permit.wall.name')
         update_attribute("wall", true)
       else
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.wall.name'))
+        permit_needs["permit_not_needed"].push('models.permit.wall.name')
         update_attribute("wall", false)
       end
 
@@ -494,10 +495,10 @@ class Permit < ActiveRecord::Base
     if to_bool(selected_siding)
 
       if siding_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.siding.name'))
+        permit_needs["permit_needed"].push('models.permit.siding.name')
         update_attribute("siding", true)
       else
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.siding.name'))
+        permit_needs["permit_not_needed"].push('models.permit.siding.name')
         update_attribute("siding", false)
       end
 
@@ -505,10 +506,10 @@ class Permit < ActiveRecord::Base
 
     if to_bool(selected_floor)
       if floor_permit_needed?
-        permit_needs["permit_needed"].push(I18n.t('models.permit.floor.name'))
+        permit_needs["permit_needed"].push('models.permit.floor.name')
         update_attribute("floor", true)
       else
-        permit_needs["permit_not_needed"].push(I18n.t('models.permit.floor.name'))
+        permit_needs["permit_not_needed"].push('models.permit.floor.name')
         update_attribute("floor", false)
       end
 

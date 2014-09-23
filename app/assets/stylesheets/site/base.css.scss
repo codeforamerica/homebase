@@ -1,0 +1,132 @@
+/*  
+    =========================
+    SET BASE VARIABLES
+
+    these variabes will override the bootstrap defaut mixins 
+    see those mixins here: http://getbootstrap.com/customize/#less-variables
+    ===========================
+*/
+
+$container-lg: 1000px; /* set the max container size */
+
+/* set some basic font styles */
+$text-color: #333; // set the base text color
+$font-family-sans-serif: 'Open Sans',sans-serif; 
+$font-family-serif: Georgia, serif;
+$font-size-base: 18px;
+
+/* style our headings */
+$headings-font-family: Montserrat, serif;
+$headings-font-weight: 700;
+$font-size-h1: 50px;
+
+$grid-gutter-width: 40px; // bump up the grid gutters
+
+$brand-danger: #a94442;
+
+/* now let's important the base bootstrap styles */
+@import "bootstrap";
+
+/*  
+    =========================
+    HOMEBASE STYLES, CRAFTED BY HAND
+
+    this is where our custom styling beyond bootstrap begins
+    ===========================
+*/
+
+body {
+  padding-bottom: 30px; // add some padding at the bottom of the page
+}
+
+.container#content {
+  margin-top: 30px; // offset all the content from the top of the page
+}
+
+.container#header {
+  .page-header {
+    margin-top:25px; // set the offset of the header
+
+    .about_container {
+      margin:20px 0; // push the collapsed about container down
+    }
+  }
+}
+
+h1 {
+  margin-top: 0px; // reset the top margin for h1. not sure why this is a thing in bootstrap/normalize
+}
+
+.logo {
+  color: $text-color;
+  font-weight: bold;
+  &:hover {
+    color: $text-color;
+    opacity: .8;
+    text-decoration: none;
+  }
+  img {
+    margin-top: -7px;
+    padding-right: 4px;
+    width: 20px;
+  } 
+}
+
+.tagline {
+  color: #999;
+  font-size: 12px;
+  margin-left: 7px;
+  position: relative;
+  top: -1px;
+}
+
+.btn-lg {
+  margin-top: 10px;
+}
+
+/* styles for #project_details */
+.radio input[type="radio"], .checkbox input[type="checkbox"] {
+	margin-top: 7px;
+}
+
+/* Footer styles */
+.footer {
+  border-top: 1px solid #eeeeee;
+  margin-top: 50px;
+  padding-top: 30px;
+}
+.footer-logo {
+  padding-right: 10px;
+  height: 65px;
+}
+
+/* Alert styles */
+.alert-ie {
+  border-radius: 0;
+  text-align: center;
+}
+.alert-ie * {
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: left;
+}
+.alert-ie h4 {
+  margin-bottom: 12.5px;
+}
+
+/* Uservoice styles */
+
+.uv-link {
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+  background-color: #df4949;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  padding: 6px 12px;
+}
+.uv-link:hover, .uv-link:focus {
+  background-color: #da2c2c;
+  color: #fff;
+  text-decoration: none;
+}

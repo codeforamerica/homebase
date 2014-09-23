@@ -7,11 +7,10 @@
   <!-- Intro text -->
   <div class="intro">
     <h1><%= t('views.permits.new.intro.heading') %></h1>
-    <p><%= t('views.permits.new.intro.helper_text') %></p>
   </div>
 
   <!-- Start the permit select form -->
-  <div class="form">
+  <div class="form <%= I18n.locale.to_s %>">
     <%= form_for @permit, html: {name: "select-improvement"} do |f| %>
 
       <!-- error checking -->
@@ -28,120 +27,80 @@
 
         <div class="row">
           <div class="col-md-4">
-            <%= f.label :selected_addition, id: "addition", class: "pick-addition btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/addition.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.addition') %></p>
-              </div>
-            <% end %>               
-            <%= f.check_box :selected_addition, style: 'display:none' %>
+            <%= f.check_box :selected_addition %>              
+            <%= f.label :selected_addition, id: "addition", class: "project" do %>
+              <p class="long"><%= t('views.permits.new.project.addition.html') %></p>
+            <% end %>
           </div>
           <div class="col-md-4">
-            <%= f.label :selected_acs_struct, id: "acs-struct", class: "pick-acs-struct btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/shed.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.acs_struct') %></p>
-              </div>
+            <%= f.check_box :selected_acs_struct %>
+            <%= f.label :selected_acs_struct, id: "acs-struct", class: "project" do %>
+              <p><%= t('views.permits.new.project.acs_struct') %></p>
             <% end %>               
-            <%= f.check_box :selected_acs_struct, style: 'display:none' %>
           </div>
           <div class="col-md-4">
-              <%= f.label :selected_deck, id: "deck", class: "pick-deck btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/deck.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.deck') %></p>
-              </div>
+            <%= f.check_box :selected_deck %>
+            <%= f.label :selected_deck, id: "deck", class: "project" do %>
+              <p><%= t('views.permits.new.project.deck') %></p>
             <% end %>               
-            <%= f.check_box :selected_deck, style: 'display:none' %>
+          </div>
+        </div><!-- ./row -->
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.check_box :selected_pool %>
+            <%= f.label :selected_pool, "Swimming Pool", id: "pool", class: "project" do %>
+              <p><%= t('views.permits.new.project.pool') %></p>
+            <% end %>              
+          </div>
+          <div class="col-md-4">
+            <%= f.check_box :selected_cover %>
+            <%= f.label :selected_cover, id: "cover", class: "project" do %>
+              <p class="long"><%= t('views.permits.new.project.cover.html') %></p>
+            <% end %>
+          </div>
+          <div class="col-md-4">
+            <%= f.check_box :selected_window %>
+            <%= f.label :selected_window, id: "window", class: "project" do %>
+              <p><%= t('views.permits.new.project.window') %></p>
+            <% end %>
+          </div>
+        </div><!-- ./row -->
+
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.check_box :selected_door %>
+            <%= f.label :selected_door, id: "door", class: "project" do %>
+              <p><%= t('views.permits.new.project.door') %></p>
+            <% end %>
+          </div>
+          <div class="col-md-4">
+            <%= f.check_box :selected_wall %>
+            <%= f.label :selected_wall, id: "wall", class: "project" do %>
+              <p><%= t('views.permits.new.project.wall') %></p>
+            <% end %>
+          </div>
+          <div class="col-md-4">
+            <%= f.check_box :selected_siding %>
+            <%= f.label :selected_siding, id: "siding", class: "project" do %>
+              <p><%= t('views.permits.new.project.siding') %></p>
+            <% end %>              
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-4">
-              <%= f.label :selected_pool, "Swimming Pool", id: "pool", class: "pick-pool btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/pool.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.pool') %></p>
-              </div>
+            <%= f.check_box :selected_floor %>
+            <%= f.label :selected_floor, id: "floor", class: "project" do %>
+              <p><%= t('views.permits.new.project.floor') %></p> 
             <% end %>              
-            <%= f.check_box :selected_pool, style: 'display:none' %>
-          </div>
-          <div class="col-md-4">
-            <%= f.label :selected_cover, id: "cover", class: "pick-cover btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/carport.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block long"><%= t('views.permits.new.project.cover.html') %></p>              
-              </div>
-            <% end %>
-            <%= f.check_box :selected_cover, style: 'display:none' %>
-          </div>
-          <div class="col-md-4">
-            <%= f.label :selected_window, id: "window", class: "pick-window btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/window.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.window') %></p>
-              </div>
-            <% end %>
-            <%= f.check_box :selected_window, style: 'display:none' %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :selected_door, id: "door", class: "pick-door btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/door.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.door') %></p>
-              </div>
-            <% end %>
-            <%= f.check_box :selected_door, style: 'display:none' %>
-          </div>
-          <div class="col-md-4">
-            <%= f.label :selected_wall, id: "wall", class: "pick-wall btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/wall.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.wall') %></p> 
-              </div>             
-            <% end %>
-            <%= f.check_box :selected_wall, style: 'display:none' %>
-          </div>
-          <div class="col-md-4">
-            <%= f.label :selected_siding, id: "siding", class: "pick-siding btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/siding.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.siding') %></p>
-              </div>              
-            <% end %>              
-            <%= f.check_box :selected_siding, style: 'display:none' %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4">
-            <%= f.label :selected_floor, id: "floor", class: "pick-floor btn-initial project" do %>
-              <div class="clearfix project-block">
-                <%= image_tag "projects/floor.png", class: "project-icon" %>
-                <div class="clearfix"></div>
-                <p class="btn-block"><%= t('views.permits.new.project.floor') %></p> 
-              </div>             
-            <% end %>              
-            <%= f.check_box :selected_floor, style: 'display:none' %>
           </div>
           <div class="col-md-4"></div>
           <div class="col-md-4"></div>
         </div>
 
       <!-- Submit button -->
-      <%= f.submit t('views.permits.new.submit'), class: "btn btn-primary btn-lg", id: "new_permit_submit" %><!--, onclick: "saveProjects()"-->
+      <%= f.submit t('views.permits.new.submit'), class: "btn btn-primary btn-lg", id: "new_permit_submit" %>
 
     <% end %>
   </div><!-- ./form -->

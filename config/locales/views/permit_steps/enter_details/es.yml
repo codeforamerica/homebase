@@ -3,42 +3,46 @@ es:
     permit_steps:
       enter_details:
         intro:
-          heading: "ES General Repair/Residential Permit Application"
-          body: "ES This permit covers many home repair and renovation projects."
+          heading: "Permiso de Reparación General / Residencial"
+          body: "Este permiso abarca muchos proyectos de reparación de viviendas y renovación."
         homeowner_info:
-          heading: "ES Homeowner information"
+          heading: "La información del propietario"
+          helper_text: "Proporcionar información del dueño de casa aquí:"
           name:
-            question: "ES Homeowner name"
+            question: "Nombre (Nombre y apellido)"
           address:
-            question: "ES Home address"
+            question: "Dirección"
           email:
-            question: "ES Homeowner email address"
+            question: "Dirección de correo electrónico"
           phone:
-            question: "ES Homeowner phone number"
+            question: "Número de teléfono"
         addition_info:
-          heading: "ES Addition information"
+          heading: "Información de la adición"
           house_area:
-            question: "ES Size of existing house in square feet"
+            question: "Tamaño de la casa existente en picuadrados"
           addition_area:
-            question: "ES Size of new addition in square feet"
+            question: "Tamaño de nueva addición en picuadrados"
           ac:
-            question: "ES Air conditioning / heating system"
-            helper_text: "ES Please select the system you plan to install in your addition."
+            question: "Aire acondicionado / calefacción"
+            helper_text: "Por favor, seleccione el sistema que va a instalar en su adición."
         window_info:
+          heading: "Información de ventanas"
           window_count:
-            question: "ES How many windows are you changing?"
-            helper_text: "ES Please include windows you are repairing."
+            question: "¿Cuántas ventanas estás cambiando?"
+            helper_text: "Por favor incluya ventanas que está reparando."
         door_info:
+          heading: "Información de puertas"
           door_count:
-            question: "ES How many doors are you changing?"
-            helper_text: "ES Please include doors you are repairing."
+            question: "¿Cuántas puertas estás cambiando?"
+            helper_text: "Por favor incluya puertas que está agregando reparación."
         final_info:
+          heading: "Resumen y costo"
           work_summary:
-            question: "ES Work Summary"
-            helper_text: "ES Please describe the project you are working on."
+            question: "Resumen del trabajo"
+            helper_text: "Por favor, describa el proyecto que se está trabajando."
           job_cost:
-            question: "ES Job Cost"
-            helper_text: "ES Please enter the total cost of labor and materials for your project."
+            question: "Costo del trabajo"
+            helper_text: "Por favor introduce el costo total de la mano de obra y los materialpara su proyecto."
 
 
-        submit: "ES Next step"
+        submit: "Enviar"

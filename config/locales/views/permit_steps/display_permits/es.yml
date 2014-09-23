@@ -2,27 +2,32 @@ es:
   views:
     permit_steps:
       display_permits:
-        intro_text: "ES This is how to start your project(s)"
+        intro_text: "Éste cómo de empezar el proyecto(s)"
         permit_not_needed:
-          heading: "ES You do not need a permit for the following project(s), build on!"
-          body: "ES A permit is not needed for your project. If you have additional questions, please contact Development Services Department at (210) 207-1111."
+          heading: "Usted no necesita un permiso para el siguiente proyecto(s)"
+          body: "Un permiso no necesario para su proyecto. Si usted tiene preguntas adicionales, por favor póngase en contacto con el Departamento de Servicios de Desarrollo al (210) 207-1111."
         permit_needed:
-          heading: "ES You need a permit for the following project(s):"
-          body: "ES Please see below for more details."
+          heading: "Se necesita un permiso para el proyecto(s) siguiente:"
+          body: "Por favor, ver más abajo para más detalles."
         further_assistance_needed:
-          heading: "ES Sorry, we can't help you right now."
-          helper_text: "ES The following project(s) do not meet the requirements for the General Permit Application:"
-          body: "ES Please contact Development Services Department at (210) 207-1111 to get the permit you need."
+          heading: "Lo sentimos, no podemos ayudar en este momento."
+          helper_text:
+            part_1: "Lo sentimos, la solicitud de permiso de residencia no apropiado para el"
+            part_2: "que se quiere construir."
+          body: "Nos puede ayudar a solicitar el permiso adecuado para este proyecto Llámenos al (210) 207-1111 y nosotros le ayudaremos."
         detail_permit_info:
-          heading: "ES General Repair/Residential Permit Application"
-          body: "ES This permit is required for most residential repair projects. Separate permits are required for any mechanical, electrical, or plumbing work."
-          helper_text: "ES This is the permit for the following project(s):"
+          heading: "ReparacionGeneral/ Residencial Solicitud de Permiso"
+          body: "Necesitará un reparación general / permiso de residencial en la mayoría de reparación residencial permisos separados se requieren para cualquier, o el trabajo de plomería eléctrica mecánica."
+          helper_text: "Este el permiso para el proyecto(s) siguiente:"
           app_cost:
-            html: "ES <strong>Application cost:</strong> <br>Application costs are based on the Fee Schedule. <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Click here to view the Fee Schedule for more information.</a>"
-          req_docs: "ES Required documents:"
-          permit_app: "ES Completed permit application"
-          site_plan: "ES Completed site plan"
-          photo_id: "ES Form of photo identification (i.e. driver's license, passport)"
-          ownership_proof: "ES Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
-          misc_text: "ES We will help you fill these out"
-        submit: "ES Apply for this permit"
+            heading: "Este el costo de aplicación:"
+            html: "Los costos de aplicación se basan en el <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Lista de tarifas [PDF]</a>."
+          req_docs: "Estos son los documentos requeridos:"
+          misc_text: "Nosotros le ayudará a llenar estos fuera"
+          permit_app: "Aplicación permiso"
+          site_plan: "Plan de sitio"
+          bring_id: "Usted también tendrá que:"
+          photo_id: "La forma de identificación con foto (licencia decir, de conducir, pasaporte)"
+          ownership_proof: "La prueba de la propiedad de la vivienda de la propiedad que está trabajando (decir, de hecho, el condado de Bexar Appraisal District papeleo)"
+          
+        submit: "Aplicar este permiso"
