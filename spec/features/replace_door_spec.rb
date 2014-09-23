@@ -103,7 +103,7 @@ feature "Replace doors" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    expect(page).not_to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+    #expect(page).not_to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
   end
 
