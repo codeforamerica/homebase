@@ -135,10 +135,10 @@
 
       </table>
 
-      <a class="btn btn-danger btn-md" href="/send_email" target="_blank"><%= t('views.permit_steps.display_summary.permit.send_button') %></a>
-      <a class="btn btn-default btn-md" href="<%= wizard_path(:enter_details) %>"><%= t('views.permit_steps.display_summary.permit.problem_button') %></a>
-
+      <!-- Next button -->
+      <%= link_to t('views.permit_steps.display_summary.permit.send_button'), next_wizard_path, class: "btn btn-danger btn-lg" %>
+      <!-- Next button -->
+      <%= link_to t('views.permit_steps.display_summary.permit.problem_button'), wizard_path(:enter_details), class: "btn btn-default btn-lg" %>
     </div><!-- ./panel_body -->
   </div><!-- ./panel -->
-
 </div> <!-- ./col-sm-9 -->
