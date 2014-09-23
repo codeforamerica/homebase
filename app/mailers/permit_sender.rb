@@ -13,5 +13,7 @@ class PermitSender < ActionMailer::Base
     :subject => 'New permit application has been generated',
     :template_path => 'permit_sender',
     :template_name => 'send_permit_application' )
+
+    mail.attachments['permit.pdf'] = PermitBinaryDetail.find_by filename: "#{unique_key}.pdf"
   end
 end
