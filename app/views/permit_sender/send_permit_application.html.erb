@@ -26,7 +26,7 @@
     <% end %>
 
     <!-- Homeowner name -->
-    <% if @permit.owner_name.length >= 1 %>
+    <% if @permit.owner_name != nil %>
       <tr>
         <td>Owner name</td>
         <td><%= @permit.owner_name %></td>
@@ -34,7 +34,7 @@
     <% end %>
 
     <!-- Project address -->
-    <% if @permit.owner_address.length >= 1 %>
+    <% if @permit.owner_address != nil  %>
       <tr>
         <td>Address</td>
         <td><%= @permit.owner_address %></td>
@@ -42,7 +42,7 @@
     <% end %>
 
     <!-- Phone number -->
-    <% if @permit.phone.length >= 1 %>
+    <% if @permit.phone.length != nil  %>
       <tr>
         <td>Phone number</td>
         <td><%= @permit.phone %></td>
@@ -50,7 +50,7 @@
     <% end %>
 
     <!-- Email address -->
-    <% if @permit.email.length >= 1 %>
+    <% if @permit.email.length != nil  %>
       <tr>
         <td>Email Address</td>
         <td><%= @permit.email %></td>
@@ -74,7 +74,7 @@
     <% end %>
 
     <!-- Air conditioning type -->
-    <% if @permit.ac.length >= 1 %>
+    <% if @permit.ac  != nil  %>
       <tr>
         <td>Air conditioning type</td>
         <td><%= @permit.ac %></td>
@@ -98,7 +98,7 @@
     <% end %>
 
     <!-- Work summary -->
-    <% if @permit.work_summary.length >= 1 %>
+    <% if @permit.work_summary != nil  %>
       <tr>
         <td>Work Summary</td>
         <td><%= @permit.work_summary %></td>
