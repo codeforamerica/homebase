@@ -127,7 +127,7 @@
           <% if @permit.job_cost != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.cost') %></td>
-              <td>$<%= @permit.job_cost %></td>
+              <td><%= number_to_currency(@permit.job_cost) %></td>
             </tr>
           <% end %>
 

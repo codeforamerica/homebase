@@ -109,7 +109,7 @@
     <% if @permit.job_cost != nil %>
       <tr>
         <td>Job Cost</td>
-        <td>$<%= @permit.job_cost %></td>
+        <td><%= number_to_currency(@permit.job_cost) %></td>
       </tr>
     <% end %>
 
