@@ -14,7 +14,7 @@ class PermitMailer < ActionMailer::Base
 
     mail( :to => @permit.email,
     #:cc => 'sanantonio@codeforamerica.org',
-    :subject => 'New permit application has been generated',
+    :subject => I18n.t('mailers.permit_mailer.subject'),
     :template_path => 'permit_mailer',
     :template_name => 'send_permit_application' )
                                     

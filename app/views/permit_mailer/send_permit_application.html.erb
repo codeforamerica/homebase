@@ -1,13 +1,13 @@
-<h1>A new permit has been created</h1>
-<p>We've created a new permit. The permit details are below.</p>
-<p>Your finished permit application has been attached.</p>
-<p>If you have any questions, contact us at help@homebasefix.com.</p>
+<h1><%= t('views.permit_mailer.send_permit_application.heading') %></h1>
+<p><%= t('views.permit_mailer.send_permit_application.details') %></p>
+<p><%= t('views.permit_mailer.send_permit_application.attachment_details') %></p>
+<p><%= t('views.permit_mailer.send_permit_application.questions') %></p>
 
 <table>
   <thead>
     <tr>
-      <th>Field Name</th>
-      <th>Your Response</th>
+      <th><%= t('views.permit_mailer.send_permit_application.table.field_name') %></th>
+      <th><%= t('views.permit_mailer.send_permit_application.table.response') %></th>
     </tr>
   </thead>
 
@@ -16,7 +16,7 @@
     <!-- Required permits -->
     <% if ! @permit_needs["permit_needed"].empty? %>
       <tr>
-        <td>Projects</td>
+        <td><%= t('views.permit_mailer.send_permit_application.table.projects') %></td>
         <td>
           <% @permit_needs["permit_needed"].each do |project| %>
             <li><%= t(project) %></li>
@@ -26,92 +26,78 @@
     <% end %>
 
     <!-- Homeowner name -->
-    <% if @permit.owner_name != nil %>
-      <tr>
-        <td>Owner name</td>
-        <td><%= @permit.owner_name %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.owner_name') %></td>
+      <td><%= @permit.owner_name %></td>
+    </tr>
 
     <!-- Project address -->
-    <% if @permit.owner_address != nil  %>
-      <tr>
-        <td>Address</td>
-        <td><%= @permit.owner_address %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.address') %></td>
+      <td><%= @permit.owner_address %></td>
+    </tr>
 
     <!-- Phone number -->
-    <% if @permit.phone.length != nil  %>
-      <tr>
-        <td>Phone number</td>
-        <td><%= @permit.phone %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.phone') %></td>
+      <td><%= @permit.phone %></td>
+    </tr>
 
     <!-- Email address -->
-    <% if @permit.email.length != nil  %>
-      <tr>
-        <td>Email Address</td>
-        <td><%= @permit.email %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.email') %></td>
+      <td><%= @permit.email %></td>
+    </tr>
 
-    <!-- House area -->
-    <% if @permit.house_area != nil %>
+    <% if @permit.addition %>
+
+      <!-- House area -->
       <tr>
-        <td>House size</td>
+        <td><%= t('views.permit_mailer.send_permit_application.table.house_area') %></td>
         <td><%= @permit.house_area %> square feet</td>
       </tr>
-    <% end %>
 
-    <!-- Addition area -->
-    <% if @permit.addition_area != nil %>
+      <!-- Addition area -->
       <tr>
-        <td>Addition size</td>
+        <td><%= t('views.permit_mailer.send_permit_application.table.addition_area') %></td>
         <td><%= @permit.addition_area %> square feet</td>
       </tr>
-    <% end %>
 
-    <!-- Air conditioning type -->
-    <% if @permit.ac  != nil  %>
+      <!-- Air conditioning type -->
       <tr>
-        <td>Air conditioning type</td>
+        <td><%= t('views.permit_mailer.send_permit_application.table.ac') %></td>
         <td><%= @permit.ac %></td>
       </tr>
+
     <% end %>
 
-    <!-- Window count -->
-    <% if @permit.window_count != nil %>
+    <% if @permit.window %>
+      <!-- Window count -->
       <tr>
-        <td>Number of windows under repair</td>
+        <td><%= t('views.permit_mailer.send_permit_application.table.window_count') %></td>
         <td><%= @permit.window_count %></td>
       </tr>
     <% end %>
 
-    <!-- Door count -->
-    <% if @permit.door_count != nil %>
+    <% if @permit.door %>
+      <!-- Door count -->
       <tr>
-        <td>Number of doors under repair</td>
+        <td><%= t('views.permit_mailer.send_permit_application.table.window_count') %></td>
         <td><%= @permit.door_count %></td>
       </tr>
     <% end %>
 
     <!-- Work summary -->
-    <% if @permit.work_summary != nil  %>
-      <tr>
-        <td>Work Summary</td>
-        <td><%= @permit.work_summary %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.work_summary') %></td>
+      <td><%= @permit.work_summary %></td>
+    </tr>
 
     <!-- Job cost -->
-    <% if @permit.job_cost != nil %>
-      <tr>
-        <td>Job Cost</td>
-        <td><%= number_to_currency(@permit.job_cost) %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.job_cost') %></td>
+      <td><%= number_to_currency(@permit.job_cost) %></td>
+    </tr>
 
   </tbody>
 
