@@ -1,4 +1,4 @@
-class PermitSender < ActionMailer::Base
+class PermitMailer < ActionMailer::Base
   default from: "donotreply@homebasefix.com"
   layout 'email' # use views/layouts/email.html.erb as the base layout
 
@@ -13,9 +13,9 @@ class PermitSender < ActionMailer::Base
                                         :content => permit_binary_detail.binary.data }
 
     mail( :to => @permit.email,
-    :cc => 'sanantonio@codeforamerica.org',
+    #:cc => 'sanantonio@codeforamerica.org',
     :subject => 'New permit application has been generated',
-    :template_path => 'permit_sender',
+    :template_path => 'permit_mailer',
     :template_name => 'send_permit_application' )
                                     
   end
