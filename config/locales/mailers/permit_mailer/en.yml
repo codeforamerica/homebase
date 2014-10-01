@@ -1,0 +1,4 @@
+en:
+  mailers:
+    permit_mailer:
+      subject: "New permit application has been generated"

@@ -11,7 +11,7 @@ class PermitStepsController < ApplicationController
   STEPS = [ :answer_screener, :display_permits, :enter_details, :confirm_terms, :display_summary, :submit_application ]
 
   # Error steps, steps that should only be jumped to when there's an error
-  ERROR_STEPS = [ :error_page, :use_contractor, :send_email_success ]
+  ERROR_STEPS = [ :error_page, :use_contractor ]
 
   steps *(STEPS + ERROR_STEPS)
   
@@ -45,7 +45,6 @@ class PermitStepsController < ApplicationController
       if (@permit.contractor)
         jump_to(:use_contractor)
       else
-
         # Get hash of permit needs that was saved in session that will be used
         # to display permits in categories
         @permit_needs = session[:permit_needs]
@@ -56,6 +55,7 @@ class PermitStepsController < ApplicationController
       @permit_ac_options = @permit.ac_options
 
     when :display_summary
+
       # Get hash of permit needs that was saved in session that will be used
       # to display permits in categories
       @permit_needs = session[:permit_needs]
@@ -85,7 +85,7 @@ class PermitStepsController < ApplicationController
         # to display permits in categories
         @permit_needs = session[:permit_needs]
 
-        PermitSender.send_permit_application(@permit, @permit_needs, @unique_key).deliver
+        PermitMailer.send_permit_application(@permit, @permit_needs, @unique_key).deliver
 
         @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
                                 @permit.acs_struct ||
@@ -111,9 +111,9 @@ class PermitStepsController < ApplicationController
     # Update status so model can perform validation accordingly
     params[:permit][:status] = step.to_s
 
-    # Currently the last step is display_summary, because the later pages
+    # Currently the last step is submit application, because the later pages
     # are used as error paths, so will not use the steps.last for this
-    params[:permit][:status] = 'active' if step == :display_summary 
+    params[:permit][:status] = 'active' if step == :submit_application 
 
     case step
 

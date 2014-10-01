@@ -1,0 +1,4 @@
+es:
+  mailers:
+    permit_mailer:
+      subject: "Nueva aplicación de permiso se ha generado"
