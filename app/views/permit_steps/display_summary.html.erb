@@ -44,63 +44,52 @@
           <% end %>
 
           <!-- Homeowner name -->
-          <% if @permit.owner_name != nil %>
-            <tr>
-              <td><%= t('views.permit_steps.display_summary.table.owner_name') %></td>
-              <td><%= @permit.owner_name %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= t('views.permit_steps.display_summary.table.owner_name') %></td>
+            <td><%= @permit.owner_name %></td>
+          </tr>
 
           <!-- Project address -->
-          <% if @permit.owner_address != nil %>
-            <tr>
-              <td><%= t('views.permit_steps.display_summary.table.address') %></td>
-              <td><%= @permit.owner_address %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= t('views.permit_steps.display_summary.table.address') %></td>
+            <td><%= @permit.owner_address %></td>
+          </tr>
 
           <!-- Phone number -->
-          <% if @permit.phone != nil %>
-            <tr>
-              <td><%= t('views.permit_steps.display_summary.table.phone') %></td>
-              <td><%= @permit.phone %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= t('views.permit_steps.display_summary.table.phone') %></td>
+            <td><%= @permit.phone %></td>
+          </tr>
 
           <!-- Email address -->
-          <% if @permit.email != nil %>
-            <tr>
-              <td><%= t('views.permit_steps.display_summary.table.email') %></td>
-              <td><%= @permit.email %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= t('views.permit_steps.display_summary.table.email') %></td>
+            <td><%= @permit.email %></td>
+          </tr>
 
+          <% if @permit.addition %>
           <!-- House area -->
-          <% if @permit.house_area != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.size') %></td>
               <td><%= @permit.house_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
             </tr>
-          <% end %>
 
           <!-- Addition area -->
-          <% if @permit.addition_area != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.added_size') %></td>
               <td><%= @permit.addition_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
             </tr>
-          <% end %>
 
           <!-- Air conditioning type -->
-          <% if @permit.ac != nil %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.ac') %></td>
               <td><%= @permit.ac %></td>
             </tr>
+
           <% end %>
 
           <!-- Window count -->
-          <% if @permit.window_count != nil %>
+          <% if @permit.window %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.number_windows') %></td>
               <td><%= @permit.window_count %></td>
@@ -108,7 +97,7 @@
           <% end %>
 
           <!-- Door count -->
-          <% if @permit.door_count != nil %>
+          <% if @permit.door %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.number_doors') %></td>
               <td><%= @permit.door_count %></td>
@@ -116,20 +105,16 @@
           <% end %>
 
           <!-- Work summary -->
-          <% if @permit.work_summary != nil %>
-            <tr>
-              <td><%= t('views.permit_steps.display_summary.table.summary') %></td>
-              <td><%= @permit.work_summary %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= t('views.permit_steps.display_summary.table.summary') %></td>
+            <td><%= @permit.work_summary %></td>
+          </tr>
 
           <!-- Job cost -->
-          <% if @permit.job_cost != nil %>
-            <tr>
-              <td><%= t('views.permit_steps.display_summary.table.cost') %></td>
-              <td><%= number_to_currency(@permit.job_cost) %></td>
-            </tr>
-          <% end %>
+          <tr>
+            <td><%= t('views.permit_steps.display_summary.table.cost') %></td>
+            <td><%= number_to_currency(@permit.job_cost) %></td>
+          </tr>
 
         </tbody>
 
