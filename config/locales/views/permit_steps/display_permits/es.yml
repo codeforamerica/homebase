@@ -23,7 +23,7 @@ es:
             heading: "Este el costo de aplicación:"
             html: "Los costos de aplicación se basan en el <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Lista de tarifas [PDF]</a>."
           req_docs: "Estos son los documentos requeridos:"
-          misc_text: "Nosotros le ayudará a llenar estos fuera"
+          misc_text: "Nosotros le ayudará a llenar estos fuera:"
           permit_app: "Aplicación permiso"
           site_plan: "Plan de sitio"
           bring_id: "Usted también tendrá que:"

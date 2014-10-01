@@ -23,7 +23,7 @@ en:
             heading: "This is the application cost:"
             html: "Application costs are based on the <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Fee Schedule [PDF]</a>."
           req_docs: "These are the required documents:"
-          misc_text: "We will help you fill these out"
+          misc_text: "We will help you fill these out:"
           permit_app: "Permit application"
           site_plan: "Site plan"
           bring_id: "You will also need:"
