@@ -61,6 +61,12 @@ label.project {
   }
 }
 
+// style the error text
+.field_with_errors .form-control, .field_with_errors p {
+    color: #a94442;
+    font-weight: 700;
+}
+
 #addition {
     background-image: none\9;
     background-image: image-url("permits/new/addition.png");
