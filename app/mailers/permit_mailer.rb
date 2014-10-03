@@ -13,7 +13,7 @@ class PermitMailer < ActionMailer::Base
                                         :content => permit_binary_detail.binary.data }
 
     mail( :to => @permit.email,
-    #:cc => 'sanantonio@codeforamerica.org',
+    :cc => 'sanantonio@codeforamerica.org',
     :subject => I18n.t('mailers.permit_mailer.subject'),
     :template_path => 'permit_mailer',
     :template_name => 'send_permit_application' )
