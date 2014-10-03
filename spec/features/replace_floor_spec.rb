@@ -83,7 +83,7 @@ feature "Replace flooring" do
 
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Replace siding in my backyard"
@@ -102,7 +102,11 @@ feature "Replace flooring" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).not_to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).not_to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 

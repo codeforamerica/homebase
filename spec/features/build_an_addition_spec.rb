@@ -6,7 +6,7 @@ feature "Build an addition" do
     @cosa = FactoryGirl.create(:cosa_boundary)
   end
 
-  scenario "when user selects a Room Addition that needs permit (Greater than or equal to 1000 sq ft and more than 125 sq feet & 1 story)" do
+  scenario "when user selects a Room Addition that needs permit (less than 1000 sq ft and more than 125 sq feet & 1 story)" do
 
     visit '/permits'
 
@@ -50,7 +50,7 @@ feature "Build an addition" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.addition_info.house_area.question'), with: "1234"
@@ -73,11 +73,15 @@ feature "Build an addition" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
-  scenario "when user selects a Room Addition that needs permit (Greater than or equal to 1000 sq ft and equal to 125 sq feet & 1 story)" do
+  scenario "when user selects a Room Addition that needs permit (less than to 1000 sq ft and equal to 125 sq feet & 1 story)" do
 
     visit '/permits'
 
@@ -121,7 +125,7 @@ feature "Build an addition" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.addition_info.house_area.question'), with: "1234"
@@ -144,11 +148,15 @@ feature "Build an addition" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
-  scenario "when user selects a Room Addition that needs permit (Greater than or equal to 1000 sq ft and less than 125 sq feet & 1 story)" do
+  scenario "when user selects a Room Addition that needs permit (less than 1000 sq ft and less than 125 sq feet & 1 story)" do
 
     visit '/permits'
 
@@ -192,7 +200,7 @@ feature "Build an addition" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.addition_info.house_area.question'), with: "1234"
@@ -215,8 +223,11 @@ feature "Build an addition" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).not_to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).not_to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
   end
 
 

@@ -61,7 +61,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -80,8 +80,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
 
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
   end
 
   scenario "when user selects a deck that needs a permit (Greater than 200 sq ft & 
@@ -139,7 +142,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -158,7 +161,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -218,7 +225,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -237,7 +244,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -296,7 +307,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -315,7 +326,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -374,7 +389,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?('Steet address', with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -393,7 +408,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -452,7 +471,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -471,7 +490,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -530,7 +553,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -549,7 +572,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -608,7 +635,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -627,7 +654,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -688,7 +719,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -707,7 +738,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -766,7 +801,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -785,7 +820,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -845,7 +884,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -864,7 +903,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -923,7 +966,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -942,7 +985,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -1001,7 +1048,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -1020,7 +1067,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -1079,7 +1130,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -1098,7 +1149,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
@@ -1157,7 +1212,7 @@ feature "Build a deck" do
     #permit_steps#enter_details
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.name.question'), with: "John Doe"
     page.has_field?(I18n.t('views.permit_steps.enter_details.homeowner_info.address.question'), with: "302 Madison St, San Antonio, TX 78204")
-    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johndoe.com"
+    fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.email.question'), with: "john@johdoe.test"
     fill_in I18n.t('views.permit_steps.enter_details.homeowner_info.phone.question'), with: "413-456-3456"
 
     fill_in I18n.t('views.permit_steps.enter_details.final_info.work_summary.question'), with: "Building a new shed in my backyard"
@@ -1176,7 +1231,11 @@ feature "Build a deck" do
 
     expect(current_path).to eq('/en/permit_steps/display_summary')
     expect(page).to have_content(I18n.t('views.permit_steps.display_summary.intro.heading'))
-    #expect(page).to have_content(I18n.t('views.permit_steps.display_summary.site_plan.heading'))
+
+    click_on I18n.t('views.permit_steps.display_summary.permit.send_button')
+
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.intro.heading'))
+    expect(page).to have_content(I18n.t('views.permit_steps.submit_application.site_plan.heading'))
 
   end
 
