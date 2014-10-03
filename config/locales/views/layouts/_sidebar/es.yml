@@ -9,6 +9,7 @@ es:
         step_4: "4. Llene permisos"
         step_5: "5. Firme sus permisos"
         step_6: "6. Envíe sus permisos"
+        step_7: "7. Sus siguientes pasos"
         current_step: "Paso actual"
         project: "Su proyecto"
         addition: "Añadir Cuartos"

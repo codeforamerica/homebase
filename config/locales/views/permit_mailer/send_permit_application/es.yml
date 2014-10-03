@@ -1,0 +1,23 @@
+es:
+  views:
+    permit_mailer:
+      send_permit_application:
+        heading: "Un nuevo permiso ha sido creado"
+        details: "Hemos creado un nuevo permiso. Los detalles de permisos están por debajo."
+        attachment_details: "Su solicitud de permiso de terminar ha sido adjuntado."
+        questions: "Si tiene alguna pregunta, póngase en contacto con nosotros en help@homebasefix.com."
+        table:
+          field_name: "Nombre del campo"
+          response: "Tu respuesta"
+          projects: "Proyectos"
+          owner_name: "Nombre del propietario"
+          address: "Dirección"
+          phone: "Número de teléfono"
+          email: "Dirección de correo electrónico"
+          house_area: "Superficie de la Propiedad"
+          addition_area: "Tamaño adición"
+          ac: "Aire acondicionado tipo"
+          window_count: "Número de ventanas en reparación"
+          door_count: "Número de puertas en reparación"
+          work_summary: "Resumen trabajo"
+          job_cost: "Costo de empleo"

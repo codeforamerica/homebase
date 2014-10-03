@@ -1,0 +1,53 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 6} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1><%= t('views.permit_steps.submit_application.intro.heading') %></h1>
+    <p><%= t('views.permit_steps.submit_application.intro.body', email: @permit.email)  %></p>
+  </div><!-- ./intro -->
+
+  <!-- Site plan section -->
+  <% if @site_plan_required %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><%= t('views.permit_steps.submit_application.site_plan.heading') %></h4>
+      </div>
+      <div class="panel-body">
+        <p><%= t('views.permit_steps.submit_application.site_plan.description') %></p>
+        <p><%= t('views.permit_steps.submit_application.site_plan.instruction') %></p>
+        <p>
+          <a class="btn btn-primary btn-md" href="<%= asset_path('siteplan-packet-1.0.pdf') %>" target="_blank">
+            <%= t('views.permit_steps.submit_application.site_plan.download_button') %>
+          </a>
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- This is here and here and here -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4><%= t('views.permit_steps.submit_application.next_steps.heading') %></h4>
+    </div>
+    <div class="panel-body">
+      <p class="big-time"><%= t('views.permit_steps.submit_application.next_steps.timeframe') %></p>
+      <p><%= t('views.permit_steps.submit_application.next_steps.instruction') %></p>
+      <p><%= t('views.permit_steps.submit_application.next_steps.details') %></p>
+      <p><%= t('views.permit_steps.submit_application.next_steps.location.html') %></p>
+      <p><%= t('views.permit_steps.submit_application.next_steps.hour.html') %></p>
+      <p><%= t('views.permit_steps.submit_application.next_steps.bring.html') %>
+      <ul>
+        <li><%= t('views.permit_steps.submit_application.next_steps.site_plan') %></li>
+        <li><%= t('views.permit_steps.submit_application.next_steps.photo_id') %></li>
+        <li><%= t('views.permit_steps.submit_application.next_steps.ownership_proof') %></li>
+        <li><%= t('views.permit_steps.submit_application.next_steps.payment') %></li>
+      </ul>
+       <p><%= t('views.permit_steps.submit_application.next_steps.contact.html') %></p>
+    </div>
+  </div>
+
+</div><!-- ./col-sm-9 -->

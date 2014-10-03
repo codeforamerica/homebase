@@ -398,6 +398,8 @@ class Permit < ActiveRecord::Base
         update_attribute("addition", nil)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("addition", nil)
     end
 
     ####### Helpers Methods to change virtual attributes values to booleans ########
@@ -415,6 +417,8 @@ class Permit < ActiveRecord::Base
         update_attribute("acs_struct", nil)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("acs_struct", nil)
     end
 
     if to_bool(selected_deck)
@@ -429,6 +433,8 @@ class Permit < ActiveRecord::Base
         update_attribute("deck", nil)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("deck", nil)
     end
 
     if to_bool(selected_pool)
@@ -444,6 +450,8 @@ class Permit < ActiveRecord::Base
         update_attribute("pool", nil)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("pool", nil)
     end
 
     if to_bool(selected_cover)
@@ -456,6 +464,8 @@ class Permit < ActiveRecord::Base
         update_attribute("cover", nil)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("cover", nil)
     end
 
     if to_bool(selected_window)
@@ -468,6 +478,8 @@ class Permit < ActiveRecord::Base
         update_attribute("window", false)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("window", nil)
     end
 
     if to_bool(selected_door)
@@ -479,6 +491,8 @@ class Permit < ActiveRecord::Base
         update_attribute("door", false)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("door", nil)
     end
 
     if to_bool(selected_wall)
@@ -490,6 +504,8 @@ class Permit < ActiveRecord::Base
         update_attribute("wall", false)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("wall", nil)
     end
 
     if to_bool(selected_siding)
@@ -502,6 +518,8 @@ class Permit < ActiveRecord::Base
         update_attribute("siding", false)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("siding", nil)
     end
 
     if to_bool(selected_floor)
@@ -513,6 +531,8 @@ class Permit < ActiveRecord::Base
         update_attribute("floor", false)
       end
 
+    else # prevent attribute to be true if back button has been hit
+      update_attribute("floor", nil)
     end
 
 

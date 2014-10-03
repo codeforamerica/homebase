@@ -80,6 +80,10 @@ h1 {
   top: -1px;
 }
 
+.btn-lg {
+  margin-top: 10px;
+}
+
 /* styles for #project_details */
 .radio input[type="radio"], .checkbox input[type="checkbox"] {
 	margin-top: 7px;
@@ -125,4 +129,17 @@ h1 {
   background-color: #da2c2c;
   color: #fff;
   text-decoration: none;
+}
+
+/* Word breaking */
+.word-break, h1 {
+-ms-word-break: break-all;
+     word-break: break-all;
+
+     // Non standard for webkit
+     word-break: break-word;
+
+-webkit-hyphens: auto;
+   -moz-hyphens: auto;
+        hyphens: auto;
 }

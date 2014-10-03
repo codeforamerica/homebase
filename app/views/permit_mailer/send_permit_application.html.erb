@@ -1,0 +1,104 @@
+<h1><%= t('views.permit_mailer.send_permit_application.heading') %></h1>
+<p><%= t('views.permit_mailer.send_permit_application.details') %></p>
+<p><%= t('views.permit_mailer.send_permit_application.attachment_details') %></p>
+<p><%= t('views.permit_mailer.send_permit_application.questions') %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t('views.permit_mailer.send_permit_application.table.field_name') %></th>
+      <th><%= t('views.permit_mailer.send_permit_application.table.response') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <!-- Required permits -->
+    <% if ! @permit_needs["permit_needed"].empty? %>
+      <tr>
+        <td><%= t('views.permit_mailer.send_permit_application.table.projects') %></td>
+        <td>
+          <% @permit_needs["permit_needed"].each do |project| %>
+            <li><%= t(project) %></li>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+    <!-- Homeowner name -->
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.owner_name') %></td>
+      <td><%= @permit.owner_name %></td>
+    </tr>
+
+    <!-- Project address -->
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.address') %></td>
+      <td><%= @permit.owner_address %></td>
+    </tr>
+
+    <!-- Phone number -->
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.phone') %></td>
+      <td><%= @permit.phone %></td>
+    </tr>
+
+    <!-- Email address -->
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.email') %></td>
+      <td><%= @permit.email %></td>
+    </tr>
+
+    <% if @permit.addition %>
+
+      <!-- House area -->
+      <tr>
+        <td><%= t('views.permit_mailer.send_permit_application.table.house_area') %></td>
+        <td><%= @permit.house_area %> square feet</td>
+      </tr>
+
+      <!-- Addition area -->
+      <tr>
+        <td><%= t('views.permit_mailer.send_permit_application.table.addition_area') %></td>
+        <td><%= @permit.addition_area %> square feet</td>
+      </tr>
+
+      <!-- Air conditioning type -->
+      <tr>
+        <td><%= t('views.permit_mailer.send_permit_application.table.ac') %></td>
+        <td><%= @permit.ac %></td>
+      </tr>
+
+    <% end %>
+
+    <% if @permit.window %>
+      <!-- Window count -->
+      <tr>
+        <td><%= t('views.permit_mailer.send_permit_application.table.window_count') %></td>
+        <td><%= @permit.window_count %></td>
+      </tr>
+    <% end %>
+
+    <% if @permit.door %>
+      <!-- Door count -->
+      <tr>
+        <td><%= t('views.permit_mailer.send_permit_application.table.window_count') %></td>
+        <td><%= @permit.door_count %></td>
+      </tr>
+    <% end %>
+
+    <!-- Work summary -->
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.work_summary') %></td>
+      <td><%= @permit.work_summary %></td>
+    </tr>
+
+    <!-- Job cost -->
+    <tr>
+      <td><%= t('views.permit_mailer.send_permit_application.table.job_cost') %></td>
+      <td><%= number_to_currency(@permit.job_cost) %></td>
+    </tr>
+
+  </tbody>
+
+</table>

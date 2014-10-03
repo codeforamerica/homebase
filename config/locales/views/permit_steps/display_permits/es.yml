@@ -16,14 +16,14 @@ es:
             part_2: "que se quiere construir."
           body: "Nos puede ayudar a solicitar el permiso adecuado para este proyecto Llámenos al (210) 207-1111 y nosotros le ayudaremos."
         detail_permit_info:
-          heading: "ReparacionGeneral/ Residencial Solicitud de Permiso"
+          heading: "Reparacion General / Residencial Solicitud de Permiso"
           body: "Necesitará un reparación general / permiso de residencial en la mayoría de reparación residencial permisos separados se requieren para cualquier, o el trabajo de plomería eléctrica mecánica."
           helper_text: "Este el permiso para el proyecto(s) siguiente:"
           app_cost:
             heading: "Este el costo de aplicación:"
             html: "Los costos de aplicación se basan en el <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Lista de tarifas [PDF]</a>."
           req_docs: "Estos son los documentos requeridos:"
-          misc_text: "Nosotros le ayudará a llenar estos fuera"
+          misc_text: "Nosotros le ayudará a llenar estos fuera:"
           permit_app: "Aplicación permiso"
           site_plan: "Plan de sitio"
           bring_id: "Usted también tendrá que:"
