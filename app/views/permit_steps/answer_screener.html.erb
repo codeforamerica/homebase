@@ -3,10 +3,10 @@
 
 <!-- Begin step -->
 <div class="col-sm-9">
-  <h1><%= t('views.permit_steps.answer_screener.header') %></h1>
-  <%= form_for @permit, url: wizard_path, html: {name: "address-form"} do |f| %>
+  <h1><%= t('views.project_steps.answer_screener.header') %></h1>
+  <%= form_for @project, url: wizard_path, html: {name: "address-form"} do |f| %>
     <!-- error checking -->
-    <% if @permit.errors.any? %>
+    <% if @project.errors.any? %>
       <div class="alert alert-danger">
         <p><strong><%= t('views.defaults.error_statement') %></strong></p>
       </div>
@@ -34,7 +34,7 @@
     </div><!-- panel -->   
     <!-- ./address entry -->
 
-    <% if @permit.selected_addition %>
+    <% if @project.selected_addition %>
       <!-- Room Additions section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -43,7 +43,7 @@
         <div class="panel-body">
           <p><%= t('views.permit_steps.answer_screener.addition.question') %></p>
 
-            <% @permit_addition_screener.each do |attribute, details| %>
+            <% @project_addition_screener.each do |attribute, details| %>
 
               <%= render  partial: "permit_steps/form_helper/radio", 
                           locals: { f: f, 
@@ -57,7 +57,7 @@
       <!-- ./Room Additions section -->
     <% end %>
 
-    <% if @permit.selected_acs_struct %>
+    <% if @project.selected_acs_struct %>
       <!-- Shed/Garage Accessory Structure section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -66,7 +66,7 @@
         <div class="panel-body">
           <p><%= t('views.permit_steps.answer_screener.acs_struct.question') %></p>
 
-            <% @permit_acs_struct_screener.each do |attribute, details| %>
+            <% @project_acs_struct_screener.each do |attribute, details| %>
 
               <%= render  partial: "permit_steps/form_helper/radio", 
                           locals: { f: f, 
@@ -80,7 +80,7 @@
       <!-- ./Shed/Garage Accessory Structure -->
     <% end %>
 
-    <% if @permit.selected_deck %>
+    <% if @project.selected_deck %>
       <!-- Deck section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -89,7 +89,7 @@
         <div class="panel-body">
           <p><%= t('views.permit_steps.answer_screener.deck.question') %></p>
 
-            <% @permit_deck_screener.each do |attribute, details| %>
+            <% @project_deck_screener.each do |attribute, details| %>
 
               <%= render  partial: "permit_steps/form_helper/radio", 
                           locals: { f: f, 
@@ -103,7 +103,7 @@
       <!-- ./Deck section -->
     <% end %>
 
-    <% if @permit.selected_pool %>
+    <% if @project.selected_pool %>
       <!-- Swimming Pool section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -112,7 +112,7 @@
         <div class="panel-body">
           <p><%= t('views.permit_steps.answer_screener.pool.question') %></p>
 
-            <% @permit_pool_screener.each do |attribute, details| %>
+            <% @project_pool_screener.each do |attribute, details| %>
               
               <%= render  partial: "permit_steps/form_helper/radio", 
                           locals: { f: f, 
@@ -126,7 +126,7 @@
       <!-- ./Swimming Pool section -->
     <% end %>
     
-    <% if @permit.selected_window %>
+    <% if @project.selected_window %>
       <!-- Windows section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -149,7 +149,7 @@
     <% end %>
 
     
-    <% if @permit.selected_door %>
+    <% if @project.selected_door %>
       <!-- Doors section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -171,7 +171,7 @@
     <% end %>
 
     
-    <% if @permit.selected_wall %>
+    <% if @project.selected_wall %>
       <!-- Walls section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -193,7 +193,7 @@
     <% end %>
 
     
-    <% if @permit.selected_siding %>
+    <% if @project.selected_siding %>
       <!-- Siding Replacement section -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -216,7 +216,7 @@
     <% end %>
 
     
-    <% if @permit.selected_floor %>
+    <% if @project.selected_floor %>
       <!-- Floor - Structural Repairs section -->
       <div class="panel panel-default">
         <div class="panel-heading">

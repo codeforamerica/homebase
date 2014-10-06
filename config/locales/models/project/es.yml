@@ -1,6 +1,6 @@
 es:
   models:
-    permit:
+    project:
       addition:
         name: "Espacio/habitación"
         size:
@@ -99,7 +99,7 @@ es:
   activerecord:
     errors:
       models:
-        permit:
+        project:
           attributes:
             addition_size:
               blank: "Seleccione el tamaño del nuevo espacio o sala."

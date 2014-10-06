@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808041624) do
+ActiveRecord::Schema.define(version: 20141006002523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140808041624) do
   add_index "permit_binary_details", ["binary_id"], :name => "index_permit_binary_details_on_binary_id"
   add_index "permit_binary_details", ["permit_id"], :name => "index_permit_binary_details_on_permit_id"
 
-  create_table "permits", force: true do |t|
+  create_table "projects", force: true do |t|
     t.string   "owner_name"
     t.string   "owner_address"
     t.boolean  "addition"
@@ -76,5 +76,14 @@ ActiveRecord::Schema.define(version: 20140808041624) do
     t.float    "lat"
     t.float    "lng"
   end
+
+  create_table "windows", force: true do |t|
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "permit_id"
+  end
+
+  add_index "windows", ["permit_id"], :name => "index_windows_on_permit_id"
 
 end

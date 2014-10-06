@@ -3,8 +3,8 @@ class PermitMailer < ActionMailer::Base
   layout 'email' # use views/layouts/email.html.erb as the base layout
 
   # send the permit email to San Antonio Gov, pass in the user object that contains the user's email address
-  def send_permit_application(permit, permit_needs, unique_key)
-    @permit = permit
+  def send_permit_application(project, permit_needs, unique_key)
+    @project = project
     @permit_needs = permit_needs
     @unique_key = unique_key
 
@@ -12,8 +12,8 @@ class PermitMailer < ActionMailer::Base
     mail.attachments['permit.pdf'] = {  :mime_type => permit_binary_detail.content_type,
                                         :content => permit_binary_detail.binary.data }
 
-    mail( :to => @permit.email,
-    :cc => 'sanantonio@codeforamerica.org',
+    mail( :to => @project.email,
+    #:cc => 'sanantonio@codeforamerica.org',
     :subject => I18n.t('mailers.permit_mailer.subject'),
     :template_path => 'permit_mailer',
     :template_name => 'send_permit_application' )

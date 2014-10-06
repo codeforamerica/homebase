@@ -13,10 +13,10 @@
 
   <!-- Form -->
   <div class="form">
-    <%= form_for @permit, url: wizard_path, html: {name: "email-form"} do |f| %>
+    <%= form_for @project, url: wizard_path, html: {name: "email-form"} do |f| %>
 
     <!-- error checking -->
-    <% if @permit.errors.any? %>
+    <% if @project.errors.any? %>
       <div class="alert alert-danger">
         <p><strong><%= t('views.defaults.error_statement') %></strong></p>
       </div>
@@ -93,7 +93,7 @@
 
     <!-- ./Homeowner info section -->
 
-    <% if @permit.addition %>
+    <% if @project.addition %>
       <!-- Addition section --> 
 
       <div class="panel panel-default">
@@ -140,8 +140,8 @@
                           question: t('views.permit_steps.enter_details.addition_info.ac.question'),
                           helper_text: t('views.permit_steps.enter_details.addition_info.ac.helper_text'),
                           attribute: :ac, 
-                          options: @permit_ac_options,
-                          model_attribute: @permit.ac} %>
+                          options: @project_ac_options,
+                          model_attribute: @project.ac} %>
           </div>
 
           <!-- ./ac -->
@@ -153,7 +153,7 @@
       <% end %>
 
       <!-- Window section -->
-      <% if @permit.window %>
+      <% if @project.window %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4><%= t('views.permit_steps.enter_details.window_info.heading') %></h4>
@@ -175,7 +175,7 @@
       <% end %> <!-- window -->
 
       <!-- Door section -->
-      <% if @permit.door %>
+      <% if @project.door %>
         <div class="panel panel-default">
 
           <div class="panel-heading">

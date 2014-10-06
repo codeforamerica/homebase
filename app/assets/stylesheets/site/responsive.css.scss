@@ -7,7 +7,7 @@
   .container#content {
     margin-top:0; // we don't need this margin anymore
   }
-  .new_permit .col-md-4 {
+  .new_project .col-md-4 {
     padding-bottom: 5px;
   }
   .tagline {
@@ -59,7 +59,7 @@
 /* Extra small devices (phones, less than 479px) */
 
 @media (max-width: 479px) {
-  .new_permit .col-md-4 {
+  .new_project .col-md-4 {
     padding-bottom: 3px;
   }
   .btn-block {

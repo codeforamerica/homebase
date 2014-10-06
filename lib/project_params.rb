@@ -1,6 +1,6 @@
-module PermitParams
-  def permit_params
-   params.require(:permit).permit(
+module ProjectParams
+  def project_params
+   params.require(:project).permit(
     :owner_name, 
     :owner_address, 
     :lat,

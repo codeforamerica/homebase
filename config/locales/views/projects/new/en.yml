@@ -1,6 +1,6 @@
 en:
   views:
-    permits:
+    projects:
       new:
         intro:
           heading: "How would you like to improve your house?"

@@ -46,74 +46,74 @@
           <!-- Homeowner name -->
           <tr>
             <td><%= t('views.permit_steps.display_summary.table.owner_name') %></td>
-            <td><%= @permit.owner_name %></td>
+            <td><%= @project.owner_name %></td>
           </tr>
 
           <!-- Project address -->
           <tr>
             <td><%= t('views.permit_steps.display_summary.table.address') %></td>
-            <td><%= @permit.owner_address %></td>
+            <td><%= @project.owner_address %></td>
           </tr>
 
           <!-- Phone number -->
           <tr>
             <td><%= t('views.permit_steps.display_summary.table.phone') %></td>
-            <td><%= @permit.phone %></td>
+            <td><%= @project.phone %></td>
           </tr>
 
           <!-- Email address -->
           <tr>
             <td><%= t('views.permit_steps.display_summary.table.email') %></td>
-            <td class="word-break"><%= @permit.email %></td>
+            <td class="word-break"><%= @project.email %></td>
           </tr>
 
-          <% if @permit.addition %>
+          <% if @project.addition %>
           <!-- House area -->
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.size') %></td>
-              <td><%= @permit.house_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
+              <td><%= @project.house_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
             </tr>
 
           <!-- Addition area -->
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.added_size') %></td>
-              <td><%= @permit.addition_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
+              <td><%= @project.addition_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
             </tr>
 
           <!-- Air conditioning type -->
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.ac') %></td>
-              <td><%= @permit.ac %></td>
+              <td><%= @project.ac %></td>
             </tr>
 
           <% end %>
 
           <!-- Window count -->
-          <% if @permit.window %>
+          <% if @project.window %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.number_windows') %></td>
-              <td><%= @permit.window_count %></td>
+              <td><%= @project.window_count %></td>
             </tr>
           <% end %>
 
           <!-- Door count -->
-          <% if @permit.door %>
+          <% if @project.door %>
             <tr>
               <td><%= t('views.permit_steps.display_summary.table.number_doors') %></td>
-              <td><%= @permit.door_count %></td>
+              <td><%= @project.door_count %></td>
             </tr>
           <% end %>
 
           <!-- Work summary -->
           <tr>
             <td><%= t('views.permit_steps.display_summary.table.summary') %></td>
-            <td><%= @permit.work_summary %></td>
+            <td><%= @project.work_summary %></td>
           </tr>
 
           <!-- Job cost -->
           <tr>
             <td><%= t('views.permit_steps.display_summary.table.cost') %></td>
-            <td><%= number_to_currency(@permit.job_cost) %></td>
+            <td><%= number_to_currency(@project.job_cost) %></td>
           </tr>
 
         </tbody>

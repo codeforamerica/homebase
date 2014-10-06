@@ -1,6 +1,6 @@
 es:
   views:
-    permits:
+    projects:
       new:
         intro:
           heading: "¿Cómo le gustaría mejorar su casa?"

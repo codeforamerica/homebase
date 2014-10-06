@@ -1,8 +1,8 @@
-require 'permit_params'
+require 'project_params'
 require 'securerandom'
 
 class PermitStepsController < ApplicationController
-  include PermitParams
+  include ProjectParams
   include PermitStepsHelper
 
   include Wicked::Wizard
@@ -17,32 +17,32 @@ class PermitStepsController < ApplicationController
   
   def show
 
-    @permit = current_permit
+    @project = current_project
 
     # Re-populate the permit project selection from session variables
-    @permit.selected_addition = session[:selected_addition]
-    @permit.selected_acs_struct = session[:selected_acs_struct]
-    @permit.selected_deck = session[:selected_deck]
-    @permit.selected_pool = session[:selected_pool]
-    @permit.selected_cover = session[:selected_cover]
-    @permit.selected_window = session[:selected_window]
-    @permit.selected_door = session[:selected_door]
-    @permit.selected_wall = session[:selected_wall]
-    @permit.selected_siding = session[:selected_siding]
-    @permit.selected_floor = session[:selected_floor]
+    @project.selected_addition = session[:selected_addition]
+    @project.selected_acs_struct = session[:selected_acs_struct]
+    @project.selected_deck = session[:selected_deck]
+    @project.selected_pool = session[:selected_pool]
+    @project.selected_cover = session[:selected_cover]
+    @project.selected_window = session[:selected_window]
+    @project.selected_door = session[:selected_door]
+    @project.selected_wall = session[:selected_wall]
+    @project.selected_siding = session[:selected_siding]
+    @project.selected_floor = session[:selected_floor]
 
     case step
 
     when :answer_screener
-      @permit_addition_screener = @permit.addition_details
-      @permit_acs_struct_screener = @permit.acs_struct_details
-      @permit_deck_screener = @permit.deck_details
-      @permit_pool_screener = @permit.pool_details
+      @project_addition_screener = @project.addition_details
+      @project_acs_struct_screener = @project.acs_struct_details
+      @project_deck_screener = @project.deck_details
+      @project_pool_screener = @project.pool_details
 
 
     when :display_permits
 
-      if (@permit.contractor)
+      if (@project.contractor)
         jump_to(:use_contractor)
       else
         # Get hash of permit needs that was saved in session that will be used
@@ -52,7 +52,7 @@ class PermitStepsController < ApplicationController
 
     when :enter_details
 
-      @permit_ac_options = @permit.ac_options
+      @project_ac_options = @project.ac_options
 
     when :display_summary
 
@@ -67,14 +67,14 @@ class PermitStepsController < ApplicationController
 
       # Will temporarily save the generated permit pdf in tmp folder
       file_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
-      permit_created = create_permit(file_path, @permit)
+      permit_created = create_permit(file_path, @project)
 
       if permit_created
 
         # Save the generated permit pdf in the model
         content = IO.binread file_path
         @permit_binary_detail = PermitBinaryDetail.create(file_data: content, 
-                                                          permit_id: @permit.id, 
+                                                          permit_id: @project.id, 
                                                           filename: "#{@unique_key}.pdf")
 
         # Delete the temporary file after saved in the model
@@ -85,13 +85,13 @@ class PermitStepsController < ApplicationController
         # to display permits in categories
         @permit_needs = session[:permit_needs]
 
-        PermitMailer.send_permit_application(@permit, @permit_needs, @unique_key).deliver
+        PermitMailer.send_permit_application(@project, @permit_needs, @unique_key).deliver
 
-        @site_plan_required = ( @permit.addition && @permit.addition_area >= 125 ) ||
-                                @permit.acs_struct ||
-                                @permit.deck ||
-                                @permit.pool ||
-                                @permit.cover
+        @site_plan_required = ( @project.addition && @project.addition_area >= 125 ) ||
+                                @project.acs_struct ||
+                                @project.deck ||
+                                @project.pool ||
+                                @project.cover
 
       else
         jump_to(:error_page)       
@@ -106,80 +106,80 @@ class PermitStepsController < ApplicationController
   end
 
   def update
-    @permit = current_permit
+    @project = current_project
 
     # Update status so model can perform validation accordingly
-    params[:permit][:status] = step.to_s
+    params[:project][:status] = step.to_s
 
     # Currently the last step is submit application, because the later pages
     # are used as error paths, so will not use the steps.last for this
-    params[:permit][:status] = 'active' if step == :submit_application 
+    params[:project][:status] = 'active' if step == :submit_application 
 
     case step
 
     when :answer_screener
 
-      # Re-populate the permit project selection from session variables
-      params[:permit][:selected_addition] = session[:selected_addition]
-      params[:permit][:selected_acs_struct] = session[:selected_acs_struct]
-      params[:permit][:selected_deck] = session[:selected_deck]
-      params[:permit][:selected_pool] = session[:selected_pool]
-      params[:permit][:selected_cover] = session[:selected_cover]
-      params[:permit][:selected_window] = session[:selected_window]
-      params[:permit][:selected_door] = session[:selected_door]
-      params[:permit][:selected_wall] = session[:selected_wall]
-      params[:permit][:selected_siding] = session[:selected_siding]
-      params[:permit][:selected_floor] = session[:selected_floor]
+      # Re-populate the project project selection from session variables
+      params[:project][:selected_addition] = session[:selected_addition]
+      params[:project][:selected_acs_struct] = session[:selected_acs_struct]
+      params[:project][:selected_deck] = session[:selected_deck]
+      params[:project][:selected_pool] = session[:selected_pool]
+      params[:project][:selected_cover] = session[:selected_cover]
+      params[:project][:selected_window] = session[:selected_window]
+      params[:project][:selected_door] = session[:selected_door]
+      params[:project][:selected_wall] = session[:selected_wall]
+      params[:project][:selected_siding] = session[:selected_siding]
+      params[:project][:selected_floor] = session[:selected_floor]
 
       # Need to show screener again if errors occur
-      @permit_addition_screener = @permit.addition_details
-      @permit_acs_struct_screener = @permit.acs_struct_details
-      @permit_deck_screener = @permit.deck_details
-      @permit_pool_screener = @permit.pool_details
+      @project_addition_screener = @project.addition_details
+      @project_acs_struct_screener = @project.acs_struct_details
+      @project_deck_screener = @project.deck_details
+      @project_pool_screener = @project.pool_details
 
       # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
 
-      @permit.update_attributes(permit_params)
+      @project.update_attributes(project_params)
 
       # Save hash of permit needs in session which will be used
       # to display permits in categories
-      session[:permit_needs] = @permit.update_permit_needs_for_projects
+      session[:permit_needs] = @project.update_permit_needs_for_projects
 
     when :enter_details
 
       # Need to show ac options if errors occur
-      @permit_ac_options = @permit.ac_options
+      @project_ac_options = @project.ac_options
 
       # This will limit the number of times Geocoder is called as there is a 
       # limit on the number of times this is being called per day
       # @TODO: May want to make all caps comparison so to prevent case sensitive issue"
-      if params[:permit][:owner_address].strip != @permit.owner_address
+      if params[:project][:owner_address].strip != @project.owner_address
 
         # This will fill out all the address information (address, latitude, longitude)
         fill_in_address_details
       end
-      @permit.update_attributes(permit_params)
+      @project.update_attributes(project_params)
 
     when :confirm_terms
 
       # Remove leading or trailing spaces
       # @TODO: May want to make it all caps to prevent case sensitive compare later
-      params[:permit][:confirmed_name] = params[:permit][:confirmed_name].strip
-      @permit.update_attributes(permit_params)
+      params[:project][:confirmed_name] = params[:project][:confirmed_name].strip
+      @project.update_attributes(project_params)
 
     else # Default case
       
-      @permit.update_attributes(permit_params)
+      @project.update_attributes(project_params)
     end
 
-    if @permit.errors.any?
+    if @project.errors.any?
       # render the same step
       # @TODO: What does this mean?
       render_wizard
     else
       # render the next step
-      render_wizard(@permit)
+      render_wizard(@project)
     end
   end
 
@@ -204,16 +204,16 @@ class PermitStepsController < ApplicationController
   # This will help fill in all associated address information in params (address, lat, lng)
   def fill_in_address_details
 
-    address_details = CosaBoundary.address_details(params[:permit][:owner_address])
+    address_details = CosaBoundary.address_details(params[:project][:owner_address])
     
     if address_details
-      params[:permit][:owner_address] = address_details[:full_address]
-      params[:permit][:lat] = address_details[:lat]
-      params[:permit][:lng] = address_details[:lng]
+      params[:project][:owner_address] = address_details[:full_address]
+      params[:project][:lat] = address_details[:lat]
+      params[:project][:lng] = address_details[:lng]
     else
-      params[:permit][:owner_address] = nil
-      params[:permit][:lat] = nil
-      params[:permit][:lng] = nil
+      params[:project][:owner_address] = nil
+      params[:project][:lat] = nil
+      params[:project][:lng] = nil
     end
   end
 end
