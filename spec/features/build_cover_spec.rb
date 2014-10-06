@@ -8,11 +8,11 @@ feature "Build a cover" do
   
   scenario "when user selects a carport, patio cover, or porch cover that needs permit" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.cover.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.cover.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
@@ -32,7 +32,7 @@ feature "Build a cover" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.cover.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.cover.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 

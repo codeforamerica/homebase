@@ -11,30 +11,30 @@ feature "Build a deck" do
                                                         attached to dwelling & 
                                                         serve a required exit door)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -51,7 +51,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -92,30 +92,30 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -132,7 +132,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -175,30 +175,30 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -215,7 +215,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -257,30 +257,30 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -297,7 +297,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -339,30 +339,30 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -379,7 +379,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -421,30 +421,30 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -461,7 +461,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -503,30 +503,30 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -543,7 +543,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -585,30 +585,30 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.gt_200')
+      choose I18n.t('models.project.deck.size.options.gt_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -625,7 +625,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -669,30 +669,30 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     serve a required exit door)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -709,7 +709,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -751,30 +751,30 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -791,7 +791,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -834,30 +834,30 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -874,7 +874,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -916,30 +916,30 @@ feature "Build a deck" do
                                                                     Not attached to dwelling & 
                                                                     Not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.gt_30')
+      choose I18n.t('models.project.deck.grade.options.gt_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -956,7 +956,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -998,30 +998,30 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -1038,7 +1038,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -1080,30 +1080,30 @@ feature "Build a deck" do
                                                                     attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -1120,7 +1120,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -1162,30 +1162,30 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.served')
+      choose I18n.t('models.project.deck.exit_door.options.served')
     end
 
     within "div.contractor" do
@@ -1202,7 +1202,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.deck.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -1244,30 +1244,30 @@ feature "Build a deck" do
                                                                     not attached to dwelling & 
                                                                     not serve a required exit door))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.deck')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.deck')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.deck_size" do
-      choose I18n.t('models.permit.deck.size.options.lte_200')
+      choose I18n.t('models.project.deck.size.options.lte_200')
     end
 
     within "div.deck_grade" do
-      choose I18n.t('models.permit.deck.grade.options.lte_30')
+      choose I18n.t('models.project.deck.grade.options.lte_30')
     end
 
     within "div.deck_dwelling_attach" do
-      choose I18n.t('models.permit.deck.dwelling_attach.options.not_attached')
+      choose I18n.t('models.project.deck.dwelling_attach.options.not_attached')
     end
 
     within "div.deck_exit_door" do
-      choose I18n.t('models.permit.deck.exit_door.options.not_served')
+      choose I18n.t('models.project.deck.exit_door.options.not_served')
     end
 
     within "div.contractor" do
@@ -1284,7 +1284,7 @@ feature "Build a deck" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_not_needed').should have_content(I18n.t('models.permit.deck.name'))
+    page.find('div.permit_not_needed').should have_content(I18n.t('models.project.deck.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 

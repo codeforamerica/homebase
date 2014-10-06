@@ -3,7 +3,7 @@
 
 <!-- Begin step -->
 <div class="col-sm-9">
-  <h1><%= t('views.project_steps.answer_screener.header') %></h1>
+  <h1><%= t('views.permit_steps.answer_screener.header') %></h1>
   <%= form_for @project, url: wizard_path, html: {name: "address-form"} do |f| %>
     <!-- error checking -->
     <% if @project.errors.any? %>

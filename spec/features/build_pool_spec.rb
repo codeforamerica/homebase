@@ -8,22 +8,22 @@ feature "Build a swimming pool" do
   
   scenario "when user selects a swimming pool that needs permit (in ground & less than or equal to 5,000 gallons)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.pool')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.pool')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.pool_location" do
-      choose I18n.t('models.permit.pool.location.options.in_ground')
+      choose I18n.t('models.project.pool.location.options.in_ground')
     end
 
     within "div.pool_volume" do
-      choose I18n.t('models.permit.pool.volume.options.lte_5000')
+      choose I18n.t('models.project.pool.volume.options.lte_5000')
     end
 
     within "div.contractor" do
@@ -40,7 +40,7 @@ feature "Build a swimming pool" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.pool.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.pool.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -79,22 +79,22 @@ feature "Build a swimming pool" do
 
   scenario "when user selects a swimming pool that needs permit (in ground & more than 5,000 gallons)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.pool')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.pool')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.pool_location" do
-      choose I18n.t('models.permit.pool.location.options.in_ground')
+      choose I18n.t('models.project.pool.location.options.in_ground')
     end
 
     within "div.pool_volume" do
-      choose I18n.t('models.permit.pool.volume.options.gt_5000')
+      choose I18n.t('models.project.pool.volume.options.gt_5000')
     end
 
     within "div.contractor" do
@@ -111,7 +111,7 @@ feature "Build a swimming pool" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.pool.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.pool.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -150,22 +150,22 @@ feature "Build a swimming pool" do
 
   scenario "when user selects a swimming pool that do not need permit (above ground & less than and equal to 5,000 gallons)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.pool')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.pool')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.pool_location" do
-      choose I18n.t('models.permit.pool.location.options.above_ground')
+      choose I18n.t('models.project.pool.location.options.above_ground')
     end
 
     within "div.pool_volume" do
-      choose I18n.t('models.permit.pool.volume.options.lte_5000')
+      choose I18n.t('models.project.pool.volume.options.lte_5000')
     end
 
     within "div.contractor" do
@@ -182,7 +182,7 @@ feature "Build a swimming pool" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_not_needed').should have_content(I18n.t('models.permit.pool.name'))
+    page.find('div.permit_not_needed').should have_content(I18n.t('models.project.pool.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 
@@ -190,22 +190,22 @@ feature "Build a swimming pool" do
 
   scenario "when user selects a swimming pool that needs permit (above ground & more than 5,000 gallons)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.pool')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.pool')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.pool_location" do
-      choose I18n.t('models.permit.pool.location.options.above_ground')
+      choose I18n.t('models.project.pool.location.options.above_ground')
     end
 
     within "div.pool_volume" do
-      choose I18n.t('models.permit.pool.volume.options.gt_5000')
+      choose I18n.t('models.project.pool.volume.options.gt_5000')
     end
 
     within "div.contractor" do
@@ -222,7 +222,7 @@ feature "Build a swimming pool" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.pool.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.pool.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 

@@ -391,7 +391,7 @@ class Project < ActiveRecord::Base
     if to_bool(selected_addition) 
 
       if addition_permit_needed?
-        permit_needs["permit_needed"].push('models.permit.addition.name')
+        permit_needs["permit_needed"].push('models.project.addition.name')
         update_attribute("addition", true)
       else
         permit_needs["further_assistance_needed"].push('models.project.addition.name')

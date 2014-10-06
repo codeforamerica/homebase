@@ -8,22 +8,22 @@ feature "Build a shed or garage" do
   
   scenario "when user selects a Shed or Garage that needs permit (Greater than 120 sq ft & 1 story)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.acs_struct')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.acs_struct')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.acs_struct_size" do
-      choose I18n.t('models.permit.acs_struct.size.options.gt_120')
+      choose I18n.t('models.project.acs_struct.size.options.gt_120')
     end
 
     within "div.acs_struct_num_story" do
-      choose I18n.t('models.permit.acs_struct.num_story.options.one')
+      choose I18n.t('models.project.acs_struct.num_story.options.one')
     end
 
     within "div.contractor" do
@@ -40,7 +40,7 @@ feature "Build a shed or garage" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.acs_struct.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.acs_struct.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -79,22 +79,22 @@ feature "Build a shed or garage" do
 
   scenario "when user selects a Shed or Garage that do not need permit (Less than or equal to 120 sq ft & 1 story))" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.acs_struct')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.acs_struct')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.acs_struct_size" do
-      choose I18n.t('models.permit.acs_struct.size.options.lte_120')
+      choose I18n.t('models.project.acs_struct.size.options.lte_120')
     end
 
     within "div.acs_struct_num_story" do
-      choose I18n.t('models.permit.acs_struct.num_story.options.one')
+      choose I18n.t('models.project.acs_struct.num_story.options.one')
     end
 
     within "div.contractor" do
@@ -111,7 +111,7 @@ feature "Build a shed or garage" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_not_needed').should have_content(I18n.t('models.permit.acs_struct.name'))
+    page.find('div.permit_not_needed').should have_content(I18n.t('models.project.acs_struct.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 
@@ -120,22 +120,22 @@ feature "Build a shed or garage" do
 
   scenario "when user selects a Shed or Garage that needs further assistance (Less than or equal to 120 sq ft & 2 or more stories)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.acs_struct')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.acs_struct')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.acs_struct_size" do
-      choose I18n.t('models.permit.acs_struct.size.options.lte_120')
+      choose I18n.t('models.project.acs_struct.size.options.lte_120')
     end
 
     within "div.acs_struct_num_story" do
-      choose I18n.t('models.permit.acs_struct.num_story.options.two_or_more')
+      choose I18n.t('models.project.acs_struct.num_story.options.two_or_more')
     end
 
     within "div.contractor" do
@@ -152,7 +152,7 @@ feature "Build a shed or garage" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.further_assistance_needed').should have_content(I18n.t('models.permit.acs_struct.name'))
+    page.find('div.further_assistance_needed').should have_content(I18n.t('models.project.acs_struct.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 
@@ -160,22 +160,22 @@ feature "Build a shed or garage" do
 
   scenario "when user selects a Shed or Garage that needs further assistance (Greater than 120 sq ft & 2 or more stories)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.acs_struct')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.acs_struct')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.acs_struct_size" do
-      choose I18n.t('models.permit.acs_struct.size.options.gt_120')
+      choose I18n.t('models.project.acs_struct.size.options.gt_120')
     end
 
     within "div.acs_struct_num_story" do
-      choose I18n.t('models.permit.acs_struct.num_story.options.two_or_more')
+      choose I18n.t('models.project.acs_struct.num_story.options.two_or_more')
     end
 
     within "div.contractor" do
@@ -192,7 +192,7 @@ feature "Build a shed or garage" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.further_assistance_needed').should have_content(I18n.t('models.permit.acs_struct.name'))
+    page.find('div.further_assistance_needed').should have_content(I18n.t('models.project.acs_struct.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 

@@ -8,22 +8,22 @@ feature "Build an addition" do
 
   scenario "when user selects a Room Addition that needs permit (less than 1000 sq ft and more than 125 sq feet & 1 story)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.addition.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.addition.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.addition_size" do
-      choose I18n.t('models.permit.addition.size.options.lt_1000')
+      choose I18n.t('models.project.addition.size.options.lt_1000')
     end
 
     within "div.addition_num_story" do
-      choose I18n.t('models.permit.addition.num_story.options.one')
+      choose I18n.t('models.project.addition.num_story.options.one')
     end
 
     within "div.contractor" do
@@ -40,7 +40,7 @@ feature "Build an addition" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.addition.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.addition.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -83,22 +83,22 @@ feature "Build an addition" do
 
   scenario "when user selects a Room Addition that needs permit (less than to 1000 sq ft and equal to 125 sq feet & 1 story)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.addition.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.addition.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.addition_size" do
-      choose I18n.t('models.permit.addition.size.options.lt_1000')
+      choose I18n.t('models.project.addition.size.options.lt_1000')
     end
 
     within "div.addition_num_story" do
-      choose I18n.t('models.permit.addition.num_story.options.one')
+      choose I18n.t('models.project.addition.num_story.options.one')
     end
 
     within "div.contractor" do
@@ -115,7 +115,7 @@ feature "Build an addition" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.addition.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.addition.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -158,22 +158,22 @@ feature "Build an addition" do
 
   scenario "when user selects a Room Addition that needs permit (less than 1000 sq ft and less than 125 sq feet & 1 story)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.addition.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.addition.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.addition_size" do
-      choose I18n.t('models.permit.addition.size.options.lt_1000')
+      choose I18n.t('models.project.addition.size.options.lt_1000')
     end
 
     within "div.addition_num_story" do
-      choose I18n.t('models.permit.addition.num_story.options.one')
+      choose I18n.t('models.project.addition.num_story.options.one')
     end
 
     within "div.contractor" do
@@ -190,7 +190,7 @@ feature "Build an addition" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.permit_needed').should have_content(I18n.t('models.permit.addition.name'))
+    page.find('div.permit_needed').should have_content(I18n.t('models.project.addition.name'))
 
     click_on I18n.t('views.permit_steps.display_permits.submit')
 
@@ -236,22 +236,22 @@ feature "Build an addition" do
 
   scenario "when user selects a Room Addition that needs further assistance (Greater than or equal to 1000 sq ft & 1 story)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.addition.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.addition.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.addition_size" do
-      choose I18n.t('models.permit.addition.size.options.gte_1000')
+      choose I18n.t('models.project.addition.size.options.gte_1000')
     end
 
     within "div.addition_num_story" do
-      choose I18n.t('models.permit.addition.num_story.options.one')
+      choose I18n.t('models.project.addition.num_story.options.one')
     end
 
     within "div.contractor" do
@@ -268,7 +268,7 @@ feature "Build an addition" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.further_assistance_needed').should have_content(I18n.t('models.permit.addition.name'))
+    page.find('div.further_assistance_needed').should have_content(I18n.t('models.project.addition.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 
@@ -277,22 +277,22 @@ feature "Build an addition" do
 
   scenario "when user selects a Room Addition that needs further assistance (less than to 1000 sq ft & 2 or more stories)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.addition.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.addition.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.addition_size" do
-      choose I18n.t('models.permit.addition.size.options.lt_1000')
+      choose I18n.t('models.project.addition.size.options.lt_1000')
     end
 
     within "div.addition_num_story" do
-      choose I18n.t('models.permit.addition.num_story.options.two_or_more')
+      choose I18n.t('models.project.addition.num_story.options.two_or_more')
     end
 
     within "div.contractor" do
@@ -309,7 +309,7 @@ feature "Build an addition" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.further_assistance_needed').should have_content(I18n.t('models.permit.addition.name'))
+    page.find('div.further_assistance_needed').should have_content(I18n.t('models.project.addition.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 
@@ -317,22 +317,22 @@ feature "Build an addition" do
 
   scenario "when user selects a Room Addition that needs further assistance (Greater than or equal to 1000 sq ft & 2 or more stories)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.addition.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.addition.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.addition_size" do
-      choose I18n.t('models.permit.addition.size.options.gte_1000')
+      choose I18n.t('models.project.addition.size.options.gte_1000')
     end
 
     within "div.addition_num_story" do
-      choose I18n.t('models.permit.addition.num_story.options.two_or_more')
+      choose I18n.t('models.project.addition.num_story.options.two_or_more')
     end
 
     within "div.contractor" do
@@ -349,7 +349,7 @@ feature "Build an addition" do
     expect(page).to have_content(I18n.t('views.permit_steps.display_permits.intro_text'))
 
     #permit_steps#display_permits
-    page.find('div.further_assistance_needed').should have_content(I18n.t('models.permit.addition.name'))
+    page.find('div.further_assistance_needed').should have_content(I18n.t('models.project.addition.name'))
 
     page.has_no_button? I18n.t('views.permit_steps.display_permits.submit')
 
@@ -357,22 +357,22 @@ feature "Build an addition" do
 
   scenario "when user selects a Room Addition using a contractor (less than to 1000 sq ft & 1 story)" do
 
-    visit '/permits'
+    visit '/projects'
 
-    # permit#new
-    check I18n.t('views.permits.new.project.addition.raw')
-    click_on I18n.t('views.permits.new.submit')
+    # project#new
+    check I18n.t('views.projects.new.project.addition.raw')
+    click_on I18n.t('views.projects.new.submit')
 
     expect(current_path).to eq('/en/permit_steps/answer_screener')
     expect(page).to have_content(I18n.t('views.permit_steps.answer_screener.header'))
 
     #permit_steps#answer_screener
     within "div.addition_size" do
-      choose I18n.t('models.permit.addition.size.options.lt_1000')
+      choose I18n.t('models.project.addition.size.options.lt_1000')
     end
 
     within "div.addition_num_story" do
-      choose I18n.t('models.permit.addition.num_story.options.one')
+      choose I18n.t('models.project.addition.num_story.options.one')
     end
 
     within "div.contractor" do
