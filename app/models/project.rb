@@ -1,8 +1,9 @@
 class Project < ActiveRecord::Base 
   has_many :permit_binary_details
   has_many :binaries, through: :permit_binary_details
+  has_one :general_repair_permit
 
- 
+  accepts_nested_attributes_for :general_repair_permit
   include ActiveModel::Validations
   
 
