@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006002523) do
+ActiveRecord::Schema.define(version: 20141007051509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,32 @@ ActiveRecord::Schema.define(version: 20141006002523) do
     t.float    "acres"
   end
 
+  create_table "general_repair_permits", force: true do |t|
+    t.boolean  "addition"
+    t.integer  "house_area"
+    t.integer  "addition_area"
+    t.string   "ac"
+    t.integer  "window_count"
+    t.boolean  "door"
+    t.integer  "door_count"
+    t.boolean  "wall"
+    t.boolean  "siding"
+    t.boolean  "floor"
+    t.boolean  "cover"
+    t.boolean  "pool"
+    t.boolean  "deck"
+    t.boolean  "acs_struct"
+    t.boolean  "accepted_terms"
+    t.text     "work_summary"
+    t.decimal  "job_cost",       precision: 15, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.boolean  "window"
+  end
+
+  add_index "general_repair_permits", ["project_id"], :name => "index_general_repair_permits_on_project_id"
+
   create_table "permit_binary_details", force: true do |t|
     t.string   "filename"
     t.string   "content_type"
@@ -49,41 +75,14 @@ ActiveRecord::Schema.define(version: 20141006002523) do
   create_table "projects", force: true do |t|
     t.string   "owner_name"
     t.string   "owner_address"
-    t.boolean  "addition"
-    t.integer  "house_area"
-    t.integer  "addition_area"
-    t.string   "ac"
     t.string   "phone"
     t.string   "email"
-    t.text     "work_summary"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "job_cost",       precision: 15, scale: 2
     t.string   "status"
-    t.boolean  "window"
-    t.boolean  "door"
-    t.boolean  "wall"
-    t.boolean  "siding"
-    t.boolean  "floor"
-    t.integer  "window_count"
-    t.integer  "door_count"
-    t.boolean  "cover"
-    t.boolean  "pool"
-    t.boolean  "deck"
-    t.boolean  "acs_struct"
-    t.boolean  "accepted_terms"
     t.boolean  "contractor"
     t.float    "lat"
     t.float    "lng"
   end
-
-  create_table "windows", force: true do |t|
-    t.integer  "count"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "permit_id"
-  end
-
-  add_index "windows", ["permit_id"], :name => "index_windows_on_permit_id"
 
 end

@@ -17,5 +17,6 @@ class RemoveMovedColumnsFromProjects < ActiveRecord::Migration
     remove_column :projects, :acs_struct, :boolean
     remove_column :projects, :accepted_terms, :boolean
     remove_column :projects, :work_summary, :text
+    remove_column :projects, :job_cost, :decimal
   end
 end
