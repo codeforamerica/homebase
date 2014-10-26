@@ -8,41 +8,8 @@ class Project < ActiveRecord::Base
   
 
   ######## Virtual Attributes ########
-
-                # User selected projects
-  attr_accessor :selected_addition,
-                :selected_acs_struct,
-                :selected_deck,
-                :selected_pool,
-                :selected_cover,
-                :selected_window,
-                :selected_door,
-                :selected_wall,
-                :selected_siding,
-                :selected_floor,
-
-                #:contractor,
-                
-                :confirmed_name,
-
-                # Room Addition
-                :addition_size, :addition_num_story,
-                # Accessory Structure
-                :acs_struct_size, :acs_struct_num_story,
-                # Deck
-                :deck_size, :deck_grade, :deck_dwelling_attach, :deck_exit_door,
-                # Pool
-                :pool_location, :pool_volume,
-                # Window
-                :window_replace_glass,
-                # Door
-                :door_replace_existing,
-                # Wall
-                :wall_general_changes,
-                # Siding
-                :siding_over_existing,
-                # Floor
-                :floor_covering
+           
+  attr_accessor :confirmed_name
   
   ######## Validations #######
 
@@ -105,30 +72,31 @@ class Project < ActiveRecord::Base
   validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i
 
-  # Addition Section
-  validates_presence_of :house_area, :if => :active_or_details_addition?
-  validates_numericality_of :house_area, :if => :only_if_house_presence?
-  validates_presence_of :addition_area, :if => :active_or_details_addition?
-  validates_numericality_of :addition_area, :if => :only_if_addition_presence?
-  validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?
-  validates_presence_of :ac, :if => :active_or_details_addition?
+  # Addition Section # @TODO: move to general repair permits
+  # validates_presence_of :house_area, :if => :active_or_details_addition?
+  # validates_numericality_of :house_area, :if => :only_if_house_presence?
+  # validates_presence_of :addition_area, :if => :active_or_details_addition?
+  # validates_numericality_of :addition_area, :if => :only_if_addition_presence?
+  # validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?
+  # validates_presence_of :ac, :if => :active_or_details_addition?
 
-  # Window Section
-  validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?
+  # Window Section # @TODO: move to general repair permits
+  # validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?
   
-  # Door Section
-  validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?
+  # Door Section # @TODO: move to general repair permits
+  # validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?
 
-  # Final Info Section
-  validates_presence_of :work_summary, :if => :active_or_details?
-  validates_presence_of :job_cost, :if => :active_or_details?
-  validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
-  validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
+  # Final Info Section @TODO: move to general repair permits
+  # validates_presence_of :work_summary, :if => :active_or_details?
+  # validates_presence_of :job_cost, :if => :active_or_details?
+  # validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
+  # validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
 
-  ## Validations on permit_step#confirm_terms ##
+  ## Validations on permit_step#confirm_terms ## @TODO: move to general repair permits
 
-  validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
-  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.project.ensure_name_confirmed_msg')
+  # validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
+  # before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.project.ensure_name_confirmed_msg')
+
   # @TODO: may want to do this instead of before_save
   # class Person < ActiveRecord::Base
   #   validates :email, confirmation: true
@@ -205,6 +173,9 @@ class Project < ActiveRecord::Base
   end
 
   def only_if_screener_addition?
+    puts "************only_if_screener_addition: #{status.to_s.include?('answer_screener')}, #{to_bool(selected_addition)}"
+    puts "addition_size: #{addition_size}"
+
     status.to_s.include?('answer_screener') && to_bool(selected_addition)
   end
 
@@ -297,247 +268,107 @@ class Project < ActiveRecord::Base
     end
   end
 
-  
-  ########  Business Logic for when project is needed ########
+  # Formatter
 
-  # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
-  def addition_permit_needed?
-    if addition_size.eql?("lessThan1000") && addition_num_story.eql?("1Story")
-      return true
-    else
-      return nil
+  def create_needed_permits
+
+    if GeneralRepairPermit.is_needed?(self)
+      self.general_repair_permit ||= GeneralRepairPermit.new
+      if GeneralRepairPermit.addition_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {addition: true})
+      end
+      if GeneralRepairPermit.acs_struct_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {acs_struct: true})
+      end
+      if GeneralRepairPermit.deck_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {deck: true})
+      end
+      if GeneralRepairPermit.pool_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {pool: true})
+      end
+      if GeneralRepairPermit.cover_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {cover: true})
+      end
+      if GeneralRepairPermit.window_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {window: true})
+      end
+      if GeneralRepairPermit.door_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {door: true})
+      end
+      if GeneralRepairPermit.wall_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {wall: true})
+      end
+      if GeneralRepairPermit.siding_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {siding: true})
+      end
+      if GeneralRepairPermit.floor_permit_needed?(self)
+        update_attributes(general_repair_permit_attributes: {floor: true})
+      end
+      # Add more subproject check
     end
+
+    # Add more permits
+
   end
 
-  def acs_struct_permit_needed?
-    if acs_struct_size.eql?('greaterThan120') && acs_struct_num_story.eql?('1Story')
-      return true
-    elsif acs_struct_size.eql?('lessThanEqualTo120') && acs_struct_num_story.eql?('1Story')
-      return false
-    else
-      return nil
+  # Output: {general_repair_permit => {addition => true, door => true}, historical_form => {addition => true, door => false}}
+  def get_require_permits_for_subprojects
+    response = {}
+    response[:general_repair_permit] = GeneralRepairPermit.subprojects_needs(self)
+    # Add more forms and permits here
+    # response[:name_of_permit] = PermitClass.is_needed?(self)
+
+    return response
+  end 
+
+  # Input:  {general_repair_permit => {addition => true, door => true}, historical_form => {addition => true, door => false}}, true
+  # Output: [addition, door]
+  # Input:  {general_repair_permit => {addition => true, door => true}, historical_form => {addition => true, door => false}}, false
+  # Output: [door]
+  def self.get_subprojects_permit_needed(required_permits, permit_needed_check)
+    response = []
+    required_permits.each do | permit, subproject_pair |
+      subproject_pair.each do | subproject, permit_needed |
+        if permit_needed == permit_needed_check
+          response.push("models.project.#{subproject.to_s.sub('selected_', '')}.name")
+        end
+      end
     end
+    return response.uniq
   end
 
-  def deck_permit_needed?
-    if  deck_size.eql?('lessThanEqualTo200') && 
-        deck_grade.eql?('lessThanEqualTo30') && 
-        deck_dwelling_attach.eql?('notAttachedToDwelling') && 
-        deck_exit_door.eql?('noExitDoor')
-      return false
-    else
-      return true
+  # Input: {general_repair_permit => {addition => true, door => true}, historical_form => {addition => true, door => false}}
+  # Output: { general_repair_permit => {addition, door}, historical_form => {addition}}
+  def self.get_permits_to_subprojects(required_permits)
+    response = {}
+    required_permits.each do | permit, subproject_pair |
+      subproject_pair.each do | subproject, permit_needed |
+        if permit_needed == true
+          if response[permit] == nil
+            response[permit] = []
+          end
+          response[permit].push(subproject)
+        end
+      end
     end
+    return response
   end
 
-  def pool_permit_needed?
-    if pool_location.eql?('inGround')
-      return true
-    elsif pool_location.eql?('aboveGround') && pool_volume.eql?('moreThan5000')
-      return true
-    elsif pool_location.eql?('aboveGround') && pool_volume.eql?('lessThanEqualTo5000')
-      return false
-    else
-      return nil
-    end
-  end
+  def get_permit_needed_info
+    response = {}
+    response[:required_permits] = get_require_permits_for_subprojects
+    # @TODO: May need to manipulate if something in permit_needed, should it be in not_permit, what about if
+    # something needs further assistance, do I still apply for permit?
+    response[:permit_needed] = self.class.get_subprojects_permit_needed(response[:required_permits], true)
+    response[:permit_not_needed] = self.class.get_subprojects_permit_needed(response[:required_permits], false)
+    response[:further_assistance_needed] = self.class.get_subprojects_permit_needed(response[:required_permits], nil)
+    #response[:subproject_to_permits] = self.class.get_subproject_to_permits
+    response[:permits_to_subprojects] = self.class.get_permits_to_subprojects(response[:required_permits])
+    return response
 
-  def cover_permit_needed?
-    return true
-  end
-
-  def window_permit_needed?
-    if to_bool(window_replace_glass)
-      return false
-    else
-      return true
-    end
-  end
-
-  def door_permit_needed?
-    if to_bool(door_replace_existing)
-      return false
-    else
-      return true
-    end
-  end
-
-  def wall_permit_needed?
-    if to_bool(wall_general_changes)
-      return false
-    else
-      return true
-    end
-  end
-
-  def siding_permit_needed?
-    if to_bool(siding_over_existing)
-      return false
-    else
-      return true
-    end
-  end
-
-  def floor_permit_needed?
-    if to_bool(floor_covering)
-      return false
-    else
-      return true
-    end
-  end
-
-  def update_permit_needs_for_projects
-    permit_needs = { "permit_needed" => [], "permit_not_needed" => [], "further_assistance_needed" => [] }
-
-    if to_bool(selected_addition) 
-
-      if addition_permit_needed?
-        permit_needs["permit_needed"].push('models.project.addition.name')
-        update_attribute("addition", true)
-      else
-        permit_needs["further_assistance_needed"].push('models.project.addition.name')
-        update_attribute("addition", nil)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("addition", nil)
-    end
-
-    ####### Helpers Methods to change virtual attributes values to booleans ########
-    # @TODO: Check if these are necessary anymore
-
-    if to_bool(selected_acs_struct)
-
-      if acs_struct_permit_needed?
-        permit_needs["permit_needed"].push('models.project.acs_struct.name')
-        update_attribute("acs_struct", true)
-      elsif acs_struct_permit_needed? == false
-        permit_needs["permit_not_needed"].push('models.project.acs_struct.name')
-      else
-        permit_needs["further_assistance_needed"].push('models.project.acs_struct.name')
-        update_attribute("acs_struct", nil)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("acs_struct", nil)
-    end
-
-    if to_bool(selected_deck)
-
-      if deck_permit_needed?
-        permit_needs["permit_needed"].push('models.project.deck.name')
-        update_attribute("deck", true)
-      elsif deck_permit_needed? == false
-        permit_needs["permit_not_needed"].push('models.project.deck.name')
-      else
-        permit_needs["further_assistance_needed"].push('models.project.deck.name')
-        update_attribute("deck", nil)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("deck", nil)
-    end
-
-    if to_bool(selected_pool)
-
-      if pool_permit_needed?
-        permit_needs["permit_needed"].push('models.project.pool.name')
-        update_attribute("pool", true)
-      elsif pool_permit_needed? == false
-        permit_needs["permit_not_needed"].push('models.project.pool.name')
-        update_attribute("pool", false)
-      else
-        permit_needs["further_assistance_needed"].push('models.project.pool.name')
-        update_attribute("pool", nil)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("pool", nil)
-    end
-
-    if to_bool(selected_cover)
-
-      if cover_permit_needed?
-        permit_needs["permit_needed"].push('models.project.cover.name')
-        update_attribute("cover", true)
-      else
-        permit_needs["further_assistance_needed"].push('models.project.cover.name')
-        update_attribute("cover", nil)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("cover", nil)
-    end
-
-    if to_bool(selected_window)
-
-      if window_permit_needed?
-        permit_needs["permit_needed"].push('models.project.window.name')
-        update_attribute("window", true)
-      else
-        permit_needs["permit_not_needed"].push('models.project.window.name')
-        update_attribute("window", false)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("window", nil)
-    end
-
-    if to_bool(selected_door)
-      if door_permit_needed?
-        permit_needs["permit_needed"].push('models.project.door.name')
-        update_attribute("door", true)
-      else
-        permit_needs["permit_not_needed"].push('models.project.door.name')
-        update_attribute("door", false)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("door", nil)
-    end
-
-    if to_bool(selected_wall)
-      if wall_permit_needed?
-        permit_needs["permit_needed"].push('models.project.wall.name')
-        update_attribute("wall", true)
-      else
-        permit_needs["permit_not_needed"].push('models.project.wall.name')
-        update_attribute("wall", false)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("wall", nil)
-    end
-
-    if to_bool(selected_siding)
-
-      if siding_permit_needed?
-        permit_needs["permit_needed"].push('models.project.siding.name')
-        update_attribute("siding", true)
-      else
-        permit_needs["permit_not_needed"].push('models.project.siding.name')
-        update_attribute("siding", false)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("siding", nil)
-    end
-
-    if to_bool(selected_floor)
-      if floor_permit_needed?
-        permit_needs["permit_needed"].push('models.project.floor.name')
-        update_attribute("floor", true)
-      else
-        permit_needs["permit_not_needed"].push('models.project.floor.name')
-        update_attribute("floor", false)
-      end
-
-    else # prevent attribute to be true if back button has been hit
-      update_attribute("floor", nil)
-    end
+    # permit_not_needed only if it doesn't exist in permit_needed or further_assistance_needed
 
 
-    return permit_needs
   end
 
   def to_bool(value)

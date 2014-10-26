@@ -8,14 +8,14 @@
   <div class="intro">
     <h1><%= t('views.permit_steps.display_permits.intro_text') %></h1>
   </div>
-  
+  <%= @permit_needs %>
   <!-- Permit Not Needed Projects -->
-  <% if ! @permit_needs["permit_not_needed"].empty? %>
+  <% if ! @permit_needs[:permit_not_needed].empty? %>
 
     <div class="alert alert-success permit_not_needed" role="alert">
       <h4><%= t('views.permit_steps.display_permits.permit_not_needed.heading') %></h4>
       <ul>
-        <% @permit_needs["permit_not_needed"].each do |project| %>
+        <% @permit_needs[:permit_not_needed].each do |project| %>
           <li><%= t(project) %></li>
         <% end %>
       </ul>
@@ -26,12 +26,12 @@
   <!-- ./Permit Not Needed Project -->
   
   <!-- Permit Needed Projects -->
-  <% if ! @permit_needs["permit_needed"].empty? %>
+  <% if ! @permit_needs[:permit_needed].empty? %>
   
     <div class="alert alert-warning permit_needed" role="alert">
       <h4><%= t('views.permit_steps.display_permits.permit_needed.heading') %></h4>
         <ul>
-          <% @permit_needs["permit_needed"].each do |project| %>
+          <% @permit_needs[:permit_needed].each do |project| %>
             <li><%= t(project) %></li>
           <% end %>
         </ul>
@@ -42,11 +42,11 @@
   <!-- ./Permit Needed Project -->
   
   <!-- Further Assistance Needed Projects -->
-  <% if ! @permit_needs["further_assistance_needed"].empty? %>
+  <% if ! @permit_needs[:further_assistance_needed].empty? %>
 
     <div class="alert alert-danger further_assistance_needed" role="alert">
       <p class="info-top"><%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_1') %>
-        <% @permit_needs["further_assistance_needed"].each do |project| %>
+        <% @permit_needs[:further_assistance_needed].each do |project| %>
           <span class="project-title"><%= t(project) %></span>
         <% end %>
         <%= t('views.permit_steps.display_permits.further_assistance_needed.helper_text.part_2') %>
@@ -56,7 +56,7 @@
 
   <% end %>
 
-  <% if ! @permit_needs["permit_needed"].empty? %>
+  <% if ! @permit_needs[:permit_needed].empty? %>
 
     <div class="panel panel-default panel-info-addition">
       <div class="panel-heading">
@@ -66,7 +66,7 @@
         <p><%= t('views.permit_steps.display_permits.detail_permit_info.body') %></p>
         <p><strong><%= t('views.permit_steps.display_permits.detail_permit_info.helper_text') %></strong></p>    
         <ul>
-          <% @permit_needs["permit_needed"].each do |project| %>
+          <% @permit_needs[:permit_needed].each do |project| %>
             <li><%= t(project) %></li>
           <% end %>
         </ul>            

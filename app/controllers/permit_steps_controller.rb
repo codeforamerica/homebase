@@ -20,16 +20,16 @@ class PermitStepsController < ApplicationController
     @project = current_project
 
     # Re-populate the permit project selection from session variables
-    @project.selected_addition = session[:selected_addition]
-    @project.selected_acs_struct = session[:selected_acs_struct]
-    @project.selected_deck = session[:selected_deck]
-    @project.selected_pool = session[:selected_pool]
-    @project.selected_cover = session[:selected_cover]
-    @project.selected_window = session[:selected_window]
-    @project.selected_door = session[:selected_door]
-    @project.selected_wall = session[:selected_wall]
-    @project.selected_siding = session[:selected_siding]
-    @project.selected_floor = session[:selected_floor]
+    # @project.selected_addition = session[:selected_addition]
+    # @project.selected_acs_struct = session[:selected_acs_struct]
+    # @project.selected_deck = session[:selected_deck]
+    # @project.selected_pool = session[:selected_pool]
+    # @project.selected_cover = session[:selected_cover]
+    # @project.selected_window = session[:selected_window]
+    # @project.selected_door = session[:selected_door]
+    # @project.selected_wall = session[:selected_wall]
+    # @project.selected_siding = session[:selected_siding]
+    # @project.selected_floor = session[:selected_floor]
 
     case step
 
@@ -47,11 +47,16 @@ class PermitStepsController < ApplicationController
       else
         # Get hash of permit needs that was saved in session that will be used
         # to display permits in categories
-        @permit_needs = session[:permit_needs]
+        #@permit_needs = session[:permit_needs]
+        puts "*******@permit_needs = #{@permit_needs}*******"
+        @permit_needs = @project.get_permit_needed_info
+        session[:permit_needs] = @permit_needs
+        puts "*******@permit_needs1 = #{@permit_needs1}********"
       end
 
     when :enter_details
 
+      @project.create_needed_permits
       @project_ac_options = @project.ac_options
 
     when :display_summary
@@ -109,6 +114,9 @@ class PermitStepsController < ApplicationController
     @project = current_project
 
     # Update status so model can perform validation accordingly
+    if params[:project] == nil
+      params[:project] = {}
+    end
     params[:project][:status] = step.to_s
 
     # Currently the last step is submit application, because the later pages
@@ -120,16 +128,16 @@ class PermitStepsController < ApplicationController
     when :answer_screener
 
       # Re-populate the project project selection from session variables
-      params[:project][:selected_addition] = session[:selected_addition]
-      params[:project][:selected_acs_struct] = session[:selected_acs_struct]
-      params[:project][:selected_deck] = session[:selected_deck]
-      params[:project][:selected_pool] = session[:selected_pool]
-      params[:project][:selected_cover] = session[:selected_cover]
-      params[:project][:selected_window] = session[:selected_window]
-      params[:project][:selected_door] = session[:selected_door]
-      params[:project][:selected_wall] = session[:selected_wall]
-      params[:project][:selected_siding] = session[:selected_siding]
-      params[:project][:selected_floor] = session[:selected_floor]
+      # params[:project][:selected_addition] = session[:selected_addition]
+      # params[:project][:selected_acs_struct] = session[:selected_acs_struct]
+      # params[:project][:selected_deck] = session[:selected_deck]
+      # params[:project][:selected_pool] = session[:selected_pool]
+      # params[:project][:selected_cover] = session[:selected_cover]
+      # params[:project][:selected_window] = session[:selected_window]
+      # params[:project][:selected_door] = session[:selected_door]
+      # params[:project][:selected_wall] = session[:selected_wall]
+      # params[:project][:selected_siding] = session[:selected_siding]
+      # params[:project][:selected_floor] = session[:selected_floor]
 
       # Need to show screener again if errors occur
       @project_addition_screener = @project.addition_details
@@ -144,7 +152,7 @@ class PermitStepsController < ApplicationController
 
       # Save hash of permit needs in session which will be used
       # to display permits in categories
-      session[:permit_needs] = @project.update_permit_needs_for_projects
+      #session[:permit_needs] = @project.update_permit_needs_for_projects
 
     when :enter_details
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007051509) do
+ActiveRecord::Schema.define(version: 20141026192510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,31 @@ ActiveRecord::Schema.define(version: 20141007051509) do
     t.boolean  "contractor"
     t.float    "lat"
     t.float    "lng"
+    t.boolean  "selected_addition"
+    t.boolean  "selected_acs_struct"
+    t.boolean  "selected_deck"
+    t.boolean  "selected_pool"
+    t.boolean  "selected_cover"
+    t.boolean  "selected_window"
+    t.boolean  "selected_door"
+    t.boolean  "selected_wall"
+    t.boolean  "selected_siding"
+    t.boolean  "selected_floor"
+    t.string   "addition_size"
+    t.string   "addition_num_story"
+    t.string   "acs_struct_size"
+    t.string   "acs_struct_num_story"
+    t.string   "deck_size"
+    t.string   "deck_grade"
+    t.string   "deck_dwelling_attach"
+    t.string   "deck_exit_door"
+    t.string   "pool_location"
+    t.string   "pool_volume"
+    t.boolean  "window_replace_glass"
+    t.boolean  "door_replace_existing"
+    t.boolean  "wall_general_changes"
+    t.boolean  "siding_over_existing"
+    t.boolean  "floor_covering"
   end
 
 end
