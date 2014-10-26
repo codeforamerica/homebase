@@ -1,31 +1,14 @@
 module ProjectParams
   def project_params
    params.require(:project).permit(
+    :id,
     :owner_name, 
     :owner_address, 
     :lat,
     :lng,
-    :addition, 
-    :house_area, 
-    :addition_area, 
-    :ac, 
     :phone,
     :email,
-    :work_summary,
-    :job_cost,
     :status,
-    :window,
-    :door,
-    :wall,
-    :siding,
-    :floor,
-    :window_count,
-    :door_count,
-    :cover,
-    :pool,
-    :deck,
-    :acs_struct,
-    :accepted_terms,
 
     # --Virtual Attributes--
     :selected_addition,
@@ -59,7 +42,26 @@ module ProjectParams
     :floor_covering,
 
     :confirmed_name,
-    :contractor
+    :contractor,
+    general_repair_permit_attributes: [ :id,
+                                        :addition,
+                                        :house_area,
+                                        :addition_area,
+                                        :ac,
+                                        :window_count,
+                                        :door,
+                                        :door_count,
+                                        :wall,
+                                        :siding,
+                                        :floor,
+                                        :cover,
+                                        :pool,
+                                        :deck,
+                                        :acs_struct,
+                                        :accepted_terms,
+                                        :work_summary,
+                                        :job_cost,
+                                        :project_id]
     )
  end
 end

@@ -275,7 +275,12 @@ class Project < ActiveRecord::Base
     if GeneralRepairPermit.is_needed?(self)
       self.general_repair_permit ||= GeneralRepairPermit.new
       if GeneralRepairPermit.addition_permit_needed?(self)
+        puts "general_repair_permit.addition: #{general_repair_permit.addition}"
+        puts "********************__________Updating addition_________***********"
         update_attributes(general_repair_permit_attributes: {addition: true})
+
+        puts "********************__________Updated addition_________***********"
+        puts "general_repair_permit.addition: #{general_repair_permit.addition}"
       end
       if GeneralRepairPermit.acs_struct_permit_needed?(self)
         update_attributes(general_repair_permit_attributes: {acs_struct: true})

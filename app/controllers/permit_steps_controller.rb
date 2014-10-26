@@ -19,18 +19,6 @@ class PermitStepsController < ApplicationController
 
     @project = current_project
 
-    # Re-populate the permit project selection from session variables
-    # @project.selected_addition = session[:selected_addition]
-    # @project.selected_acs_struct = session[:selected_acs_struct]
-    # @project.selected_deck = session[:selected_deck]
-    # @project.selected_pool = session[:selected_pool]
-    # @project.selected_cover = session[:selected_cover]
-    # @project.selected_window = session[:selected_window]
-    # @project.selected_door = session[:selected_door]
-    # @project.selected_wall = session[:selected_wall]
-    # @project.selected_siding = session[:selected_siding]
-    # @project.selected_floor = session[:selected_floor]
-
     case step
 
     when :answer_screener
@@ -126,18 +114,6 @@ class PermitStepsController < ApplicationController
     case step
 
     when :answer_screener
-
-      # Re-populate the project project selection from session variables
-      # params[:project][:selected_addition] = session[:selected_addition]
-      # params[:project][:selected_acs_struct] = session[:selected_acs_struct]
-      # params[:project][:selected_deck] = session[:selected_deck]
-      # params[:project][:selected_pool] = session[:selected_pool]
-      # params[:project][:selected_cover] = session[:selected_cover]
-      # params[:project][:selected_window] = session[:selected_window]
-      # params[:project][:selected_door] = session[:selected_door]
-      # params[:project][:selected_wall] = session[:selected_wall]
-      # params[:project][:selected_siding] = session[:selected_siding]
-      # params[:project][:selected_floor] = session[:selected_floor]
 
       # Need to show screener again if errors occur
       @project_addition_screener = @project.addition_details
