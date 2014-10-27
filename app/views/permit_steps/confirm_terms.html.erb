@@ -31,7 +31,10 @@
           <p><%= t('views.permit_steps.confirm_terms.requirement.body') %></p>
           
           <!-- Only display slab information if this project will have a foundation -->
-          <% if @project.addition || @project.acs_struct || @project.cover %>
+          <% if @project.general_repair_permit.addition || 
+                @project.general_repair_permit.acs_struct || 
+                @project.general_repair_permit.cover %>
+
             <p><%= t('views.permit_steps.confirm_terms.requirement.engineer_letter.html') %></p>              
           <% end %>
 
@@ -46,11 +49,13 @@
             </div>
           <% end %>
 
+          <%= f.fields_for :general_repair_permit do |ff| %>
           <div class="checkbox">
-            <%= f.label :accepted_terms do %>
-              <%= f.check_box :accepted_terms %> <%= t('views.permit_steps.confirm_terms.requirement.accept_text') %>
+            <%= ff.label :accepted_terms do %>
+              <%= ff.check_box :accepted_terms %> <%= t('views.permit_steps.confirm_terms.requirement.accept_text') %>
             <% end %>
           </div>
+          <% end %>
 
       </div><!-- ./panel-body -->
     </div><!-- ./panel -->

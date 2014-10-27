@@ -80,11 +80,11 @@ class PermitStepsController < ApplicationController
 
         PermitMailer.send_permit_application(@project, @permit_needs, @unique_key).deliver
 
-        @site_plan_required = ( @project.addition && @project.addition_area >= 125 ) ||
-                                @project.acs_struct ||
-                                @project.deck ||
-                                @project.pool ||
-                                @project.cover
+        @site_plan_required = ( @project.general_repair_permit.addition && @project.general_repair_permit.addition_area >= 125 ) ||
+                                @project.general_repair_permit.acs_struct ||
+                                @project.general_repair_permit.deck ||
+                                @project.general_repair_permit.pool ||
+                                @project.general_repair_permit.cover
 
       else
         jump_to(:error_page)       
@@ -124,6 +124,7 @@ class PermitStepsController < ApplicationController
       # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
 
+      puts "^^^^^^^^^^^^^^update: answer_screener #{@project.to_s}^^^^^^^^^^^^^^^"
       @project.update_attributes(project_params)
 
       # Save hash of permit needs in session which will be used
@@ -143,6 +144,7 @@ class PermitStepsController < ApplicationController
         # This will fill out all the address information (address, latitude, longitude)
         fill_in_address_details
       end
+      puts "^^^^^^^^^^^^^^update: enter_details #{@project.to_s}^^^^^^^^^^^^^^^"
       @project.update_attributes(project_params)
 
     when :confirm_terms
@@ -150,10 +152,11 @@ class PermitStepsController < ApplicationController
       # Remove leading or trailing spaces
       # @TODO: May want to make it all caps to prevent case sensitive compare later
       params[:project][:confirmed_name] = params[:project][:confirmed_name].strip
+      puts "^^^^^^^^^^^^^^update: confirm_terms #{@project.to_s}^^^^^^^^^^^^^^^"
       @project.update_attributes(project_params)
 
     else # Default case
-      
+       puts "^^^^^^^^^^^^^^update: default #{@project.to_s}^^^^^^^^^^^^^^^"     
       @project.update_attributes(project_params)
     end
 

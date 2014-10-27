@@ -274,43 +274,51 @@ class Project < ActiveRecord::Base
 
     if GeneralRepairPermit.is_needed?(self)
       self.general_repair_permit ||= GeneralRepairPermit.new
-      if GeneralRepairPermit.addition_permit_needed?(self)
-        puts "general_repair_permit.addition: #{general_repair_permit.addition}"
-        puts "********************__________Updating addition_________***********"
+      if selected_addition && GeneralRepairPermit.addition_permit_needed?(self)
+        puts "$$$$$$$$ Addition is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {addition: true})
-
-        puts "********************__________Updated addition_________***********"
-        puts "general_repair_permit.addition: #{general_repair_permit.addition}"
       end
-      if GeneralRepairPermit.acs_struct_permit_needed?(self)
+      if selected_acs_struct && GeneralRepairPermit.acs_struct_permit_needed?(self)
+        puts "$$$$$$$$ acs_struct is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {acs_struct: true})
       end
-      if GeneralRepairPermit.deck_permit_needed?(self)
+      if selected_deck && GeneralRepairPermit.deck_permit_needed?(self)
+        puts "$$$$$$$$ deck is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {deck: true})
       end
-      if GeneralRepairPermit.pool_permit_needed?(self)
+      if selected_pool && GeneralRepairPermit.pool_permit_needed?(self)
+        puts "$$$$$$$$ Pool is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {pool: true})
       end
-      if GeneralRepairPermit.cover_permit_needed?(self)
+      if selected_cover && GeneralRepairPermit.cover_permit_needed?(self)
+        puts "$$$$$$$$ cover is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {cover: true})
       end
-      if GeneralRepairPermit.window_permit_needed?(self)
+      if selected_window && GeneralRepairPermit.window_permit_needed?(self)
+        puts "$$$$$$$$ window is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {window: true})
       end
-      if GeneralRepairPermit.door_permit_needed?(self)
+      if selected_door && GeneralRepairPermit.door_permit_needed?(self)
+        puts "$$$$$$$$ door is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {door: true})
       end
-      if GeneralRepairPermit.wall_permit_needed?(self)
+      if selected_wall && GeneralRepairPermit.wall_permit_needed?(self)
+        puts "$$$$$$$$ wall is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {wall: true})
       end
-      if GeneralRepairPermit.siding_permit_needed?(self)
+      if selected_siding && GeneralRepairPermit.siding_permit_needed?(self)
+        puts "$$$$$$$$ siding is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {siding: true})
       end
-      if GeneralRepairPermit.floor_permit_needed?(self)
+      if selected_floor && GeneralRepairPermit.floor_permit_needed?(self)
+        puts "$$$$$$$$ floor is needed $$$$$$$$$"
         update_attributes(general_repair_permit_attributes: {floor: true})
       end
       # Add more subproject check
+    puts "^^^^^^^^^^^^^^create_needed_permits: #{self.to_json}^^^^^^^^^^^^^^^"
+    puts "^^^^^^^^^^^^^^create_needed_permits #{self.general_repair_permit.to_json}^^^^^^^^^^^^^^^"
     end
+
 
     # Add more permits
 

@@ -2,7 +2,7 @@ require 'timeout'
 require 'pdf_forms'
 
 module PermitStepsHelper
-  def create_permit (file_path, permit)
+  def create_permit (file_path, project)
     pdftk = PdfForms.new('pdftk')
     template_path = "#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf"
     field_names = pdftk.get_field_names("#{Rails.root}/lib/PermitForms/general-repairs-form-template.pdf")
@@ -19,47 +19,47 @@ module PermitStepsHelper
                     file_path, 
                     { 
                       'DATE'                => Date.today.strftime("%m/%d/%Y"),
-                      'JOB_COST'            => view_context.number_to_currency(permit.job_cost),
-                      'OWNER_NAME'          => permit.owner_name, 
-                      'ADDRESS'             => permit.owner_address,
+                      'JOB_COST'            => view_context.number_to_currency(project.general_repair_permit.job_cost),
+                      'OWNER_NAME'          => project.owner_name, 
+                      'ADDRESS'             => project.owner_address,
 
-                      'ADDITIONS_CHECKBOX'  => permit.addition ? "X" : ' ',
-                      'SQ_FOOT_HOUSE'       => permit.house_area,
-                      'SQ_FOOT_ADDITION'    => permit.addition_area,
+                      'ADDITIONS_CHECKBOX'  => project.general_repair_permit.addition ? "X" : ' ',
+                      'SQ_FOOT_HOUSE'       => project.general_repair_permit.house_area,
+                      'SQ_FOOT_ADDITION'    => project.general_repair_permit.addition_area,
                       # @TODO: I may need to put all these choices in shared file
-                      'AC_NONE'             => permit.ac == I18n.t('models.project.ac.options.none') ? "X" : ' ',
-                      'AC_WALL_UNIT'        => permit.ac == I18n.t('models.project.ac.options.wall') ? "X" : ' ',
-                      'AC_EXTENDED'         => permit.ac == I18n.t('models.project.ac.options.extended') ? "X" : ' ',
-                      'AC_NEW_SPLIT'        => permit.ac == I18n.t('models.project.ac.options.split') ? "X" : ' ',
+                      'AC_NONE'             => project.general_repair_permit.ac == I18n.t('models.project.ac.options.none') ? "X" : ' ',
+                      'AC_WALL_UNIT'        => project.general_repair_permit.ac == I18n.t('models.project.ac.options.wall') ? "X" : ' ',
+                      'AC_EXTENDED'         => project.general_repair_permit.ac == I18n.t('models.project.ac.options.extended') ? "X" : ' ',
+                      'AC_NEW_SPLIT'        => project.general_repair_permit.ac == I18n.t('models.project.ac.options.split') ? "X" : ' ',
 
-                      'ACCESSORY_STRUCTURE_CHECKBOX' => permit.acs_struct ? "X" : ' ',
+                      'ACCESSORY_STRUCTURE_CHECKBOX' => project.general_repair_permit.acs_struct ? "X" : ' ',
 
-                      'DECK_CHECKBOX'           => permit.deck ? "X" : ' ',
+                      'DECK_CHECKBOX'           => project.general_repair_permit.deck ? "X" : ' ',
 
-                      'POOL_CHECKBOX'           => permit.pool ? "X" : ' ',
+                      'POOL_CHECKBOX'           => project.general_repair_permit.pool ? "X" : ' ',
                       
-                      'CARPORT_COVER_CHECKBOX'  => permit.cover ? "X" : ' ',
+                      'CARPORT_COVER_CHECKBOX'  => project.general_repair_permit.cover ? "X" : ' ',
 
-                      'GENERAL_REPAIRS_CHECKBOX'  => (permit.window ||
-                                                      permit.door ||
-                                                      permit.wall ||
-                                                      permit.siding ||
-                                                      permit.floor) ? "X" : ' ',
-                      'WINDOWS_CHECKBOX'          => permit.window ? "X" : ' ',
-                      'NUMBER_WINDOWS'            => permit.window_count,
-                      'DOORS_CHECKBOX'            => permit.door ? "X" : ' ',
-                      'NUMBER_DOORS'              => permit.door_count,
-                      'WALLS_CHECKBOX'            => permit.wall ? "X" : ' ',
-                      'SIDING_CHECKBOX'           => permit.siding ? "X" : ' ',
-                      'FLOOR_STRUCTURAL_CHECKBOX' => permit.floor ? "X" : ' ',
+                      'GENERAL_REPAIRS_CHECKBOX'  => (project.general_repair_permit.window ||
+                                                      project.general_repair_permit.door ||
+                                                      project.general_repair_permit.wall ||
+                                                      project.general_repair_permit.siding ||
+                                                      project.general_repair_permit.floor) ? "X" : ' ',
+                      'WINDOWS_CHECKBOX'          => project.general_repair_permit.window ? "X" : ' ',
+                      'NUMBER_WINDOWS'            => project.general_repair_permit.window_count,
+                      'DOORS_CHECKBOX'            => project.general_repair_permit.door ? "X" : ' ',
+                      'NUMBER_DOORS'              => project.general_repair_permit.door_count,
+                      'WALLS_CHECKBOX'            => project.general_repair_permit.wall ? "X" : ' ',
+                      'SIDING_CHECKBOX'           => project.general_repair_permit.siding ? "X" : ' ',
+                      'FLOOR_STRUCTURAL_CHECKBOX' => project.general_repair_permit.floor ? "X" : ' ',
 
                       # According to DSD logic, homeowner is contractor if they're doing project
-                      'CONTRACTOR_NAME'           => permit.owner_name,
-                      'TELEPHONE'                 => permit.phone,
-                      'EMAIL'                     => permit.email,
-                      'WORK_SUMMARY'              => permit.work_summary,
+                      'CONTRACTOR_NAME'           => project.owner_name,
+                      'TELEPHONE'                 => project.phone,
+                      'EMAIL'                     => project.email,
+                      'WORK_SUMMARY'              => project.general_repair_permit.work_summary,
 
-                      'SIGNATURE'                 => "#{permit.owner_name}  - SIGNED WITH HOMEBASE #{Date.today.strftime('%m/%d/%Y')}"
+                      'SIGNATURE'                 => "#{project.owner_name}  - SIGNED WITH HOMEBASE #{Date.today.strftime('%m/%d/%Y')}"
 
                     },
                     flatten: true
