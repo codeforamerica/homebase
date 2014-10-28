@@ -43,19 +43,16 @@ class Project < ActiveRecord::Base
   validates_presence_of :pool_volume, :if => :only_if_screener_pool?
 
   # Window Section
-  validates_presence_of :window_replace_glass, :if => :only_if_screener_window?
+  validates_inclusion_of :window_replace_glass, :in => [true, false], :if => :only_if_screener_window?
   
   # Door Section
-  validates_presence_of :door_replace_existing, :if => :only_if_screener_door?
+  validates_inclusion_of :door_replace_existing, :in => [true, false], :if => :only_if_screener_door?
   
   # Wall Section
-  validates_presence_of :wall_general_changes, :if => :only_if_screener_wall?
-  
-  # Siding Section
-  validates_presence_of :siding_over_existing, :if => :only_if_screener_siding?
+  validates_inclusion_of :wall_general_changes, :in => [true, false], :if => :only_if_screener_wall?
   
   # Floor Section
-  validates_presence_of :floor_covering, :if => :only_if_screener_floor?
+  validates_inclusion_of :floor_covering, :in => [true, false], :if => :only_if_screener_floor?
 
   # Contractor Section
   validates_inclusion_of :contractor, :in => [true, false], :if => :active_or_screener?
@@ -274,46 +271,50 @@ class Project < ActiveRecord::Base
 
     if GeneralRepairPermit.is_needed?(self)
       self.general_repair_permit ||= GeneralRepairPermit.new
+      attributes = {}
       if selected_addition && GeneralRepairPermit.addition_permit_needed?(self)
         puts "$$$$$$$$ Addition is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {addition: true})
+        attributes[:addition] = true
       end
       if selected_acs_struct && GeneralRepairPermit.acs_struct_permit_needed?(self)
         puts "$$$$$$$$ acs_struct is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {acs_struct: true})
+        attributes[:acs_struct] = true
       end
       if selected_deck && GeneralRepairPermit.deck_permit_needed?(self)
         puts "$$$$$$$$ deck is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {deck: true})
+        attributes[:deck] = true
       end
       if selected_pool && GeneralRepairPermit.pool_permit_needed?(self)
         puts "$$$$$$$$ Pool is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {pool: true})
+        attributes[:pool] = true
       end
       if selected_cover && GeneralRepairPermit.cover_permit_needed?(self)
         puts "$$$$$$$$ cover is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {cover: true})
+        attributes[:cover] = true
       end
       if selected_window && GeneralRepairPermit.window_permit_needed?(self)
         puts "$$$$$$$$ window is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {window: true})
+        attributes[:window] = true
       end
       if selected_door && GeneralRepairPermit.door_permit_needed?(self)
         puts "$$$$$$$$ door is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {door: true})
+        attributes[:door] = true
       end
       if selected_wall && GeneralRepairPermit.wall_permit_needed?(self)
         puts "$$$$$$$$ wall is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {wall: true})
+        attributes[:wall] = true
       end
       if selected_siding && GeneralRepairPermit.siding_permit_needed?(self)
         puts "$$$$$$$$ siding is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {siding: true})
+        attributes[:siding] = true
       end
       if selected_floor && GeneralRepairPermit.floor_permit_needed?(self)
         puts "$$$$$$$$ floor is needed $$$$$$$$$"
-        update_attributes(general_repair_permit_attributes: {floor: true})
+        attributes[:floor] = true
       end
+
+      general_repair_permit_attributes = attributes
+      self.save
       # Add more subproject check
     puts "^^^^^^^^^^^^^^create_needed_permits: #{self.to_json}^^^^^^^^^^^^^^^"
     puts "^^^^^^^^^^^^^^create_needed_permits #{self.general_repair_permit.to_json}^^^^^^^^^^^^^^^"

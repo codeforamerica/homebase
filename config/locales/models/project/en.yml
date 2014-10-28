@@ -122,15 +122,15 @@ en:
             pool_volume:
               blank: "Select the size of the swimming pool."
             window_replace_glass:
-              blank: "Select whether you are only replacing broken glass or not."
+              inclusion: "Select whether you are only replacing broken glass or not."
             door_replace_existing:
-              blank: "Select whether you are only replacing doors on their existing hinges or not."
+              inclusion: "Select whether you are only replacing doors on their existing hinges or not."
             wall_general_changes:
-              blank: "Select whether you are only painting, adding wallpaper, or repairing sheetrock — not moving or altering studs."
+              inclusion: "Select whether you are only painting, adding wallpaper, or repairing sheetrock — not moving or altering studs."
             siding_over_existing:
-              blank: "Select whether you are only placing new siding over existing siding or not."
+              inclusion: "Select whether you are only placing new siding over existing siding or not."
             floor_covering:
-              blank: "Select whether you are only replacing or adding carpet, tile, wood, or laminate flooring."
+              inclusion: "Select whether you are only replacing or adding carpet, tile, wood, or laminate flooring."
             contractor:
               inclusion: "Select whether you are doing the work yourself or hiring a contractor in this project."
             owner_address:

@@ -122,15 +122,15 @@ es:
             pool_volume:
               blank: "Seleccione el tamaño de la piscina."
             window_replace_glass:
-              blank: "Seleccione si sólo está reemplazando el vidrio roto o no"
+              inclusion: "Seleccione si sólo está reemplazando el vidrio roto o no"
             door_replace_existing:
-              blank: "Seleccione si sólo va a sustituir las puertas de sus bisagras existento no"
+              inclusion: "Seleccione si sólo va a sustituir las puertas de sus bisagras existento no"
             wall_general_changes:
-              blank: "Seleccione si sólo está pintando, añadiendo fondos de escritorio, o la reparación de placas de yeso - No mover o alterar montantes."
+              inclusion: "Seleccione si sólo está pintando, añadiendo fondos de escritorio, o la reparación de placas de yeso - No mover o alterar montantes."
             siding_over_existing:
-              blank: "Seleccione si sólo va a poner nuevo revestimiento sobre el revestimiento existente o no."
+              inclusion: "Seleccione si sólo va a poner nuevo revestimiento sobre el revestimiento existente o no."
             floor_covering:
-              blank: "Seleccione si sólo está reemplazando o añadiendo alfombras, baldosas, madera o suelo laminado."
+              inclusion: "Seleccione si sólo está reemplazando o añadiendo alfombras, baldosas, madera o suelo laminado."
             contractor:
               inclusion: "Seleccione si usted está haciendo el trabajo usted mismo o contratar a un contratista en este proyecto."
             owner_address:
