@@ -273,49 +273,39 @@ class Project < ActiveRecord::Base
       self.general_repair_permit ||= GeneralRepairPermit.new
       attributes = {}
       if selected_addition && GeneralRepairPermit.addition_permit_needed?(self)
-        puts "$$$$$$$$ Addition is needed $$$$$$$$$"
         attributes[:addition] = true
       end
       if selected_acs_struct && GeneralRepairPermit.acs_struct_permit_needed?(self)
-        puts "$$$$$$$$ acs_struct is needed $$$$$$$$$"
         attributes[:acs_struct] = true
       end
       if selected_deck && GeneralRepairPermit.deck_permit_needed?(self)
-        puts "$$$$$$$$ deck is needed $$$$$$$$$"
         attributes[:deck] = true
       end
       if selected_pool && GeneralRepairPermit.pool_permit_needed?(self)
-        puts "$$$$$$$$ Pool is needed $$$$$$$$$"
         attributes[:pool] = true
       end
       if selected_cover && GeneralRepairPermit.cover_permit_needed?(self)
-        puts "$$$$$$$$ cover is needed $$$$$$$$$"
         attributes[:cover] = true
       end
       if selected_window && GeneralRepairPermit.window_permit_needed?(self)
-        puts "$$$$$$$$ window is needed $$$$$$$$$"
         attributes[:window] = true
       end
       if selected_door && GeneralRepairPermit.door_permit_needed?(self)
-        puts "$$$$$$$$ door is needed $$$$$$$$$"
         attributes[:door] = true
       end
       if selected_wall && GeneralRepairPermit.wall_permit_needed?(self)
-        puts "$$$$$$$$ wall is needed $$$$$$$$$"
         attributes[:wall] = true
       end
       if selected_siding && GeneralRepairPermit.siding_permit_needed?(self)
-        puts "$$$$$$$$ siding is needed $$$$$$$$$"
         attributes[:siding] = true
       end
       if selected_floor && GeneralRepairPermit.floor_permit_needed?(self)
-        puts "$$$$$$$$ floor is needed $$$$$$$$$"
         attributes[:floor] = true
       end
-
+      # Add more subproject check
       general_repair_permit_attributes = attributes
       self.save
-      # Add more subproject check
+
     puts "^^^^^^^^^^^^^^create_needed_permits: #{self.to_json}^^^^^^^^^^^^^^^"
     puts "^^^^^^^^^^^^^^create_needed_permits #{self.general_repair_permit.to_json}^^^^^^^^^^^^^^^"
     end
