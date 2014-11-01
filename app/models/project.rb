@@ -273,6 +273,7 @@ class Project < ActiveRecord::Base
       self.general_repair_permit ||= GeneralRepairPermit.new
       attributes = {}
       if selected_addition && GeneralRepairPermit.addition_permit_needed?(self)
+        puts("^^^^^^^^addition is needed^^^^^^")
         attributes[:addition] = true
       end
       if selected_acs_struct && GeneralRepairPermit.acs_struct_permit_needed?(self)
@@ -303,9 +304,10 @@ class Project < ActiveRecord::Base
         attributes[:floor] = true
       end
       # Add more subproject check
-      general_repair_permit_attributes = attributes
-      self.save
+      self.general_repair_permit_attributes = attributes
+      is_saved = self.save
 
+      puts "^^^^^is_saved#{is_saved}^^^^^^^"
     puts "^^^^^^^^^^^^^^create_needed_permits: #{self.to_json}^^^^^^^^^^^^^^^"
     puts "^^^^^^^^^^^^^^create_needed_permits #{self.general_repair_permit.to_json}^^^^^^^^^^^^^^^"
     end
@@ -366,7 +368,6 @@ class Project < ActiveRecord::Base
     response[:permit_needed] = self.class.get_subprojects_permit_needed(response[:required_permits], true)
     response[:permit_not_needed] = self.class.get_subprojects_permit_needed(response[:required_permits], false)
     response[:further_assistance_needed] = self.class.get_subprojects_permit_needed(response[:required_permits], nil)
-    #response[:subproject_to_permits] = self.class.get_subproject_to_permits
     response[:permits_to_subprojects] = self.class.get_permits_to_subprojects(response[:required_permits])
     return response
 
