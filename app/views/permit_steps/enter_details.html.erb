@@ -114,7 +114,8 @@
                             helper_text: nil,
                             attribute: :house_area, 
                             placeholder: nil,
-                            input_addon: nil } %>
+                            input_addon: nil,
+                            nested_model: "general_repair_permit" } %>
             </div>
 
             <!-- ./house_area -->
@@ -128,7 +129,8 @@
                             helper_text: nil,
                             attribute: :addition_area, 
                             placeholder: nil,
-                            input_addon: nil } %>
+                            input_addon: nil,
+                            nested_model: "general_repair_permit"  } %>
             </div>
 
             <!-- ./addition_area -->
@@ -142,7 +144,8 @@
                             helper_text: t('views.permit_steps.enter_details.addition_info.ac.helper_text'),
                             attribute: :ac, 
                             options: @project_ac_options,
-                            model_attribute: @project.general_repair_permit.ac} %>
+                            model_attribute: @project.general_repair_permit.ac,
+                            nested_model: "general_repair_permit" } %>
             </div>
 
             <!-- ./ac -->
@@ -168,7 +171,8 @@
                               helper_text: t('views.permit_steps.enter_details.window_info.window_count.helper_text'),
                               attribute: :window_count, 
                               placeholder: nil,
-                              input_addon: nil } %>
+                              input_addon: nil,
+                              nested_model: "general_repair_permit" } %>
               </div>
 
             </div> <!-- ./panel_body -->
@@ -191,7 +195,8 @@
                               helper_text: t('views.permit_steps.enter_details.door_info.door_count.helper_text'),
                               attribute: :door_count, 
                               placeholder: nil,
-                              input_addon: nil } %>
+                              input_addon: nil,
+                            nested_model: "general_repair_permit" } %>
               </div>
 
             </div> <!-- ./panel_body -->
@@ -214,7 +219,8 @@
                 locals: { f: ff, 
                           question: t('views.permit_steps.enter_details.final_info.work_summary.question'),
                           helper_text: t('views.permit_steps.enter_details.final_info.work_summary.helper_text'),
-                          attribute: :work_summary } %>
+                          attribute: :work_summary,
+                          nested_model: "general_repair_permit" } %>
           </div>
 
           <!-- ./work_summary -->
@@ -227,7 +233,8 @@
                           helper_text: t('views.permit_steps.enter_details.final_info.job_cost.helper_text'),
                           attribute: :job_cost, 
                           placeholder: nil,
-                          input_addon: "$" } %>
+                          input_addon: "$",
+                          nested_model: "general_repair_permit" } %>
           </div>
           <!-- ./job_cost -->
 

@@ -90,10 +90,6 @@ en:
           extended: "Extended from main house"
           split:    "New split system"
 
-      ensure_name_confirmed_msg: "The name didn't validate."
-
-      confirmed_name_msg: "The name you entered did not match the name you used on your permit application (%{name}). Please type your name again."
-
       no_proj_chosen_msg: "Please choose at least one project to work on."
 
   activerecord:
@@ -141,32 +137,4 @@ en:
               invalid: "Enter your valid email address (for example, john@email.com)"
             phone:
               invalid: "Enter a valid phone number (for example, 210-555-5555)"
-            house_area:
-              blank: "Enter the size of house in square feet."
-              not_a_number: "Enter the size of house in square feet."
-            addition_area:
-              blank: "Enter the size of addition in square feet."
-              not_a_number: "Enter the size of addition in square feet."
-              less_than: "Addition must be less than 1,000 square feet."
-            ac:
-              blank: "Select an air conditioning / heating system."
-            window_count:
-              not_a_number: "Specify the number of windows you are repairing."
-              greater_than: "Specify the number of windows you are repairing."
-            door_count:
-              not_a_number: "Specify the number of doors you are repairing."
-              greater_than: "Specify the number of doors you are repairing."
-            work_summary:
-              blank: "Enter a work summary."
-            job_cost:
-              blank: "Enter the job cost."
-              invalid: "Job cost has an invalid format, it should be like 1000.00"
-              not_a_number: "Job cost should be between the range of 0.00 to 1000000000000.00 and in format like 1000.00"
-              greater_than: "Job cost should be between the range of 0.00 to 1000000000000.00"
-              less_than: "Job cost should be between the range of 0.00 to 1000000000000.00"
-            accepted_terms:
-              accepted: "Accept the terms listed here by checking the box below."
-
-  
-
-
+              

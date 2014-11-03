@@ -9,8 +9,6 @@ module ProjectParams
     :phone,
     :email,
     :status,
-
-    # --Virtual Attributes--
     :selected_addition,
     :selected_acs_struct,
     :selected_deck,
@@ -41,7 +39,6 @@ module ProjectParams
     # Floor
     :floor_covering,
 
-    :confirmed_name,
     :contractor,
     general_repair_permit_attributes: [ :id,
                                         :addition,
@@ -61,7 +58,8 @@ module ProjectParams
                                         :accepted_terms,
                                         :work_summary,
                                         :job_cost,
-                                        :project_id]
+                                        :project_id,
+                                        :confirmed_name]
     )
  end
 end

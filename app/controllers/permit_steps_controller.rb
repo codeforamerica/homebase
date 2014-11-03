@@ -151,9 +151,12 @@ class PermitStepsController < ApplicationController
 
       # Remove leading or trailing spaces
       # @TODO: May want to make it all caps to prevent case sensitive compare later
-      params[:project][:confirmed_name] = params[:project][:confirmed_name].strip
-      puts "^^^^^^^^^^^^^^update: confirm_terms #{@project.to_s}^^^^^^^^^^^^^^^"
-      @project.update_attributes(project_params)
+      #if params[:project][:general_repair_permit_attribute][:confirmed_name]
+      puts "!!!!!!!! #{params} !!!!!!!!"
+        params[:project][:general_repair_permit_attributes][:confirmed_name] = params[:project][:general_repair_permit_attributes][:confirmed_name].strip
+        puts "^^^^^^^^^^^^^^update: confirm_terms #{@project.to_s}^^^^^^^^^^^^^^^"
+        @project.update_attributes(project_params)
+      #end
 
     else # Default case
        puts "^^^^^^^^^^^^^^update: default #{@project.to_s}^^^^^^^^^^^^^^^"     

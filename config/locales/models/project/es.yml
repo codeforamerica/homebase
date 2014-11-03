@@ -90,10 +90,6 @@ es:
           extended: "Extendido desde la casa principal"
           split:    "Nuevo sistema dividido"
 
-      ensure_name_confirmed_msg: "El nombre no valida."
-
-      confirmed_name_msg: "El nombre que ha introducido no coincide con el nombre que usó en su solicitud de permiso (%{name}). Por favor escriba su nombre otra vez."
-
       no_proj_chosen_msg: "Por favor, elija al menos un proyecto para trabajar en."
 
   activerecord:
@@ -141,32 +137,3 @@ es:
               invalid: "Escribe tu dirección de correo electrónico válida (por ejemplo, john@email.com)"
             phone:
               invalid: "Ingrese un número de teléfono válido (por ejemplo, 210-555-5555)"
-            house_area:
-              blank: "Ingrese el tamaño de la casa en picuadrados."
-              not_a_number: "Ingrese el tamaño de la casa en picuadrados."
-            addition_area:
-              blank: "Ingrese el tamaño de la suma en picuadrados."
-              not_a_number: "Ingrese el tamaño de la suma en picuadrados."
-              less_than: "La adición debe ser inferior a 1,000 picuadrados."
-            ac:
-              blank: "Seleccionar un sistema de aire acondicionado / calefacción."
-            window_count:
-              not_a_number: "Especifique el número de ventanas que está reparando."
-              greater_than: "Especifique el número de ventanas que está reparando."
-            door_count:
-              not_a_number: "Especifique el número de puertas que está reparando."
-              greater_than: "Especifique el número de puertas que está reparando."
-            work_summary:
-              blank: "Ingrese un resumen del trabajo."
-            job_cost:
-              blank: "Ingrese el costo del trabajo."
-              invalid: "costo de empleo tiene un formato no válido, debe ser como 1000.00"
-              not_a_number: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00 y en formato como 1000.00"
-              greater_than: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00"
-              less_than: "Costo del trabajo debe estar entre el rango de 0.00-1000000000000.00"
-            accepted_terms:
-              accepted: "Acepte los términos que figuran aquí, marcando la casilla de abajo."
-
-  
-
-

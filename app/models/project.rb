@@ -6,11 +6,6 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :general_repair_permit
   include ActiveModel::Validations
   
-
-  ######## Virtual Attributes ########
-           
-  attr_accessor :confirmed_name
-  
   ######## Validations #######
 
   # @TODO: Should I group these in terms of each view, should model have an idea of how the views look like
@@ -69,30 +64,6 @@ class Project < ActiveRecord::Base
   validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i
 
-  # Addition Section # @TODO: move to general repair permits
-  # validates_presence_of :house_area, :if => :active_or_details_addition?
-  # validates_numericality_of :house_area, :if => :only_if_house_presence?
-  # validates_presence_of :addition_area, :if => :active_or_details_addition?
-  # validates_numericality_of :addition_area, :if => :only_if_addition_presence?
-  # validates_numericality_of :addition_area, less_than: 1000, :if => :only_if_addition_presence?
-  # validates_presence_of :ac, :if => :active_or_details_addition?
-
-  # Window Section # @TODO: move to general repair permits
-  # validates_numericality_of :window_count, greater_than: 0, :if => :only_if_window_true?
-  
-  # Door Section # @TODO: move to general repair permits
-  # validates_numericality_of :door_count, greater_than: 0, :if=> :only_if_door_true?
-
-  # Final Info Section @TODO: move to general repair permits
-  # validates_presence_of :work_summary, :if => :active_or_details?
-  # validates_presence_of :job_cost, :if => :active_or_details?
-  # validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
-  # validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
-
-  ## Validations on permit_step#confirm_terms ## @TODO: move to general repair permits
-
-  # validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
-  # before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.project.ensure_name_confirmed_msg')
 
   # @TODO: may want to do this instead of before_save
   # class Person < ActiveRecord::Base
@@ -170,9 +141,6 @@ class Project < ActiveRecord::Base
   end
 
   def only_if_screener_addition?
-    puts "************only_if_screener_addition: #{status.to_s.include?('answer_screener')}, #{to_bool(selected_addition)}"
-    puts "addition_size: #{addition_size}"
-
     status.to_s.include?('answer_screener') && to_bool(selected_addition)
   end
 
@@ -220,41 +188,6 @@ class Project < ActiveRecord::Base
     status.to_s.include?('enter_details') || active?
   end
 
-  def active_or_details_addition?
-    active_or_details? && addition
-  end
-
-  def only_if_addition_presence?
-    active_or_details_addition? && ! addition_area.blank?
-  end
-
-  def only_if_house_presence?
-    active_or_details_addition? && ! house_area.blank?
-  end
-
-  def only_if_job_cost_presence?
-    active_or_details? && ! job_cost.blank?
-  end
-
-  def only_if_window_true?
-    active_or_details? && window
-  end
-
-  def only_if_door_true?
-    active_or_details? && door
-  end
-
-  def ensure_name_confirmed
-    if !confirmed_name.eql?(owner_name)
-      errors[:confirmed_name] << (I18n.t('models.project.confirmed_name_msg', name: owner_name))
-    end
-    confirmed_name.eql?(owner_name)
-  end
-
-  def accepted_terms_acceptance?
-    status.to_s.include?('confirm_terms') || active?
-  end
-
   def at_least_one_chosen
     if !( to_bool(selected_addition) || to_bool(selected_window) || to_bool(selected_door) || 
           to_bool(selected_wall) || to_bool(selected_siding) || to_bool(selected_floor) || 
@@ -273,7 +206,6 @@ class Project < ActiveRecord::Base
       self.general_repair_permit ||= GeneralRepairPermit.new
       attributes = {}
       if selected_addition && GeneralRepairPermit.addition_permit_needed?(self)
-        puts("^^^^^^^^addition is needed^^^^^^")
         attributes[:addition] = true
       end
       if selected_acs_struct && GeneralRepairPermit.acs_struct_permit_needed?(self)
@@ -306,10 +238,6 @@ class Project < ActiveRecord::Base
       # Add more subproject check
       self.general_repair_permit_attributes = attributes
       is_saved = self.save
-
-      puts "^^^^^is_saved#{is_saved}^^^^^^^"
-    puts "^^^^^^^^^^^^^^create_needed_permits: #{self.to_json}^^^^^^^^^^^^^^^"
-    puts "^^^^^^^^^^^^^^create_needed_permits #{self.general_repair_permit.to_json}^^^^^^^^^^^^^^^"
     end
 
 

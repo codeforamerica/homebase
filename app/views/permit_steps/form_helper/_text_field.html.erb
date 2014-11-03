@@ -3,12 +3,15 @@
     <%= f.label attribute, question %>
   <% end %>
 
-  <% if @project.errors[attribute].length >= 1 %>
+  <% error = @project.errors if local_assigns[:error].nil? %>
+  <% edited_attribute = local_assigns[:nested_model].nil? ? attribute : "#{nested_model}.#{attribute}"%>
+
+  <% if error[edited_attribute].length >= 1 %>
 
     <!-- create an errors div to style error message and make input red -->    
     <div class="field_with_errors">
       <!-- Print out the error message (from validator) -->
-      <% @project.errors[attribute].each do | msg | %>
+      <% error[edited_attribute].each do | msg | %>
         <p><%= msg %></p>
       <% end %>
     </div>
