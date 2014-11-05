@@ -5,7 +5,7 @@ en:
         heading: "A new permit has been created"
         details: "We've created a new permit. The permit details are below."
         attachment_details: "Your finished permit application has been attached."
-        questions: "If you have any questions, contact us at help@homebasefix.com."
+        questions: "If you have any questions, contact us at developmentservicescustomerservice@sanantonio.gov."
         table:
           field_name: "Field Name"
           response: "Your Response"
