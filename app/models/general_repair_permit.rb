@@ -29,7 +29,7 @@ class GeneralRepairPermit < ActiveRecord::Base
   ## Validations on permit_step#confirm_terms ## @TODO: move to general repair permits
 
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
-  before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.general_repair_permit.ensure_name_confirmed_msg')
+  validate :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.general_repair_permit.ensure_name_confirmed_msg')
 
   def get_project
     Project.find_by_id(project_id)
