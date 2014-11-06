@@ -5,7 +5,7 @@ es:
         heading: "Un nuevo permiso ha sido creado"
         details: "Hemos creado un nuevo permiso. Los detalles de permisos están por debajo."
         attachment_details: "Su solicitud de permiso de terminar ha sido adjuntado."
-        questions: "Si tiene alguna pregunta, póngase en contacto con nosotros en help@homebasefix.com."
+        questions: "Si tiene alguna pregunta, póngase en contacto con nosotros en developmentservicescustomerservice@sanantonio.gov."
         table:
           field_name: "Nombre del campo"
           response: "Tu respuesta"
