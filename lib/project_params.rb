@@ -59,7 +59,8 @@ module ProjectParams
                                         :work_summary,
                                         :job_cost,
                                         :project_id,
-                                        :confirmed_name]
+                                        :confirmed_name,
+                                        :project_status_to_be_saved]
     )
  end
 end

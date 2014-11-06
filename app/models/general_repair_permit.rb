@@ -3,7 +3,8 @@ class GeneralRepairPermit < ActiveRecord::Base
 
   ######## Virtual Attributes ########
            
-  attr_accessor :confirmed_name
+  attr_accessor :confirmed_name,
+                :project_status_to_be_saved
 
   # Addition Section # @TODO: move to general repair permits
   validates_presence_of :house_area, :if => :project_active_or_details_addition?
@@ -31,14 +32,11 @@ class GeneralRepairPermit < ActiveRecord::Base
   before_save :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.general_repair_permit.ensure_name_confirmed_msg')
 
   def get_project
-    project = Project.find_by_id(project_id)
-    return project
+    Project.find_by_id(project_id)
   end
 
   def project_active_or_details?
-    project = get_project
-    result = project && project.status && (project.status.to_s.include?('enter_details') || project.status.to_s.include?('active'))
-    return result
+    project_status_to_be_saved.to_s.include?('enter_details') || project_status_to_be_saved.to_s.include?('active')
   end  
 
   def only_if_is_needed_enter_details?
@@ -79,8 +77,7 @@ class GeneralRepairPermit < ActiveRecord::Base
   end
 
   def accepted_terms_acceptance?
-    project = get_project
-    return project && project.status && (project.status.to_s.include?('confirm_terms') || project.status.to_s.include?('active'))
+    project_status_to_be_saved.to_s.include?('confirm_terms') || project_status_to_be_saved.to_s.include?('active')
   end
   
 

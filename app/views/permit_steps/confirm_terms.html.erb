@@ -41,9 +41,9 @@
           <p><strong><%= t('views.permit_steps.confirm_terms.requirement.dsd_contact') %></strong></p>
 
           <!-- check if there's an error for this field -->
-          <% if @project.errors[:accepted_terms].length >= 1 %>
+          <% if @project.errors["general_repair_permit.accepted_terms"].length >= 1 %>
             <div class="alert alert-danger">
-              <% @project.errors[:accepted_terms].each do | msg | %>
+              <% @project.errors["general_repair_permit.accepted_terms"].each do | msg | %>
                 <p><strong><%= msg %></strong></p>
               <% end %>
             </div>
@@ -74,6 +74,7 @@
             <p><strong><%= t('views.permit_steps.confirm_terms.signature.confirmed_name.text', name: @project.owner_name) %></strong></p>
 
             <!-- check if there's an error for this field -->
+            <%#= @project.errors.inspect %>
             <% if @project.errors["general_repair_permit.confirmed_name"].length >= 1 %>
               <div class="alert alert-danger">
                 <% @project.errors["general_repair_permit.confirmed_name"].each do | msg | %>

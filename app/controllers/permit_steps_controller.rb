@@ -111,6 +111,13 @@ class PermitStepsController < ApplicationController
     # are used as error paths, so will not use the steps.last for this
     params[:project][:status] = 'active' if step == :submit_application 
 
+    # General Repair Permit
+    if params[:project][:general_repair_permit_attributes]
+      params[:project][:general_repair_permit_attributes][:project_status_to_be_saved] = step.to_s
+    end
+
+    # Add status update if there's more permits
+
     case step
 
     when :answer_screener
