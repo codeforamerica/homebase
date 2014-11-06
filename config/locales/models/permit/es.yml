@@ -10,36 +10,36 @@ es:
             gte_1000: "Mayor o igual a 1,000 pies cuadrados"
 
         num_story:
-          label: "Plantas"
+          label: "Pisos"
           options:
-            one: "1 plantas"
-            two_or_more: "2 o más plantas"
+            one: "1 piso"
+            two_or_more: "2 o más pisos"
 
       acs_struct:
         name: "Cobertizo/garaje"
         size:
           label: "Tamaño"
           options:
-            lte_120: "Menor o igual a 120 metros cuadrados" 
-            gt_120: "Más de 120 metros cuadrados"
+            lte_120: "Menor o igual a 120 pies cuadrados" 
+            gt_120: "Más de 120 pies cuadrados"
 
         num_story:
-          label: "Plantas"
+          label: "Pisos"
           options:
-            one:          "1 planta"
-            two_or_more:  "2 o más plantas"
+            one:          "1 piso"
+            two_or_more:  "2 o más pisos"
 
       deck:
         name: "Cubierta"
         size:
           label: "Tamaño"
           options:
-            lte_200: "Menor o igual a 200 metros cuadrados"
-            gt_200: "Más de 200 metros cuadrados"
+            lte_200: "Menor o igual a 200 pies cuadrados"
+            gt_200: "Más de 200 pies cuadrados"
         grade:
           label: "Pendiente"
           options:
-            lte_30: "Menor o igual a 30 centímetros por encima de pendiente"
+            lte_30: "Menor o igual a 30 pulgadas por encima de pendiente"
             gt_30:  "Mayor de 30 pulgadas sobre el pendiente"
         dwelling_attach:
           label: "Adjuntos de la casa"
@@ -49,8 +49,8 @@ es:
         exit_door:
           label: "Puerta de salida"
           options:
-            served:   "Cumple la función de puerta salida"
-            not_served: "No cumple la función de puerta salida"
+            served:   "Cumple la función de la puerta de salida"
+            not_served: "No cumple la función de la puerta de salida"
 
       pool:
         name: "Piscina"
@@ -104,11 +104,11 @@ es:
             addition_size:
               blank: "Seleccione el tamaño del nuevo espacio o sala."
             addition_num_story:
-              blank: "Seleccione el número de plantas del nuevo espacio o sala."
+              blank: "Seleccione el número de pisos del nuevo espacio o sala."
             acs_struct_size:
               blank: "Seleccione el tamaño del cobertizo o garaje."
             acs_struct_num_story:
-              blank: "Seleccione el número de plantas del cobertizo o garaje."
+              blank: "Seleccione el número de pisos del cobertizo o garaje."
             deck_size:
               blank: "Seleccione el tamaño de la cubierta."
             deck_grade:
@@ -122,17 +122,17 @@ es:
             pool_volume:
               blank: "Seleccione el tamaño de la piscina."
             window_replace_glass:
-              blank: "Seleccione si sólo está reemplazando el vidrio roto o no"
+              blank: "Seleccione si sólo está reemplazando el vidrio quebrado o no"
             door_replace_existing:
-              blank: "Seleccione si sólo va a sustituir las puertas de sus bisagras existento no"
+              blank: "Seleccione si sólo va a sustituir las puertas de sus bisagras (hinges) existentes o no"
             wall_general_changes:
-              blank: "Seleccione si sólo está pintando, añadiendo fondos de escritorio, o la reparación de placas de yeso - No mover o alterar montantes."
+              blank: "Seleccione si sólo está pintando, agregando papel de empapelar, o la reparando placas de yeso - No va a mudar o alterar los barrotes"
             siding_over_existing:
               blank: "Seleccione si sólo va a poner nuevo revestimiento sobre el revestimiento existente o no."
             floor_covering:
-              blank: "Seleccione si sólo está reemplazando o añadiendo alfombras, baldosas, madera o suelo laminado."
+              blank: "Seleccione si sólo está reemplazando o añadiendo alfombras, baldosas (tile), piso de madera o suelo laminado."
             contractor:
-              inclusion: "Seleccione si usted está haciendo el trabajo usted mismo o contratar a un contratista en este proyecto."
+              inclusion: "Seleccione si está haciendo el trabajo usted mismo o va a contratar a un contratista en este proyecto."
             owner_address:
               blank: "Ingrese una dirección en San Antonio."
             owner_name:
