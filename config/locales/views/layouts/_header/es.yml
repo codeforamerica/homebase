@@ -12,5 +12,5 @@ es:
         link_to_domain:
           html: "Esta aplicación le permite aplicar para los permisos que necesita para mejorar su hogar legalmente. <a href=\"http://homebasefix.com\">Clic aquí </a> para leer más sobre Homebase y cómo estamos simplificando el proceso de reparación de su casa en San Antonio."
         help_instruction: 
-          heading: "¿Necesitas Ayuda Envíenos un email con su tema"
+          heading: "¿Necesitas Ayuda Envíenos un email con su tema?"
           html: "Por favor, envíenos un email a <a href=\"mailto:developmentservicescustomerservice@sanantonio.gov?subject=Homebase Question\">developmentservicescustomerservice@sanantonio.gov</a> con preguntas y cuestiones."

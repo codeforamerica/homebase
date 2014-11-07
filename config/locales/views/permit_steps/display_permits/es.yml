@@ -6,10 +6,10 @@ es:
         permit_not_needed:
           heading: "Usted no necesita un permiso para el siguiente proyecto(s)"
           additional_permits: "Permisos adicionales deben ser presentadas por un profesional autorizado si va a hacer los siguientes proyectos: plomería, mecánica (HVAC), eléctricas."
-          body: "Un permiso no necesario para su proyecto. Si usted tiene preguntas adicionales, por favor póngase en contacto con el Departamento de Servicios de Desarrollo al (210) 207-1111."
+          body: "Un permiso no necesario para su proyecto. Si usted tiene preguntas adicionales, por favor póngase en contacto con el Departamento de Servicios de Desarrollo (210) 207-1111."
         permit_needed:
           heading: "Se necesita un permiso para el proyecto(s) siguiente:"
-          body: "Por favor, ver más abajo para más detalles."
+          body: "Por favor, vea más abajo para más detalles."
         further_assistance_needed:
           heading: "Lo sentimos, no podemos ayudar en este momento."
           helper_text:
@@ -17,18 +17,18 @@ es:
             part_2: "que se quiere construir."
           body: "Nos puede ayudar a solicitar el permiso adecuado para este proyecto Llámenos al (210) 207-1111 y nosotros le ayudaremos."
         detail_permit_info:
-          heading: "Reparacion General / Residencial Solicitud de Permiso"
-          body: "Necesitará un reparación general / permiso de residencial en la mayoría de reparación residencial permisos separados se requieren para cualquier, o el trabajo de plomería eléctrica mecánica."
-          helper_text: "Este el permiso para el proyecto(s) siguiente:"
+          heading: "Reparacion General / Residencial Aplicación de Permiso"
+          body: "Necesitará un permiso para reparaciónes generales en la mayoría de reparaciónes residenciales. Se requiere permisos separados para trabajo de plomería, eléctrica o mecánica."
+          helper_text: "Este es el permiso para el proyecto(s) siguiente:"
           app_cost:
-            heading: "Este el costo de aplicación:"
+            heading: "Este es el costo de aplicación:"
             html: "Los costos de aplicación se basan en el <a href=\"http://www.sanantonio.gov/dsd/pdf/FY2014FeeSchedule.pdf\" target=\"_blank\">Lista de tarifas [PDF]</a>."
           req_docs: "Estos son los documentos requeridos:"
-          misc_text: "Nosotros le ayudará a llenar estos fuera:"
-          permit_app: "Aplicación permiso"
+          misc_text: "Nosotros le ayudará a llenar lo siguiente:"
+          permit_app: "Aplicación de permiso"
           site_plan: "Plan de sitio"
           bring_id: "Usted también tendrá que:"
-          photo_id: "La forma de identificación con foto (licencia decir, de conducir, pasaporte)"
-          ownership_proof: "La prueba de la propiedad de la vivienda de la propiedad que está trabajando (decir, de hecho, el condado de Bexar Appraisal District papeleo)"
+          photo_id: "Un tipo de identificación con foto (licencia decir, de conducir, pasaporte, tarjeta de residencia)"
+          ownership_proof: "Prueba que usted es el dueño/dueña de la propiedad donde están trabajando (la escritura, papeleo de Bexar County Appraisal District)"
           
         submit: "Aplicar este permiso"
