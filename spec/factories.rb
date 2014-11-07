@@ -11,28 +11,22 @@ FactoryGirl.define do
   factory :project do
     owner_name        "John Doe"
     owner_address     "302 Madison St, San Antonio, TX 78204"
-    addition          true
-    house_area        1500
-    addition_area     500
-    ac                "Wall Unit"
     phone             "210-245-3453"
     email             "company@company.com"
-    work_summary      "Adding a 500 square-foot room in the backyard"
-    job_cost          2000.40
     status            "active"
-    window            true
-    door              true
-    wall              true
-    siding            true
-    floor             true
-    window_count      true
-    door_count        true
-    cover             true
-    pool              true
-    deck              true
-    acs_struct        true
-    confirmed_name    "John Doe"
-    accepted_terms    true
+    contractor        false
+    lat               29.414432
+    lng               -98.491916
+    selected_addition          true
+    selected_acs_struct        true
+    selected_deck              true
+    selected_pool              true
+    selected_cover             true
+    selected_window            true
+    selected_door              true
+    selected_wall              true
+    selected_siding            true
+    selected_floor             true
     addition_size         'lessThan1000'
     addition_num_story    '1Story'
     acs_struct_size       'greaterThan120'
@@ -53,28 +47,22 @@ FactoryGirl.define do
   factory :empty_project, parent: :project do
     owner_name        nil
     owner_address     nil
-    addition          nil
-    house_area        nil
-    addition_area     nil
-    ac                nil
     phone             nil
     email             nil
-    work_summary      nil
-    job_cost          nil
     status            nil
-    window            nil
-    door              nil
-    wall              nil
-    siding            nil
-    floor             nil
-    window_count      nil
-    door_count        nil
-    cover             nil
-    pool              nil
-    deck              nil
-    acs_struct        nil
-    confirmed_name    nil
-    accepted_terms    nil
+    contractor        nil
+    lat               nil
+    lng               nil
+    selected_addition          nil
+    selected_acs_struct        nil
+    selected_deck              nil
+    selected_pool              nil
+    selected_cover             nil
+    selected_window            nil
+    selected_door              nil
+    selected_wall              nil
+    selected_siding            nil
+    selected_floor             nil
     addition_size         nil
     addition_num_story    nil
     acs_struct_size       nil
@@ -91,4 +79,27 @@ FactoryGirl.define do
     siding_over_existing  nil
     floor_covering        nil
   end    
+
+
+  factory :general_repair_permit do
+    addition          true
+    house_area        1500
+    addition_area     500
+    ac                "Wall Unit"
+    window_count      2
+    door              true
+    door_count        3
+    wall              true
+    siding            true
+    floor             true
+    cover             true
+    pool              true
+    deck              true
+    acs_struct        true
+    accepted_terms    true
+    work_summary      "Adding a 500 square-foot room in the backyard"
+    job_cost          2000.40
+    confirmed_name    "John Doe"
+    project_status_to_be_saved  "active"
+  end
 end
