@@ -33,13 +33,8 @@ class PermitStepsController < ApplicationController
       if (@project.contractor)
         jump_to(:use_contractor)
       else
-        # Get hash of permit needs that was saved in session that will be used
-        # to display permits in categories
-        #@permit_needs = session[:permit_needs]
-        puts "*******@permit_needs = #{@permit_needs}*******"
         @permit_needs = @project.get_permit_needed_info
         session[:permit_needs] = @permit_needs
-        puts "*******@permit_needs1 = #{@permit_needs1}********"
       end
 
     when :enter_details
@@ -131,12 +126,8 @@ class PermitStepsController < ApplicationController
       # This will fill out all the address information (address, latitude, longitude)
       fill_in_address_details
 
-      puts "^^^^^^^^^^^^^^update: answer_screener #{@project.to_s}^^^^^^^^^^^^^^^"
       @project.update_attributes(project_params)
 
-      # Save hash of permit needs in session which will be used
-      # to display permits in categories
-      #session[:permit_needs] = @project.update_permit_needs_for_projects
 
     when :enter_details
 
@@ -151,28 +142,21 @@ class PermitStepsController < ApplicationController
         # This will fill out all the address information (address, latitude, longitude)
         fill_in_address_details
       end
-      puts "^^^^^^^^^^^^^^update: enter_details #{@project.to_s}^^^^^^^^^^^^^^^"
       @project.update_attributes(project_params)
 
     when :confirm_terms
 
       # Remove leading or trailing spaces
       # @TODO: May want to make it all caps to prevent case sensitive compare later
-      #if params[:project][:general_repair_permit_attribute][:confirmed_name]
-      puts "!!!!!!!! #{params} !!!!!!!!"
-        params[:project][:general_repair_permit_attributes][:confirmed_name] = params[:project][:general_repair_permit_attributes][:confirmed_name].strip
-        puts "^^^^^^^^^^^^^^update: confirm_terms #{@project.to_s}^^^^^^^^^^^^^^^"
-        @project.update_attributes(project_params)
-      #end
+      params[:project][:general_repair_permit_attributes][:confirmed_name] = params[:project][:general_repair_permit_attributes][:confirmed_name].strip
+      @project.update_attributes(project_params)
 
-    else # Default case
-       puts "^^^^^^^^^^^^^^update: default #{@project.to_s}^^^^^^^^^^^^^^^"     
+    else # Default case  
       @project.update_attributes(project_params)
     end
 
     if @project.errors.any?
       # render the same step
-      # @TODO: What does this mean?
       render_wizard
     else
       # render the next step
@@ -182,7 +166,6 @@ class PermitStepsController < ApplicationController
 
   def serve
 
-    # @TODO: I don't understand why I need to attach this .pdf there.
     permit_binary_detail = PermitBinaryDetail.find_by filename: "#{params[:filename]}.pdf"
 
     if permit_binary_detail

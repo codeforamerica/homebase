@@ -80,7 +80,6 @@ FactoryGirl.define do
     floor_covering        nil
   end    
 
-
   factory :general_repair_permit do
     addition          true
     house_area        1500
@@ -101,5 +100,11 @@ FactoryGirl.define do
     job_cost          2000.40
     confirmed_name    "John Doe"
     project_status_to_be_saved  "active"
+  end
+
+  factory :permit_binary_detail do
+    file_data   IO.binread "#{Rails.root}/spec/test.pdf"
+    permit_id   1
+    filename    "test.pdf"
   end
 end
