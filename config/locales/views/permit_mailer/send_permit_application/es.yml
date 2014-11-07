@@ -18,7 +18,6 @@ es:
         contact:
           html: "<strong>¿Tiene alguna pregunta?</strong> Llame al Departamento de Servicios de Desarrollo en (210) 207-1111. También puede enviar un correo electrónico a <a href=\"mailto:developmentservicescustomerservice@sanantonio.gov\">developmentservicescustomerservice@sanantonio.gov</a>"
         attachment_details: "Una versión imprimible de su solicitud de permiso se ha unido. Usted puede mantener esto para sus registros."
-        questions: "Si tiene alguna pregunta, póngase en contacto con nosotros en developmentservicescustomerservice@sanantonio.gov."
         table:
           field_name: "Nombre del campo"
           response: "Tu respuesta"
