@@ -11,10 +11,10 @@ es:
         what_to_bring:
           intro:
             html: "<strong>Qué llevar:</strong> Cuando usted visita el One-Stop, por favor traiga la siguiente:"
-          site_plan: "Your printed and completed site plan"
-          photo_id: "A form of photo identification (i.e. driver's license, passport)"
-          ownership_proof: "Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
-          payment: "A form of payment (i.e. credit card, check or cash)"
+          site_plan: "Su plan de sitio impresos y completados"
+          photo_id: "Identificación con fotografía (por ejemplo, licencia de conducir, pasaporte)"
+          ownership_proof: "Prueba de la propiedad de la vivienda que está trabajando (decir, título de propiedad, los papelde Condado Bexar Appraisal District)"
+          payment: "Una tarjeta de crédito, cheque o dinero en efectivo para pagar la cuota"
         contact:
           html: "<strong>¿Tiene alguna pregunta?</strong> Llame al Departamento de Servicios de Desarrollo en (210) 207-1111. También puede enviar un correo electrónico a <a href=\"mailto:developmentservicescustomerservice@sanantonio.gov\">developmentservicescustomerservice@sanantonio.gov</a>"
         attachment_details: "Una versión imprimible de su solicitud de permiso se ha unido. Usted puede mantener esto para sus registros."
