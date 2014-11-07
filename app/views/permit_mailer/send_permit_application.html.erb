@@ -1,7 +1,21 @@
+<!-- Introduction information -->
 <h1><%= t('views.permit_mailer.send_permit_application.heading') %></h1>
-<p><%= t('views.permit_mailer.send_permit_application.details') %></p>
+<h3><%= t('views.permit_mailer.send_permit_application.details') %></h3>
+
+<!-- What to bring -->
+<p><%= t('views.permit_mailer.send_permit_application.what_to_bring.intro.html') %>
+<ul>
+  <li><%= t('views.permit_mailer.send_permit_application.what_to_bring.site_plan') %></li>
+  <li><%= t('views.permit_mailer.send_permit_application.what_to_bring.photo_id') %></li>
+  <li><%= t('views.permit_mailer.send_permit_application.what_to_bring.ownership_proof') %></li>
+  <li><%= t('views.permit_mailer.send_permit_application.what_to_bring.payment') %></li>
+</ul>
+
+<!-- How to ask questions -->
+<p><%= t('views.permit_mailer.send_permit_application.contact.html') %></p>
+
+<!-- Permit print application attached -->
 <p><%= t('views.permit_mailer.send_permit_application.attachment_details') %></p>
-<p><%= t('views.permit_mailer.send_permit_application.questions') %></p>
 
 <table>
   <thead>
@@ -54,13 +68,13 @@
       <!-- House area -->
       <tr>
         <td><%= t('views.permit_mailer.send_permit_application.table.house_area') %></td>
-        <td><%= @project.general_repair_permit.house_area %> square feet</td>
+        <td><%= @project.general_repair_permit.house_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
       </tr>
 
       <!-- Addition area -->
       <tr>
         <td><%= t('views.permit_mailer.send_permit_application.table.addition_area') %></td>
-        <td><%= @project.general_repair_permit.addition_area %> square feet</td>
+        <td><%= @project.general_repair_permit.addition_area %> <%= t('views.permit_steps.display_summary.table.units') %></td>
       </tr>
 
       <!-- Air conditioning type -->

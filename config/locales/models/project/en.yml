@@ -134,7 +134,6 @@ en:
             owner_name:
               blank: "Enter home owner name."
             email:
-              invalid: "Enter your valid email address (for example, john@email.com)"
+              invalid: "Enter your valid email address (for example, john@email.com)."
             phone:
-              invalid: "Enter a valid phone number (for example, 210-555-5555)"
-              
+              invalid: "Enter a valid phone number (for example, 210-555-5555)."

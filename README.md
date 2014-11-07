@@ -59,14 +59,17 @@ Homebase checks if a user's address is in San Antonio (that's the only city we'r
 
     $ bundle exec rake cosa_boundaries:load
 
-#### 4. Add your API keys
+#### 4. Add your API keys and Login information
 
-Copy the file .env_example to .env, and change all the API keys on the files.  Remember to not check in this file to a public repository, as you don't want other to have these information.
+Copy the file .env_example to .env, and change all the keys on the file.  Remember to not check in this file to a public repository, as you don't want others to have this information.
 
-Our application currently uses the following services: 
+Our application currently requires the following keys: 
 
 * GOOGLE_GEOCODER_API_KEY:
   * You can get your own Geocoder Server Key from here: [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/)
+
+* SENDGRID_USERNAME and SENDGRID_PASSWORD: 
+  * You can get your own SendGrid credentials at [SendGrid](http://www.sendgrid.com)
 
 #### 5. Start your web service
 

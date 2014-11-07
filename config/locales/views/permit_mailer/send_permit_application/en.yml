@@ -2,10 +2,22 @@ en:
   views:
     permit_mailer:
       send_permit_application:
-        heading: "A new permit has been created"
-        details: "We've created a new permit. The permit details are below."
-        attachment_details: "Your finished permit application has been attached."
-        questions: "If you have any questions, contact us at developmentservicescustomerservice@sanantonio.gov."
+        heading: "Your permit application has been made with Homebase"
+        details: "You still need to visit the Development Services Department One-Stop to finish your permit application and pay your fees."
+        where_to_visit:
+          html: "<strong>Where to visit:</strong> The Development Services Department One-Stop is located at <a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo, San Antonio, Texas 78204</a>."
+        when_to_visit:
+          html: "<strong>One-stop office hours:</strong> 7:45am–4:30pm (Monday–Friday)"
+        what_to_bring:
+          intro:
+            html: "<strong>What to bring:</strong> When you visit the One-Stop, please bring the following:"
+          site_plan: "Your printed and completed site plan"
+          photo_id: "A form of photo identification (i.e. driver's license, passport)"
+          ownership_proof: "Proof of home ownership for the property you're working on (i.e. deed, Bexar County Appraisal District paperwork)"
+          payment: "A form of payment (i.e. credit card, check or cash)"
+        contact:
+          html: "<strong>Do you have any questions?</strong> Call the Development Services Department at (210) 207-1111. You can also send an email to <a href=\"mailto:developmentservicescustomerservice@sanantonio.gov\">developmentservicescustomerservice@sanantonio.gov</a>"
+        attachment_details: "A printable version of your permit application has been attached. You can keep this for your records."
         table:
           field_name: "Field Name"
           response: "Your Response"

@@ -17,3 +17,6 @@
 
 # Ignore all environment variables.
 /.env
+
+# ignore DSstore
+.DS_Store
