@@ -11,10 +11,10 @@ en:
           instruction: "You are required to draw and submit a detailed site plan with your permit. You will have to submit your site plan when your permit application is approved."
           download_button: "Download and fill out the site plan form"
         next_steps:
-          heading: "You'll receive an update by email soon"
-          timeframe: "1-2 days"
-          instruction: "Your permit application is under review by the Development Services Department. You may receive an email soon asking you for more information."
-          details: "You will likely receive a response in 1-2 days. If you have any questions, please reach out to DSD or visit the One-Stop. Contact information is below."
+          heading: "Please visit Development Services Department to continue your application"
+          alert: "You still need to visit a city office to finish your permit application and pay your fees. Your permit will not be reviewed until you do so."
+          instruction: "Before your permit application is accepted you must visit the Development Services Center One-Stop to submit additional documents and pay your fees."
+          details: "Please visit the permit counter at the One-Stop and let them know you applied with Homebase."
           location:
             html: "<strong>Where:</strong> The Development Services Department One-Stop is located at <a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo, San Antonio, Texas 78204</a>."
           hour:

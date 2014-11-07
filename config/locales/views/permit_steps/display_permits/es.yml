@@ -5,6 +5,7 @@ es:
         intro_text: "Éste cómo de empezar el proyecto(s)"
         permit_not_needed:
           heading: "Usted no necesita un permiso para el siguiente proyecto(s)"
+          additional_permits: "Permisos adicionales deben ser presentadas por un profesional autorizado si va a hacer los siguientes proyectos: plomería, mecánica (HVAC), eléctricas."
           body: "Un permiso no necesario para su proyecto. Si usted tiene preguntas adicionales, por favor póngase en contacto con el Departamento de Servicios de Desarrollo (210) 207-1111."
         permit_needed:
           heading: "Se necesita un permiso para el proyecto(s) siguiente:"

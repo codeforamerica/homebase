@@ -2,10 +2,22 @@ es:
   views:
     permit_mailer:
       send_permit_application:
-        heading: "Un nuevo permiso ha sido creado"
-        details: "Hemos creado un nuevo permiso. Los detalles de permisos están por debajo."
-        attachment_details: "Su solicitud de permiso de terminar ha sido adjuntado."
-        questions: "Si tiene alguna pregunta, póngase en contacto con nosotros en developmentservicescustomerservice@sanantonio.gov."
+        heading: "Su solicitud de permiso se ha hecho con Homebase"
+        details: "Usted todavía tiene que visitar el Departamento de Servicios de Desarrollo One-Stop para terminar su solicitud de permiso y pagar sus honorarios."
+        where_to_visit:
+          html: "<strong>Dónde ir:</strong> <p>El Departamento de Servicios de Desarrollo One-Stop está situado en la calle:</p><a href=\"https://www.google.com/maps/place/1901+S+Alamo+St/@29.4120584,-98.5013719,17z/data=!3m1!4b1!4m2!3m1!1s0x865c58b9ef04f373:0x367c26cca99a8393\">1901 S. Alamo St. <br>San Antonio, Texas 78204</a>"
+        when_to_visit:
+          html: "<strong>Las horas de oficina:</strong> 7:45am–4:30pm (Lunes-Viernes)"
+        what_to_bring:
+          intro:
+            html: "<strong>Qué llevar:</strong> Cuando usted visita el One-Stop, por favor traiga la siguiente:"
+          site_plan: "Su plan de sitio impresos y completados"
+          photo_id: "Identificación con fotografía (por ejemplo, licencia de conducir, pasaporte)"
+          ownership_proof: "Prueba de la propiedad de la vivienda que está trabajando (decir, título de propiedad, los papelde Condado Bexar Appraisal District)"
+          payment: "Una tarjeta de crédito, cheque o dinero en efectivo para pagar la cuota"
+        contact:
+          html: "<strong>¿Tiene alguna pregunta?</strong> Llame al Departamento de Servicios de Desarrollo en (210) 207-1111. También puede enviar un correo electrónico a <a href=\"mailto:developmentservicescustomerservice@sanantonio.gov\">developmentservicescustomerservice@sanantonio.gov</a>"
+        attachment_details: "Una versión imprimible de su solicitud de permiso se ha unido. Usted puede mantener esto para sus registros."
         table:
           field_name: "Nombre del campo"
           response: "Tu respuesta"
