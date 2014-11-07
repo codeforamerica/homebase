@@ -17,6 +17,6 @@ es:
           window: "Reemplaza las ventanas"
           door: "Reemplaza las puertas"
           wall: "Reemplaza o repare las paredes"
-          siding: "Reemplaza el revestimiento"
+          siding: "Reemplaza el revestimiento (siding)"
           floor: "Reemplaza o arregle los pisos"
         submit: "Enviar"
