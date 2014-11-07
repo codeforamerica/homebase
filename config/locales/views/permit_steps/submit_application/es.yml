@@ -3,7 +3,7 @@ es:
     permit_steps:
       submit_application:
         intro:
-          heading: "Éxito! Su solicitud de permiso está en camino."
+          heading: "Éxito! Su solicitud de permiso está en camino"
           body: "Hemos enviado tu solicitud de permiso a la ciudad. Enviamos una copia a su correo electrónico en %{email}. Hay pocas cosas que hacer a continuación."
         site_plan:
           heading: "Haga un plan detallado del sitio"
