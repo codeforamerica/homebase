@@ -122,11 +122,11 @@ es:
             pool_volume:
               blank: "Seleccione el tamaño de la piscina."
             window_replace_glass:
-              blank: "Seleccione si sólo está reemplazando el vidrio quebrado o no"
+              blank: "Seleccione si sólo está reemplazando el vidrio quebrado o no."
             door_replace_existing:
-              blank: "Seleccione si sólo va a sustituir las puertas de sus bisagras (hinges) existentes o no"
+              blank: "Seleccione si sólo va a sustituir las puertas de sus bisagras (hinges) existentes o no."
             wall_general_changes:
-              blank: "Seleccione si sólo está pintando, agregando papel de empapelar, o la reparando placas de yeso - No va a mudar o alterar los barrotes"
+              blank: "Seleccione si sólo está pintando, agregando papel de empapelar, o la reparando placas de yeso - No va a mudar o alterar los barrotes."
             siding_over_existing:
               blank: "Seleccione si sólo va a poner nuevo revestimiento sobre el revestimiento existente o no."
             floor_covering:
@@ -138,9 +138,9 @@ es:
             owner_name:
               blank: "Ingresa dueño de la casa."
             email:
-              invalid: "Escribe tu dirección de correo electrónico válida (por ejemplo, john@email.com)"
+              invalid: "Escribe tu dirección de correo electrónico válida (por ejemplo, john@email.com)."
             phone:
-              invalid: "Ingrese un número de teléfono válido (por ejemplo, 210-555-5555)"
+              invalid: "Ingrese un número de teléfono válido (por ejemplo, 210-555-5555)."
             house_area:
               blank: "Ingrese el tamaño de la casa en picuadrados."
               not_a_number: "Ingrese el tamaño de la casa en picuadrados."

@@ -138,9 +138,9 @@ en:
             owner_name:
               blank: "Enter home owner name."
             email:
-              invalid: "Enter your valid email address (for example, john@email.com)"
+              invalid: "Enter your valid email address (for example, john@email.com)."
             phone:
-              invalid: "Enter a valid phone number (for example, 210-555-5555)"
+              invalid: "Enter a valid phone number (for example, 210-555-5555)."
             house_area:
               blank: "Enter the size of house in square feet."
               not_a_number: "Enter the size of house in square feet."
