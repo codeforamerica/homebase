@@ -1,9 +1,9 @@
 require 'project_params'
 require 'securerandom'
+require 'project_permit_creator'
 
 class PermitStepsController < ApplicationController
   include ProjectParams
-  include PermitStepsHelper
 
   include Wicked::Wizard
 
@@ -55,7 +55,7 @@ class PermitStepsController < ApplicationController
 
       # Will temporarily save the generated permit pdf in tmp folder
       file_path = "#{Rails.root}/tmp/#{@unique_key}.pdf"
-      permit_created = create_permit(file_path, @project)
+      permit_created = ProjectPermitCreator.new(file_path, @project).create_permit
 
       if permit_created
 

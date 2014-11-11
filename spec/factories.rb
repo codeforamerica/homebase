@@ -81,10 +81,12 @@ FactoryGirl.define do
   end    
 
   factory :general_repair_permit do
+    project
     addition          true
     house_area        1500
     addition_area     500
-    ac                "Wall Unit"
+    ac                "Wall unit"
+    window            true
     window_count      2
     door              true
     door_count        3
