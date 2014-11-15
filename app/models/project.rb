@@ -10,14 +10,14 @@ class Project < ActiveRecord::Base
 
   # @TODO: Should I group these in terms of each view, should model have an idea of how the views look like
 
-  ## Validations on permit_steps#new ##
+  ## Validations on project_steps#new ##
 
   before_validation(on: :create) do
     projects_to_bool
   end
   validate :at_least_one_chosen, :if => :first_step?
 
-  ## Validations on permit_steps#answer_screener ##
+  ## Validations on project_steps#answer_screener ##
 
   # Addition Section
   validates_presence_of :addition_size, :if => :only_if_screener_addition?
@@ -46,6 +46,9 @@ class Project < ActiveRecord::Base
   # Wall Section
   validates_inclusion_of :wall_general_changes, :in => [true, false], :if => :only_if_screener_wall?
   
+  # Siding Section
+  validates_inclusion_of :siding_over_existing, :in => [true, false], :if => :only_if_screener_siding?
+  
   # Floor Section
   validates_inclusion_of :floor_covering, :in => [true, false], :if => :only_if_screener_floor?
 
@@ -56,11 +59,11 @@ class Project < ActiveRecord::Base
   validates_presence_of :owner_address, :if => :active_or_screener_details?
   validates_with AddressValidator, :if => :only_if_address_presence?
   
-  ## Validations on permit_steps#enter_details ##
+  ## Validations on project_steps#enter_details ##
 
   # Basic Information Section
   validates_presence_of :owner_name, :if => :active_or_details?
-  # Validator for owner_address above at permit_steps#answer_screener
+  # Validator for owner_address above at project_steps#answer_screener
   validates_format_of :email, :if => :active_or_details?, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates_format_of :phone, :if => :active_or_details?, :with => /\A(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\z/i
 

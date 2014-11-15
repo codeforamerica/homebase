@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     if @project.save
       session[:project_id] = @project.id
 
-      redirect_to permit_steps_path
+      redirect_to project_steps_path
     else
       render :new
     end

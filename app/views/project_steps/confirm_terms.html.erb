@@ -1,0 +1,97 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: ProjectStepsController::STEPS.index(:confirm_terms) + 1} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1><%= t('views.project_steps.confirm_terms.intro_text') %></h1>
+  </div>
+
+  <div class="form">
+    <%= form_for @project, url: wizard_path, html: { name: "confirm-form" } do |f| %>
+
+    <!-- Check for errors -->
+    <% if @project.errors.any? %>
+      <div class="alert alert-danger">
+        <p><strong><%= t('views.defaults.error_statement') %></strong></p>
+      </div>
+    <% end %>
+    <!-- ./Check for errors -->
+
+    <!-- Other requirements -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h4><%= t('views.project_steps.confirm_terms.requirement.heading') %></h4>
+      </div>
+
+      <div class="panel-body">
+
+          <p><%= t('views.project_steps.confirm_terms.requirement.body') %></p>
+          
+          <!-- Only display slab information if this project will have a foundation -->
+          <% if @project.general_repair_permit.addition || 
+                @project.general_repair_permit.acs_struct || 
+                @project.general_repair_permit.cover %>
+
+            <p><%= t('views.project_steps.confirm_terms.requirement.engineer_letter.html') %></p>              
+          <% end %>
+
+          <p><strong><%= t('views.project_steps.confirm_terms.requirement.dsd_contact') %></strong></p>
+
+          <!-- check if there's an error for this field -->
+          <% if @project.errors["general_repair_permit.accepted_terms"].length >= 1 %>
+            <div class="alert alert-danger">
+              <% @project.errors["general_repair_permit.accepted_terms"].each do | msg | %>
+                <p><strong><%= msg %></strong></p>
+              <% end %>
+            </div>
+          <% end %>
+
+          <%= f.fields_for :general_repair_permit do |ff| %>
+          <div class="checkbox">
+            <%= ff.label :accepted_terms do %>
+              <%= ff.check_box :accepted_terms %> <%= t('views.project_steps.confirm_terms.requirement.accept_text') %>
+            <% end %>
+          </div>
+          <% end %>
+
+      </div><!-- ./panel-body -->
+    </div><!-- ./panel -->
+
+    <%= f.fields_for :general_repair_permit do |ff| %>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4><%= t('views.project_steps.confirm_terms.signature.heading') %></h4>
+        </div>
+
+        <div class="panel-body">
+          <p><%= t('views.project_steps.confirm_terms.signature.body') %></p>
+
+          <%= ff.label :confirmed_name do %>                
+            <p><strong><%= t('views.project_steps.confirm_terms.signature.confirmed_name.text', name: @project.owner_name) %></strong></p>
+
+            <!-- check if there's an error for this field -->
+            <%#= @project.errors.inspect %>
+            <% if @project.errors["general_repair_permit.confirmed_name"].length >= 1 %>
+              <div class="alert alert-danger">
+                <% @project.errors["general_repair_permit.confirmed_name"].each do | msg | %>
+                  <p><strong><%= msg %></strong></p>
+                <% end %>
+              </div>
+            <% end %>
+
+            <%= ff.text_field :confirmed_name, value: "", placeholder: t('views.project_steps.confirm_terms.signature.confirmed_name.placeholder'), class: "form-control input-lg" %>
+          <% end %>
+        </div><!-- ./panel_body -->
+      </div><!-- ./panel -->
+    <% end %>            
+    <div class="form-group submit-form">
+      <%= f.submit t('views.project_steps.confirm_terms.submit'), class: "btn btn-primary btn-lg" %>
+    </div>
+    <% end %>
+
+</div><!-- ./col-sm-9 -->
+

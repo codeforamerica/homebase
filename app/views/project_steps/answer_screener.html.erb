@@ -1,0 +1,263 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: ProjectStepsController::STEPS.index(:answer_screener) + 1} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+  <h1><%= t('views.project_steps.answer_screener.header') %></h1>
+  <%= form_for @project, url: wizard_path, html: {name: "address-form"} do |f| %>
+    <!-- error checking -->
+    <% if @project.errors.any? %>
+      <div class="alert alert-danger">
+        <p><strong><%= t('views.defaults.error_statement') %></strong></p>
+      </div>
+    <% end %>
+    <!-- ./error checking -->
+
+    <!-- address entry -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><%= t('views.project_steps.answer_screener.owner_address.header') %></h4>
+      </div>
+      <div class="panel-body">
+        <!-- Start the address form -->
+        <div class="form-group">
+          <%= render  partial: "project_steps/form_helper/text_field", 
+              locals: { f: f, 
+                        question: t('views.project_steps.answer_screener.owner_address.question'), 
+                        helper_text: nil,
+                        attribute: :owner_address, 
+                        placeholder: t('views.project_steps.answer_screener.owner_address.placeholder'),
+                        input_addon: nil } %>
+          <span class="help-block"><%= t('views.project_steps.answer_screener.owner_address.helper_text') %></span>
+        </div>
+      </div><!-- ./panel_body -->
+    </div><!-- panel -->   
+    <!-- ./address entry -->
+
+    <% if @project.selected_addition %>
+      <!-- Room Additions section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.addition.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.addition.question') %></p>
+
+            <% @project_addition_screener.each do |attribute, details| %>
+
+              <%= render  partial: "project_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+
+        </div>
+      </div>
+      <!-- ./Room Additions section -->
+    <% end %>
+
+    <% if @project.selected_acs_struct %>
+      <!-- Shed/Garage Accessory Structure section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.acs_struct.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.acs_struct.question') %></p>
+
+            <% @project_acs_struct_screener.each do |attribute, details| %>
+
+              <%= render  partial: "project_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+
+        </div>
+      </div>
+      <!-- ./Shed/Garage Accessory Structure -->
+    <% end %>
+
+    <% if @project.selected_deck %>
+      <!-- Deck section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.deck.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.deck.question') %></p>
+
+            <% @project_deck_screener.each do |attribute, details| %>
+
+              <%= render  partial: "project_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+               
+        </div>
+      </div>
+      <!-- ./Deck section -->
+    <% end %>
+
+    <% if @project.selected_pool %>
+      <!-- Swimming Pool section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.pool.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.pool.question') %></p>
+
+            <% @project_pool_screener.each do |attribute, details| %>
+              
+              <%= render  partial: "project_steps/form_helper/radio", 
+                          locals: { f: f, 
+                                    question: details[:label], 
+                                    attribute: attribute, 
+                                    option:  details[:options]} %>
+            <% end %>
+
+        </div>
+      </div>
+      <!-- ./Swimming Pool section -->
+    <% end %>
+    
+    <% if @project.selected_window %>
+      <!-- Windows section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.window.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.window.question.html') %></p>
+
+          <%= render  partial: "project_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :window_replace_glass, 
+                                option: [ { value: true, 
+                                            label: t('views.project_steps.answer_screener.window.options.yes_statement') }, 
+                                          { value: false, 
+                                            label: t('views.project_steps.answer_screener.window.options.no_statement') }]} %>        
+        </div>
+      </div>
+      <!-- ./Windows section -->
+    <% end %>
+
+    
+    <% if @project.selected_door %>
+      <!-- Doors section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.door.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.door.question.html') %></p>
+          <%= render  partial: "project_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :door_replace_existing, 
+                                option: [ { value: true, 
+                                            label: t('views.project_steps.answer_screener.door.options.yes_statement') }, 
+                                          { value: false, 
+                                            label: t('views.project_steps.answer_screener.door.options.no_statement') }]} %>   
+        </div>
+      </div>
+      <!-- ./Doors section -->
+    <% end %>
+
+    
+    <% if @project.selected_wall %>
+      <!-- Walls section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.wall.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.wall.question.html') %></p>
+          <%= render  partial: "project_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :wall_general_changes, 
+                                option: [ { value: true, 
+                                            label: t('views.project_steps.answer_screener.wall.options.yes_statement') }, 
+                                          { value: false, 
+                                            label: t('views.project_steps.answer_screener.wall.options.no_statement') }]} %>         
+        </div>
+      </div>
+      <!-- ./Walls section -->
+    <% end %>
+
+    
+    <% if @project.selected_siding %>
+      <!-- Siding Replacement section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.siding.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.siding.question.html') %></p>
+
+          <%= render  partial: "project_steps/form_helper/radio", 
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :siding_over_existing, 
+                                option: [ { value: true, 
+                                            label: t('views.project_steps.answer_screener.siding.options.yes_statement') }, 
+                                          { value: false, 
+                                            label: t('views.project_steps.answer_screener.siding.options.no_statement') }]} %>  
+        </div>
+      </div>
+      <!-- ./Siding Replacement section -->
+    <% end %>
+
+    
+    <% if @project.selected_floor %>
+      <!-- Floor - Structural Repairs section -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.answer_screener.floor.header') %></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= t('views.project_steps.answer_screener.floor.question.html') %></p>
+
+          <%= render  partial: "project_steps/form_helper/radio",
+                      locals: { f: f,
+                                question: nil,
+                                attribute: :floor_covering, 
+                                option: [ { value: true, 
+                                            label: t('views.project_steps.answer_screener.floor.options.yes_statement') }, 
+                                          { value: false, 
+                                            label: t('views.project_steps.answer_screener.floor.options.no_statement') }]} %>     
+        </div>
+      </div>
+      <!-- ./Floor-Structural Repairs section -->
+    <% end %>
+   
+    <!-- Contractor section -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><%= t('views.project_steps.answer_screener.contractor.header') %></h4>
+      </div>
+      <div class="panel-body">
+        <p><%= t('views.project_steps.answer_screener.contractor.question') %></p>
+        <%= render  partial: "project_steps/form_helper/radio", 
+                    locals: { f: f,
+                              question: nil,
+                              attribute: :contractor, 
+                              option: [ { value: false, 
+                                          label: t('views.project_steps.answer_screener.contractor.options.no_statement') },
+                                        { value: true, 
+                                          label: t('views.project_steps.answer_screener.contractor.options.yes_statement') }]} %>            
+      </div>
+    </div><!-- ./Contractor section -->
+
+    <!-- submit button -->
+    <%= f.submit t('views.project_steps.answer_screener.submit'), class: "btn btn-primary btn-lg"%>
+
+  <% end %>
+</div> <!-- ./col-sm-9 -->

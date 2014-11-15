@@ -1,0 +1,250 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: ProjectStepsController::STEPS.index(:enter_details) + 1} %>
+
+<!-- Begin step -->
+<div class="col-sm-9 multi-form"> <!-- multi-form adds some nice padding for long form groupings -->
+
+  <!-- Intro text -->
+    <div class="intro">
+      <h1><%= t('views.project_steps.enter_details.intro.heading') %></h1>
+      <p><%= t('views.project_steps.enter_details.intro.body') %></p>
+    </div>
+
+
+  <!-- Form -->
+  <div class="form">
+    <%= form_for @project, url: wizard_path, html: {name: "email-form"} do |f| %>
+
+    <!-- error checking -->
+    <% if @project.errors.any? %>
+      <div class="alert alert-danger">
+        <p><strong><%= t('views.defaults.error_statement') %></strong></p>
+      </div>
+    <% end %>
+    <!-- ./error checking -->
+
+    <!-- Homeowner info section --> 
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h4><%= t('views.project_steps.enter_details.homeowner_info.heading') %></h4>
+      </div>
+
+      <div class="panel-body">
+        <p><%= t('views.project_steps.enter_details.homeowner_info.helper_text') %></p>
+        
+        <!-- owner_name -->
+        
+        <div class="form-group">
+          <%= render  partial: "project_steps/form_helper/text_field", 
+              locals: { f: f, 
+                        question: t('views.project_steps.enter_details.homeowner_info.name.question'), 
+                        helper_text: nil,
+                        attribute: :owner_name,
+                        placeholder: nil,
+                        input_addon: nil } %>
+        </div>
+
+        <!-- ./owner_name -->
+
+        <!-- owner_address -->
+
+        <div class="form-group">
+          <%= render  partial: "project_steps/form_helper/text_field", 
+              locals: { f: f, 
+                        question: t('views.project_steps.enter_details.homeowner_info.address.question'), 
+                        helper_text: nil,
+                        attribute: :owner_address, 
+                        placeholder: nil,
+                        input_addon: nil } %>
+        </div>
+
+        <!-- email -->
+
+        <div class="form-group">
+          <%= render  partial: "project_steps/form_helper/text_field", 
+              locals: { f: f, 
+                        question: t('views.project_steps.enter_details.homeowner_info.email.question'),
+                        helper_text: nil, 
+                        attribute: :email, 
+                        placeholder: nil,
+                        input_addon: nil } %>
+        </div>
+
+        <!-- ./email -->
+
+        <!-- phone -->
+
+        <div class="form-group">
+          <%= render  partial: "project_steps/form_helper/text_field", 
+              locals: { f: f, 
+                        question: t('views.project_steps.enter_details.homeowner_info.phone.question'), 
+                        helper_text: nil,
+                        attribute: :phone, 
+                        placeholder: nil,
+                        input_addon: nil } %>
+        </div>
+
+        <!-- ./phone -->
+
+        </div><!-- ./panel_body -->
+      </div><!-- ./panel -->
+
+
+    <%= f.fields_for :general_repair_permit do |ff| %>
+      <!-- ./Homeowner info section -->
+      <% if @project.general_repair_permit.addition %>
+        <!-- Addition section --> 
+
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <h4><%= t('views.project_steps.enter_details.addition_info.heading') %></h4>
+          </div>
+
+          <div class="panel-body">
+
+            <!-- house_area -->
+
+            <div class="form-group">
+              <%= render  partial: "project_steps/form_helper/text_field", 
+                  locals: { f: ff, 
+                            question: t('views.project_steps.enter_details.addition_info.house_area.question'),
+                            helper_text: nil,
+                            attribute: :house_area, 
+                            placeholder: nil,
+                            input_addon: nil,
+                            nested_model: "general_repair_permit" } %>
+            </div>
+
+            <!-- ./house_area -->
+
+            <!-- addition_area -->
+
+            <div class="form-group">
+              <%= render  partial: "project_steps/form_helper/text_field", 
+                  locals: { f: ff, 
+                            question: t('views.project_steps.enter_details.addition_info.addition_area.question'),
+                            helper_text: nil,
+                            attribute: :addition_area, 
+                            placeholder: nil,
+                            input_addon: nil,
+                            nested_model: "general_repair_permit"  } %>
+            </div>
+
+            <!-- ./addition_area -->
+
+            <!-- ac -->
+
+            <div class="form-group">
+              <%= render  partial: "project_steps/form_helper/select", 
+                  locals: { f: ff, 
+                            question: t('views.project_steps.enter_details.addition_info.ac.question'),
+                            helper_text: t('views.project_steps.enter_details.addition_info.ac.helper_text'),
+                            attribute: :ac, 
+                            options: @project_ac_options,
+                            model_attribute: @project.general_repair_permit.ac,
+                            nested_model: "general_repair_permit" } %>
+            </div>
+
+            <!-- ./ac -->
+
+            </div><!-- ./panel_body -->
+          </div><!-- ./panel -->
+
+        <!-- ./Addition section -->
+        <% end %>
+
+        <!-- Window section -->
+        <% if @project.general_repair_permit.window %>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4><%= t('views.project_steps.enter_details.window_info.heading') %></h4>
+            </div>
+            <div class="panel-body">
+
+              <div class="form-group">
+                <%= render  partial: "project_steps/form_helper/text_field", 
+                    locals: { f: ff, 
+                              question: t('views.project_steps.enter_details.window_info.window_count.question'),
+                              helper_text: t('views.project_steps.enter_details.window_info.window_count.helper_text'),
+                              attribute: :window_count, 
+                              placeholder: nil,
+                              input_addon: nil,
+                              nested_model: "general_repair_permit" } %>
+              </div>
+
+            </div> <!-- ./panel_body -->
+          </div> <!-- ./panel -->
+        <% end %> <!-- window -->
+
+        <!-- Door section -->
+        <% if @project.general_repair_permit.door %>
+          <div class="panel panel-default">
+
+            <div class="panel-heading">
+              <h4><%= t('views.project_steps.enter_details.door_info.heading') %></h4>
+            </div>
+            <div class="panel-body">
+
+              <div class="form-group">
+                <%= render  partial: "project_steps/form_helper/text_field", 
+                    locals: { f: ff, 
+                              question: t('views.project_steps.enter_details.door_info.door_count.question'),
+                              helper_text: t('views.project_steps.enter_details.door_info.door_count.helper_text'),
+                              attribute: :door_count, 
+                              placeholder: nil,
+                              input_addon: nil,
+                            nested_model: "general_repair_permit" } %>
+              </div>
+
+            </div> <!-- ./panel_body -->
+          </div> <!-- ./panel -->
+        <% end %> <!-- door -->
+
+      <!-- Final info section -->
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h4><%= t('views.project_steps.enter_details.final_info.heading') %></h4>
+        </div>
+
+        <div class="panel-body">
+
+        <!-- work_summary -->
+          <div class="form-group">
+            <%= render  partial: "project_steps/form_helper/text_area", 
+                locals: { f: ff, 
+                          question: t('views.project_steps.enter_details.final_info.work_summary.question'),
+                          helper_text: t('views.project_steps.enter_details.final_info.work_summary.helper_text'),
+                          attribute: :work_summary,
+                          nested_model: "general_repair_permit" } %>
+          </div>
+
+          <!-- ./work_summary -->
+
+          <!-- job_cost -->
+          <div class="form-group">
+            <%= render  partial: "project_steps/form_helper/text_field", 
+                locals: { f: ff, 
+                          question: t('views.project_steps.enter_details.final_info.job_cost.question'),
+                          helper_text: t('views.project_steps.enter_details.final_info.job_cost.helper_text'),
+                          attribute: :job_cost, 
+                          placeholder: nil,
+                          input_addon: "$",
+                          nested_model: "general_repair_permit" } %>
+          </div>
+          <!-- ./job_cost -->
+
+        </div><!-- ./panel-body -->
+      </div><!-- ./panel -->
+
+      <!-- ./Final info section-->   
+    <% end %>
+    <%= f.submit t('views.project_steps.enter_details.submit'), class: "btn btn-primary btn-lg" %> 
+
+    <% end %>
+  </div>
+</div>

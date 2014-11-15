@@ -1,0 +1,95 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: ProjectStepsController::STEPS.index(:display_permits) + 1} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1><%= t('views.project_steps.display_permits.intro_text') %></h1>
+  </div>
+  <!-- Permit Not Needed Projects -->
+  <% if ! @permit_needs[:permit_not_needed].empty? %>
+
+    <div class="alert alert-success permit_not_needed" role="alert">
+      <h4><%= t('views.project_steps.display_permits.permit_not_needed.heading') %></h4>
+      <ul>
+        <% @permit_needs[:permit_not_needed].each do |project| %>
+          <li><%= t(project) %></li>
+        <% end %>
+      </ul>
+      <p class="info-bottom"><strong><%= t('views.project_steps.display_permits.permit_not_needed.additional_permits') %></strong></p>
+      <p class="info-bottom"><%= t('views.project_steps.display_permits.permit_not_needed.body') %></p>  
+    </div>
+
+  <% end %>
+  <!-- ./Permit Not Needed Project -->
+  
+  <!-- Permit Needed Projects -->
+  <% if ! @permit_needs[:permit_needed].empty? %>
+  
+    <div class="alert alert-warning permit_needed" role="alert">
+      <h4><%= t('views.project_steps.display_permits.permit_needed.heading') %></h4>
+        <ul>
+          <% @permit_needs[:permit_needed].each do |project| %>
+            <li><%= t(project) %></li>
+          <% end %>
+        </ul>
+        <p class="info-bottom"><%= t('views.project_steps.display_permits.permit_needed.body') %></p>  
+    </div>
+
+  <% end %>
+  <!-- ./Permit Needed Project -->
+  
+  <!-- Further Assistance Needed Projects -->
+  <% if ! @permit_needs[:further_assistance_needed].empty? %>
+
+    <div class="alert alert-danger further_assistance_needed" role="alert">
+      <p class="info-top"><%= t('views.project_steps.display_permits.further_assistance_needed.helper_text.part_1') %>
+        <% @permit_needs[:further_assistance_needed].each do |project| %>
+          <span class="project-title"><%= t(project) %></span>
+        <% end %>
+        <%= t('views.project_steps.display_permits.further_assistance_needed.helper_text.part_2') %>
+      </p>
+      <p class="info-bottom"><%= t('views.project_steps.display_permits.further_assistance_needed.body') %></p>
+    </div>
+
+  <% end %>
+
+  <% if ! @permit_needs[:permit_needed].empty? %>
+
+    <div class="panel panel-default panel-info-addition">
+      <div class="panel-heading">
+        <h4><%= t('views.project_steps.display_permits.detail_permit_info.heading') %></h4>
+      </div>
+      <div class="panel-body">
+        <p><%= t('views.project_steps.display_permits.detail_permit_info.body') %></p>
+        <p><strong><%= t('views.project_steps.display_permits.detail_permit_info.helper_text') %></strong></p>    
+        <ul>
+          <% @permit_needs[:permit_needed].each do |project| %>
+            <li><%= t(project) %></li>
+          <% end %>
+        </ul>            
+        <p><strong><%= t('views.project_steps.display_permits.detail_permit_info.app_cost.heading') %></strong></p>
+        <p><%= t('views.project_steps.display_permits.detail_permit_info.app_cost.html') %></p>
+        <p><strong><%= t('views.project_steps.display_permits.detail_permit_info.req_docs') %></strong></p>
+        <p><%= t('views.project_steps.display_permits.detail_permit_info.misc_text') %></p>
+          <ul>
+            <li><%= t('views.project_steps.display_permits.detail_permit_info.permit_app') %></li>
+            <li><%= t('views.project_steps.display_permits.detail_permit_info.site_plan') %></li>
+          </ul>        
+        <p><%= t('views.project_steps.display_permits.detail_permit_info.bring_id') %></p>
+          <ul>
+            <li><%= t('views.project_steps.display_permits.detail_permit_info.photo_id') %></li>
+            <li><%= t('views.project_steps.display_permits.detail_permit_info.ownership_proof') %></li> 
+          </ul>
+
+        <!-- Next button -->
+        <%= link_to t('views.project_steps.display_permits.submit'), next_wizard_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+
+  <% end %>
+
+
+</div><!-- ./col-sm-9 -->

@@ -1,6 +1,0 @@
-es:
-  views:
-    permit_steps:
-      form_helper:
-        select:
-          select_one: "Seleccione uno..."

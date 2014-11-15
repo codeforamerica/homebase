@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get '/:locale' => 'projects#new'
     
     root to: 'projects#new'
-    resources :permit_steps
+    resources :project_steps
 
     # This is different than the Rails intended used of get '/projects', which it should
     # bring you to projects#index page, but since we do not plan to have this page
@@ -20,10 +20,10 @@ Rails.application.routes.draw do
     get '/reset' => 'application#reset'
 
     # Send an email
-    get '/send_email' => 'permit_steps#send_email'
+    get '/send_email' => 'project_steps#send_email'
 
     # This will serve the generated permit PDF
-    get '/generated_permits/:filename' => 'permit_steps#serve'
+    get '/generated_permits/:filename' => 'project_steps#serve'
 
     # This is the engine light to make sure application dependency are okay
     get '/.well-known/status' => 'status#check'

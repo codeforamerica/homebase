@@ -26,7 +26,7 @@ class GeneralRepairPermit < ActiveRecord::Base
   validates_format_of :job_cost, :if => :only_if_job_cost_presence?, :with => /\A\d+(?:\.\d{0,2})?\z/
   validates_numericality_of :job_cost, :if => :only_if_job_cost_presence?, :greater_than => 0, :less_than => 1000000000000
 
-  ## Validations on permit_step#confirm_terms ## @TODO: move to general repair permits
+  ## Validations on project_step#confirm_terms ## @TODO: move to general repair permits
 
   validates_acceptance_of :accepted_terms, :accept => true, :if => :accepted_terms_acceptance?
   validate :ensure_name_confirmed, :if => :accepted_terms_acceptance?, :message => I18n.t('models.general_repair_permit.ensure_name_confirmed_msg')

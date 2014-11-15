@@ -1,0 +1,19 @@
+es:
+  views:
+    project_steps:
+      confirm_terms:
+        intro_text: "Lea estos términos y firmar su permiso de línea"
+        requirement:
+          heading: "Puede haber otros requisitos"
+          body: "Permisos adicionales, inspecciony documentos puede ser requerido para completar su proyecto se requieren permisos separados para electricidad, plomería, y otras partdel proyecto."
+          engineer_letter:
+            html: "Un ingeniero profesional por lo general tiene que inspeccionar las nuevas losas de hormigón antde verter el hormigón Para encontrar un ingeniero profesional, visite el <a href=\"http://engineers.texas.gov\" target=\"_blank\">Junta de Ingenieros Profesionalde Texas website</a>."
+          dsd_contact: "Si usted tiene alguna pregunta o no está seguro acerca de esta información, puede llamar al Departamento de Servicios de Desarrollo al (210) 207-1111"
+          accept_text: "Yo entiendo que pueden ser necesarios otros permisos y las inspecciones."
+        signature:
+          heading: "De acuerdo a los términos de solicitud de permiso"
+          body: "He leído las reglas y la información que figuran en esta solicitud en línea y saber que la misma sea veraz y correcta y por el presente acuerdo en que si se expide el permiso, todas las disposicionde la Ordenanza de la ciudad que se cumplirá si en el presente documento se especifica o no. entiendo que el permiso pertenece al dueño de la propiedad y yo soy un agente autorizado."
+          confirmed_name:
+            text: "Para firmar este permiso, escriba su nombre completo (%{name}) en el cuadro a continuación:"
+            placeholder: "Escriba su nombre"
+        submit: "Estoy de acuerdo"

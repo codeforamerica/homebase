@@ -1,0 +1,32 @@
+<%= f.label attribute, question %>
+<% error = @project.errors if local_assigns[:error].nil? %>
+<% edited_attribute = local_assigns[:nested_model].nil? ? attribute : "#{nested_model}.#{attribute}"%>
+
+<% if error[edited_attribute].length >= 1 %>
+
+  <!-- create an errors div to style error message and make input red -->    
+  <div class="field_with_errors">
+    <!-- Print out the error message (from validator) -->
+    <% error[edited_attribute].each do | msg | %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="select">
+  <% if helper_text %>
+    <p class="help-block"><%= helper_text %></p>
+  <% end %>
+
+  <% if model_attribute.blank? %>
+    <%= f.select  attribute, 
+                  options_for_select(options), 
+                  { include_blank: t('views.project_steps.form_helper.select.select_one') }, 
+                  { class: "form-control" } %>
+  <% else %>
+    <%= f.select  attribute, 
+                  options_for_select(options, model_attribute), 
+                  { include_blank: t('views.project_steps.form_helper.select.select_one') }, 
+                  { class: "form-control" } %>
+  <% end %>  
+</div>
