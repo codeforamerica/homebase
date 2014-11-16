@@ -29,6 +29,6 @@
 //= require site/uservoice
 
 //
-//// Permit_Steps
-//= require permit_steps/enter_details
-//= require permit_steps/confirm_terms
+//// Project_Steps
+//= require project_steps/enter_details
+//= require project_steps/confirm_terms

@@ -1,0 +1,17 @@
+<!-- Render the sidebar partial -->
+<%= render partial: "layouts/sidebar", locals: {cur_step: 4} %>
+
+<!-- Begin step -->
+<div class="col-sm-9">
+
+  <!-- Intro text -->
+  <div class="intro">
+    <h1><%= t('views.project_steps.error_page.heading') %></h1>
+    <div class="alert alert-danger">
+        <p><%= t('views.project_steps.error_page.description') %></p>
+        <p><strong><%= t('views.project_steps.error_page.instruction') %></strong></p>
+        <p><%= t('views.project_steps.error_page.contact.html') %></p>
+    </div>
+  </div>
+ </div>
+</div>

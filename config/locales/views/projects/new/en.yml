@@ -1,0 +1,22 @@
+en:
+  views:
+    projects:
+      new:
+        intro:
+          heading: "How would you like to improve your house?"
+        project:
+          addition:
+            raw: "Add space or build a new room"
+            html: "Add space or <br>build a new room"
+          acs_struct: "Build a shed or garage"
+          deck: "Build a deck"
+          pool: "Build a swimming pool"
+          cover:
+            raw: "Build a carport or outdoor cover"
+            html: "Build a carport <br>or outdoor cover"
+          window: "Replace my windows"
+          door: "Replace my doors"
+          wall: "Replace or fix my walls"
+          siding: "Replace my siding"
+          floor: "Replace or fix my floors"
+        submit: "Next step"

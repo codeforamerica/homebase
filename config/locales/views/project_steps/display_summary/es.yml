@@ -1,0 +1,29 @@
+es:
+  views:
+    project_steps:
+      display_summary:
+        intro:
+          heading: "Casi terminado! Es el momento de enviar su solicitud"
+          body: "Usted está listo para enviar su solicitud a la ciudad. Sólo tienes que seguir los siguientes pasos:"
+        permit:
+          heading: "Examen y envíe su solicitud de permiso"
+          congrat_text: "Revise a continuación sus respuestas."
+          download_instruction: "Si hay problemas, volver atrás y corregir su respuesta. Si todo se ve bien, envíe su solicitud."
+          send_button: "Envíe mi solicitud"
+          problem_button: "Vuelve y arregle mis respuestas."
+        table:
+          head:
+            description: "Nombre del Campo"
+            response: "Sus Respuestas"
+          list: "Proyectos"
+          address: "Dirección"
+          phone: "Número de teléfono"
+          email: "Dirección de correo electrónico"
+          size: "Superficie de la casa"
+          added_size: "Tamaño de adición"
+          units: "pies cuadrados"
+          ac: "Tipo de aire acondicionado"
+          number_windows: "Número de ventanas en reparación"
+          number_doors: "Número de puertas en reparación"
+          summary: "Resumen del trabajo"
+          cost: "Costo de trabajo"

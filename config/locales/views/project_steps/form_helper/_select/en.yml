@@ -1,0 +1,6 @@
+en:
+  views:
+    project_steps:
+      form_helper:
+        select:
+          select_one: "Select one..."

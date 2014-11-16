@@ -1,0 +1,22 @@
+es:
+  views:
+    projects:
+      new:
+        intro:
+          heading: "¿Cómo le gustaría mejorar su casa?"
+        project:
+          addition:
+            raw: "Añada espacio o construya una nueva sala "
+            html: "Añada espacio o <br>construya una nueva sala "
+          acs_struct: "Construya un cobertizo o garaje "
+          deck: "Construya una cubierta o patio"
+          pool: "Construya una piscina"
+          cover:
+            raw: "Construya una cubierta de coche o la cubierta al aire libre"
+            html: "Construya una cubierta de coche o la cubierta al aire libre"
+          window: "Reemplaza las ventanas"
+          door: "Reemplaza las puertas"
+          wall: "Reemplaza o repare las paredes"
+          siding: "Reemplaza el revestimiento (siding)"
+          floor: "Reemplaza o arregle los pisos"
+        submit: "Enviar"

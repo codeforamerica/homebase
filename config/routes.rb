@@ -4,26 +4,26 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   scope "(:locale)", locale: /en|es/ do
-    get '/:locale' => 'permits#new'
+    get '/:locale' => 'projects#new'
     
-    root to: 'permits#new'
-    resources :permit_steps
+    root to: 'projects#new'
+    resources :project_steps
 
-    # This is different than the Rails intended used of get '/permits', which it should
-    # bring you to permits#index page, but since we do not plan to have this page
+    # This is different than the Rails intended used of get '/projects', which it should
+    # bring you to projects#index page, but since we do not plan to have this page
     # and we need the behavior to go back to new when "back" button is pressed on
-    # '/permits' page, so this route is being used.
-    get '/permits', to: 'permits#new'
-    post '/permits', to: 'permits#create'
+    # '/projects' page, so this route is being used.
+    get '/projects', to: 'projects#new'
+    post '/projects', to: 'projects#create'
     
     # This will reset session variables
     get '/reset' => 'application#reset'
 
     # Send an email
-    get '/send_email' => 'permit_steps#send_email'
+    get '/send_email' => 'project_steps#send_email'
 
     # This will serve the generated permit PDF
-    get '/generated_permits/:filename' => 'permit_steps#serve'
+    get '/generated_permits/:filename' => 'project_steps#serve'
 
     # This is the engine light to make sure application dependency are okay
     get '/.well-known/status' => 'status#check'

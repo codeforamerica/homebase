@@ -36,10 +36,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_permit
-    @current_permit ||= Permit.find_by_id(session[:permit_id]) if session[:permit_id]
+  def current_project
+    @current_project ||= Project.find_by_id(session[:project_id]) if session[:project_id]
   end
-  helper_method :current_permit
+  helper_method :current_project
 
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"

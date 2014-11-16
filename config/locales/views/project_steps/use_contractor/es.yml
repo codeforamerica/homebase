@@ -1,0 +1,7 @@
+es:
+  views:
+    project_steps:
+      use_contractor:
+        heading: "¡Buenas noticias!"
+        description: "Usted dijo que está usando un contratista. Ellos llenarán y presentarán los permisos para ti. Por favor avise al contratista para que sepa que necesita hacer esto."
+        contact: "Si tiene preguntas adicionales, comuníquese con el Departamento de Servicios de Desarrollo (210) 207-1111."
