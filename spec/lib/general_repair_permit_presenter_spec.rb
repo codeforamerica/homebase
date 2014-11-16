@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe GeneralRepairPermitPresenter do
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
   describe '#to_hash' do
     let(:permit) { FactoryGirl.create(:general_repair_permit) }
     let(:presenter) { GeneralRepairPermitPresenter.new(permit.project)}
@@ -48,5 +51,9 @@ describe GeneralRepairPermitPresenter do
                       }
       expect(presenter.to_hash).to eq(form_data)
     end
+  end
+
+  after(:all) do
+    @cosa.destroy
   end
 end

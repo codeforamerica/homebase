@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe ProjectPermitCreator do
+  before(:all) do 
+    @cosa = FactoryGirl.create(:cosa_boundary)
+  end
+
   describe '#create_permit' do
     let(:permit) { FactoryGirl.create(:general_repair_permit) }
     let(:file_path) { Rails.root.join('tmp', 'rspec') }
@@ -27,5 +31,9 @@ describe ProjectPermitCreator do
       expect(pdftk).to receive(:fill_form).with(anything, anything, anything, flatten: true)
       project_permit_creator.create_permit   
     end
+  end
+  
+  after(:all) do
+    @cosa.destroy
   end
 end
