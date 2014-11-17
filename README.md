@@ -71,6 +71,9 @@ Our application currently requires the following keys:
 * SENDGRID_USERNAME and SENDGRID_PASSWORD: 
   * You can get your own SendGrid credentials at [SendGrid](http://www.sendgrid.com)
 
+* EMAIL_CUSTOMER_SERVICE:
+  * This is the email address you want your customer service department to receive when a user submits an application.
+
 #### 5. Start your web service
 
 Homebase uses the [Foreman](http://theforeman.org/) web server. It's easy to start up.
@@ -106,7 +109,10 @@ You'll also need to upgrade to the Standard Yanari package (this costs $50/month
     $ heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
     $ heroku config:set LD_LIBRARY_PATH=/app/lib
     $ heroku config:set PDFTK_PATH=/vendor/pdftk/bin/pdftk
-    $ heroku config:set GOOGLE_GEOCODER_API_KEY=REPLACE YOUR API KEY HERE
+    $ heroku config:set GOOGLE_GEOCODER_API_KEY=REPLACE_WITH_YOUR_API_KEY_HERE
+    $ heroku config:set SENDGRID_USERNAME=REPLACE_WITH_YOUR_USERNAME_HERE
+    $ heroku config:set SENDGRID_PASSWORD=REPLACE_WITH_YOUR_PASSWORD_HERE
+    $ heroku config:set EMAIL_CUSTOMER_SERVICE=REPLACE_WITH_YOUR_CUSTOMER_SERVICE_EMAIL_ADDRESS
 
 #### 4. Change your database config
 
