@@ -81,7 +81,7 @@ class GeneralRepairPermit < ActiveRecord::Base
   end
   
 
-  ########  Business Logic for when project is needed ########
+  ########  Business Logic for when permit is needed ########
 
   # Return true if this permit is needed, false if not needed, nil if more guidance will be needed from DSD
   def self.addition_permit_needed?(project)
@@ -225,7 +225,7 @@ class GeneralRepairPermit < ActiveRecord::Base
         self.door_permit_needed?(project) ||
         self.wall_permit_needed?(project) ||
         self.siding_permit_needed?(project) ||
-        self.floor_permit_needed?(project) # || self.subproject_permit_needed?(project) (continue to add more subject here)
+        self.floor_permit_needed?(project) # || self.subproject_permit_needed?(project) (continue to add more subproject here)
       return true
     else
       return false
